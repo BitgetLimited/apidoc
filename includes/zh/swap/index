@@ -1,4 +1,4 @@
-<h1 id='185368440e'>更新日志  </h1>
+<h1 id='185368440e'>更新日志</h1>
 <table><thead>
 <tr>
 <th>生效时间（新加坡时间 UTC+8)</th>
@@ -14,7 +14,7 @@
 <td>合约文档</td>
 </tr>
 </tbody></table>
-<h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
+<h1 id='5ea2e0cde2'>简介</h1><h2 id='api-1'>API 简介1</h2>
 <p>欢迎使用Bitget开发者文档！  </p>
 
 <p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。  </p>
@@ -125,7 +125,7 @@
 <p><strong>WebSocket</strong></p>
 
 <p>WebSocket将每个命令类型限制为每秒xx条命令。</p>
-<h2 id='api-2'>API域名</h2>
+<h2 id='api'>API域名</h2>
 <p>您可以自行比较使用Rest API和Websocket两个接入方式，选择延迟低的进行使用。     </p>
 
 <table><thead>
@@ -149,7 +149,7 @@
 <td>国内</td>
 </tr>
 </tbody></table>
-<h2 id='api-3'>API验证</h2>
+<h2 id='api-2'>API验证</h2>
 <p><strong>发起请求</strong> </p>
 
 <p>所有REST请求的header都必须包含以下key：</p>
