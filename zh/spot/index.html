@@ -1,0 +1,409 @@
+
+<!doctype html>
+<html>
+  <head>
+    <link href="../../images/favicon-120dc053.png" rel="icon" type="image/png" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>bitget API Docs</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+      header.top-nav {
+        position:fixed;
+        display:flex;
+        flex:1;
+        width:100%;
+        z-index:100;
+        padding: 0 26px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        align-items: center;
+        background: #131625;
+        -webkit-box-shadow: 0 1px 0 0 #000;
+                box-shadow: 0 1px 0 0 #000;
+      }
+      div.top-menu{
+        display:flex;
+        flex: 1;
+      }
+      a.logo-link{
+        line-height: 50px;
+      }
+      img.logo {
+        width: 109px;
+        height: 33px;
+        margin-top: 10px;
+        vertical-align: middle;
+      }
+      .con {
+          display: flex;
+          top: 0;
+          height: 55px;
+          margin: 0 0 0 62px;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+      }
+
+      .con li{
+          text-align: center;
+          line-height: 55px;
+          border:0 solid #000;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
+      }
+
+      .con a {
+        display: inline-block;
+        color: #B0B8DB;
+        font-size: 16px;
+        text-decoration: none;
+        line-height: 53px;
+        padding: 0 20px;
+      }
+
+      .con a.selected {
+        border-bottom: 2px solid transparent;
+        border-color: #357CE1;
+        color: #fff;
+      }
+
+      a.international{
+
+
+        width: 78px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        border: 1px solid #383F66;
+        color: #ADC1D5;
+        text-decoration: none;
+        border-radius: 3px;
+        -webkit-transition: all 300ms;
+        transition: all 300ms;
+      }
+    </style>
+    <link href="../../stylesheets/screen-c84a247c.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print-14ff89df.css" rel="stylesheet" media="print" />
+      <script src="../../javascripts/all-0f81ae09.js"></script>
+  </head>
+  <header class="top-nav">
+  <div class="top-menu">
+  <a href="https://bitgetlimited.github.io/apidoc/zh/" class="logo-link" target="_self">
+    <img src="../../images/logo-2cda61b9.png" class="logo" alt="Logo" />
+  </a>
+  <ul class="con">
+   <li><a  id="swap"  data-text="合约" >Swap</a></li>
+   <li><a id="spot" data-text="币币" >Spot</a></li>
+  </ul>
+  </div>
+  <a class="international" id="international" href="javascript:void(0);">English</a>
+  </header>
+
+  <body class="zh zh_spot zh_spot_index" data-languages="[&quot;console&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="console">console</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#zh" class="toc-h1 toc-link" data-title="zh 中文标题">zh 中文标题</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#178ac93762" class="toc-h2 toc-link" data-title="二级标题 币币">二级标题 币币</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <!---
+Clipboard script
+-->
+
+<script src="./dist/clipboard.min.js"></script>
+
+<script>
+var clipboard = new ClipboardJS('.clipboard_button');
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
+<h1 id='zh'>zh 中文标题</h1><h3 id='178ac93762'>二级标题 币币</h3>
+<blockquote>
+<p>这是中文下的api 文档</p>
+</blockquote>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="console">console</a>
+          </div>
+      </div>
+    </div>
+  </body>
+
+<script>
+    $(".con a").click(function(){
+      $(".con a").removeClass("selected");
+      $(this).addClass("selected")
+    });
+    $("#international").click(function(){
+      $this = $(this);
+      var currentUrl = window.location.href;
+      var index=currentUrl.indexOf("#");
+      currentUrl=currentUrl.substring(0,index);
+      if ($this.text() == 'English') {
+        window.location=currentUrl.replace(/\/en/,"/zh");
+      } else {
+        window.location=currentUrl.replace(/\/zh/,"/en");
+
+      }
+    });
+    var  currentUrl=window.location.href;
+    var isEn=currentUrl.indexOf('en/')>-1;
+    var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isLocal=currentUrl.indexOf('local')>-1;
+    var $international=$("#international");
+    var $search=$("#input-search");
+
+    var $Swap=$("#swap"),
+        $Spot=$("#spot");
+    if(isSwap){
+        $Swap.addClass('selected');
+    } else{
+        $Spot.addClass('selected');
+    }
+    if(!isEn){
+        $Swap.html($Swap.attr('data-text'))
+        $Spot.html($Spot.attr('data-text'))
+
+        $international.html('简体中文')
+        $search.html('搜索');
+    }
+    if(isLocal){
+      if(isEn){
+          $Swap.attr('href','/en/swap/')
+          $Spot.attr('href','/en/spot/')
+      } else{
+          $Swap.attr('href','/zh/swap/')
+          $Spot.attr('href','/zh/spot/')
+      }
+
+    } else{
+      if(isEn){
+          $Swap.attr('href','/apidoc/en/swap/')
+          $Spot.attr('href','/apidoc/en/spot/')
+      } else{
+          $Swap.attr('href','/apidoc/zh/swap/')
+          $Spot.attr('href','/apidoc/zh/spot/')
+      }
+    }
+</script>
+
+</html>
