@@ -789,7 +789,7 @@ Signature = base64.encode(Signature)
 <li>POST: 参数按照json格式发送body传输到服务器。</li>
 </ul>
 <h1 id='1163d302ca'>合约行情接口</h1><h2 id='038df82194'>获取服务端时间</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：20次/2s</p>
 
 <p><strong>HTTP请求</strong>
     返回服务器的时间</p>
@@ -1764,7 +1764,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h1 id='9eecf81cfe'>合约账户接口</h1><h2 id='1597b6986f'>查询所有合约账户信息</h2>
-<p>限速规则：1次/1s</p>
+<p>限速规则：1次/s</p>
 
 <p><strong>HTTP请求</strong>
    查询所有合约账户信息</p>
@@ -1846,7 +1846,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='cae9a03868'>单个合约账户信息</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     单个合约账户信息</p>
@@ -1944,7 +1944,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='715bca48c0'>获取单个合约的用户配置</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     获取单个合约的用户配置</p>
@@ -2012,7 +2012,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='4215cf81c7'>调整杠杆</h2>
-<p>限速规则：2次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     调整杠杆</p>
@@ -2092,7 +2092,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='02b912f7e0'>列出主账户资产流水</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     列出主账户资产流水</p>
@@ -2205,7 +2205,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='929d8e264b'>列出保证金账户资产流水</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     列出保证金账户资产流水</p>
@@ -2318,7 +2318,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='9e3bc1e664'>调整保证金</h2>
-<p>限速规则：20次/1s</p>
+<p>限速规则：20次/2s</p>
 
 <p><strong>HTTP请求</strong>
     调整保证金</p>
@@ -2389,7 +2389,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='abf1bb4b0e'>自动追加保证金</h2>
-<p>限速规则：20次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
    自动追加保证金</p>
@@ -2454,7 +2454,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='2cedacc22e'>获取全部合约仓位信息</h2>
-<p>限速规则：5次/1s</p>
+<p>限速规则：5次/s</p>
 
 <p><strong>HTTP请求</strong>
     获取全部合约仓位信息</p>
@@ -2540,7 +2540,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='f1e69afa43'>获取单个合约仓位信息</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
      获取单个合约仓位信息</p>
@@ -2642,7 +2642,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='a7ce30a45b'>获取合约挂单冻结数量</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     获取合约挂单冻结数量</p>
@@ -2700,7 +2700,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h1 id='ea84f6c646'>合约交易接口</h1><h2 id='fd6ce2a756'>下单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
    下单</p>
@@ -2795,7 +2795,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='de93fae07b'>批量下单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     批量下单</p>
@@ -2869,7 +2869,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='3eedd32d80'>取消订单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     取消订单</p>
@@ -2938,7 +2938,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='0d236c6a2b'>批量撤单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     批量撤单</p>
@@ -3024,7 +3024,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='8c074d34d5'>获取单订单信息</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     获取单订单信息</p>
@@ -3143,7 +3143,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='23e02e24af'>获取订单列表</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     获取订单列表</p>
@@ -3282,7 +3282,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='b546ba2cec'>查询成交明细</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     查询成交明细</p>
@@ -3378,7 +3378,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='03b4e6fa59'>计划委托下单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     计划委托下单</p>
@@ -3473,7 +3473,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='2857693297'>计划委托撤单</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     计划委托撤单</p>
@@ -3547,7 +3547,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='4db6b940df'>查询当前计划委托</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     查询当前计划委托</p>
@@ -3699,7 +3699,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='a637b4edb8'>查询计划历史委托</h2>
-<p>限速规则：10次/1s</p>
+<p>限速规则：10次/s</p>
 
 <p><strong>HTTP请求</strong>
     查询计划历史委托</p>
