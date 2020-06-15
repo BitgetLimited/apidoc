@@ -317,7 +317,7 @@
                     <a href="#58c52154b7" class="toc-h2 toc-link" data-title="市商/量化">市商/量化</a>
                   </li>
                   <li>
-                    <a href="#ecae7085ce" class="toc-h2 toc-link" data-title="更新订阅">更新订阅</a>
+                    <a href="#7b3af22e1f" class="toc-h2 toc-link" data-title="更新关注">更新关注</a>
                   </li>
                   <li>
                     <a href="#152d3db758" class="toc-h2 toc-link" data-title="联系我们">联系我们</a>
@@ -353,6 +353,9 @@
                   </li>
                   <li>
                     <a href="#9a3f8fe408" class="toc-h2 toc-link" data-title="标准规范">标准规范</a>
+                  </li>
+                  <li>
+                    <a href="#48a34da7ed" class="toc-h2 toc-link" data-title="分页请求">分页请求</a>
                   </li>
               </ul>
           </li>
@@ -526,7 +529,7 @@ clipboard.on('error', function(e) {
 
 <p>文档右侧是针对请求参数以及响应结果的示例。</p>
 <h2 id='58c52154b7'>市商/量化</h2>
-<p>欢迎有优秀 maker 策略且交易量大的用户参与长期做市商项目。xxxxxx，请提供以下信息发送邮件至：</p>
+<p>欢迎有优秀 maker 策略且交易量大的用户参与长期做市商项目。请提供以下信息发送邮件至：</p>
 
 <ul>
 <li><a href="mailto:support@bitget.com">support@bitget.com</a> 合约做市商申请。</li>
@@ -534,20 +537,17 @@ clipboard.on('error', function(e) {
 
 <ol>
 <li>提供 UID （需不存在返佣关系的 UID）；</li>
-<li>提供其他交易平台 maker 交易量截图证明（比如30天内成交量，或者 VIP 等级等）；</li>
+<li>提供其他交易平台 maker 交易量截图证明（比如30天内成交量）；</li>
 <li>请简要阐述做市方法，不需要细节。 </li>
 </ol>
-<h2 id='ecae7085ce'>更新订阅</h2>
+<h2 id='7b3af22e1f'>更新关注</h2>
 <p>关于API新增、更新、下线等信息Bitget会提前发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。  </p>
 
 <p>您可以点击 <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>这里 </a> 订阅公告。</p>
-
-<p>订阅流程为：点击“API公告”右上角“关注”按钮，用账号登录成功后，再次点击“关注”按钮，并选择需要关注的内容类型，按钮变为“正在关注”，即表示订阅成功。若无账号，点击弹窗左下角“注册”按钮，进行注册。  </p>
 <h2 id='152d3db758'>联系我们</h2>
-<p>使用过程中如有问题或者建议，您可选择以下任一方式联系我们：</p>
+<p>使用过程中如有问题或者建议，您可选择以下方式联系我们：</p>
 
 <ul>
-<li>添加微信号：AQ54501，申请注明UID和编程语言。</li>
 <li>发送邮件至support@bitget.com。</li>
 </ul>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
@@ -555,7 +555,7 @@ clipboard.on('error', function(e) {
 
 <p>您可以点击 <a href='https://www.bitget.com/zh-CN/account/newapi'>这里 </a> 创建 API Key。</p>
 
-<p>每个母用户可创建50组Api Key，每个Api Key可对应设置读取、交易两种权限。  </p>
+<p>每个用户可创建10组Api Key，每个Api Key可对应设置读取、交易两种权限。  </p>
 
 <p>权限说明如下：</p>
 
@@ -647,8 +647,8 @@ clipboard.on('error', function(e) {
 </tr>
 <tr>
 <td>域名2</td>
-<td>https://capi.bitget.cc</td>
-<td>wss://csocketapi.bitget.cc</td>
+<td>https://capi.bitget.io</td>
+<td>wss://csocketapi.bitget.io</td>
 <td>国内</td>
 </tr>
 </tbody></table>
@@ -769,6 +769,39 @@ Signature = base64.encode(Signature)
 
 <p><code>
 例如：1591094342502
+</code></p>
+
+<p><strong>限频规则</strong></p>
+
+<p>如果请求过于频繁系统将自动限制请求，并在http header中返回429 too many requests状态码。</p>
+
+<ul>
+<li><p>公共接口：如行情接口，统一限频为2秒最多20个请求。</p></li>
+<li><p>授权接口：通过apikey限制授权接口的调用，参考每个接口的限频规则限频。</p></li>
+</ul>
+
+<p><strong>请求格式</strong></p>
+
+<p>所有的API请求都是restful，目前只有两种方法：GET和POST</p>
+
+<ul>
+<li>GET:  参数通过queryString在路径中传输到服务器。</li>
+<li>POST: 参数按照json格式发送body传输到服务器。</li>
+</ul>
+<h2 id='48a34da7ed'>分页请求</h2>
+<p>REST请求使用游标分页，参数如下，适合与查询/trades，/fills，/orders，默认返回100条记录。可以通【游标参数】指定要分页查询的方向。</p>
+
+<p><strong>游标参数</strong></p>
+
+<ul>
+<li>gt: 大于。</li>
+<li>lt: 小于。</li>
+</ul>
+
+<p><strong>分页游标</strong></p>
+
+<p><code>
+例如：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </code></p>
 
 <p><strong>限频规则</strong></p>
