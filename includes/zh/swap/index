@@ -283,20 +283,40 @@ Signature = base64.encode(Signature)
 <li>POST: 参数按照json格式发送body传输到服务器。</li>
 </ul>
 <h2 id='48a34da7ed'>分页请求</h2>
-<p>REST请求使用游标分页，参数如下，适合与查询/trades，/fills，/orders，默认返回100条记录。可以通【游标参数】指定要分页查询的方向。</p>
+<p>REST请求使用游标分页，参数如下，适合与查询/trades，/fills，/orders，默认返回100条记录。可以通【游标参数】指定要分页查询的方向，我们会标注支持游标查询的方法。</p>
 
 <p><strong>游标参数</strong></p>
 
-<ul>
-<li>gt: 大于。</li>
-<li>lt: 小于。</li>
-</ul>
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gt</td>
+<td>String</td>
+<td>大于，表示查询大于它的ID数据。</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>String</td>
+<td>小于，表示查询小于它的ID数据。</td>
+</tr>
+</tbody></table>
 
 <p><strong>分页游标</strong></p>
 
 <p><code>
 例如：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
-</code></p>
+</code>
+<strong>实例</strong></p>
+
+<ol>
+<li>GET /api/swap/v3/order/orders?gt=1&amp;limit=50 查询订单id大于1的50条记录</li>
+<li>GET /api/swap/v3/order/orders?lt=100&amp;limit=30 查询订单id小于100的30条记</li>
+</ol>
 
 <p><strong>限频规则</strong></p>
 
