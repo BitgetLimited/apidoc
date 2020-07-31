@@ -1,0 +1,18 @@
+<h1 id='185368440e'>更新日志</h1>
+<table><thead>
+<tr>
+<th>生效时间（新加坡时间 UTC+8)</th>
+<th>接口</th>
+<th>新增/修改</th>
+<th>摘要</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2020.7.15 10:00</td>
+<td><code>现货API</code></td>
+<td>新增</td>
+<td>现货API</td>
+</tr>
+</tbody></table>
+<h1 id='api'>现货API</h1><h2 id='rest-api'>现货REST行情、交易API</h2>
+<p><a href="https://github.com/BitgetLimited/API_DOC/blob/master/README%E5%B8%81%E5%B8%81_rest_api.md">Spot API</a><br></p>

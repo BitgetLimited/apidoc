@@ -1,0 +1,18 @@
+<h1 id='changelog'>Changelog</h1>
+<table><thead>
+<tr>
+<th>Release Time (Singapore Time UTC +8)</th>
+<th>interface</th>
+<th>New/Update</th>
+<th>abstract</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>15 July 2020,10:00</td>
+<td><code>Historical API address</code></td>
+<td>New</td>
+<td>Historical API address</td>
+</tr>
+</tbody></table>
+<h1 id='spot-api-address'>Spot API address</h1><h2 id='spot-rest-api-market-amp-trade'>Spot REST API(Market &amp; Trade)</h2>
+<p><a href="https://github.com/BitgetLimited/API_Docs_en">Spot API</a><br></p>

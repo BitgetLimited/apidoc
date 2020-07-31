@@ -1,0 +1,3777 @@
+
+<!doctype html>
+<html>
+<head>
+  <link href="../../images/favicon-120dc053.png" rel="icon" type="image/png" />
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>bitget API Docs</title>
+
+  <style>
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    header.top-nav {
+      position:fixed;
+      display:flex;
+      flex:1;
+      width:100%;
+      z-index:100;
+      padding: 0 26px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      align-items: center;
+      background: #161B27;
+      -webkit-box-shadow: 0 1px 0 0 #000;
+              box-shadow: 0 1px 0 0 #000;
+    }
+    div.top-menu{
+      display:flex;
+      flex: 1;
+    }
+    a.logo-link{
+      line-height: 50px;
+    }
+    img.logo {
+      width: 109px;
+      height: 33px;
+      margin-top: 10px;
+      vertical-align: middle;
+    }
+    .con {
+      display: flex;
+      top: 0;
+      height: 55px;
+      margin: 0 0 0 96px;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    .con li{
+      text-align: center;
+      line-height: 55px;
+      border:0 solid #000;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+
+    .con a {
+      display: inline-block;
+      color: #B0B8DB;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 53px;
+      padding: 0 20px;
+    }
+
+    .con a.selected {
+      border-bottom: 2px solid transparent;
+      border-color: #357CE1;
+      color: #fff;
+    }
+
+    a.international{
+
+
+      width: 78px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border: 1px solid #383F66;
+      color: #ADC1D5;
+      text-decoration: none;
+      border-radius: 3px;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+    }
+  </style>
+  <link href="../../stylesheets/screen-f95284e8.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/print-bf778bdf.css" rel="stylesheet" media="print" />
+    <script src="../../javascripts/all-0f81ae09.js"></script>
+</head>
+<header class="top-nav">
+  <div class="top-menu">
+      <a href="https://bitgetlimited.github.io/apidoc/zh/swap" class="logo-link" target="_self">
+        <img src="../../images/logo-2cda61b9.png" class="logo" alt="Logo" />
+      </a>
+    <ul class="con">
+      <li><a  id="swap"  data-text="合约" >Swap</a></li>
+         <li><a id="spot" data-text="现货" >Spot</a></li>
+    </ul>
+  </div>
+  <a class="international" id="international" href="javascript:void(0);">English</a>
+</header>
+
+<body class="en en_swap en_swap_index" data-languages="[&quot;console&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar-cad8cdcb.png" alt="Navbar" />
+      </span>
+</a>
+<div class="toc-wrapper">
+    <div class="lang-selector">
+          <a href="#" data-language-name="console">console</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+  <ul id="toc" class="toc-list-h1">
+      <li>
+        <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
+      </li>
+      <li>
+        <a href="#historical-api-address" class="toc-h1 toc-link" data-title="Historical API address">Historical API address</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#contract-websocket-quotes-assets-and-trade-push-api" class="toc-h2 toc-link" data-title="Contract WebSocket quotes, assets and trade push API">Contract WebSocket quotes, assets and trade push API</a>
+              </li>
+              <li>
+                <a href="#contract-trading-rest-market-trading-api" class="toc-h2 toc-link" data-title="Contract trading REST market, trading API">Contract trading REST market, trading API</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#introduction" class="toc-h1 toc-link" data-title="INTRODUCTION">INTRODUCTION</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#api-introduction" class="toc-h2 toc-link" data-title="API INTRODUCTION">API INTRODUCTION</a>
+              </li>
+              <li>
+                <a href="#market-maker-program" class="toc-h2 toc-link" data-title="Market Maker Program">Market Maker Program</a>
+              </li>
+              <li>
+                <a href="#subscription" class="toc-h2 toc-link" data-title="Subscription">Subscription</a>
+              </li>
+              <li>
+                <a href="#contact-us" class="toc-h2 toc-link" data-title="contact us">contact us</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#preparation" class="toc-h2 toc-link" data-title="Preparation">Preparation</a>
+              </li>
+              <li>
+                <a href="#sdk-and-demo" class="toc-h2 toc-link" data-title="SDK and Demo">SDK and Demo</a>
+              </li>
+              <li>
+                <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+              </li>
+              <li>
+                <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
+              </li>
+              <li>
+                <a href="#api-domain" class="toc-h2 toc-link" data-title="API Domain">API Domain</a>
+              </li>
+              <li>
+                <a href="#api-authentication" class="toc-h2 toc-link" data-title="API Authentication">API Authentication</a>
+              </li>
+              <li>
+                <a href="#the-signature" class="toc-h2 toc-link" data-title="The signature">The signature</a>
+              </li>
+              <li>
+                <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request interaction">Request interaction</a>
+              </li>
+              <li>
+                <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard specification">Standard specification</a>
+              </li>
+              <li>
+                <a href="#paging-request" class="toc-h2 toc-link" data-title="Paging request">Paging request</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#contract-trading-interface" class="toc-h1 toc-link" data-title="Contract Trading interface">Contract Trading interface</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#gets-the-server-time" class="toc-h2 toc-link" data-title="Gets the server time">Gets the server time</a>
+              </li>
+              <li>
+                <a href="#contract-information" class="toc-h2 toc-link" data-title="Contract Information">Contract Information</a>
+              </li>
+              <li>
+                <a href="#get-depth-data" class="toc-h2 toc-link" data-title="Get depth data">Get depth data</a>
+              </li>
+              <li>
+                <a href="#get-all-ticker-information" class="toc-h2 toc-link" data-title="get all ticker information">get all ticker information</a>
+              </li>
+              <li>
+                <a href="#get-one-ticker-information" class="toc-h2 toc-link" data-title="get one ticker information">get one ticker information</a>
+              </li>
+              <li>
+                <a href="#filled-orders" class="toc-h2 toc-link" data-title="Filled Orders">Filled Orders</a>
+              </li>
+              <li>
+                <a href="#market-data" class="toc-h2 toc-link" data-title="Market Data">Market Data</a>
+              </li>
+              <li>
+                <a href="#indices" class="toc-h2 toc-link" data-title="Indices">Indices</a>
+              </li>
+              <li>
+                <a href="#open-interests" class="toc-h2 toc-link" data-title="Open Interests">Open Interests</a>
+              </li>
+              <li>
+                <a href="#current-price-limits" class="toc-h2 toc-link" data-title="Current Price Limits">Current Price Limits</a>
+              </li>
+              <li>
+                <a href="#next-settlement-time" class="toc-h2 toc-link" data-title="Next Settlement Time">Next Settlement Time</a>
+              </li>
+              <li>
+                <a href="#funding-rate-history" class="toc-h2 toc-link" data-title="Funding Rate History">Funding Rate History</a>
+              </li>
+              <li>
+                <a href="#mark-price" class="toc-h2 toc-link" data-title="Mark Price">Mark Price</a>
+              </li>
+              <li>
+                <a href="#gets-the-openable-number" class="toc-h2 toc-link" data-title="Gets the openable number">Gets the openable number</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#contract-account-interface" class="toc-h1 toc-link" data-title="Contract account interface">Contract account interface</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#all-contract-account-information" class="toc-h2 toc-link" data-title="all contract account information">all contract account information</a>
+              </li>
+              <li>
+                <a href="#perpetual-swap-account-of-a-currency" class="toc-h2 toc-link" data-title="Perpetual Swap Account of a Currency">Perpetual Swap Account of a Currency</a>
+              </li>
+              <li>
+                <a href="#get-swap-leverage" class="toc-h2 toc-link" data-title="Get Swap Leverage">Get Swap Leverage</a>
+              </li>
+              <li>
+                <a href="#set-swap-leverage" class="toc-h2 toc-link" data-title="Set Swap Leverage">Set Swap Leverage</a>
+              </li>
+              <li>
+                <a href="#adjust-margin" class="toc-h2 toc-link" data-title="Adjust margin">Adjust margin</a>
+              </li>
+              <li>
+                <a href="#auto-margin-replenishment-amr" class="toc-h2 toc-link" data-title="Auto Margin Replenishment (AMR)">Auto Margin Replenishment (AMR)</a>
+              </li>
+              <li>
+                <a href="#get-all-contract-position-information" class="toc-h2 toc-link" data-title="Get all contract position information">Get all contract position information</a>
+              </li>
+              <li>
+                <a href="#get-one-of-the-margin-mode-information" class="toc-h2 toc-link" data-title="Get one of the Margin mode information">Get one of the Margin mode information</a>
+              </li>
+              <li>
+                <a href="#get-on-hold-amount-for-open-orders" class="toc-h2 toc-link" data-title="Get on hold amount for open orders">Get on hold amount for open orders</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#contract-trading-endpoints" class="toc-h1 toc-link" data-title="Contract trading endpoints">Contract trading endpoints</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#place-order" class="toc-h2 toc-link" data-title="Place order">Place order</a>
+              </li>
+              <li>
+                <a href="#batch-order" class="toc-h2 toc-link" data-title="Batch order">Batch order</a>
+              </li>
+              <li>
+                <a href="#cancel-order" class="toc-h2 toc-link" data-title="Cancel order">Cancel order</a>
+              </li>
+              <li>
+                <a href="#cancel-orders-in-batch" class="toc-h2 toc-link" data-title="Cancel orders in batch">Cancel orders in batch</a>
+              </li>
+              <li>
+                <a href="#get-the-order-details-of-an-order" class="toc-h2 toc-link" data-title="Get the Order Details of an Order">Get the Order Details of an Order</a>
+              </li>
+              <li>
+                <a href="#get-list-of-orders" class="toc-h2 toc-link" data-title="Get list of orders">Get list of orders</a>
+              </li>
+              <li>
+                <a href="#get-transaction-details" class="toc-h2 toc-link" data-title="Get Transaction Details">Get Transaction Details</a>
+              </li>
+              <li>
+                <a href="#place-order-with-stop-limit" class="toc-h2 toc-link" data-title="Place order with Stop limit">Place order with Stop limit</a>
+              </li>
+              <li>
+                <a href="#close-position-with-stop-limit" class="toc-h2 toc-link" data-title="Close position with Stop limit">Close position with Stop limit</a>
+              </li>
+              <li>
+                <a href="#check-stop-limit-status" class="toc-h2 toc-link" data-title="Check Stop limit status">Check Stop limit status</a>
+              </li>
+              <li>
+                <a href="#get-the-history-of-stop-limit" class="toc-h2 toc-link" data-title="Get the history of Stop limit">Get the history of Stop limit</a>
+              </li>
+          </ul>
+      </li>
+  </ul>
+</div>
+<div class="page-wrapper">
+  <div class="dark-box"></div>
+  <div class="content">
+    <!---
+Clipboard script
+-->
+
+<script src="../../dist/clipboard.min-f99f064d.js"></script>
+
+<script>
+var clipboard = new ClipboardJS('.clipboard_button');
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
+<h1 id='changelog'>Changelog</h1>
+<table><thead>
+<tr>
+<th>Release Time (Singapore Time UTC +8)</th>
+<th>interface</th>
+<th>New/Update</th>
+<th>abstract</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>19 July 2020,10:00</td>
+<td><code>Support multiple languages</code></td>
+<td>New</td>
+<td>Support Chinese/English/Japanese/Korean</td>
+</tr>
+<tr>
+<td>15 July 2020,10:00</td>
+<td><code>Historical API address</code></td>
+<td>New</td>
+<td>Historical API address</td>
+</tr>
+<tr>
+<td>9 Jun 2020,10:00</td>
+<td>Perpetual Swap</td>
+<td>New</td>
+<td>Perpetual Swap</td>
+</tr>
+</tbody></table>
+<h1 id='historical-api-address'>Historical API address</h1><h2 id='contract-websocket-quotes-assets-and-trade-push-api'>Contract WebSocket quotes, assets and trade push API</h2>
+<p><a href="https://github.com/BitgetLimited/API_Docs_en/blob/master/README_contract_websocket_api.md">WebSocket API</a></p>
+<h2 id='contract-trading-rest-market-trading-api'>Contract trading REST market, trading API</h2>
+<p><a href="https://github.com/BitgetLimited/API_Docs_en/blob/master/README_contract_rest_api.md">Contract API</a><br></p>
+<h1 id='introduction'>INTRODUCTION</h1><h2 id='api-introduction'>API INTRODUCTION</h2>
+<p>Welcome to Bitget API！  </p>
+
+<p>This is the official Bitget API document, this data is available and updates in real-time. Please follow us to get latest news.</p>
+
+<p>You can switch to different API business in the top menu, and switch to different language by clicking the button in the top right.</p>
+
+<p>The example of request and response is showing in the right-hand side.</p>
+<h2 id='market-maker-program'>Market Maker Program</h2>
+<p>Bitget welcome making /liquidity providing with good market making strategy and large trading volume. Please provide the information as below and email to:</p>
+
+<ul>
+<li><a href="mailto:bd.overseas@bitget.com">bd.overseas@bitget.com</a> Bitget contract market maker。</li>
+</ul>
+
+<ol>
+<li>Please provide UID (This account is not allow to link to any rebate program account)；</li>
+<li>Screenshot of trading volume in other transaction platform (such as trading volume within 30 days)；</li>
+<li>A brief description of your market-making strategy。 </li>
+</ol>
+<h2 id='subscription'>Subscription</h2>
+<p>Bitget will publish API announcement in advance for any API change, please subscribe our announcements so that you can get latest update.</p>
+
+<p>You can click Here to subscribe the announcements.<a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>Here </a> subscribe。</p>
+<h2 id='contact-us'>contact us</h2>
+<p>You can contact us at bd.overseas@bitget.com if any issue or suggestions </p>
+<h1 id='quick-start'>Quick Start</h1><h2 id='preparation'>Preparation</h2>
+<p>Before you use API, you need to login the website to create API Key with proper permissions.  </p>
+
+<p>You can manage your API Key.
+ <a href='https://www.bitget.com/zh-CN/account/newapi'>Here </a> create API Key。</p>
+
+<p>Every user account can create at most 10 API Key, each of them has two permissions:  </p>
+
+<p>Permission ：
+- Read permission: It is used to query the data, such as order query, trade query.
+- Trade permission: It is used to create order, cancel order and transfer, etc.</p>
+
+<p>Please remember below information after creation:</p>
+
+<ul>
+<li><p><code>APIKey</code>  API key is submitted alongside web service (or similar) requests in order to identify the origin of the request. It is used in API request.</p></li>
+<li><p><code>Secretkey</code>  Secret Key It is used to generate the signature (only visible once after creation.</p></li>
+<li><p><code>Passphrase</code>  Passphrase will be provided by you to further secure your API access. Passphrase cannot recover the Passphrase if you lose it, need a generate a new APIKey.</p></li>
+</ul>
+
+<aside class="notice">
+
+    The API Key can bind one or more IP addresses, we strongly suggest you bind IP address for security purpose. The API Key without IP binding will be expired after 365 days.
+
+</aside>
+
+<aside class="warning">
+    <red>
+        <b>Warning</b>
+    </red>
+    ：These three keys are important to your account safety, please don't share to anyone else. If you find your API Key is disposed, please delete APIKey  immediately.
+
+</aside> 
+<h2 id='sdk-and-demo'>SDK and Demo</h2>
+<p><strong>SDK (Suggested)</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-go-sdk-api">Go</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
+
+<p><strong>Other Demos</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/Exchange_API">https://github.com/BitgetLimited/Exchange_API</a></p>
+<h2 id='endpoints'>Endpoints</h2>
+<p>This chapter mainly divides the detail of interface type into the following two aspects：</p>
+
+<ul>
+<li>Public APIs</li>
+<li>Private APIs</li>
+</ul>
+
+<p><strong>Public APIs</strong> </p>
+
+<p>The public interface can be used to get configuration information and market data. Public requests can be invoked without authentication.</p>
+
+<p><strong>Private APIs</strong> </p>
+
+<p>The private interface can be used for order management and account management. Each private request must be signed using a canonical form of validation.</p>
+
+<p>The private interface needs to be validated using your APIKey.</p>
+<h2 id='rate-limits'>Rate Limits</h2>
+<p>This chapter mainly divides the details of access restriction into the following two aspects:</p>
+
+<ul>
+<li>Rest API</li>
+<li>WebSocket</li>
+</ul>
+
+<p>When access exceeds the frequency limit, a status of 429 is returned: requests are too frequent.</p>
+
+<p><strong>Rest API</strong> </p>
+
+<p>If a valid APIKey is passed in, limit the speed with UserID; If not, then take the public IP speed limit.</p>
+
+<p>Speed limit rules: there are separate instructions for each interface. If there is no general interface, the speed limit is 10 times/second.</p>
+
+<p>Special note: When placing bulk orders, if 4 coin pairs are placed and each coin pair is 10 orders, it will be counted as one request.</p>
+
+<p><strong>WebSocket</strong></p>
+
+<p>WebSocket limits each command type to xx commands per second.</p>
+<h2 id='api-domain'>API Domain</h2>
+<p>You can compare Rest API and WebSocket and choose the one with the lowest latency.     </p>
+
+<table><thead>
+<tr>
+<th>Domain</th>
+<th>REST API</th>
+<th>Websocket</th>
+<th>Suggestion</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Domain1</td>
+<td>https://capi.bitget.com</td>
+<td>wss://csocketapi.bitget.com</td>
+<td>International</td>
+</tr>
+<tr>
+<td>Domain2</td>
+<td>https://capi.bitget.io</td>
+<td>wss://csocketapi.bitget.io</td>
+<td>CHINA</td>
+</tr>
+</tbody></table>
+<h2 id='api-authentication'>API Authentication</h2>
+<p><strong>Making Requests</strong> </p>
+
+<p>All REST request headers must contain the following keys:</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY as a string。</li>
+<li>ACCESS-SIGN：Base64 encoded signatures (see Signing messages).</li>
+<li>ACCESS-TIMESTAMP：The timestamp you requested.</li>
+<li>ACCESS-PASSPHRASE：The password you set when you created the API KEY.</li>
+<li>Content-Type：Set to Application/JSON uniformly.</li>
+<li>locale:Support multiple languages，Such as: Chinese (zh-CN), English (en-US), Japanese (ja-JP), Korean (ko-KR).</li>
+</ul>
+<h2 id='the-signature'>The signature</h2>
+<p>ACCESS-SIGN The request header is correct <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> String (+ represents string concatenation) is used <strong>HMAC SHA256</strong> Method encrypt and pass*<em>BASE64</em>* Produced by encoding the output.</p>
+
+<p><strong>Signature field description</strong> </p>
+
+<ul>
+<li>timestamp：Same as access-Timestamp request header.</li>
+<li>method：Request method (POST/GET), all uppercase.</li>
+<li>requestPath：Request interface path.</li>
+<li>queryString：In the request URL (? After the request parameters) query string.</li>
+<li>body：The string corresponding to the request body. If the request does not have a body (usually a GET request), the body can be omitted.</li>
+</ul>
+
+<p><strong>When the queryString is empty, the signature format</strong> </p>
+
+<p><code>
+timestamp + method + requestPath + body
+</code></p>
+
+<p><strong>Signature format when queryString is not null</strong> </p>
+
+<p><code>
+timestamp + method + requestPath + &quot;?&quot; + queryString + body
+</code></p>
+
+<p><strong>For example</strong> </p>
+
+<p>Get the depth information of the contract. Take cmt_btcusdt as an example:</p>
+
+<ul>
+<li>Timestamp = 1591089508404 </li>
+<li>Method = &quot;GET&quot;</li>
+<li>requestPath = &quot;/api/swap/v3/market/depth&quot;</li>
+<li>queryString= &quot;?symbol=cmt_btcusdt&amp;limit=20&quot;</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p><code>
+&#39;1591089508404GET/api/swap/v1/market/depth?symbol=cmt_btcusdt&amp;limit=20&#39;  
+</code></p>
+
+<p>Order by contract, take cmt_btcusdt as an example:</p>
+
+<ul>
+<li>Timestamp = 1561022985382 </li>
+<li>Method = &quot;POST&quot;</li>
+<li>requestPath = &quot;/api/swap/v3/order/placeOrder&quot;</li>
+<li>body = {&quot;symbol&quot;:&quot;cmt_btcusdt&quot;,&quot;size&quot;:&quot;8&quot;,&quot;type&quot;:&quot;1&quot;,&quot;match_price&quot;:&quot;1&quot;,&quot;order_type&quot;:&quot;1&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p><code>
+&#39;1561022985382POST/api/swap/v3/order/placeOrder{&quot;symbol&quot;:&quot;cmt_btcusdt&quot;,&quot;size&quot;:&quot;8&quot;,&quot;type&quot;:&quot;1&quot;,&quot;match_price&quot;:&quot;1&quot;,&quot;order_type&quot;:&quot;1&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}&#39;  
+</code></p>
+
+<p><strong>The steps to generate the final signature</strong> </p>
+
+<p>In step 1, the string to be signed is encrypted using the private key secretkey for HMAC Sha256</p>
+
+<p><code>
+Signature = hmac_sha256(secretkey, Message)
+</code></p>
+
+<p>Step 2: Base64 encoding for Signature</p>
+
+<p><code>
+Signature = base64.encode(Signature)
+</code></p>
+<h2 id='request-interaction'>Request interaction</h2>
+<p>All requests are based on Https protocol, and the content-type in the request header should be uniformly set to &#39;Application/JSON&#39;.</p>
+
+<p><strong>Request interaction specification</strong></p>
+
+<ul>
+<li>Request parameters: Parameters are encapsulated according to interface request parameters.</li>
+<li>Submit request parameters: The encapsulated request parameters are submitted to the server via GET/POST.</li>
+<li>Server response: The server first performs parameter security verification on the user request data, and then returns the response data to the user in JSON format according to the business logic.</li>
+<li>Data processing: Processing of server response data.</li>
+</ul>
+
+<p><strong>successful</strong></p>
+
+<p>The HTTP status code 200 indicates a successful response and may contain content. If the response contains content, it is displayed in the corresponding return content.</p>
+
+<p><strong>Common error code</strong></p>
+
+<ul>
+<li>Invalid Request format 400 Bad Request  Invalid Request forma Request format</li>
+<li>401 Unauthorized – Invalid API Key </li>
+<li>403 Forbidden – You do not have access to the requested resource </li>
+<li>404 Not Found requested</li>
+<li>429 Too Many Requests</li>
+<li>500 Internal Server Error – We had a problem with our server </li>
+<li>If you fail, the body has an error description</li>
+</ul>
+<h2 id='standard-specification'>Standard specification</h2>
+<p><strong>The time stamp</strong></p>
+
+<p>The access-Timestamp in the request signature is in milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected.
+If there is a large deviation between local server time and API server time, we recommend that you update the HTTP header by querying API server time.</p>
+
+<p><code>
+For example：1591094342502
+</code></p>
+
+<p><strong>Limited frequency rules</strong></p>
+
+<p>The system automatically limits requests if they are too frequent, and returns the 429 Too many Requests status code in the HTTP header.</p>
+
+<ul>
+<li><p>Common interface: if the market interface, unified frequency limit is 2 seconds at most 20 requests.</p></li>
+<li><p>Authorization interface: Limits calls to authorization interfaces through apiKey, referring to frequency limiting rules for each interface.</p></li>
+</ul>
+
+<p><strong>The request format</strong></p>
+
+<p>All API requests are restful and there are currently only two methods: GET and POST</p>
+
+<ul>
+<li>GET:  Parameters are passed to the server in the path via the queryString.</li>
+<li>POST: The parameter is sent in JSON format to the body for transfer to the server.</li>
+</ul>
+<h2 id='paging-request'>Paging request</h2>
+<p>REST requests page through cursors with the following parameters, suitable for queries /trades, /fills, /orders, and return 100 records by default. You can specify the direction of the query to page through [cursor parameters], and we will annotate methods that support cursor queries.</p>
+
+<p><strong>The cursor parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter names</th>
+<th>The parameter types</th>
+<th>describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gt</td>
+<td>String</td>
+<td>Greater than indicates that the query is greater than its ID data.</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>String</td>
+<td>Less than, indicates that the query is less than its ID data.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Paging cursor</strong></p>
+
+<p><code>
+For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
+</code></p>
+
+<p><strong>The instance</strong></p>
+
+<ol>
+<li>GET /api/swap/v3/order/orders?gt=1&amp;limit=50 Query 50 records with order ID greater than 1</li>
+<li>GET /api/swap/v3/order/orders?lt=100&amp;limit=30 Query 30 records with order ID less than 100</li>
+</ol>
+
+<p><strong>Limited frequency rules</strong></p>
+
+<p>The system automatically limits requests if they are too frequent, and returns the 429 Too many Requests status code in the HTTP header.</p>
+
+<ul>
+<li><p>Common interface: if the market interface, unified frequency limit is 2 seconds at most 20 requests.</p></li>
+<li><p>Authorization interface: Limits calls to authorization interfaces through apiKey, referring to frequency limiting rules for each interface.</p></li>
+</ul>
+
+<p><strong>The request format</strong></p>
+
+<p>All API requests are restful and there are currently only two methods: GET and POST</p>
+
+<ul>
+<li>GET:  Parameters are requested in the URL through the queryString.</li>
+<li>POST: The parameter is sent in JSON format to the body for transfer to the server.</li>
+</ul>
+<h1 id='contract-trading-interface'>Contract Trading interface</h1><h2 id='gets-the-server-time'>Gets the server time</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Request</strong>
+    Time to return to server</p>
+
+<ul>
+<li>GET /api/swap/v3/market/time</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"epoch"</span><span class="p">:</span><span class="s2">"1591099099.896"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iso"</span><span class="p">:</span><span class="s2">"2020-06-02T11:58:19.896Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1591099099896</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">epoch</td>
+<td style="text-align: center">The decimal seconds format for the UTC time zone Unix timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">iso</td>
+<td style="text-align: center">ISO8601 standard time format</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">The timestamp of the server</td>
+</tr>
+</tbody></table>
+<h2 id='contract-information'>Contract Information</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    Get market data.</p>
+
+<ul>
+<li>GET /api/swap/v3/market/contracts</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"coin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"delivery"</span><span class="p">:[</span><span class="w">
+         </span><span class="s2">"07:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"15:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"23:00:00"</span><span class="w">
+     </span><span class="p">],</span><span class="w"> 
+    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"priceEndStep"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quote_currency"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">Currency of deposit</td>
+</tr>
+<tr>
+<td style="text-align: left">contract_val</td>
+<td style="text-align: left">Contract value</td>
+</tr>
+<tr>
+<td style="text-align: left">delivery</td>
+<td style="text-align: left">Settlement time</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: left">(true or false) , forward contract or not</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">priceEndStep</td>
+<td style="text-align: left">Prices&#39; Last Digit in Cents</td>
+</tr>
+<tr>
+<td style="text-align: left">quote_currency</td>
+<td style="text-align: left">Quote currency</td>
+</tr>
+<tr>
+<td style="text-align: left">size_increment</td>
+<td style="text-align: left">Order quantity accuracy</td>
+</tr>
+<tr>
+<td style="text-align: left">tick_size</td>
+<td style="text-align: left">Order price accuracy</td>
+</tr>
+<tr>
+<td style="text-align: left">underlying_index</td>
+<td style="text-align: left">Underlying index</td>
+</tr>
+</tbody></table>
+<h2 id='get-depth-data'>Get depth data</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Get depth data</p>
+
+<ul>
+<li>GET /api/swap/v3/market/depth</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&#39;limit&#39;</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of results per request</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"asks"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"19299"</span><span class="p">,</span><span class="w">
+              </span><span class="mf">2.0</span><span class="w">
+        </span><span class="p">]</span><span class="w">   
+     </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"bids"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"499"</span><span class="p">,</span><span class="w">
+             </span><span class="mf">1.0</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+         </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"4995.0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"12500"</span><span class="p">,</span><span class="w">
+              </span><span class="mf">2.0</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+     </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591237821479"</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: center">Sell side depth</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: center">Buy side depth</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-ticker-information'>get all ticker information</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    get all ticker information</p>
+
+<ul>
+<li>GET /api/swap/v3/market/tickers</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"332.00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"203.00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"394"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_bchusdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">best_ask</td>
+<td style="text-align: left">Best ask price</td>
+</tr>
+<tr>
+<td style="text-align: left">best_bid</td>
+<td style="text-align: left">best bid price</td>
+</tr>
+<tr>
+<td style="text-align: left">high_24h</td>
+<td style="text-align: left">Highest price in the past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">last</td>
+<td style="text-align: left">Last traded price</td>
+</tr>
+<tr>
+<td style="text-align: left">low_24h</td>
+<td style="text-align: left">Lowest price in the past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">Lowest price in the past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">volume_24h</td>
+<td style="text-align: left">Trading volume of past 24 hours</td>
+</tr>
+</tbody></table>
+<h2 id='get-one-ticker-information'>get one ticker information</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    get one ticker information</p>
+
+<ul>
+<li>GET /api/swap/v3/market/ticker</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">best_ask</td>
+<td style="text-align: left">Best ask price</td>
+</tr>
+<tr>
+<td style="text-align: left">best_bid</td>
+<td style="text-align: left">best bid price</td>
+</tr>
+<tr>
+<td style="text-align: left">high_24h</td>
+<td style="text-align: left">Highest price in the past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">last</td>
+<td style="text-align: left">Last traded price</td>
+</tr>
+<tr>
+<td style="text-align: left">low_24h</td>
+<td style="text-align: left">Lowest price in the past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">Timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">volume_24h</td>
+<td style="text-align: left">24 hour trading volume (contracts)</td>
+</tr>
+</tbody></table>
+<h2 id='filled-orders'>Filled Orders</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong></p>
+
+<p>Filled Orders</p>
+
+<ul>
+<li>GET /api/swap/v3/market/trades</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&#39;limit&#39;</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of results per request</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"7844.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"48"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591111746879"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"651735392382353615"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约Id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">成交方向：sell，buy</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">成交时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: center">成交id</td>
+</tr>
+</tbody></table>
+<h2 id='market-data'>Market Data</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Retrieve the candlestick charts of the trading pairs. </p>
+
+<ul>
+<li>GET /api/swap/v3/market/candles</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Instrument ID</td>
+</tr>
+<tr>
+<td style="text-align: left">start</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Start time，in ISO 8601 format;</td>
+</tr>
+<tr>
+<td style="text-align: left">end</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">End time，in ISO 8601 format;</td>
+</tr>
+<tr>
+<td style="text-align: left">granularity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Bar size in seconds, default 60, must be one of [60/180/300/900/1800/3600/7200/14400/21600/43200/86400/604800] or returns error</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="s2">"1556687460000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"342"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"0.064340137494"</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Data return time</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: center">Open price</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: center">Higest price</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: center">Lowest price</td>
+</tr>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: center">Closing price</td>
+</tr>
+<tr>
+<td style="text-align: left">volume</td>
+<td style="text-align: center">Trading volume (in contracts size)</td>
+</tr>
+<tr>
+<td style="text-align: left">currency_volume</td>
+<td style="text-align: center">Trading volume (in currency amount)</td>
+</tr>
+</tbody></table>
+<h2 id='indices'>Indices</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Retrieve indices of tokens. This is publicly accessible without account authentication.</p>
+
+<ul>
+<li>GET /api/swap/v3/market/index</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"9654.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256590003"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">index</td>
+<td style="text-align: center">Index price</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='open-interests'>Open Interests</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Retrieve the total open interest of a contract on Bitget. This is publicly accessible without account authentication.</p>
+
+<ul>
+<li> GET /api/swap/v3/market/open_interest</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: center">Total holdings</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='current-price-limits'>Current Price Limits</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    Retrieve the ceiling of the buy price and floor of sell price of the contract. This is publicly accessible without account authentication.</p>
+
+<ul>
+<li>GET /api/swap/v3/market/price_limit</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"highest"</span><span class="p">:</span><span class="s2">"14474.5"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"lowest"</span><span class="p">:</span><span class="s2">"4824.5"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591257126461"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Yes否是正向合约</td>
+</tr>
+<tr>
+<td style="text-align: left">highest</td>
+<td style="text-align: center">Ceiling of buying price</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest</td>
+<td style="text-align: center">Floor of selling price</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='next-settlement-time'>Next Settlement Time</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Get the time of next settlement.</p>
+
+<ul>
+<li>GET /api/swap/v3/market/funding_time</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_time</td>
+<td style="text-align: center">time of current funding</td>
+</tr>
+</tbody></table>
+<h2 id='funding-rate-history'>Funding Rate History</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    Get Funding Rate History</p>
+
+<ul>
+<li>GET /api/swap/v3/market/historical_funding_rate</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Request to start</td>
+</tr>
+<tr>
+<td style="text-align: left">to</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Request to end</td>
+</tr>
+<tr>
+<td style="text-align: left">&#39;limit&#39;</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">number of results per request in chronological order (latest at the front).</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_rate</td>
+<td style="text-align: center">current funding rate</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_time</td>
+<td style="text-align: center">Settlement time</td>
+</tr>
+</tbody></table>
+<h2 id='mark-price'>Mark Price</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    Get the tag price. This is a public endpoint, no identity verification is needed.</p>
+
+<ul>
+<li>GET /api/swap/v3/market/mark_price</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="s2">"8047.87"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591264230941"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">mark_price</td>
+<td style="text-align: center">Specify the margin price</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='gets-the-openable-number'>Gets the openable number</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    Gets the openable number</p>
+
+<ul>
+<li>GET /api/swap/v3/market/open_count</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">The total amount of the opening</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Open price</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">The default leverage is 20 times</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"openCount"</span><span class="p">:</span><span class="s2">"199999"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">openCount</td>
+<td style="text-align: center">Can be opened for</td>
+</tr>
+</tbody></table>
+<h1 id='contract-account-interface'>Contract account interface</h1><h2 id='all-contract-account-information'>all contract account information</h2>
+<p>Rate Limit：1 requests per 1 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+   Retrieve information from all tokens in the perpetual swap account</p>
+
+<ul>
+<li>GET /api/swap/v3/account/accounts</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> 
+  </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: center">Equity of the account</td>
+</tr>
+<tr>
+<td style="text-align: left">fixed_balance</td>
+<td style="text-align: center">Balance of fixed margin account</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">total_avail_balance</td>
+<td style="text-align: center">Balance of the account</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: center">Margin for open positions</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: center">Realized profits and losses</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">Unrealized profits and losses</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_frozen</td>
+<td style="text-align: center">Initial margin on hold</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Margin Mode: crossed / fixed</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+</tbody></table>
+<h2 id='perpetual-swap-account-of-a-currency'>Perpetual Swap Account of a Currency</h2>
+<p>Rate Limit：5 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    Retrieve the perpetual swap account information of a single trading pair.</p>
+
+<ul>
+<li> GET /api/swap/v3/account/account</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: center">Equity of the account</td>
+</tr>
+<tr>
+<td style="text-align: left">fixed_balance</td>
+<td style="text-align: center">Balance of fixed margin account</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">total_avail_balance</td>
+<td style="text-align: center">Balance of the account</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: center">Margin for open positions</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: center">Realized profits and losses</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">Unrealized profits and losses</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_frozen</td>
+<td style="text-align: center">Initial margin on hold</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Margin Mode: crossed / fixed</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+</tbody></table>
+<h2 id='get-swap-leverage'>Get Swap Leverage</h2>
+<p>Rate Limit：5 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    Retrieve the leverage ratio and margin mode of a perpetual swap.</p>
+
+<ul>
+<li>GET /api/swap/v3/account/settings</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">long_leverage</td>
+<td style="text-align: center">Leverage level for long positions</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Margin Mode: crossed / fixed</td>
+</tr>
+<tr>
+<td style="text-align: left">short_leverage</td>
+<td style="text-align: center">Leverage level for short positions</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+</tbody></table>
+<h2 id='set-swap-leverage'>Set Swap Leverage</h2>
+<p>Rate Limit：5 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    调整杠杆</p>
+
+<ul>
+<li>POST /api/swap/v3/account/leverage</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">New leverage level from 1-100</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&#39;1’. Fixed-margin for long position; ‘2’. Fixed-margin for short position;</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">long_leverage</td>
+<td style="text-align: center">Leverage level for long positions</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Margin mode</td>
+</tr>
+<tr>
+<td style="text-align: left">short_leverage</td>
+<td style="text-align: center">Leverage level for short positions</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">forwardContractFlag</td>
+<td style="text-align: center">Is it a positive contract</td>
+</tr>
+</tbody></table>
+<h2 id='adjust-margin'>Adjust margin</h2>
+<p>Rate Limit：20 requests per 2 seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    adjust margin</p>
+
+<ul>
+<li>POST /api/swap/v3/account/adjustMargin</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">adjust amount</td>
+</tr>
+<tr>
+<td style="text-align: left">positionType</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Direction 0 Long 1 Short</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Type 1 Increase 2 Reduce</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"527252921197264814"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">Result</td>
+</tr>
+<tr>
+<td style="text-align: left">orderNo</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+</tbody></table>
+<h2 id='auto-margin-replenishment-amr'>Auto Margin Replenishment (AMR)</h2>
+<p>Rate Limit：5 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+   Auto Margin Replenishment (AMR)</p>
+
+<ul>
+<li>POST /api/swap/v3/account/modifyAutoAppendMargin</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Direction 1 Long 2 Short</td>
+</tr>
+<tr>
+<td style="text-align: left">append_type</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Adjust margin type 0 Manually 1 Automatic</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"append_type"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">Setting result</td>
+</tr>
+<tr>
+<td style="text-align: left">append_type</td>
+<td style="text-align: center">Current setting: 0 Manually 1 Automatic</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-contract-position-information'>Get all contract position information</h2>
+<p>Rate Limit：5 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    get all contract position information</p>
+
+<ul>
+<li>GET /api/swap/v3/position/allPosition</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">[</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+     </span><span class="p">]</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Cross margin or Isolated margin</td>
+</tr>
+<tr>
+<td style="text-align: left">liquidation_price</td>
+<td style="text-align: center">Estimated liquidation price</td>
+</tr>
+<tr>
+<td style="text-align: left">position</td>
+<td style="text-align: center">Position Margi(the margin for holding current positions)</td>
+</tr>
+<tr>
+<td style="text-align: left">avail_position</td>
+<td style="text-align: center">Available position</td>
+</tr>
+<tr>
+<td style="text-align: left">avg_cost</td>
+<td style="text-align: center">Transaction average price</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: center">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: center">Realized Profit and loss</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">Direction Long or short</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">System time</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: center">Used margin</td>
+</tr>
+</tbody></table>
+<h2 id='get-one-of-the-margin-mode-information'>Get one of the Margin mode information</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+     Retrieve information on your positions of a single contract.</p>
+
+<ul>
+<li> GET /api/swap/v3/position/singlePosition</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
+           </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+     </span><span class="p">]</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: center">Cross margin or Isolated margin</td>
+</tr>
+<tr>
+<td style="text-align: left">liquidation_price</td>
+<td style="text-align: center">Estimated liquidation price</td>
+</tr>
+<tr>
+<td style="text-align: left">position</td>
+<td style="text-align: center">Position Margi(the margin for holding current positions)</td>
+</tr>
+<tr>
+<td style="text-align: left">avail_position</td>
+<td style="text-align: center">Available position</td>
+</tr>
+<tr>
+<td style="text-align: left">avg_cost</td>
+<td style="text-align: center">Transaction average price</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: center">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: center">Realized Profit and loss</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">Direction: Long or short</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">System time</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: center">Used margin</td>
+</tr>
+</tbody></table>
+<h2 id='get-on-hold-amount-for-open-orders'>Get on hold amount for open orders</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    get on hold amount for open orders</p>
+
+<ul>
+<li>GET /api/swap/v3/position/holds</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: center">Initial margin on hold</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">timestamp</td>
+</tr>
+</tbody></table>
+<h1 id='contract-trading-endpoints'>Contract trading endpoints</h1><h2 id='place-order'>Place order</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+   Place order</p>
+
+<ul>
+<li>POST /api/swap/v3/order/placeOrder</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">customize order IDs to identify your orders. (Less than 50 characters without special characters,</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Quantity to buy or sell (value not equal to 0 or negative)</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">1 Open long 2Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">0: Normal order (Unfilled and 0 imply normal limit order) 1: Post only 2: Fill or Kill 3: Immediate Or Cancel</td>
+</tr>
+<tr>
+<td style="text-align: left">match_price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">0 Limit price 1 market price</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Price of each contract</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513466539039522813"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client  ID </td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID </td>
+</tr>
+</tbody></table>
+<h2 id='batch-order'>Batch order</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    batch order</p>
+
+<ul>
+<li>POST /api/swap/v3/order/batchOrders</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_data</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">JSON type strings, e.g  [{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;},{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;}],The fields refer to the [Contract trading] endpoints, and can only process up to 20 orders in batch</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_info"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410001096713"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">Result of an Order</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client  ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-order'>Cancel order</h2>
+<p>Rate Limit：10 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    Cancel order </p>
+
+<ul>
+<li>POST /api/swap/v3/order/cancel_order</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">order id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">Cancellation status</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-orders-in-batch'>Cancel orders in batch</h2>
+<p>Rate Limit：10 requests per seconds</p>
+
+<p><strong>HTTP Requests</strong>
+    request to cancel order in batch </p>
+
+<ul>
+<li>POST /api/swap/v3/order/cancel_batch_orders</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">ids</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order ID combination</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"order_ids"</span><span class="p">:[</span><span class="w">
+          </span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"478585558"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"fail_infos"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"401"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">processing result</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_ids</td>
+<td style="text-align: center">Orders</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">err_code</td>
+<td style="text-align: center">Error code</td>
+</tr>
+<tr>
+<td style="text-align: left">err_msg</td>
+<td style="text-align: center">Error message</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-order-details-of-an-order'>Get the Order Details of an Order</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    get the order details of an order</p>
+
+<ul>
+<li>GET /api/swap/v3/order/detail</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">The amount in this order</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">System time</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">createTime</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_qty</td>
+<td style="text-align: center">The amount which has been filled</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: center">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">The limit price of limit order</td>
+</tr>
+<tr>
+<td style="text-align: left">price_avg</td>
+<td style="text-align: center">Average filled price</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">Order status -1 Cancelled successful 0 submitted 1partial-filled 2filled</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: center">The order type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: center">Total profit and loss</td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-orders'>Get list of orders</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    Get list of orders</p>
+
+<ul>
+<li>GET /api/swap/v3/order/orders</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">from</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">From and to combine to which page check (default is 1)</td>
+</tr>
+<tr>
+<td style="text-align: left">to</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">From and to combine to which page check (default is 1)</td>
+</tr>
+<tr>
+<td style="text-align: left">&#39;limit&#39;</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of results per request. The maximum is 100; the default is 100</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Status: 0 Failed</td>
+</tr>
+</tbody></table>
+
+<p>(contains risk triggered revocation 1 Partially Filled 2 Fully Filled 3 = Incomplete (Open + Partially Filled) 4  Canceling </p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">Order amount</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">System time</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">createTime</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_qty</td>
+<td style="text-align: center">Filled quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: center">transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">order price</td>
+</tr>
+<tr>
+<td style="text-align: left">price_avg</td>
+<td style="text-align: center">average filled price</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">Status: 0 Failed</td>
+</tr>
+</tbody></table>
+
+<p>(contains risk triggered revocation 1 Partially Filled 2 Fully Filled 3 = Incomplete (Open + Partially Filled) 4  Canceling 
+|type|Type (1: open long 2: open short 3: close long 4: 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short
+|order_type|Order type 0: Normal limit order 1: Only be Maker (Post only)&quot;2: Fill Or Kill 3: Immediate or Cancel (IOC)
+|totalProfits|Totoal profit and loss</p>
+<h2 id='get-transaction-details'>Get Transaction Details</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    get transaction details</p>
+
+<ul>
+<li>GET /api/swap/v3/order/fills</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"6667390"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"525946425993854915"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"9839.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order_qty"</span><span class="p">:</span><span class="s2">"3466"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: center">trade Id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">order id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">deal price</td>
+</tr>
+<tr>
+<td style="text-align: left">order_qty</td>
+<td style="text-align: center">Quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: center">transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">exec_type</td>
+<td style="text-align: center">Taker or maker (T or M)</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">Side of the orde 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+</tr>
+</tbody></table>
+<h2 id='place-order-with-stop-limit'>Place order with Stop limit</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    place order with Stop limit </p>
+
+<ul>
+<li>POST /api/swap/v3/order/plan_order</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">合约code</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">customize order IDs to identify your orders. (Less than 50 characters without special characters,</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Quantity to buy or sell (value not equal to 0 or negative)</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Type 1 Open position 2 Close position</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Direction 1 Long 2 Short</td>
+</tr>
+<tr>
+<td style="text-align: left">match_type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order Type 0 Limit 1 Market</td>
+</tr>
+<tr>
+<td style="text-align: left">execute_price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Stop price (execute price)</td>
+</tr>
+<tr>
+<td style="text-align: left">trigger_price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Limit price (trigger price)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589579827556646928"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">plan Order ID</td>
+</tr>
+</tbody></table>
+<h2 id='close-position-with-stop-limit'>Close position with Stop limit</h2>
+<p>Rate Limit：10 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    close position with Stop limit</p>
+
+<ul>
+<li> POST /api/swap/v3/order/cancel_plan</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"5895798275566469458"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"order not exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">Status of cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">err_code</td>
+<td style="text-align: center">reason of cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">err_msg</td>
+<td style="text-align: center">reason of cancellation</td>
+</tr>
+</tbody></table>
+<h2 id='check-stop-limit-status'>Check Stop limit status</h2>
+<p>Rate Limit：10 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    check stop limit status </p>
+
+<ul>
+<li> GET /api/swap/v3/order/currentPlan</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Direction 1 Open long 2 Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Current page</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page: the actual query will check 5 more,and a maximum of 1000</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query start time</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query stop time</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">nextPage</td>
+<td style="text-align: center">Next page</td>
+</tr>
+<tr>
+<td style="text-align: left">execute_count</td>
+<td style="text-align: center">amount of Stop</td>
+</tr>
+<tr>
+<td style="text-align: left">delegate_count</td>
+<td style="text-align: center">amount of Limit</td>
+</tr>
+<tr>
+<td style="text-align: left">create_time</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">update_time</td>
+<td style="text-align: center">Updated time</td>
+</tr>
+<tr>
+<td style="text-align: left">direction</td>
+<td style="text-align: center">Direction 1.Open long 2.Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">direction_desc</td>
+<td style="text-align: center">Description of direction 1.Open long 2.Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">trigger_price</td>
+<td style="text-align: center">Stop price</td>
+</tr>
+<tr>
+<td style="text-align: left">execute_price</td>
+<td style="text-align: center">limit price (execute price)</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Order Type 0 Limit 1 Market</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">status 1: waiting to order 2: order placing 3: failed status 4 under cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">status_desc</td>
+<td style="text-align: center">Description of status 1: waiting to order 2: order placing 3: failed status 4 under cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">create_trade_price</td>
+<td style="text-align: center">Executed price of stop limit</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-history-of-stop-limit'>Get the history of Stop limit</h2>
+<p>Rate Limit：10 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    Get the history of Stop limit</p>
+
+<ul>
+<li>GET /api/swap/v3/order/historyPlan</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Direction:1Buy long 2. Buy short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">page_index</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">current page</td>
+</tr>
+<tr>
+<td style="text-align: left">page_size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page: the actual query will check 5 more,and a maximum of 1000</td>
+</tr>
+<tr>
+<td style="text-align: left">start_time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query start time</td>
+</tr>
+<tr>
+<td style="text-align: left">end_time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query end time</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"open long"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">
+                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
+           </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">nextPage</td>
+<td style="text-align: center">Next page</td>
+</tr>
+<tr>
+<td style="text-align: left">execute_count</td>
+<td style="text-align: center">amount of limit</td>
+</tr>
+<tr>
+<td style="text-align: left">delegate_count</td>
+<td style="text-align: center">amount of stop</td>
+</tr>
+<tr>
+<td style="text-align: left">create_time</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">update_time</td>
+<td style="text-align: center">Update time</td>
+</tr>
+<tr>
+<td style="text-align: left">direction</td>
+<td style="text-align: center">Direction 1.Open long 2.Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">direction_desc</td>
+<td style="text-align: center">Description of direction 1.Open long 2.Open short 3 Close long 4 Close short</td>
+</tr>
+<tr>
+<td style="text-align: left">trigger_price</td>
+<td style="text-align: center">trigger price</td>
+</tr>
+<tr>
+<td style="text-align: left">execute_price</td>
+<td style="text-align: center">execute price</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Order Type 0 Limit 1 Market</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">status 1: waiting to order 2: order placing 3: failed status 4 under cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">status_desc</td>
+<td style="text-align: center">description of 1: waiting to order 2: order placing 3: failed status 4 under cancellation</td>
+</tr>
+<tr>
+<td style="text-align: left">create_trade_price</td>
+<td style="text-align: center">Executed price of stop limit</td>
+</tr>
+</tbody></table>
+
+  </div>
+  <div class="dark-box">
+      <div class="lang-selector">
+            <a href="#" data-language-name="console">console</a>
+      </div>
+  </div>
+</div>
+</body>
+
+<script>
+    $(".con a").click(function(){
+        $(".con a").removeClass("selected");
+        $(this).addClass("selected")
+    });
+    $("#international").click(function(){
+        $this = $(this);
+        var currentUrl = window.location.href;
+        var index=currentUrl.indexOf("#");
+        currentUrl=currentUrl.substring(0,index);
+        if ($this.text() == 'English') {
+            window.location=currentUrl.replace(/\/zh/,"/en");
+        } else {
+            window.location=currentUrl.replace(/\/en/,"/zh");
+        }
+    });
+    var  currentUrl=window.location.href;
+    var isEn=currentUrl.indexOf('en/')>-1;
+    var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isLocal=currentUrl.indexOf('local')>-1;
+    var $international=$("#international");
+    var $search=$("#input-search");
+
+    var $Swap=$("#swap"),
+        $Spot=$("#spot");
+    if(isSwap){
+        $Swap.addClass('selected');
+    } else{
+        $Spot.addClass('selected');
+    }
+    if(!isEn){
+        $Swap.html($Swap.attr('data-text'))
+        $Spot.html($Spot.attr('data-text'))
+
+        $international.html('English')
+    }else {
+        $international.html('简体中文')
+        $search.html('搜索');
+    }
+    if(isLocal){
+        if(isEn){
+            $Swap.attr('href','/en/swap/')
+            $Spot.attr('href','/en/spot/')
+        } else{
+            $Swap.attr('href','/zh/swap/')
+            $Spot.attr('href','/zh/spot/')
+        }
+
+    } else{
+        if(isEn){
+            $Swap.attr('href','/apidoc/en/swap/')
+            $Spot.attr('href','/apidoc/en/spot/')
+        } else{
+            $Swap.attr('href','/apidoc/zh/swap/')
+            $Spot.attr('href','/apidoc/zh/spot/')
+        }
+    }
+</script>
+
+</html>
