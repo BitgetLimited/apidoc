@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>31 July 2020,10:00</td>
+<td><code>update domain API address</code></td>
+<td>update</td>
+<td>update domain API address</td>
+</tr>
+<tr>
 <td>19 July 2020,10:00</td>
 <td><code>Support multiple languages</code></td>
 <td>New</td>
@@ -154,8 +160,8 @@
 </tr>
 <tr>
 <td>Domain2</td>
-<td>https://capi.bitget.io</td>
-<td>wss://csocketapi.bitget.io</td>
+<td>https://capi.bitgetapi.com</td>
+<td>wss://csocketapi.bitgetapi.com</td>
 <td>CHINA</td>
 </tr>
 </tbody></table>
