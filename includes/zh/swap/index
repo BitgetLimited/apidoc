@@ -104,6 +104,8 @@
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-go-sdk-api">Go</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
 
+<p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>
+
 <p><strong>其它代码示例</strong></p>
 
 <p><a href="https://github.com/BitgetLimited/Exchange_API">https://github.com/BitgetLimited/Exchange_API</a></p>
@@ -1152,10 +1154,10 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol':"</span><span class="err">cmt_btcusdt</span><span class="s2">",
-     "</span><span class="err">forwardContractFlag</span><span class="s2">":false,
-     "</span><span class="err">funding_time</span><span class="s2">":"</span><span class="mi">1591282800000</span><span class="s2">"
- }
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
 
@@ -1228,10 +1230,10 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol':"</span><span class="err">cmt_btcusdt</span><span class="s2">",
-     "</span><span class="err">funding_rate</span><span class="s2">":"</span><span class="mf">0.001</span><span class="s2">",
-     "</span><span class="err">funding_time</span><span class="s2">":"</span><span class="mi">19238271212</span><span class="s2">"
- }
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
 
@@ -1592,7 +1594,7 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="mi">2</span><span class="s2">""</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -2897,8 +2899,8 @@ Signature = base64.encode(Signature)
      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
      </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
      </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"订单不存在
-}
+     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"订单不存在"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
 

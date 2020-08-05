@@ -100,6 +100,8 @@
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-go-sdk-api">Go</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
 
+<p>CCXT is our authorized SDK provider and you may access the Bitget API through CCXT. For more information, please visit: <a href="https://ccxt.trade">https://ccxt.trade</a>.</p>
+
 <p><strong>Other Demos</strong></p>
 
 <p><a href="https://github.com/BitgetLimited/Exchange_API">https://github.com/BitgetLimited/Exchange_API</a></p>
