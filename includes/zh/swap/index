@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>2020.8.26 20:40</td>
+<td><code>文档优化</code></td>
+<td>修改</td>
+<td>文档优化</td>
+</tr>
+<tr>
 <td>2020.7.31 15:00</td>
 <td><code>修改域名</code></td>
 <td>修改</td>
@@ -76,8 +82,8 @@
 <p>权限说明如下：</p>
 
 <ul>
-<li>读取权限：读取权限用于对数据的查询接口，例如：行情数据。</li>
-<li>交易权限：交易权限用于下单、撤单、订单查询、成交查询等接口。</li>
+<li>读取权限：读取权限用于对数据的查询，例如：行情数据。</li>
+<li>交易权限：交易权限用于下单、撤单等接口。</li>
 </ul>
 
 <p>创建成功后请务必记住以下信息：</p>
@@ -89,7 +95,7 @@
 </ul>
 
 <aside class="notice">
-    创建 APIKey 时可以绑定 IP 地址，未绑定 IP 地址的 APIKey 有效期为365天。出于安全考虑，强烈建议您绑定 IP 地址。
+    创建 APIKey 时可以绑定 IP 地址，未绑定 IP 地址的 APIKey出于安全考虑，强烈建议您绑定 IP 地址。
 </aside>
 
 <aside class="warning">
@@ -97,20 +103,16 @@
         <b>风险提示</b>
     </red>
     ：这三个密钥与账号安全密切相关，请牢记<b>Passphrase</b>，无论何时都请勿向他人透露。
-    APIKey的泄露可能会造成您的资产损失，若发现APIKey泄露请尽快删除该APIKey。
+    这三个密钥任意一个泄露可能会造成您的资产损失，若发现APIKey泄露请尽快删除该APIKey。
 </aside> 
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-go-sdk-api">Go</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  </p>
 
 <p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>
-
-<p><strong>其它代码示例</strong></p>
-
-<p><a href="https://github.com/BitgetLimited/Exchange_API">https://github.com/BitgetLimited/Exchange_API</a></p>
 <h2 id='5076603a3e'>接口类型</h2>
-<p>本章节主要为接口类型的细节分以下两个方面：</p>
+<p>本章节主要为接口类型分以下两个方面：</p>
 
 <ul>
 <li>公共接口</li>
@@ -127,47 +129,39 @@
 
 <p>私有接口需要使用您的APIKey进行验证。</p>
 <h2 id='12907e94be'>访问限制</h2>
-<p>本章节主要为访问限制的细节分以下两个方面：</p>
+<p>本章节主要为访问限制：</p>
 
 <ul>
-<li>Rest API</li>
-<li>WebSocket
+<li>Rest API
 当访问超过频率限制时，将返回429状态：请求太频繁。</li>
 </ul>
 
 <p><strong>Rest API</strong> </p>
 
-<p>如果传入有效的APIKey 用UserID限速；如果没有则拿公网IP限速。</p>
+<p>如果传入有效的APIKey 用APIKey限速；如果没有则拿公网IP限速。</p>
 
 <p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 10次/秒。</p>
 
 <p>特殊说明：批量下单时，若下4个币对，每个币对10个订单时，计为一次请求。</p>
-
-<p><strong>WebSocket</strong></p>
-
-<p>WebSocket将每个命令类型限制为每秒xx条命令。</p>
 <h2 id='api-3'>API域名</h2>
-<p>您可以自行比较使用Rest API和Websocket两个接入方式，选择延迟低的进行使用。     </p>
+<p>您可以自行使用Rest API接入方式进行操作。     </p>
 
 <table><thead>
 <tr>
 <th>域名</th>
 <th>REST API</th>
-<th>Websocket</th>
 <th>建议使用</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>域名1</td>
 <td>https://capi.bitget.com</td>
-<td>wss://csocketapi.bitget.com</td>
 <td>国际</td>
 </tr>
 <tr>
 <td>域名2</td>
 <td>https://capi.bitgetapi.com</td>
-<td>wss://csocketapi.bitgetapi.com</td>
-<td>国内</td>
+<td>中国地区</td>
 </tr>
 </tbody></table>
 <h2 id='api-4'>API验证</h2>
@@ -199,13 +193,13 @@
 <p><strong>queryString为空时，签名格式</strong> </p>
 
 <p><code>
-timestamp + method + requestPath + body
+timestamp + method.toUpperCase() + requestPath + body
 </code></p>
 
 <p><strong>queryString不为空时，签名格式</strong> </p>
 
 <p><code>
-timestamp + method + requestPath + &quot;?&quot; + queryString + body
+timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
 </code></p>
 
 <p><strong>举例说明</strong> </p>
@@ -272,7 +266,7 @@ Signature = base64.encode(Signature)
 <p><strong>常见错误码</strong></p>
 
 <ul>
-<li>400 Bad Request – Invalid request forma 请求格式无效</li>
+<li>400 Bad Request – Invalid request format 请求格式无效</li>
 <li>401 Unauthorized – Invalid API Key 无效的API Key</li>
 <li>403 Forbidden – You do not have access to the requested resource 请求无权限</li>
 <li>404 Not Found 没有找到请求</li>
@@ -286,10 +280,6 @@ Signature = base64.encode(Signature)
 <p>请求签名中的ACCESS-TIMESTAMP的单位是毫秒。请求的时间戳必须在API服务时间的30秒内，否则请求将被视为过期并被拒绝。
 如果本地服务器时间和API服务器时间之间存在较大的偏差，那么我们建议您使用通过查询API服务器时间来更新http header。</p>
 
-<p><code>
-例如：1591094342502
-</code></p>
-
 <p><strong>限频规则</strong></p>
 
 <p>如果请求过于频繁系统将自动限制请求，并在http header中返回429 too many requests状态码。</p>
@@ -301,61 +291,7 @@ Signature = base64.encode(Signature)
 
 <p><strong>请求格式</strong></p>
 
-<p>所有的API请求都是restful，目前只有两种方法：GET和POST</p>
-
-<ul>
-<li>GET:  参数通过queryString在路径中传输到服务器。</li>
-<li>POST: 参数按照json格式发送body传输到服务器。</li>
-</ul>
-<h2 id='48a34da7ed'>分页请求</h2>
-<p>REST请求使用游标分页，参数如下，适合与查询/trades，/fills，/orders，默认返回100条记录。可以通【游标参数】指定要分页查询的方向，我们会标注支持游标查询的方法。</p>
-
-<p><strong>游标参数</strong></p>
-
-<table><thead>
-<tr>
-<th>参数名</th>
-<th>参数类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>gt</td>
-<td>String</td>
-<td>大于，表示查询大于它的ID数据。</td>
-</tr>
-<tr>
-<td>lt</td>
-<td>String</td>
-<td>小于，表示查询小于它的ID数据。</td>
-</tr>
-</tbody></table>
-
-<p><strong>分页游标</strong></p>
-
-<p><code>
-例如：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
-</code></p>
-
-<p><strong>实例</strong></p>
-
-<ol>
-<li>GET /api/swap/v3/order/orders?gt=1&amp;limit=50 查询订单id大于1的50条记录</li>
-<li>GET /api/swap/v3/order/orders?lt=100&amp;limit=30 查询订单id小于100的30条记</li>
-</ol>
-
-<p><strong>限频规则</strong></p>
-
-<p>如果请求过于频繁系统将自动限制请求，并在http header中返回429 too many requests状态码。</p>
-
-<ul>
-<li><p>公共接口：如行情接口，统一限频为2秒最多20个请求。</p></li>
-<li><p>授权接口：通过apikey限制授权接口的调用，参考每个接口的限频规则限频。</p></li>
-</ul>
-
-<p><strong>请求格式</strong></p>
-
-<p>所有的API请求都是restful，目前只有两种方法：GET和POST</p>
+<p>目前只有两种格式的请求方法：GET和POST</p>
 
 <ul>
 <li>GET:  参数通过queryString在路径中传输到服务器。</li>
@@ -375,9 +311,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"epoch"</span><span class="p">:</span><span class="s2">"1591099099.896"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"iso"</span><span class="p">:</span><span class="s2">"2020-06-02T11:58:19.896Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1591099099896</span><span class="w">
+    </span><span class="s2">"epoch"</span><span class="p">:</span><span class="s2">"1591099099.896"</span><span class="p">,</span><span class="w"> </span><span class="err">//Unix时间戳的秒数</span><span class="w">
+    </span><span class="s2">"iso"</span><span class="p">:</span><span class="s2">"2020-06-02T11:58:19.896Z"</span><span class="p">,</span><span class="w"> </span><span class="err">//ISO</span><span class="mi">8601</span><span class="err">标准的时间格式</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1591099099896</span><span class="w"> </span><span class="err">//Unix时间戳的毫秒数</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -390,7 +326,7 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">epoch</td>
-<td style="text-align: center">UTC时区Unix时间戳的十进制秒数格式</td>
+<td style="text-align: center">Unix时间戳的秒数</td>
 </tr>
 <tr>
 <td style="text-align: left">iso</td>
@@ -398,7 +334,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">服务器的时间戳</td>
+<td style="text-align: center">Unix时间戳的毫秒数</td>
 </tr>
 </tbody></table>
 <h2 id='6b15dcb6a3'>获取合约信息</h2>
@@ -416,20 +352,20 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"coin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"delivery"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">  </span><span class="err">//合约名称</span><span class="w">
+    </span><span class="s2">"coin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//保证金币种</span><span class="w">
+    </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约面值</span><span class="w">
+    </span><span class="s2">"delivery"</span><span class="p">:[</span><span class="w">  </span><span class="err">//结算时间</span><span class="w">
          </span><span class="s2">"07:00:00"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"15:00:00"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"23:00:00"</span><span class="w">
      </span><span class="p">],</span><span class="w"> 
-    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"priceEndStep"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quote_currency"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
+    </span><span class="s2">"priceEndStep"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="err">//价格最后一位步长</span><span class="w">
+    </span><span class="s2">"quote_currency"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//计价币种</span><span class="w">
+    </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//数量精度</span><span class="w">
+    </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//价格精度</span><span class="w">
+    </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w"> </span><span class="err">//合约币种</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -441,6 +377,10 @@ Signature = base64.encode(Signature)
 <th style="text-align: left">字段说明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">合约名称</td>
+</tr>
 <tr>
 <td style="text-align: left">coin</td>
 <td style="text-align: left">保证金币种</td>
@@ -458,16 +398,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">是否是正向合约</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">合约名称</td>
-</tr>
-<tr>
 <td style="text-align: left">priceEndStep</td>
 <td style="text-align: left">价格最后一位步长</td>
 </tr>
 <tr>
 <td style="text-align: left">quote_currency</td>
-<td style="text-align: left">计价货币</td>
+<td style="text-align: left">计价币种</td>
 </tr>
 <tr>
 <td style="text-align: left">size_increment</td>
@@ -522,21 +458,21 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"asks"</span><span class="p">:[</span><span class="w">
          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"19299"</span><span class="p">,</span><span class="w">
-              </span><span class="mf">2.0</span><span class="w">
+            </span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//价格</span><span class="w">
+            </span><span class="s2">"19299"</span><span class="p">,</span><span class="w"> </span><span class="err">//数量</span><span class="w">
+              </span><span class="mf">2.0</span><span class="w">  </span><span class="err">//废弃字段</span><span class="w">
         </span><span class="p">]</span><span class="w">   
      </span><span class="p">],</span><span class="w">
    </span><span class="s2">"bids"</span><span class="p">:[</span><span class="w">
          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"499"</span><span class="p">,</span><span class="w">
-             </span><span class="mf">1.0</span><span class="w">
+            </span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//价格</span><span class="w">
+            </span><span class="s2">"499"</span><span class="p">,</span><span class="w">  </span><span class="err">//数量</span><span class="w">
+             </span><span class="mf">1.0</span><span class="w"> </span><span class="err">//废弃字段</span><span class="w">
         </span><span class="p">],</span><span class="w">
          </span><span class="p">[</span><span class="w">
             </span><span class="s2">"4995.0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"12500"</span><span class="p">,</span><span class="w">
-              </span><span class="mf">2.0</span><span class="w">
+              </span><span class="mf">2.0</span><span class="w">  
         </span><span class="p">]</span><span class="w">
      </span><span class="p">],</span><span class="w">
    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591237821479"</span><span class="w"> 
@@ -579,14 +515,15 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"332.00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"203.00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"394"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_bchusdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_bchusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+        </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"332.00"</span><span class="p">,</span><span class="w">  </span><span class="err">//卖一价</span><span class="w">
+        </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"203.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//买一价</span><span class="w">
+        </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"394"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最高价</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">     </span><span class="err">//最新成交价</span><span class="w">
+        </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最低价</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
+        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w">
+        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -599,6 +536,10 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">best_ask</td>
 <td style="text-align: left">卖一价</td>
 </tr>
@@ -609,10 +550,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">high_24h</td>
 <td style="text-align: left">24小时最高价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">last</td>
@@ -629,6 +566,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">volume_24h</td>
 <td style="text-align: left">24小时成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">priceChangePercent</td>
+<td style="text-align: left">24小时价格变动百分比</td>
 </tr>
 </tbody></table>
 <h2 id='ticker-2'>获取某个ticker信息</h2>
@@ -663,14 +604,15 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+    </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//卖一价</span><span class="w">
+    </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//买一价</span><span class="w">
+    </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最高价</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">  </span><span class="err">//最新成交价</span><span class="w">
+    </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最低价</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
+    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w">
+    </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -682,6 +624,10 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">best_ask</td>
 <td style="text-align: left">卖一价</td>
 </tr>
@@ -692,10 +638,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">high_24h</td>
 <td style="text-align: left">24小时最高价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">last</td>
@@ -712,6 +654,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">volume_24h</td>
 <td style="text-align: left">24小时成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">priceChangePercent</td>
+<td style="text-align: left">24小时价格变动百分比</td>
 </tr>
 </tbody></table>
 <h2 id='2fdd066e43'>获取成交数据</h2>
@@ -754,12 +700,12 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"7844.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"48"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591111746879"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"651735392382353615"</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"7844.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交价格</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交方向：sell或者buy</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"48"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交数量</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591111746879"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交时间戳</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"651735392382353615"</span><span class="w"> </span><span class="err">//成交id</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -773,7 +719,7 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">合约Id</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">price</td>
@@ -890,13 +836,13 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1556687460000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"342"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"0.064340137494"</span><span class="w">
+    </span><span class="s2">"1556687460000"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//开盘价格</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//最高价格</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//最低价格</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//收盘价格</span><span class="w">
+    </span><span class="s2">"342"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易量(按张折算)</span><span class="w">
+    </span><span class="s2">"0.064340137494"</span><span class="w"> </span><span class="err">//交易量（按币折算)</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -968,9 +914,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"9654.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256590003"</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+    </span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"9654.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//现货指数价格</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256590003"</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -982,12 +928,12 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">index</td>
-<td style="text-align: center">现货指数价格</td>
-</tr>
-<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">index</td>
+<td style="text-align: center">现货指数价格</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
@@ -1026,10 +972,10 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">  </span><span class="err">//总持仓量</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">系统时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1041,16 +987,16 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">amount</td>
 <td style="text-align: center">总持仓量</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
 <td style="text-align: center">是否是正向合约</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
@@ -1086,11 +1032,11 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"highest"</span><span class="p">:</span><span class="s2">"14474.5"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"lowest"</span><span class="p">:</span><span class="s2">"4824.5"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591257126461"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">  </span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
+     </span><span class="s2">"highest"</span><span class="p">:</span><span class="s2">"14474.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//最高买价</span><span class="w">
+     </span><span class="s2">"lowest"</span><span class="p">:</span><span class="s2">"4824.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//最低卖价</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591257126461"</span><span class="w">  </span><span class="err">//系统时间戳</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1102,16 +1048,16 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">forwardContractFlag</td>
 <td style="text-align: center">是否是正向合约</td>
 </tr>
 <tr>
 <td style="text-align: left">highest</td>
 <td style="text-align: center">最高买价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">lowest</td>
@@ -1154,9 +1100,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">  </span><span class="err">//下一次的结算时间</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1230,9 +1176,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w"> </span><span class="err">//资金费率</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w"> </span><span class="err">//结算时间</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1288,9 +1234,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="s2">"8047.87"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591264230941"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="s2">"8047.87"</span><span class="p">,</span><span class="w"> </span><span class="err">//标记价格</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591264230941"</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1364,7 +1310,7 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"openCount"</span><span class="p">:</span><span class="s2">"199999"</span><span class="w">
+   </span><span class="s2">"openCount"</span><span class="p">:</span><span class="s2">"199999"</span><span class="w"> </span><span class="err">//可开张数</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1395,17 +1341,17 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> 
   </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">  </span><span class="err">//账户权益</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="err">//废弃字段</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//可用余额</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//已实现盈亏</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//未实现盈亏</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓冻结保证金</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//仓位模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1418,16 +1364,20 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">equity</td>
 <td style="text-align: center">账户权益</td>
 </tr>
 <tr>
 <td style="text-align: left">fixed_balance</td>
-<td style="text-align: center">逐仓账户余额</td>
+<td style="text-align: center">逐仓可用余额</td>
 </tr>
 <tr>
 <td style="text-align: left">total_avail_balance</td>
-<td style="text-align: center">账户余额</td>
+<td style="text-align: center">可用余额</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
@@ -1440,10 +1390,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">unrealized_pnl</td>
 <td style="text-align: center">未实现盈亏</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">margin_frozen</td>
@@ -1494,17 +1440,17 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//账户权益</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//废弃字段</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//可用余额</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//已实现盈亏</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//未实现盈亏</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓冻结保证金</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//仓位模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1516,16 +1462,20 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">equity</td>
 <td style="text-align: center">账户权益</td>
 </tr>
 <tr>
 <td style="text-align: left">fixed_balance</td>
-<td style="text-align: center">逐仓账户余额</td>
+<td style="text-align: center">逐仓可用余额</td>
 </tr>
 <tr>
 <td style="text-align: left">total_avail_balance</td>
-<td style="text-align: center">账户余额</td>
+<td style="text-align: center">可用余额</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
@@ -1538,10 +1488,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">unrealized_pnl</td>
 <td style="text-align: center">未实现盈亏</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">margin_frozen</td>
@@ -1592,11 +1538,11 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="err">//多仓杠杆</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//空仓杠杆</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1608,6 +1554,10 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">long_leverage</td>
 <td style="text-align: center">多仓杠杆</td>
 </tr>
@@ -1618,10 +1568,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">short_leverage</td>
 <td style="text-align: center">空仓杠杆</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
@@ -1672,11 +1618,11 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="err">//多仓杠杆</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//空仓杠杆</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1688,6 +1634,10 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">long_leverage</td>
 <td style="text-align: center">多仓杠杆</td>
 </tr>
@@ -1698,10 +1648,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">short_leverage</td>
 <td style="text-align: center">空仓杠杆</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
@@ -1758,8 +1704,8 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"527252921197264814"</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//结果</span><span class="w">
+    </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"527252921197264814"</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1823,8 +1769,8 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"append_type"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//设置结果</span><span class="w">
+     </span><span class="s2">"append_type"</span><span class="p">:</span><span class="mi">1</span><span class="w"> </span><span class="err">//当前设置状态：</span><span class="mi">0</span><span class="err">表示不自动追加，</span><span class="mi">1</span><span class="err">表示自动追加</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -1859,19 +1805,19 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">[</span><span class="w">
  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
     </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">  </span><span class="err">//合约名称</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//预估爆仓价</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓数量</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//可平数量</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓平均价</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//杠杆</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//已实现盈亏</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//方向</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -1887,7 +1833,11 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">margin_mode</td>
-<td style="text-align: center">全仓模式或逐仓模式</td>
+<td style="text-align: center">持仓模式 fixed逐仓模式 crossed全仓模式</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">liquidation_price</td>
@@ -1904,10 +1854,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">avg_cost</td>
 <td style="text-align: center">开仓平均价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -1962,19 +1908,19 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓模式</span><span class="w"> </span><span class="err">fixed逐仓模式</span><span class="w"> </span><span class="err">crossed全仓模式</span><span class="w">
     </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//预估爆仓价</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓数量</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//可平数量</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓平均价</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//杠杆</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//已实现盈亏</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//方向</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -1989,7 +1935,11 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">margin_mode</td>
-<td style="text-align: center">全仓模式或逐仓模式</td>
+<td style="text-align: center">持仓模式 fixed逐仓模式 crossed全仓模式</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">liquidation_price</td>
@@ -2006,10 +1956,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">avg_cost</td>
 <td style="text-align: center">开仓平均价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -2064,9 +2010,9 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w"> 
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓冻结保证金</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w">  </span><span class="err">//查询时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2158,8 +2104,8 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513466539039522813"</span><span class="w">
+    </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端请求标识</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513466539039522813"</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2220,9 +2166,9 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"order_info"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="w">
+            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//成交结果</span><span class="w">
+            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端请求标识</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="w"> </span><span class="err">//成交订单Id</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2291,10 +2237,10 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
+   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端标识</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w"> </span><span class="err">//取消结果</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2306,16 +2252,16 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
 <td style="text-align: left">order_id</td>
 <td style="text-align: center">订单号</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
 <td style="text-align: center">客户端标识</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约账户</td>
 </tr>
 <tr>
 <td style="text-align: left">result</td>
@@ -2360,17 +2306,17 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//处理结果</span><span class="w">
    </span><span class="s2">"order_ids"</span><span class="p">:[</span><span class="w">
-          </span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"258414711"</span><span class="p">,</span><span class="err">//成功的id</span><span class="w">
           </span><span class="s2">"478585558"</span><span class="w">
     </span><span class="p">],</span><span class="w">
    </span><span class="s2">"fail_infos"</span><span class="p">:[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"401"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"258414711"</span><span class="p">,</span><span class="w"> </span><span class="err">//失败的id</span><span class="w">
+        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"401"</span><span class="p">,</span><span class="w"> </span><span class="err">//错误code</span><span class="w">
+        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">  </span><span class="err">//错误信息</span><span class="w">
      </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2384,12 +2330,12 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">result</td>
-<td style="text-align: center">处理结果</td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: left">result</td>
+<td style="text-align: center">处理结果</td>
 </tr>
 <tr>
 <td style="text-align: left">order_ids</td>
@@ -2432,7 +2378,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -2446,20 +2392,20 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托数量</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> </span><span class="err">//废弃字段</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端标识</span><span class="w">
+     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间戳</span><span class="w">
+     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交数量</span><span class="w">
+     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//手续费</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单id</span><span class="w">
+     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托价格</span><span class="w">
+     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交均价</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托类型</span><span class="w">
+     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//订单类型</span><span class="w">
+     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w"> </span><span class="err">//总盈亏</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2480,7 +2426,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">系统时间戳</td>
+<td style="text-align: center">系统时间戳 //废弃字段</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -2516,11 +2462,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">type</td>
-<td style="text-align: center">1:开多 2:开空 3:平多 4:平空 5:减仓平多 6:减仓平空 7:协议平多 8:协议平空 9:爆仓平多 10:爆仓平空</td>
+<td style="text-align: center">委托类型  1:开多 2:开空 3:平多 4:平空 5:减仓平多 6:减仓平空 7:协议平多 8:协议平空 9:爆仓平多 10:爆仓平空</td>
 </tr>
 <tr>
 <td style="text-align: left">order_type</td>
-<td style="text-align: center">0：普通委托 1：只做Maker（Post only） 2：全部成交或立即取消（FOK） 3：立即成交并取消剩余（IOC）</td>
+<td style="text-align: center">订单类型  0：普通委托 1：只做Maker（Post only） 2：全部成交或立即取消（FOK） 3：立即成交并取消剩余（IOC）</td>
 </tr>
 <tr>
 <td style="text-align: left">totalProfits</td>
@@ -2551,7 +2497,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: left">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">from</td>
@@ -2584,20 +2530,20 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托数量</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> </span><span class="err">//废弃字段</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端标识</span><span class="w">
+     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间戳</span><span class="w">
+     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交数量</span><span class="w">
+     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//手续费</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单id</span><span class="w">
+     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托价格</span><span class="w">
+     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交均价</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托类型</span><span class="w">
+     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单类型</span><span class="w">
+     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w"> </span><span class="err">//总盈亏</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2619,7 +2565,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">系统时间戳</td>
+<td style="text-align: center">系统时间戳  //废弃字段</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -2655,11 +2601,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">type</td>
-<td style="text-align: center">1:开多 2:开空 3:平多 4:平空 5:减仓平多 6:减仓平空 7:协议平多 8:协议平空 9:爆仓平多 10:爆仓平空</td>
+<td style="text-align: center">委托类型 1:开多 2:开空 3:平多 4:平空 5:减仓平多 6:减仓平空 7:协议平多 8:协议平空 9:爆仓平多 10:爆仓平空</td>
 </tr>
 <tr>
 <td style="text-align: left">order_type</td>
-<td style="text-align: center">0：普通委托 1：只做Maker（Post only） 2：全部成交或立即取消（FOK） 3：立即成交并取消剩余（IOC）</td>
+<td style="text-align: center">订单类型   0：普通委托 1：只做Maker（Post only） 2：全部成交或立即取消（FOK） 3：立即成交并取消剩余（IOC）</td>
 </tr>
 <tr>
 <td style="text-align: left">totalProfits</td>
@@ -2690,7 +2636,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -2705,15 +2651,15 @@ Signature = base64.encode(Signature)
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"6667390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"525946425993854915"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"9839.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_qty"</span><span class="p">:</span><span class="s2">"3466"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">  </span><span class="err">//合约名称</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"6667390"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交Id</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"525946425993854915"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单id</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"9839.00"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交价格</span><span class="w"> 
+      </span><span class="s2">"order_qty"</span><span class="p">:</span><span class="s2">"3466"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交数量</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w"> </span><span class="err">//手续费</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间戳</span><span class="w">
+      </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w"> </span><span class="err">//流动性方向</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w"> </span><span class="err">//订单方向</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -2726,12 +2672,12 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">trade_id</td>
-<td style="text-align: center">成交Id</td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: center">成交Id</td>
 </tr>
 <tr>
 <td style="text-align: left">order_id</td>
@@ -2786,7 +2732,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -2836,8 +2782,8 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589579827556646928"</span><span class="w">
+      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端标识</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589579827556646928"</span><span class="w"> </span><span class="err">//计划委托订单号</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2881,7 +2827,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -2895,11 +2841,11 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"5895798275566469458"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"订单不存在"</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"5895798275566469458"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w"> </span><span class="err">//客户端标识</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//是否撤销成功</span><span class="w">
+     </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w"> </span><span class="err">//撤销失败时的原因code</span><span class="w">
+     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"订单不存在"</span><span class="w"> </span><span class="err">//撤销失败时的原因</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -2955,7 +2901,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -2995,23 +2941,23 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
       </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"未执行状态"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
+                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//执行数量</span><span class="w">
+                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w"> </span><span class="err">//委托数量</span><span class="w">
+                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w"> </span><span class="err">//创建时间戳</span><span class="w">
+                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
+                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//方向</span><span class="w">
+                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w"> </span><span class="err">//方向描述</span><span class="w">
+                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//触发价格</span><span class="w">
+                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//执行价格</span><span class="w">
+                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
+                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//订单类型</span><span class="w">
+                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//状态</span><span class="w">
+                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"未执行状态"</span><span class="p">,</span><span class="w"> </span><span class="err">//状态描述</span><span class="w">
+                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w"> </span><span class="err">//计划委托时的成交价</span><span class="w">
            </span><span class="p">}</span><span class="w">
          </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w"> </span><span class="err">//是否有下一页</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -3022,6 +2968,10 @@ Signature = base64.encode(Signature)
 <th style="text-align: center">字段说明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
 <tr>
 <td style="text-align: left">nextPage</td>
 <td style="text-align: center">是否有下一页</td>
@@ -3064,19 +3014,15 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">order_type</td>
-<td style="text-align: center">订单类型0限价 1市价</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">订单类型 0限价 1市价</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
-<td style="text-align: center">1未执行状态 2已委托 3执行失败状态 4用户取消状态</td>
+<td style="text-align: center">状态 1未执行状态 2已委托 3执行失败状态 4用户取消状态</td>
 </tr>
 <tr>
 <td style="text-align: left">status_desc</td>
-<td style="text-align: center">（1未执行状态 2已委托 3执行失败状态 4用户取消状态）  描述</td>
+<td style="text-align: center">状态描述 （1未执行状态 2已委托 3执行失败状态 4用户取消状态）</td>
 </tr>
 <tr>
 <td style="text-align: left">create_trade_price</td>
@@ -3107,7 +3053,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">合约名称</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -3147,23 +3093,23 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
       </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"未执行状态"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
+                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
+                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//执行数量</span><span class="w">
+                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="err">//委托数量</span><span class="w">
+                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="err">//创建时间戳</span><span class="w">
+                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
+                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//方向</span><span class="w">
+                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w"> </span><span class="err">//方向描述</span><span class="w">
+                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//触发价格</span><span class="w">
+                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//执行价格</span><span class="w">
+                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单号</span><span class="w">
+                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//订单类型</span><span class="w">
+                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态</span><span class="w">
+                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"未执行状态"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态描述</span><span class="w">
+                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w"> </span><span class="err">//计划委托时的成交价</span><span class="w">
            </span><span class="p">}</span><span class="w">
          </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w"> </span><span class="err">//是否有下一页</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong> </p>
@@ -3174,6 +3120,10 @@ Signature = base64.encode(Signature)
 <th style="text-align: center">字段说明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
 <tr>
 <td style="text-align: left">nextPage</td>
 <td style="text-align: center">是否有下一页</td>
@@ -3219,16 +3169,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">订单类型0限价 1市价</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">合约code</td>
-</tr>
-<tr>
 <td style="text-align: left">status</td>
-<td style="text-align: center">1未执行状态 2已委托 3执行失败状态 4用户取消状态</td>
+<td style="text-align: center">订单状态 1未执行状态 2已委托 3执行失败状态 4用户取消状态</td>
 </tr>
 <tr>
 <td style="text-align: left">status_desc</td>
-<td style="text-align: center">（1未执行状态 2已委托 3执行失败状态 4用户取消状态）  描述</td>
+<td style="text-align: center">状态描述（1未执行状态 2已委托 3执行失败状态 4用户取消状态）</td>
 </tr>
 <tr>
 <td style="text-align: left">create_trade_price</td>

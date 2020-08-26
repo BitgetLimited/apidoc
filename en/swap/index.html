@@ -345,10 +345,10 @@
                 <a href="#sdk-and-demo" class="toc-h2 toc-link" data-title="SDK and Demo">SDK and Demo</a>
               </li>
               <li>
-                <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
               </li>
               <li>
-                <a href="#rate-limits" class="toc-h2 toc-link" data-title="Rate Limits">Rate Limits</a>
+                <a href="#restriction-of-visit" class="toc-h2 toc-link" data-title="Restriction of visit">Restriction of visit</a>
               </li>
               <li>
                 <a href="#api-domain" class="toc-h2 toc-link" data-title="API Domain">API Domain</a>
@@ -364,9 +364,6 @@
               </li>
               <li>
                 <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard specification">Standard specification</a>
-              </li>
-              <li>
-                <a href="#paging-request" class="toc-h2 toc-link" data-title="Paging request">Paging request</a>
               </li>
           </ul>
       </li>
@@ -519,6 +516,12 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
+<td>26 August 2020,20:40</td>
+<td><code>doc optimize</code></td>
+<td>update</td>
+<td>doc optimize</td>
+</tr>
+<tr>
 <td>31 July 2020,15:00</td>
 <td><code>update domain API address</code></td>
 <td>update</td>
@@ -595,7 +598,7 @@ clipboard.on('error', function(e) {
 
 <aside class="notice">
 
-    The API Key can bind one or more IP addresses, we strongly suggest you bind IP address for security purpose. The API Key without IP binding will be expired after 365 days.
+    The API Key can bind one or more IP addresses, we strongly suggest you bind IP address for security purpose.
 
 </aside>
 
@@ -609,15 +612,11 @@ clipboard.on('error', function(e) {
 <h2 id='sdk-and-demo'>SDK and Demo</h2>
 <p><strong>SDK (Suggested)</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>  | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-go-sdk-api">Go</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node</a>   </p>
 
 <p>CCXT is our authorized SDK provider and you may access the Bitget API through CCXT. For more information, please visit: <a href="https://ccxt.trade">https://ccxt.trade</a>.</p>
-
-<p><strong>Other Demos</strong></p>
-
-<p><a href="https://github.com/BitgetLimited/Exchange_API">https://github.com/BitgetLimited/Exchange_API</a></p>
-<h2 id='endpoints'>Endpoints</h2>
-<p>This chapter mainly divides the detail of interface type into the following two aspects：</p>
+<h2 id='interface-type'>Interface Type</h2>
+<p>This chapter mainly divides the following two aspects into interface types：</p>
 
 <ul>
 <li>Public APIs</li>
@@ -628,53 +627,45 @@ clipboard.on('error', function(e) {
 
 <p>The public interface can be used to get configuration information and market data. Public requests can be invoked without authentication.</p>
 
-<p><strong>Private APIs</strong> </p>
+<p><strong>Private APIs</strong> __</p>
 
 <p>The private interface can be used for order management and account management. Each private request must be signed using a canonical form of validation.</p>
 
 <p>The private interface needs to be validated using your APIKey.</p>
-<h2 id='rate-limits'>Rate Limits</h2>
-<p>This chapter mainly divides the details of access restriction into the following two aspects:</p>
+<h2 id='restriction-of-visit'>Restriction of visit</h2>
+<p>This chapter is mainly for access restrictions:</p>
 
 <ul>
 <li>Rest API</li>
-<li>WebSocket</li>
 </ul>
 
 <p>When access exceeds the frequency limit, a status of 429 is returned: requests are too frequent.</p>
 
 <p><strong>Rest API</strong> </p>
 
-<p>If a valid APIKey is passed in, limit the speed with UserID; If not, then take the public IP speed limit.</p>
+<p>If a valid APIKey is passed in, limit the speed with APIKey; If not, then take the public IP speed limit.</p>
 
 <p>Speed limit rules: there are separate instructions for each interface. If there is no general interface, the speed limit is 10 times/second.</p>
 
 <p>Special note: When placing bulk orders, if 4 coin pairs are placed and each coin pair is 10 orders, it will be counted as one request.</p>
-
-<p><strong>WebSocket</strong></p>
-
-<p>WebSocket limits each command type to xx commands per second.</p>
 <h2 id='api-domain'>API Domain</h2>
-<p>You can compare Rest API and WebSocket and choose the one with the lowest latency.     </p>
+<p>You can use the Rest API access method to operate by yourself.     </p>
 
 <table><thead>
 <tr>
 <th>Domain</th>
 <th>REST API</th>
-<th>Websocket</th>
 <th>Suggestion</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Domain1</td>
 <td>https://capi.bitget.com</td>
-<td>wss://csocketapi.bitget.com</td>
 <td>International</td>
 </tr>
 <tr>
 <td>Domain2</td>
 <td>https://capi.bitgetapi.com</td>
-<td>wss://csocketapi.bitgetapi.com</td>
 <td>CHINA</td>
 </tr>
 </tbody></table>
@@ -707,13 +698,13 @@ clipboard.on('error', function(e) {
 <p><strong>When the queryString is empty, the signature format</strong> </p>
 
 <p><code>
-timestamp + method + requestPath + body
+timestamp + method.toUpperCase() + requestPath + body
 </code></p>
 
 <p><strong>Signature format when queryString is not null</strong> </p>
 
 <p><code>
-timestamp + method + requestPath + &quot;?&quot; + queryString + body
+timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
 </code></p>
 
 <p><strong>For example</strong> </p>
@@ -794,10 +785,6 @@ Signature = base64.encode(Signature)
 <p>The access-Timestamp in the request signature is in milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected.
 If there is a large deviation between local server time and API server time, we recommend that you update the HTTP header by querying API server time.</p>
 
-<p><code>
-For example：1591094342502
-</code></p>
-
 <p><strong>Limited frequency rules</strong></p>
 
 <p>The system automatically limits requests if they are too frequent, and returns the 429 Too many Requests status code in the HTTP header.</p>
@@ -809,64 +796,10 @@ For example：1591094342502
 
 <p><strong>The request format</strong></p>
 
-<p>All API requests are restful and there are currently only two methods: GET and POST</p>
+<p>There are currently only two format request methods: GET and POST</p>
 
 <ul>
 <li>GET:  Parameters are passed to the server in the path via the queryString.</li>
-<li>POST: The parameter is sent in JSON format to the body for transfer to the server.</li>
-</ul>
-<h2 id='paging-request'>Paging request</h2>
-<p>REST requests page through cursors with the following parameters, suitable for queries /trades, /fills, /orders, and return 100 records by default. You can specify the direction of the query to page through [cursor parameters], and we will annotate methods that support cursor queries.</p>
-
-<p><strong>The cursor parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter names</th>
-<th>The parameter types</th>
-<th>describe</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>gt</td>
-<td>String</td>
-<td>Greater than indicates that the query is greater than its ID data.</td>
-</tr>
-<tr>
-<td>lt</td>
-<td>String</td>
-<td>Less than, indicates that the query is less than its ID data.</td>
-</tr>
-</tbody></table>
-
-<p><strong>Paging cursor</strong></p>
-
-<p><code>
-For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
-</code></p>
-
-<p><strong>The instance</strong></p>
-
-<ol>
-<li>GET /api/swap/v3/order/orders?gt=1&amp;limit=50 Query 50 records with order ID greater than 1</li>
-<li>GET /api/swap/v3/order/orders?lt=100&amp;limit=30 Query 30 records with order ID less than 100</li>
-</ol>
-
-<p><strong>Limited frequency rules</strong></p>
-
-<p>The system automatically limits requests if they are too frequent, and returns the 429 Too many Requests status code in the HTTP header.</p>
-
-<ul>
-<li><p>Common interface: if the market interface, unified frequency limit is 2 seconds at most 20 requests.</p></li>
-<li><p>Authorization interface: Limits calls to authorization interfaces through apiKey, referring to frequency limiting rules for each interface.</p></li>
-</ul>
-
-<p><strong>The request format</strong></p>
-
-<p>All API requests are restful and there are currently only two methods: GET and POST</p>
-
-<ul>
-<li>GET:  Parameters are requested in the URL through the queryString.</li>
 <li>POST: The parameter is sent in JSON format to the body for transfer to the server.</li>
 </ul>
 <h1 id='contract-trading-interface'>Contract Trading interface</h1><h2 id='gets-the-server-time'>Gets the server time</h2>
@@ -898,7 +831,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">epoch</td>
-<td style="text-align: center">The decimal seconds format for the UTC time zone Unix timestamp</td>
+<td style="text-align: center">Unix timestamp in seconds</td>
 </tr>
 <tr>
 <td style="text-align: left">iso</td>
@@ -906,7 +839,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">The timestamp of the server</td>
+<td style="text-align: center">Unix timestamp in milliseconds</td>
 </tr>
 </tbody></table>
 <h2 id='contract-information'>Contract Information</h2>
@@ -924,20 +857,20 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"coin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"delivery"</span><span class="p">:[</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+    </span><span class="s2">"coin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">Margin</span><span class="w"> </span><span class="err">currency</span><span class="w">
+    </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">value</span><span class="w"> 
+    </span><span class="s2">"delivery"</span><span class="p">:[</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Settlement</span><span class="w"> </span><span class="err">time</span><span class="w">
          </span><span class="s2">"07:00:00"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"15:00:00"</span><span class="p">,</span><span class="w">
          </span><span class="s2">"23:00:00"</span><span class="w">
      </span><span class="p">],</span><span class="w"> 
-    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"priceEndStep"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quote_currency"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">
+    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">(</span><span class="kc">true</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="kc">false</span><span class="err">)</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">not</span><span class="w">
+    </span><span class="s2">"priceEndStep"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">    </span><span class="err">//Prices'</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">Digit</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Cents</span><span class="w">
+    </span><span class="s2">"quote_currency"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">   </span><span class="err">//Denominated</span><span class="w"> </span><span class="err">currency</span><span class="w">
+    </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">    </span><span class="err">//Quantity</span><span class="w"> </span><span class="err">accuracy</span><span class="w">
+    </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">    </span><span class="err">//Price</span><span class="w"> </span><span class="err">accuracy</span><span class="w">  
+    </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">currency</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -950,8 +883,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">coin</td>
-<td style="text-align: left">Currency of deposit</td>
+<td style="text-align: left">Margin currency</td>
 </tr>
 <tr>
 <td style="text-align: left">contract_val</td>
@@ -966,28 +903,24 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">(true or false) , forward contract or not</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Contract name</td>
-</tr>
-<tr>
 <td style="text-align: left">priceEndStep</td>
 <td style="text-align: left">Prices&#39; Last Digit in Cents</td>
 </tr>
 <tr>
 <td style="text-align: left">quote_currency</td>
-<td style="text-align: left">Quote currency</td>
+<td style="text-align: left">Denominated currency</td>
 </tr>
 <tr>
 <td style="text-align: left">size_increment</td>
-<td style="text-align: left">Order quantity accuracy</td>
+<td style="text-align: left">Quantity accuracy</td>
 </tr>
 <tr>
 <td style="text-align: left">tick_size</td>
-<td style="text-align: left">Order price accuracy</td>
+<td style="text-align: left">Price accuracy</td>
 </tr>
 <tr>
 <td style="text-align: left">underlying_index</td>
-<td style="text-align: left">Underlying index</td>
+<td style="text-align: left">Contract currency</td>
 </tr>
 </tbody></table>
 <h2 id='get-depth-data'>Get depth data</h2>
@@ -1014,7 +947,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">&#39;limit&#39;</td>
@@ -1030,16 +963,16 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"asks"</span><span class="p">:[</span><span class="w">
          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"19299"</span><span class="p">,</span><span class="w">
-              </span><span class="mf">2.0</span><span class="w">
+            </span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">   </span><span class="err">//price</span><span class="w">
+            </span><span class="s2">"19299"</span><span class="p">,</span><span class="w">   </span><span class="err">//amount</span><span class="w">
+              </span><span class="mf">2.0</span><span class="w">     </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
         </span><span class="p">]</span><span class="w">   
      </span><span class="p">],</span><span class="w">
    </span><span class="s2">"bids"</span><span class="p">:[</span><span class="w">
          </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"499"</span><span class="p">,</span><span class="w">
-             </span><span class="mf">1.0</span><span class="w">
+            </span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">   </span><span class="err">//price</span><span class="w">
+            </span><span class="s2">"499"</span><span class="p">,</span><span class="w">     </span><span class="err">//amount</span><span class="w">
+             </span><span class="mf">1.0</span><span class="w">       </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
         </span><span class="p">],</span><span class="w">
          </span><span class="p">[</span><span class="w">
             </span><span class="s2">"4995.0"</span><span class="p">,</span><span class="w">
@@ -1087,14 +1020,15 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"332.00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"203.00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"394"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_bchusdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_bchusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w"> 
+        </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"332.00"</span><span class="p">,</span><span class="w">      </span><span class="err">//Best</span><span class="w"> </span><span class="err">ask</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+        </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"203.00"</span><span class="p">,</span><span class="w">      </span><span class="err">//Best</span><span class="w"> </span><span class="err">bid</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"394"</span><span class="p">,</span><span class="w">        </span><span class="err">//Highest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w"> 
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">           </span><span class="err">//Last</span><span class="w"> </span><span class="err">traded</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+        </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">        </span><span class="err">//Lowest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w"> 
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w">  </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">    </span><span class="err">//Trading</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">-hour</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">percentage</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1106,6 +1040,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <th style="text-align: left">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract name</td>
+</tr>
 <tr>
 <td style="text-align: left">best_ask</td>
 <td style="text-align: left">Best ask price</td>
@@ -1119,10 +1057,6 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">Highest price in the past 24 hours</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">last</td>
 <td style="text-align: left">Last traded price</td>
 </tr>
@@ -1132,11 +1066,15 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: left">Lowest price in the past 24 hours</td>
+<td style="text-align: left">System timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">volume_24h</td>
 <td style="text-align: left">Trading volume of past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">priceChangePercent</td>
+<td style="text-align: left">24-hour price change percentage</td>
 </tr>
 </tbody></table>
 <h2 id='get-one-ticker-information'>get one ticker information</h2>
@@ -1163,7 +1101,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1171,14 +1109,15 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w"> 
+    </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="s2">"8858.0"</span><span class="p">,</span><span class="w">     </span><span class="err">//Best</span><span class="w"> </span><span class="err">ask</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="s2">"7466.0"</span><span class="p">,</span><span class="w">    </span><span class="err">//Best</span><span class="w"> </span><span class="err">bid</span><span class="w"> </span><span class="err">price</span><span class="w">   
+    </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">     </span><span class="err">//Highest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">        </span><span class="err">//Last</span><span class="w"> </span><span class="err">traded</span><span class="w"> </span><span class="err">price</span><span class="w">  
+    </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">    </span><span class="err">//Lowest</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w">  </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
+    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">   </span><span class="err">//Trading</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">past</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="err">hours</span><span class="w">
+    </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">-hour</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">percentage</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1190,20 +1129,20 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">best_ask</td>
 <td style="text-align: left">Best ask price</td>
 </tr>
 <tr>
 <td style="text-align: left">best_bid</td>
-<td style="text-align: left">best bid price</td>
+<td style="text-align: left">Best bid price</td>
 </tr>
 <tr>
 <td style="text-align: left">high_24h</td>
 <td style="text-align: left">Highest price in the past 24 hours</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Contract ID</td>
 </tr>
 <tr>
 <td style="text-align: left">last</td>
@@ -1215,11 +1154,15 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: left">Timestamp</td>
+<td style="text-align: left">System Timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">volume_24h</td>
-<td style="text-align: left">24 hour trading volume (contracts)</td>
+<td style="text-align: left">Trading volume of past 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">priceChangePercent</td>
+<td style="text-align: left">24-hour price change percentage</td>
 </tr>
 </tbody></table>
 <h2 id='filled-orders'>Filled Orders</h2>
@@ -1247,7 +1190,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">&#39;limit&#39;</td>
@@ -1262,12 +1205,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"7844.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"48"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591111746879"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"651735392382353615"</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"7844.00"</span><span class="p">,</span><span class="w">        </span><span class="err">//Deal</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">            </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">direction</span><span class="p">:</span><span class="w"> </span><span class="err">sell</span><span class="p">,</span><span class="w"> </span><span class="err">buy</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"48"</span><span class="p">,</span><span class="w">            </span><span class="err">//The</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">transactions</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591111746879"</span><span class="p">,</span><span class="w">    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"651735392382353615"</span><span class="w">   </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">id</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1281,27 +1224,27 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">合约Id</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">price</td>
-<td style="text-align: center">成交价格</td>
+<td style="text-align: center">Deal price</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: center">成交方向：sell，buy</td>
+<td style="text-align: center">Transaction direction: sell, buy</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: center">成交数量</td>
+<td style="text-align: center">The number of transactions</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">成交时间戳</td>
+<td style="text-align: center">Transaction timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">trade_id</td>
-<td style="text-align: center">成交id</td>
+<td style="text-align: center">Transaction id</td>
 </tr>
 </tbody></table>
 <h2 id='market-data'>Market Data</h2>
@@ -1328,7 +1271,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Instrument ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">start</td>
@@ -1354,13 +1297,13 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"1556687460000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"342"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"0.064340137494"</span><span class="w">
+    </span><span class="s2">"1556687460000"</span><span class="p">,</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">          </span><span class="err">//Open</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">         </span><span class="err">//Higest</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">        </span><span class="err">//Lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"5315.5"</span><span class="p">,</span><span class="w">       </span><span class="err">//Closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"342"</span><span class="p">,</span><span class="w">         </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">(converted</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">Zhang)</span><span class="w">
+    </span><span class="s2">"0.064340137494"</span><span class="w">   </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">(converted</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">currency)</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1373,7 +1316,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">Data return time</td>
+<td style="text-align: center">System timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">open</td>
@@ -1393,11 +1336,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">volume</td>
-<td style="text-align: center">Trading volume (in contracts size)</td>
+<td style="text-align: center">Transaction volume (converted by Zhang)</td>
 </tr>
 <tr>
 <td style="text-align: left">currency_volume</td>
-<td style="text-align: center">Trading volume (in currency amount)</td>
+<td style="text-align: center">Transaction volume (converted by currency)</td>
 </tr>
 </tbody></table>
 <h2 id='indices'>Indices</h2>
@@ -1424,7 +1367,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1432,9 +1375,9 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"9654.1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256590003"</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+    </span><span class="s2">"index"</span><span class="p">:</span><span class="s2">"9654.1"</span><span class="p">,</span><span class="w">        </span><span class="err">//Index</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256590003"</span><span class="w">  </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1446,16 +1389,16 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">index</td>
 <td style="text-align: center">Index price</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='open-interests'>Open Interests</h2>
@@ -1482,7 +1425,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1490,10 +1433,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w">  </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">        </span><span class="err">//Total</span><span class="w"> </span><span class="err">holdings</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">    </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w">   </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1505,20 +1448,20 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract  name</td>
+</tr>
+<tr>
 <td style="text-align: left">amount</td>
 <td style="text-align: center">Total holdings</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='current-price-limits'>Current Price Limits</h2>
@@ -1545,7 +1488,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1553,11 +1496,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"highest"</span><span class="p">:</span><span class="s2">"14474.5"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"lowest"</span><span class="p">:</span><span class="s2">"4824.5"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591257126461"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
+     </span><span class="s2">"highest"</span><span class="p">:</span><span class="s2">"14474.5"</span><span class="p">,</span><span class="w">        </span><span class="err">//Ceiling</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">buying</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"lowest"</span><span class="p">:</span><span class="s2">"4824.5"</span><span class="p">,</span><span class="w">         </span><span class="err">//Floor</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">selling</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591257126461"</span><span class="w">   </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1569,16 +1512,16 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Yes否是正向合约</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 <tr>
 <td style="text-align: left">highest</td>
 <td style="text-align: center">Ceiling of buying price</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
 </tr>
 <tr>
 <td style="text-align: left">lowest</td>
@@ -1586,7 +1529,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='next-settlement-time'>Next Settlement Time</h2>
@@ -1613,7 +1556,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1621,9 +1564,9 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">     </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">     </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"1591282800000"</span><span class="w">  </span><span class="err">//time</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">funding</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1636,11 +1579,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 <tr>
 <td style="text-align: left">funding_time</td>
@@ -1671,7 +1614,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract  name</td>
 </tr>
 <tr>
 <td style="text-align: left">from</td>
@@ -1697,9 +1640,9 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">       </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">      </span><span class="err">//current</span><span class="w"> </span><span class="err">funding</span><span class="w"> </span><span class="err">rate</span><span class="w">
+     </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="s2">"19238271212"</span><span class="w">    </span><span class="err">//Settlement</span><span class="w"> </span><span class="err">time</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1712,7 +1655,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">funding_rate</td>
@@ -1747,7 +1690,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1755,9 +1698,9 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="s2">"8047.87"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591264230941"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">       </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="s2">"8047.87"</span><span class="p">,</span><span class="w">      </span><span class="err">//Specify</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591264230941"</span><span class="w">   </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -1770,7 +1713,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">mark_price</td>
@@ -1778,7 +1721,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='gets-the-openable-number'>Gets the openable number</h2>
@@ -1805,7 +1748,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">amount</td>
@@ -1831,7 +1774,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"openCount"</span><span class="p">:</span><span class="s2">"199999"</span><span class="w">
+   </span><span class="s2">"openCount"</span><span class="p">:</span><span class="s2">"199999"</span><span class="w">     </span><span class="err">//Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">openings</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -1844,7 +1787,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">openCount</td>
-<td style="text-align: center">Can be opened for</td>
+<td style="text-align: center">Number of openings</td>
 </tr>
 </tbody></table>
 <h1 id='contract-account-interface'>Contract account interface</h1><h2 id='all-contract-account-information'>all contract account information</h2>
@@ -1862,17 +1805,17 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> 
   </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">      </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Equity</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">account</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//Available</span><span class="w"> </span><span class="err">Balance</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Freeze</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">     </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">          </span><span class="err">//Margin</span><span class="w"> </span><span class="err">Mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">     </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1885,44 +1828,36 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">equity</td>
 <td style="text-align: center">Equity of the account</td>
 </tr>
 <tr>
 <td style="text-align: left">fixed_balance</td>
-<td style="text-align: center">Balance of fixed margin account</td>
-</tr>
-<tr>
-<td style="text-align: left"></td>
-<td style="text-align: center"></td>
+<td style="text-align: center">Available balance by warehouse</td>
 </tr>
 <tr>
 <td style="text-align: left">total_avail_balance</td>
-<td style="text-align: center">Balance of the account</td>
+<td style="text-align: center">Available Balance</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
-<td style="text-align: center">Margin for open positions</td>
+<td style="text-align: center">Used margin</td>
 </tr>
 <tr>
 <td style="text-align: left">realized_pnl</td>
 <td style="text-align: center">Realized profits and losses</td>
 </tr>
 <tr>
-<td style="text-align: left"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
 <td style="text-align: left">unrealized_pnl</td>
 <td style="text-align: center">Unrealized profits and losses</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">margin_frozen</td>
-<td style="text-align: center">Initial margin on hold</td>
+<td style="text-align: center">Freeze margin for opening positions</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
@@ -1934,7 +1869,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
 <h2 id='perpetual-swap-account-of-a-currency'>Perpetual Swap Account of a Currency</h2>
@@ -1961,7 +1896,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -1969,17 +1904,17 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">      </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Equity</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">account</span><span class="w">
+     </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
+     </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//Available</span><span class="w"> </span><span class="err">Balance</span><span class="w">
+     </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
+     </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+     </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+     </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Freeze</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">positions</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">     </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+     </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">          </span><span class="err">//Margin</span><span class="w"> </span><span class="err">Mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
+     </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">     </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -1991,44 +1926,36 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">equity</td>
 <td style="text-align: center">Equity of the account</td>
 </tr>
 <tr>
 <td style="text-align: left">fixed_balance</td>
-<td style="text-align: center">Balance of fixed margin account</td>
-</tr>
-<tr>
-<td style="text-align: left"></td>
-<td style="text-align: center"></td>
+<td style="text-align: center">Available balance by warehouse</td>
 </tr>
 <tr>
 <td style="text-align: left">total_avail_balance</td>
-<td style="text-align: center">Balance of the account</td>
+<td style="text-align: center">Available Balance</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
-<td style="text-align: center">Margin for open positions</td>
+<td style="text-align: center">Used margin</td>
 </tr>
 <tr>
 <td style="text-align: left">realized_pnl</td>
 <td style="text-align: center">Realized profits and losses</td>
 </tr>
 <tr>
-<td style="text-align: left"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
 <td style="text-align: left">unrealized_pnl</td>
 <td style="text-align: center">Unrealized profits and losses</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">margin_frozen</td>
-<td style="text-align: center">Initial margin on hold</td>
+<td style="text-align: center">Freeze margin for opening positions</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
@@ -2040,7 +1967,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
 <h2 id='get-swap-leverage'>Get Swap Leverage</h2>
@@ -2067,7 +1994,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -2075,11 +2002,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">        </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">        </span><span class="err">//Leverage</span><span class="w"> </span><span class="err">level</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">long</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">       </span><span class="err">//Margin</span><span class="w"> </span><span class="err">Mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">       </span><span class="err">//Leverage</span><span class="w"> </span><span class="err">level</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">short</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">     </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2090,6 +2017,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
 <tr>
 <td style="text-align: left">long_leverage</td>
 <td style="text-align: center">Leverage level for long positions</td>
@@ -2103,12 +2034,8 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: center">Leverage level for short positions</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
 <h2 id='set-swap-leverage'>Set Swap Leverage</h2>
@@ -2135,7 +2062,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -2155,11 +2082,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">           </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"long_leverage"</span><span class="p">:</span><span class="s2">"100"</span><span class="p">,</span><span class="w">           </span><span class="err">//Leverage</span><span class="w"> </span><span class="err">level</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">long</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">          </span><span class="err">//Margin</span><span class="w"> </span><span class="err">mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
+   </span><span class="s2">"short_leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">          </span><span class="err">//Leverage</span><span class="w"> </span><span class="err">level</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">short</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="w">    </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2171,24 +2098,24 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">long_leverage</td>
 <td style="text-align: center">Leverage level for long positions</td>
 </tr>
 <tr>
 <td style="text-align: left">margin_mode</td>
-<td style="text-align: center">Margin mode</td>
+<td style="text-align: center">Margin mode: crossed / fixed</td>
 </tr>
 <tr>
 <td style="text-align: left">short_leverage</td>
 <td style="text-align: center">Leverage level for short positions</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">forwardContractFlag</td>
-<td style="text-align: center">Is it a positive contract</td>
+<td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
 <h2 id='adjust-margin'>Adjust margin</h2>
@@ -2215,7 +2142,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">amount</td>
@@ -2241,8 +2168,8 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"527252921197264814"</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">      </span><span class="err">//result</span><span class="w">
+    </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"527252921197264814"</span><span class="w">   </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2286,7 +2213,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -2306,8 +2233,8 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"append_type"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">       </span><span class="err">//Setting</span><span class="w"> </span><span class="err">result</span><span class="w">
+     </span><span class="s2">"append_type"</span><span class="p">:</span><span class="mi">1</span><span class="w">     </span><span class="err">//Current</span><span class="w"> </span><span class="err">setting</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">Manually</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">Automatic</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2342,19 +2269,19 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">[</span><span class="w">
  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">       </span><span class="err">//Margin</span><span class="w"> </span><span class="err">mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
     </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">      </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">    </span><span class="err">//Estimated</span><span class="w"> </span><span class="err">liquidation</span><span class="w"> </span><span class="err">price</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">               </span><span class="err">//Position</span><span class="w"> </span><span class="err">Margi(the</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">holding</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">positions)</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">        </span><span class="err">//Available</span><span class="w"> </span><span class="err">position</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">          </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">            </span><span class="err">//Leverage</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">  </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -2369,8 +2296,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">margin_mode</td>
-<td style="text-align: center">Cross margin or Isolated margin</td>
+<td style="text-align: center">Margin mode: crossed / fixed</td>
 </tr>
 <tr>
 <td style="text-align: left">liquidation_price</td>
@@ -2389,10 +2320,6 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: center">Transaction average price</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">leverage</td>
 <td style="text-align: center">Leverage</td>
 </tr>
@@ -2406,7 +2333,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">System time</td>
+<td style="text-align: center">System timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
@@ -2437,7 +2364,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -2445,19 +2372,19 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">       </span><span class="err">//Margin</span><span class="w"> </span><span class="err">mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
     </span><span class="s2">"holding"</span><span class="p">:[</span><span class="w">
            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">
+              </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">       </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+              </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">  </span><span class="err">//Estimated</span><span class="w"> </span><span class="err">liquidation</span><span class="w"> </span><span class="err">price</span><span class="w">
+              </span><span class="s2">"position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">             </span><span class="err">//Position</span><span class="w"> </span><span class="err">Margi(the</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">holding</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">positions)</span><span class="w">
+              </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">      </span><span class="err">//Available</span><span class="w"> </span><span class="err">position</span><span class="w">
+              </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">        </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
+              </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">          </span><span class="err">//Leverage</span><span class="w">
+              </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">   </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -2471,8 +2398,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">margin_mode</td>
-<td style="text-align: center">Cross margin or Isolated margin</td>
+<td style="text-align: center">Margin mode: crossed / fixed</td>
 </tr>
 <tr>
 <td style="text-align: left">liquidation_price</td>
@@ -2491,10 +2422,6 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: center">Transaction average price</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
-</tr>
-<tr>
 <td style="text-align: left">leverage</td>
 <td style="text-align: center">Leverage</td>
 </tr>
@@ -2508,7 +2435,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">System time</td>
+<td style="text-align: center">System timestamp</td>
 </tr>
 <tr>
 <td style="text-align: left">margin</td>
@@ -2539,7 +2466,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 </tbody></table>
 
@@ -2547,9 +2474,9 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w"> 
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w">          </span><span class="err">//Initial</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">hold</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2562,7 +2489,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">amount</td>
@@ -2570,7 +2497,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
-<td style="text-align: center">timestamp</td>
+<td style="text-align: center">System timestamp</td>
 </tr>
 </tbody></table>
 <h1 id='contract-trading-endpoints'>Contract trading endpoints</h1><h2 id='place-order'>Place order</h2>
@@ -2597,7 +2524,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -2641,8 +2568,8 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513466539039522813"</span><span class="w">
+    </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">      </span><span class="err">//Client</span><span class="w">  </span><span class="err">ID </span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513466539039522813"</span><span class="w">   </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID </span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2686,7 +2613,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">order_data</td>
@@ -2700,12 +2627,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">  
     </span><span class="s2">"order_info"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="w">
+            </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">         </span><span class="err">//Result</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">Order</span><span class="w">
+            </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"dxdanzi"</span><span class="p">,</span><span class="w">     </span><span class="err">//Client</span><span class="w">  </span><span class="err">ID</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="w">   </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2760,7 +2687,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -2774,10 +2701,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">          </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">   </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">     </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">                    </span><span class="err">//Cancellation</span><span class="w"> </span><span class="err">status</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2789,16 +2716,16 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
 <td style="text-align: left">order_id</td>
 <td style="text-align: center">Order ID</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
 <td style="text-align: center">Client ID</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
 </tr>
 <tr>
 <td style="text-align: left">result</td>
@@ -2829,7 +2756,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">ids</td>
@@ -2843,17 +2770,17 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">      </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">              </span><span class="err">//processing</span><span class="w"> </span><span class="err">result</span><span class="w">
    </span><span class="s2">"order_ids"</span><span class="p">:[</span><span class="w">
-          </span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">   </span><span class="err">//Successful</span><span class="w"> </span><span class="err">id</span><span class="w">
           </span><span class="s2">"478585558"</span><span class="w">
     </span><span class="p">],</span><span class="w">
    </span><span class="s2">"fail_infos"</span><span class="p">:[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"401"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"258414711"</span><span class="p">,</span><span class="w">   </span><span class="err">//Failed</span><span class="w"> </span><span class="err">id</span><span class="w">
+        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"401"</span><span class="p">,</span><span class="w">        </span><span class="err">//Error</span><span class="w"> </span><span class="err">code</span><span class="w">
+        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">            </span><span class="err">//Error</span><span class="w"> </span><span class="err">message</span><span class="w">
      </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2867,12 +2794,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">result</td>
-<td style="text-align: center">processing result</td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: left">result</td>
+<td style="text-align: center">processing result</td>
 </tr>
 <tr>
 <td style="text-align: left">order_ids</td>
@@ -2915,7 +2842,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -2929,20 +2856,20 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w">     </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
+     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">    </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//The</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">order</span><span class="w"> 
+     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                  </span><span class="err">//Average</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//Order</span><span class="w"> </span><span class="err">status</span><span class="w">
+     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                     </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
+     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Order</span><span class="w"> </span><span class="err">type</span><span class="w">
+     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">          </span><span class="err">//Total</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">          
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -2955,7 +2882,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -2999,11 +2926,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">type</td>
-<td style="text-align: center">The order type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+<td style="text-align: center">Commission type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
 </tr>
 <tr>
 <td style="text-align: left">order_type</td>
-<td style="text-align: center">Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
+<td style="text-align: center">Order Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
 </tr>
 <tr>
 <td style="text-align: left">totalProfits</td>
@@ -3034,7 +2961,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">from</td>
@@ -3069,20 +2996,20 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
    </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w"> 
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">
+          </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
+          </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w">     </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
+          </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+          </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
+          </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
+          </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">    </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//The</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">order</span><span class="w"> 
+          </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                  </span><span class="err">//Average</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">price</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//Order</span><span class="w"> </span><span class="err">status</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                     </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Order</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">          </span><span class="err">//Total</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">    
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -3096,11 +3023,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: center">Order amount</td>
+<td style="text-align: center">The amount in this order</td>
 </tr>
 <tr>
 <td style="text-align: left">timestamp</td>
@@ -3116,34 +3043,41 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">filled_qty</td>
-<td style="text-align: center">Filled quantity</td>
+<td style="text-align: center">The amount which has been filled</td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
-<td style="text-align: center">transaction fee</td>
+<td style="text-align: center">Transaction fee</td>
 </tr>
 <tr>
 <td style="text-align: left">order_id</td>
-<td style="text-align: center">order ID</td>
+<td style="text-align: center">Order ID</td>
 </tr>
 <tr>
 <td style="text-align: left">price</td>
-<td style="text-align: center">order price</td>
+<td style="text-align: center">The limit price of limit order</td>
 </tr>
 <tr>
 <td style="text-align: left">price_avg</td>
-<td style="text-align: center">average filled price</td>
+<td style="text-align: center">Average filled price</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
-<td style="text-align: center">Status: 0 Failed</td>
+<td style="text-align: center">Order status -1 Cancelled successful 0 submitted 1partial-filled 2filled</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: center">Commission type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Order Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: center">Total profit and loss</td>
 </tr>
 </tbody></table>
-
-<p>(contains risk triggered revocation 1 Partially Filled 2 Fully Filled 3 = Incomplete (Open + Partially Filled) 4  Canceling 
-|type|Type (1: open long 2: open short 3: close long 4: 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short
-|order_type|Order type 0: Normal limit order 1: Only be Maker (Post only)&quot;2: Fill Or Kill 3: Immediate or Cancel (IOC)
-|totalProfits|Totoal profit and loss</p>
 <h2 id='get-transaction-details'>Get Transaction Details</h2>
 <p>Rate Limit：10 requests per second</p>
 
@@ -3168,7 +3102,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3183,15 +3117,15 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"6667390"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"525946425993854915"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"9839.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_qty"</span><span class="p">:</span><span class="s2">"3466"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+      </span><span class="s2">"trade_id"</span><span class="p">:</span><span class="s2">"6667390"</span><span class="p">,</span><span class="w">     </span><span class="err">//trade</span><span class="w"> </span><span class="err">Id</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"525946425993854915"</span><span class="p">,</span><span class="w">   </span><span class="err">//order</span><span class="w"> </span><span class="err">id</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"9839.00"</span><span class="p">,</span><span class="w">      </span><span class="err">//deal</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="s2">"order_qty"</span><span class="p">:</span><span class="s2">"3466"</span><span class="p">,</span><span class="w">    </span><span class="err">//Quantity</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w">    </span><span class="err">//transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+      </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">              </span><span class="err">//Liquidity</span><span class="w"> </span><span class="err">direction</span><span class="w">   </span><span class="err">Taker</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">maker</span><span class="w"> </span><span class="err">(T</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">M)</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">                   </span><span class="err">//Side</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -3204,12 +3138,12 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">trade_id</td>
-<td style="text-align: center">trade Id</td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: left">trade_id</td>
+<td style="text-align: center">trade Id</td>
 </tr>
 <tr>
 <td style="text-align: left">order_id</td>
@@ -3233,11 +3167,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">exec_type</td>
-<td style="text-align: center">Taker or maker (T or M)</td>
+<td style="text-align: center">Liquidity direction Taker or maker (T or M)</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: center">Side of the orde 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+<td style="text-align: center">Side of the order 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
 </tr>
 </tbody></table>
 <h2 id='place-order-with-stop-limit'>Place order with Stop limit</h2>
@@ -3264,7 +3198,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">合约code</td>
+<td style="text-align: center">Contract  name</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -3314,8 +3248,8 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589579827556646928"</span><span class="w">
+      </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">       </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+      </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589579827556646928"</span><span class="w">    </span><span class="err">//plan</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">ID</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -3359,7 +3293,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3373,11 +3307,11 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"5895798275566469458"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"order not exist"</span><span class="w">
+     </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"5895798275566469458"</span><span class="p">,</span><span class="w">      </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+     </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"bitget#123456"</span><span class="p">,</span><span class="w">         </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">                      </span><span class="err">//Status</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cancellation</span><span class="w">
+     </span><span class="s2">"err_code"</span><span class="p">:</span><span class="s2">"403"</span><span class="p">,</span><span class="w">                   </span><span class="err">//code</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cancellation</span><span class="w"> 
+     </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="s2">"order not exist"</span><span class="w">        </span><span class="err">//reason</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cancellation</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -3402,7 +3336,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">err_code</td>
-<td style="text-align: center">reason of cancellation</td>
+<td style="text-align: center">code of cancellation</td>
 </tr>
 <tr>
 <td style="text-align: left">err_msg</td>
@@ -3433,7 +3367,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -3473,23 +3407,23 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
       </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
               </span><span class="p">{</span><span class="w">
-                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
+                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">     </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">       </span><span class="err">//amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">Stop</span><span class="w">
+                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">     </span><span class="err">//amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">Limit</span><span class="w">
+                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">   </span><span class="err">//Created</span><span class="w"> </span><span class="err">time</span><span class="w">
+                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">  </span><span class="err">//Updated</span><span class="w"> </span><span class="err">time</span><span class="w">
+                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">               </span><span class="err">//Direction</span><span class="w">
+                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">     </span><span class="err">//Description</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">direction</span><span class="w">
+                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">       </span><span class="err">//Stop</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">          </span><span class="err">//limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">(execute</span><span class="w"> </span><span class="err">price)</span><span class="w"> 
+                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">  </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">                  </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
+                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">                     </span><span class="err">//status</span><span class="w">
+                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">        </span><span class="err">//Description</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">status</span><span class="w">
+                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">   </span><span class="err">//Executed</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">limit</span><span class="w">
            </span><span class="p">}</span><span class="w">
          </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">   </span><span class="err">//Next</span><span class="w"> </span><span class="err">page</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -3500,6 +3434,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
 <tr>
 <td style="text-align: left">nextPage</td>
 <td style="text-align: center">Next page</td>
@@ -3514,7 +3452,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 </tr>
 <tr>
 <td style="text-align: left">create_time</td>
-<td style="text-align: center">Creation time</td>
+<td style="text-align: center">Created time</td>
 </tr>
 <tr>
 <td style="text-align: left">update_time</td>
@@ -3543,10 +3481,6 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <tr>
 <td style="text-align: left">order_type</td>
 <td style="text-align: center">Order Type 0 Limit 1 Market</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
@@ -3585,7 +3519,7 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract ID</td>
+<td style="text-align: center">Contract name</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -3623,25 +3557,25 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-      </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
-              </span><span class="p">{</span><span class="w">
-                 </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"open long"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">
-           </span><span class="p">}</span><span class="w">
-         </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">     </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+                       </span><span class="s2">"execute_count"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">       </span><span class="err">//amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">Stop</span><span class="w">
+                       </span><span class="s2">"delegate_count"</span><span class="p">:</span><span class="s2">"1222222"</span><span class="p">,</span><span class="w">     </span><span class="err">//amount</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">Limit</span><span class="w">
+                       </span><span class="s2">"create_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">   </span><span class="err">//Created</span><span class="w"> </span><span class="err">time</span><span class="w">
+                       </span><span class="s2">"update_time"</span><span class="p">:</span><span class="mi">1576294708136</span><span class="p">,</span><span class="w">  </span><span class="err">//Updated</span><span class="w"> </span><span class="err">time</span><span class="w">
+                       </span><span class="s2">"direction"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">               </span><span class="err">//Direction</span><span class="w">
+                       </span><span class="s2">"direction_desc"</span><span class="p">:</span><span class="s2">"开多"</span><span class="p">,</span><span class="w">     </span><span class="err">//Description</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">direction</span><span class="w">
+                       </span><span class="s2">"trigger_price"</span><span class="p">:</span><span class="s2">"22222210.0"</span><span class="p">,</span><span class="w">       </span><span class="err">//Stop</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+                       </span><span class="s2">"execute_price"</span><span class="p">:</span><span class="s2">"7490.0"</span><span class="p">,</span><span class="w">          </span><span class="err">//limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">(execute</span><span class="w"> </span><span class="err">price)</span><span class="w"> 
+                       </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"589588227514433528"</span><span class="p">,</span><span class="w">  </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+                       </span><span class="s2">"order_type"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">                  </span><span class="err">//Order</span><span class="w"> </span><span class="err">Type</span><span class="w">
+                       </span><span class="s2">"status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">                     </span><span class="err">//status</span><span class="w">
+                       </span><span class="s2">"status_desc"</span><span class="p">:</span><span class="s2">"status"</span><span class="p">,</span><span class="w">        </span><span class="err">//Description</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">status</span><span class="w">
+                       </span><span class="s2">"create_trade_price"</span><span class="p">:</span><span class="s2">"7490"</span><span class="w">   </span><span class="err">//Executed</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">limit</span><span class="w">
+                 </span><span class="p">}</span><span class="w">
+               </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"nextPage"</span><span class="p">:</span><span class="kc">false</span><span class="w">   </span><span class="err">//Next</span><span class="w"> </span><span class="err">page</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong> </p>
@@ -3652,6 +3586,10 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
 <tr>
 <td style="text-align: left">nextPage</td>
 <td style="text-align: center">Next page</td>
@@ -3695,10 +3633,6 @@ For example：GET /api/swap/v3/order/orders?gt=1&amp;limit=50
 <tr>
 <td style="text-align: left">order_type</td>
 <td style="text-align: center">Order Type 0 Limit 1 Market</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract ID</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
