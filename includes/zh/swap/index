@@ -23,7 +23,7 @@
 <td>2020.7.19 10:00</td>
 <td><code>支持多语言</code></td>
 <td>新增</td>
-<td>支持中/英/日/韩</td>
+<td>支持中/英</td>
 </tr>
 <tr>
 <td>2020.7.15 10:00</td>
@@ -175,7 +175,7 @@
 <li>ACCESS-TIMESTAMP：您请求的时间戳。</li>
 <li>ACCESS-PASSPHRASE：您在创建API KEY时设置的口令。</li>
 <li>Content-Type：统一设置为application/json。</li>
-<li>locale:支持多语言，如：中文(zh-CN),英语(en-US),日语(ja-JP),韩语(ko-KR)</li>
+<li>locale:支持多语言，如：中文(zh-CN),英语(en-US)</li>
 </ul>
 <h2 id='8ba46c43fe'>签名</h2>
 <p>ACCESS-SIGN的请求头是对 <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>

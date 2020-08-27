@@ -23,7 +23,7 @@
 <td>19 July 2020,10:00</td>
 <td><code>Support multiple languages</code></td>
 <td>New</td>
-<td>Support Chinese/English/Japanese/Korean</td>
+<td>Support Chinese/English</td>
 </tr>
 <tr>
 <td>15 July 2020,10:00</td>
@@ -172,7 +172,7 @@
 <li>ACCESS-TIMESTAMP：The timestamp you requested.</li>
 <li>ACCESS-PASSPHRASE：The password you set when you created the API KEY.</li>
 <li>Content-Type：Set to Application/JSON uniformly.</li>
-<li>locale:Support multiple languages，Such as: Chinese (zh-CN), English (en-US), Japanese (ja-JP), Korean (ko-KR).</li>
+<li>locale:Support multiple languages，Such as: Chinese (zh-CN), English (en-US).</li>
 </ul>
 <h2 id='the-signature'>The signature</h2>
 <p>ACCESS-SIGN The request header is correct <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> String (+ represents string concatenation) is used <strong>HMAC SHA256</strong> Method encrypt and pass*<em>BASE64</em>* Produced by encoding the output.</p>
