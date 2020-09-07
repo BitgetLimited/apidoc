@@ -196,6 +196,10 @@
 .highlight .o {
   color: #f92672;
 }
+
+    .highlight .err {
+      color: #fff;
+    }
     header.top-nav {
       position:fixed;
       display:flex;
@@ -441,9 +445,6 @@
               <li>
                 <a href="#get-one-of-the-margin-mode-information" class="toc-h2 toc-link" data-title="Get one of the Margin mode information">Get one of the Margin mode information</a>
               </li>
-              <li>
-                <a href="#get-on-hold-amount-for-open-orders" class="toc-h2 toc-link" data-title="Get on hold amount for open orders">Get on hold amount for open orders</a>
-              </li>
           </ul>
       </li>
       <li>
@@ -465,7 +466,13 @@
                 <a href="#get-the-order-details-of-an-order" class="toc-h2 toc-link" data-title="Get the Order Details of an Order">Get the Order Details of an Order</a>
               </li>
               <li>
-                <a href="#get-list-of-orders" class="toc-h2 toc-link" data-title="Get list of orders">Get list of orders</a>
+                <a href="#get-list-of-orders-mark-obsolete" class="toc-h2 toc-link" data-title="Get list of orders    Mark obsolete">Get list of orders    Mark obsolete</a>
+              </li>
+              <li>
+                <a href="#get-order-history-commission" class="toc-h2 toc-link" data-title="Get order history commission">Get order history commission</a>
+              </li>
+              <li>
+                <a href="#get-the-current-order-of-the-order" class="toc-h2 toc-link" data-title="Get the current order of the order">Get the current order of the order</a>
               </li>
               <li>
                 <a href="#get-transaction-details" class="toc-h2 toc-link" data-title="Get Transaction Details">Get Transaction Details</a>
@@ -481,6 +488,14 @@
               </li>
               <li>
                 <a href="#get-the-history-of-stop-limit" class="toc-h2 toc-link" data-title="Get the history of Stop limit">Get the history of Stop limit</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi-error-code" class="toc-h1 toc-link" data-title="RestAPI error code">RestAPI error code</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#contract-error-code" class="toc-h2 toc-link" data-title="Contract error code">Contract error code</a>
               </li>
           </ul>
       </li>
@@ -515,6 +530,24 @@ clipboard.on('error', function(e) {
 <th>abstract</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>7 September 2020,16:00</td>
+<td>GET /api/swap/v3/market/historyFundRate</td>
+<td>New</td>
+<td>Replace the previous (Get contract historical funding rate) interface</td>
+</tr>
+<tr>
+<td>7 September 2020,16:00</td>
+<td>GET /api/swap/v3/order/history</td>
+<td>New</td>
+<td>Get order history commission</td>
+</tr>
+<tr>
+<td>7 September 2020,16:00</td>
+<td>GET /api/swap/v3/order/current</td>
+<td>New</td>
+<td>Get the current order of the order</td>
+</tr>
 <tr>
 <td>26 August 2020,20:40</td>
 <td><code>doc optimize</code></td>
@@ -1597,7 +1630,7 @@ If there is a large deviation between local server time and API server time, we 
     Get Funding Rate History</p>
 
 <ul>
-<li>GET /api/swap/v3/market/historical_funding_rate</li>
+<li>GET /api/swap/v3/market/historyFundRate</li>
 </ul>
 
 <p><strong>Request Parameter</strong>  </p>
@@ -1617,22 +1650,16 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Contract  name</td>
 </tr>
 <tr>
-<td style="text-align: left">from</td>
+<td style="text-align: left">pageIndex</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Request to start</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
 </tr>
 <tr>
-<td style="text-align: left">to</td>
+<td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Request to end</td>
-</tr>
-<tr>
-<td style="text-align: left">&#39;limit&#39;</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">number of results per request in chronological order (latest at the front).</td>
+<td style="text-align: center">Number of data per page</td>
 </tr>
 </tbody></table>
 
@@ -2074,7 +2101,13 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">side</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">&#39;1’. Fixed-margin for long position; ‘2’. Fixed-margin for short position;</td>
+<td style="text-align: center">Position direction (1-long position, 2-short position)      Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Position direction (1-long position, 2-short position)</td>
 </tr>
 </tbody></table>
 
@@ -2219,7 +2252,13 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">side</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Direction 1 Long 2 Short</td>
+<td style="text-align: center">Position direction 1 Long 2 Short     Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Position direction 1 Long 2 Short</td>
 </tr>
 <tr>
 <td style="text-align: left">append_type</td>
@@ -2279,7 +2318,8 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">          </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
               </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">            </span><span class="err">//Leverage</span><span class="w">
               </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">     </span><span class="err">Mark</span><span class="w"> </span><span class="err">obsolete</span><span class="w">
+              </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
               </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">  </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
        </span><span class="p">}</span><span class="w">
@@ -2332,6 +2372,10 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Direction Long or short</td>
 </tr>
 <tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: center">Position  Direction Long or short</td>
+</tr>
+<tr>
 <td style="text-align: left">timestamp</td>
 <td style="text-align: center">System timestamp</td>
 </tr>
@@ -2382,7 +2426,8 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">        </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
               </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">          </span><span class="err">//Leverage</span><span class="w">
               </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
-              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">     </span><span class="err">Mark</span><span class="w"> </span><span class="err">obsolete</span><span class="w">
+              </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
               </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">   </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
        </span><span class="p">}</span><span class="w">
@@ -2440,64 +2485,6 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: center">Used margin</td>
-</tr>
-</tbody></table>
-<h2 id='get-on-hold-amount-for-open-orders'>Get on hold amount for open orders</h2>
-<p>Rate Limit：10 requests per second</p>
-
-<p><strong>HTTP Requests</strong>
-    get on hold amount for open orders</p>
-
-<ul>
-<li>GET /api/swap/v3/position/holds</li>
-</ul>
-
-<p><strong>Request Parameter</strong>  </p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameters</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract name</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"102"</span><span class="p">,</span><span class="w">          </span><span class="err">//Initial</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">hold</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response</strong> </p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameters</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract name</td>
-</tr>
-<tr>
-<td style="text-align: left">amount</td>
-<td style="text-align: center">Initial margin on hold</td>
-</tr>
-<tr>
-<td style="text-align: left">timestamp</td>
-<td style="text-align: center">System timestamp</td>
 </tr>
 </tbody></table>
 <h1 id='contract-trading-endpoints'>Contract trading endpoints</h1><h2 id='place-order'>Place order</h2>
@@ -2619,7 +2606,13 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">order_data</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">JSON type strings, e.g  [{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;},{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;}],The fields refer to the [Contract trading] endpoints, and can only process up to 20 orders in batch</td>
+<td style="text-align: center">JSON type strings, e.g  [{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;},{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;}],The fields refer to the [Contract trading] endpoints, and can only process up to 20 orders in batch      Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">orderDataList</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Object attributes, e.g  (price=5,size=2,type=1,match_price=1,order_type=1,client_oid=&quot;abc&quot;),The fields refer to the [Contract trading] endpoints, and can only process up to 20 orders in batch</td>
 </tr>
 </tbody></table>
 
@@ -2937,7 +2930,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Total profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='get-list-of-orders'>Get list of orders</h2>
+<h2 id='get-list-of-orders-mark-obsolete'>Get list of orders    Mark obsolete</h2>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2998,7 +2991,6 @@ If there is a large deviation between local server time and API server time, we 
    </span><span class="p">{</span><span class="w">
           </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
           </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
-          </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"15582271175271"</span><span class="p">,</span><span class="w">     </span><span class="err">//Obsolete</span><span class="w"> </span><span class="err">field</span><span class="w">
           </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
           </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
           </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
@@ -3030,8 +3022,242 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">The amount in this order</td>
 </tr>
 <tr>
-<td style="text-align: left">timestamp</td>
-<td style="text-align: center">System time</td>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">createTime</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_qty</td>
+<td style="text-align: center">The amount which has been filled</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: center">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">The limit price of limit order</td>
+</tr>
+<tr>
+<td style="text-align: left">price_avg</td>
+<td style="text-align: center">Average filled price</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">Order status -1 Cancelled successful 0 submitted 1partial-filled 2filled</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: center">Commission type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Order Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: center">Total profit and loss</td>
+</tr>
+</tbody></table>
+<h2 id='get-order-history-commission'>Get order history commission</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    Get order history commission</p>
+
+<ul>
+<li>GET /api/swap/v3/order/history</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of data per page</td>
+</tr>
+<tr>
+<td style="text-align: left">createDate</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of days (the number of days must be less than or equal to 90, cannot be a negative number)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
+          </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+          </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
+          </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
+          </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">    </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//The</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">order</span><span class="w"> 
+          </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                  </span><span class="err">//Average</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">price</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//Order</span><span class="w"> </span><span class="err">status</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                     </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Order</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">          </span><span class="err">//Total</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">    
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">The amount in this order</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: center">Client ID</td>
+</tr>
+<tr>
+<td style="text-align: left">createTime</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_qty</td>
+<td style="text-align: center">The amount which has been filled</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: center">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">The limit price of limit order</td>
+</tr>
+<tr>
+<td style="text-align: left">price_avg</td>
+<td style="text-align: center">Average filled price</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">Order status -1 Cancelled successful 0 submitted 1partial-filled 2filled</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: center">Commission type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: center">Order Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: center">Total profit and loss</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-current-order-of-the-order'>Get the current order of the order</h2>
+<p>Rate Limit：10 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+    Get the current order of the order</p>
+
+<ul>
+<li>GET /api/swap/v3/order/current</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
+          </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
+          </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
+          </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
+          </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">    </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//The</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">order</span><span class="w"> 
+          </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                  </span><span class="err">//Average</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">price</span><span class="w">
+          </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//Order</span><span class="w"> </span><span class="err">status</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                     </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Order</span><span class="w"> </span><span class="err">type</span><span class="w">
+          </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">          </span><span class="err">//Total</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">    
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">The amount in this order</td>
 </tr>
 <tr>
 <td style="text-align: left">client_oid</td>
@@ -3125,7 +3351,8 @@ If there is a large deviation between local server time and API server time, we 
       </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"-0.0000528407360000"</span><span class="p">,</span><span class="w">    </span><span class="err">//transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
       </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1561121514442"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
       </span><span class="s2">"exec_type"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">              </span><span class="err">//Liquidity</span><span class="w"> </span><span class="err">direction</span><span class="w">   </span><span class="err">Taker</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">maker</span><span class="w"> </span><span class="err">(T</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">M)</span><span class="w">
-      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">                   </span><span class="err">//Side</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">    </span><span class="err">Mark</span><span class="w"> </span><span class="err">obsolete</span><span class="w">
+      </span><span class="s2">"delegateType"</span><span class="p">:</span><span class="s2">"3"</span><span class="w">          </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -3222,7 +3449,13 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Direction 1 Long 2 Short</td>
+<td style="text-align: center">Position Direction 1 Long 2 Short      Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Position Direction 1 Long 2 Short</td>
 </tr>
 <tr>
 <td style="text-align: left">match_type</td>
@@ -3373,19 +3606,25 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Direction 1 Open long 2 Open short 3 Close long 4 Close short</td>
+<td style="text-align: center">Commission type 1 Open long 2 Open short 3 Close long 4 Close short        Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">delegateType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Commission type 1 Open long 2 Open short 3 Close long 4 Close short</td>
 </tr>
 <tr>
 <td style="text-align: left">pageIndex</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page</td>
+<td style="text-align: center">Current page (1-200)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Number per page: the actual query will check 5 more,and a maximum of 1000</td>
+<td style="text-align: center">Number per page(1-100)</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -3525,28 +3764,34 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Direction:1Buy long 2. Buy short 3 Close long 4 Close short</td>
+<td style="text-align: center">Commission type 1 Open long 2 Open short 3 Close long 4 Close short        Mark obsolete</td>
 </tr>
 <tr>
-<td style="text-align: left">page_index</td>
+<td style="text-align: left">delegateType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">current page</td>
+<td style="text-align: center">Commission type 1 Open long 2 Open short 3 Close long 4 Close short</td>
 </tr>
 <tr>
-<td style="text-align: left">page_size</td>
+<td style="text-align: left">pageIndex</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Number per page: the actual query will check 5 more,and a maximum of 1000</td>
+<td style="text-align: center">current page(1-200)</td>
 </tr>
 <tr>
-<td style="text-align: left">start_time</td>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page(1-100)</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
 <td style="text-align: center">Query start time</td>
 </tr>
 <tr>
-<td style="text-align: left">end_time</td>
+<td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
 <td style="text-align: center">Query end time</td>
@@ -3645,6 +3890,236 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">create_trade_price</td>
 <td style="text-align: center">Executed price of stop limit</td>
+</tr>
+</tbody></table>
+<h1 id='restapi-error-code'>RestAPI error code</h1>
+<p>## Public error code</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error message</th>
+<th style="text-align: left">error code</th>
+<th style="text-align: center">http status code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">ACCESS_KEY header is required</td>
+<td style="text-align: left">40001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">ACCESS_SIGN header is required</td>
+<td style="text-align: left">40002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">ACCESS_TIMESTAMP header is required</td>
+<td style="text-align: left">40003</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_TIMESTAMP</td>
+<td style="text-align: left">40005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_KEY</td>
+<td style="text-align: left">40006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid Content_Type, please use the application/json format</td>
+<td style="text-align: left">40007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Request timestamp expired</td>
+<td style="text-align: left">40008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">API authentication failed</td>
+<td style="text-align: left">40009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Request too frequently</td>
+<td style="text-align: left">429</td>
+<td style="text-align: center">429</td>
+</tr>
+<tr>
+<td style="text-align: left">ACCESS_PASSPHRASE header is required</td>
+<td style="text-align: left">40011</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey/passphrase is incorrect</td>
+<td style="text-align: left">40012</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">User is frozen</td>
+<td style="text-align: left">40013</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Incorrect permissions</td>
+<td style="text-align: left">40014</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">System error</td>
+<td style="text-align: left">40015</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The user must bind a mobile phone or Google</td>
+<td style="text-align: left">40016</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Parameter verification failed</td>
+<td style="text-align: left">40017</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Illegal ip request</td>
+<td style="text-align: left">40018</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
+<h2 id='contract-error-code'>Contract error code</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Error message</th>
+<th style="text-align: left">error code</th>
+<th style="text-align: center">http status code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">The contract configuration does not exist, please check the parameters</td>
+<td style="text-align: left">40102</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Can&#39;t find the order data, please confirm the order number</td>
+<td style="text-align: left">40109</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Server upgrade, please try again later</td>
+<td style="text-align: left">40200</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">No permission to use it yet, if you need to use it, please contact customer service</td>
+<td style="text-align: left">40301</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Can only query up to 20,000 data</td>
+<td style="text-align: left">40303</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid length is not greater than 50, and cannot be Martian characters</td>
+<td style="text-align: left">40305</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Batch processing orders can only process up to 50</td>
+<td style="text-align: left">40306</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The contract is temporarily maintained</td>
+<td style="text-align: left">40308</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The contract has been removed</td>
+<td style="text-align: left">40309</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Status check abnormal</td>
+<td style="text-align: left">40400</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The operation cannot be performed</td>
+<td style="text-align: left">40401</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The query direction is not the direction of the plan commission</td>
+<td style="text-align: left">40407</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Range error</td>
+<td style="text-align: left">40408</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">wrong format</td>
+<td style="text-align: left">40409</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Only check the data of the last three months</td>
+<td style="text-align: left">40704</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The start and end time cannot exceed 90 days</td>
+<td style="text-align: left">40705</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Start time is greater than end time</td>
+<td style="text-align: left">40707</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">There is no position in this position, and automatic margin call cannot be set</td>
+<td style="text-align: left">40709</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Abnormal account status</td>
+<td style="text-align: left">40710</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Insufficient contract account balance</td>
+<td style="text-align: left">40711</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Insufficient margin</td>
+<td style="text-align: left">40712</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Cannot exceed the maximum transferable margin amount</td>
+<td style="text-align: left">40713</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The position is zero and direct margin call is not allowed</td>
+<td style="text-align: left">40714</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The number of orders is greater than the maximum number that can be opened</td>
+<td style="text-align: left">40715</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Parameter is empty</td>
+<td style="text-align: left">40724</td>
+<td style="text-align: center">400</td>
 </tr>
 </tbody></table>
 
