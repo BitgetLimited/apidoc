@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>14 September 2020,21:12</td>
+<td>POST /api/swap/v3/position/changeHoldModel</td>
+<td>New</td>
+<td>Modify the user&#39;s closing mode</td>
+</tr>
+<tr>
 <td>7 September 2020,16:00</td>
 <td>GET /api/swap/v3/market/historyFundRate</td>
 <td>New</td>
@@ -1964,6 +1970,53 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Used margin</td>
 </tr>
 </tbody></table>
+<h2 id='modify-the-user-39-s-account-mode'>Modify the user&#39;s account  mode</h2>
+<p>Rate Limit：20 requests per second</p>
+
+<p><strong>HTTP Requests</strong>
+     Modify the user&#39;s account mode</p>
+
+<ul>
+<li>  POST /api/swap/v3/position/changeHoldModel </li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<p>|Parameters  | Type   |Required|Description         |
+ |:------|:----------|:-----:|:-----------:|
+ |symbol | String    |Yes    |Contract name      |
+ |holdModel|Integer|Yes|account mode (1 position by position 2 full position)|</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">     </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+    </span><span class="s2">"resultHoldMode"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">        </span><span class="err">//Return</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">account</span><span class="w"> </span><span class="err">mode</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">full</span><span class="w"> </span><span class="err">position</span><span class="w">
+    </span><span class="s2">"switchSuccess"</span><span class="p">:</span><span class="kc">true</span><span class="w">      </span><span class="err">//Whether</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">modification</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">successful</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">success</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">failure</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">resultHoldMode</td>
+<td style="text-align: center">Return to the account  mode 1 position by position 2 full position</td>
+</tr>
+<tr>
+<td style="text-align: left">switchSuccess</td>
+<td style="text-align: center">Whether the modification is successful true success false failure</td>
+</tr>
+</tbody></table>
 <h1 id='contract-trading-endpoints'>Contract trading endpoints</h1><h2 id='place-order'>Place order</h2>
 <p>Rate Limit：10 requests per second</p>
 
@@ -3596,6 +3649,11 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">Parameter is empty</td>
 <td style="text-align: left">40724</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Return no mapping information</td>
+<td style="text-align: left">40725</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

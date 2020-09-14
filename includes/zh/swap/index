@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>2020.9.14 21:12</td>
+<td>POST /api/swap/v3/position/changeHoldModel</td>
+<td>新增</td>
+<td>修改用户的平仓模式</td>
+</tr>
+<tr>
 <td>2020.9.7 16:00</td>
 <td>GET /api/swap/v3/market/historyFundRate</td>
 <td>新增</td>
@@ -2012,6 +2018,70 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">已用保证金</td>
 </tr>
 </tbody></table>
+<h2 id='5225cc1ae3'>修改用户账户模式</h2>
+<p>限速规则：20次/s</p>
+
+<p><strong>HTTP请求</strong>
+     修改用户账户模式</p>
+
+<ul>
+<li> POST /api/swap/v3/position/changeHoldModel</li>
+</ul>
+
+<p><strong>请求参数</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">holdModel</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">账户模式(1 逐仓 2 全仓)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">     </span><span class="err">//合约名称</span><span class="w">
+    </span><span class="s2">"resultHoldMode"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">        </span><span class="err">//返回账户模式</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">逐仓</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">全仓</span><span class="w">
+    </span><span class="s2">"switchSuccess"</span><span class="p">:</span><span class="kc">true</span><span class="w">      </span><span class="err">//是否修改成功</span><span class="w">  </span><span class="kc">true</span><span class="w"> </span><span class="err">成功</span><span class="w">  </span><span class="kc">false</span><span class="w"> </span><span class="err">失败</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong> </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">resultHoldMode</td>
+<td style="text-align: center">返回账户模式 1 逐仓 2 全仓</td>
+</tr>
+<tr>
+<td style="text-align: left">switchSuccess</td>
+<td style="text-align: center">是否修改成功  true 成功  false 失败</td>
+</tr>
+</tbody></table>
 <h1 id='ea84f6c646'>合约交易接口</h1><h2 id='fd6ce2a756'>下单</h2>
 <p>限速规则：10次/s</p>
 
@@ -3643,6 +3713,11 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">参数为空</td>
 <td style="text-align: left">40724</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">返回无映射信息</td>
+<td style="text-align: left">40725</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
