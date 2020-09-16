@@ -396,6 +396,8 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//数量精度</span><span class="w">
     </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//价格精度</span><span class="w">
     </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w"> </span><span class="err">//合约币种</span><span class="w">
+    </span><span class="s2">"minLeverage"</span><span class="p">:</span><span class="mi">1</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小杠杆</span><span class="w"> 
+    </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="mi">100</span><span class="w"> </span><span class="err">//最大杠杆</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>

@@ -393,6 +393,8 @@ If there is a large deviation between local server time and API server time, we 
     </span><span class="s2">"size_increment"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">    </span><span class="err">//Quantity</span><span class="w"> </span><span class="err">accuracy</span><span class="w">
     </span><span class="s2">"tick_size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">    </span><span class="err">//Price</span><span class="w"> </span><span class="err">accuracy</span><span class="w">  
     </span><span class="s2">"underlying_index"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="w">   </span><span class="err">//Contract</span><span class="w"> </span><span class="err">currency</span><span class="w">
+    </span><span class="s2">"minLeverage"</span><span class="p">:</span><span class="mi">1</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">minimum</span><span class="w">  </span><span class="err">leverage</span><span class="w">
+    </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="mi">100</span><span class="w"> </span><span class="err">//maximum</span><span class="w"> </span><span class="err">leverage</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
