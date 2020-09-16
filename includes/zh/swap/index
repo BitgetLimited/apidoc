@@ -8,10 +8,16 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>2020.9.16 21:00</td>
+<td>/api/swap/v3/market/contracts</td>
+<td>修改</td>
+<td>新增合约信息支持的最小最大杠杆倍数</td>
+</tr>
+<tr>
 <td>2020.9.14 21:12</td>
 <td>POST /api/swap/v3/position/changeHoldModel</td>
 <td>新增</td>
-<td>修改用户账户模式</td>
+<td>api接口支持全仓</td>
 </tr>
 <tr>
 <td>2020.9.7 16:00</td>
