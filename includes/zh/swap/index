@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>2020.9.18 20:12</td>
+<td>/api/swap/v3/account/leverage</td>
+<td>修改</td>
+<td>增加请求参数字段 holdModel (代表用户当前的持仓模式)</td>
+</tr>
+<tr>
 <td>2020.9.16 21:00</td>
 <td>/api/swap/v3/market/contracts</td>
 <td>修改</td>
@@ -1651,6 +1657,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">持仓方向 （1-多仓，2-空仓）</td>
+</tr>
+<tr>
+<td style="text-align: left">holdModel</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">用户当前的持仓模式 (1 逐仓模式 2 全仓模式) 默认是 1,当用户的持仓模式是2的时候 持仓方向也就是(holdSide这个字段不用传值)</td>
 </tr>
 </tbody></table>
 
@@ -3727,6 +3739,46 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">400</td>
 </tr>
 <tr>
+<td style="text-align: left">该交易对不支持全仓模式</td>
+<td style="text-align: left">40716</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">平仓张数不能超过持有张数</td>
+<td style="text-align: left">40717</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">平多委托价格不允许低于爆仓价</td>
+<td style="text-align: left">40718</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">平空委托价格不允许高于爆仓价</td>
+<td style="text-align: left">40719</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">合约对手深度不存在</td>
+<td style="text-align: left">40720</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前不允许挂市价单</td>
+<td style="text-align: left">40721</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">因价格波动过大，市价委托成本不足，开仓委托失败</td>
+<td style="text-align: left">40722</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">未成交委托单总数过高</td>
+<td style="text-align: left">40723</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
 <td style="text-align: left">参数为空</td>
 <td style="text-align: left">40724</td>
 <td style="text-align: center">400</td>
@@ -3734,6 +3786,31 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">返回无映射信息</td>
 <td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">全仓模式不支持自动追加保证金</td>
+<td style="text-align: left">40726</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">全仓模式不支持调整保证金</td>
+<td style="text-align: left">40727</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">您当前为交易员身份，请在当前带单下进行平仓</td>
+<td style="text-align: left">40728</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">调整仓位失败，当前持有仓位或委托或者计划委托</td>
+<td style="text-align: left">40729</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前有委托，或者计划委托，无法调整杠杆</td>
+<td style="text-align: left">40730</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

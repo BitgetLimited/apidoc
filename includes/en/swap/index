@@ -8,6 +8,12 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>18 September 2020, 20.12</td>
+<td>/api/swap/v3/account/leverage</td>
+<td>update</td>
+<td>Increase the request parameter field holdModel (representing the user&#39;s current holding mode)</td>
+</tr>
+<tr>
 <td>16 September 2020, 21:00</td>
 <td>/api/swap/v3/market/contracts</td>
 <td>update</td>
@@ -1607,6 +1613,12 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">Position direction (1-long position, 2-short position)</td>
+</tr>
+<tr>
+<td style="text-align: left">holdModel</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">The user&#39;s current position mode (1 position-by-position mode 2 full position mode) The default is 1, when the user&#39;s position mode is 2, the position direction is (the holdSide field does not need to be passed)</td>
 </tr>
 </tbody></table>
 
@@ -3680,6 +3692,46 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">400</td>
 </tr>
 <tr>
+<td style="text-align: left">The trading pair does not support full position mode</td>
+<td style="text-align: left">40716</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The number of closed positions cannot exceed the number of holdings</td>
+<td style="text-align: left">40717</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The commission price for closing long positions is not allowed to be lower than the liquidation price</td>
+<td style="text-align: left">40718</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The short order price is not allowed to be higher than the liquidation price</td>
+<td style="text-align: left">40719</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Contract opponent depth does not exist</td>
+<td style="text-align: left">40720</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Currently not allowed to list market orders</td>
+<td style="text-align: left">40721</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Due to excessive price fluctuations and insufficient market price commission costs, the position opening commission failed</td>
+<td style="text-align: left">40722</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The total number of unfilled orders is too high</td>
+<td style="text-align: left">40723</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
 <td style="text-align: left">Parameter is empty</td>
 <td style="text-align: left">40724</td>
 <td style="text-align: center">400</td>
@@ -3687,6 +3739,31 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">Return no mapping information</td>
 <td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Full position mode does not support automatic margin call</td>
+<td style="text-align: left">40726</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Whole position mode does not support margin adjustment</td>
+<td style="text-align: left">40727</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">You are currently a trader, please close the position under the current order</td>
+<td style="text-align: left">40728</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Failed to adjust the position, the current position or order or plan order</td>
+<td style="text-align: left">40729</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">There is currently a commission or a planned commission, and the leverage cannot be adjusted</td>
+<td style="text-align: left">40730</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
