@@ -534,12 +534,6 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
-<td>18 September 2020, 20.12</td>
-<td>/api/swap/v3/account/leverage</td>
-<td>update</td>
-<td>Increase the request parameter field holdModel (representing the user&#39;s current holding mode)</td>
-</tr>
-<tr>
 <td>16 September 2020, 21:00</td>
 <td>/api/swap/v3/market/contracts</td>
 <td>update</td>
@@ -2138,13 +2132,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Position direction (1-long position, 2-short position)</td>
-</tr>
-<tr>
-<td style="text-align: left">holdModel</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">The user&#39;s current position mode (1 position-by-position mode 2 full position mode) The default is 1, when the user&#39;s position mode is 2, the position direction is (the holdSide field does not need to be passed)</td>
+<td style="text-align: center">Position direction (1-long position, 2-short position)  crossed mode  the holdSide field does not need to be passed</td>
 </tr>
 </tbody></table>
 

@@ -537,12 +537,6 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
-<td>2020.9.18 20:12</td>
-<td>/api/swap/v3/account/leverage</td>
-<td>修改</td>
-<td>增加请求参数字段 holdModel (代表用户当前的持仓模式)</td>
-</tr>
-<tr>
 <td>2020.9.16 21:00</td>
 <td>/api/swap/v3/market/contracts</td>
 <td>修改</td>
@@ -2185,13 +2179,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">持仓方向 （1-多仓，2-空仓）</td>
-</tr>
-<tr>
-<td style="text-align: left">holdModel</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">用户当前的持仓模式 (1 逐仓模式 2 全仓模式) 默认是 1,当用户的持仓模式是2的时候 持仓方向也就是(holdSide这个字段不用传值)</td>
+<td style="text-align: center">持仓方向 （1-多仓，2-空仓） 全仓时此字段可以不传值</td>
 </tr>
 </tbody></table>
 
