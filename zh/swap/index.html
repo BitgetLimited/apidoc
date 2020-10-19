@@ -310,6 +310,61 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#2020-10-10" class="toc-h2 toc-link" data-title="2020年10月10日【新增多个接口返回值】">2020年10月10日【新增多个接口返回值】</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1-ticker-24" class="toc-h3 toc-link" data-title="1、获取全部ticker信息增“24小时成交量”字段">1、获取全部ticker信息增“24小时成交量”字段</a>
+                      </li>
+                      <li>
+                        <a href="#2-ticker-24" class="toc-h3 toc-link" data-title="2、获取单个ticker信息增“24小时成交量”字段">2、获取单个ticker信息增“24小时成交量”字段</a>
+                      </li>
+                      <li>
+                        <a href="#3" class="toc-h3 toc-link" data-title="3、获取全部合约仓位信息增“未实现盈亏”字段">3、获取全部合约仓位信息增“未实现盈亏”字段</a>
+                      </li>
+                      <li>
+                        <a href="#4" class="toc-h3 toc-link" data-title="4、获取单个合约仓位信息新增“未实现盈亏”字段">4、获取单个合约仓位信息新增“未实现盈亏”字段</a>
+                      </li>
+                      <li>
+                        <a href="#5" class="toc-h3 toc-link" data-title="5、获取平台总持仓量新增多个字段">5、获取平台总持仓量新增多个字段</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#2020-9-16" class="toc-h2 toc-link" data-title="2020年9月16日【新增合约信息口返回值】">2020年9月16日【新增合约信息口返回值】</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1" class="toc-h3 toc-link" data-title="1、获取合约信息接口">1、获取合约信息接口</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#2020-9-14" class="toc-h2 toc-link" data-title="2020年9月14日【新增合约支持全仓】">2020年9月14日【新增合约支持全仓】</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1-2" class="toc-h3 toc-link" data-title="1、获取合约信息接口">1、获取合约信息接口</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#2020-9-7" class="toc-h2 toc-link" data-title="2020年9月7日【新增接口】">2020年9月7日【新增接口】</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1-3" class="toc-h3 toc-link" data-title="1、获取合约历史资金费率">1、获取合约历史资金费率</a>
+                      </li>
+                      <li>
+                        <a href="#2" class="toc-h3 toc-link" data-title="2、获取订单历史委托">2、获取订单历史委托</a>
+                      </li>
+                      <li>
+                        <a href="#3-2" class="toc-h3 toc-link" data-title="3、获取订单当前委托">3、获取订单当前委托</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#2020-6-9-v3" class="toc-h2 toc-link" data-title="2020年6月9日【新增v3合约文档】">2020年6月9日【新增v3合约文档】</a>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#api" class="toc-h1 toc-link" data-title="老版本API地址">老版本API地址</a>
@@ -527,76 +582,71 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1>
-<table><thead>
-<tr>
-<th>生效时间（新加坡时间 UTC+8)</th>
-<th>接口</th>
-<th>新增/修改</th>
-<th>摘要</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>2020.9.16 21:00</td>
-<td>/api/swap/v3/market/contracts</td>
-<td>修改</td>
-<td>新增合约信息支持的最小最大杠杆倍数</td>
-</tr>
-<tr>
-<td>2020.9.14 21:12</td>
-<td>POST /api/swap/v3/position/changeHoldModel</td>
-<td>新增</td>
-<td>api接口支持全仓</td>
-</tr>
-<tr>
-<td>2020.9.7 16:00</td>
-<td>GET /api/swap/v3/market/historyFundRate</td>
-<td>新增</td>
-<td>代替之前的(获取合约历史资金费率)接口</td>
-</tr>
-<tr>
-<td>2020.9.7 16:00</td>
-<td>GET /api/swap/v3/order/history</td>
-<td>新增</td>
-<td>获取订单历史委托</td>
-</tr>
-<tr>
-<td>2020.9.7 16:00</td>
-<td>GET /api/swap/v3/order/current</td>
-<td>新增</td>
-<td>获取订单当前委托</td>
-</tr>
-<tr>
-<td>2020.8.26 20:40</td>
-<td><code>文档优化</code></td>
-<td>修改</td>
-<td>文档优化</td>
-</tr>
-<tr>
-<td>2020.7.31 15:00</td>
-<td><code>修改域名</code></td>
-<td>修改</td>
-<td>修改接入域名</td>
-</tr>
-<tr>
-<td>2020.7.19 10:00</td>
-<td><code>支持多语言</code></td>
-<td>新增</td>
-<td>支持中/英</td>
-</tr>
-<tr>
-<td>2020.7.15 10:00</td>
-<td><code>老版本API地址</code></td>
-<td>新增</td>
-<td>老版本API地址</td>
-</tr>
-<tr>
-<td>2020.6.9 10:00</td>
-<td><code>合约文档</code></td>
-<td>新增</td>
-<td>合约文档</td>
-</tr>
-</tbody></table>
+<h1 id='185368440e'>更新日志</h1><h2 id='2020-10-10'>2020年10月10日【新增多个接口返回值】</h2><h3 id='1-ticker-24'>1、获取全部ticker信息增“24小时成交量”字段</h3>
+<ul>
+<li>接口名称：获取合约的历史资金费率</li>
+<li>接口URL：/api/swap/v3/market/tickers</li>
+<li>修改内容： 新增字段base_volume，表示24小时成交量,单位币。</li>
+</ul>
+<h3 id='2-ticker-24'>2、获取单个ticker信息增“24小时成交量”字段</h3>
+<ul>
+<li>接口名称：获取单个ticker信息</li>
+<li>接口URL：/api/swap/v3/market/ticker</li>
+<li>修改内容： 新增字段base_volume，表示24小时成交量,单位币。</li>
+</ul>
+<h3 id='3'>3、获取全部合约仓位信息增“未实现盈亏”字段</h3>
+<ul>
+<li>接口名称：获取全部合约仓位信息</li>
+<li>接口URL：/api/swap/v3/position/allPosition</li>
+<li>修改内容： 新增字段unrealized_pnl，表示未实现盈亏。</li>
+</ul>
+<h3 id='4'>4、获取单个合约仓位信息新增“未实现盈亏”字段</h3>
+<ul>
+<li>接口名称：获取全部合约仓位信息</li>
+<li>接口URL：/api/swap/v3/position/singlePosition</li>
+<li>修改内容： 新增字段unrealized_pnl(未实现盈亏)。</li>
+</ul>
+<h3 id='5'>5、获取平台总持仓量新增多个字段</h3>
+<ul>
+<li>接口名称：获取平台总持仓量</li>
+<li>接口URL：/api/swap/v3/market/open_interest</li>
+<li>修改内容： 新增字段base_volume(总持仓左币量),target_volume(总持仓右币量)。</li>
+</ul>
+<h2 id='2020-9-16'>2020年9月16日【新增合约信息口返回值】</h2><h3 id='1'>1、获取合约信息接口</h3>
+<ul>
+<li>接口名称：获取合约信息接口</li>
+<li>接口URL：/api/swap/v3/market/contracts</li>
+<li>修改内容： 新增2个字段maxLeverage(合约支持最大杠杆)、minLeverage(合约支持最小杠杆)</li>
+</ul>
+<h2 id='2020-9-14'>2020年9月14日【新增合约支持全仓】</h2><h3 id='1-2'>1、获取合约信息接口</h3>
+<ul>
+<li>接口名称：修改用户账户模式</li>
+<li>接口类型：私有接口</li>
+<li>接口URL：/api/swap/v3/position/changeHoldModel</li>
+</ul>
+<h2 id='2020-9-7'>2020年9月7日【新增接口】</h2><h3 id='1-3'>1、获取合约历史资金费率</h3>
+<ul>
+<li>接口名称：获取合约历史资金费率</li>
+<li>接口类型：公有接口</li>
+<li>接口URL：/api/swap/v3/market/historyFundRate</li>
+</ul>
+<h3 id='2'>2、获取订单历史委托</h3>
+<ul>
+<li>接口名称：获取订单历史委托</li>
+<li>接口类型：私有接口</li>
+<li>接口URL：/api/swap/v3/order/history</li>
+</ul>
+<h3 id='3-2'>3、获取订单当前委托</h3>
+<ul>
+<li>接口名称：获取订单当前委托</li>
+<li>接口类型：私有接口</li>
+<li>接口URL：/api/swap/v3/order/current</li>
+</ul>
+<h2 id='2020-6-9-v3'>2020年6月9日【新增v3合约文档】</h2>
+<ul>
+<li>新增v3文档</li>
+<li>错误信息支持中/英</li>
+</ul>
 <h1 id='api'>老版本API地址</h1><h2 id='websocket-api'>合约WebSocket行情，资产和交易推送API</h2>
 <p><a href="https://github.com/BitgetLimited/API_DOC/blob/master/README%E5%90%88%E7%BA%A6_websocket_api.md">WebSocket API</a></p>
 <h2 id='rest-api'>合约交易REST行情、交易API</h2>
@@ -1091,8 +1141,9 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w">     </span><span class="err">//最新成交价</span><span class="w">
         </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"332"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最低价</span><span class="w">
         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591240033936"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
-        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w">
-        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
+        </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="p">,</span><span class="err">单位张数</span><span class="w">
+        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
+        </span><span class="s2">"base_volume"</span><span class="p">:</span><span class="s2">"15722.59"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w"> </span><span class="err">单位币</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1134,11 +1185,15 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">volume_24h</td>
-<td style="text-align: left">24小时成交量</td>
+<td style="text-align: left">24小时成交量,张数</td>
 </tr>
 <tr>
 <td style="text-align: left">priceChangePercent</td>
 <td style="text-align: left">24小时价格变动百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">24小时成交量,按币统计</td>
 </tr>
 </tbody></table>
 <h2 id='ticker-2'>获取某个ticker信息</h2>
@@ -1180,8 +1235,9 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w">  </span><span class="err">//最新成交价</span><span class="w">
     </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="s2">"8858"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时最低价</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591252726275"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
-    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w">
-    </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
+    </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="p">,</span><span class="err">单位张数</span><span class="w">
+    </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.63"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时价格变动百分比</span><span class="w">
+    </span><span class="s2">"base_volume"</span><span class="p">:</span><span class="s2">"15722.59"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="mi">24</span><span class="err">小时成交量</span><span class="w"> </span><span class="err">单位币</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1222,11 +1278,15 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">volume_24h</td>
-<td style="text-align: left">24小时成交量</td>
+<td style="text-align: left">24小时成交量,张数</td>
 </tr>
 <tr>
 <td style="text-align: left">priceChangePercent</td>
 <td style="text-align: left">24小时价格变动百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">24小时成交量,按币统计</td>
 </tr>
 </tbody></table>
 <h2 id='2fdd066e43'>获取成交数据</h2>
@@ -1541,10 +1601,12 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//合约名称</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">  </span><span class="err">//总持仓量</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">系统时间戳</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="err">//合约名称</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4097696"</span><span class="p">,</span><span class="err">//总持仓量</span><span class="p">,</span><span class="err">张数</span><span class="w">
+    </span><span class="s2">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4097.696"</span><span class="p">,</span><span class="err">//总持仓量</span><span class="p">,</span><span class="err">左币量</span><span class="w">
+    </span><span class="s2">"target_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47124323.5392"</span><span class="p">,</span><span class="err">//总持仓量</span><span class="p">,</span><span class="err">右币量</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1603109860796"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">系统时间戳</span><span class="w">
+    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">//是否是正向合约</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong>  </p>
@@ -1561,7 +1623,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">amount</td>
-<td style="text-align: center">总持仓量</td>
+<td style="text-align: center">总持仓量，张数</td>
 </tr>
 <tr>
 <td style="text-align: left">forwardContractFlag</td>
@@ -1570,6 +1632,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">timestamp</td>
 <td style="text-align: center">系统时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: center">左币量</td>
+</tr>
+<tr>
+<td style="text-align: left">target_volume</td>
+<td style="text-align: center">右币量</td>
 </tr>
 </tbody></table>
 <h2 id='025c787500'>获取合约最高限价和最低限价</h2>
@@ -2393,7 +2463,8 @@ Signature = base64.encode(Signature)
               </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓方向</span><span class="w">  </span><span class="err">标注废弃</span><span class="w">
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">持仓方向</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+              </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w"> </span><span class="err">//未实现盈亏</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -2455,6 +2526,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">margin</td>
 <td style="text-align: center">已用保证金</td>
 </tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">未实现盈亏</td>
+</tr>
 </tbody></table>
 <h2 id='f1e69afa43'>获取单个合约仓位信息</h2>
 <p>限速规则：10次/s</p>
@@ -2501,7 +2576,8 @@ Signature = base64.encode(Signature)
               </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//持仓方向</span><span class="w">    </span><span class="err">标注废弃</span><span class="w">
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">持仓方向</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w"> </span><span class="err">//系统时间戳</span><span class="w">
-              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+              </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//已用保证金</span><span class="w">
+              </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w"> </span><span class="err">//未实现盈亏</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -2561,6 +2637,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: center">已用保证金</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">未实现盈亏</td>
 </tr>
 </tbody></table>
 <h2 id='5225cc1ae3'>修改用户账户模式</h2>

@@ -1,73 +1,68 @@
-<h1 id='changelog'>Changelog</h1>
-<table><thead>
-<tr>
-<th>Release Time (Singapore Time UTC +8)</th>
-<th>interface</th>
-<th>New/Update</th>
-<th>abstract</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>16 September 2020, 21:00</td>
-<td>/api/swap/v3/market/contracts</td>
-<td>update</td>
-<td>add contract supported minimum and maximum leverage</td>
-</tr>
-<tr>
-<td>14 September 2020,21:12</td>
-<td>POST /api/swap/v3/position/changeHoldModel</td>
-<td>New</td>
-<td>api interface supports full position</td>
-</tr>
-<tr>
-<td>7 September 2020,16:00</td>
-<td>GET /api/swap/v3/market/historyFundRate</td>
-<td>New</td>
-<td>Replace the previous (Get contract historical funding rate) interface</td>
-</tr>
-<tr>
-<td>7 September 2020,16:00</td>
-<td>GET /api/swap/v3/order/history</td>
-<td>New</td>
-<td>Get order history commission</td>
-</tr>
-<tr>
-<td>7 September 2020,16:00</td>
-<td>GET /api/swap/v3/order/current</td>
-<td>New</td>
-<td>Get the current order of the order</td>
-</tr>
-<tr>
-<td>26 August 2020,20:40</td>
-<td><code>doc optimize</code></td>
-<td>update</td>
-<td>doc optimize</td>
-</tr>
-<tr>
-<td>31 July 2020,15:00</td>
-<td><code>update domain API address</code></td>
-<td>update</td>
-<td>update domain API address</td>
-</tr>
-<tr>
-<td>19 July 2020,10:00</td>
-<td><code>Support multiple languages</code></td>
-<td>New</td>
-<td>Support Chinese/English</td>
-</tr>
-<tr>
-<td>15 July 2020,10:00</td>
-<td><code>Historical API address</code></td>
-<td>New</td>
-<td>Historical API address</td>
-</tr>
-<tr>
-<td>9 Jun 2020,10:00</td>
-<td>Perpetual Swap</td>
-<td>New</td>
-<td>Perpetual Swap</td>
-</tr>
-</tbody></table>
+<h1 id='changelog'>Changelog</h1><h2 id='10-10-october-added-multiple-interface-return-values'>10.10 October【Added multiple interface return values】</h2><h3 id='1-get-all-ticker-information-and-add-quot-24-hour-trading-volume-quot-field'>1、Get all ticker information and add &quot;24-hour trading volume&quot; field</h3>
+<ul>
+<li>interface Get the historical funding rate of the contract</li>
+<li>interface URL：/api/swap/v3/market/tickers</li>
+<li>Modify content： Added a new field base_volume, which means 24 hours trading volume, unit currency</li>
+</ul>
+<h3 id='2-get-the-information-of-a-single-ticker-and-add-the-quot-24-hour-volume-quot-field'>2、Get the information of a single ticker and add the &quot;24-hour volume&quot; field</h3>
+<ul>
+<li>interface Get the information of a single ticker</li>
+<li>interface URL：/api/swap/v3/market/ticker</li>
+<li>Modify content： Added a new field base_volume, which means 24 hours trading volume, unit currency</li>
+</ul>
+<h3 id='3-get-the-position-information-of-all-contracts-and-add-the-quot-unrealized-profit-and-loss-quot-field'>3、Get the position information of all contracts and add the &quot;unrealized profit and loss&quot; field</h3>
+<ul>
+<li>interface name：Get all contract position information</li>
+<li>interface URL：/api/swap/v3/position/allPosition</li>
+<li>Modify content： New field unrealized_pnl (unrealized profit and loss)</li>
+</ul>
+<h3 id='4-get-position-information-of-a-single-contract-and-add-quot-unrealized-profit-and-loss-quot-field'>4、Get position information of a single contract and add &quot;unrealized profit and loss&quot; field</h3>
+<ul>
+<li>interface name：Get position information of a single contract</li>
+<li>interface URL：/api/swap/v3/position/singlePosition</li>
+<li>Modify content： New field unrealized_pnl (unrealized profit and loss)</li>
+</ul>
+<h3 id='5-get-the-platform-39-s-total-holdings-and-add-multiple-fields'>5、Get the platform&#39;s total holdings and add multiple fields</h3>
+<ul>
+<li>interface name：Get the total platform position</li>
+<li>interface URL：/api/swap/v3/market/open_interest</li>
+<li>Modify content：Added fields base_volume (total amount of left currency in position), target_volume (total amount of right currency in position)。</li>
+</ul>
+<h2 id='september-16-2020-new-return-value-of-contract-information-port'>September 16, 2020【New return value of contract information port】</h2><h3 id='1-contract-information'>1、Contract Information</h3>
+<ul>
+<li>interface name：Contract Information</li>
+<li>interface URL：/api/swap/v3/market/contracts</li>
+<li>Modify content： Added 2 fields maxLeverage (the contract supports the maximum leverage), minLeverage (the contract supports the minimum leverage)</li>
+</ul>
+<h2 id='september-14-2020-new-contract-supports-full-position'>September 14, 2020 [New contract supports full position]</h2><h3 id='1-modify-user-account-mode'>1、Modify user account mode</h3>
+<ul>
+<li>interface name：Modify user account mode</li>
+<li>interface type: private interface</li>
+<li>interface URL：/api/swap/v3/position/changeHoldModel</li>
+</ul>
+<h2 id='september-7-2020-new-interface'>September 7, 2020 [New Interface]</h2><h3 id='1-get-contract-historical-funding-rate'>1、Get contract historical funding rate</h3>
+<ul>
+<li>interface name：Get contract historical funding rate</li>
+<li>interface type: public interface</li>
+<li>interface URL：/api/swap/v3/market/historyFundRate</li>
+</ul>
+<h3 id='2-get-order-history-commission'>2、Get order history commission</h3>
+<ul>
+<li>interface name：Get order history commission</li>
+<li>interface type: private interface</li>
+<li>interface URL：/api/swap/v3/order/history</li>
+</ul>
+<h3 id='3-get-the-current-order-of-the-order'>3、Get the current order of the order</h3>
+<ul>
+<li>interface name：Get the current order of the order</li>
+<li>interface type: private interface</li>
+<li>interface URL：/api/swap/v3/order/current</li>
+</ul>
+<h2 id='june-9-2020-add-v3-contract-document'>June 9, 2020 [Add v3 contract document]</h2>
+<ul>
+<li>new v3 contract document</li>
+<li>Error message support Chinese/English</li>
+</ul>
 <h1 id='historical-api-address'>Historical API address</h1><h2 id='contract-websocket-quotes-assets-and-trade-push-api'>Contract WebSocket quotes, assets and trade push API</h2>
 <p><a href="https://github.com/BitgetLimited/API_Docs_en/blob/master/README_contract_websocket_api.md">WebSocket API</a></p>
 <h2 id='contract-trading-rest-market-trading-api'>Contract trading REST market, trading API</h2>
@@ -965,10 +960,12 @@ If there is a large deviation between local server time and API server time, we 
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w">  </span><span class="err">name</span><span class="w">
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"425810"</span><span class="p">,</span><span class="w">        </span><span class="err">//Total</span><span class="w"> </span><span class="err">holdings</span><span class="w">
-   </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">    </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
-   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1591256880751"</span><span class="w">   </span><span class="err">//System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="err">//Contract</span><span class="w">  </span><span class="err">name</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4097696"</span><span class="p">,</span><span class="err">//Total</span><span class="w"> </span><span class="err">holdings</span><span class="w">
+    </span><span class="s2">"base_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4097.696"</span><span class="p">,</span><span class="err">//Total</span><span class="w"> </span><span class="err">holdings</span><span class="p">,</span><span class="err">left</span><span class="w"> </span><span class="err">coin</span><span class="w"> </span><span class="err">vol</span><span class="w">
+    </span><span class="s2">"target_volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47124323.5392"</span><span class="p">,</span><span class="err">//Total</span><span class="w"> </span><span class="err">holdings</span><span class="p">,</span><span class="err">right</span><span class="w"> </span><span class="err">coin</span><span class="w"> </span><span class="err">vol</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1603109860796"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">System</span><span class="w"> </span><span class="err">Timestamp</span><span class="w">
+    </span><span class="s2">"forwardContractFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">forward</span><span class="w"> </span><span class="err">contract</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response</strong>  </p>
@@ -994,6 +991,14 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">timestamp</td>
 <td style="text-align: center">System Timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: center">Total holdings,left coin vol</td>
+</tr>
+<tr>
+<td style="text-align: left">target_volume</td>
+<td style="text-align: center">Total holdings,right coin vol</td>
 </tr>
 </tbody></table>
 <h2 id='current-price-limits'>Current Price Limits</h2>
@@ -1821,6 +1826,7 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
               </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">  </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
+              </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w"> </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -1882,6 +1888,10 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">margin</td>
 <td style="text-align: center">Used margin</td>
 </tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">Unrealized profit and loss</td>
+</tr>
 </tbody></table>
 <h2 id='get-one-of-the-margin-mode-information'>Get one of the Margin mode information</h2>
 <p>Rate Limit：10 requests per second</p>
@@ -1929,6 +1939,7 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
               </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="w">   </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
+              </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="w"> </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
        </span><span class="p">}</span><span class="w">
      </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
@@ -1984,6 +1995,10 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: center">Used margin</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: center">Unrealized profit and loss</td>
 </tr>
 </tbody></table>
 <h2 id='modify-the-user-39-s-account-mode'>Modify the user&#39;s account  mode</h2>
