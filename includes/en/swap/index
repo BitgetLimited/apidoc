@@ -1,4 +1,98 @@
-<h1 id='changelog'>Changelog</h1><h2 id='10-10-october-added-multiple-interface-return-values'>10.10 October【Added multiple interface return values】</h2><h3 id='1-get-all-ticker-information-and-add-quot-24-hour-trading-volume-quot-field'>1、Get all ticker information and add &quot;24-hour trading volume&quot; field</h3>
+<h1 id='changelog'>Changelog</h1><h2 id='march-24-2021-add-v3-trader-profit-document'>March 24, 2021【Add v3 trader profit document】</h2><h3 id='1-trader-profit-summary'>1、trader profit summary</h3>
+<ul>
+<li>interface name：trader profit summary</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/summary</li>
+</ul>
+<h3 id='2-summary-of-historical-distribution-by-settlement-currency'>2、summary of historical distribution by settlement currency</h3>
+<ul>
+<li>interface name：summary of historical distribution by settlement currency</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/profitSettleTokenIdGroup</li>
+</ul>
+<h3 id='3-statistics-of-historical-distribution-by-day-and-settlement-currency'>3、statistics of historical distribution by day and settlement currency</h3>
+<ul>
+<li>interface name：statistics of historical distribution by day and settlement currency</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/profitDateGroupList</li>
+</ul>
+<h3 id='4-historical-profit-sharing-details'>4、historical profit sharing details</h3>
+<ul>
+<li>interface name：historical profit sharing details</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/profitDateList</li>
+</ul>
+<h3 id='5-list-of-details-to-be-shared'>5、list of details to be shared</h3>
+<ul>
+<li>interface name：list of details to be shared</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/waitProfitDateList</li>
+</ul>
+<h2 id='december-1-2020-added-websocketapi-menu-bar'>December 1, 2020 【Added WebsocketApi menu bar】</h2><h3 id='1-user-39-s-current-plan-to-delegate-channel'>1 User&#39;s current plan to delegate channel</h3>
+<ul>
+<li>Channel name：User&#39;s current plan to delegate channel</li>
+<li>channel：{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/current_plans:btcusd&quot;]}</li>
+</ul>
+<h3 id='2-user-history-plan-commissioned-channel'>2 User history plan commissioned channel</h3>
+<ul>
+<li>Channel name：User history plan commissioned channel</li>
+<li>channel：{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/history_plans:btcusd&quot;]}</li>
+</ul>
+<h3 id='3-public-ticker-channel'>3 Public-ticker channel</h3>
+<ul>
+<li>Channel name：Public-ticker channel</li>
+<li>channel：{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/ticker:btcusd&quot;]}</li>
+<li>Modify content：Added holding (holding volume), volume_token_24h (24-hour trading volume in currency), volume_usdt_24h (24-hour trading volume in usdt) these three fields</li>
+</ul>
+<h3 id='4-public-k-line-channel'>4 Public-k line channel</h3>
+<ul>
+<li>Channel name：Public-k line channel</li>
+<li>channel：{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/candle60s:btcusd&quot;]}</li>
+<li>Modify content: Added currency_volume (transaction volume (coin)) field</li>
+</ul>
+<h2 id='november-10-2020-new-fields-in-account-interface'>November 10, 2020 【New fields in account interface】</h2><h3 id='1-query-all-contract-account-information'>1 Query all contract account information</h3>
+<ul>
+<li>interface name：Query all contract account information</li>
+<li>interface URL：/api/swap/v3/account/accounts</li>
+<li>Modify content：Increase the marginRatio (margin rate) field</li>
+</ul>
+<h2 id='november-3-2020-modify-k-line-interface-and-position-information'>November 3, 2020【Modify k-line interface and position information】</h2><h3 id='1-get-k-line-data'>1 Get k-line data</h3>
+<ul>
+<li>interface name：Get k-line data</li>
+<li>interface URL：/api/swap/v3/market/candles</li>
+<li>Modify content：adds time compatibility field</li>
+</ul>
+<h3 id='2-get-contract-position-information'>2 Get contract position information</h3>
+<ul>
+<li>interface name：Get contract position information</li>
+<li>interface URL：/api/swap/v3/position/allPosition</li>
+<li>Modify content：The response message adds the keepMarginRate (maintenance margin rate) field</li>
+</ul>
+<h2 id='october-26-2020-new-contract-documentary-interface'>October 26, 2020【New contract documentary interface】</h2><h3 id='1-place-an-order-to-close-a-warehouse'>1、Place an order to close a warehouse</h3>
+<ul>
+<li>interface name：Place an order to close a warehouse</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/closeTrackOrder</li>
+</ul>
+<h3 id='2-get-the-trader-39-s-current-list-of-orders'>2、Get the trader&#39;s current list of orders</h3>
+<ul>
+<li>interface name：Get the trader&#39;s current list of orders</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/currentTrack</li>
+</ul>
+<h3 id='3-get-a-list-of-historical-tapes'>3、Get a list of historical tapes</h3>
+<ul>
+<li>interface name：Get a list of historical tapes</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/historyTrack</li>
+</ul>
+<h3 id='4-place-an-order'>4、Place an order</h3>
+<ul>
+<li>interface name：Place an order</li>
+<li>interface URL：/api/swap/v3/order/placeOrder</li>
+<li>Modify content：Increase in input parameters ((presetTakeProfitPrice)preset take profit price, (presetStopLossPrice)preset stop loss price) these two parameters</li>
+</ul>
+<h2 id='10-10-october-added-multiple-interface-return-values'>10.10 October【Added multiple interface return values】</h2><h3 id='1-get-all-ticker-information-and-add-quot-24-hour-trading-volume-quot-field'>1、Get all ticker information and add &quot;24-hour trading volume&quot; field</h3>
 <ul>
 <li>interface Get the historical funding rate of the contract</li>
 <li>interface URL：/api/swap/v3/market/tickers</li>
@@ -63,10 +157,30 @@
 <li>new v3 contract document</li>
 <li>Error message support Chinese/English</li>
 </ul>
-<h1 id='historical-api-address'>Historical API address</h1><h2 id='contract-websocket-quotes-assets-and-trade-push-api'>Contract WebSocket quotes, assets and trade push API</h2>
-<p><a href="https://github.com/BitgetLimited/API_Docs_en/blob/master/README_contract_websocket_api.md">WebSocket API</a></p>
-<h2 id='contract-trading-rest-market-trading-api'>Contract trading REST market, trading API</h2>
-<p><a href="https://github.com/BitgetLimited/API_Docs_en/blob/master/README_contract_rest_api.md">Contract API</a><br></p>
+<h2 id='october-26-2020-new-contract-documentary-interface-2'>October 26, 2020【New contract documentary interface】</h2><h3 id='1-place-an-order-to-close-a-warehouse-2'>1、Place an order to close a warehouse</h3>
+<ul>
+<li>interface name：Place an order to close a warehouse</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/closeTrackOrder</li>
+</ul>
+<h3 id='2-get-the-trader-39-s-current-list-of-orders-2'>2、Get the trader&#39;s current list of orders</h3>
+<ul>
+<li>interface name：Get the trader&#39;s current list of orders</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/currentTrack</li>
+</ul>
+<h3 id='3-get-a-list-of-historical-tapes-2'>3、Get a list of historical tapes</h3>
+<ul>
+<li>interface name：Get a list of historical tapes</li>
+<li>interface type：private interface</li>
+<li>interface URL：/api/swap/v3/trace/historyTrack</li>
+</ul>
+<h3 id='4-place-an-order-2'>4、Place an order</h3>
+<ul>
+<li>interface name：Place an order</li>
+<li>interface URL：/api/swap/v3/order/placeOrder</li>
+<li>Modify content：Increase in input parameters (preset take profit price, preset stop loss price) these two parameters</li>
+</ul>
 <h1 id='introduction'>INTRODUCTION</h1><h2 id='api-introduction'>API INTRODUCTION</h2>
 <p>Welcome to Bitget API！  </p>
 
@@ -319,7 +433,7 @@ If there is a large deviation between local server time and API server time, we 
 <li>GET:  Parameters are passed to the server in the path via the queryString.</li>
 <li>POST: The parameter is sent in JSON format to the body for transfer to the server.</li>
 </ul>
-<h1 id='contract-trading-interface'>Contract Trading interface</h1><h2 id='gets-the-server-time'>Gets the server time</h2>
+<h1 id='restapi'>RestAPI</h1><h2 id='contract-trading-interface'>Contract Trading interface</h2><h3 id='gets-the-server-time'>Gets the server time</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Request</strong>
@@ -359,7 +473,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Unix timestamp in milliseconds</td>
 </tr>
 </tbody></table>
-<h2 id='contract-information'>Contract Information</h2>
+<h3 id='contract-information'>Contract Information</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -450,7 +564,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">maximum leverage</td>
 </tr>
 </tbody></table>
-<h2 id='get-depth-data'>Get depth data</h2>
+<h3 id='get-depth-data'>Get depth data</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -531,7 +645,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Timestamp</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-ticker-information'>get all ticker information</h2>
+<h3 id='get-all-ticker-information'>get all ticker information</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -604,7 +718,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">24-hour price change percentage</td>
 </tr>
 </tbody></table>
-<h2 id='get-one-ticker-information'>get one ticker information</h2>
+<h3 id='get-one-ticker-information'>get one ticker information</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -692,7 +806,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">24-hour price change percentage</td>
 </tr>
 </tbody></table>
-<h2 id='filled-orders'>Filled Orders</h2>
+<h3 id='filled-orders'>Filled Orders</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong></p>
@@ -774,7 +888,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Transaction id</td>
 </tr>
 </tbody></table>
-<h2 id='market-data'>Market Data</h2>
+<h3 id='market-data'>Market Data</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -804,13 +918,25 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">start</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Start time，in ISO 8601 format;</td>
+<td style="text-align: center">Start time，in ISO 8601 format;    Mark obsolete</td>
 </tr>
 <tr>
 <td style="text-align: left">end</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">End time，in ISO 8601 format;</td>
+<td style="text-align: center">End time，in ISO 8601 format;       Mark obsolete</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Start time (time stamp)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">End time (time stamp)</td>
 </tr>
 <tr>
 <td style="text-align: left">granularity</td>
@@ -870,7 +996,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Transaction volume (converted by currency)</td>
 </tr>
 </tbody></table>
-<h2 id='indices'>Indices</h2>
+<h3 id='indices'>Indices</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -928,7 +1054,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
-<h2 id='open-interests'>Open Interests</h2>
+<h3 id='open-interests'>Open Interests</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1001,7 +1127,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Total holdings,right coin vol</td>
 </tr>
 </tbody></table>
-<h2 id='current-price-limits'>Current Price Limits</h2>
+<h3 id='current-price-limits'>Current Price Limits</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1069,7 +1195,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
-<h2 id='next-settlement-time'>Next Settlement Time</h2>
+<h3 id='next-settlement-time'>Next Settlement Time</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1127,7 +1253,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">time of current funding</td>
 </tr>
 </tbody></table>
-<h2 id='funding-rate-history'>Funding Rate History</h2>
+<h3 id='funding-rate-history'>Funding Rate History</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1197,7 +1323,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Settlement time</td>
 </tr>
 </tbody></table>
-<h2 id='mark-price'>Mark Price</h2>
+<h3 id='mark-price'>Mark Price</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1255,7 +1381,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">System Timestamp</td>
 </tr>
 </tbody></table>
-<h2 id='gets-the-openable-number'>Gets the openable number</h2>
+<h3 id='gets-the-openable-number'>Gets the openable number</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1321,7 +1447,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Number of openings</td>
 </tr>
 </tbody></table>
-<h1 id='contract-account-interface'>Contract account interface</h1><h2 id='all-contract-account-information'>all contract account information</h2>
+<h2 id='contract-account-interface'>Contract account interface</h2><h3 id='all-contract-account-information'>all contract account information</h3>
 <p>Rate Limit：1 requests per 1 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1343,6 +1469,9 @@ If there is a large deviation between local server time and API server time, we 
    </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
    </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
    </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+   </span><span class="s2">"longMarginRatio"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">            </span><span class="err">//Margin</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">multiple</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"shortMarginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">         </span><span class="err">//Margin</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">short</span><span class="w"> </span><span class="err">positions</span><span class="w">
+   </span><span class="s2">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">             </span><span class="err">//Whole</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">rate</span><span class="w">
    </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Freeze</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">positions</span><span class="w">
    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">     </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
    </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">          </span><span class="err">//Margin</span><span class="w"> </span><span class="err">Mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
@@ -1387,6 +1516,18 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Unrealized profits and losses</td>
 </tr>
 <tr>
+<td style="text-align: left">longMarginRatio</td>
+<td style="text-align: center">Margin rate for multiple positions</td>
+</tr>
+<tr>
+<td style="text-align: left">shortMarginRatio</td>
+<td style="text-align: center">Margin rate for short positions</td>
+</tr>
+<tr>
+<td style="text-align: left">marginRatio</td>
+<td style="text-align: center">Whole position margin rate</td>
+</tr>
+<tr>
 <td style="text-align: left">margin_frozen</td>
 <td style="text-align: center">Freeze margin for opening positions</td>
 </tr>
@@ -1403,7 +1544,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
-<h2 id='perpetual-swap-account-of-a-currency'>Perpetual Swap Account of a Currency</h2>
+<h3 id='perpetual-swap-account-of-a-currency'>Perpetual Swap Account of a Currency</h3>
 <p>Rate Limit：5 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1442,6 +1583,9 @@ If there is a large deviation between local server time and API server time, we 
      </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                        </span><span class="err">//Used</span><span class="w"> </span><span class="err">margin</span><span class="w">
      </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                 </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
      </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Unrealized</span><span class="w"> </span><span class="err">profits</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">losses</span><span class="w">
+     </span><span class="s2">"longMarginRatio"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">            </span><span class="err">//Margin</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">multiple</span><span class="w"> </span><span class="err">positions</span><span class="w">
+     </span><span class="s2">"shortMarginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">         </span><span class="err">//Margin</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">short</span><span class="w"> </span><span class="err">positions</span><span class="w">
+     </span><span class="s2">"marginRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">             </span><span class="err">//Whole</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">rate</span><span class="w">
      </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Freeze</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">positions</span><span class="w">
      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1658098718494"</span><span class="p">,</span><span class="w">     </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
      </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">          </span><span class="err">//Margin</span><span class="w"> </span><span class="err">Mode</span><span class="p">:</span><span class="w"> </span><span class="err">crossed</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">fixed</span><span class="w">
@@ -1485,6 +1629,18 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Unrealized profits and losses</td>
 </tr>
 <tr>
+<td style="text-align: left">longMarginRatio</td>
+<td style="text-align: center">Margin rate for multiple positions</td>
+</tr>
+<tr>
+<td style="text-align: left">shortMarginRatio</td>
+<td style="text-align: center">Margin rate for short positions</td>
+</tr>
+<tr>
+<td style="text-align: left">marginRatio</td>
+<td style="text-align: center">Whole position margin rate</td>
+</tr>
+<tr>
 <td style="text-align: left">margin_frozen</td>
 <td style="text-align: center">Freeze margin for opening positions</td>
 </tr>
@@ -1501,7 +1657,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
-<h2 id='get-swap-leverage'>Get Swap Leverage</h2>
+<h3 id='get-swap-leverage'>Get Swap Leverage</h3>
 <p>Rate Limit：5 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1569,7 +1725,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
-<h2 id='set-swap-leverage'>Set Swap Leverage</h2>
+<h3 id='set-swap-leverage'>Set Swap Leverage</h3>
 <p>Rate Limit：5 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1655,7 +1811,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Is it a forward contract</td>
 </tr>
 </tbody></table>
-<h2 id='adjust-margin'>Adjust margin</h2>
+<h3 id='adjust-margin'>Adjust margin</h3>
 <p>Rate Limit：20 requests per 2 seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1726,7 +1882,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Order ID</td>
 </tr>
 </tbody></table>
-<h2 id='auto-margin-replenishment-amr'>Auto Margin Replenishment (AMR)</h2>
+<h3 id='auto-margin-replenishment-amr'>Auto Margin Replenishment (AMR)</h3>
 <p>Rate Limit：5 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1797,7 +1953,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Current setting: 0 Manually 1 Automatic</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-contract-position-information'>Get all contract position information</h2>
+<h3 id='get-all-contract-position-information'>Get all contract position information</h3>
 <p>Rate Limit：5 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1822,6 +1978,7 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">          </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
               </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">            </span><span class="err">//Leverage</span><span class="w">
               </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">      </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">        </span><span class="err">//Maintenance</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">rate</span><span class="w">
               </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">     </span><span class="err">Mark</span><span class="w"> </span><span class="err">obsolete</span><span class="w">
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                      </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">    </span><span class="err">//System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
@@ -1873,6 +2030,10 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Realized Profit and loss</td>
 </tr>
 <tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: center">Maintenance margin rate</td>
+</tr>
+<tr>
 <td style="text-align: left">side</td>
 <td style="text-align: center">Direction Long or short</td>
 </tr>
@@ -1893,7 +2054,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Unrealized profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='get-one-of-the-margin-mode-information'>Get one of the Margin mode information</h2>
+<h3 id='get-one-of-the-margin-mode-information'>Get one of the Margin mode information</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -1935,6 +2096,7 @@ If there is a large deviation between local server time and API server time, we 
               </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">        </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">price</span><span class="w">
               </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">          </span><span class="err">//Leverage</span><span class="w">
               </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//Realized</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+              </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">      </span><span class="err">//Maintenance</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">rate</span><span class="w">
               </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">     </span><span class="err">Mark</span><span class="w"> </span><span class="err">obsolete</span><span class="w">
               </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Position</span><span class="w"> </span><span class="err">Direction</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">short</span><span class="w">
               </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1557571623963"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">System</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
@@ -1985,6 +2147,10 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Realized Profit and loss</td>
 </tr>
 <tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: center">Maintenance margin rate</td>
+</tr>
+<tr>
 <td style="text-align: left">side</td>
 <td style="text-align: center">Direction: Long or short</td>
 </tr>
@@ -2001,7 +2167,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Unrealized profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='modify-the-user-39-s-account-mode'>Modify the user&#39;s account  mode</h2>
+<h3 id='modify-the-user-39-s-account-mode'>Modify the user&#39;s account  mode</h3>
 <p>Rate Limit：20 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2065,7 +2231,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Whether the modification is successful true success false failure</td>
 </tr>
 </tbody></table>
-<h1 id='contract-trading-endpoints'>Contract trading endpoints</h1><h2 id='place-order'>Place order</h2>
+<h2 id='contract-trading-endpoints'>Contract trading endpoints</h2><h3 id='place-order'>Place order</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2095,7 +2261,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">client_oid</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">customize order IDs to identify your orders. (Less than 50 characters without special characters,</td>
+<td style="text-align: center">Custom order number (not more than 40 characters, and cannot be special characters, such as Martian characters, etc.), can not be repeated in the pending order. If vacant, the system will automatically assign value</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -2127,6 +2293,18 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">No</td>
 <td style="text-align: center">Price of each contract</td>
 </tr>
+<tr>
+<td style="text-align: left">presetTakeProfitPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Preset take profit price</td>
+</tr>
+<tr>
+<td style="text-align: left">presetStopLossPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Preset stop price</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -2154,7 +2332,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Order ID </td>
 </tr>
 </tbody></table>
-<h2 id='batch-order'>Batch order</h2>
+<h3 id='batch-order'>Batch order</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2179,12 +2357,6 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">Contract name</td>
-</tr>
-<tr>
-<td style="text-align: left">order_data</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">JSON type strings, e.g  [{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;},{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:&quot;abc&quot;}],The fields refer to the [Contract trading] endpoints, and can only process up to 20 orders in batch      Mark obsolete</td>
 </tr>
 <tr>
 <td style="text-align: left">orderDataList</td>
@@ -2234,7 +2406,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Order ID</td>
 </tr>
 </tbody></table>
-<h2 id='cancel-order'>Cancel order</h2>
+<h3 id='cancel-order'>Cancel order</h3>
 <p>Rate Limit：10 requests per second </p>
 
 <p><strong>HTTP Requests</strong>
@@ -2303,7 +2475,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Cancellation status</td>
 </tr>
 </tbody></table>
-<h2 id='cancel-orders-in-batch'>Cancel orders in batch</h2>
+<h3 id='cancel-orders-in-batch'>Cancel orders in batch</h3>
 <p>Rate Limit：10 requests per seconds</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2389,7 +2561,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Error message</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-order-details-of-an-order'>Get the Order Details of an Order</h2>
+<h3 id='get-the-order-details-of-an-order'>Get the Order Details of an Order</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2508,143 +2680,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Total profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='get-list-of-orders-mark-obsolete'>Get list of orders    Mark obsolete</h2>
-<p>Rate Limit：10 requests per second</p>
-
-<p><strong>HTTP Requests</strong>
-    Get list of orders</p>
-
-<ul>
-<li>GET /api/swap/v3/order/orders</li>
-</ul>
-
-<p><strong>Request Parameter</strong>  </p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameters</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Contract name</td>
-</tr>
-<tr>
-<td style="text-align: left">from</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">From and to combine to which page check (default is 1)</td>
-</tr>
-<tr>
-<td style="text-align: left">to</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">From and to combine to which page check (default is 1)</td>
-</tr>
-<tr>
-<td style="text-align: left">&#39;limit&#39;</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Number of results per request. The maximum is 100; the default is 100</td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Status: 0 Failed</td>
-</tr>
-</tbody></table>
-
-<p>(contains risk triggered revocation 1 Partially Filled 2 Fully Filled 3 = Incomplete (Open + Partially Filled) 4  Canceling </p>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-   </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w">    </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
-          </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order</span><span class="w">
-          </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="s2">"cmdtde"</span><span class="p">,</span><span class="w">           </span><span class="err">//Client</span><span class="w"> </span><span class="err">ID</span><span class="w">
-          </span><span class="s2">"createTime"</span><span class="p">:</span><span class="s2">"1698475585258"</span><span class="p">,</span><span class="w">   </span><span class="err">//Creation</span><span class="w"> </span><span class="err">time</span><span class="w">
-          </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//The</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">which</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">been</span><span class="w"> </span><span class="err">filled</span><span class="w">
-          </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                    </span><span class="err">//Transaction</span><span class="w"> </span><span class="err">fee</span><span class="w">
-          </span><span class="s2">"order_id"</span><span class="p">:</span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">    </span><span class="err">//Order</span><span class="w"> </span><span class="err">ID</span><span class="w">
-          </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//The</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">limit</span><span class="w"> </span><span class="err">order</span><span class="w"> 
-          </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">                  </span><span class="err">//Average</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">price</span><span class="w">
-          </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"-1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//Order</span><span class="w"> </span><span class="err">status</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">                     </span><span class="err">//Commission</span><span class="w"> </span><span class="err">type</span><span class="w">
-          </span><span class="s2">"order_type"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">              </span><span class="err">//Order</span><span class="w"> </span><span class="err">type</span><span class="w">
-          </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="s2">"253"</span><span class="w">          </span><span class="err">//Total</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">    
- </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p><strong>Response</strong> </p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameters</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: center">Contract name</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: center">The amount in this order</td>
-</tr>
-<tr>
-<td style="text-align: left">client_oid</td>
-<td style="text-align: center">Client ID</td>
-</tr>
-<tr>
-<td style="text-align: left">createTime</td>
-<td style="text-align: center">Creation time</td>
-</tr>
-<tr>
-<td style="text-align: left">filled_qty</td>
-<td style="text-align: center">The amount which has been filled</td>
-</tr>
-<tr>
-<td style="text-align: left">fee</td>
-<td style="text-align: center">Transaction fee</td>
-</tr>
-<tr>
-<td style="text-align: left">order_id</td>
-<td style="text-align: center">Order ID</td>
-</tr>
-<tr>
-<td style="text-align: left">price</td>
-<td style="text-align: center">The limit price of limit order</td>
-</tr>
-<tr>
-<td style="text-align: left">price_avg</td>
-<td style="text-align: center">Average filled price</td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: center">Order status -1 Cancelled successful 0 submitted 1partial-filled 2filled</td>
-</tr>
-<tr>
-<td style="text-align: left">type</td>
-<td style="text-align: center">Commission type, 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
-</tr>
-<tr>
-<td style="text-align: left">order_type</td>
-<td style="text-align: center">Order Type 0. Normal limit order 1. Only be Maker (Post only)&quot;2 Fill or Kill (FOK) 3. Immediate or Cancel (IOC)</td>
-</tr>
-<tr>
-<td style="text-align: left">totalProfits</td>
-<td style="text-align: center">Total profit and loss</td>
-</tr>
-</tbody></table>
-<h2 id='get-order-history-commission'>Get order history commission</h2>
+<h3 id='get-order-history-commission'>Get order history commission</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2772,7 +2808,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Total profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-current-order-of-the-order'>Get the current order of the order</h2>
+<h3 id='get-the-current-order-of-the-order'>Get the current order of the order</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2882,7 +2918,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Total profit and loss</td>
 </tr>
 </tbody></table>
-<h2 id='get-transaction-details'>Get Transaction Details</h2>
+<h3 id='get-transaction-details'>Get Transaction Details</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -2979,7 +3015,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Side of the order 1,Open long 2 Open short 3 Close long 4 Close short 5 Buy limit 6Sell limit 7.Long close agreement 8. Short close agreement 9. Forced liquidity long 10 Forced liquidity short</td>
 </tr>
 </tbody></table>
-<h2 id='place-order-with-stop-limit'>Place order with Stop limit</h2>
+<h3 id='place-order-with-stop-limit'>Place order with Stop limit</h3>
 <p>Rate Limit：10 requests per second</p>
 
 <p><strong>HTTP Requests</strong>
@@ -3008,8 +3044,8 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">client_oid</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">customize order IDs to identify your orders. (Less than 50 characters without special characters,</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Custom order number (not more than 40 characters, and cannot be special characters, such as Martian characters, etc.), can not be repeated in the pending order. If vacant, the system will automatically assign value</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -3080,7 +3116,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">plan Order ID</td>
 </tr>
 </tbody></table>
-<h2 id='close-position-with-stop-limit'>Close position with Stop limit</h2>
+<h3 id='close-position-with-stop-limit'>Close position with Stop limit</h3>
 <p>Rate Limit：10 requests per second </p>
 
 <p><strong>HTTP Requests</strong>
@@ -3154,7 +3190,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">reason of cancellation</td>
 </tr>
 </tbody></table>
-<h2 id='check-stop-limit-status'>Check Stop limit status</h2>
+<h3 id='check-stop-limit-status'>Check Stop limit status</h3>
 <p>Rate Limit：10 requests per second </p>
 
 <p><strong>HTTP Requests</strong>
@@ -3312,7 +3348,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Executed price of stop limit</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-history-of-stop-limit'>Get the history of Stop limit</h2>
+<h3 id='get-the-history-of-stop-limit'>Get the history of Stop limit</h3>
 <p>Rate Limit：10 requests per second </p>
 
 <p><strong>HTTP Requests</strong>
@@ -3470,6 +3506,1644 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">Executed price of stop limit</td>
 </tr>
 </tbody></table>
+<h2 id='copy-trading-interface'>Copy trading interface</h2><h3 id='get-the-current-list'>Get the current list</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong></p>
+
+<p>Get the current list</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/currentTrack</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page (1-100 integer)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="s2">"699848017573842632"</span><span class="p">,</span><span class="w">  </span><span class="err">//order</span><span class="w"> </span><span class="err">number</span><span class="w">
+     </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//Position</span><span class="w"> </span><span class="err">direction</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">Short</span><span class="w"> </span><span class="err">position</span><span class="w">
+     </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">   </span><span class="err">//Opening</span><span class="w"> </span><span class="err">leverage</span><span class="w">
+     </span><span class="s2">"averageOpenPrice"</span><span class="p">:</span><span class="mf">11451.50000</span><span class="p">,</span><span class="w">  </span><span class="err">//Average</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1602582690614</span><span class="p">,</span><span class="w">  </span><span class="err">//Opening</span><span class="w"> </span><span class="err">time</span><span class="w">
+     </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">    </span><span class="err">//Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">positions</span><span class="w"> </span><span class="err">(number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">transactions</span><span class="w"> </span><span class="err">opened)</span><span class="w">
+     </span><span class="s2">"stopProfitPrice"</span><span class="p">:</span><span class="s2">"123.14"</span><span class="p">,</span><span class="w">    </span><span class="err">//Take</span><span class="w"> </span><span class="err">Profit</span><span class="w"> </span><span class="err">Price</span><span class="w">
+     </span><span class="s2">"stopLossPrice"</span><span class="p">:</span><span class="s2">"20.52"</span><span class="w">     </span><span class="err">//Stop</span><span class="w"> </span><span class="err">price</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='close-a-position-with-a-single-order'>Close a position with a single order</h3>
+<p>Rate Limit：1 requests per second </p>
+
+<p><strong>HTTP Requests</strong></p>
+
+<p>Close a position with a single order</p>
+
+<ul>
+<li>POST /api/swap/v3/trace/closeTrackOrder</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Tracking order number  get &#39;/api/swap/v3/trace/currentTrack&#39; interface return result orderNo</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="mi">6258224712558517</span><span class="p">,</span><span class="w"> </span><span class="err">//Document</span><span class="w"> </span><span class="err">number</span><span class="w">
+     </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">                 </span><span class="err">//Copy</span><span class="w"> </span><span class="err">result</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='get-a-list-of-historical-tapes'>Get a list of historical tapes</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    Get a list of historical tapes</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/historyTrack</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page (1-100 integer)</td>
+</tr>
+<tr>
+<td style="text-align: left">createDate</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">The number of days to query forward from the current time (the number of days must be less than or equal to 90, cannot be a negative number)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"cmt_btcusdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//Contract</span><span class="w"> </span><span class="err">name</span><span class="w">
+     </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"682799071840175632"</span><span class="p">,</span><span class="w">  </span><span class="err">//order</span><span class="w"> </span><span class="err">number</span><span class="w">
+     </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="err">//Position</span><span class="w"> </span><span class="err">direction</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="err">Long</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">Short</span><span class="w"> </span><span class="err">position</span><span class="w">
+     </span><span class="s2">"openLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">        </span><span class="err">//Opening</span><span class="w"> </span><span class="err">leverage</span><span class="w">
+     </span><span class="s2">"openAvgPrice"</span><span class="w"> </span><span class="p">:</span><span class="s2">"11366.50"</span><span class="p">,</span><span class="w">     </span><span class="err">//Average</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"openTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1598517905197</span><span class="p">,</span><span class="w">    </span><span class="err">//Opening</span><span class="w"> </span><span class="err">time</span><span class="w">
+     </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">           </span><span class="err">//Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">closed</span><span class="w"> </span><span class="err">trades</span><span class="w">
+     </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">1599135145368</span><span class="p">,</span><span class="w">          </span><span class="err">//Position</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">trigger</span><span class="w"> </span><span class="err">time</span><span class="w">
+     </span><span class="s2">"closeAvgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11272.00"</span><span class="p">,</span><span class="w">        </span><span class="err">//Average</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+     </span><span class="s2">"stopType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="mi">0</span><span class="w"> </span><span class="err">common</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">stop</span><span class="w"> </span><span class="err">loss</span><span class="w"> </span><span class="err">(closed</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">type)</span><span class="w">
+     </span><span class="s2">"achievedProfits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.07650000"</span><span class="p">,</span><span class="w"> </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
+     </span><span class="s2">"openFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00680910"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">fees</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">positions</span><span class="w">
+     </span><span class="s2">"closeFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000"</span><span class="w">    </span><span class="err">//Cumulative</span><span class="w"> </span><span class="err">handling</span><span class="w"> </span><span class="err">fee</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">liquidation</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='trader-profit-summary'>trader profit summary</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    trader profit summary</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/summary</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"yesterdaySplitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//yesterday</span><span class="w"> </span><span class="err">profit</span><span class="w">
+     </span><span class="s2">"sumProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//total</span><span class="w"> </span><span class="err">profit</span><span class="w">
+     </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">  </span><span class="err">//wait</span><span class="w"> </span><span class="err">profit</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='summary-of-historical-distribution-by-settlement-currency'>summary of historical distribution by settlement currency</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    summary of historical distribution by settlement currency</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/profitSettleTokenIdGroup</li>
+</ul>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//settle</span><span class="w"> </span><span class="err">token</span><span class="w">
+     </span><span class="s2">"profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">  </span><span class="err">//profit</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='statistics-of-historical-distribution-by-day-and-settlement-currency'>statistics of historical distribution by day and settlement currency</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    statistics of historical distribution by day and settlement currency</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/profitDateGroupList</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page (1-100 integer)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//settle</span><span class="w"> </span><span class="err">token</span><span class="w">
+     </span><span class="s2">"profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//profit</span><span class="w">
+     </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1616487216598"</span><span class="w"> </span><span class="err">//date</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='historical-profit-sharing-details'>historical profit sharing details</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    historical profit sharing details</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/profitDateList</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page (1-100 integer)</td>
+</tr>
+<tr>
+<td style="text-align: left">settleTokenId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">settle token(&quot;USDT&quot;, &quot;ETH&quot;, &quot;BTC&quot;, &quot;BCH&quot;)</td>
+</tr>
+<tr>
+<td style="text-align: left">date</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">statistical interface of historical distribution by day and settlement currency response date(1616487216598)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//settle</span><span class="w"> </span><span class="err">token</span><span class="w">
+     </span><span class="s2">"profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//profit</span><span class="w">
+     </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="err">//nickName</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='list-of-details-to-be-shared'>list of details to be shared</h3>
+<p>Rate Limit：20 requests per second </p>
+
+<p><strong>HTTP Requests</strong>
+    list of details to be shared</p>
+
+<ul>
+<li>GET /api/swap/v3/trace/waitProfitDateList</li>
+</ul>
+
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameters</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageIndex</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page number, empty default first page, starting from 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number per page (1-100 integer)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w"> </span><span class="err">//settle</span><span class="w"> </span><span class="err">token</span><span class="w">
+     </span><span class="s2">"profit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//profit</span><span class="w">
+     </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="err">//nickName</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='perpetual-contract'>Perpetual contract</h2>
+<p>The following is the perpetual contract v3 WebSocketAPI</p>
+<h3 id='brief-introduction'>Brief Introduction</h3>
+<p>WebSocket is a HTML5 new Protocol. It implements full-duplex communication between the client and the server, allowing data to be quickly propagated in both directions.
+ A simple handshake can establish a connection between the client and the server, and the server can actively push information to the client according to business rules. 
+ The advantages are as follows:  </p>
+
+<ul>
+<li>When the client and server are transmitting data, the request header information is relatively small, about 2 bytes. </li>
+<li>Both client and server can actively send data to each other.</li>
+<li>In order to save bandwidth and server resource, it is not necessary to create and cancel TCP request in multiple times.</li>
+</ul>
+
+<p>Strongly recommend developer to use WebSocket API to obtain market info and bid/ask market depth info etc.</p>
+
+<table><thead>
+<tr>
+<th>Domain name</th>
+<th>WebSocket API</th>
+<th>Recommended to use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Domain name 1</td>
+<td>wss://csocketapi.bitget.com/ws/v1</td>
+<td>International</td>
+</tr>
+<tr>
+<td>Domain name 2</td>
+<td>wss://csocketapi.bitgetapi.com/ws/v1</td>
+<td>China area</td>
+</tr>
+</tbody></table>
+
+<p>Connection instruction  </p>
+
+<p>System will auto-disconnect while subscription has been done within 30sec or no ping command sent by user after 30sec after ws is connected</p>
+<h3 id='order-format'>Order format</h3>
+<p>Request format</p>
+
+<p>{&quot;op&quot;: &quot;value&quot;, &quot;args&quot;: [&quot;value1&quot;,&quot;value2&quot;]}   </p>
+
+<p>op value is: 1--subscribe ； 2-- unsubscribe；3--login</p>
+
+<p>args: value is channel name, can define 1 or more channel</p>
+
+<p>Successful response format</p>
+
+<p>{&quot;event&quot;: &quot;value&quot;,&quot;channel&quot;:&quot;value&quot;}</p>
+
+<p>{&quot;table&quot;:&quot;channel&quot;,&quot;data&quot;:&quot;[{&quot;value1&quot;,&quot;value2&quot;}]&quot;}</p>
+
+<p>Failed response format</p>
+
+<p>{&quot;event&quot;:&quot;error&quot;,&quot;message&quot;:&quot;error_message&quot;,&quot;errorCode&quot;:&quot;&quot;}    </p>
+<h3 id='trading-pair-format'>Trading pair format</h3>
+<p>Reverse contract (example)</p>
+
+<p>btcusd、ethusd、ltcusd、xrpusd、bchusd、eosusd</p>
+
+<p>Forward contract (example)</p>
+
+<p>cmt_bnbusdt、cmt_btcusdt</p>
+
+<p>Simulation contract (example)</p>
+
+<p>sbtcusd（Reverse contract simulation）、cmt_btcsusdt（Forward contract simulation）        </p>
+<h3 id='subscribe'>Subscribe</h3>
+<p>User has the opinion to subscribe 1 or more channels, total length of multiple channel can not exceeds 4096 bytes.    </p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;SubscriptionTopic&quot;]}</p>
+
+<p>Note: op value is subscribe</p>
+
+<p>args array content is channel name</p>
+
+<p>channelname is consist of business/channel</p>
+
+<p>Perpetual push business is swap, channel is the particular name under such business, if the channel name can not be differentiate by alphabet, then they can use &quot; _ &quot; to connect.    </p>
+
+<p>Example:</p>
+
+<p>&quot;swap/ticker:btcusd&quot; or &quot;swap/price_range:btcusd&quot;</p>
+
+<p>filter is filterable data, refer to channel for detailed instruction</p>
+
+<p>Example: </p>
+
+<p>send: {&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/ticker:btcusd&quot;, &quot;swap/candle60s:btcusd&quot;]}</p>
+
+<p>response:     </p>
+
+<p>{&quot;event&quot;: subscribe,&quot;channel&quot;:&quot;swap/ticker:btcusd&quot;} {&quot;event&quot;: subscribe,&quot;channel&quot;:&quot;swap/candle60s:btcusd&quot;}</p>
+
+<p>{&quot;table&quot;:&quot;swap/ticker&quot;,&quot;data&quot;:[{&quot;high_24h&quot;:&quot;3369&quot;,&quot;instrument_id&quot;:&quot;btcusd&quot;,&quot;last&quot;:&quot;3299&quot;, &quot;low_24h&quot;:&quot;3112&quot;,&quot;timestamp&quot;:&quot;2018-12-09T08:12:04.659Z&quot;,&quot;volume_24h&quot;:&quot;8389225&quot;}]}</p>
+
+<p>{&quot;table&quot;:&quot;swap/candle60s&quot;,&quot;data&quot;:[{&quot;instrument_id&quot;:&quot;btcusd&quot;,&quot;candle&quot;:[&quot;2018-12-09T08:12:00.000Z&quot;, &quot;3299.8&quot;,&quot;3299.8&quot;,&quot;3299&quot;,&quot;3299&quot;,&quot;82&quot;,&quot;2.4854&quot;]}]}      </p>
+<h3 id='cancel-subscription'>Cancel subscription</h3>
+<p>Can cancel 1 or more channels</p>
+
+<p>{&quot;op&quot;: &quot;unsubscribe&quot;, &quot;args&quot;: [SubscriptionTopic]}</p>
+
+<p>Example:</p>
+
+<p>Request:</p>
+
+<p>{&quot;op&quot;: &quot;unsubscribe&quot;, &quot;args&quot;: [&quot;swap/ticker:btcusd&quot;, &quot;swap/candle60s:btcusd&quot;]}    </p>
+
+<p>return:</p>
+
+<p>{&quot;event&quot;:&quot;unsubscribe&quot;,&quot;channel&quot;:&quot;swap/ticker:btcusd&quot;} {&quot;event&quot;:&quot;unsubscribe&quot;,&quot;channel&quot;:&quot;swap/candle60s:btcusd&quot;}      </p>
+<h3 id='login'>Login</h3>
+<p>For the description of the signature method, refer to the verification section in the API overview</p>
+
+<p>Login subscription format:</p>
+
+<p>{&quot;op&quot;:&quot;login&quot;,&quot;args&quot;:[&quot;api_key&quot;,&quot;passphrase&quot;,&quot;timestamp&quot;,&quot;sign&quot;]}</p>
+
+<p>Response：</p>
+
+<p>{&quot;event&quot;:&quot;login&quot;,&quot;success&quot;:true}</p>
+
+<p>Example:</p>
+
+<p>{&quot;op&quot;:&quot;login&quot;,&quot;args&quot;:[&quot;bg_573af5eca856acd91c230da294ce2105&quot;,&quot;123456&quot;,&quot;1538054050&quot;,
+    &quot;8RCOqCJAhhEh4PWcZB/96QojLDqMAg4qNynIixFzS3E=&quot;]}</p>
+
+<p>api_key: APIKey applied for for the user   </p>
+
+<p>passphrase: It is filled in when applying for v3 api, if there is no password, then pass in an empty string (&quot;&quot;) </p>
+
+<p>timestamp: is the timestamp is the Unix Epoch time, the unit is seconds, the timestamp will expire after 30 seconds</p>
+
+<p>sign: is the signature string, the signature rules are as follows：</p>
+
+<p>The Message is (string to be signed): timestamp+method+requestPath</p>
+
+<p>Examples of timestamp: const timestamp =&#39;&#39; + Date.now() / 1000</p>
+
+<p>The method always defaults to&#39;GET&#39;</p>
+
+<p>requestPath always defaults to&#39;/user/verify&#39;</p>
+
+<p>Steps to generate the final signature:</p>
+
+<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
+
+<p>Signature = hmac_sha256(secretkey, Message)</p>
+
+<p>The second step is to base64 encode the Signature</p>
+
+<p>Signature = base64.encode(Signature)</p>
+
+<p>If login fails, it will automatically disconnect</p>
+<h3 id='connection-limit'>Connection limit</h3>
+<p>Connection limit：1 time/s</p>
+
+<p>Subscription limit：240 times/hr</p>
+
+<p>If no data returned after connecting to ws, connection will auto-disconnect after 30s, suggest user to follow below instruction:</p>
+
+<ul>
+<li>Set a timer for 20 sec after every message received</li>
+<li>Sending string ‘ping’ is timer is triggered (no new message received after 20 sec)</li>
+<li>Expect a literal string ‘pong’ as a response. Send out error or re-connect if nothing is received after 20 sec </li>
+</ul>
+<h3 id='channel-description'>Channel description</h3>
+<p>Channels are not required to log in: Market channel, Candlestick chart channel, Trading data channel, Fund fees channel, Price limit range channel, Market depth data channel, Price tag channel.</p>
+
+<p>Channels are required to log in：User account channel, User trade channel, User position channel</p>
+
+<p>Name of Channels are not required to log in：</p>
+
+<p>swap/ticker // ticker data channel</p>
+
+<p>swap/candle60s // 1min Candlestick chart data channel</p>
+
+<p>swap/candle300s // 5min Candlestick chart data channel</p>
+
+<p>swap/candle900s // 15min Candlestick chart data channel</p>
+
+<p>swap/candle1800s // 30min Candlestick chart data channel</p>
+
+<p>swap/candle3600s // 1h Candlestick chart data channel</p>
+
+<p>swap/candle14400s // 4h Candlestick chart data channel</p>
+
+<p>swap/candle43200s // 12h Candlestick chart data channel</p>
+
+<p>swap/candle86400s // 1day Candlestick chart data channel</p>
+
+<p>swap/candle604800s // 1week Candlestick chart data channel</p>
+
+<p>swap/trade // Trade info channel</p>
+
+<p>swap/funding_rate// Fund fees channel</p>
+
+<p>swap/price_range// Price limit range channel</p>
+
+<p>swap/depth // Market depth data channel,first 200 range, subsequent one is increment</p>
+
+<p>swap/depth5 // Market depth data channel, return to first 5 range everytime</p>
+
+<p>swap/mark_price// Price tag channel</p>
+
+<p>Channels are required for login：</p>
+
+<p>swap/account // User account info channel</p>
+
+<p>swap/position // User position info channel</p>
+
+<p>swap/order // User trade data channel</p>
+<h3 id='user-position-channel'>User position channel</h3>
+<p>Require user to login to obtain user position info</p>
+
+<p>Send example</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/position:btcusd&quot;]}</p>
+
+<p>swap / position is channel name, btcusd is instrument_id </p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/position"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"holding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2985"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0136"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.8129"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0239"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"avail_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"avg_cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2935"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"liquidation_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0136"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.8129"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0239"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">}],</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crossed"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">iquidation_price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Estimated stopped-out price</td>
+</tr>
+<tr>
+<td style="text-align: left">position</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Position cont</td>
+</tr>
+<tr>
+<td style="text-align: left">avail_position</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Close position cont</td>
+</tr>
+<tr>
+<td style="text-align: left">avg_cost</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Open position avg price</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Leveraging</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Realized P/L</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Unrealized P/L</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Direction (long/short)</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Margin</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">fixed: Isolated margin crossed: Cross margin</td>
+</tr>
+</tbody></table>
+<h3 id='user-account-channel'>User account channel</h3>
+<p>Need user to log in to obtain account info</p>
+
+<p>Send example</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/account:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id    </p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/account"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21.9334"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"fixed_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.8129"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_frozen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.8143"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"margin_mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"realized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"total_avail_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.0043"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"unrealized_pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0710"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Account privilege</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract name</td>
+</tr>
+<tr>
+<td style="text-align: left">margin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Used margin</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_frozen</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Freeze margin for open a position</td>
+</tr>
+<tr>
+<td style="text-align: left">realized_pnl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Realized P/L</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">total_avail_balance</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Account balance</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealized_pnl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Unrealized P/L</td>
+</tr>
+<tr>
+<td style="text-align: left">fixed_balance</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Isolated margin account balance</td>
+</tr>
+<tr>
+<td style="text-align: left">margin_mode</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Account type: Isolated margin fixed Cross margin crossed</td>
+</tr>
+</tbody></table>
+<h3 id='user-trade-channel'>User trade channel</h3>
+<p>Need user to log in to obtain user trade data</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/order:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/order"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"last_fill_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"filled_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"client_oid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"last_fill_qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"price_avg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"last_fill_px"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2935"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"contract_val"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6c-a-625f6f638-0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"order_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract name, e.g. btcusd</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order cont</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">filled_qty</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Deal cont</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Fees</td>
+</tr>
+<tr>
+<td style="text-align: left">order_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order ID set by user</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order price</td>
+</tr>
+<tr>
+<td style="text-align: left">price_avg</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Deal avg price</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">1:Open long position 2:Open short position 3:Close long position 4.Close short position</td>
+</tr>
+<tr>
+<td style="text-align: left">contract_val</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract value</td>
+</tr>
+<tr>
+<td style="text-align: left">order_type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">0:Plain order 1:Only Maker(Post only) 2: Fill or Kill (FOK) 3:Deal immediately and cancel the rests (IOC)</td>
+</tr>
+<tr>
+<td style="text-align: left">last_fill_time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Last deal time</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order status(“1”: New order, “2”Partial order, “3”:Completely deal,”5”:Cancel,”6”:Cancal by risk triggered)</td>
+</tr>
+</tbody></table>
+<h3 id='user-39-s-current-plan-to-delegate-channel'>User&#39;s current plan to delegate channel</h3>
+<p>To obtain the user’s current plan entrusted data, user login is required</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/current_plans:btcusd&quot;]}</p>
+
+<p>swap/current_plans is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/current_plans"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"done"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"forcePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606553787494"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"forceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606553777494"</span><span class="w">       
+     </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Record number</td>
+</tr>
+<tr>
+<td style="text-align: left">contractId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">product code</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Number of entrusted sheets</td>
+</tr>
+<tr>
+<td style="text-align: left">direction</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order type 1: open long 2: open short 3: close long 4: close short 5: close long 6: close short 7: close long by agreement 8: close short by agreement 9: close long by liquidation 10: close short by liquidation</td>
+</tr>
+<tr>
+<td style="text-align: left">done</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Number of deals</td>
+</tr>
+<tr>
+<td style="text-align: left">forcePrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Trigger mandatory price</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Commission price</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order status (-1: Successful cancellation 0: Waiting for deal 1: Partial deal 2: Completed deal)</td>
+</tr>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">time</td>
+</tr>
+<tr>
+<td style="text-align: left">forceTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Time to trigger forcing</td>
+</tr>
+</tbody></table>
+<h3 id='user-history-plan-delegate-channel'>User history plan delegate channel</h3>
+<p>Obtain user&#39;s historical plan delegate data, user login is required</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/history_plans:btcusd&quot;]}</p>
+
+<p>swap/history_plans is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+       </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/history_plans"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"513468410013679613"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"arvPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606554020500"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dealCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"delegatePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"forcePrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"forceTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1606554010500"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2541.21"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1422.32"</span><span class="w">
+     </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Record number</td>
+</tr>
+<tr>
+<td style="text-align: left">arvPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Average transaction price</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Number of orders</td>
+</tr>
+<tr>
+<td style="text-align: left">contractId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">product code</td>
+</tr>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">time</td>
+</tr>
+<tr>
+<td style="text-align: left">dealCount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">The number of transactions</td>
+</tr>
+<tr>
+<td style="text-align: left">delegatePrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Commission price</td>
+</tr>
+<tr>
+<td style="text-align: left">direction</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order type 1: open long 2: open short 3: close long 4: close short 5: close long 6: close short 7: close long by agreement 8: close short by agreement 9: close long by liquidation 10: close short by liquidation</td>
+</tr>
+<tr>
+<td style="text-align: left">forcePrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Trigger mandatory price</td>
+</tr>
+<tr>
+<td style="text-align: left">forceTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Time to trigger forcing</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order type 0 limit price 1 market price</td>
+</tr>
+<tr>
+<td style="text-align: left">pnl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Realized profit and loss</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Order status (-1: Successful cancellation 0: Waiting for deal 1: Partial deal 2: Completed deal)</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">totalProfits</td>
+</tr>
+</tbody></table>
+<h3 id='public-ticker-channel'>Public-Ticker channel</h3>
+<p>Obtain all perpetual contracts latest market price, best bidding price, best asking price and 24h trading volume</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/ticker:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/ticker"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"best_ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5603.5"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"best_bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5600.1"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"high_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5773.7"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5603.3"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"low_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5566"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"volume_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1538076"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"holding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1555450.000000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"volume_token_24h"</span><span class="p">:</span><span class="s2">"17955.2439"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"volume_usdt_24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"179556.2439"</span><span class="w"> 
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contact name, e.g. btcusd</td>
+</tr>
+<tr>
+<td style="text-align: left">best_bid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Best bidding price</td>
+</tr>
+<tr>
+<td style="text-align: left">best_ask</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Best asking price</td>
+</tr>
+<tr>
+<td style="text-align: left">last</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Last deal price</td>
+</tr>
+<tr>
+<td style="text-align: left">high_24h</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Highest price in 24h</td>
+</tr>
+<tr>
+<td style="text-align: left">low_24h</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Lowest price in 24h</td>
+</tr>
+<tr>
+<td style="text-align: left">volume_24h</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">24h volume</td>
+</tr>
+<tr>
+<td style="text-align: left">holding</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Open interest</td>
+</tr>
+<tr>
+<td style="text-align: left">volume_token_24h</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">24-hour trading volume in (coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">volume_usdt_24h</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">24-hour usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">System timestamp</td>
+</tr>
+</tbody></table>
+<h3 id='public-candlestick-chart'>Public- Candlestick chart</h3>
+<p>Public-cand Channel Public-cand</p>
+
+<p>Obtain contract Candlestick chart data</p>
+
+<p>Channel list：</p>
+
+<p>swap/candle60s // 1min Candlestick chart data channel</p>
+
+<p>swap/candle300s // 5min Candlestick chart data channel</p>
+
+<p>swap/candle900s // 15min Candlestick chart data channel</p>
+
+<p>swap/candle1800s // 30min Candlestick chart data channel</p>
+
+<p>swap/candle3600s // 1h Candlestick chart data channel</p>
+
+<p>swap/candle14400s // 4h Candlestick chart data channel</p>
+
+<p>swap/candle43200s // 12h Candlestick chart data channel</p>
+
+<p>swap/candle86400s // 1day Candlestick chart data channel</p>
+
+<p>swap/candle604800s // 1week Candlestick chart data channel</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;:[&quot;swap/candle60s:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/candle60s"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"candle"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5613"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5611.9"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5611.9"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1218"</span><span class="p">,</span><span class="w"> </span><span class="s2">"21.7009"</span><span class="p">,</span><span class="s2">"21.7009"</span><span class="p">]</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Start time</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Opening price</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Highest price</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Lowest price</td>
+</tr>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Closing price</td>
+</tr>
+<tr>
+<td style="text-align: left">volume</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">rading volume (cont)</td>
+</tr>
+<tr>
+<td style="text-align: left">currency_volume</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Transaction volume (coins)</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract btcusd</td>
+</tr>
+</tbody></table>
+<h3 id='public-trading-channel'>Public- Trading channel</h3>
+<p>Obtain recent trading data</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/trade:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/trade"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5611.9"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Deal price</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Deal QTY</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Direction (buy or sell)</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Deal time</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">btcusd</td>
+</tr>
+</tbody></table>
+<h3 id='public-fund-fees-channel'>Public – Fund fees channel</h3>
+<p>Obtain contract fees</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/funding_rate:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/funding_rate"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"funding_rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00067"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"funding_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contact name, e.g. btcusd</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_time</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Next settlement time</td>
+</tr>
+<tr>
+<td style="text-align: left">funding_rate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Current fees</td>
+</tr>
+</tbody></table>
+<h3 id='public-price-limit-channel'>Public - Price limit channel</h3>
+<p>Obtain the best bidding and asking price for contact current position</p>
+
+<p>Send example</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/price_range:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/price_range"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"highest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5665.9"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"lowest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5553.6"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">System timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">lowest</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Best asking price</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract name, e.g. btcusd</td>
+</tr>
+<tr>
+<td style="text-align: left">highest</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Best bidding price</td>
+</tr>
+</tbody></table>
+<h3 id='public-market-depth-5-channel'>Public – Market depth 5 channel</h3>
+<p>Return first 5 range market depth data every time</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/depth5:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/depth5"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"58"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.8"</span><span class="p">,</span><span class="w"> </span><span class="s2">"125"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5622"</span><span class="p">,</span><span class="w"> </span><span class="s2">"84"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5622.5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"6"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5623"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1"</span><span class="p">]</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"287"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"41"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621"</span><span class="p">,</span><span class="w"> </span><span class="s2">"26"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5620.9"</span><span class="p">,</span><span class="w"> </span><span class="s2">"640"</span><span class="p">]</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Asking market depth</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Bidding market depth</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<p>[&quot;411.8&quot;,&quot;6&quot;] [String,String] 411.8 is market depth price, 10 is QTY of this price</p>
+<h3 id='public-market-depth-channel'>Public- Market depth channel</h3>
+<p>Return first 200 range for the first time, subsequent one is increment</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/depth:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/depth"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(partial/update)"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+   </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"58"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.8"</span><span class="p">,</span><span class="w"> </span><span class="s2">"125"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5622"</span><span class="p">,</span><span class="w"> </span><span class="s2">"84"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5622.5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"6"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5623"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1"</span><span class="p">]</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"287"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"41"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5621"</span><span class="p">,</span><span class="w"> </span><span class="s2">"26"</span><span class="p">],</span><span class="w">
+   </span><span class="p">[</span><span class="s2">"5620.9"</span><span class="p">,</span><span class="w"> </span><span class="s2">"640"</span><span class="p">]</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+   </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Asking market depth</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Bidding market depth</td>
+</tr>
+<tr>
+<td style="text-align: left">action</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Full amount increment tag</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contract ID</td>
+</tr>
+</tbody></table>
+
+<p>[&quot;411.8&quot;,&quot;6&quot;] [String,String] 411.8 is market depth price, 10 is QTY of this price</p>
+<h3 id='public-price-tag-channel'>Public – Price tag channel</h3>
+<p>Obtain price tag</p>
+
+<p>Send example:</p>
+
+<p>{&quot;op&quot;: &quot;subscribe&quot;, &quot;args&quot;: [&quot;swap/mark_price:btcusd&quot;]}</p>
+
+<p>swap/account is channel name, btcusd is instrument id</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="s2">"table"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap/mark_price"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+     </span><span class="s2">"instrument_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusd"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"mark_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5620.9"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1559544244016"</span><span class="w">
+     </span><span class="p">}]</span><span class="w">             
+ </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong>  </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">instrument_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Contact name, e.g. btcusd</td>
+</tr>
+<tr>
+<td style="text-align: left">mark_price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Tag price</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">System timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='websocketapi-error-code'>WebSocketAPI error Code</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Error message</th>
+<th style="text-align: center">Error code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Invalid ACCESS_PASSPHRASE</td>
+<td style="text-align: center">30001</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_TIMESTAMP</td>
+<td style="text-align: center">30002</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_KEY</td>
+<td style="text-align: center">30003</td>
+</tr>
+<tr>
+<td style="text-align: left">Timestamp request expired</td>
+<td style="text-align: center">30004</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid sign</td>
+<td style="text-align: center">30005</td>
+</tr>
+<tr>
+<td style="text-align: left">Login failure</td>
+<td style="text-align: center">30006</td>
+</tr>
+<tr>
+<td style="text-align: left">Unrecognized request</td>
+<td style="text-align: center">30007</td>
+</tr>
+<tr>
+<td style="text-align: left">Channel doesn&#39;t exist</td>
+<td style="text-align: center">30008</td>
+</tr>
+<tr>
+<td style="text-align: left">User not logged in/User must be logged in</td>
+<td style="text-align: center">30009</td>
+</tr>
+<tr>
+<td style="text-align: left">Symbol not exists</td>
+<td style="text-align: center">30010</td>
+</tr>
+<tr>
+<td style="text-align: left">Symbol not open</td>
+<td style="text-align: center">30011</td>
+</tr>
+</tbody></table>
 <h1 id='restapi-error-code'>RestAPI error code</h1>
 <p>## Public error code</p>
 
@@ -3600,7 +5274,7 @@ If there is a large deviation between local server time and API server time, we 
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">client_oid length is not greater than 50, and cannot be Martian characters</td>
+<td style="text-align: left">client_oid length is not greater than 40, and cannot be Martian characters</td>
 <td style="text-align: left">40305</td>
 <td style="text-align: center">400</td>
 </tr>
@@ -3767,6 +5441,116 @@ If there is a large deviation between local server time and API server time, we 
 <tr>
 <td style="text-align: left">There is currently a commission or a planned commission, and the leverage cannot be adjusted</td>
 <td style="text-align: left">40730</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">This product does not support copy trading</td>
+<td style="text-align: left">40731</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Not currently a trader</td>
+<td style="text-align: left">40732</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order closing has been processed</td>
+<td style="text-align: left">40733</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Failed to place an order, the minimum number of trader open positions %s</td>
+<td style="text-align: left">40734</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Long position take profit price should be greater than the average opening price</td>
+<td style="text-align: left">40735</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Long position take profit price is greater than the current price</td>
+<td style="text-align: left">40736</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The short position take profit price should be less than the average opening price</td>
+<td style="text-align: left">40737</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The short position take profit price should be less than the current price</td>
+<td style="text-align: left">40738</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The stop loss price of a long position should be less than the average opening price</td>
+<td style="text-align: left">40739</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The stop loss price of a long position should be less than the current price</td>
+<td style="text-align: left">40740</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The stop loss price of a short position should be greater than the average opening price</td>
+<td style="text-align: left">40741</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The stop loss price of the short position should be greater than the current price</td>
+<td style="text-align: left">40742</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order is being closed and cannot be closed again</td>
+<td style="text-align: left">40743</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The tracking order status is wrong</td>
+<td style="text-align: left">40744</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">This order is being commissioned, and liquidation is not supported temporarily</td>
+<td style="text-align: left">40745</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">At present, the maximum number of positions that can be closed is %s. For the excess number, please go to the current order to close the position</td>
+<td style="text-align: left"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">40746</td>
+<td style="text-align: left">400</td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">The bonus is not allowed to hold two-way positions</td>
+<td style="text-align: left">40747</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The commission price is higher than the highest bid price</td>
+<td style="text-align: left">40748</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The commission price is lower than the lowest selling price</td>
+<td style="text-align: left">40749</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The plan commission for this contract has reached the upper limit</td>
+<td style="text-align: left">40750</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The contract&#39;s stop profit and stop loss order has reached the upper limit</td>
+<td style="text-align: left">40751</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
