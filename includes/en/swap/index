@@ -3680,7 +3680,8 @@ If there is a large deviation between local server time and API server time, we 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
      </span><span class="s2">"yesterdaySplitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//yesterday</span><span class="w"> </span><span class="err">profit</span><span class="w">
      </span><span class="s2">"sumProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//total</span><span class="w"> </span><span class="err">profit</span><span class="w">
-     </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">  </span><span class="err">//wait</span><span class="w"> </span><span class="err">profit</span><span class="w">
+     </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//wait</span><span class="w"> </span><span class="err">profit</span><span class="w">
+     </span><span class="s2">"yesterdayTimeStamp"</span><span class="p">:</span><span class="s2">""</span><span class="w"> </span><span class="err">//yesterday</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">TimeStamp</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='summary-of-historical-distribution-by-settlement-currency'>summary of historical distribution by settlement currency</h3>
 <p>Rate Limit：20 requests per second </p>

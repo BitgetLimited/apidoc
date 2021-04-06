@@ -3715,7 +3715,8 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
      </span><span class="s2">"yesterdaySplitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//昨日分润</span><span class="w">
      </span><span class="s2">"sumProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//累计分润</span><span class="w">
-     </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">  </span><span class="err">//待分润</span><span class="w">
+     </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">  </span><span class="err">//待分润</span><span class="w">
+     </span><span class="s2">"yesterdayTimeStamp"</span><span class="p">:</span><span class="s2">""</span><span class="w"> </span><span class="err">//昨日分润日期时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='91bd0dd759'>历史分润按结算币种汇总</h3>
 <p>限速规则：20次/s</p>
