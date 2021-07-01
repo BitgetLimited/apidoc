@@ -1,18 +1,2352 @@
-<h1 id='185368440e'>更新日志</h1>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-5-20-v1'>2021年5月20日【新增v1现货文档】</h2>
+<ul>
+<li>新增v1中文文档</li>
+<li>错误信息支持中</li>
+</ul>
+<h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
+<p>欢迎使用Bitget开发者文档！</p>
+
+<p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。</p>
+
+<p>你可以通过点击上方菜单来切换获取不同业务的API，还可通过点击右上方的语言按钮来切换文档语言。</p>
+
+<p>文档右侧是针对请求参数以及响应结果的示例。</p>
+<h2 id='7b3af22e1f'>更新关注</h2>
+<p>关于API新增、更新、下线等信息Bitget会提前发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。</p>
+
+<p>您可以点击 <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>这里 </a> 订阅公告。</p>
+<h2 id='152d3db758'>联系我们</h2>
+<p>使用过程中如有问题或者建议，您可选择以下方式联系我们：</p>
+
+<ul>
+<li>发送邮件至API@bitget.com。</li>
+</ul>
+<h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
+<p>如需使用API ，请先登录网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。</p>
+
+<p>您可以点击 <a href='https://www.bitget.com/zh-CN/account/newapi'>这里 </a> 创建 API Key。</p>
+
+<p>每个用户可创建10组Api Key，每个Api Key可对应设置读取、交易两种权限。</p>
+
+<p>权限说明如下：</p>
+
+<ul>
+<li>读取权限：读取权限用于对数据的查询，例如：行情数据。</li>
+<li>交易权限：交易权限用于下单、撤单等接口。</li>
+</ul>
+
+<p>创建成功后请务必记住以下信息：</p>
+
+<ul>
+<li><code>APIKey</code>  API交易的身份标识，随机算法生成。</li>
+<li><code>Secretkey</code>  私钥，由系统随机生成，用于签名的生成。</li>
+<li><code>Passphrase</code>  口令，由用户自己设定,需要注意的是，Passphrase忘记之后是无法找回的，需要重新创建APIKey。</li>
+</ul>
+
+<aside class="notice">
+
+```
+创建 APIKey 时可以绑定 IP 地址，未绑定 IP 地址的 APIKey出于安全考虑，强烈建议您绑定 IP 地址。
+```
+
+</aside>
+
+<aside class="warning">
+
+```
+<red>
+    <b>风险提示</b>
+</red>
+：这三个密钥与账号安全密切相关，请牢记<b>Passphrase</b>，无论何时都请勿向他人透露。
+这三个密钥任意一个泄露可能会造成您的资产损失，若发现APIKey泄露请尽快删除该APIKey。
+```
+
+</aside> 
+<h2 id='sdk'>SDK/代码示例</h2>
+<p><strong>SDK（推荐）</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
+
+<p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>
+<h2 id='5076603a3e'>接口类型</h2>
+<p>本章节主要为接口类型分以下两个方面：</p>
+
+<ul>
+<li>公共接口</li>
+<li>私有接口</li>
+</ul>
+
+<p><strong>公共接口</strong></p>
+
+<p>公共接口可用于获取配置信息和行情数据。公共请求无需认证即可调用。</p>
+
+<p><strong>私有接口</strong></p>
+
+<p>私有接口可用于订单管理和账户管理。每个私有请求必须使用规范的验证形式进行签名。</p>
+
+<p>私有接口需要使用您的APIKey进行验证。</p>
+<h2 id='12907e94be'>访问限制</h2>
+<p>本章节主要为访问限制：</p>
+
+<ul>
+<li>Rest API
+当访问超过频率限制时，将返回429状态：请求太频繁。</li>
+</ul>
+
+<p><strong>Rest API</strong></p>
+
+<p>如果传入有效的APIKey 用APIKey限速；如果没有则拿公网IP限速。</p>
+
+<p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 10次/秒。</p>
+
+<p>特殊说明：批量下单时，若下4个币对，每个币对10个订单时，计为一次请求。</p>
+<h2 id='api-2'>API域名</h2>
+<p>您可以自行使用Rest API接入方式进行操作。</p>
+
 <table><thead>
 <tr>
-<th>生效时间（新加坡时间 UTC+8)</th>
-<th>接口</th>
-<th>新增/修改</th>
-<th>摘要</th>
+<th>域名</th>
+<th>REST API</th>
+<th>建议使用</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>2020.7.15 10:00</td>
-<td><code>现货API</code></td>
-<td>新增</td>
-<td>现货API</td>
+<td>域名1</td>
+<td>https://capi.bitget.com</td>
+<td>国际</td>
+</tr>
+<tr>
+<td>域名2</td>
+<td>https://capi.bitgetapi.com</td>
+<td>中国地区</td>
 </tr>
 </tbody></table>
-<h1 id='api'>现货API</h1><h2 id='rest-api'>现货REST行情、交易API</h2>
-<p><a href="https://github.com/BitgetLimited/API_DOC/blob/master/README%E5%B8%81%E5%B8%81_rest_api.md">Spot API</a><br></p>
+<h2 id='api-3'>API验证</h2>
+<p><strong>发起请求</strong></p>
+
+<p>所有REST请求的header都必须包含以下key：</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY作为一个字符串。</li>
+<li>ACCESS-SIGN：使用base64编码签名（请参阅签名消息）。</li>
+<li>ACCESS-TIMESTAMP：您请求的时间戳。</li>
+<li>ACCESS-PASSPHRASE：您在创建API KEY时设置的口令。</li>
+<li>Content-Type：统一设置为application/json。</li>
+<li>locale:支持多语言，如：中文(zh-CN),英语(en-US)</li>
+</ul>
+<h2 id='api-4'>API公开参数</h2>
+<p><strong>side(交易方向)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sell</td>
+<td>卖</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>买</td>
+</tr>
+</tbody></table>
+
+<p><strong>orderType(订单类型)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>限价</td>
+</tr>
+<tr>
+<td>market</td>
+<td>市价</td>
+</tr>
+</tbody></table>
+
+<p><strong>force(订单类型)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal</td>
+<td>不用特殊控制类型订单</td>
+</tr>
+<tr>
+<td>postOnly</td>
+<td>postOnly类型订单</td>
+</tr>
+<tr>
+<td>fok</td>
+<td>全部成交或立即取消（FOK）</td>
+</tr>
+<tr>
+<td>ioc</td>
+<td>立即成交并取消剩余（IOC）</td>
+</tr>
+</tbody></table>
+
+<p><strong>status(订单状态)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>new</td>
+<td>未成交</td>
+</tr>
+<tr>
+<td>partial-fill</td>
+<td>部分成交</td>
+</tr>
+<tr>
+<td>full-fill</td>
+<td>全部成交</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>已撤销</td>
+</tr>
+</tbody></table>
+
+<p><strong>groupType(账单流水大类型)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>充值</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>提现</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>交易</td>
+</tr>
+<tr>
+<td>transfer</td>
+<td>划转</td>
+</tr>
+<tr>
+<td>other</td>
+<td>其他</td>
+</tr>
+</tbody></table>
+
+<p><strong>bizType(账单流水业务类型)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>充值</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>提现</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>买</td>
+</tr>
+<tr>
+<td>sell</td>
+<td>卖</td>
+</tr>
+<tr>
+<td>transfer-in</td>
+<td>转入</td>
+</tr>
+<tr>
+<td>transfer-out</td>
+<td>转出</td>
+</tr>
+</tbody></table>
+
+<p><strong>status(充提订单状态)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cancel</td>
+<td>取消</td>
+</tr>
+<tr>
+<td>reject</td>
+<td>拒绝</td>
+</tr>
+<tr>
+<td>success</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>wallet-fail</td>
+<td>钱包失败</td>
+</tr>
+<tr>
+<td>wallet-processing</td>
+<td>钱包处理中</td>
+</tr>
+<tr>
+<td>first-audit</td>
+<td>初审</td>
+</tr>
+<tr>
+<td>recheck</td>
+<td>复审</td>
+</tr>
+<tr>
+<td>first-reject</td>
+<td>初审拒绝</td>
+</tr>
+<tr>
+<td>recheck-reject</td>
+<td>复审拒绝</td>
+</tr>
+</tbody></table>
+
+<p><strong>type(用户提币地址查询)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chain-on</td>
+<td>链上</td>
+</tr>
+<tr>
+<td>inner-transfer</td>
+<td>内部地址</td>
+</tr>
+</tbody></table>
+
+<p><strong>K线间隔(granularity)</strong></p>
+
+<ul>
+<li>1min(1分钟)</li>
+<li>5min(5分钟)</li>
+<li>15min(15分钟)</li>
+<li>30min(30分钟)</li>
+<li>1h(1小时)</li>
+<li>4h(4小时)</li>
+<li>12h(12小时)</li>
+<li>1day(1天)</li>
+<li>1week(1周)</li>
+</ul>
+<h2 id='8ba46c43fe'>签名</h2>
+<p>ACCESS-SIGN的请求头是对 <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
+
+<p><strong>签名各字段说明</strong></p>
+
+<ul>
+<li>timestamp：与 ACCESS-TIMESTAMP 请求头相同。</li>
+<li>method：请求方法(POST/GET)，字母全部大写。</li>
+<li>requestPath：请求接口路径。</li>
+<li>queryString：请求URL中(?后的请求参数)的查询字符串。</li>
+<li>body：请求主体对应的字符串，如果请求没有主体(通常为GET请求)则body可省略。</li>
+</ul>
+
+<p><strong>queryString为空时，签名格式</strong></p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + body
+</code></p>
+
+<p><strong>queryString不为空时，签名格式</strong></p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
+</code></p>
+
+<p><strong>举例说明</strong></p>
+
+<p>获取深度信息，以 btcusdt 为例:</p>
+
+<ul>
+<li>Timestamp = 1591089508404</li>
+<li>Method = &quot;GET&quot;</li>
+<li>requestPath = &quot;/api/spot/v1/market/depth&quot;</li>
+<li>queryString= &quot;?symbol=btcusdt_spbl&amp;limit=20&quot;</li>
+</ul>
+
+<p>生成待签名的字符串:</p>
+
+<p><code>
+&#39;1591089508404GET/api/spot/v1/market/depth?symbol=btcusdt_spbl&amp;limit=20&#39;
+</code></p>
+
+<p>下单，以 btcusdt 为例:</p>
+
+<ul>
+<li>Timestamp = 1561022985382</li>
+<li>Method = &quot;POST&quot;</li>
+<li>requestPath = &quot;/api/spot/v1/order/order&quot;</li>
+<li>body = {&quot;symbol&quot;:&quot;btcusdt_spbl&quot;,&quot;quantity&quot;:&quot;8&quot;,&quot;side&quot;:&quot;buy&quot;,&quot;price&quot;:&quot;1&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;clientOrderId&quot;:&quot;bitget#123456&quot;}</li>
+</ul>
+
+<p>生成待签名的字符串:</p>
+
+<p><code>
+&#39;1561022985382POST/api/spot/v3/order/order{&quot;symbol&quot;:&quot;btcusdt_spbl&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;buy&quot;,&quot;price&quot;:&quot;1&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;clientOrderId&quot;:&quot;bitget#123456&quot;}&#39;  
+</code></p>
+
+<p><strong>生成最终签名的步骤</strong></p>
+
+<p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
+
+<p><code>
+Signature = hmac_sha256(secretkey, Message)
+</code></p>
+
+<p>第2步，对于Signature进行base64编码</p>
+
+<p><code>
+Signature = base64.encode(Signature)
+</code></p>
+<h2 id='d9ed27b09f'>请求交互</h2>
+<p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
+
+<p><strong>请求交互说明</strong></p>
+
+<ul>
+<li>请求参数：根据接口请求参数规定进行参数封装。</li>
+<li>提交请求参数：将封装好的请求参数通过GET/POST方式提交至服务器。</li>
+<li>服务器响应：服务器首先对用户请求数据进行参数安全校验，通过校验后根据业务逻辑将响应数据以JSON格式返回给用户。</li>
+<li>数据处理：对服务器响应数据进行处理。</li>
+</ul>
+
+<p><strong>成功</strong></p>
+
+<p>HTTP状态码200表示成功响应，并可能包含内容。如果响应含有内容，则将显示在相应的返回内容里面。</p>
+
+<p><strong>常见错误码</strong></p>
+
+<ul>
+<li>400 Bad Request – Invalid request format 请求格式无效</li>
+<li>401 Unauthorized – Invalid API Key 无效的API Key</li>
+<li>403 Forbidden – You do not have access to the requested resource 请求无权限</li>
+<li>404 Not Found 没有找到请求</li>
+<li>429 Too Many Requests 请求太频繁被系统限流</li>
+<li>500 Internal Server Error – We had a problem with our server 服务器内部错误</li>
+<li>如果失败body带有错误描述信息</li>
+</ul>
+<h2 id='9a3f8fe408'>标准规范</h2>
+<p><strong>时间戳</strong></p>
+
+<p>请求签名中的ACCESS-TIMESTAMP的单位是毫秒。请求的时间戳必须在API服务时间的30秒内，否则请求将被视为过期并被拒绝。
+如果本地服务器时间和API服务器时间之间存在较大的偏差，那么我们建议您使用通过查询API服务器时间来更新http header。</p>
+
+<p><strong>限频规则</strong></p>
+
+<p>如果请求过于频繁系统将自动限制请求，并在http header中返回429 too many requests状态码。</p>
+
+<ul>
+<li>公共接口：如行情接口，统一限频为2秒最多20个请求。</li>
+<li>授权接口：通过apikey限制授权接口的调用，参考每个接口的限频规则限频。</li>
+</ul>
+
+<p><strong>请求格式</strong></p>
+
+<p>目前只有两种格式的请求方法：GET和POST</p>
+
+<ul>
+<li>GET:  参数通过queryString在路径中传输到服务器。</li>
+<li>POST: 参数按照json格式发送body传输到服务器。</li>
+</ul>
+<h1 id='restapi'>RestAPI</h1><h2 id='5a0fbdfb96'>基础配置接口</h2><h3 id='3f1907847c'>获取服务器时间</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取服务器时间</p>
+
+<ul>
+<li>GET /api/spot/v1/public/time </li>
+</ul>
+
+<blockquote>
+<p>返回数据：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622097118135</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622097118134</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='0768e744b5'>币种基础信息</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取平台所有币种信息</p>
+
+<ul>
+<li>GET /api/spot/v1/public/currencies</li>
+</ul>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1622097139437</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transfer"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chains"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"chain"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"minWithdrawAmount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"browserUrl"</span><span class="p">:</span><span class="s2">"https://blockchair.com/bitcoin/testnet/transaction/"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transfer"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chains"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"chain"</span><span class="p">:</span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"minWithdrawAmount"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"browserUrl"</span><span class="p">:</span><span class="s2">"https://ropsten.etherscan.io/tx/"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: left">币种id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: left">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">transfer</td>
+<td style="text-align: left">是否可以划转</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">链名称</td>
+</tr>
+<tr>
+<td style="text-align: left">needTag</td>
+<td style="text-align: left">是否需要tag</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawAble</td>
+<td style="text-align: left">是否可提现</td>
+</tr>
+<tr>
+<td style="text-align: left">rechargeAble</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawFee</td>
+<td style="text-align: left">提现手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">depositConfirm</td>
+<td style="text-align: left">充值确认块数</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawConfirm</td>
+<td style="text-align: left">提现确认块数</td>
+</tr>
+<tr>
+<td style="text-align: left">minDepositAmount</td>
+<td style="text-align: left">最小充值数</td>
+</tr>
+<tr>
+<td style="text-align: left">minWithdrawAmount</td>
+<td style="text-align: left">最小提现数</td>
+</tr>
+<tr>
+<td style="text-align: left">browserUrl</td>
+<td style="text-align: left">区块浏览器地址</td>
+</tr>
+</tbody></table>
+<h3 id='d8141aedea'>币对基础配置信息</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取所有币对基础配置信息</p>
+
+<ul>
+<li>GET /api/spot/v1/public/products</li>
+</ul>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1622097197283</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"EOSUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">baseCoin</td>
+<td style="text-align: center">基础币</td>
+</tr>
+<tr>
+<td style="text-align: left">quoteCoin</td>
+<td style="text-align: center">计价货币</td>
+</tr>
+<tr>
+<td style="text-align: left">minTradeAmount</td>
+<td style="text-align: center">最小交易数量</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTradeAmount</td>
+<td style="text-align: center">最小交易数量</td>
+</tr>
+<tr>
+<td style="text-align: left">takerFeeRate</td>
+<td style="text-align: center">taker手续费率</td>
+</tr>
+<tr>
+<td style="text-align: left">makerFeeRate</td>
+<td style="text-align: center">maker手续费率</td>
+</tr>
+<tr>
+<td style="text-align: left">priceScale</td>
+<td style="text-align: center">价格精度</td>
+</tr>
+<tr>
+<td style="text-align: left">quantityScale</td>
+<td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">状态</td>
+</tr>
+</tbody></table>
+<h3 id='d9d6d6f443'>单个币对获取信息</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取全部ticker信息</p>
+
+<ul>
+<li>GET /api/spot/v1/public/product</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1622097197283</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">baseCoin</td>
+<td style="text-align: center">基础币</td>
+</tr>
+<tr>
+<td style="text-align: left">quoteCoin</td>
+<td style="text-align: center">计价货币</td>
+</tr>
+<tr>
+<td style="text-align: left">minTradeAmount</td>
+<td style="text-align: center">最小交易数量</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTradeAmount</td>
+<td style="text-align: center">最小交易数量</td>
+</tr>
+<tr>
+<td style="text-align: left">takerFeeRate</td>
+<td style="text-align: center">taker手续费率</td>
+</tr>
+<tr>
+<td style="text-align: left">makerFeeRate</td>
+<td style="text-align: center">maker手续费率</td>
+</tr>
+<tr>
+<td style="text-align: left">priceScale</td>
+<td style="text-align: center">价格精度</td>
+</tr>
+<tr>
+<td style="text-align: left">quantityScale</td>
+<td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">状态</td>
+</tr>
+</tbody></table>
+<h2 id='dd1d4ee749'>公共行情接口</h2><h3 id='ticker'>获取某个Ticker信息</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取某个ticker信息</p>
+
+<ul>
+<li>GET /api/spot/v1/market/ticker</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btc_usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"24小时最高价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"24小时最低价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"开盘价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"最新成交价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"计价币成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"基础币成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"usdt成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"更新的时间"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">high24h</td>
+<td style="text-align: left">24小时最高价</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>返回值说明</strong></td>
+<td style="text-align: left">24小时最低价</td>
+</tr>
+<tr>
+<td style="text-align: left">返回字段</td>
+<td style="text-align: left">字段说明</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">high24h</td>
+<td style="text-align: left">24小时最高价</td>
+</tr>
+<tr>
+<td style="text-align: left">last</td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+</tbody></table>
+<h3 id='ticker-2'>获取全部Ticker信息</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取全部ticker信息</p>
+
+<ul>
+<li>GET /api/spot/v1/market/tickers</li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btc_usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"24小时最高价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"24小时最低价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"开盘价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"最新成交价"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"计价币成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"基础币成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"usdt成交额"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"更新的时间"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">high24h</td>
+<td style="text-align: left">24小时最高价</td>
+</tr>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: left">最新成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">low24h</td>
+<td style="text-align: left">24小时最低价</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">系统时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">base_volume</td>
+<td style="text-align: left">基础币量</td>
+</tr>
+<tr>
+<td style="text-align: left">quoteVolume</td>
+<td style="text-align: left">计价币量</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtVolume</td>
+<td style="text-align: left">usdt币量</td>
+</tr>
+</tbody></table>
+<h3 id='2fdd066e43'>获取成交数据</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取成交数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/fills</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">默认100，最大500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1622097283024</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BFTUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"781698148534505473"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"2.38735"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"2470.6224"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="s2">"1622097282536"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BFTUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"781698140590493697"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"2.38649"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"3239.7976"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="s2">"1622097280642"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: center">成交单id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">交易方向</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTotalAmount</td>
+<td style="text-align: center">已成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTime</td>
+<td style="text-align: center">成交时间</td>
+</tr>
+</tbody></table>
+<h3 id='k'>获取K线数据</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取K线数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/candles</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">period</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">K线的时间单位,粒度（取值参考如下列表)</td>
+</tr>
+<tr>
+<td style="text-align: left">after</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">时间之后的</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">时间之前的（如果都传）</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1622097356073</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"2.34517"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high"</span><span class="p">:</span><span class="s2">"2.34771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low"</span><span class="p">:</span><span class="s2">"2.34214"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"2.34555"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"189631.101357091"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"80862.6823"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"189631.101357091"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1622091360000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"2.34391"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high"</span><span class="p">:</span><span class="s2">"2.34903"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low"</span><span class="p">:</span><span class="s2">"2.34391"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"2.34608"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"167725.002115681"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"71479.3205"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"167725.002115681"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1622091420000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: center">系统时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">open</td>
+<td style="text-align: center">开盘价格</td>
+</tr>
+<tr>
+<td style="text-align: left">high</td>
+<td style="text-align: center">最高价格</td>
+</tr>
+<tr>
+<td style="text-align: left">low</td>
+<td style="text-align: center">最低价格</td>
+</tr>
+<tr>
+<td style="text-align: left">close</td>
+<td style="text-align: center">收盘价格</td>
+</tr>
+<tr>
+<td style="text-align: left">baseVol</td>
+<td style="text-align: center">交易币成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">quoteVol</td>
+<td style="text-align: center">计价币成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtVol</td>
+<td style="text-align: center">usdt成交量</td>
+</tr>
+</tbody></table>
+<h3 id='5139801b64'>获取深度数据</h3>
+<p>限速规则：20次/2s</p>
+
+<p><strong>HTTP请求</strong>
+获取K线数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/depth</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约名称</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">默认：step0： 不合并，取值：step0,step1，step2，step3，step4，step5</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622102974025,
+    "data":{
+        "asks":[
+            [
+                "38084.5",
+                "0.0039"
+            ],
+            [
+                "38085.7",
+                "0.0018"
+            ],
+            [
+                "38086.7",
+                "0.0310"
+            ],
+            [
+                "38088.2",
+                "0.5303"
+            ]
+        ],
+        "bids":[
+            [
+                "38073.7",
+                "0.4993000000000000"
+            ],
+            [
+                "38073.4",
+                "0.4500"
+            ],
+            [
+                "38073.3",
+                "0.1179"
+            ],
+            [
+                "38071.5",
+                "0.2162"
+            ]
+        ],
+        "timestamp":"1622102974025"
+    }
+}
+</code></pre><h2 id='df03e301d5'>账户接口</h2><h3 id='6f78777a98'>获取账户资产</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取账户资产</p>
+
+<ul>
+<li>GET  /api/spot/v1/account/assets</li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+  "data":[
+    {
+        "coinId":"10012",
+        "coinName":"usdt",
+        "available":"0",
+        "frozen":"0",
+        "lock":"0",
+        "uTime":"1622697148"
+    }
+]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: center">币种id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: center">可用资产</td>
+</tr>
+<tr>
+<td style="text-align: left">frozen</td>
+<td style="text-align: center">冻结资产</td>
+</tr>
+<tr>
+<td style="text-align: left">lock</td>
+<td style="text-align: center">锁仓资产</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: center">更新时间</td>
+</tr>
+</tbody></table>
+<h3 id='23f9acd1d3'>获取账单流水</h3>
+<p>限速规则 10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取账单流水</p>
+
+<ul>
+<li>POST /api/spot/v1/account/bills</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币种ID</td>
+</tr>
+<tr>
+<td style="text-align: left">groupType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">账单大类型   <a href="#API公开参数">groupType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">bizType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">业务类型  <a href="#API公开参数">bizType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">after</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入billId， 在这 billId 之前的数据</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 billId 在这 billId 之后的数据。</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">返回结果的数量，默认100，最大 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+  "data":[{
+      "cTime":"1622697148",
+      "coinId":"22",
+      "coinName":"usdt",
+      "groupType":"deposit",
+      "bizType":"transfer-in", 
+      "quantity":"1",
+      "balance": "1",
+      "fees":"0",
+      "billId":"1291"
+}]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: center">币种Id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">groupType</td>
+<td style="text-align: center">流水类型</td>
+</tr>
+<tr>
+<td style="text-align: left">bizType</td>
+<td style="text-align: center">流水账单业务类型</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: center">数量</td>
+</tr>
+<tr>
+<td style="text-align: left">balance</td>
+<td style="text-align: center">划转之前的资产</td>
+</tr>
+<tr>
+<td style="text-align: left">fees</td>
+<td style="text-align: center">手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">billId</td>
+<td style="text-align: center">id</td>
+</tr>
+</tbody></table>
+<h2 id='fdf72688ac'>订单接口</h2><h3 id='fd6ce2a756'>下单</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取账户资产</p>
+
+<ul>
+<li>POST  /api/spot/v1/trade/orders</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易方向</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易类型 limit/market</td>
+</tr>
+<tr>
+<td style="text-align: left">force</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">限价价格</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">委托数量</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">自定义id 长度：40</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"200",
+    "msg":"success",
+    "data":{
+        "orderId":"1001",
+        "clientOrderId":"hgXjh89AsxleMSw"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义id</td>
+</tr>
+</tbody></table>
+<h3 id='de93fae07b'>批量下单</h3>
+<p>限速规则 10次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>批量下单</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/batch-orders</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">List<Order></td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">下单集合</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Order参数</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易方向</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易类型 limit/market</td>
+</tr>
+<tr>
+<td style="text-align: left">force</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">限价价格</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">委托数量</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">自定义id 长度：40</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"200",
+    "msg":"success",
+    "data":{
+        "orderId":"1001",
+        "clientOrderId":"hgXjh89AsxleMSw"
+    }
+}
+</code></pre><h3 id='fc150cab0e'>撤单</h3>
+<p>限速规则 50次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>撤单操作</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-order</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+
+  "code":"200",
+   "message":"success"
+
+}
+</code></pre><h3 id='8cc3c3d64a'>批量撤单(单对)</h3>
+<p>限速规则 50次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>批量撤单请求</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-batch-orders</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderIds</td>
+<td style="text-align: left">String[]</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单id数组</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">   
+</span></code></pre><h3 id='f876a4e1f9'>获取订单详情</h3>
+<p>限速规则 20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>根据订单id或者自定义id获取订单</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/orderInfo</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderIds</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center"></td>
+<td style="text-align: center">自定义id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt_spbl"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"2222222"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"34245.12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">  
+  </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountId</td>
+<td style="text-align: center">账户id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">委托类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">委托方向</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">订状态</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTotalAmount</td>
+<td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+</tbody></table>
+<h3 id='19671a1099'>获取未成交列表</h3>
+<p>限速规则 20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取未成交和部分成交未撤单的订单</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/open-orders</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt_spbl"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"2222222"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"34829.12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">  
+  </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountId</td>
+<td style="text-align: center">账户id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">委托类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">委托方向</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">订状态</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTotalAmount</td>
+<td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+</tbody></table>
+<h3 id='b9220b5487'>获取历史委托列表</h3>
+<p>限速规则 20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取全部成交和已撤销的订单</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/history</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">after</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 orderId， 在这 orderId 之前的数据 desc</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 orderId 在这 orderId 之后的数据 asc</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">返回结果的数量，默认100，最大 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+"data":[{
+  "accountId":"10012",
+  "symbol":"btcusdt_spbl",
+  "orderId":"2222222",
+  "clientOrderId":"xxxxxxx",
+  "price":"34982.12",
+  "quantity":"1",  
+  "orderType":"limit",
+  "side":"buy",
+  "status":"new",
+  "fillPrice":"34982.12",
+  "fillQuantity":"1",
+  "fillTotalAmount":"34982.12",
+  "cTime":"1622697148"
+}]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountId</td>
+<td style="text-align: center">账户id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: center">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">quantity</td>
+<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">委托类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">委托方向</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">订状态</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTotalAmount</td>
+<td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+</tbody></table>
+<h3 id='106a02279b'>获取成交明细</h3>
+<p>限速规则 20次/2s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取成交的历史明细</p>
+
+<ul>
+<li> POST /api/spot/v1/trade/fills</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">after</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 orderId， 在这 orderId 之前的数据 desc</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 orderId 在这 orderId 之后的数据 asc</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">返回结果的数量，默认100，最大 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"",
+  "message":"",
+  "data":[{
+  "accountId":"1001",
+  "symbol":"btcusdt_spbl",
+  "orderId":"100021",
+  "fillId":"102211",
+  "orderType":"limit",
+  "side":"buy",
+  "fillPrice":"38293.12",
+  "fillQuantity":"1",
+  "fillTotalAmount":"38293.12",
+  "cTime":"1622697148",
+  "feeCcy":"btc",
+  "fees":"0.0001"
+}]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountId</td>
+<td style="text-align: center">账户id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">fillId</td>
+<td style="text-align: center">成交id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">委托类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">委托方向</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTotalAmount</td>
+<td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">feeCcy</td>
+<td style="text-align: center">手续费币种</td>
+</tr>
+<tr>
+<td style="text-align: left">fees</td>
+<td style="text-align: center">手续费</td>
+</tr>
+</tbody></table>
+<h1 id='restapi-2'>RestAPI错误代码</h1><h2 id='5699b4eac7'>公共错误码</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">错误提示</th>
+<th style="text-align: left">错误码</th>
+<th style="text-align: center">http状态码</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_KEY&quot;不能为空</td>
+<td style="text-align: left">40001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_SIGN&quot;不能为空</td>
+<td style="text-align: left">40002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_TIMESTAMP&quot;不能为空</td>
+<td style="text-align: left">40003</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_TIMESTAMP</td>
+<td style="text-align: left">40005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_KEY</td>
+<td style="text-align: left">40006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的Content_Type，请使用“application/json”格式</td>
+<td style="text-align: left">40007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求时间戳过期</td>
+<td style="text-align: left">40008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">api 校验失败</td>
+<td style="text-align: left">40009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求太频繁</td>
+<td style="text-align: left">429</td>
+<td style="text-align: center">429</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_PASSPHRASE&quot;不能为空</td>
+<td style="text-align: left">40011</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey/passphrase不正确</td>
+<td style="text-align: left">40012</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">用户被冻结</td>
+<td style="text-align: left">40013</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">权限不正确</td>
+<td style="text-align: left">40014</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">系统错误</td>
+<td style="text-align: left">40015</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">用户必须绑定手机或者谷歌</td>
+<td style="text-align: left">40016</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数校验失败</td>
+<td style="text-align: left">40017</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">非法的ip请求</td>
+<td style="text-align: left">40018</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
