@@ -1329,20 +1329,19 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btc_usdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"24小时最高价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"24小时最低价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"开盘价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"最新成交价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"计价币成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"基础币成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"usdt成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"更新的时间"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1625125756372</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -1362,28 +1361,32 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">24小时最高价</td>
 </tr>
 <tr>
-<td style="text-align: left"></td>
+<td style="text-align: left">close</td>
 <td style="text-align: left">最新成交价</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>返回值说明</strong></td>
+<td style="text-align: left">low24h</td>
 <td style="text-align: left">24小时最低价</td>
 </tr>
 <tr>
-<td style="text-align: left">返回字段</td>
-<td style="text-align: left">字段说明</td>
+<td style="text-align: left">open</td>
+<td style="text-align: left">开盘价</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">币对名称</td>
+<td style="text-align: left">quoteVol</td>
+<td style="text-align: left">计价币成交额</td>
 </tr>
 <tr>
-<td style="text-align: left">high24h</td>
-<td style="text-align: left">24小时最高价</td>
+<td style="text-align: left">baseVol</td>
+<td style="text-align: left">基础币成交额</td>
 </tr>
 <tr>
-<td style="text-align: left">last</td>
-<td style="text-align: left">最新成交价</td>
+<td style="text-align: left">usdtVol</td>
+<td style="text-align: left">usdt成交额</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">时间戳</td>
 </tr>
 </tbody></table>
 <h3 id='ticker-2'>获取全部Ticker信息</h3>
@@ -1401,21 +1404,21 @@ Signature = base64.encode(Signature)
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btc_usdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"24小时最高价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"24小时最低价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"开盘价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"最新成交价"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"计价币成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"基础币成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"usdt成交额"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"更新的时间"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1625125756372</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
