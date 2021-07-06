@@ -275,14 +275,14 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-f95284e8.css" rel="stylesheet" media="screen" />
-  <link href="../../stylesheets/print-bf778bdf.css" rel="stylesheet" media="print" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
-        <img src="../../images/logo-2cda61b9.png" class="logo" alt="Logo" />
+        <img src="../../images/logo-2cda61b9.png" class="logo" alt="" />
       </a>
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
@@ -296,7 +296,7 @@
 <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="../../images/navbar-cad8cdcb.png" alt="Navbar" />
+        <img src="../../images/navbar-cad8cdcb.png" alt="" />
       </span>
 </a>
 <div class="toc-wrapper">
@@ -309,13 +309,149 @@
     <ul class="search-results"></ul>
   <ul id="toc" class="toc-list-h1">
       <li>
-        <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
-      </li>
-      <li>
-        <a href="#spot-api-address" class="toc-h1 toc-link" data-title="Spot API address">Spot API address</a>
+        <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#spot-rest-api-market-amp-trade" class="toc-h2 toc-link" data-title="Spot REST API(Market &amp; Trade)">Spot REST API(Market &amp; Trade)</a>
+                <a href="#05-07-2021-new-creation-v1-spot-trading-document" class="toc-h2 toc-link" data-title="05/07/2021【New creation v1 Spot trading document】">05/07/2021【New creation v1 Spot trading document】</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#api-introduction" class="toc-h2 toc-link" data-title="API Introduction">API Introduction</a>
+              </li>
+              <li>
+                <a href="#update-follow-up" class="toc-h2 toc-link" data-title="Update follow-up">Update follow-up</a>
+              </li>
+              <li>
+                <a href="#contact-us" class="toc-h2 toc-link" data-title="Contact us">Contact us</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick start">Quick start</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#prepare-to-integrate" class="toc-h2 toc-link" data-title="Prepare to integrate">Prepare to integrate</a>
+              </li>
+              <li>
+                <a href="#sdk-code-example" class="toc-h2 toc-link" data-title="SDK / Code example">SDK / Code example</a>
+              </li>
+              <li>
+                <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
+              </li>
+              <li>
+                <a href="#access-restriction" class="toc-h2 toc-link" data-title="Access restriction">Access restriction</a>
+              </li>
+              <li>
+                <a href="#api-domain" class="toc-h2 toc-link" data-title="API domain">API domain</a>
+              </li>
+              <li>
+                <a href="#api-verification" class="toc-h2 toc-link" data-title="API Verification">API Verification</a>
+              </li>
+              <li>
+                <a href="#api-public-parameters" class="toc-h2 toc-link" data-title="API Public parameters">API Public parameters</a>
+              </li>
+              <li>
+                <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
+              </li>
+              <li>
+                <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request interaction">Request interaction</a>
+              </li>
+              <li>
+                <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard Specification">Standard Specification</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi" class="toc-h1 toc-link" data-title="RestAPI">RestAPI</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#basic-configuration-interface" class="toc-h2 toc-link" data-title="Basic configuration interface">Basic configuration interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#obtain-server-time" class="toc-h3 toc-link" data-title="Obtain server time">Obtain server time</a>
+                      </li>
+                      <li>
+                        <a href="#coin-basic-information" class="toc-h3 toc-link" data-title="Coin basic information">Coin basic information</a>
+                      </li>
+                      <li>
+                        <a href="#basic-configuration-information-of-trading-pairs" class="toc-h3 toc-link" data-title="Basic configuration information of trading pairs">Basic configuration information of trading pairs</a>
+                      </li>
+                      <li>
+                        <a href="#single-trading-pair-to-obtain-information" class="toc-h3 toc-link" data-title="Single trading pair to obtain information">Single trading pair to obtain information</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#public-market-interface" class="toc-h2 toc-link" data-title="Public market interface">Public market interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#obtain-a-ticker-information" class="toc-h3 toc-link" data-title="Obtain a Ticker information">Obtain a Ticker information</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-all-ticker-information" class="toc-h3 toc-link" data-title="Obtain all Ticker information">Obtain all Ticker information</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-transaction-data" class="toc-h3 toc-link" data-title="Obtain transaction data">Obtain transaction data</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-candlestick-line-data" class="toc-h3 toc-link" data-title="Obtain candlestick line data">Obtain candlestick line data</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-market-depth-data" class="toc-h3 toc-link" data-title="Obtain market depth data">Obtain market depth data</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#account-interface" class="toc-h2 toc-link" data-title="Account interface">Account interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#obtain-account-assets" class="toc-h3 toc-link" data-title="Obtain account assets">Obtain account assets</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-transaction-detail-flow" class="toc-h3 toc-link" data-title="Obtain transaction detail flow">Obtain transaction detail flow</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#order-interface" class="toc-h2 toc-link" data-title="Order interface">Order interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#place-order" class="toc-h3 toc-link" data-title="Place order">Place order</a>
+                      </li>
+                      <li>
+                        <a href="#batch-order" class="toc-h3 toc-link" data-title="Batch order">Batch order</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-order" class="toc-h3 toc-link" data-title="Cancel order">Cancel order</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-order-in-batch-single-trading-pair" class="toc-h3 toc-link" data-title="Cancel order in batch (single trading pair)">Cancel order in batch (single trading pair)</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-order-details" class="toc-h3 toc-link" data-title="Obtain order details">Obtain order details</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-unfilled-order-list" class="toc-h3 toc-link" data-title="Obtain unfilled order list">Obtain unfilled order list</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-order-history-list" class="toc-h3 toc-link" data-title="Obtain order history list">Obtain order history list</a>
+                      </li>
+                      <li>
+                        <a href="#obtain-transaction-details" class="toc-h3 toc-link" data-title="Obtain transaction details">Obtain transaction details</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi-error-code" class="toc-h1 toc-link" data-title="RestAPI  error code">RestAPI  error code</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#public-error-code" class="toc-h2 toc-link" data-title="Public error code">Public error code</a>
               </li>
           </ul>
       </li>
@@ -328,7 +464,7 @@
 Clipboard script
 -->
 
-<script src="../../dist/clipboard.min-f99f064d.js"></script>
+      <script src="../../dist/clipboard.min-f99f064d.js"></script>
 
 <script>
 var clipboard = new ClipboardJS('.clipboard_button');
@@ -341,24 +477,2407 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='changelog'>Changelog</h1>
+<h1 id='update-log'>Update Log</h1><h2 id='05-07-2021-new-creation-v1-spot-trading-document'>05/07/2021【New creation v1 Spot trading document】</h2>
+<ul>
+<li>Old spot <a href="https://github.com/BitgetLimited/API_DOC">Api</a></li>
+<li>New creation of V1 document</li>
+<li>Supporting of error message</li>
+</ul>
+<h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
+<p>Welcome to Bitget developer documentation!</p>
+
+<p>This document is the only official document of Bitget API. The capabilities provided by Bitget API will be continuously updated here. Please pay attention to it in time.</p>
+
+<p>You can switch to access different business APIs by clicking the upper menu, and you can switch the document language by clicking the language button on the upper right.</p>
+
+<p>On the right side of the document is an example of request parameters and response results.</p>
+<h2 id='update-follow-up'>Update follow-up</h2>
+<p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance. It is recommended that users follow and subscribe to our announcements to obtain relevant information in a timely manner.</p>
+
+<p>You can click <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>here </a> to subscribe to the announcement.</p>
+<h2 id='contact-us'>Contact us</h2>
+<p>If you have any questions or suggestions, feel free to contact us:</p>
+
+<ul>
+<li>Email API@bitget.com。</li>
+</ul>
+<h1 id='quick-start'>Quick start</h1><h2 id='prepare-to-integrate'>Prepare to integrate</h2>
+<p>If you need to use the API, please log in to the web page first, complete the API key application and permission configuration, and then develop and trade according to the details of this document.</p>
+
+<p>You can click <a href='https://www.bitget.com/zh-CN/account/newapi'>here</a>  to create an API Key.</p>
+
+<p>Each user can create 10 sets of Api Keys, and each Api Key can set two permissions for reading and trading.</p>
+
+<p>The permissions are described as follows:</p>
+
+<ul>
+<li>Read permission: Read permission is used to query data, such as market data.</li>
+<li>Transaction permission: Transaction authority is used for the interface of placing and cancelling orders.</li>
+</ul>
+
+<p>After the API creation is successful, please remember the following information:</p>
+
+<ul>
+<li><code>APIKey </code> The identity of API transactions, it is generated by a random algorithm.</li>
+<li><code>Secretkey</code>  The private key is randomly generated by the system and used for signature generation.</li>
+<li><code>Passphrase</code>  Passphrase is set by the user. It should be noted that if the Passphrase is forgotten, it cannot be retrieved, and the APIKey needs to be recreated.</li>
+</ul>
+
+<aside class="notice">
+
+```
+User can bind IP address when he creates APIKey ，For the safety consideration of APIKe for unbind IP address，the binding of IP address is strongly recommended. 
+```
+
+</aside>
+
+<aside class="warning">
+
+```Html
+<red>
+    <b> risk warning</b>
+</red>
+
+：These three keys are closely related to account security, please keep in mind<b>Passphrase</b>，Do not disclose to others at any time.
+
+Leaking any one of these three keys may cause loss of your assets. If you find that the APIKey is leaked,
+
+please delete the APIKey as soon as possible.
+
+```
+
+</aside> 
+<h2 id='sdk-code-example'>SDK / Code example</h2>
+<p><strong>SDK（Recommended）</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
+
+<p>CCXT is our authorized SDK provider, and you can access Bitget API through CCXT. For more information, please visit:</p>
+
+<p><a href="https://ccxt.trade/">https://ccxt.trade</a></p>
+<h2 id='interface-type'>Interface Type</h2>
+<p>This chapter is consist of the following two aspects for the interface types:</p>
+
+<ul>
+<li>Public interface</li>
+<li>Private interface</li>
+</ul>
+
+<p><strong>Public interface</strong></p>
+
+<p>The public interface can be used to obtain configuration information and market data. Public requests can be called without authentication.</p>
+
+<p><strong>Private interface</strong></p>
+
+<p>The private interface can be used for order management and account management. Every private request must be signed using a canonical form of verification.</p>
+
+<p>The private interface needs to be verified with your APIKey.</p>
+<h2 id='access-restriction'>Access restriction</h2>
+<p>This chapter mainly focuses on access restrictions:</p>
+
+<ul>
+<li>Rest API when the access exceeds the frequency limit, it will return to the 429 status: the request is too frequent.</li>
+</ul>
+
+<p><strong>Rest API</strong></p>
+
+<p>If a valid APIKey is passed in, use APIKey to limit the speed; if not, use the public IP to limit the speed.</p>
+
+<p>Speed ​​limit rules: There are separate instructions on each interface. If there is no specific instruction, the speed limit of general interface is 10 times per second.</p>
+
+<p>Special note: When placing orders in batches, if 4 trading pairs are placed, 10 orders for each trading pair are counted as one request.</p>
+<h2 id='api-domain'>API domain</h2>
+<p>You can use the Rest API access method by yourself.</p>
+
 <table><thead>
 <tr>
-<th>Release Time (Singapore Time UTC +8)</th>
-<th>interface</th>
-<th>New/Update</th>
-<th>abstract</th>
+<th>Domain</th>
+<th>REST API</th>
+<th>Recommend to use</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>15 July 2020,10:00</td>
-<td><code>Historical API address</code></td>
-<td>New</td>
-<td>Historical API address</td>
+<td>Domain 1</td>
+<td><a href="https://capi.bitget.com/">https://capi.bitget.com</a></td>
+<td>International</td>
+</tr>
+<tr>
+<td>Domain 2</td>
+<td><a href="https://capi.bitgetapi.com/">https://capi.bitgetapi.com</a></td>
+<td>China</td>
 </tr>
 </tbody></table>
-<h1 id='spot-api-address'>Spot API address</h1><h2 id='spot-rest-api-market-amp-trade'>Spot REST API(Market &amp; Trade)</h2>
-<p><a href="https://github.com/BitgetLimited/API_Docs_en">Spot API</a><br></p>
+<h2 id='api-verification'>API Verification</h2>
+<p><strong>Initiating request</strong></p>
+
+<p>The header of all REST requests must contain the following keys:</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY as a string.</li>
+<li>ACCESS-SIGN： Sign with base64 encoding (see Signing messages).</li>
+<li>ACCESS-TIMESTAMP： The timestamp of your request.</li>
+<li>ACCESS-PASSPHRASE：The passphrase you set when creating the API KEY.</li>
+<li>Content-Type：Standardized setting to application/json.</li>
+<li>locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
+</ul>
+<h2 id='api-public-parameters'>API Public parameters</h2>
+<p><strong>side(Trade direction)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sell</td>
+<td>Sell</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>Buy</td>
+</tr>
+</tbody></table>
+
+<p><strong>orderType(Order type)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>Limit order</td>
+</tr>
+<tr>
+<td>market</td>
+<td>Market order</td>
+</tr>
+</tbody></table>
+
+<p><strong>force(Order type)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal</td>
+<td>Do not use special type order</td>
+</tr>
+<tr>
+<td>postOnly</td>
+<td>postOnly type of order</td>
+</tr>
+<tr>
+<td>fok</td>
+<td>Fill Or Kill（FOK）</td>
+</tr>
+<tr>
+<td>ioc</td>
+<td>Immediate-Or-Cancel（IOC）</td>
+</tr>
+</tbody></table>
+
+<p><strong>status(Order status)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>new</td>
+<td>Unfilled</td>
+</tr>
+<tr>
+<td>partial-fill</td>
+<td>Partially filled</td>
+</tr>
+<tr>
+<td>full-fill</td>
+<td>Fully filled</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>Cancelled</td>
+</tr>
+</tbody></table>
+
+<p><strong>groupType(Major types of transaction)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>Deposit</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>Withdrawal</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td>Trade</td>
+</tr>
+<tr>
+<td>transfer</td>
+<td>Transfer</td>
+</tr>
+<tr>
+<td>other</td>
+<td>Others</td>
+</tr>
+</tbody></table>
+
+<p><strong>bizType(Business type)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deposit</td>
+<td>Deposit</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>Withdrawal</td>
+</tr>
+<tr>
+<td>buy</td>
+<td>Buy</td>
+</tr>
+<tr>
+<td>Sell</td>
+<td>sell</td>
+</tr>
+<tr>
+<td>transfer-in</td>
+<td>Transfer-in</td>
+</tr>
+<tr>
+<td>transfer-out</td>
+<td>Transfer-out</td>
+</tr>
+</tbody></table>
+
+<p><strong>status(deposit-withdrawal order status)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cancel</td>
+<td>Cancel</td>
+</tr>
+<tr>
+<td>reject</td>
+<td>Reject</td>
+</tr>
+<tr>
+<td>success</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>wallet-fail</td>
+<td>Wallet failed</td>
+</tr>
+<tr>
+<td>wallet-processing</td>
+<td>Wallet processing</td>
+</tr>
+<tr>
+<td>first-audit</td>
+<td>1st audit</td>
+</tr>
+<tr>
+<td>recheck</td>
+<td>2nd audit</td>
+</tr>
+<tr>
+<td>first-reject</td>
+<td>1st audit rejected</td>
+</tr>
+<tr>
+<td>recheck-reject</td>
+<td>2nd audit rejected</td>
+</tr>
+</tbody></table>
+
+<p><strong>type(User withdrawal address query)</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chain-on</td>
+<td>On blockchain</td>
+</tr>
+<tr>
+<td>inner-transfer</td>
+<td>Internal address</td>
+</tr>
+</tbody></table>
+
+<p><strong>Candlestick line timeframe (granularity)</strong></p>
+
+<ul>
+<li>1min(1min)</li>
+<li>5min(5mins)</li>
+<li>15min(15mins)</li>
+<li>30min(30mins)</li>
+<li>1h(1hr)</li>
+<li>4h(4hrs)</li>
+<li>12h(12hrs)</li>
+<li>1day(1day)</li>
+<li>1week(1week)</li>
+</ul>
+<h2 id='signature'>Signature</h2>
+<p>The request header of ACCESS-SIGN is obtained by encrypting <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body **string (+ means string connection) using the **HMAC SHA256 **method, and outputting it through **BASE64</strong> encoding.</p>
+
+<p><strong>Description of each string of the signature</strong></p>
+
+<ul>
+<li>timestamp： Same as ACCESS-TIMESTAMP request header.</li>
+<li>method：Request method (POST/GET), all uppercase letters.</li>
+<li>requestPath：Request interface path.</li>
+<li>queryString： The query string in the request URL (the request parameter after the ?).</li>
+<li>body： The string corresponding to the request body. If the request has no body (usually a GET request), the body can be omitted.</li>
+</ul>
+
+<p><strong>When queryString is empty, the signature format</strong></p>
+<pre class="highlight plaintext"><code>timestamp + method.toUpperCase() + requestPath + body
+</code></pre>
+<p> </p>
+
+<p><strong>When queryString is not empty, the signature format</strong></p>
+<pre class="highlight plaintext"><code>timestamp + method.toUpperCase() + requestPath + "?" + queryString + body
+</code></pre>
+<p><strong>For example</strong></p>
+
+<p>To obtain in-depth information, take btcusdt as an example:</p>
+
+<ul>
+<li>Timestamp = 1591089508404</li>
+<li>Method = &quot;GET&quot;</li>
+<li>requestPath = &quot;/api/spot/v1/market/depth&quot;</li>
+<li>queryString= &quot;?symbol=btcusdt_spbl&amp;limit=20&quot;</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p>&#39;1591089508404GET/api/spot/v1/market/depth?symbol=btcusdt_spbl&amp;limit=20&#39;</p>
+
+<p>Place order，take btcusdt as an example:</p>
+
+<ul>
+<li>Timestamp = 1561022985382</li>
+<li>Method = &quot;POST&quot;</li>
+<li>requestPath = &quot;/api/spot/v1/order/order&quot;</li>
+<li>body = {&quot;symbol&quot;:&quot;btcusdt_spbl&quot;,&quot;quantity&quot;:&quot;8&quot;,&quot;side&quot;:&quot;buy&quot;,&quot;price&quot;:&quot;1&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;clientOrderId&quot;:&quot;bitget#123456&quot;}</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p>&#39;1561022985382POST/api/spot/v3/order/order{&quot;symbol&quot;:&quot;btcusdt_spbl&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;buy&quot;,&quot;price&quot;:&quot;1&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;clientOrderId&quot;:&quot;bitget#123456&quot;}&#39;</p>
+
+<p> </p>
+
+<p><strong>Steps to generate the final signature</strong></p>
+
+<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
+
+<p>Signature = hmac_sha256(secretkey, Message)</p>
+
+<p> </p>
+
+<p>Step 2. Base64 encoding for Signature.</p>
+
+<p>Signature = base64.encode(Signature)</p>
+
+<p><strong> </strong></p>
+<h2 id='request-interaction'>Request interaction</h2>
+<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be standardized as:&#39;application/json&#39;.</p>
+
+<p><strong>Request interaction description</strong></p>
+
+<ul>
+<li>Request parameters: encapsulate parameters according to the interface request parameters.</li>
+<li>Submit request parameters: submit the encapsulated request parameters to the server through GET/POST.</li>
+<li>Server response: the server first performs parameter security verification on the user&#39;s requested data, and then returns the response data to the user in JSON format according to the business logic after passing the verification.</li>
+<li>Data processing: processing the server response data.</li>
+</ul>
+
+<p><strong>Success</strong></p>
+
+<p>HTTP status code 200 indicates a successful response and may contain content. If the response contains content, it will be displayed in the corresponding return content.</p>
+
+<p><strong>Common error codes</strong></p>
+
+<ul>
+<li>400 Bad Request – Invalid request format </li>
+<li>401 Unauthorized – Invalid API Key</li>
+<li>403 Forbidden – You do not have access to the requested resource </li>
+<li>404 Not Found - The request is not found</li>
+<li>429 Too Many Requests - Requests are too frequent and are limited by the system</li>
+<li>500 Internal Server Error – Internal Server Error</li>
+<li>If it is failed, body has an error description</li>
+</ul>
+<h2 id='standard-specification'>Standard Specification</h2>
+<p><strong>Timestamp</strong></p>
+
+<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected. If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+
+<p><strong>Frequency limiting rules</strong></p>
+
+<p>If the request is too frequent, the system will automatically limit the request and return the “429 too many requests” status code in the http header.</p>
+
+<p>· Public interface: such as the market information interface, the standardized frequency limit is 2 seconds with max. 20 requests.</p>
+
+<p>· Authorization interface: restrict the call of the authorization interface through apikey, refer to the frequency limitation rule of each interface for frequency limitation.</p>
+
+<p><strong>Request format</strong></p>
+
+<p>There are currently only two request methods in formats: GET and POST</p>
+
+<ul>
+<li>GET: The parameters are transmitted to the server in the path through queryString.</li>
+<li>POST: The parameters are sent to the server by sending the body in json format.</li>
+</ul>
+<h1 id='restapi'>RestAPI</h1><h2 id='basic-configuration-interface'>Basic configuration interface</h2><h3 id='obtain-server-time'>Obtain server time</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain server time</p>
+
+<ul>
+<li>GET /api/spot/v1/public/time</li>
+</ul>
+
+<blockquote>
+<p>Return data：</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1622097118135,
+    "data": 1622097118134
+}
+
+</code></pre><h3 id='coin-basic-information'>Coin basic information</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>Obtain all coins information on the platform</p>
+
+<ul>
+<li>GET /api/spot/v1/public/currencies</li>
+</ul>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622097139437,
+    "data":[
+        {
+            "coinId":"1",
+            "coinName":"BTC",
+            "transfer":"true",
+            "chains":[
+                {
+                    "chain":null,
+                    "needTag":"false",
+                    "withdrawAble":"true",
+                    "rechargeAble":"true",
+                    "withdrawFee":"0.005",
+                    "depositConfirm":"1",
+                    "withdrawConfirm":"1",
+                    "minDepositAmount":"0.001",
+                    "minWithdrawAmount":"0.001",
+                    "browserUrl":"https://blockchair.com/bitcoin/testnet/transaction/"
+                }
+            ]
+        },
+        {
+            "coinId":"2",
+            "coinName":"USDT",
+            "transfer":"true",
+            "chains":[
+                {
+                    "chain":"ERC20",
+                    "needTag":"false",
+                    "withdrawAble":"true",
+                    "rechargeAble":"true",
+                    "withdrawFee":"0.01",
+                    "depositConfirm":"12",
+                    "withdrawConfirm":"1",
+                    "minDepositAmount":"0.1",
+                    "minWithdrawAmount":"0.1",
+                    "browserUrl":"https://ropsten.etherscan.io/tx/"
+                }
+            ]
+        }
+    ]
+}
+
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>transfer</td>
+<td>Whether can be transferred</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>Chain name</td>
+</tr>
+<tr>
+<td>needTag</td>
+<td>Whether need to tag</td>
+</tr>
+<tr>
+<td>withdrawAble</td>
+<td>Whether can be withdrawn</td>
+</tr>
+<tr>
+<td>rechargeAble</td>
+<td>Whether can deposit</td>
+</tr>
+<tr>
+<td>withdrawFee</td>
+<td>Withdrawal fee</td>
+</tr>
+<tr>
+<td>depositConfirm</td>
+<td>Deposit no. of confirmation block</td>
+</tr>
+<tr>
+<td>withdrawConfirm</td>
+<td>Withdrawal no. of confirmation block</td>
+</tr>
+<tr>
+<td>minDepositAmount</td>
+<td>Min. deposit amount</td>
+</tr>
+<tr>
+<td>minWithdrawAmount</td>
+<td>Min. withdrawal amount</td>
+</tr>
+<tr>
+<td>browserUrl</td>
+<td>Blockchain browser</td>
+</tr>
+</tbody></table>
+<h3 id='basic-configuration-information-of-trading-pairs'>Basic configuration information of trading pairs</h3>
+<p>Speed ​​limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain basic configuration information of all trading pairs</p>
+
+<ul>
+<li>GET /api/spot/v1/public/products</li>
+</ul>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622097197283,
+    "data":[
+        {
+            "symbol":"BTCUSDT_SPBL",
+            "baseCoin":"BTC",
+            "quoteCoin":"USDT",
+            "minTradeAmount":"0.0001",
+            "maxTradeAmount":"10000",
+            "takerFeeRate":"0.001",
+            "makerFeeRate":"0.001",
+            "priceScale":"4",
+            "quantityScale":"8",
+            "status":"online"
+        },
+        {
+            "symbol":"EOSUSDT_SPBL",
+            "baseCoin":"EOS",
+            "quoteCoin":"USDT",
+            "minTradeAmount":"1",
+            "maxTradeAmount":"1",
+            "takerFeeRate":"1",
+            "makerFeeRate":"1",
+            "priceScale":"1",
+            "quantityScale":"1",
+            "status":"online"
+        }
+    ]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>baseCoin</td>
+<td>Base coin</td>
+</tr>
+<tr>
+<td>quoteCoin</td>
+<td>Denomination coin</td>
+</tr>
+<tr>
+<td>minTradeAmount</td>
+<td>Min. trading amount</td>
+</tr>
+<tr>
+<td>maxTradeAmount</td>
+<td>Max. trading amount</td>
+</tr>
+<tr>
+<td>takerFeeRate</td>
+<td>Taker transaction fee rate</td>
+</tr>
+<tr>
+<td>makerFeeRate</td>
+<td>Maker transaction fee rate</td>
+</tr>
+<tr>
+<td>priceScale</td>
+<td>Pricing scale</td>
+</tr>
+<tr>
+<td>quantityScale</td>
+<td>Quantity scale</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+</tr>
+</tbody></table>
+<h3 id='single-trading-pair-to-obtain-information'>Single trading pair to obtain information</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain all ticker information</p>
+
+<ul>
+<li>GET /api/spot/v1/public/product</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Name of trading pair</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622097197283,
+    "data":[
+        {
+            "symbol":"BTCUSDT_SPBL",
+            "baseCoin":"BTC",
+            "quoteCoin":"USDT",
+            "minTradeAmount":"0.0001",
+            "maxTradeAmount":"10000",
+            "takerFeeRate":"0.001",
+            "makerFeeRate":"0.001",
+            "priceScale":"4",
+            "quantityScale":"8",
+            "status":"online"
+        }
+    ]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>baseCoin</td>
+<td>Base coin</td>
+</tr>
+<tr>
+<td>quoteCoin</td>
+<td>Denomination coin</td>
+</tr>
+<tr>
+<td>minTradeAmount</td>
+<td>Min. trading amount</td>
+</tr>
+<tr>
+<td>maxTradeAmount</td>
+<td>Max. trading amount</td>
+</tr>
+<tr>
+<td>takerFeeRate</td>
+<td>Taker transaction fee rate</td>
+</tr>
+<tr>
+<td>makerFeeRate</td>
+<td>Maker transaction fee rate</td>
+</tr>
+<tr>
+<td>priceScale</td>
+<td>Pricing scale</td>
+</tr>
+<tr>
+<td>quantityScale</td>
+<td>Quantity scale</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+</tr>
+</tbody></table>
+<h2 id='public-market-interface'>Public market interface</h2><h3 id='obtain-a-ticker-information'>Obtain a Ticker information</h3>
+<p>Speed ​​limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain a Ticker information</p>
+
+<ul>
+<li>GET /api/spot/v1/market/ticker</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Contract name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":{
+        "symbol":"BTCUSDT",
+        "high24h":"34413.1",
+        "low24h":"34413.1",
+        "close":"34413.1",
+        "quoteVol":"0",
+        "baseVol":"0",
+        "usdtVol":"0",
+        "ts":"1625125755277"
+    },
+    "msg":"success",
+    "requestTime":1625125756372
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>high24h</td>
+<td>24h highest price</td>
+</tr>
+<tr>
+<td>last</td>
+<td>Latest transaction price</td>
+</tr>
+<tr>
+<td>low24h</td>
+<td>24h lowest price</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>System timestamp</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>Base coin volume</td>
+</tr>
+<tr>
+<td>quoteVolume</td>
+<td>Denomination coin volume</td>
+</tr>
+<tr>
+<td>usdtVolume</td>
+<td>USDT volume</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-all-ticker-information'>Obtain all Ticker information</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain all ticker information</p>
+
+<ul>
+<li>GET /api/spot/v1/market/tickers</li>
+</ul>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":[
+      {
+        "symbol":"BTCUSDT",
+        "high24h":"34413.1",
+        "low24h":"34413.1",
+        "close":"34413.1",
+        "quoteVol":"0",
+        "baseVol":"0",
+        "usdtVol":"0",
+        "ts":"1625125755277"
+    }
+    ]
+    "msg":"success",
+    "requestTime":1625125756372
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>high24h</td>
+<td>24h highest price</td>
+</tr>
+<tr>
+<td>last</td>
+<td>Latest transaction price</td>
+</tr>
+<tr>
+<td>low24h</td>
+<td>24h lowest price</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>System timestamp</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>Base coin volume</td>
+</tr>
+<tr>
+<td>quoteVolume</td>
+<td>Denomination coin volume</td>
+</tr>
+<tr>
+<td>usdtVolume</td>
+<td>USDT volume</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-transaction-data'>Obtain transaction data</h3>
+<p>Speed ​​limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain transaction data</p>
+
+<ul>
+<li>GET /api/spot/v1/market/fills</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Contract name</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>No</td>
+<td>Default is 100，Max. is 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622097283024,
+    "data":[
+        {
+            "symbol":"BFTUSDT_SPBL",
+            "tradeId":"781698148534505473",
+            "side":"buy",
+            "fillPrice":"2.38735",
+            "fillQuantity":"2470.6224",
+            "fillTime":"1622097282536"
+        },
+        {
+            "symbol":"BFTUSDT_SPBL",
+            "tradeId":"781698140590493697",
+            "side":"sell",
+            "fillPrice":"2.38649",
+            "fillQuantity":"3239.7976",
+            "fillTime":"1622097280642"
+        }
+    ]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Contract name</td>
+</tr>
+<tr>
+<td>tradeId</td>
+<td>Filled order ID</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Trade direction</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity</td>
+</tr>
+<tr>
+<td>fillTotalAmount</td>
+<td>Total filled amount</td>
+</tr>
+<tr>
+<td>fillTime</td>
+<td>Transaction time</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-candlestick-line-data'>Obtain candlestick line data</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain candlestick line data</p>
+
+<ul>
+<li>GET /api/spot/v1/market/candles</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Contract name</td>
+</tr>
+<tr>
+<td>period</td>
+<td>String</td>
+<td>Yes</td>
+<td>Candlestick line time unit, granularity (​​refer to the following list for values)</td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Time after</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Time before</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622097356073,
+    "data":[
+        {
+            "open":"2.34517",
+            "high":"2.34771",
+            "low":"2.34214",
+            "close":"2.34555",
+            "quoteVol":"189631.101357091",
+            "baseVol":"80862.6823",
+            "usdtVol":"189631.101357091",
+            "ts":"1622091360000"
+        },
+        {
+            "open":"2.34391",
+            "high":"2.34903",
+            "low":"2.34391",
+            "close":"2.34608",
+            "quoteVol":"167725.002115681",
+            "baseVol":"71479.3205",
+            "usdtVol":"167725.002115681",
+            "ts":"1622091420000"
+        }
+    ]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>System timestamp</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Opening price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>Highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>Lowest price</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Closing price</td>
+</tr>
+<tr>
+<td>baseVol</td>
+<td>Base coin volume</td>
+</tr>
+<tr>
+<td>quoteVol</td>
+<td>Denomination coin volume</td>
+</tr>
+<tr>
+<td>usdtVol</td>
+<td>USDT volume</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-market-depth-data'>Obtain market depth data</h3>
+<p>Speed limit rule: 20 times/2s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain market depth data</p>
+
+<ul>
+<li>GET /api/spot/v1/market/depth</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Contract name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Yes</td>
+<td>Default: step0: do not merge, value: step0, step1, step2, step3, step4, step5</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "requestTime":1622102974025,
+    "data":{
+        "asks":[
+            [
+                "38084.5",
+                "0.0039"
+            ],
+            [
+                "38085.7",
+                "0.0018"
+            ],
+            [
+                "38086.7",
+                "0.0310"
+            ],
+            [
+                "38088.2",
+                "0.5303"
+            ]
+        ],
+        "bids":[
+            [
+                "38073.7",
+                "0.4993000000000000"
+            ],
+            [
+                "38073.4",
+                "0.4500"
+            ],
+            [
+                "38073.3",
+                "0.1179"
+            ],
+            [
+                "38071.5",
+                "0.2162"
+            ]
+        ],
+        "timestamp":"1622102974025"
+    }
+}
+</code></pre><h2 id='account-interface'>Account interface</h2><h3 id='obtain-account-assets'>Obtain account assets</h3>
+<p>Speed ​​limit rule: 10 times/1s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>obtain account assets</p>
+
+<ul>
+<li>GET /api/spot/v1/account/assets</li>
+</ul>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+  "data":[
+    {
+        "coinId":"10012",
+        "coinName":"usdt",
+        "available":"0",
+        "frozen":"0",
+        "lock":"0",
+        "uTime":"1622697148"
+    }
+]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Available assets</td>
+</tr>
+<tr>
+<td>frozen</td>
+<td>Frozen assets</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>Locked assets</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>Update timing</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-transaction-detail-flow'>Obtain transaction detail flow</h3>
+<p>Speed ​​limit rule 10 times/1s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain transaction detail flow</p>
+
+<ul>
+<li>POST /api/spot/v1/account/bills</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Integer</td>
+<td>No</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>groupType</td>
+<td>String</td>
+<td>No</td>
+<td>Transaction group type</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>String</td>
+<td>No</td>
+<td>Business type</td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Send in billId, the data before this billId</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Send in billId, the data after this billId</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>No</td>
+<td>The number of returned results, the default is 100, the max. is 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+  "data":[{
+      "cTime":"1622697148",
+      "coinId":"22",
+      "coinName":"usdt",
+      "groupType":"deposit",
+      "bizType":"transfer-in", 
+      "quantity":"1",
+      "balance": "1",
+      "fees":"0",
+      "billId":"1291"
+}]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cTime</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>coinId</td>
+<td>Coin Id</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>groupType</td>
+<td>Transaction flow type</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>Transaction bill business type</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Quantity</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>Assets before transfer</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>Transaction fees</td>
+</tr>
+<tr>
+<td>billId</td>
+<td>ID</td>
+</tr>
+</tbody></table>
+<h2 id='order-interface'>Order interface</h2><h3 id='place-order'>Place order</h3>
+<p>Speed limit rule: 10 times/1s</p>
+
+<p><strong>HTTP Request</strong> </p>
+
+<p>Interface for placing order</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/orders</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to ：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trade direction</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order type limit/market</td>
+</tr>
+<tr>
+<td>force</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String</td>
+<td>No</td>
+<td>Limit pricing</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order quantity</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>String</td>
+<td>No</td>
+<td>Custom id length: 40</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"200",
+    "msg":"success",
+    "data":{
+        "orderId":"1001",
+        "clientOrderId":"hgXjh89AsxleMSw"
+    }
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Custom ID</td>
+</tr>
+</tbody></table>
+<h3 id='batch-order'>Batch order</h3>
+<p>Speed limit rule 50 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Batch order</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/batch-orders</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trade direction</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order type: limit/market</td>
+</tr>
+<tr>
+<td>force</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String</td>
+<td>No</td>
+<td>Limit pricing</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order quantity</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>String</td>
+<td>No</td>
+<td>Custom ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"200",
+    "msg":"success",
+    "data":{
+        "orderId":"1001",
+        "clientOrderId":"hgXjh89AsxleMSw"
+    }
+}
+</code></pre><h3 id='cancel-order'>Cancel order</h3>
+<p>Speed ​​limit rule 50 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Cancel order</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-order</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>Parameter name</strong>****</th>
+<th><strong>Parameter type</strong>****</th>
+<th><strong>To be a must</strong>****</th>
+<th><strong>Description</strong>****</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+
+  "code":"200",
+   "message":"success"
+
+}   
+</code></pre><h3 id='cancel-order-in-batch-single-trading-pair'>Cancel order in batch (single trading pair)</h3>
+<p>Speed limit rule 50 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Cancel order in batch</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-batch-orders</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>orderIds</td>
+<td>String[]</td>
+<td>Yes</td>
+<td>Order ID array</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+
+  "code":"200",
+   "message":"success"
+
+}   
+</code></pre><h3 id='obtain-order-details'>Obtain order details</h3>
+<p>Speed ​​limit rule 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain orders based on order ID or custom ID</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/orderInfo</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>orderIds</td>
+<td>String</td>
+<td>Yes</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>String</td>
+<td></td>
+<td>Custom ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+"data":[{
+  "accountId":"10012",
+  "symbol":"btcusdt_spbl",
+  "orderId":"2222222",
+  "clientOrderId":"xxxxxxx",
+  "price":"34245.12",
+  "quantity":"1",  
+  "orderType":"limit",
+  "side":"buy",
+  "status":"new",
+  "fillPrice":"0",
+  "fillQuantity":"0",
+  "fillTotalAmount":"0",
+  "cTime":"1622697148"
+}]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Custom ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Order quantity</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Order direction</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Order status</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity</td>
+</tr>
+<tr>
+<td>fillTotalAmount</td>
+<td>Total transcation volume</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>Creation time</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-unfilled-order-list'>Obtain unfilled order list</h3>
+<p>Speed ​​limit rule 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain list of unfilled and partially filled order without cancellation </p>
+
+<ul>
+<li>POST /api/spot/v1/trade/open-orders</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+"data":[{
+  "accountId":"10012",
+  "symbol":"btcusdt_spbl",
+  "orderId":"2222222",
+  "clientOrderId":"xxxxxxx",
+  "price":"34829.12",
+  "quantity":"1",  
+  "orderType":"limit",
+  "side":"buy",
+  "status":"new",
+  "fillPrice":"0",
+  "fillQuantity":"0",
+  "fillTotalAmount":"0",
+  "cTime":"1622697148"
+}]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Custom ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Order quantity</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Order direction</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Order status</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity</td>
+</tr>
+<tr>
+<td>fillTotalAmount</td>
+<td>Total transcation volume</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>Creation time</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-order-history-list'>Obtain order history list</h3>
+<p>Speed limit rule 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain all filled and cancelled orders </p>
+
+<ul>
+<li>POST /api/spot/v1/trade/history</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Send in orderId, the data before this orderId desc</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Send in the orderId, the data after this orderId asc</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>No</td>
+<td>The number of returned results, the default is 100, the max. is 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"200",
+  "message":"success",
+"data":[{
+  "accountId":"10012",
+  "symbol":"btcusdt_spbl",
+  "orderId":"2222222",
+  "clientOrderId":"xxxxxxx",
+  "price":"34982.12",
+  "quantity":"1",  
+  "orderType":"limit",
+  "side":"buy",
+  "status":"new",
+  "fillPrice":"34982.12",
+  "fillQuantity":"1",
+  "fillTotalAmount":"34982.12",
+  "cTime":"1622697148"
+}]
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Custom ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Order quantity</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Order direction</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Order status</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity</td>
+</tr>
+<tr>
+<td>fillTotalAmount</td>
+<td>Total transcation volume</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>Creation time</td>
+</tr>
+</tbody></table>
+<h3 id='obtain-transaction-details'>Obtain transaction details</h3>
+<p>Speed ​​limit rule 20 times/2s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>Obtain transaction detail history</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/fills</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>No</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Send in orderId, the data before this orderId desc</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Send in the orderId, the data after this orderId asc</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>No</td>
+<td>The number of returned results, the default is 100, the max. is 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
+  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt_spbl"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"100021"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillId"</span><span class="p">:</span><span class="s2">"102211"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"38293.12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"38293.12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feeCcy"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fees"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>fillId</td>
+<td>Transaction ID</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Order direction</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity</td>
+</tr>
+<tr>
+<td>fillTotalAmount</td>
+<td>Total transaction volume</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>Creation time</td>
+</tr>
+<tr>
+<td>feeCcy</td>
+<td>Coin for transaction fee</td>
+</tr>
+<tr>
+<td>fees</td>
+<td>Transaction fees</td>
+</tr>
+</tbody></table>
+<h1 id='restapi-error-code'>RestAPI  error code</h1><h2 id='public-error-code'>Public error code</h2>
+<table><thead>
+<tr>
+<th>Error message</th>
+<th>Error code</th>
+<th>http status code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>The request header &quot;ACCESS_KEY&quot; cannot be empty</td>
+<td>40001</td>
+<td>400</td>
+</tr>
+<tr>
+<td>The request header &quot;ACCESS_SIGN&quot; cannot be empty</td>
+<td>40002</td>
+<td>400</td>
+</tr>
+<tr>
+<td>The request header &quot;ACCESS_TIMESTAMP&quot; cannot be empty</td>
+<td>40003</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Invalid ACCESS_TIMESTAMP</td>
+<td>40005</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Invalid ACCESS_KEY</td>
+<td>40006</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Invalid Content_Type，please use“application/json”format</td>
+<td>40007</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Requested timestamp expired</td>
+<td>40008</td>
+<td>400</td>
+</tr>
+<tr>
+<td>api verification failed</td>
+<td>40009</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Request is too frequent</td>
+<td>429</td>
+<td>429</td>
+</tr>
+<tr>
+<td>The request header &quot;ACCESS_PASSPHRASE&quot; cannot be empty</td>
+<td>40011</td>
+<td>400</td>
+</tr>
+<tr>
+<td>apikey/passphrase is incorrect</td>
+<td>40012</td>
+<td>400</td>
+</tr>
+<tr>
+<td>User has been frozen</td>
+<td>40013</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Incorrect permissions</td>
+<td>40014</td>
+<td>400</td>
+</tr>
+<tr>
+<td>System error</td>
+<td>40015</td>
+<td>400</td>
+</tr>
+<tr>
+<td>The user must bind a mobile phone or Google authenticator</td>
+<td>40016</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Parameter verification failed</td>
+<td>40017</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Illegal IP request</td>
+<td>40018</td>
+<td>400</td>
+</tr>
+</tbody></table>
+
+<p> ## Spot error code</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Error message</th>
+<th style="text-align: left">Error code</th>
+<th style="text-align: center">http status code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Batch processing orders can only process up to 50</td>
+<td style="text-align: left">40912</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">OrderId or clientId must be passed one</td>
+<td style="text-align: left">40913</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The contract configuration does not exist, please check the parameters</td>
+<td style="text-align: left">40102</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Server upgrade, please try again later</td>
+<td style="text-align: left">40200</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid length is not greater than 40, and cannot be Martian characters</td>
+<td style="text-align: left">40305</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">wrong format</td>
+<td style="text-align: left">40409</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Only check the data of the last three months</td>
+<td style="text-align: left">40704</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Start time is greater than end time</td>
+<td style="text-align: left">40707</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Parameter is empty</td>
+<td style="text-align: left">40724</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">spot service return an error</td>
+<td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
 
   </div>
   <div class="dark-box">
