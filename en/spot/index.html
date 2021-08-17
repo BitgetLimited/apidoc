@@ -2907,20 +2907,28 @@ please delete the APIKey as soon as possible.
     var  currentUrl=window.location.href;
     var isEn=currentUrl.indexOf('en/')>-1;
     var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isSpot=currentUrl.indexOf('spot/')>-1;
+    var isMix=currentUrl.indexOf('mix/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
 
     var $Swap=$("#swap"),
         $Spot=$("#spot");
+    $Mix=$("#mix");
     if(isSwap){
         $Swap.addClass('selected');
-    } else{
+    }
+    if(isSpot){
         $Spot.addClass('selected');
+    }
+    if(isMix){
+        $Mix.addClass('selected');
     }
     if(!isEn){
         $Swap.html($Swap.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
+        $Mix.html($Mix.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -2931,18 +2939,22 @@ please delete the APIKey as soon as possible.
         if(isEn){
             $Swap.attr('href','/en/swap/')
             $Spot.attr('href','/en/spot/')
+            $Mix.attr('href','/en/mix/')
         } else{
             $Swap.attr('href','/zh/swap/')
             $Spot.attr('href','/zh/spot/')
+            $Mix.attr('href','/zh/mix/')
         }
 
     } else{
         if(isEn){
             $Swap.attr('href','/apidoc/en/swap/')
             $Spot.attr('href','/apidoc/en/spot/')
+            $Mix.attr('href','/apidoc/en/mix/')
         } else{
             $Swap.attr('href','/apidoc/zh/swap/')
             $Spot.attr('href','/apidoc/zh/spot/')
+            $Mix.attr('href','/apidoc/zh/mix/')
         }
     }
 </script>
