@@ -869,6 +869,22 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <td>Quanto Swap Contract</td>
 </tr>
 </tbody></table>
+<p><strong>Kline interval(granularity)</strong></p>
+
+<ul>
+  <li>60(1min)</li>
+  <li>300(5min)</li>
+  <li>900(15min)</li>
+  <li>1800(30min)</li>
+  <li>3600(1hour)</li>
+  <li>14400(4hour)</li>
+  <li>43200(12hour)</li>
+  <li>86400(1day)</li>
+  <li>604800(1week)</li>
+</ul>
+
+
+
 <h2 id='api-domain-name'>API Domain Name</h2>
 <p>You can use the Rest API access method to operate by yourself.     </p>
 
@@ -1682,6 +1698,24 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">Currency pair name</td>
+</tr>
+<tr>
+    <td style="text-align: left">pageSize</td>
+    <td style="text-align: left">int</td>
+    <td style="text-align: center">No</td>
+    <td style="text-align: center">Display line number default 20</td>
+</tr>
+<tr>
+    <td style="text-align: left">pageNo</td>
+    <td style="text-align: left">int</td>
+    <td style="text-align: center">No</td>
+    <td style="text-align: center">Pages Default 1</td>
+</tr>
+<tr>
+    <td style="text-align: left">nextPage</td>
+    <td style="text-align: left">boolean</td>
+    <td style="text-align: center">No</td>
+    <td style="text-align: center">Whether to query the next page, default false</td>
 </tr>
 </tbody></table>
 

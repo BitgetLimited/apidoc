@@ -869,6 +869,21 @@ clipboard.on('error', function(e) {
 <td>混合合约</td>
 </tr>
 </tbody></table>
+
+<p><strong>K线间隔(granularity)</strong></p>
+
+<ul>
+  <li>60(1分钟)</li>
+  <li>300(5分钟)</li>
+  <li>900(15分钟)</li>
+  <li>1800(30分钟)</li>
+  <li>3600(1小时)</li>
+  <li>14400(4小时)</li>
+  <li>43200(12小时)</li>
+  <li>86400(1天)</li>
+  <li>604800(1周)</li>
+</ul>
+
 <h2 id='api-3'>API域名</h2>
 <p>您可以自行使用Rest API接入方式进行操作。     </p>
 
@@ -1682,6 +1697,24 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">币对名称</td>
+</tr>
+<tr>
+    <td style="text-align: left">pageSize</td>
+    <td style="text-align: left">int</td>
+    <td style="text-align: center">否</td>
+    <td style="text-align: center">显示行数 默认20</td>
+</tr>
+<tr>
+    <td style="text-align: left">pageNo</td>
+    <td style="text-align: left">int</td>
+    <td style="text-align: center">否</td>
+    <td style="text-align: center">页数 默认1</td>
+</tr>
+<tr>
+    <td style="text-align: left">nextPage</td>
+    <td style="text-align: left">boolean</td>
+    <td style="text-align: center">否</td>
+    <td style="text-align: center">是否查询下一页 默认false</td>
 </tr>
 </tbody></table>
 
