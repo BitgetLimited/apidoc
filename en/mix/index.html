@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+    <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -282,7 +282,7 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
-        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+          <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
@@ -317,6 +317,9 @@
               </li>
               <li>
                 <a href="#september-06-2021-new-account-list-query" class="toc-h2 toc-link" data-title="September 06, 2021【New account list query】">September 06, 2021【New account list query】</a>
+              </li>
+              <li>
+                <a href="#september-08-2021-contract-list-and-ticker-quotes" class="toc-h2 toc-link" data-title="September 08, 2021【Contract List and Ticker Quotes】">September 08, 2021【Contract List and Ticker Quotes】</a>
               </li>
           </ul>
       </li>
@@ -561,8 +564,12 @@ clipboard.on('error', function(e) {
 </ul>
 <h2 id='september-06-2021-new-account-list-query'>September 06, 2021【New account list query】</h2>
 <ul>
-<li>Account interface New account list query, query all account information according to business lines</li>
+<li>Account interface New account list query, query all account information according to prodcut type</li>
 <li>New unrealized profit and loss field in position interface</li>
+</ul>
+<h2 id='september-08-2021-contract-list-and-ticker-quotes'>September 08, 2021【Contract List and Ticker Quotes】</h2>
+<ul>
+<li>Get the list of all contracts and get all the ticker quotations interface requires the <code>productType</code> parameter to be passed in to support simulated trading</li>
 </ul>
 <h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
 <p>Welcome to Bitget Developer document!  </p>
@@ -639,8 +646,6 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <p><strong>SDK（Recommended）</strong></p>
 
 <p><a href="https://github.com/BitgetLimited/V1-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V1-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
-
-
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter mainly divides the interface types into the following two aspects:</p>
 
@@ -872,12 +877,20 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 </tr>
 </thead><tbody>
 <tr>
-<td>usdt_type</td>
+<td>umcbl</td>
 <td>USDT Unified Contract</td>
 </tr>
 <tr>
-<td>mix_type</td>
+<td>dmcbl</td>
 <td>Quanto Swap Contract</td>
+</tr>
+<tr>
+<td>sumcbl</td>
+<td>USDT Unified Contract Analog disk</td>
+</tr>
+<tr>
+<td>sdmcbl</td>
+<td>Quanto Swap Contract Analog disk</td>
 </tr>
 </tbody></table>
 
@@ -1057,6 +1070,24 @@ If there is a large deviation between the local server time and the API server t
 <li>GET /api/mix/v1/market/contracts</li>
 </ul>
 
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Necessary?</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>Return Data</p>
 </blockquote>
@@ -1174,7 +1205,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1242,7 +1273,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1329,6 +1360,24 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>GET /api/mix/v1/market/tickers</li>
 </ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Necessary?</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Return Data</p>
@@ -1430,7 +1479,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1489,7 +1538,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">granularity</td>
@@ -1587,7 +1636,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1615,7 +1664,7 @@ If there is a large deviation between the local server time and the API server t
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">Currency pair name</td>
+<td style="text-align: left">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">index</td>
@@ -1649,7 +1698,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1706,7 +1755,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1770,7 +1819,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1827,7 +1876,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1889,7 +1938,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -1951,7 +2000,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2084,7 +2133,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Business Line</td>
+<td style="text-align: center">product type</td>
 </tr>
 </tbody></table>
 
@@ -2180,13 +2229,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">openPrice</td>
@@ -2242,13 +2291,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -2332,13 +2381,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -2388,13 +2437,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginMode</td>
@@ -2472,13 +2521,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2608,7 +2657,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2843,13 +2892,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderDataList</td>
@@ -2974,13 +3023,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3043,13 +3092,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderIds</td>
@@ -3114,7 +3163,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -3237,7 +3286,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -3390,7 +3439,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3513,7 +3562,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3608,13 +3657,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -3818,13 +3867,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -3895,13 +3944,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -3982,13 +4031,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -4057,7 +4106,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name  (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -4120,7 +4169,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -4245,7 +4294,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -4402,13 +4451,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Order Id</td>
+<td style="text-align: center">product type</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
@@ -4460,23 +4509,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Tracking order number</td>
 </tr>
 <tr>
-<td style="text-align: left">openOr</td>
-<td style="text-align: left">Trader’s order number This order number cannot be used when the trader closes a position, and a tracking order number is required</td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>Return Value Description</strong></td>
-<td style="text-align: left">Trading pair name</td>
-</tr>
-<tr>
-<td style="text-align: left">Return Field</td>
-<td style="text-align: left">Field Description</td>
-</tr>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left"></td>
+<td style="text-align: left">openOrderId</td>
 <td style="text-align: left">Trader’s order number This order number cannot be used when the trader closes a position, and a tracking order number is required</td>
 </tr>
 <tr>
@@ -4494,6 +4527,22 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">averageOpenPrice</td>
 <td style="text-align: left">Average opening price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Position opening time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">openDealCount</td>
+<td style="text-align: left">Number of positions opened</td>
+</tr>
+<tr>
+<td style="text-align: left">stopProfitPrice</td>
+<td style="text-align: left">Take profit price</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">Stop price</td>
 </tr>
 </tbody></table>
 <h3 id='trader-close-position-interface'>Trader close position interface</h3>
@@ -4519,7 +4568,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency pair name</td>
+<td style="text-align: center">Currency pair name (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">trackingNo</td>

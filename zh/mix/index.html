@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+    <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -282,7 +282,7 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.info/zh-CN/" class="logo-link" target="_self">
-        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+          <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
@@ -317,6 +317,9 @@
               </li>
               <li>
                 <a href="#2021-9-06" class="toc-h2 toc-link" data-title="2021年9月06日【新增账户列表查询】">2021年9月06日【新增账户列表查询】</a>
+              </li>
+              <li>
+                <a href="#2021-9-08-ticker" class="toc-h2 toc-link" data-title="2021年9月08日【合约列表和Ticker行情】">2021年9月08日【合约列表和Ticker行情】</a>
               </li>
           </ul>
       </li>
@@ -564,6 +567,10 @@ clipboard.on('error', function(e) {
 <li>账户接口 新增账户列表查询，根据业务线查询所有账户信息</li>
 <li>仓位接口新增未实现盈亏字段</li>
 </ul>
+<h2 id='2021-9-08-ticker'>2021年9月08日【合约列表和Ticker行情】</h2>
+<ul>
+<li>获取全部合约列表和获取全部ticker行情接口需要传入productType参数，支持模拟盘交易</li>
+</ul>
 <h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
 <p>欢迎使用Bitget开发者文档！  </p>
 
@@ -639,8 +646,6 @@ clipboard.on('error', function(e) {
 <p><strong>SDK（推荐）</strong></p>
 
 <p><a href="https://github.com/BitgetLimited/V1-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V1-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
-
-
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -872,12 +877,20 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
-<td>usdt_type</td>
+<td>umcbl</td>
 <td>USDT专业合约</td>
 </tr>
 <tr>
-<td>mix_type</td>
+<td>dmcbl</td>
 <td>混合合约</td>
+</tr>
+<tr>
+<td>sumcbl</td>
+<td>USDT专业合约模拟盘</td>
+</tr>
+<tr>
+<td>sdmcbl</td>
+<td>混合合约模拟盘</td>
 </tr>
 </tbody></table>
 
@@ -1057,6 +1070,24 @@ Signature = base64.encode(Signature)
 <li>GET /api/mix/v1/market/contracts</li>
 </ul>
 
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -1174,7 +1205,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1242,7 +1273,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1330,6 +1361,24 @@ Signature = base64.encode(Signature)
 <li>GET /api/mix/v1/market/tickers</li>
 </ul>
 
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -1364,7 +1413,7 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">币对名称</td>
+<td style="text-align: left">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">last</td>
@@ -1430,7 +1479,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1489,7 +1538,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">granularity</td>
@@ -1587,7 +1636,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1649,7 +1698,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1706,7 +1755,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1770,7 +1819,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1827,7 +1876,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1889,7 +1938,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1951,7 +2000,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2084,7 +2133,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">业务线</td>
+<td style="text-align: center">产品类型</td>
 </tr>
 </tbody></table>
 
@@ -2180,7 +2229,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2242,13 +2291,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -2334,13 +2383,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
@@ -2384,13 +2433,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginMode</td>
@@ -2468,13 +2517,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -2604,7 +2653,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -2728,13 +2777,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -2839,13 +2888,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderDataList</td>
@@ -2970,13 +3019,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3039,13 +3088,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderIds</td>
@@ -3110,7 +3159,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -3233,7 +3282,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -3386,7 +3435,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3509,7 +3558,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3604,13 +3653,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -3721,13 +3770,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -3814,13 +3863,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -3891,13 +3940,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -3978,13 +4027,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">保证金币种</td>
+<td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -4053,7 +4102,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -4116,7 +4165,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -4241,7 +4290,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -4398,13 +4447,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">订单号</td>
+<td style="text-align: center">产品类型</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
@@ -4515,7 +4564,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称</td>
+<td style="text-align: center">币对名称 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">trackingNo</td>
