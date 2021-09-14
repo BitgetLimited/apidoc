@@ -287,7 +287,7 @@
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
          <li><a id="spot" data-text="现货" >Spot</a></li>
-        <li><a id="mix" data-text="专业合约" >Mix</a></li>
+         <li><a id="mix" data-text="专业合约" >Mix</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -415,6 +415,9 @@
                       <li>
                         <a href="#23f9acd1d3" class="toc-h3 toc-link" data-title="获取账单流水">获取账单流水</a>
                       </li>
+                      <li>
+                        <a href="#b0c7e2b4a5" class="toc-h3 toc-link" data-title="获取划转记录">获取划转记录</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -453,6 +456,9 @@
           <ul class="toc-list-h2">
               <li>
                 <a href="#5699b4eac7" class="toc-h2 toc-link" data-title="公共错误码">公共错误码</a>
+              </li>
+              <li>
+                <a href="#8c719e58bd" class="toc-h2 toc-link" data-title="现货错误码">现货错误码</a>
               </li>
           </ul>
       </li>
@@ -547,7 +553,7 @@ clipboard.on('error', function(e) {
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
 
-<!--<p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>-->
+<p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -690,11 +696,11 @@ clipboard.on('error', function(e) {
 <td>未成交</td>
 </tr>
 <tr>
-<td>partial-fill</td>
+<td>partial_fill</td>
 <td>部分成交</td>
 </tr>
 <tr>
-<td>full-fill</td>
+<td>full_fill</td>
 <td>全部成交</td>
 </tr>
 <tr>
@@ -828,6 +834,38 @@ clipboard.on('error', function(e) {
 <tr>
 <td>inner-transfer</td>
 <td>内部地址</td>
+</tr>
+</tbody></table>
+
+<p><strong>accountType(账户类型)</strong></p>
+
+<p>不区分大小写</p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EXCHANGE</td>
+<td>现货账户</td>
+</tr>
+<tr>
+<td>OTC_SGD</td>
+<td>OTC账户</td>
+</tr>
+<tr>
+<td>CONTRACT</td>
+<td>合约账户</td>
+</tr>
+<tr>
+<td>USD_MIX</td>
+<td>混合合约账户</td>
+</tr>
+<tr>
+<td>USDT_MIX</td>
+<td>USDT专业合约账户</td>
 </tr>
 </tbody></table>
 
@@ -1322,7 +1360,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">合约名称</td>
+<td style="text-align: center">交易对名称</td>
 </tr>
 </tbody></table>
 
@@ -1447,7 +1485,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">24小时最低价</td>
 </tr>
 <tr>
-<td style="text-align: left">timestamp</td>
+<td style="text-align: left">ts</td>
 <td style="text-align: left">系统时间戳</td>
 </tr>
 <tr>
@@ -1608,7 +1646,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">before</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">时间之前的（如果都传）</td>
+<td style="text-align: center">时间之前的</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1961,11 +1999,126 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">id</td>
 </tr>
 </tbody></table>
+<h3 id='b0c7e2b4a5'>获取划转记录</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取账单流水</p>
+
+<ul>
+<li>GET /api/spot/v1/account/transferRecords</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币种ID</td>
+</tr>
+<tr>
+<td style="text-align: left">fromType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">账单大类型   <a href="#API公开参数">accountType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">after</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入tradeTime, 在这 tradeTime 之前的数据</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">传入 tradeTime, 在这 tradeTime 之后的数据</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">返回结果的数量，默认100，最大 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":[
+        {
+            "coinName":"btc",
+            "status":"SUCCESS",
+            "toType":"USD_MIX",
+            "toSymbol":"",
+            "fromType":"CONTRACT",
+            "fromSymbol":"BTC/USD",
+            "amount":"1000.00000000",
+            "tradeTime":"1631070374488"
+        }
+    ],
+    "msg":"success",
+    "requestTime":1631608142260
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">划转状态</td>
+</tr>
+<tr>
+<td style="text-align: left">toType</td>
+<td style="text-align: center">转入账户类型 <a href="#API公开参数">accountType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">toSymbol</td>
+<td style="text-align: center">转入账户交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">fromType</td>
+<td style="text-align: center">转出账户类型 <a href="#API公开参数">accountType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">fromSymbol</td>
+<td style="text-align: center">转出账户交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: center">数量</td>
+</tr>
+<tr>
+<td style="text-align: left">tradeTime</td>
+<td style="text-align: center">交易时间(毫秒时间戳)</td>
+</tr>
+</tbody></table>
 <h2 id='fdf72688ac'>订单接口</h2><h3 id='fd6ce2a756'>下单</h3>
 <p>限速规则：10次/1s</p>
 
 <p><strong>HTTP请求</strong>
-获取账户资产</p>
+下单接口</p>
 
 <ul>
 <li>POST  /api/spot/v1/trade/orders</li>
@@ -2833,6 +2986,65 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
+<h2 id='8c719e58bd'>现货错误码</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">错误提示</th>
+<th style="text-align: left">错误码</th>
+<th style="text-align: center">http状态码</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">单次撤单不能超过50</td>
+<td style="text-align: left">40912</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId或者clientId 必须传一个</td>
+<td style="text-align: left">40913</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">交易对配置不存在</td>
+<td style="text-align: left">40102</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">服务器升级，请稍后再试</td>
+<td style="text-align: left">40200</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">client_oid长度不大于40,且不能是火星字符</td>
+<td style="text-align: left">40305</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">格式错误</td>
+<td style="text-align: left">40409</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">只能查最近三个月的数据</td>
+<td style="text-align: left">40704</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">开始时间大于结束时间</td>
+<td style="text-align: left">40707</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数为空</td>
+<td style="text-align: left">40724</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">服务返回错误</td>
+<td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
 
   </div>
   <div class="dark-box">
@@ -2880,6 +3092,7 @@ Signature = base64.encode(Signature)
     if(isMix){
         $Mix.addClass('selected');
     }
+
     if(!isEn){
         $Swap.html($Swap.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
