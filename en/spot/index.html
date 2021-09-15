@@ -275,8 +275,8 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
-    <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
+  <link href="../../stylesheets/screen-7d156c95.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
@@ -287,7 +287,7 @@
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
          <li><a id="spot" data-text="现货" >Spot</a></li>
-        <li><a id="mix" data-text="专业合约" >Mix</a></li>
+         <li><a id="mix" data-text="专业合约" >Mix</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -314,6 +314,9 @@
           <ul class="toc-list-h2">
               <li>
                 <a href="#05-07-2021-new-creation-v1-spot-trading-document" class="toc-h2 toc-link" data-title="05/07/2021【New creation v1 Spot trading document】">05/07/2021【New creation v1 Spot trading document】</a>
+              </li>
+              <li>
+                <a href="#15-09-2021-add-transfer-record-interface" class="toc-h2 toc-link" data-title="15/09/2021 【Add transfer record interface】">15/09/2021 【Add transfer record interface】</a>
               </li>
           </ul>
       </li>
@@ -415,6 +418,9 @@
                       <li>
                         <a href="#obtain-transaction-detail-flow" class="toc-h3 toc-link" data-title="Obtain transaction detail flow">Obtain transaction detail flow</a>
                       </li>
+                      <li>
+                        <a href="#get-transfer-record" class="toc-h3 toc-link" data-title="Get transfer record">Get transfer record</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -465,7 +471,7 @@
 Clipboard script
 -->
 
-      <script src="../../dist/clipboard.min-f99f064d.js"></script>
+<script src="../../dist/clipboard.min-f99f064d.js"></script>
 
 <script>
 var clipboard = new ClipboardJS('.clipboard_button');
@@ -482,6 +488,10 @@ clipboard.on('error', function(e) {
 <ul>
 <li>New creation of V1 document</li>
 <li>Supporting of error message</li>
+</ul>
+<h2 id='15-09-2021-add-transfer-record-interface'>15/09/2021 【Add transfer record interface】</h2>
+<ul>
+<li>Added transfer record interface</li>
 </ul>
 <h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
 <p>Welcome to Bitget developer documentation!</p>
@@ -552,9 +562,9 @@ please delete the APIKey as soon as possible.
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
 
-<!--<p>CCXT is our authorized SDK provider, and you can access Bitget API through CCXT. For more information, please visit:</p>-->
+<p>CCXT is our authorized SDK provider, and you can access Bitget API through CCXT. For more information, please visit:</p>
 
-<!--<p><a href="https://ccxt.trade/">https://ccxt.trade</a></p>-->
+<p><a href="https://ccxt.trade/">https://ccxt.trade</a></p>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter is consist of the following two aspects for the interface types:</p>
 
@@ -1366,7 +1376,7 @@ please delete the APIKey as soon as possible.
 <td>24h highest price</td>
 </tr>
 <tr>
-<td>last</td>
+<td>close</td>
 <td>Latest transaction price</td>
 </tr>
 <tr>
@@ -1439,7 +1449,7 @@ please delete the APIKey as soon as possible.
 <td>24h highest price</td>
 </tr>
 <tr>
-<td>last</td>
+<td>close</td>
 <td>Latest transaction price</td>
 </tr>
 <tr>
@@ -1659,7 +1669,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </thead><tbody>
 <tr>
-<td>ts</td>
+<td>timestamp</td>
 <td>System timestamp</td>
 </tr>
 <tr>
@@ -1962,6 +1972,115 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>billId</td>
 <td>ID</td>
+</tr>
+</tbody></table>
+<h3 id='get-transfer-record'>Get transfer record</h3>
+<p>Speed limit rule 20 times/1s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/account/transferRecords</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>To be a must</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Integer</td>
+<td>No</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>No</td>
+<td>Major type of bill accountType</td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Send in billId, the data before this tradeTime</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Send in billId, the data after this tradeTime</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>No</td>
+<td>The number of returned results, the default is 100, the max. is 500</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":[
+        {
+            "coinName":"btc",
+            "status":"SUCCESS",
+            "toType":"USD_MIX",
+            "toSymbol":"",
+            "fromType":"CONTRACT",
+            "fromSymbol":"BTC/USD",
+            "amount":"1000.00000000",
+            "tradeTime":"1631070374488"
+        }
+    ],
+    "msg":"success",
+    "requestTime":1631608142260
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th>Return string</th>
+<th>String description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Transfer status</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>Transfer in account type</td>
+</tr>
+<tr>
+<td>toSymbol</td>
+<td>Transfer to account Symbol</td>
+</tr>
+<tr>
+<td>fromType</td>
+<td>Transfer out account type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Number of transfers</td>
+</tr>
+<tr>
+<td>tradeTime</td>
+<td>Transfer time</td>
 </tr>
 </tbody></table>
 <h2 id='order-interface'>Order interface</h2><h3 id='place-order'>Place order</h3>
@@ -2915,7 +3034,7 @@ please delete the APIKey as soon as possible.
 
     var $Swap=$("#swap"),
         $Spot=$("#spot");
-    $Mix=$("#mix");
+        $Mix=$("#mix");
     if(isSwap){
         $Swap.addClass('selected');
     }
@@ -2925,6 +3044,7 @@ please delete the APIKey as soon as possible.
     if(isMix){
         $Mix.addClass('selected');
     }
+
     if(!isEn){
         $Swap.html($Swap.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
