@@ -560,7 +560,7 @@ clipboard.on('error', function(e) {
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
 
-
+<p>CCXT是我们的授权SDK提供者，您可以通过CCXT访问Bitget API。有关更多信息，请访问：<a href="https://ccxt.trade">https://ccxt.trade</a>。</p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -1122,7 +1122,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">rechargeAble</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">是否可提现是否可充值</td>
 </tr>
 <tr>
 <td style="text-align: left">withdrawFee</td>
@@ -1496,15 +1496,15 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">系统时间戳</td>
 </tr>
 <tr>
-<td style="text-align: left">base_volume</td>
+<td style="text-align: left">baseVol</td>
 <td style="text-align: left">基础币量</td>
 </tr>
 <tr>
-<td style="text-align: left">quoteVolume</td>
+<td style="text-align: left">quoteVol</td>
 <td style="text-align: left">计价币量</td>
 </tr>
 <tr>
-<td style="text-align: left">usdtVolume</td>
+<td style="text-align: left">usdtVol</td>
 <td style="text-align: left">usdt币量</td>
 </tr>
 </tbody></table>
@@ -1587,10 +1587,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">成交单id</td>
 </tr>
 <tr>
-<td style="text-align: left">orderType</td>
-<td style="text-align: center">订单类型</td>
-</tr>
-<tr>
 <td style="text-align: left">side</td>
 <td style="text-align: center">交易方向</td>
 </tr>
@@ -1601,10 +1597,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">fillQuantity</td>
 <td style="text-align: center">成交数量</td>
-</tr>
-<tr>
-<td style="text-align: left">fillTotalAmount</td>
-<td style="text-align: center">已成交总额</td>
 </tr>
 <tr>
 <td style="text-align: left">fillTime</td>
@@ -1771,7 +1763,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center"></td>
+<td style="text-align: center">查询条数 默认150</td>
 </tr>
 </tbody></table>
 
@@ -2179,7 +2171,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">clientOrderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">自定义id 长度：40</td>
+<td style="text-align: center">自定义id</td>
 </tr>
 </tbody></table>
 
@@ -2293,7 +2285,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">clientOrderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">自定义id 长度：40</td>
+<td style="text-align: center">自定义id</td>
 </tr>
 </tbody></table>
 
@@ -2432,7 +2424,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">clientOrderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center"></td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">自定义id</td>
 </tr>
 </tbody></table>
@@ -2518,7 +2510,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间</td>
+<td style="text-align: center">创建时间 (时间戳秒)</td>
 </tr>
 </tbody></table>
 <h3 id='19671a1099'>获取未成交列表</h3>
@@ -2631,7 +2623,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间</td>
+<td style="text-align: center">创建时间 (时间戳秒)</td>
 </tr>
 </tbody></table>
 <h3 id='b9220b5487'>获取历史委托列表</h3>
@@ -2762,7 +2754,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间</td>
+<td style="text-align: center">创建时间(时间戳秒)</td>
 </tr>
 </tbody></table>
 <h3 id='106a02279b'>获取成交明细</h3>
@@ -2886,7 +2878,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间</td>
+<td style="text-align: center">创建时间(时间戳秒)</td>
 </tr>
 <tr>
 <td style="text-align: left">feeCcy</td>

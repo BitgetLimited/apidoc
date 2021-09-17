@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -562,7 +562,9 @@ please delete the APIKey as soon as possible.
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
 
+<p>CCXT is our authorized SDK provider, and you can access Bitget API through CCXT. For more information, please visit:</p>
 
+<p><a href="https://ccxt.trade/">https://ccxt.trade</a></p>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter is consist of the following two aspects for the interface types:</p>
 
@@ -842,6 +844,36 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>inner-transfer</td>
 <td>Internal address</td>
+</tr>
+</tbody></table>
+
+<p><strong>accountType</strong></p>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EXCHANGE</td>
+<td>spot account</td>
+</tr>
+<tr>
+<td>OTC_SGD</td>
+<td>Otc account</td>
+</tr>
+<tr>
+<td>CONTRACT</td>
+<td>contract account</td>
+</tr>
+<tr>
+<td>USD_MIX</td>
+<td>Mix account</td>
+</tr>
+<tr>
+<td>USDT_MIX</td>
+<td>USDT Futurre account</td>
 </tr>
 </tbody></table>
 
@@ -1386,15 +1418,15 @@ please delete the APIKey as soon as possible.
 <td>System timestamp</td>
 </tr>
 <tr>
-<td>base_volume</td>
+<td>baseVol</td>
 <td>Base coin volume</td>
 </tr>
 <tr>
-<td>quoteVolume</td>
+<td>quoteVol</td>
 <td>Denomination coin volume</td>
 </tr>
 <tr>
-<td>usdtVolume</td>
+<td>usdtVol</td>
 <td>USDT volume</td>
 </tr>
 </tbody></table>
@@ -1459,15 +1491,15 @@ please delete the APIKey as soon as possible.
 <td>System timestamp</td>
 </tr>
 <tr>
-<td>base_volume</td>
+<td>baseVol</td>
 <td>Base coin volume</td>
 </tr>
 <tr>
-<td>quoteVolume</td>
+<td>quoteVol</td>
 <td>Denomination coin volume</td>
 </tr>
 <tr>
-<td>usdtVolume</td>
+<td>usdtVol</td>
 <td>USDT volume</td>
 </tr>
 </tbody></table>
@@ -1550,10 +1582,6 @@ please delete the APIKey as soon as possible.
 <td>Filled order ID</td>
 </tr>
 <tr>
-<td>orderType</td>
-<td>Order type</td>
-</tr>
-<tr>
 <td>side</td>
 <td>Trade direction</td>
 </tr>
@@ -1564,10 +1592,6 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>fillQuantity</td>
 <td>Transaction quantity</td>
-</tr>
-<tr>
-<td>fillTotalAmount</td>
-<td>Total filled amount</td>
 </tr>
 <tr>
 <td>fillTime</td>
@@ -1623,7 +1647,7 @@ please delete the APIKey as soon as possible.
 <td>limit</td>
 <td>String</td>
 <td>No</td>
-<td></td>
+<td>Default 100</td>
 </tr>
 </tbody></table>
 
@@ -1667,7 +1691,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </thead><tbody>
 <tr>
-<td>timestamp</td>
+<td>ts</td>
 <td>System timestamp</td>
 </tr>
 <tr>
@@ -1736,7 +1760,7 @@ please delete the APIKey as soon as possible.
 <td>limit</td>
 <td>String</td>
 <td>No</td>
-<td></td>
+<td>default 150</td>
 </tr>
 </tbody></table>
 
