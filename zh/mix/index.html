@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-    <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -275,14 +275,14 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.info/zh-CN/" class="logo-link" target="_self">
-          <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
       <li><a  id="swap"  data-text="合约" >Swap</a></li>
@@ -313,13 +313,16 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#2021-7-27-v1" class="toc-h2 toc-link" data-title="2021年7月27日【新增混合合约V1文档】">2021年7月27日【新增混合合约V1文档】</a>
+                <a href="#2021-9-24-websocket" class="toc-h2 toc-link" data-title="2021年9月26日【专业合约WebSocket公共频道上线】">2021年9月26日【专业合约WebSocket公共频道上线】</a>
+              </li>
+              <li>
+                <a href="#2021-9-08-ticker" class="toc-h2 toc-link" data-title="2021年9月08日【合约列表和Ticker行情】">2021年9月08日【合约列表和Ticker行情】</a>
               </li>
               <li>
                 <a href="#2021-9-06" class="toc-h2 toc-link" data-title="2021年9月06日【新增账户列表查询】">2021年9月06日【新增账户列表查询】</a>
               </li>
               <li>
-                <a href="#2021-9-08-ticker" class="toc-h2 toc-link" data-title="2021年9月08日【合约列表和Ticker行情】">2021年9月08日【合约列表和Ticker行情】</a>
+                <a href="#2021-7-27-v1" class="toc-h2 toc-link" data-title="2021年7月27日【新增混合合约V1文档】">2021年7月27日【新增混合合约V1文档】</a>
               </li>
           </ul>
       </li>
@@ -533,7 +536,58 @@
           </ul>
       </li>
       <li>
+        <a href="#websocketapi" class="toc-h1 toc-link" data-title="WebSocketAPI">WebSocketAPI</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#153042ed9e" class="toc-h2 toc-link" data-title="概述">概述</a>
+              </li>
+              <li>
+                <a href="#7328deebb5" class="toc-h2 toc-link" data-title="连接">连接</a>
+              </li>
+              <li>
+                <a href="#21f1e88275" class="toc-h2 toc-link" data-title="登录">登录</a>
+              </li>
+              <li>
+                <a href="#5319af762d" class="toc-h2 toc-link" data-title="订阅">订阅</a>
+              </li>
+              <li>
+                <a href="#b109d834a1" class="toc-h2 toc-link" data-title="取消订阅">取消订阅</a>
+              </li>
+              <li>
+                <a href="#checksum" class="toc-h2 toc-link" data-title="Checksum机制">Checksum机制</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#6b8c0ab1a4" class="toc-h3 toc-link" data-title="深度合并">深度合并</a>
+                      </li>
+                      <li>
+                        <a href="#ba62be084b" class="toc-h3 toc-link" data-title="计算校验和">计算校验和</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#a6ff2d9336" class="toc-h2 toc-link" data-title="公共频道">公共频道</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#9841eacefc" class="toc-h3 toc-link" data-title="行情频道">行情频道</a>
+                      </li>
+                      <li>
+                        <a href="#k-2" class="toc-h3 toc-link" data-title="K线频道">K线频道</a>
+                      </li>
+                      <li>
+                        <a href="#d7c4656629" class="toc-h3 toc-link" data-title="深度频道">深度频道</a>
+                      </li>
+                      <li>
+                        <a href="#c6b02483b9" class="toc-h3 toc-link" data-title="交易频道">交易频道</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>
         <a href="#restapi-2" class="toc-h1 toc-link" data-title="RestAPI错误代码">RestAPI错误代码</a>
+      </li>
+      <li>
+        <a href="#websocket" class="toc-h1 toc-link" data-title="WebSocket错误代码">WebSocket错误代码</a>
       </li>
   </ul>
 </div>
@@ -544,7 +598,7 @@
 Clipboard script
 -->
 
-      <script src="../../dist/clipboard.min-f99f064d.js"></script>
+<script src="../../dist/clipboard.min-f99f064d.js"></script>
 
 <script>
 var clipboard = new ClipboardJS('.clipboard_button');
@@ -557,19 +611,24 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-7-27-v1'>2021年7月27日【新增混合合约V1文档】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-websocket'>2021年9月26日【专业合约WebSocket公共频道上线】</h2>
 <ul>
-<li>新增V1文档</li>
-<li>错误信息支持中/英</li>
+<li>专业合约公共频道接口上线</li>
+<li>仓位接口新增爆仓价字段</li>
+</ul>
+<h2 id='2021-9-08-ticker'>2021年9月08日【合约列表和Ticker行情】</h2>
+<ul>
+<li>获取全部合约列表和获取全部ticker行情接口需要传入productType参数，支持模拟盘交易</li>
 </ul>
 <h2 id='2021-9-06'>2021年9月06日【新增账户列表查询】</h2>
 <ul>
 <li>账户接口 新增账户列表查询，根据业务线查询所有账户信息</li>
 <li>仓位接口新增未实现盈亏字段</li>
 </ul>
-<h2 id='2021-9-08-ticker'>2021年9月08日【合约列表和Ticker行情】</h2>
+<h2 id='2021-7-27-v1'>2021年7月27日【新增混合合约V1文档】</h2>
 <ul>
-<li>获取全部合约列表和获取全部ticker行情接口需要传入productType参数，支持模拟盘交易</li>
+<li>新增V1文档</li>
+<li>错误信息支持中/英</li>
 </ul>
 <h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
 <p>欢迎使用Bitget开发者文档！  </p>
@@ -894,34 +953,33 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 
-      <p><strong>state(订单状态)</strong></p>
+<p><strong>state(订单状态)</strong></p>
 
-      <table><thead>
-      <tr>
-          <th>字段</th>
-          <th>说明</th>
-      </tr>
-      </thead><tbody>
-      <tr>
-          <td>new</td>
-          <td>新建订单</td>
-      </tr>
-      <tr>
-          <td>partially_filled</td>
-          <td>部分成交</td>
-      </tr>
-      <tr>
-          <td>filled</td>
-          <td>全部成交</td>
-      </tr>
-      <tr>
-          <td>canceled</td>
-          <td>已撤销</td>
-      </tr>
-      </tbody></table>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>new</td>
+<td>新建订单</td>
+</tr>
+<tr>
+<td>partially_filled</td>
+<td>部分成交</td>
+</tr>
+<tr>
+<td>filled</td>
+<td>全部成交</td>
+</tr>
+<tr>
+<td>canceled</td>
+<td>已撤销</td>
+</tr>
+</tbody></table>
 
-
-<p><strong>granularity(K线间隔)</strong></p>
+<p><strong>granularity(K线类别)</strong></p>
 
 <ul>
 <li>60(1minute)</li>
@@ -1123,6 +1181,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.0004"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.0006"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"feeRateUpRatio"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
@@ -1154,7 +1213,23 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">币对名称</td>
+<td style="text-align: left">产品id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbolName</td>
+<td style="text-align: left">产品名称</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>返回值说明</strong></td>
+<td style="text-align: left">左币</td>
+</tr>
+<tr>
+<td style="text-align: left">返回字段</td>
+<td style="text-align: left">字段说明</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">产品名称</td>
 </tr>
 <tr>
 <td style="text-align: left">baseCoin</td>
@@ -1196,18 +1271,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">minTradeNum</td>
 <td style="text-align: left">最小开张数</td>
 </tr>
-<tr>
-<td style="text-align: left">priceEndStep</td>
-<td style="text-align: left">价格步长</td>
-</tr>
-<tr>
-<td style="text-align: left">volumePlace</td>
-<td style="text-align: left">数量小数精度</td>
-</tr>
-<tr>
-<td style="text-align: left">pricePlace</td>
-<td style="text-align: left">价格小数精度</td>
-</tr>
 </tbody></table>
 <h3 id='5cb783b30a'>深度行情接口</h3>
 <p>限速规则: 20次/1s (IP)</p>
@@ -1232,7 +1295,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1300,7 +1363,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1506,7 +1569,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -1565,7 +1628,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">granularity</td>
@@ -1577,13 +1640,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">开始时间（时间戳 毫秒）</td>
+<td style="text-align: center">开始时间（时间戳毫秒）</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">结束时间（时间戳 毫秒）</td>
+<td style="text-align: center">结束时间（时间戳毫秒）</td>
 </tr>
 </tbody></table>
 
@@ -1663,7 +1726,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1725,7 +1788,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1782,7 +1845,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1846,7 +1909,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1903,7 +1966,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -1965,7 +2028,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -2027,7 +2090,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2256,7 +2319,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2318,7 +2381,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2410,7 +2473,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2460,7 +2523,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2544,7 +2607,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2575,6 +2638,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unrealizedPL"</span><span class="err">：</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2645,6 +2709,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">unrealizedPL</td>
 <td style="text-align: left">未实现盈亏</td>
+</tr>
+<tr>
+<td style="text-align: left">liquidationPrice</td>
+<td style="text-align: left">预估爆仓价</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -2705,6 +2773,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2777,6 +2846,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">未实现盈亏</td>
 </tr>
 <tr>
+<td style="text-align: left">liquidationPrice</td>
+<td style="text-align: left">预估爆仓价</td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">最近更新时间 时间戳 毫秒</td>
 </tr>
@@ -2804,7 +2877,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2915,7 +2988,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3046,7 +3119,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3115,7 +3188,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3186,7 +3259,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 </tbody></table>
 
@@ -3309,7 +3382,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -3462,7 +3535,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3585,7 +3658,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -3680,7 +3753,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3803,7 +3876,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -3896,7 +3969,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -3973,7 +4046,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -4060,7 +4133,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -4129,7 +4202,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
@@ -4192,7 +4265,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -4317,7 +4390,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -4474,7 +4547,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">productType</td>
@@ -4591,7 +4664,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">币对名称 必须大写</td>
+<td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
 <td style="text-align: left">trackingNo</td>
@@ -5051,6 +5124,1413 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">昵称</td>
 </tr>
 </tbody></table>
+<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
+<p>WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务器全双工通信， 使得数据可以快速地双向传播。通过一次简单的握手就
+ 可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
+
+<ul>
+<li>客户端和服务器进行数据传输时，请求头信息比较小，大概2个字节。</li>
+<li>客户端和服务器皆可以主动地发送数据给对方。</li>
+<li>不需要多次创建TCP请求和销毁，节约宽带和服务器的资源。</li>
+</ul>
+
+<p>强烈建议开发者使用WebSocket API获取市场行情和买卖深度等信息。
+​     </p>
+
+<table><thead>
+<tr>
+<th>域名</th>
+<th>WebSocket API</th>
+<th>建议使用</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>域名1</td>
+<td>wss://ws.bitget.com/mix/v1/stream</td>
+<td>国际</td>
+</tr>
+<tr>
+<td>域名2</td>
+<td>wss://ws.bitgetapi.com/mix/v1/stream</td>
+<td>中国地区</td>
+</tr>
+</tbody></table>
+
+<p>连接说明：</p>
+
+<p>连接上ws后30s内订阅或订阅后30s内用户未发送ping指令，系统会自动断开连接</p>
+<h2 id='7328deebb5'>连接</h2>
+<p><strong>连接说明</strong>：</p>
+
+<p><strong>连接限制</strong>：1次/秒</p>
+
+<p><strong>订阅限制</strong>：240次/小时</p>
+
+<p>如果出现网络问题，系统会自动断开连接</p>
+
+<p>如果连接成功后30s未订阅或订阅后30s内服务器未向用户推送数据，系统会自动断开连接</p>
+
+<p>为了保持连接有效且稳定，建议您进行以下操作：</p>
+
+<ol>
+<li>每次接收到消息后，用户设置一个定时器，定时N秒，N 小于30。</li>
+<li>如果定时器被触发（N 秒内没有收到新消息），发送字符串 &#39;ping&#39;。</li>
+<li>期待一个文字字符串&#39;pong&#39;作为回应。如果在 N秒内未收到，请发出错误或重新连接。</li>
+</ol>
+<h2 id='21f1e88275'>登录</h2>
+<p><strong>api_key</strong>:用于调用API的用户身份唯一标示，需要用户申请</p>
+
+<p><strong>passphrase</strong>:API Key 的密码,如果没有口令的话传入空字符串(&quot;&quot;)即可</p>
+
+<p><strong>timestamp</strong>: 时间戳 是Unix Epoch时间，单位是秒， 时间戳30秒后会过期</p>
+
+<p><strong>sign</strong>:为签名字符串，签名规则参照如下:</p>
+
+<p>Message即(待签名字符串)为： timestamp+method+requestPath</p>
+
+<p>其中timestamp示例:const timestamp = &#39;&#39; + Date.now() / 1000</p>
+
+<p>method一律默认为&#39;GET&#39;</p>
+
+<p>requestPath 一律默认为&#39;/user/verify&#39;</p>
+
+<p> 请求在时间戳之后30秒会失效，如果您的服务器时间和API服务器时间有偏差，推荐使用 REST API查询API服务器的时间，然后设置时间戳</p>
+
+<p>签名方式说明参考API概述里的验证部分</p>
+
+<p>生成最终签名的步骤</p>
+
+<p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
+
+<p>Signature = hmac_sha256(secretkey, Message)</p>
+
+<p>第2步，对于Signature进行base64编码</p>
+
+<p>Signature = base64.encode(Signature)</p>
+
+<p>如果登录失败会自动断开链接</p>
+
+<blockquote>
+<p>请求格式说明：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"&lt;passphrase&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"&lt;timestamp&gt;"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"&lt;sign&gt;"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<blockquote>
+<p>请求示例：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"bg_573af5eca856acd91c230da294ce2105"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1538054050"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"8RCOqCJAhhEh4PWcZB/96QojLDqMAg4qNynIixFzS3E="</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>成功返回示例：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"30005"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"login fail"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='5319af762d'>订阅</h2>
+<p><strong>订阅说明</strong></p>
+
+<blockquote>
+<p>请求格式说明</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op":"subscribe",
+    "args":[
+        "&lt;SubscriptionTopic&gt; "
+    ]
+}
+</code></pre>
+<p>WebSocket 频道： <code>公共频道</code> </p>
+
+<p><code>公共频道</code>无需登录，包括行情频道，K线频道，交易数据频道，深度数据频道等。</p>
+
+<ul>
+<li><code>instId</code>  来源    <a href="#合约信息接口">/contracts</a>  的 `symbolName</li>
+</ul>
+
+<p>用户可以选择订阅一个或者多个频道，多个频道总长度不能超过4096个字节。</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1m"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>否</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>产品ID或产品名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "event":"subscribe",
+    "arg":{
+        "instType":"mc",
+        "channel":"ticker",
+        "instId":"BTCUSDT"
+    }
+}
+</code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>否</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+<h2 id='b109d834a1'>取消订阅</h2>
+<p>可以取消一个或者多个频道</p>
+
+<blockquote>
+<p>请求格式说明</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op":"unsubscribe",
+    "args":[
+        "&lt; SubscriptionTopic &gt; "
+    ]
+}
+</code></pre>
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op":"unsubscribe",
+    "args":[
+        {
+            "instType":"MC",
+            "channel":"ticker",
+            "instId":"BTCUSDT"
+        },
+        {
+            "instType":"MC",
+            "channel":"candle1D",
+            "instId":"BTCUSDT"
+        }
+    ]
+}
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>取消订阅的频道列表</td>
+</tr>
+<tr>
+<td>instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>取消订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>否</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+<h2 id='checksum'>Checksum机制</h2>
+<p>此机制可以帮助用户校验深度数据的准确性。</p>
+<h3 id='6b8c0ab1a4'>深度合并</h3>
+<p>用户订阅增量推送（如：<code>books</code>）深度频道成功后，首先获取初始全量深度数据，当获取到增量推送数据后，更新本地全量深度数据。</p>
+
+<ol>
+<li>如果有相同价格，则比较数量；数量为0删除此深度，数量有变化则替换此数据。</li>
+<li>如果没有相同价格，则按照价格优劣排序（bid为价格降序，ask为价格升序），将深度信息插入到全量数据中</li>
+</ol>
+<h3 id='ba62be084b'>计算校验和</h3>
+<p>先用深度合并后前25档bids和asks组成一个字符串（其中ask和bid中的价格和数量以冒号连接），再计算其crc32值（32位有符号整型）。</p>
+<pre class="highlight plaintext"><code>1.bid和ask超过25档
+合并后全量深度数据（在此仅展示2档数据，实际应截取25档数据）：
+"bids": [
+    [ 3366.1, 7 ],
+    [ 3366 , 6]
+]
+"asks": [
+    [ 3366.8, 9],
+    [ 3368 , 8]
+]
+校验字符串：
+"3366.1:7:3366.8:9:3366:6:3368:8"
+
+2.bid或ask不足25档  
+合并后全量深度数据：
+"bids": [
+    [ 3366.1, 7]
+]
+"asks": [
+    [ 3366.8, 9],
+    [ 3368  , 8 ],
+    [ 3372  , 8 ]
+]
+校验字符串：
+"3366.1:7:3366.8:9:3368:8:3372:8"
+</code></pre>
+<ol>
+<li>当bid和ask深度数据超过25档时，截取各自25档数据，要校验的字符串按照bid、ask深度数据交替方式连接。如：bid[价格:数量]:ask[价格:数量]:bid[价格:数量]:ask[价格:数量]...</li>
+<li>bid或ask深度数据不足25档时，直接忽略缺失的深度。如：bid[价格:数量]:ask[价格:数量]:asks[价格:数量]:asks[价格:数量]...</li>
+</ol>
+<h2 id='a6ff2d9336'>公共频道</h2><h3 id='9841eacefc'>行情频道</h3>
+<p>获取产品的最新成交价、买一价、卖一价和24小时交易量等信息，有数据更新推送一次数据</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th></th>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名，<code>ticker</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>成功返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>推送示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"44962.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="s2">"44962"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="s2">"44961"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"45136.50"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"43620.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"capitalRate"</span><span class="p">:</span><span class="s2">"-0.00010"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nextSettleTime"</span><span class="p">:</span><span class="mi">1632495600000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"systemTime"</span><span class="p">:</span><span class="mi">1632470889087</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"markPrice"</span><span class="p">:</span><span class="s2">"44936.21"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="s2">"44959.23"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holding"</span><span class="p">:</span><span class="s2">"1825.822"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"39746.470"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>订阅成功的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>推送数据动作，增量推送数据还是全量推送数据<code>snapshot</code>：全量<code>update</code>：增量</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>订阅的数据</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>&gt;last</td>
+<td>String</td>
+<td>最新价</td>
+</tr>
+<tr>
+<td>&gt;bestAsk</td>
+<td>String</td>
+<td>卖一价</td>
+</tr>
+<tr>
+<td>&gt;bestBid</td>
+<td>String</td>
+<td>买一价</td>
+</tr>
+<tr>
+<td>&gt;high24h</td>
+<td>String</td>
+<td>24小时最高价</td>
+</tr>
+<tr>
+<td>&gt;low24h</td>
+<td>String</td>
+<td>24小时最低价</td>
+</tr>
+<tr>
+<td>&gt;priceCahngePercent</td>
+<td>String</td>
+<td>24小时涨跌幅</td>
+</tr>
+<tr>
+<td>&gt;capitalRate</td>
+<td>String</td>
+<td>资金费率</td>
+</tr>
+<tr>
+<td>&gt;nextSettleTime</td>
+<td>String</td>
+<td>下次资金费率结算时间 时间戳毫秒</td>
+</tr>
+<tr>
+<td>&gt;systemTime</td>
+<td>String</td>
+<td>系统时间</td>
+</tr>
+<tr>
+<td>&gt;marketPrice</td>
+<td>String</td>
+<td>标记价格</td>
+</tr>
+<tr>
+<td>&gt;indexPrice</td>
+<td>String</td>
+<td>指数价格</td>
+</tr>
+<tr>
+<td>&gt;holding</td>
+<td>String</td>
+<td>持仓量</td>
+</tr>
+<tr>
+<td>&gt;baseVolume</td>
+<td>String</td>
+<td>左币交易量</td>
+</tr>
+<tr>
+<td>&gt;quoteVolume</td>
+<td>String</td>
+<td>右币交易量</td>
+</tr>
+</tbody></table>
+<h3 id='k-2'>K线频道</h3>
+<p>获取产品的K线数据。</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名，<code>candle1W</code><code>candle1D</code><code>candle12H</code> <code>candle4H</code>  <code>candle1H</code><code>candle30m</code> <code>candle15m</code> <code>candle5m</code> <code>candle1m</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>成功返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>推送示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1597026383085"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"8533.02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"8553.74"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"8527.17"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"8548.26"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"45247"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>订阅成功的频道</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>订阅的数据</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>开始时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td>&gt; o</td>
+<td>String</td>
+<td>开盘价格</td>
+</tr>
+<tr>
+<td>&gt; h</td>
+<td>String</td>
+<td>最高价格</td>
+</tr>
+<tr>
+<td>&gt; l</td>
+<td>String</td>
+<td>最低价格</td>
+</tr>
+<tr>
+<td>&gt; c</td>
+<td>String</td>
+<td>收盘价格</td>
+</tr>
+<tr>
+<td>&gt; v</td>
+<td>String</td>
+<td>数值为左币交易量</td>
+</tr>
+</tbody></table>
+<h3 id='d7c4656629'>深度频道</h3>
+<p>获取深度数据，<code>books</code>是全量深度频道，<code>books5</code>是5档频道；</p>
+
+<p><code>books</code> 首次推全量快照数据，以后增量推送，以后增量推送，即有深度有变化推送一次变化的数据</p>
+
+<p><code>books5</code>首次推5档快照数据，以后全量推送，有深度变化推送一次5档数据，即每次都推送5档数据</p>
+
+<p><code>books15</code> 首次推15档快照数据，以后全量推送，有深度变化推送一次15档数据，即每次都推送15档数据</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op":"subscribe",
+    "args":[
+        {
+            "instType":"mc",
+            "channel":"books5",
+            "instId":"BTCUSDT"
+        }
+    ]
+}
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名，<code>books</code> <code>books5</code> <code>books15</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>成功返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+</tbody></table>
+
+<p>推送示例:全量</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"books"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="err">    </span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">  </span><span class="p">{</span><span class="err">            </span><span class="w">
+        </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="mf">44849.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0031</span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="mf">44845.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.725</span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"checksum"</span><span class="p">:</span><span class="s2">" -1638549107"</span><span class="p">,</span><span class="w">
+        </span><span class="err"> </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628826748009"</span><span class="err"> </span><span class="w">
+    </span><span class="p">}</span><span class="err">   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>订阅成功的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>推送数据动作，增量推送数据还是全量推送数据<code>snapshot</code>：全量<code>update</code>：增量</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>订阅的数据</td>
+</tr>
+<tr>
+<td>&gt; asks</td>
+<td>Array</td>
+<td>卖方深度</td>
+</tr>
+<tr>
+<td>&gt; bids</td>
+<td>Array</td>
+<td>买方深度</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>数据更新时间戳，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td>&gt; checksum</td>
+<td>Integer</td>
+<td>检验和</td>
+</tr>
+</tbody></table>
+
+<p><strong>asks和bids值数组举例说明： [&quot;411.8&quot;, &quot;10&quot;] 411.8为深度价格，10为此价格的基础币量</strong></p>
+<h3 id='c6b02483b9'>交易频道</h3>
+<p>获取最近的成交数据，有成交数据就推送, 首次推送最近50条成交记录, 后续增量推送</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型     <code>MC：公共频道</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名，<code>trade</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>成功返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>是</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>推送示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1630585523753"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.0100"</span><span class="p">,</span><span class="w">
+            </span><span class="mi">1</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"1630572379706"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.0221"</span><span class="p">,</span><span class="w">
+            </span><span class="mi">1</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>订阅成功的频道</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>订阅的数据</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>成交时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td>&gt; px</td>
+<td>String</td>
+<td>成交价格</td>
+</tr>
+<tr>
+<td>&gt; sz</td>
+<td>String</td>
+<td>成交数量</td>
+</tr>
+<tr>
+<td>&gt; side</td>
+<td>String</td>
+<td>成交方向，buy 买 sell卖</td>
+</tr>
+</tbody></table>
 <h1 id='restapi-2'>RestAPI错误代码</h1>
 <table><thead>
 <tr>
@@ -5212,6 +6692,54 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">计划委托单已经处于结束状态</td>
 <td style="text-align: left">43026</td>
 <td style="text-align: center">400</td>
+</tr>
+</tbody></table>
+<h1 id='websocket'>WebSocket错误代码</h1>
+<table><thead>
+<tr>
+<th style="text-align: left">错误提示</th>
+<th style="text-align: left">错误码</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">频道不存在</td>
+<td style="text-align: left">30001</td>
+</tr>
+<tr>
+<td style="text-align: left">不合法的请求</td>
+<td style="text-align: left">30002</td>
+</tr>
+<tr>
+<td style="text-align: left">无效op</td>
+<td style="text-align: left">30003</td>
+</tr>
+<tr>
+<td style="text-align: left">用户需要登录</td>
+<td style="text-align: left">30004</td>
+</tr>
+<tr>
+<td style="text-align: left">登录失败</td>
+<td style="text-align: left">30005</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_KEY</td>
+<td style="text-align: left">30011</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_PASSPHRASE</td>
+<td style="text-align: left">30012</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_TIMESTAMP</td>
+<td style="text-align: left">30013</td>
+</tr>
+<tr>
+<td style="text-align: left">请求时间戳过期</td>
+<td style="text-align: left">30014</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的签名</td>
+<td style="text-align: left">30015</td>
 </tr>
 </tbody></table>
 
