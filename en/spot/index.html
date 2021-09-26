@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -313,10 +313,13 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#05-07-2021-new-creation-v1-spot-trading-document" class="toc-h2 toc-link" data-title="05/07/2021【New creation v1 Spot trading document】">05/07/2021【New creation v1 Spot trading document】</a>
+                <a href="#24-09-2021-websocket-api" class="toc-h2 toc-link" data-title="26/09/ 2021【WebSocket Api 】">24/09/ 2021【WebSocket Api 】</a>
               </li>
               <li>
                 <a href="#15-09-2021-add-transfer-record-interface" class="toc-h2 toc-link" data-title="15/09/2021 【Add transfer record interface】">15/09/2021 【Add transfer record interface】</a>
+              </li>
+              <li>
+                <a href="#05-07-2021-new-creation-v1-spot-trading-document" class="toc-h2 toc-link" data-title="05/07/2021【New creation v1 Spot trading document】">05/07/2021【New creation v1 Spot trading document】</a>
               </li>
           </ul>
       </li>
@@ -455,12 +458,74 @@
           </ul>
       </li>
       <li>
+        <a href="#websocketapi" class="toc-h1 toc-link" data-title="WebSocketAPI">WebSocketAPI</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+              </li>
+              <li>
+                <a href="#connect" class="toc-h2 toc-link" data-title="Connect">Connect</a>
+              </li>
+              <li>
+                <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+              </li>
+              <li>
+                <a href="#subscribe" class="toc-h2 toc-link" data-title="Subscribe">Subscribe</a>
+              </li>
+              <li>
+                <a href="#unsubscribe" class="toc-h2 toc-link" data-title="Unsubscribe">Unsubscribe</a>
+              </li>
+              <li>
+                <a href="#checksum" class="toc-h2 toc-link" data-title="Checksum">Checksum</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#merging-incremental-data-into-full-data" class="toc-h3 toc-link" data-title="Merging incremental data into full data">Merging incremental data into full data</a>
+                      </li>
+                      <li>
+                        <a href="#calculate-checksum" class="toc-h3 toc-link" data-title="Calculate Checksum">Calculate Checksum</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#public-channels" class="toc-h2 toc-link" data-title="Public Channels">Public Channels</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#tickers-channel" class="toc-h3 toc-link" data-title="Tickers Channel">Tickers Channel</a>
+                      </li>
+                      <li>
+                        <a href="#candlesticks-channel" class="toc-h3 toc-link" data-title="Candlesticks Channel">Candlesticks Channel</a>
+                      </li>
+                      <li>
+                        <a href="#depth-channel" class="toc-h3 toc-link" data-title="Depth channel">Depth channel</a>
+                      </li>
+                      <li>
+                        <a href="#trades-channel" class="toc-h3 toc-link" data-title="Trades Channel">Trades Channel</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#private-channel" class="toc-h2 toc-link" data-title="Private Channel">Private Channel</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#account-channel" class="toc-h3 toc-link" data-title="Account Channel">Account Channel</a>
+                      </li>
+                      <li>
+                        <a href="#order-channel" class="toc-h3 toc-link" data-title="Order Channel">Order Channel</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>
         <a href="#restapi-error-code" class="toc-h1 toc-link" data-title="RestAPI  error code">RestAPI  error code</a>
           <ul class="toc-list-h2">
               <li>
                 <a href="#public-error-code" class="toc-h2 toc-link" data-title="Public error code">Public error code</a>
               </li>
           </ul>
+      </li>
+      <li>
+        <a href="#websocket-error-code" class="toc-h1 toc-link" data-title="WebSocket error code">WebSocket error code</a>
       </li>
   </ul>
 </div>
@@ -484,14 +549,18 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='05-07-2021-new-creation-v1-spot-trading-document'>05/07/2021【New creation v1 Spot trading document】</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='24-09-2021-websocket-api'>26/09/ 2021【WebSocket Api 】</h2>
 <ul>
-<li>New creation of V1 document</li>
-<li>Supporting of error message</li>
+<li>WebSocket Public Channel and Private Channel Online</li>
 </ul>
 <h2 id='15-09-2021-add-transfer-record-interface'>15/09/2021 【Add transfer record interface】</h2>
 <ul>
 <li>Added transfer record interface</li>
+</ul>
+<h2 id='05-07-2021-new-creation-v1-spot-trading-document'>05/07/2021【New creation v1 Spot trading document】</h2>
+<ul>
+<li>New creation of V1 document</li>
+<li>Supporting of error message</li>
 </ul>
 <h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
 <p>Welcome to Bitget developer documentation!</p>
@@ -561,10 +630,6 @@ please delete the APIKey as soon as possible.
 <p><strong>SDK（Recommended）</strong></p>
 
 <p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
-
-<p>CCXT is our authorized SDK provider, and you can access Bitget API through CCXT. For more information, please visit:</p>
-
-<p><a href="https://ccxt.trade/">https://ccxt.trade</a></p>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter is consist of the following two aspects for the interface types:</p>
 
@@ -593,7 +658,7 @@ please delete the APIKey as soon as possible.
 
 <p>If a valid APIKey is passed in, use APIKey to limit the speed; if not, use the public IP to limit the speed.</p>
 
-<p>Speed ​​limit rules: There are separate instructions on each interface. If there is no specific instruction, the speed limit of general interface is 10 times per second.</p>
+<p>Speed limit rules: There are separate instructions on each interface. If there is no specific instruction, the speed limit of general interface is 10 times per second.</p>
 
 <p>Special note: When placing orders in batches, if 4 trading pairs are placed, 10 orders for each trading pair are counted as one request.</p>
 <h2 id='api-domain'>API domain</h2>
@@ -2864,6 +2929,1778 @@ please delete the APIKey as soon as possible.
 <td>Transaction fees</td>
 </tr>
 </tbody></table>
+<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
+<p>WebSocket is a new HTML5 protocol that achieves full-duplex data transmission between the client and server, allowing data to be transferred effectively in both directions. A connection between the client and server can be established with just one handshake. The server will then be able to push data to the client according to preset rules. Its advantages include:</p>
+
+<ul>
+<li>The WebSocket request header size for data transmission between client and server is only 2 bytes.</li>
+<li>Either the client or server can initiate data transmission.</li>
+<li>There&#39;s no need to repeatedly create and delete TCP connections, saving resources on bandwidth and server.</li>
+</ul>
+
+<p>It is strongly recommended that developers use WebSocket API to obtain market information and transaction depth.
+​     </p>
+
+<table><thead>
+<tr>
+<th>domain</th>
+<th>WebSocket API</th>
+<th>Recommended to use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain 1</td>
+<td>wss://ws.bitget.com/spot/v1/stream</td>
+<td>internationality</td>
+</tr>
+<tr>
+<td>domain 2</td>
+<td>wss://ws.bitgetapi.com/spot/v1/stream</td>
+<td>China area</td>
+</tr>
+</tbody></table>
+<h2 id='connect'>Connect</h2>
+<p><strong>Connection instructions</strong>:</p>
+
+<p><strong>Connection limit</strong>: 1 time per second</p>
+
+<p>When subscribing to a public channel, use the address of the public service. When subscribing to a private channel, use the address of the private service</p>
+
+<p><strong>Subscription limit</strong>: 240 times per hour</p>
+
+<p>If there’s a network problem, the system will automatically disable the connection.</p>
+
+<p>The connection will break automatically if the subscription is not established or data has not been pushed for more than 30 seconds.</p>
+
+<p>To keep the connection stable:</p>
+
+<ol>
+<li>Set a timer of N seconds whenever a response message is received, where N is less than 30.</li>
+<li>If the timer is triggered, which means that no new message is received within N seconds, send the String &#39;ping&#39;.</li>
+<li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error or reconnect.</li>
+</ol>
+<h2 id='login'>Login</h2>
+<p><strong>api_key</strong>: Unique identification for invoking API. Requires user to apply one manually.</p>
+
+<p><strong>passphrase</strong>: APIKey password</p>
+
+<p><strong>timestamp</strong>: the Unix Epoch time, the unit is seconds</p>
+
+<p><strong>sign</strong>: signature string, the signature algorithm is as follows:</p>
+
+<p>First concatenate <code>timestamp</code>, <code>method</code>, <code>requestPath</code>, and <code>body</code> strings, then use HMAC SHA256 method to encrypt the concatenated string with SecretKey, and then perform Base64 encoding.</p>
+
+<p><strong>secretKey</strong>: The security key generated when the user applies for APIKey, e.g. : 22582BD0CFF14C41EDBF1AB98506286D</p>
+
+<p><strong>Example of timestamp</strong>: const timestamp =&#39;&#39; + Date.now() / 1000</p>
+
+<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/users/self/verify&#39;, secretKey))</p>
+
+<p><strong>method</strong>: always &#39;GET&#39;.</p>
+
+<p><strong>requestPath</strong> : always &#39;/users/self/verify&#39;</p>
+
+<p>The request will expire 30 seconds after the timestamp. If your server time differs from the API server time, we recommended using the REST API to query the API server time and then set the timestamp.</p>
+
+<p>For the description of the signature method, refer to the verification section in the API overview</p>
+
+<p>Steps to generate the final signature:</p>
+
+<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
+
+<p>Signature = hmac_sha256(secretkey, Message)</p>
+
+<p>The second step is to base64 encode the Signature</p>
+
+<p>Signature = base64.encode(Signature)</p>
+
+<p>If login fails, it will automatically disconnect</p>
+
+<blockquote>
+<p>Request format description</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;passphrase&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;timestamp&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;sign&gt;"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_573af5eca856acd91c230da294ce2105"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1538054050"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8RCOqCJAhhEh4PWcZB/96QojLDqMAg4qNynIixFzS3E="</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30005"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='subscribe'>Subscribe</h2>
+<p><strong>Subscription Instructions</strong></p>
+
+<blockquote>
+<p>Request format description</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "op": "subscribe",
+  "args": ["&lt;SubscriptionTopic&gt;"]
+}
+
+</code></pre>
+<p>WebSocket channels are divided into two categories: <code>public</code> and <code>private</code> channels.</p>
+
+<p><code>Public channels</code> -- include tickers channel, K-Line channel, limit price channel, order book channel, and mark price channel, etc -- do not require log in.</p>
+
+<ul>
+<li><code>instId</code> source    <a href="#Basic%20configuration%20information%20of%20trading%20pairs">/products</a>  in  <code>symbolName</code></li>
+</ul>
+
+<p><code>Private channels</code> -- including account channel, order channel, and position channel, etc -- require log in.</p>
+
+<ul>
+<li>User account channel <code>instId</code> is <code>default</code> Get all currency assets</li>
+</ul>
+
+<p>Users can choose to subscribe to one or more channels, and the total length of multiple channels cannot exceed 4096 bytes.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op": "subscribe",
+    "args": [{
+        "instType": "SP",
+        "channel": "ticker",
+        "instId": "BTCUSDT"
+    }, {
+        "instType": "SP",
+        "channel": "candle5m",
+        "instId": "BTCUSDT"
+    }]
+}
+</code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument type<code>SP</code>: Spot public channel  <code>SPBL</code> Spot private channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Return parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event, <code>subscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument type<code>SP</code>: Spot public channel  <code>SPBL</code> Spot private channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error message</td>
+</tr>
+</tbody></table>
+<h2 id='unsubscribe'>Unsubscribe</h2>
+<p>Unsubscribe from one or more channels.</p>
+
+<blockquote>
+<p>Request format description</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "op": "unsubscribe",
+  "args": ["&lt; SubscriptionTopic&gt; "]
+}
+</code></pre>
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op": "unsubscribe",
+    "args": [{
+        "instType": "SP",
+        "channel": "ticker",
+        "instId": "BTCUSDT"
+    }, {
+        "instType": "SP",
+        "channel": "candle1m",
+        "instId": "BTCUSDT"
+    }]
+}
+</code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of channels to unsubscribe from</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument type<code>SP</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Return parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event, <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Yes</td>
+<td>Unsubscribed channel</td>
+</tr>
+<tr>
+<td>&gt;instType</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument type<code>SP</code>: Spot public channel  <code>SPBL</code> Spot private channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+<h2 id='checksum'>Checksum</h2>
+<p>This mechanism can assist users in checking the accuracy of depth data.</p>
+<h3 id='merging-incremental-data-into-full-data'>Merging incremental data into full data</h3>
+<p>After subscribing to the incremental load push (such as <code>books</code> 400 levels) of Order Book Channel, users first receive the initial full load of market depth. After the incremental load is subsequently received, update the local full load.</p>
+
+<ol>
+<li>If there is the same price, compare the amount. If the amount is 0, delete this depth data. If the amount changes, replace the original data.</li>
+<li>If there is no same price, sort by price (bid in descending order, ask in ascending order), and insert the depth information into the full load.</li>
+</ol>
+<h3 id='calculate-checksum'>Calculate Checksum</h3>
+<p>Use the first 25 bids and asks in the full load to form a string (where a colon connects the price and amount in an ask or a bid), and then calculate the CRC32 value (32-bit signed integer).</p>
+
+<blockquote>
+<p>Calculate Checksum</p>
+</blockquote>
+<pre class="highlight plaintext"><code>1. More than 25 levels of bid and ask
+A full load of market depth (only 2 levels of data are shown here, while 25 levels of data should actually be intercepted):
+"bids": [
+  [ 43231.1, 4 ],
+  [ 43231, 6 ]
+]
+"asks": [
+  [ 43230.8, 9 ],
+  [ 43230.7, 8 ]
+]
+Check string:
+"43231.1:4:43231:6:43230.8:9:43230.7:8"
+
+2. Less than 25 levels of bid or ask
+A full load of market depth:
+"bids": [
+  [ 3366.1, 7, 0, 3 ]
+]
+"asks": [
+  [ 3366.8, 9, 10, 3 ],
+  [ 3368  , 8,  3, 4 ],
+  [ 3372  , 8,  3, 4 ]
+]
+
+Check string:
+"3366.1:7:3366.8:9:3368:8:3372:8"
+</code></pre>
+<ol>
+<li>When the bid and ask depth data exceeds 25 levels, each of them will intercept 25 levels of data, and the string to be checked is queued in a way that the bid and ask depth data are alternately arranged.
+Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>bid[price:amount]</code>:<code>ask[price:amount]</code>...</li>
+<li>When the bid or ask depth data is less than 25 levels, the missing depth data will be ignored.
+Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>asks[price:amount]</code>:<code>asks[price:amount]</code>...</li>
+</ol>
+<h2 id='public-channels'>Public Channels</h2><h3 id='tickers-channel'>Tickers Channel</h3>
+<p>Retrieve the last traded price, bid price, ask price and 24-hour trading volume of instruments. Data will be pushed every 100 ms.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type，SP</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name, <code>tickers</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unrecognized request: {</span><span class="se">\"</span><span class="s2">op</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">subscribe</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">arg</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">instType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">sp</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2"> : </span><span class="se">\"</span><span class="s2">ticker</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">instId</span><span class="se">\"</span><span class="s2"> : </span><span class="se">\"</span><span class="s2">BTCUSDT</span><span class="se">\"</span><span class="s2">}]}"</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event, <code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument name</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>Push data action, incremental push data or full push data <code>snapshot</code>: full <code>update</code>: incremental</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data</td>
+</tr>
+<tr>
+<td>&gt;instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>&gt;last</td>
+<td>String</td>
+<td>Last traded price</td>
+</tr>
+<tr>
+<td>&gt;bestAsk</td>
+<td>String</td>
+<td>Best ask price</td>
+</tr>
+<tr>
+<td>&gt;bestBid</td>
+<td>String</td>
+<td>Best bid price</td>
+</tr>
+<tr>
+<td>&gt;open24h</td>
+<td>String</td>
+<td>Open price in the past 24 hours</td>
+</tr>
+<tr>
+<td>&gt;high24h</td>
+<td>String</td>
+<td>Highest price in the past 24 hours</td>
+</tr>
+<tr>
+<td>&gt;low24h</td>
+<td>String</td>
+<td>Lowest price in the past 24 hours</td>
+</tr>
+<tr>
+<td>&gt;baseVol</td>
+<td>String</td>
+<td>24h trading volume,  with a unit of <code>currency</code>.</td>
+</tr>
+<tr>
+<td>&gt;quoteVol</td>
+<td>String</td>
+<td>24h trading volume, with a unit of <code>contact</code>.</td>
+</tr>
+<tr>
+<td>&gt;ts</td>
+<td>String</td>
+<td>Ticker data generation time, Unix timestamp format in milliseconds</td>
+</tr>
+</tbody></table>
+<h3 id='candlesticks-channel'>Candlesticks Channel</h3>
+<p>Retrieve the candlesticks data of an instrument. Data will be pushed every 500 ms.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candle1m"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type <code>SP</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>candle1W</code><code>candle1D</code><code>candle12H</code> <code>candle4H</code>  <code>candle1H</code><code>candle30m</code> <code>candle15m</code> <code>candle5m</code> <code>candle1m</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument name for example :BTCUSDT</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:sp,channel:candle1D,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event, <code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument name</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Push Data Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"1597026383085"</span><span class="p">,</span><span class="w"> </span><span class="s2">"8533.02"</span><span class="p">,</span><span class="w"> </span><span class="s2">"8553.74"</span><span class="p">,</span><span class="w"> </span><span class="s2">"8527.17"</span><span class="p">,</span><span class="w"> </span><span class="s2">"8548.26"</span><span class="p">,</span><span class="w"> </span><span class="s2">"45247"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>Data generation time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; o</td>
+<td>String</td>
+<td>Open price</td>
+</tr>
+<tr>
+<td>&gt; h</td>
+<td>String</td>
+<td>highest price</td>
+</tr>
+<tr>
+<td>&gt; l</td>
+<td>String</td>
+<td>Lowest price</td>
+</tr>
+<tr>
+<td>&gt; c</td>
+<td>String</td>
+<td>Close price</td>
+</tr>
+<tr>
+<td>&gt;v</td>
+<td>String</td>
+<td>Trading volume, with a unit of <code>contact</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='depth-channel'>Depth channel</h3>
+<p>Get depth data</p>
+
+<p><code>books</code>: Push the full snapshot data for the first time, push incrementally later, and push incrementally later, that is, if there is a change in depth, the data that has changed once is pushed</p>
+
+<p><code>books5</code>: Push 5 files of snapshot data for the first time, and then all the data will be pushed, and 5 files of data will be pushed once with in-depth changes, that is, 5 files of data will be pushed every time</p>
+
+<p><code>book15</code> 15 files of snapshot data are pushed for the first time, and then all of them will be pushed, and 15 files of data will be pushed once with in-depth changes, that is, 15 files of data will be pushed every time</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type <code>SP</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name, <code>books</code> <code>books5</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:sp,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument name</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>Push data action, incremental push data or full push data <code>snapshot</code>: full <code>update</code>: incremental</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data</td>
+</tr>
+<tr>
+<td>&gt; asks</td>
+<td>Array</td>
+<td>Order book on sell side</td>
+</tr>
+<tr>
+<td>&gt; bids</td>
+<td>Array</td>
+<td>Order book on buy side</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>Order book generation time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; checksum</td>
+<td>Integer</td>
+<td>Checksum</td>
+</tr>
+</tbody></table>
+
+<p><strong>An example of the array of asks and bids values: [&quot;411.8&quot;, &quot;10&quot;, &quot;1&quot;, &quot;4&quot;] &quot;411.8&quot; is the depth price, &quot;10&quot; is the size</strong></p>
+<h3 id='trades-channel'>Trades Channel</h3>
+<p>Retrieve the recent trades data. Data will be pushed whenever there is a trade.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>trade</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>InstrumentType</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>Filled time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; px</td>
+<td>String</td>
+<td>Trade price</td>
+</tr>
+<tr>
+<td>&gt; sz</td>
+<td>String</td>
+<td>Trade size</td>
+</tr>
+<tr>
+<td>&gt; side</td>
+<td>String</td>
+<td>Trade direction, <code>buy</code>, <code>sell</code></td>
+</tr>
+</tbody></table>
+<h2 id='private-channel'>Private Channel</h2><h3 id='account-channel'>Account Channel</h3>
+<p>Retrieve account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Typ,<code>spbl</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>account</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Currency, all is default</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+</span><span class="p">}</span><span class="err">  </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Push Data Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000.0000"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.35000"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Decription</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Currency</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data</td>
+</tr>
+<tr>
+<td>&gt; coinId</td>
+<td>String</td>
+<td>Coin Id</td>
+</tr>
+<tr>
+<td>&gt; coinName</td>
+<td>String</td>
+<td>Coin Name</td>
+</tr>
+<tr>
+<td>&gt; available</td>
+<td>String</td>
+<td>balance</td>
+</tr>
+</tbody></table>
+
+<p>First push: full push.</p>
+
+<p>Incremental push: push transaction changes</p>
+<h3 id='order-channel'>Order Channel</h3>
+<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling order.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>Instrument Type,spbl</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>Channel Name, <code>orders</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Paramters</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>Subscribed Data</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>Instrument Type<code>spbl：币币</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Paramter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed Data</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>&gt; ordId</td>
+<td>String</td>
+<td>Order Id</td>
+</tr>
+<tr>
+<td>&gt; clOrdId</td>
+<td>String</td>
+<td>Client-supplied order ID</td>
+</tr>
+<tr>
+<td>&gt; px</td>
+<td>String</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>&gt; sz</td>
+<td>String</td>
+<td>The original order quantity</td>
+</tr>
+<tr>
+<td>&gt; notional</td>
+<td>String</td>
+<td>The purchase amount, which will be returned when the market price is purchased</td>
+</tr>
+<tr>
+<td>&gt; ordType</td>
+<td>String</td>
+<td>Order Type  <code>market</code> <code>limit</code></td>
+</tr>
+<tr>
+<td>&gt; force</td>
+<td>String</td>
+<td>Category<code>normal</code><code>twap</code><code>adl</code><code>full_liquidation</code><code>partial_liquidation</code></td>
+</tr>
+<tr>
+<td>&gt; side</td>
+<td>String</td>
+<td>order side，<code>buy</code> <code>sell</code></td>
+</tr>
+<tr>
+<td>&gt; fillPx</td>
+<td>String</td>
+<td>fill price</td>
+</tr>
+<tr>
+<td>&gt; tradeId</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; fillSz</td>
+<td>String</td>
+<td>fill size</td>
+</tr>
+<tr>
+<td>&gt; fillTime</td>
+<td>String</td>
+<td>fill time</td>
+</tr>
+<tr>
+<td>&gt; fillFee</td>
+<td>String</td>
+<td>last filled fee</td>
+</tr>
+<tr>
+<td>&gt; fillFeeCcy</td>
+<td>String</td>
+<td>last filled fee currency</td>
+</tr>
+<tr>
+<td>&gt; execType</td>
+<td>String</td>
+<td>Order flow type, T: taker M: maker</td>
+</tr>
+<tr>
+<td>&gt; accFillSz</td>
+<td>String</td>
+<td>Accumulated fill quantity</td>
+</tr>
+<tr>
+<td>&gt; avgPx</td>
+<td>String</td>
+<td>Average filled price. If none is filled, it will return <code>0</code>.</td>
+</tr>
+<tr>
+<td>&gt; status</td>
+<td>String</td>
+<td>order state <code>new&#39; ‘partial-fill</code><code>full-fill</code>cancelled`</td>
+</tr>
+<tr>
+<td>&gt; cTime</td>
+<td>String</td>
+<td>Creation time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; uTime</td>
+<td>String</td>
+<td>Update time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt;orderFee</td>
+<td>Array</td>
+<td>fee list</td>
+</tr>
+<tr>
+<td>&gt;&gt; feeCcy</td>
+<td>String</td>
+<td>Fee currency</td>
+</tr>
+<tr>
+<td>&gt;&gt; fee</td>
+<td>String</td>
+<td>FeeNegative number represents the user transaction fee charged by the platform.Positive number represents rebate.</td>
+</tr>
+</tbody></table>
 <h1 id='restapi-error-code'>RestAPI  error code</h1><h2 id='public-error-code'>Public error code</h2>
 <table><thead>
 <tr>
@@ -3017,6 +4854,54 @@ please delete the APIKey as soon as possible.
 <td style="text-align: left">spot service return an error</td>
 <td style="text-align: left">40725</td>
 <td style="text-align: center">400</td>
+</tr>
+</tbody></table>
+<h1 id='websocket-error-code'>WebSocket error code</h1>
+<table><thead>
+<tr>
+<th style="text-align: left">Error Message</th>
+<th style="text-align: left">Error Code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Channel does not exist</td>
+<td style="text-align: left">30001</td>
+</tr>
+<tr>
+<td style="text-align: left">Illegal request</td>
+<td style="text-align: left">30002</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid op</td>
+<td style="text-align: left">30003</td>
+</tr>
+<tr>
+<td style="text-align: left">User needs to log in</td>
+<td style="text-align: left">30004</td>
+</tr>
+<tr>
+<td style="text-align: left">Login failed</td>
+<td style="text-align: left">30005</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_KEY</td>
+<td style="text-align: left">30011</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_PASSPHRASE</td>
+<td style="text-align: left">30012</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_TIMESTAMP</td>
+<td style="text-align: left">30013</td>
+</tr>
+<tr>
+<td style="text-align: left">Request timestamp expired</td>
+<td style="text-align: left">30014</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid signature</td>
+<td style="text-align: left">30015</td>
 </tr>
 </tbody></table>
 
