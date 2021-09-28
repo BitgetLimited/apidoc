@@ -313,7 +313,7 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#2021-9-24-websocket" class="toc-h2 toc-link" data-title="2021年9月26日【专业合约WebSocket公共频道上线】">2021年9月26日【专业合约WebSocket公共频道上线】</a>
+                <a href="#2021-9-26-websocket" class="toc-h2 toc-link" data-title="2021年9月26日【专业合约WebSocket公共频道上线】">2021年9月26日【专业合约WebSocket公共频道上线】</a>
               </li>
               <li>
                 <a href="#2021-9-08-ticker" class="toc-h2 toc-link" data-title="2021年9月08日【合约列表和Ticker行情】">2021年9月08日【合约列表和Ticker行情】</a>
@@ -340,6 +340,9 @@
               </li>
               <li>
                 <a href="#152d3db758" class="toc-h2 toc-link" data-title="联系我们">联系我们</a>
+              </li>
+              <li>
+                <a href="#0adb1147b3" class="toc-h2 toc-link" data-title="常见问题">常见问题</a>
               </li>
           </ul>
       </li>
@@ -611,7 +614,7 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-websocket'>2021年9月26日【专业合约WebSocket公共频道上线】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-26-websocket'>2021年9月26日【专业合约WebSocket公共频道上线】</h2>
 <ul>
 <li>专业合约公共频道接口上线</li>
 <li>仓位接口新增爆仓价字段</li>
@@ -659,7 +662,32 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>发送邮件至 API@bitget.com。</li>
+<li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a> </li>
 </ul>
+<h2 id='0adb1147b3'>常见问题</h2>
+<ul>
+<li>Q1： 交易员为什么不能平仓？</li>
+</ul>
+
+<p>A : 交易员平仓不能调用 下单接口，需要调用 <a href="#交易员平仓接口">交易员平仓接口</a></p>
+
+<ul>
+<li>Q2: 下单交易对我是传 BTCUSDT_UMCBL  还是传 BTCUSDT ?</li>
+</ul>
+
+<p>A : 下单接口所有的 <code>symbol</code>  参数都是传 <a href="#合约信息接口">合约信息接口</a> 接口的 <code>symbol</code> 返回的值</p>
+
+<ul>
+<li>Q3 : websocket 订阅时 <code>instId</code> 传的是什么？</li>
+</ul>
+
+<p>​       A : <code>instId</code> 传的是 <a href="#合约信息接口">合约信息接口</a> <code>symbolName</code> </p>
+
+<ul>
+<li>Q4: 接口 <code>symbol</code> 区分大小写吗？</li>
+</ul>
+
+<p>​       A ：<code>symbol</code> 区分大小写  必须一律大写</p>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
 <p>如需使用API ，请先登录网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。  </p>
 
@@ -1846,6 +1874,24 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">查询条数 默认20</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">Int</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">页码</td>
+</tr>
+<tr>
+<td style="text-align: left">nextPage</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">是否查询下一页</td>
 </tr>
 </tbody></table>
 

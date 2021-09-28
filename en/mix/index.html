@@ -313,7 +313,7 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#september-24-2021-websocket-public-channel" class="toc-h2 toc-link" data-title="September 26, 2021【WebSocket Public Channel 】">September 26, 2021【WebSocket Public Channel 】</a>
+                <a href="#september-26-2021-websocket-public-channel" class="toc-h2 toc-link" data-title="September 26, 2021【WebSocket Public Channel 】">September 26, 2021【WebSocket Public Channel 】</a>
               </li>
               <li>
                 <a href="#september-08-2021-contract-list-and-ticker-quotes" class="toc-h2 toc-link" data-title="September 08, 2021【Contract List and Ticker Quotes】">September 08, 2021【Contract List and Ticker Quotes】</a>
@@ -340,6 +340,9 @@
               </li>
               <li>
                 <a href="#contact-us" class="toc-h2 toc-link" data-title="Contact Us">Contact Us</a>
+              </li>
+              <li>
+                <a href="#faq" class="toc-h2 toc-link" data-title="FAQ">FAQ</a>
               </li>
           </ul>
       </li>
@@ -611,7 +614,7 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='september-24-2021-websocket-public-channel'>September 26, 2021【WebSocket Public Channel 】</h2>
+<h1 id='update-log'>Update log</h1><h2 id='september-26-2021-websocket-public-channel'>September 26, 2021【WebSocket Public Channel 】</h2>
 <ul>
 <li>WebSocket Public Channel Online</li>
 <li>The position interface adds a field for liquidation price  <code>/singlePosition</code>  <code>/allPosition</code></li>
@@ -659,6 +662,22 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>Send an email to API@bitget.com.</li>
+<li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
+</ul>
+<h2 id='faq'>FAQ</h2>
+<ul>
+<li><p>Q1： Why can&#39;t traders close positions?</p>
+
+<p>A : Traders should use <a href="#Trader%20close%20position%20interface">Trader close position interface</a></p></li>
+<li><p>Q2: Order parameter <code>Symbol</code> What should I pass? For example, BTCUSDT_UMCBL or BTCUSDT ? </p>
+
+<p>A : BTCUSDT_UMCBL</p></li>
+<li><p>Q3 : What does the WebSocket parameter <code>instId</code> pass? For example, BTCUSDT_UMCBL or BTCUSDT ?</p>
+
+<p>A : BTCUSDT</p></li>
+<li><p>Q4: Is the parameter <code>symbol</code> case sensitive?</p>
+
+<p>A : Yes</p></li>
 </ul>
 <h1 id='quick-start'>Quick Start</h1><h2 id='access-preparation'>Access Preparation</h2>
 <p>If you need to use the API, please log in to the web page first, complete the API key application and permission configuration, and then develop and trade according to the details of this document.  </p>
@@ -1847,6 +1866,24 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">product Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Page Size Default 20</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Page No</td>
+</tr>
+<tr>
+<td style="text-align: left">nextPage</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Whether to query the next page default false</td>
 </tr>
 </tbody></table>
 
