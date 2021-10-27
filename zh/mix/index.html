@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2021-10-27" class="toc-h2 toc-link" data-title="2021年10月27日【新增接口】">2021年10月27日【新增接口】</a>
+              </li>
+              <li>
                 <a href="#2021-9-26-websocket" class="toc-h2 toc-link" data-title="2021年9月26日【专业合约WebSocket公共频道上线】">2021年9月26日【专业合约WebSocket公共频道上线】</a>
               </li>
               <li>
@@ -514,6 +517,9 @@
                         <a href="#863e64ec14" class="toc-h3 toc-link" data-title="交易员获取当前带单">交易员获取当前带单</a>
                       </li>
                       <li>
+                        <a href="#e008da145c" class="toc-h3 toc-link" data-title="跟随者获取跟单信息">跟随者获取跟单信息</a>
+                      </li>
+                      <li>
                         <a href="#3e8ae6e3dd" class="toc-h3 toc-link" data-title="交易员平仓接口">交易员平仓接口</a>
                       </li>
                       <li>
@@ -533,6 +539,12 @@
                       </li>
                       <li>
                         <a href="#983dfacfba" class="toc-h3 toc-link" data-title="交易员待分润明细">交易员待分润明细</a>
+                      </li>
+                      <li>
+                        <a href="#dcdb3935e1" class="toc-h3 toc-link" data-title="获取平台跟单交易对信息">获取平台跟单交易对信息</a>
+                      </li>
+                      <li>
+                        <a href="#6b38cfe441" class="toc-h3 toc-link" data-title="交易员设置跟单交易对">交易员设置跟单交易对</a>
                       </li>
                   </ul>
               </li>
@@ -614,7 +626,15 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-26-websocket'>2021年9月26日【专业合约WebSocket公共频道上线】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-10-27'>2021年10月27日【新增接口】</h2>
+<ul>
+<li>跟单接口增加跟随者查看跟单接口</li>
+<li>交易员查看平仓跟单交易对信息接口</li>
+<li>交易员设置跟单交易对接口</li>
+<li>Golang SDK 上线</li>
+<li>Nodejs SDK 上线</li>
+</ul>
+<h2 id='2021-9-26-websocket'>2021年9月26日【专业合约WebSocket公共频道上线】</h2>
 <ul>
 <li>专业合约公共频道接口上线</li>
 <li>仓位接口新增爆仓价字段</li>
@@ -732,7 +752,7 @@ clipboard.on('error', function(e) {
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
+<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">NodeJs</a> </p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -1248,18 +1268,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">产品名称</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>返回值说明</strong></td>
-<td style="text-align: left">左币</td>
-</tr>
-<tr>
-<td style="text-align: left">返回字段</td>
-<td style="text-align: left">字段说明</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">产品名称</td>
-</tr>
-<tr>
 <td style="text-align: left">baseCoin</td>
 <td style="text-align: left">左币</td>
 </tr>
@@ -1298,6 +1306,18 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">minTradeNum</td>
 <td style="text-align: left">最小开张数</td>
+</tr>
+<tr>
+<td style="text-align: left">priceEndStep</td>
+<td style="text-align: left">价格步长</td>
+</tr>
+<tr>
+<td style="text-align: left">volumePlace</td>
+<td style="text-align: left">数量小数位</td>
+</tr>
+<tr>
+<td style="text-align: left">pricePlace</td>
+<td style="text-align: left">价格小数位</td>
 </tr>
 </tbody></table>
 <h3 id='5cb783b30a'>深度行情接口</h3>
@@ -2683,7 +2703,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"averageOpenPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unrealizedPL"</span><span class="err">：</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -4478,6 +4498,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"executeOrderId"</span><span class="p">:</span><span class="s2">"3036219460491"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -4505,6 +4526,22 @@ Signature = base64.encode(Signature)
 <th style="text-align: left">字段说明</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">executeOrderId</td>
+<td style="text-align: left">触发委托单id</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>返回值说明</strong></td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">返回字段</td>
+<td style="text-align: left">字段说明</td>
+</tr>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">订单号</td>
@@ -4556,18 +4593,6 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
 <td style="text-align: left">预设止盈价格</td>
-</tr>
-<tr>
-<td style="text-align: left">presetTakeLossPrice</td>
-<td style="text-align: left">预设止损价格</td>
-</tr>
-<tr>
-<td style="text-align: left">cTime</td>
-<td style="text-align: left">订单创建时间</td>
-</tr>
-<tr>
-<td style="text-align: left">executeTime</td>
-<td style="text-align: left">触发时间</td>
 </tr>
 </tbody></table>
 <h2 id='fddf776a08'>跟单接口</h2><h3 id='863e64ec14'>交易员获取当前带单</h3>
@@ -4627,7 +4652,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mf">11451.5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avgOpenPrice"</span><span class="p">:</span><span class="mf">11451.5</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1602582690614</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"stopProfitPrice"</span><span class="p">:</span><span class="s2">"123.14"</span><span class="p">,</span><span class="w">
@@ -4667,24 +4692,151 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">开仓杠杆</td>
 </tr>
 <tr>
-<td style="text-align: left">openAvgPrice</td>
+<td style="text-align: left">avgOpenPrice</td>
+<td style="text-align: left">开仓均价</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>返回值说明</strong></td>
+<td style="text-align: left">开仓时间（毫秒）</td>
+</tr>
+<tr>
+<td style="text-align: left">返回字段</td>
+<td style="text-align: left">字段说明</td>
+</tr>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">跟踪订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">openOrderId</td>
+<td style="text-align: left">交易员开单号  交易员平仓时不可使用此单号，需要使用跟踪单号</td>
+</tr>
+</tbody></table>
+<h3 id='e008da145c'>跟随者获取跟单信息</h3>
+<p>限速规则  20次/2s (AccessKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/followerOrder</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">查询数量</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">当前页号</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"804641389214179330"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"804641382428463106"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeOrderId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"short"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mi">39827</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627567376984</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"0.0010000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averageClosePrice"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634107646972</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">跟踪订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">openOrderId</td>
+<td style="text-align: left">跟随者开仓单号</td>
+</tr>
+<tr>
+<td style="text-align: left">closeOrderId</td>
+<td style="text-align: left">跟随者平仓单号</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">交易对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">持仓方向</td>
+</tr>
+<tr>
+<td style="text-align: left">openLeverage</td>
+<td style="text-align: left">开仓杠杆</td>
+</tr>
+<tr>
+<td style="text-align: left">avgOpenPrice</td>
 <td style="text-align: left">开仓均价</td>
 </tr>
 <tr>
 <td style="text-align: left">openTime</td>
-<td style="text-align: left">开仓时间（毫秒）</td>
+<td style="text-align: left">开仓时间</td>
 </tr>
 <tr>
 <td style="text-align: left">openDealCount</td>
 <td style="text-align: left">开仓数量</td>
 </tr>
 <tr>
-<td style="text-align: left">stopProfitPrice</td>
-<td style="text-align: left">止盈价格</td>
+<td style="text-align: left">averageClosePrice</td>
+<td style="text-align: left">平仓均价</td>
 </tr>
 <tr>
-<td style="text-align: left">stopLossPrice</td>
-<td style="text-align: left">止损价格</td>
+<td style="text-align: left">closeDealCount</td>
+<td style="text-align: left">平仓数量</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">平仓时间</td>
 </tr>
 </tbody></table>
 <h3 id='3e8ae6e3dd'>交易员平仓接口</h3>
@@ -5163,14 +5315,101 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">profit</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">分润</td>
 </tr>
 <tr>
 <td style="text-align: left">nickName</td>
 <td style="text-align: left">昵称</td>
 </tr>
 </tbody></table>
-<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
+<h3 id='dcdb3935e1'>获取平台跟单交易对信息</h3>
+<p>限速规则  20次/2s (AccessKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/traderSymbols</li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634723284625</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbolId</td>
+<td style="text-align: left">产品id</td>
+</tr>
+<tr>
+<td style="text-align: left">openTrade</td>
+<td style="text-align: left">是否开启跟单</td>
+</tr>
+</tbody></table>
+<h3 id='6b38cfe441'>交易员设置跟单交易对</h3>
+<p>限速规则  10次/1s (AccessKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/setUpCopySymbols</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易对id <a href="#合约信息接口">/contracts</a> <code>symbol</code></td>
+</tr>
+<tr>
+<td style="text-align: left">operation</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">增加还是删除  add/delete</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
 <p>WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务器全双工通信， 使得数据可以快速地双向传播。通过一次简单的握手就
  可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
 

@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#october-27-2021" class="toc-h2 toc-link" data-title="October 27, 2021">October 27, 2021</a>
+              </li>
+              <li>
                 <a href="#september-26-2021-websocket-public-channel" class="toc-h2 toc-link" data-title="September 26, 2021【WebSocket Public Channel 】">September 26, 2021【WebSocket Public Channel 】</a>
               </li>
               <li>
@@ -514,6 +517,9 @@
                         <a href="#trader-gets-the-current-order" class="toc-h3 toc-link" data-title="Trader gets the current order">Trader gets the current order</a>
                       </li>
                       <li>
+                        <a href="#followers-get-copy-information" class="toc-h3 toc-link" data-title="Followers get copy information">Followers get copy information</a>
+                      </li>
+                      <li>
                         <a href="#trader-close-position-interface" class="toc-h3 toc-link" data-title="Trader close position interface">Trader close position interface</a>
                       </li>
                       <li>
@@ -533,6 +539,12 @@
                       </li>
                       <li>
                         <a href="#trader-profits-sharing-details" class="toc-h3 toc-link" data-title="Trader profits sharing details">Trader profits sharing details</a>
+                      </li>
+                      <li>
+                        <a href="#get-the-list-of-platform-copy-trade-symbol" class="toc-h3 toc-link" data-title="Get the list of platform copy trade symbol">Get the list of platform copy trade symbol</a>
+                      </li>
+                      <li>
+                        <a href="#traders-set-up-copy-trade-symbol" class="toc-h3 toc-link" data-title="Traders set up copy trade symbol">Traders set up copy trade symbol</a>
                       </li>
                   </ul>
               </li>
@@ -614,7 +626,15 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='september-26-2021-websocket-public-channel'>September 26, 2021【WebSocket Public Channel 】</h2>
+<h1 id='update-log'>Update log</h1><h2 id='october-27-2021'>October 27, 2021</h2>
+<ul>
+<li>Follower view and documentary interface added</li>
+<li>The interface for traders to view the information of closing and copy trading pairs</li>
+<li>Traders set up the copy trading pair interface</li>
+<li>Golang SDK is online</li>
+<li>NodeJs SDK is online</li>
+</ul>
+<h2 id='september-26-2021-websocket-public-channel'>September 26, 2021【WebSocket Public Channel 】</h2>
 <ul>
 <li>WebSocket Public Channel Online</li>
 <li>The position interface adds a field for liquidation price  <code>/singlePosition</code>  <code>/allPosition</code></li>
@@ -724,7 +744,7 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <p>open
 <strong>SDK（Recommended）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
+<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">GoLang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">NodeJs</a></p>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter mainly divides the interface types into the following two aspects:</p>
 
@@ -1600,7 +1620,7 @@ If there is a large deviation between the local server time and the API server t
 </tbody></table>
 
 <blockquote>
-<p>返回数据</p>
+<p>Response Data </p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
@@ -2977,7 +2997,7 @@ If there is a large deviation between the local server time and the API server t
 </tbody></table>
 
 <blockquote>
-<p>返回数据</p>
+<p>Response Data </p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
@@ -4473,6 +4493,7 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"executeOrderId"</span><span class="p">:</span><span class="s2">"84271931884910"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -4505,64 +4526,68 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Order Id</td>
 </tr>
 <tr>
-<td style="text-align: left">symbol</td>
+<td style="text-align: left">executeOrderId</td>
+<td style="text-align: left">Execute success Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>返回值说明</strong></td>
 <td style="text-align: left">Currency pair name</td>
 </tr>
 <tr>
+<td style="text-align: left">返回字段</td>
+<td style="text-align: left">字段说明</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">executeOrderId</td>
+<td style="text-align: left">触发委托单id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
 <td style="text-align: left">marginCoin</td>
-<td style="text-align: left">Margin currency</td>
+<td style="text-align: left">保证金币种</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: left">Order size</td>
+<td style="text-align: left">委托数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executeSize</td>
-<td style="text-align: left">Number of executions</td>
+<td style="text-align: left">执行数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
-<td style="text-align: left">Order price</td>
+<td style="text-align: left">委托价格</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
-<td style="text-align: left">Trigger price</td>
+<td style="text-align: left">触发价格</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
-<td style="text-align: left">Order status</td>
+<td style="text-align: left">订单状态</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
-<td style="text-align: left">Trade type</td>
+<td style="text-align: left">交易类型</td>
 </tr>
 <tr>
 <td style="text-align: left">planType</td>
-<td style="text-align: left">Order type</td>
+<td style="text-align: left">订单类型</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left">Order direction</td>
+<td style="text-align: left">开单方向</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerType</td>
-<td style="text-align: left">Trigger type</td>
-</tr>
-<tr>
-<td style="text-align: left">presetTakeProfitPrice</td>
-<td style="text-align: left">Preset take profit price</td>
-</tr>
-<tr>
-<td style="text-align: left">presetTakeLossPrice</td>
-<td style="text-align: left">Preset stop loss price</td>
-</tr>
-<tr>
-<td style="text-align: left">ctime</td>
-<td style="text-align: left">Order creation time</td>
-</tr>
-<tr>
-<td style="text-align: left">executeTime</td>
-<td style="text-align: left">Trigger time</td>
+<td style="text-align: left">触发类型</td>
 </tr>
 </tbody></table>
 <h2 id='copytrade-interface'>CopyTrade interface</h2><h3 id='trader-gets-the-current-order'>Trader gets the current order</h3>
@@ -4622,7 +4647,7 @@ If there is a large deviation between the local server time and the API server t
             </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"4839999132328"</span><span class="p">,</span><span class="w">  
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mf">11451.5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avgOpenPrice"</span><span class="p">:</span><span class="mf">11451.5</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1602582690614</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"stopProfitPrice"</span><span class="p">:</span><span class="s2">"123.14"</span><span class="p">,</span><span class="w">
@@ -4662,7 +4687,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Opening leverage</td>
 </tr>
 <tr>
-<td style="text-align: left">openAvgPrice</td>
+<td style="text-align: left">avgOpenPrice</td>
 <td style="text-align: left">Average opening price</td>
 </tr>
 <tr>
@@ -4680,6 +4705,133 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">stopLossPrice</td>
 <td style="text-align: left">Stop price</td>
+</tr>
+</tbody></table>
+<h3 id='followers-get-copy-information'>Followers get copy information</h3>
+<p>Speed limit rule 20 times/2s (AccessKey)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/followerOrder</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Necessary?</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of queries</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Current page number</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Return Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"804641389214179330"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"804641382428463106"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeOrderId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"short"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mi">39827</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627567376984</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"0.0010000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"averageClosePrice"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634107646972</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Return Value Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Return Field</th>
+<th style="text-align: left">Field Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">openOrderId</td>
+<td style="text-align: left">Open Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">closeOrderId</td>
+<td style="text-align: left">Close Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Trading pair name</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Current position direction</td>
+</tr>
+<tr>
+<td style="text-align: left">openLeverage</td>
+<td style="text-align: left">Opening leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">openAvgPrice</td>
+<td style="text-align: left">Average opening price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Position opening time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">openDealCount</td>
+<td style="text-align: left">Number of positions opened</td>
+</tr>
+<tr>
+<td style="text-align: left">averageClosePrice</td>
+<td style="text-align: left">Average Close Price</td>
+</tr>
+<tr>
+<td style="text-align: left">closeDealCount</td>
+<td style="text-align: left">Close Count</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">Close Position Time (milliseconds)</td>
 </tr>
 </tbody></table>
 <h3 id='trader-close-position-interface'>Trader close position interface</h3>
@@ -5164,7 +5316,93 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Nickname</td>
 </tr>
 </tbody></table>
-<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
+<h3 id='get-the-list-of-platform-copy-trade-symbol'>Get the list of platform copy trade symbol</h3>
+<p>Speed limit rule  20 Times/2s (AccessKey)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/traderSymbols</li>
+</ul>
+
+<blockquote>
+<p>Return Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634723284625</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Return Value Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Return Field</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbolId</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
+<td style="text-align: left">openTrade</td>
+<td style="text-align: left">Whether to open copy trade</td>
+</tr>
+</tbody></table>
+<h3 id='traders-set-up-copy-trade-symbol'>Traders set up copy trade symbol</h3>
+<p>Speed limit rule  10 Times/1s (AccessKey)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/setUpCopySymbols</li>
+</ul>
+
+<p><strong>Request Param(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Desciption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id <a href="#Contract%20Information%20Interface">/contracts</a> <code>symbol</code></td>
+</tr>
+<tr>
+<td style="text-align: left">operation</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Add or delete  <code>add</code>  <code>delete</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
 <p>WebSocket is a new HTML5 protocol that achieves full-duplex data transmission between the client and server, allowing data to be transferred effectively in both directions. A connection between the client and server can be established with just one handshake. The server will then be able to push data to the client according to preset rules. Its advantages include:</p>
 
 <ul>
