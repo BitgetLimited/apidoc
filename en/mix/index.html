@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -285,7 +285,6 @@
         <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
-<!--      <li><a  id="swap"  data-text="合约" >Swap</a></li>-->
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >Mix</a></li>
     </ul>
@@ -313,7 +312,10 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#october-27-2021" class="toc-h2 toc-link" data-title="October 27, 2021">October 27, 2021</a>
+                  <a href="#december-26-2021" class="toc-h2 toc-link" data-title="December 08, 2021">December 08, 2021</a>
+              </li>
+              <li>
+                <a href="#october-26-2021" class="toc-h2 toc-link" data-title="October 26, 2021">October 26, 2021</a>
               </li>
               <li>
                 <a href="#september-26-2021-websocket-public-channel" class="toc-h2 toc-link" data-title="September 26, 2021【WebSocket Public Channel 】">September 26, 2021【WebSocket Public Channel 】</a>
@@ -596,6 +598,20 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#private-channels" class="toc-h2 toc-link" data-title="Private Channels">Private Channels</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#account-channel" class="toc-h3 toc-link" data-title="Account Channel">Account Channel</a>
+                      </li>
+                      <li>
+                        <a href="#positions-channel" class="toc-h3 toc-link" data-title="Positions Channel">Positions Channel</a>
+                      </li>
+                      <li>
+                        <a href="#order-channel" class="toc-h3 toc-link" data-title="Order Channel">Order Channel</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
       </li>
       <li>
@@ -626,7 +642,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='october-27-2021'>October 27, 2021</h2>
+<h1 id='update-log'>Update log</h1>
+<h2 id='december-26-2021'>December 08, 2021【WebSocket Private Channel 】</h2>
+<ul>
+  <li>WebSocket Private Channel Online</li>
+</ul>
+<h2 id='october-26-2021'>October 26, 2021</h2>
 <ul>
 <li>Follower view and documentary interface added</li>
 <li>The interface for traders to view the information of closing and copy trading pairs</li>
@@ -3612,6 +3633,7 @@ If there is a large deviation between the local server time and the API server t
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
@@ -3653,6 +3675,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">filledQty</td>
 <td style="text-align: left">Transaction volume</td>
+</tr>
+<tr>
+<td style="text-align: left">priceAvg</td>
+<td style="text-align: left">Transaction price</td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
@@ -4524,67 +4550,19 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">executeOrderId</td>
 <td style="text-align: left">Execute success Order Id</td>
 </tr>
-<tr>
-<td style="text-align: left"><strong>返回值说明</strong></td>
-<td style="text-align: left">Currency pair name</td>
-</tr>
-<tr>
-<td style="text-align: left">返回字段</td>
-<td style="text-align: left">字段说明</td>
-</tr>
-<tr>
-<td style="text-align: left">orderId</td>
-<td style="text-align: left">订单号</td>
-</tr>
-<tr>
-<td style="text-align: left">executeOrderId</td>
-<td style="text-align: left">触发委托单id</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">币对名称</td>
-</tr>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">保证金币种</td>
-</tr>
-<tr>
-<td style="text-align: left">size</td>
-<td style="text-align: left">委托数量</td>
-</tr>
-<tr>
-<td style="text-align: left">executeSize</td>
-<td style="text-align: left">执行数量</td>
-</tr>
-<tr>
-<td style="text-align: left">executePrice</td>
-<td style="text-align: left">委托价格</td>
-</tr>
-<tr>
-<td style="text-align: left">triggerPrice</td>
-<td style="text-align: left">触发价格</td>
-</tr>
-<tr>
-<td style="text-align: left">status</td>
-<td style="text-align: left">订单状态</td>
-</tr>
-<tr>
-<td style="text-align: left">orderType</td>
-<td style="text-align: left">交易类型</td>
-</tr>
-<tr>
-<td style="text-align: left">planType</td>
-<td style="text-align: left">订单类型</td>
-</tr>
-<tr>
-<td style="text-align: left">side</td>
-<td style="text-align: left">开单方向</td>
-</tr>
-<tr>
-<td style="text-align: left">triggerType</td>
-<td style="text-align: left">触发类型</td>
-</tr>
 </tbody></table>
+
+<p>| symbol         | Currency pair name       |
+| marginCoin     | Margin currency          |
+| size           | Order size               |
+| executeSize    | execute Size             |
+| executePrice   | Order price              |
+| triggerPrice   | Trigger price            |
+| status         | Order status             |
+| orderType      | Trade type               |
+| planType       | Order type               |
+| side           | Order direction          |
+| triggerType    | Trigger type             |</p>
 <h2 id='copytrade-interface'>CopyTrade interface</h2><h3 id='trader-gets-the-current-order'>Trader gets the current order</h3>
 <p>Speed limit rule 20 times/2s (AccessKey)</p>
 
@@ -6753,6 +6731,775 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; side</td>
 <td>String</td>
 <td>Trade direction, <code>buy</code>, <code>sell</code></td>
+</tr>
+</tbody></table>
+<h2 id='private-channels'>Private Channels</h2><h3 id='account-channel'>Account Channel</h3>
+<p>Retrieve account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Paramter</strong></p>
+
+<table><thead>
+<tr>
+<th>Paramter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type  <code>UMCBL:USDT Private Channel</code>    <code>DMCBL:Mix Private Channel</code></td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel name  <code>account</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Coin,  All is  <code>default</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+</span><span class="p">}</span><span class="err"> </span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Coin</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error messgae</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push Data Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Coin</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed Data</td>
+</tr>
+<tr>
+<td>marginCoin</td>
+<td>String</td>
+<td>Margin Coin</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>String</td>
+<td>Lock  balance</td>
+</tr>
+<tr>
+<td>available</td>
+<td>String</td>
+<td>Available balance</td>
+</tr>
+<tr>
+<td>crossMaxAvailable</td>
+<td>String</td>
+<td>Cross Liabilities of the currency</td>
+</tr>
+<tr>
+<td>fixedMaxAvailable</td>
+<td>String</td>
+<td>Isolated Liabilities of the currency</td>
+</tr>
+<tr>
+<td>maxTransferOut</td>
+<td>String</td>
+<td>Max transfer out</td>
+</tr>
+<tr>
+<td>equity</td>
+<td>String</td>
+<td>Equity of the currency</td>
+</tr>
+<tr>
+<td>usdtEquity</td>
+<td>String</td>
+<td>Equity of the currency USD</td>
+</tr>
+</tbody></table>
+
+<p>First push: full push.</p>
+
+<p>Incremental push: push transaction changes</p>
+<h3 id='positions-channel'>Positions Channel</h3>
+<p>Retrieve position information. Initial snapshot will be pushed according to subscription granularity. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation ，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>Subscribed channel List</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>positions</code></td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type  <code>UMCBL:USDT Private Channel</code>    <code>DMCBL:Mix Private Channel</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Symbol Name</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event ，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Symbol Name</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push Data Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed  Data</td>
+</tr>
+<tr>
+<td>&gt; posId</td>
+<td>String</td>
+<td>Position Id</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Symbol Name</td>
+</tr>
+<tr>
+<td>&gt; instName</td>
+<td>String</td>
+<td>Symbol Name</td>
+</tr>
+<tr>
+<td>&gt; marginCoin</td>
+<td>String</td>
+<td>Margin Coin</td>
+</tr>
+<tr>
+<td>&gt; margin</td>
+<td>String</td>
+<td>Margin, can be added or reduced</td>
+</tr>
+<tr>
+<td>&gt;marginMode</td>
+<td>String</td>
+<td>Margin mode, <code>cross</code> <code>fixed</code></td>
+</tr>
+<tr>
+<td>&gt; holdSide</td>
+<td>String</td>
+<td>Position side<code>long</code>  <code>short</code></td>
+</tr>
+<tr>
+<td>&gt; holdMode</td>
+<td>String</td>
+<td>hold Mode  <code>single_hold</code> , <code>double_hold</code></td>
+</tr>
+<tr>
+<td>&gt; total</td>
+<td>String</td>
+<td>Quantity of positions</td>
+</tr>
+<tr>
+<td>&gt; available</td>
+<td>String</td>
+<td>Position that can be closed</td>
+</tr>
+<tr>
+<td>&gt; locked</td>
+<td>String</td>
+<td>Frozen quantity</td>
+</tr>
+<tr>
+<td>&gt;averageOpenPrice</td>
+<td>String</td>
+<td>Average open price</td>
+</tr>
+<tr>
+<td>&gt; leverage</td>
+<td>String</td>
+<td>Leverage</td>
+</tr>
+<tr>
+<td>&gt; achievedProfits</td>
+<td>String</td>
+<td>Realized profit and loss</td>
+</tr>
+<tr>
+<td>&gt; upl</td>
+<td>String</td>
+<td>Unrealized profit and loss</td>
+</tr>
+<tr>
+<td>&gt; uplRate</td>
+<td>String</td>
+<td>Unrealized profit and loss ratio</td>
+</tr>
+<tr>
+<td>&gt; liqPx</td>
+<td>String</td>
+<td>Estimated liquidation price</td>
+</tr>
+<tr>
+<td>&gt; keepMarginRate</td>
+<td>String</td>
+<td>Maintenance margin requirement Ratio</td>
+</tr>
+<tr>
+<td>&gt; marginRate</td>
+<td>String</td>
+<td>Margin requirement Ratio</td>
+</tr>
+<tr>
+<td>&gt; cTime</td>
+<td>String</td>
+<td>Creation time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; uTime</td>
+<td>String</td>
+<td>Latest time position was adjusted, Unix timestamp format in milliseconds</td>
+</tr>
+</tbody></table>
+
+<p>When multiple orders are being executed at the same time, the changes of position data will be aggregated into one as much as possible.</p>
+<h3 id='order-channel'>Order Channel</h3>
+<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling order.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation ，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>Request Subscribed channel List</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name， <code>orders</code></td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type  <code>UMCBL:USDT Private Channel</code>    <code>DMCBL:Mix Private Channel</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Success Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event ，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Push Data Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed Data</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument Id</td>
+</tr>
+<tr>
+<td>&gt; ordId</td>
+<td>String</td>
+<td>Order Id</td>
+</tr>
+<tr>
+<td>&gt; clOrdId</td>
+<td>String</td>
+<td>Client-supplied order ID</td>
+</tr>
+<tr>
+<td>&gt; px</td>
+<td>String</td>
+<td>Order price</td>
+</tr>
+<tr>
+<td>&gt; sz</td>
+<td>String</td>
+<td>The original order quantity,   in the unit of currency</td>
+</tr>
+<tr>
+<td>&gt; notionalUsd</td>
+<td>String</td>
+<td>Estimated national value in USD of order</td>
+</tr>
+<tr>
+<td>&gt; ordType</td>
+<td>String</td>
+<td>Order Type <code>market</code>  <code>limit</code></td>
+</tr>
+<tr>
+<td>&gt; force</td>
+<td>String</td>
+<td>Order Force <code>normal</code>: normal order    <code>post_only</code>: Post-only order<code>fok</code>: Fill-or-kill order<code>ioc</code>: Immediate-or-cancel order</td>
+</tr>
+<tr>
+<td>&gt; side</td>
+<td>String</td>
+<td>Order side, <code>buy</code> <code>sell</code></td>
+</tr>
+<tr>
+<td>&gt; posSide</td>
+<td>String</td>
+<td>Position side    <code>long</code>  or  <code>short</code></td>
+</tr>
+<tr>
+<td>&gt; tdMode</td>
+<td>String</td>
+<td>Trade mode, <code>cross</code>: cross <code>fixed</code>: fixed</td>
+</tr>
+<tr>
+<td>&gt; tgtCcy</td>
+<td>String</td>
+<td>Margin Coin</td>
+</tr>
+<tr>
+<td>&gt; fillPx</td>
+<td>String</td>
+<td>Last filled price</td>
+</tr>
+<tr>
+<td>&gt; tradeId</td>
+<td>String</td>
+<td>Last trade ID</td>
+</tr>
+<tr>
+<td>&gt; fillSz</td>
+<td>String</td>
+<td>Last filled quantity</td>
+</tr>
+<tr>
+<td>&gt; fillTime</td>
+<td>String</td>
+<td>Last filled time</td>
+</tr>
+<tr>
+<td>&gt; fillFee</td>
+<td>String</td>
+<td>last filled fee</td>
+</tr>
+<tr>
+<td>&gt; fillFeeCcy</td>
+<td>String</td>
+<td>last filled fee currency</td>
+</tr>
+<tr>
+<td>&gt; execType</td>
+<td>String</td>
+<td>Order flow type, T: taker M: maker</td>
+</tr>
+<tr>
+<td>&gt; accFillSz</td>
+<td>String</td>
+<td>Accumulated fill quantity</td>
+</tr>
+<tr>
+<td>&gt; fillNotionalUsd</td>
+<td>String</td>
+<td>Filled notional value in USD of order</td>
+</tr>
+<tr>
+<td>&gt; avgPx</td>
+<td>String</td>
+<td>Average filled price. If none is filled, it will return <code>0</code>.</td>
+</tr>
+<tr>
+<td>&gt; state</td>
+<td>String</td>
+<td>Order Status   <code>new</code>   <code>partial-fill</code>   <code>full-fill</code>    <code>cancelled</code></td>
+</tr>
+<tr>
+<td>&gt; lever</td>
+<td>String</td>
+<td>Leverage</td>
+</tr>
+<tr>
+<td>&gt;orderFee</td>
+<td>Array</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;&gt; feeCcy</td>
+<td>String</td>
+<td>Fee currency</td>
+</tr>
+<tr>
+<td>&gt;&gt; fee</td>
+<td>String</td>
+<td>FeeNegative number represents the user transaction fee charged by the platform.Positive number represents rebate.</td>
+</tr>
+<tr>
+<td>&gt; pnl</td>
+<td>String</td>
+<td>Profit and loss</td>
+</tr>
+<tr>
+<td>&gt; uTime</td>
+<td>String</td>
+<td>Update time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; cTime</td>
+<td>String</td>
+<td>Creation time, Unix timestamp format in milliseconds</td>
 </tr>
 </tbody></table>
 <h1 id='restapi-error-codes'>RestAPI error codes</h1>
