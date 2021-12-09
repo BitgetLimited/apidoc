@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -312,7 +312,7 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
-                  <a href="#2021-12-08" class="toc-h2 toc-link" data-title="2021年12月08日【专业合约WebSocket私有频道上线】">2021年12月08日【专业合约WebSocket私有频道上线】</a>
+                <a href="#2021-12-08-websocket" class="toc-h2 toc-link" data-title="2021年12月08日【专业合约WebSocket私有频道上线】">2021年12月08日【专业合约WebSocket私有频道上线】</a>
               </li>
               <li>
                 <a href="#2021-10-26" class="toc-h2 toc-link" data-title="2021年10月26日【新增接口】">2021年10月26日【新增接口】</a>
@@ -642,8 +642,7 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1>
-<h2 id='2021-12-08'>2021年12月08日【专业合约WebSocket私有频道上线】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-12-08-websocket'>2021年12月08日【专业合约WebSocket私有频道上线】</h2>
 <ul>
 <li>专业合约私有频道接口上线</li>
 </ul>
@@ -7039,6 +7038,18 @@ Signature = base64.encode(Signature)
 <h3 id='7ba26f77f3'>持仓频道</h3>
 <p>获取持仓信息，首次订阅按照订阅维度推送数据，此外，当下单、撤单等事件触发时，推送数据以及按照订阅维度定时推送数据</p>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op": "subscribe",
+    "args": [{
+        "instType": "UMCBL",
+        "channel": "positions",
+        "instId": "default"
+    }]
+}
+</code></pre>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -7077,7 +7088,7 @@ Signature = base64.encode(Signature)
 <td>&gt; instId</td>
 <td>String</td>
 <td>否</td>
-<td>产品ID</td>
+<td>产品ID 只支持 <code>default</code> ：全部仓位</td>
 </tr>
 </tbody></table>
 
@@ -7260,9 +7271,14 @@ Signature = base64.encode(Signature)
 <td>维持保证金率</td>
 </tr>
 <tr>
-<td>&gt; marginRate</td>
+<td>&gt; fixedMarginRate</td>
 <td>String</td>
-<td>实际保证金率</td>
+<td>逐仓时，实际保证金率</td>
+</tr>
+<tr>
+<td>&gt; fixedRiskRate</td>
+<td>String</td>
+<td>逐仓时，风险率</td>
 </tr>
 <tr>
 <td>&gt; cTime</td>
@@ -7292,7 +7308,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7334,7 +7350,7 @@ Signature = base64.encode(Signature)
 <td>&gt; instId</td>
 <td>String</td>
 <td>否</td>
-<td>产品ID</td>
+<td>产品ID <code>symbolId</code> 或 <code>all</code> 全部交易对订单</td>
 </tr>
 </tbody></table>
 
@@ -7346,7 +7362,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>

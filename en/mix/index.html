@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -312,7 +312,7 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
-                  <a href="#december-26-2021" class="toc-h2 toc-link" data-title="December 08, 2021">December 08, 2021</a>
+                <a href="#december-08-2021-websocket-private-channel" class="toc-h2 toc-link" data-title="December 08, 2021【WebSocket Private Channel 】">December 08, 2021【WebSocket Private Channel 】</a>
               </li>
               <li>
                 <a href="#october-26-2021" class="toc-h2 toc-link" data-title="October 26, 2021">October 26, 2021</a>
@@ -642,10 +642,9 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1>
-<h2 id='december-26-2021'>December 08, 2021【WebSocket Private Channel 】</h2>
+<h1 id='update-log'>Update log</h1><h2 id='december-08-2021-websocket-private-channel'>December 08, 2021【WebSocket Private Channel 】</h2>
 <ul>
-  <li>WebSocket Private Channel Online</li>
+<li>WebSocket Private Channel Online</li>
 </ul>
 <h2 id='october-26-2021'>October 26, 2021</h2>
 <ul>
@@ -6947,6 +6946,18 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <h3 id='positions-channel'>Positions Channel</h3>
 <p>Retrieve position information. Initial snapshot will be pushed according to subscription granularity. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "op": "subscribe",
+    "args": [{
+        "instType": "UMCBL",
+        "channel": "positions",
+        "instId": "default"
+    }]
+}
+</code></pre>
 <p><strong>Request Parameter</strong></p>
 
 <table><thead>
@@ -6985,7 +6996,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>No</td>
-<td>Symbol Name</td>
+<td>only <code>default</code></td>
 </tr>
 </tbody></table>
 
@@ -7168,9 +7179,14 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Maintenance margin requirement Ratio</td>
 </tr>
 <tr>
-<td>&gt; marginRate</td>
+<td>&gt; fixedMarginRate</td>
 <td>String</td>
-<td>Margin requirement Ratio</td>
+<td>Margin requirement Ratio <code>fixed</code></td>
+</tr>
+<tr>
+<td>&gt; fixedRiskRate</td>
+<td>String</td>
+<td>Risk rate. <code>fixed</code></td>
 </tr>
 <tr>
 <td>&gt; cTime</td>
@@ -7196,7 +7212,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7238,7 +7254,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>No</td>
-<td>Instrument Id</td>
+<td>Instrument Id <code>symbolId</code> or <code>all</code></td>
 </tr>
 </tbody></table>
 
@@ -7250,7 +7266,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
