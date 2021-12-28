@@ -285,7 +285,6 @@
         <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
-<!--      <li><a  id="swap"  data-text="合约" >Swap</a></li>-->
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
     </ul>
@@ -313,7 +312,7 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#24-09-2021-websocket-api" class="toc-h2 toc-link" data-title="26/09/ 2021【WebSocket Api 】">26/09/ 2021【WebSocket Api 】</a>
+                <a href="#24-09-2021-websocket-api" class="toc-h2 toc-link" data-title="24/09/ 2021【WebSocket Api 】">24/09/ 2021【WebSocket Api 】</a>
               </li>
               <li>
                 <a href="#15-09-2021-add-transfer-record-interface" class="toc-h2 toc-link" data-title="15/09/2021 【Add transfer record interface】">15/09/2021 【Add transfer record interface】</a>
@@ -345,9 +344,6 @@
               </li>
               <li>
                 <a href="#sdk-code-example" class="toc-h2 toc-link" data-title="SDK / Code example">SDK / Code example</a>
-              </li>
-              <li>
-                <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
               </li>
               <li>
                 <a href="#access-restriction" class="toc-h2 toc-link" data-title="Access restriction">Access restriction</a>
@@ -549,7 +545,7 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='24-09-2021-websocket-api'>26/09/ 2021【WebSocket Api 】</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='24-09-2021-websocket-api'>24/09/ 2021【WebSocket Api 】</h2>
 <ul>
 <li>WebSocket Public Channel and Private Channel Online</li>
 </ul>
@@ -579,7 +575,7 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>Email API@bitget.com。</li>
-    <li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
+<li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
 </ul>
 <h1 id='quick-start'>Quick start</h1><h2 id='prepare-to-integrate'>Prepare to integrate</h2>
 <p>If you need to use the API, please log in to the web page first, complete the API key application and permission configuration, and then develop and trade according to the details of this document.</p>
@@ -630,8 +626,8 @@ please delete the APIKey as soon as possible.
 <h2 id='sdk-code-example'>SDK / Code example</h2>
 <p><strong>SDK（Recommended）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
-<h2 id='interface-type'>Interface Type</h2>
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node Js</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a> </p>
+
 <p>This chapter is consist of the following two aspects for the interface types:</p>
 
 <ul>
@@ -660,8 +656,6 @@ please delete the APIKey as soon as possible.
 <p>If a valid APIKey is passed in, use APIKey to limit the speed; if not, use the public IP to limit the speed.</p>
 
 <p>Speed limit rules: There are separate instructions on each interface. If there is no specific instruction, the speed limit of general interface is 10 times per second.</p>
-
-<p>Special note: When placing orders in batches, if 4 trading pairs are placed, 10 orders for each trading pair are counted as one request.</p>
 <h2 id='api-domain'>API domain</h2>
 <p>You can use the Rest API access method by yourself.</p>
 
@@ -1148,7 +1142,6 @@ please delete the APIKey as soon as possible.
         }
     ]
 }
-
 </code></pre>
 <p><strong>Return value description</strong></p>
 
@@ -1171,43 +1164,47 @@ please delete the APIKey as soon as possible.
 <td>Whether can be transferred</td>
 </tr>
 <tr>
-<td>chain</td>
+<td>chains</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; chain</td>
 <td>Chain name</td>
 </tr>
 <tr>
-<td>needTag</td>
+<td>&gt; needTag</td>
 <td>Whether need to tag</td>
 </tr>
 <tr>
-<td>withdrawAble</td>
+<td>&gt; withdrawAble</td>
 <td>Whether can be withdrawn</td>
 </tr>
 <tr>
-<td>rechargeAble</td>
+<td>&gt; rechargeAble</td>
 <td>Whether can deposit</td>
 </tr>
 <tr>
-<td>withdrawFee</td>
+<td>&gt; withdrawFee</td>
 <td>Withdrawal fee</td>
 </tr>
 <tr>
-<td>depositConfirm</td>
+<td>&gt; depositConfirm</td>
 <td>Deposit no. of confirmation block</td>
 </tr>
 <tr>
-<td>withdrawConfirm</td>
+<td>&gt; withdrawConfirm</td>
 <td>Withdrawal no. of confirmation block</td>
 </tr>
 <tr>
-<td>minDepositAmount</td>
+<td>&gt; minDepositAmount</td>
 <td>Min. deposit amount</td>
 </tr>
 <tr>
-<td>minWithdrawAmount</td>
+<td>&gt; minWithdrawAmount</td>
 <td>Min. withdrawal amount</td>
 </tr>
 <tr>
-<td>browserUrl</td>
+<td>&gt; browserUrl</td>
 <td>Blockchain browser</td>
 </tr>
 </tbody></table>
@@ -1345,6 +1342,7 @@ please delete the APIKey as soon as possible.
     "data":[
         {
             "symbol":"BTCUSDT_SPBL",
+            "symbolName":"BTCUSDT",
             "baseCoin":"BTC",
             "quoteCoin":"USDT",
             "minTradeAmount":"0.0001",
@@ -1369,6 +1367,10 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>symbol</td>
 <td>Trading pair</td>
+</tr>
+<tr>
+<td>symbolName</td>
+<td>Trading pair name</td>
 </tr>
 <tr>
 <td>baseCoin</td>
@@ -2280,53 +2282,73 @@ please delete the APIKey as soon as possible.
 
 <table><thead>
 <tr>
-<th>Parameter name</th>
-<th>Parameter type</th>
-<th>To be a must</th>
-<th>Description</th>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">To be a must</th>
+<th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>symbol</td>
-<td>String</td>
-<td>Yes</td>
-<td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
 </tr>
 <tr>
-<td>side</td>
-<td>String</td>
-<td>Yes</td>
-<td>Trade direction</td>
+<td style="text-align: left">orderList</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">order data list (length 50)</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>orderList</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">to be a must</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order side buy/sell</td>
 </tr>
 <tr>
-<td>orderType</td>
-<td>String</td>
-<td>Yes</td>
-<td>Order type: limit/market</td>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order type limit/market</td>
 </tr>
 <tr>
-<td>force</td>
-<td>String</td>
-<td>Yes</td>
-<td>Order type</td>
+<td style="text-align: left">force</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">order time force</td>
 </tr>
 <tr>
-<td>price</td>
-<td>String</td>
-<td>No</td>
-<td>Limit pricing</td>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Limit price</td>
 </tr>
 <tr>
-<td>quantity</td>
-<td>String</td>
-<td>Yes</td>
-<td>Order quantity</td>
+<td style="text-align: left">quantity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order quantity</td>
 </tr>
 <tr>
-<td>clientOrderId</td>
-<td>String</td>
-<td>No</td>
-<td>Custom ID</td>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Custom id</td>
 </tr>
 </tbody></table>
 
@@ -2423,13 +2445,13 @@ please delete the APIKey as soon as possible.
 <blockquote>
 <p>Return data</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
-  "code":"200",
-   "message":"success"
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
 
-}   
-</code></pre><h3 id='obtain-order-details'>Obtain order details</h3>
+</span><span class="p">}</span><span class="w">   
+</span></code></pre><h3 id='obtain-order-details'>Obtain order details</h3>
 <p>Speed ​​limit rule 20 times/2s</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -2457,7 +2479,7 @@ please delete the APIKey as soon as possible.
 <td>Trading pair, details refer to：<a href="#%E5%B8%81%E5%AF%B9%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">/products</a></td>
 </tr>
 <tr>
-<td>orderIds</td>
+<td>orderId</td>
 <td>String</td>
 <td>Yes</td>
 <td>Order ID</td>

@@ -281,11 +281,10 @@
 </head>
 <header class="top-nav">
   <div class="top-menu">
-      <a href="https://www.bitget.info/zh-CN/" class="logo-link" target="_self">
+      <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
         <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
       </a>
     <ul class="con">
-<!--      <li><a  id="swap"  data-text="合约" >Swap</a></li>-->
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
     </ul>
@@ -313,7 +312,7 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#2021-9-24-websocket" class="toc-h2 toc-link" data-title="2021年9月26日 【WebSocket】">2021年9月26日 【WebSocket】</a>
+                <a href="#2021-9-24-websocket" class="toc-h2 toc-link" data-title="2021年9月24日 【WebSocket】">2021年9月24日 【WebSocket】</a>
               </li>
               <li>
                 <a href="#2021-9-15" class="toc-h2 toc-link" data-title="2021年9月15日【新增划转记录接口】">2021年9月15日【新增划转记录接口】</a>
@@ -552,7 +551,7 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-websocket'>2021年9月26日 【WebSocket】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-websocket'>2021年9月24日 【WebSocket】</h2>
 <ul>
 <li>Websocket 接口上线</li>
 </ul>
@@ -628,7 +627,7 @@ clipboard.on('error', function(e) {
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> </p>
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">Node Js</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a> </p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -659,8 +658,6 @@ clipboard.on('error', function(e) {
 <p>如果传入有效的APIKey 用APIKey限速；如果没有则拿公网IP限速。</p>
 
 <p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 10次/秒。</p>
-
-<p>特殊说明：批量下单时，若下4个币对，每个币对10个订单时，计为一次请求。</p>
 <h2 id='api-2'>API域名</h2>
 <p>您可以自行使用Rest API接入方式进行操作。</p>
 
@@ -1177,43 +1174,47 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">是否可以划转</td>
 </tr>
 <tr>
-<td style="text-align: left">chain</td>
+<td style="text-align: left">chains</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; chain</td>
 <td style="text-align: left">链名称</td>
 </tr>
 <tr>
-<td style="text-align: left">needTag</td>
+<td style="text-align: left">&gt; needTag</td>
 <td style="text-align: left">是否需要tag</td>
 </tr>
 <tr>
-<td style="text-align: left">withdrawAble</td>
+<td style="text-align: left">&gt; withdrawAble</td>
 <td style="text-align: left">是否可提现</td>
 </tr>
 <tr>
-<td style="text-align: left">rechargeAble</td>
+<td style="text-align: left">&gt; rechargeAble</td>
 <td style="text-align: left">是否可提现是否可充值</td>
 </tr>
 <tr>
-<td style="text-align: left">withdrawFee</td>
+<td style="text-align: left">&gt; withdrawFee</td>
 <td style="text-align: left">提现手续费</td>
 </tr>
 <tr>
-<td style="text-align: left">depositConfirm</td>
+<td style="text-align: left">&gt; depositConfirm</td>
 <td style="text-align: left">充值确认块数</td>
 </tr>
 <tr>
-<td style="text-align: left">withdrawConfirm</td>
+<td style="text-align: left">&gt; withdrawConfirm</td>
 <td style="text-align: left">提现确认块数</td>
 </tr>
 <tr>
-<td style="text-align: left">minDepositAmount</td>
+<td style="text-align: left">&gt; minDepositAmount</td>
 <td style="text-align: left">最小充值数</td>
 </tr>
 <tr>
-<td style="text-align: left">minWithdrawAmount</td>
+<td style="text-align: left">&gt; minWithdrawAmount</td>
 <td style="text-align: left">最小提现数</td>
 </tr>
 <tr>
-<td style="text-align: left">browserUrl</td>
+<td style="text-align: left">&gt; browserUrl</td>
 <td style="text-align: left">区块浏览器地址</td>
 </tr>
 </tbody></table>
@@ -2306,7 +2307,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
 </tr>
 <tr>
-<td style="text-align: left">List<Order></td>
+<td style="text-align: left">orderList</td>
 <td style="text-align: left">List</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">下单集合</td>
@@ -2314,7 +2315,7 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <ul>
-<li>Order参数</li>
+<li>orderList参数</li>
 </ul>
 
 <table><thead>
@@ -2490,7 +2491,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">币对，具体见：<a href="#币对基础配置信息">/products</a></td>
 </tr>
 <tr>
-<td style="text-align: left">orderIds</td>
+<td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">订单id</td>
