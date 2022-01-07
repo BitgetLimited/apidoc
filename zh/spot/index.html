@@ -312,6 +312,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-1-07" class="toc-h2 toc-link" data-title="2022年1月07日">2022年1月07日</a>
+              </li>
+              <li>
                 <a href="#2021-9-24-websocket" class="toc-h2 toc-link" data-title="2021年9月24日 【WebSocket】">2021年9月24日 【WebSocket】</a>
               </li>
               <li>
@@ -551,7 +554,106 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-websocket'>2021年9月24日 【WebSocket】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-1-07'>2022年1月07日</h2>
+<ul>
+<li>去掉 https://capi.bitgetapi.com</li>
+</ul>
+
+<p>新增主域名 https://api.bitget.com</p>
+
+<ul>
+<li><p>新增错误码</p></li>
+<li><p>限频规则</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>方法路径</th>
+<th>限频频率</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/api/spot/v1/public/time</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/currencies</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/products</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/product</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/ticker</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/tickers</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/fills</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/candles</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/depth</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/assets</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/bills</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/transferRecords</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/orders</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/batch-orders</td>
+<td>5c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/cancel-order</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/cancel-batch-orders</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/orderInfo</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/open-orders</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/history</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/fills</td>
+<td>20c/1s</td>
+</tr>
+</tbody></table>
+<h2 id='2021-9-24-websocket'>2021年9月24日 【WebSocket】</h2>
 <ul>
 <li>Websocket 接口上线</li>
 </ul>
@@ -670,13 +772,13 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 <tr>
 <td>域名1</td>
-<td>https://capi.bitget.com</td>
-<td>国际</td>
+<td>https://api.bitget.com</td>
+<td>主域名</td>
 </tr>
 <tr>
 <td>域名2</td>
-<td>https://capi.bitgetapi.com</td>
-<td>中国地区</td>
+<td>https://capi.bitget.com</td>
+<td>备用域名</td>
 </tr>
 </tbody></table>
 <h2 id='api-3'>API验证</h2>
@@ -1075,7 +1177,7 @@ Signature = base64.encode(Signature)
 <li>POST: 参数按照json格式发送body传输到服务器。</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='5a0fbdfb96'>基础配置接口</h2><h3 id='3f1907847c'>获取服务器时间</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -1095,7 +1197,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622097118134</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='0768e744b5'>币种基础信息</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
 获取平台所有币种信息</p>
@@ -1219,7 +1321,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='d990beddee'>获取全部产品信息</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
 获取所有币对基础配置信息</p>
@@ -1319,7 +1421,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='84a4efea8f'>获取单个产品信息</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -1419,7 +1521,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='dd1d4ee749'>公共行情接口</h2><h3 id='ticker'>获取某个Ticker信息</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
 获取某个ticker信息</p>
@@ -1511,7 +1613,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='ticker-2'>获取全部Ticker信息</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -1584,7 +1686,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='2fdd066e43'>获取成交数据</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -1679,7 +1781,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='k'>获取K线数据</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
 获取K线数据</p>
@@ -1803,7 +1905,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='5139801b64'>获取深度数据</h3>
-<p>限速规则：20次/2s</p>
+<p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
 获取K线数据</p>
@@ -2280,7 +2382,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='de93fae07b'>批量下单</h3>
-<p>限速规则 10次/2s</p>
+<p>限速规则 5次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2376,7 +2478,7 @@ Signature = base64.encode(Signature)
     }
 }
 </code></pre><h3 id='fc150cab0e'>撤单</h3>
-<p>限速规则 50次/2s</p>
+<p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2420,7 +2522,7 @@ Signature = base64.encode(Signature)
 
 }
 </code></pre><h3 id='8cc3c3d64a'>批量撤单(单对)</h3>
-<p>限速规则 50次/2s</p>
+<p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2464,7 +2566,7 @@ Signature = base64.encode(Signature)
 
 </span><span class="p">}</span><span class="w">   
 </span></code></pre><h3 id='f876a4e1f9'>获取订单详情</h3>
-<p>限速规则 20次/2s</p>
+<p>限速规则 20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2589,7 +2691,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='19671a1099'>获取未成交列表</h3>
-<p>限速规则 20次/2s</p>
+<p>限速规则 20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2702,7 +2804,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='b9220b5487'>获取历史委托列表</h3>
-<p>限速规则 20次/2s</p>
+<p>限速规则 20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2833,7 +2935,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='106a02279b'>获取成交明细</h3>
-<p>限速规则 20次/2s</p>
+<p>限速规则 20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4879,6 +4981,56 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">服务返回错误</td>
 <td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">订单不存在</td>
+<td style="text-align: left">43001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">挂单失败</td>
+<td style="text-align: left">43002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">没有可撤消的委单</td>
+<td style="text-align: left">43004</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">超过交易量最大委托限制</td>
+<td style="text-align: left">43005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">下单数量小于最小交易数量</td>
+<td style="text-align: left">43006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">下单数量大于最大交易数量</td>
+<td style="text-align: left">43007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前委托价格不能小于{0}</td>
+<td style="text-align: left">43008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前委托价格超过限制{0}</td>
+<td style="text-align: left">43009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">交易额不能小于{0}</td>
+<td style="text-align: left">43010</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前委托价格不能小于{0}</td>
+<td style="text-align: left">43011</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

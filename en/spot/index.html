@@ -312,6 +312,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#05-1-2022" class="toc-h2 toc-link" data-title="05/1/2022">05/1/2022</a>
+              </li>
+              <li>
                 <a href="#24-09-2021-websocket-api" class="toc-h2 toc-link" data-title="24/09/ 2021【WebSocket Api 】">24/09/ 2021【WebSocket Api 】</a>
               </li>
               <li>
@@ -545,7 +548,106 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='24-09-2021-websocket-api'>24/09/ 2021【WebSocket Api 】</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='05-1-2022'>05/1/2022</h2>
+<ul>
+<li>Removed domain name https://capi.bitgetapi.com</li>
+</ul>
+
+<p>Add main domain name https://api.bitget.com</p>
+
+<ul>
+<li><p>Add error code</p></li>
+<li><p>Frequency limiting rules</p></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Request Url</th>
+<th>rule</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/api/spot/v1/public/time</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/currencies</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/products</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/public/product</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/ticker</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/tickers</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/fills</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/candles</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/market/depth</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/assets</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/bills</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/account/transferRecords</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/orders</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/batch-orders</td>
+<td>5c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/cancel-order</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/cancel-batch-orders</td>
+<td>10c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/orderInfo</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/open-orders</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/history</td>
+<td>20c/1s</td>
+</tr>
+<tr>
+<td>/api/spot/v1/trade/fills</td>
+<td>20c/1s</td>
+</tr>
+</tbody></table>
+<h2 id='24-09-2021-websocket-api'>24/09/ 2021【WebSocket Api 】</h2>
 <ul>
 <li>WebSocket Public Channel and Private Channel Online</li>
 </ul>
@@ -601,7 +703,7 @@ clipboard.on('error', function(e) {
 
 <aside class="notice">
 
-```
+```html
 User can bind IP address when he creates APIKey ，For the safety consideration of APIKe for unbind IP address，the binding of IP address is strongly recommended. 
 ```
 
@@ -619,7 +721,6 @@ User can bind IP address when he creates APIKey ，For the safety consideratio
 Leaking any one of these three keys may cause loss of your assets. If you find that the APIKey is leaked,
 
 please delete the APIKey as soon as possible.
-
 ```
 
 </aside> 
@@ -667,14 +768,14 @@ please delete the APIKey as soon as possible.
 </tr>
 </thead><tbody>
 <tr>
-<td>Domain 1</td>
-<td><a href="https://capi.bitget.com/">https://capi.bitget.com</a></td>
+<td>Domain1</td>
+<td>https://api.bitget.com</td>
 <td>International</td>
 </tr>
 <tr>
-<td>Domain 2</td>
-<td><a href="https://capi.bitgetapi.com/">https://capi.bitgetapi.com</a></td>
-<td>China</td>
+<td>Domain2</td>
+<td><a href="https://capi.bitget.com/">https://capi.bitget.com</a></td>
+<td>Alternate domain name</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -4876,6 +4977,56 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td style="text-align: left">spot service return an error</td>
 <td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order does not exist</td>
+<td style="text-align: left">43001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Pending order failed</td>
+<td style="text-align: left">43002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">There is no order to cancel</td>
+<td style="text-align: left">43004</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Exceeded the maximum order limit of transaction volume</td>
+<td style="text-align: left">43005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order quantity is less than the minimum transaction quantity</td>
+<td style="text-align: left">43006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order quantity is greater than the maximum transaction quantity</td>
+<td style="text-align: left">43007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The current order price cannot be less than {0}</td>
+<td style="text-align: left">43008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The current commission price exceeds the limit {0}</td>
+<td style="text-align: left">43009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The transaction amount cannot be less than {0}</td>
+<td style="text-align: left">43010</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The current order price cannot be less than {0}</td>
+<td style="text-align: left">43011</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
