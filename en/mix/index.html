@@ -312,6 +312,12 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#february-12-2022" class="toc-h2 toc-link" data-title="February 12, 2022">February 12, 2022</a>
+              </li>
+              <li>
+                <a href="#january-05-2022-modification-of-frequency-limit-rules-to-add-a-new-domain-name" class="toc-h2 toc-link" data-title="January 05, 2022【Modification of frequency limit rules to add a new domain name】">January 05, 2022【Modification of frequency limit rules to add a new domain name】</a>
+              </li>
+              <li>
                 <a href="#december-08-2021-websocket-private-channel" class="toc-h2 toc-link" data-title="December 08, 2021【WebSocket Private Channel 】">December 08, 2021【WebSocket Private Channel 】</a>
               </li>
               <li>
@@ -427,6 +433,9 @@
                       </li>
                       <li>
                         <a href="#get-contract-mark-price" class="toc-h3 toc-link" data-title="Get Contract Mark Price">Get Contract Mark Price</a>
+                      </li>
+                      <li>
+                        <a href="#get-symbol-supported-leverage" class="toc-h3 toc-link" data-title="get symbol supported leverage">get symbol supported leverage</a>
                       </li>
                   </ul>
               </li>
@@ -642,7 +651,30 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='december-08-2021-websocket-private-channel'>December 08, 2021【WebSocket Private Channel 】</h2>
+<h1 id='update-log'>Update log</h1><h2 id='february-12-2022'>February 12, 2022</h2>
+<ul>
+<li>add new interface get symbol supported leverage <a href="#get%20symbol%20supported%20leverage">get symbol supported leverage</a></li>
+<li>Get transaction details Support query all details <a href="#Check%20Transaction%20Details">Check Transaction Details</a></li>
+</ul>
+<h2 id='january-05-2022-modification-of-frequency-limit-rules-to-add-a-new-domain-name'>January 05, 2022【Modification of frequency limit rules to add a new domain name】</h2>
+<ul>
+<li>Removed domain name https://capi.bitgetapi.com</li>
+</ul>
+
+<p>add new domain name https://api.bitget.com</p>
+
+<ul>
+<li>Modification of frequency limit rules</li>
+</ul>
+
+<p>| Request Url                         | Rule  |
+  | ----------------------------------- | ----- |
+  | /api/mix/v1/account/setLeverage     | 5c/1s |
+  | /api/mix/v1/account/setMargin       | 5c/1s |
+  | /api/mix/v1/account/setMarginMode   | 5c/1s |
+  | /api/mix/v1/account/setPositionMode | 5c/1s |
+  | /api/mix/v1/position/allPosition    | 5c/1s |</p>
+<h2 id='december-08-2021-websocket-private-channel'>December 08, 2021【WebSocket Private Channel 】</h2>
 <ul>
 <li>WebSocket Private Channel Online</li>
 </ul>
@@ -685,7 +717,7 @@ clipboard.on('error', function(e) {
 <p>Users with excellent maker strategies and large trading volumes are welcome to participate in long-term market maker projects. Please provide the following information and send an email to:</p>
 
 <ul>
-<li><a href="mailto:vip@bitget.com">vip@bitget.com</a> Contract market maker application.</li>
+<li><a href="mailto:API@bitget.com">API@bitget.com</a> Contract market maker application.</li>
 </ul>
 
 <ol>
@@ -701,7 +733,7 @@ clipboard.on('error', function(e) {
 <p>If you have any questions or suggestions, you can contact us here:</p>
 
 <ul>
-<li>Send an email to vip@bitget.com.</li>
+<li>Send an email to API@bitget.com.</li>
 <li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
 </ul>
 <h2 id='faq'>FAQ</h2>
@@ -1064,13 +1096,13 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 </thead><tbody>
 <tr>
 <td>Domain 1</td>
-<td>https://capi.bitget.com</td>
-<td>International</td>
+<td>https://api.bitget.com</td>
+<td>Main Domain name</td>
 </tr>
 <tr>
-<td>Domain 2</td>
-<td>https://capi.bitgetapi.com</td>
-<td>China Region</td>
+<td>Domain 1</td>
+<td>https://capi.bitget.com</td>
+<td>backup</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -2143,6 +2175,68 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">timsetamp</td>
 <td style="text-align: left">Timestamp (milliseconds)</td>
+</tr>
+</tbody></table>
+<h3 id='get-symbol-supported-leverage'>get symbol supported leverage</h3>
+<p>Speed limit rule: 20次/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/symbol-leverage</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product Id (Must be capitalized)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Success Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minLeverage"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="s2">"125"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627292076687</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Return Field</th>
+<th style="text-align: left">Field Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol id</td>
+</tr>
+<tr>
+<td style="text-align: left">minLeverage</td>
+<td style="text-align: left">min leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">maxLeverage</td>
+<td style="text-align: left">max leverage</td>
 </tr>
 </tbody></table>
 <h2 id='account-interface'>Account Interface</h2><h3 id='single-currency-account-information'>Single currency Account Information</h3>
@@ -5398,11 +5492,11 @@ If there is a large deviation between the local server time and the API server t
 <td>wss://ws.bitget.com/mix/v1/stream</td>
 <td>internationality</td>
 </tr>
-<!--<tr>-->
-<!--<td>domain 2</td>-->
-<!--<td>wss://ws.bitgetapi.com/mix/v1/stream</td>-->
-<!--<td>China area</td>-->
-<!--</tr>-->
+<tr>
+<td>domain 2</td>
+<td>wss://ws.bitgetapi.com/mix/v1/stream</td>
+<td>China area</td>
+</tr>
 </tbody></table>
 <h2 id='connect'>Connect</h2>
 <p><strong>Connection instructions</strong>:</p>
@@ -5439,11 +5533,11 @@ If there is a large deviation between the local server time and the API server t
 
 <p><strong>Example of timestamp</strong>: const timestamp =&#39;&#39; + Date.now() / 1000</p>
 
-<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/user/verify&#39;, secretKey))</p>
+<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/users/self/verify&#39;, secretKey))</p>
 
 <p><strong>method</strong>: always &#39;GET&#39;.</p>
 
-<p><strong>requestPath</strong> : always &#39;/user/verify&#39;</p>
+<p><strong>requestPath</strong> : always &#39;/users/self/verify&#39;</p>
 
 <p>The request will expire 30 seconds after the timestamp. If your server time differs from the API server time, we recommended using the REST API to query the API server time and then set the timestamp.</p>
 
@@ -6996,7 +7090,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>No</td>
-<td>only <code>default</code></td>
+<td>Symbol Name</td>
 </tr>
 </tbody></table>
 
@@ -7212,7 +7306,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7254,7 +7348,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>No</td>
-<td>Instrument Id <code>default</code></td>
+<td>Instrument Id <code>symbolId</code> or <code>all</code></td>
 </tr>
 </tbody></table>
 
@@ -7266,7 +7360,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>

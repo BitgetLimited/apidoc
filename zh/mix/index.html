@@ -312,6 +312,12 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-02-12" class="toc-h2 toc-link" data-title="2022年02月12日">2022年02月12日</a>
+              </li>
+              <li>
+                <a href="#2022-1-05" class="toc-h2 toc-link" data-title="2022年1月05日【限频规则修改新增域名】">2022年1月05日【限频规则修改新增域名】</a>
+              </li>
+              <li>
                 <a href="#2021-12-08-websocket" class="toc-h2 toc-link" data-title="2021年12月08日【专业合约WebSocket私有频道上线】">2021年12月08日【专业合约WebSocket私有频道上线】</a>
               </li>
               <li>
@@ -427,6 +433,9 @@
                       </li>
                       <li>
                         <a href="#0be6ee7ca7" class="toc-h3 toc-link" data-title="获取合约标记价格">获取合约标记价格</a>
+                      </li>
+                      <li>
+                        <a href="#f1b7a9205d" class="toc-h3 toc-link" data-title="获取交易对支持的杠杆">获取交易对支持的杠杆</a>
                       </li>
                   </ul>
               </li>
@@ -629,6 +638,7 @@
 Clipboard script
 -->
 
+
 <script src="../../dist/clipboard.min-f99f064d.js"></script>
 
 <script>
@@ -642,7 +652,32 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2021-12-08-websocket'>2021年12月08日【专业合约WebSocket私有频道上线】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-02-12'>2022年02月12日</h2>
+<ul>
+<li>新增查询交易对杠杆倍数 <a href="#获取交易对支持的杠杆">获取交易对支持的杠杆</a></li>
+<li>获取成交明细支持查询全部明细 <a href="#查询成交明细">查询成交明细</a></li>
+</ul>
+<h2 id='2022-1-05'>2022年1月05日【限频规则修改新增域名】</h2>
+<ul>
+<li>去掉https://capi.bitgetapi.com</li>
+</ul>
+
+<p>新增域名 https://api.bitget.com</p>
+
+<ul>
+<li>限频规则修改</li>
+</ul>
+
+<p>| 请求路径                                | 规则    |
+  | ----------------------------------- | ----- |
+  | /api/mix/v1/account/setLeverage     | 5c/1s |
+  | /api/mix/v1/account/setMargin       | 5c/1s |
+  | /api/mix/v1/account/setMarginMode   | 5c/1s |
+  | /api/mix/v1/account/setPositionMode | 5c/1s |
+  | /api/mix/v1/position/allPosition    | 5c/1s |</p>
+
+<p>​</p>
+<h2 id='2021-12-08-websocket'>2021年12月08日【专业合约WebSocket私有频道上线】</h2>
 <ul>
 <li>专业合约私有频道接口上线</li>
 </ul>
@@ -685,7 +720,7 @@ clipboard.on('error', function(e) {
 <p>欢迎有优秀 maker 策略且交易量大的用户参与长期做市商项目。请提供以下信息发送邮件至：</p>
 
 <ul>
-<li><a href="mailto:vip@bitget.com">vip@bitget.com</a> 合约做市商申请。</li>
+<li><a href="mailto:API@bitget.com">API@bitget.com</a> 合约做市商申请。</li>
 </ul>
 
 <ol>
@@ -701,7 +736,7 @@ clipboard.on('error', function(e) {
 <p>使用过程中如有问题或者建议，您可选择以下方式联系我们：</p>
 
 <ul>
-<li>发送邮件至 vip@bitget.com。</li>
+<li>发送邮件至 API@bitget.com。</li>
 <li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a> </li>
 </ul>
 <h2 id='0adb1147b3'>常见问题</h2>
@@ -718,16 +753,13 @@ clipboard.on('error', function(e) {
 <p>A : 下单接口所有的 <code>symbol</code>  参数都是传 <a href="#合约信息接口">合约信息接口</a> 接口的 <code>symbol</code> 返回的值</p>
 
 <ul>
-<li>Q3 : websocket 订阅时 <code>instId</code> 传的是什么？</li>
+<li><p>Q3 : websocket 订阅时 <code>instId</code> 传的是什么？</p>
+
+<p>A : <code>instId</code> 传的是 <a href="#合约信息接口">合约信息接口</a> <code>symbolName</code> </p></li>
+<li><p>Q4: 接口 <code>symbol</code> 区分大小写吗？</p>
+
+<p>A ：<code>symbol</code> 区分大小写  必须一律大写</p></li>
 </ul>
-
-<p>​       A : <code>instId</code> 传的是 <a href="#合约信息接口">合约信息接口</a> <code>symbolName</code> </p>
-
-<ul>
-<li>Q4: 接口 <code>symbol</code> 区分大小写吗？</li>
-</ul>
-
-<p>​       A ：<code>symbol</code> 区分大小写  必须一律大写</p>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
 <p>如需使用API ，请先登录网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。  </p>
 
@@ -1072,13 +1104,13 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 <tr>
 <td>域名1</td>
-<td>https://capi.bitget.com</td>
+<td>https://api.bitget.com</td>
 <td>国际</td>
 </tr>
 <tr>
 <td>域名2</td>
-<td>https://capi.bitgetapi.com</td>
-<td>中国地区</td>
+<td>https://capi.bitget.com</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='api-4'>API验证</h2>
@@ -2153,8 +2185,70 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">时间戳(毫秒)</td>
 </tr>
 </tbody></table>
+<h3 id='f1b7a9205d'>获取交易对支持的杠杆</h3>
+<p>限速规则: 20次/1s (IP)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/symbol-leverage</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minLeverage"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="s2">"125"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627292076687</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">minLeverage</td>
+<td style="text-align: left">最小杠杆</td>
+</tr>
+<tr>
+<td style="text-align: left">maxLeverage</td>
+<td style="text-align: left">最大杠杆</td>
+</tr>
+</tbody></table>
 <h2 id='df03e301d5'>账户接口</h2><h3 id='86b3aa37f0'>单个币种账户信息</h3>
-<p>限速规则: 20次/2s (AccessKey)</p>
+<p>限速规则: 20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2282,7 +2376,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='ca1e923f0e'>获取账户信息列表</h3>
-<p>限速规则: 20次/2s (AccessKey)</p>
+<p>限速规则: 20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2440,7 +2534,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293049406</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='4215cf81c7'>调整杠杆</h3>
-<p>限速规则: 5次/2s (AccessKey)</p>
+<p>限速规则: 5次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2530,7 +2624,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='9e3bc1e664'>调整保证金</h3>
-<p>限速规则: 5次/2s (AccessKey)</p>
+<p>限速规则: 5次/1s (AccessKey)</p>
 
 <p>全仓时, 保证金不能调整</p>
 
@@ -2582,7 +2676,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293357336</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='1d95e0f03c'>调节保证金模式</h3>
-<p>限速规则: 5次/2s (AccessKey)</p>
+<p>限速规则: 5次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2666,7 +2760,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='f1e69afa43'>获取单个合约仓位信息</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -2801,7 +2895,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='2cedacc22e'>获取全部合约仓位信息</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3318,7 +3412,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='cee6a1fd93'>获取当前委托</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3441,7 +3535,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='4212d667d1'>获取历史委托</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3557,10 +3651,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">成交数量</td>
 </tr>
 <tr>
-    <td style="text-align: left">priceAvg</td>
-    <td style="text-align: left">成交均价</td>
-</tr>
-<tr>
 <td style="text-align: left">fee</td>
 <td style="text-align: left">手续费</td>
 </tr>
@@ -3598,7 +3688,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='f876a4e1f9'>获取订单详情</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3726,7 +3816,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='b546ba2cec'>查询成交明细</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3753,8 +3843,20 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">开始时间(时间戳毫秒) 如果查询全部明细此字段必传</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">结束时间(时间戳毫秒) 如果查询全部明细此字段必传</td>
 </tr>
 </tbody></table>
 
@@ -4333,7 +4435,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='2ac393739d'>获取当前计划委托(止盈止损)列表</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4458,7 +4560,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='b279486965'>获取历史计划委托(止盈止损)列表</h3>
-<p>限速规则:  20次/2s (AccessKey)</p>
+<p>限速规则:  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4608,7 +4710,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='fddf776a08'>跟单接口</h2><h3 id='863e64ec14'>交易员获取当前带单</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4689,7 +4791,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">openOrderId</td>
-<td style="text-align: left">交易员开单号  交易员平仓时不可使用此单号，需要使用跟踪单号</td>
+<td style="text-align: left">跟随者开仓单号</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
@@ -4708,25 +4810,24 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">开仓均价</td>
 </tr>
 <tr>
-    <td style="text-align: left">openTime</td>
-    <td style="text-align: left">开仓时间</td>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">开仓时间</td>
 </tr>
 <tr>
-    <td style="text-align: left">openDealCount</td>
-    <td style="text-align: left">开仓数量</td>
+<td style="text-align: left">openDealCount</td>
+<td style="text-align: left">开仓数量</td>
 </tr>
 <tr>
-    <td style="text-align: left">stopProfitPrice</td>
-    <td style="text-align: left">预设止盈价</td>
+<td style="text-align: left">stopProfitPrice</td>
+<td style="text-align: left">预设止盈价</td>
 </tr>
 <tr>
-    <td style="text-align: left">stopLossPrice</td>
-    <td style="text-align: left">预设止损价</td>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">预设止损价</td>
 </tr>
-
 </tbody></table>
 <h3 id='e008da145c'>跟随者获取跟单信息</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4916,7 +5017,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='f81de52fbe'>交易员获取历史带单</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5048,7 +5149,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='36cac047b7'>交易员分润汇总</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5097,7 +5198,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='12737cca2b'>交易员历史分润汇总(按结算币种)</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5138,7 +5239,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='4e343a945e'>交易员历史分润汇总(按结算币种和日期)</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5184,7 +5285,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='cb838ad3a6'>交易员历史分润明细</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5266,7 +5367,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='983dfacfba'>交易员待分润明细</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5336,7 +5437,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='dcdb3935e1'>获取平台跟单交易对信息</h3>
-<p>限速规则  20次/2s (AccessKey)</p>
+<p>限速规则  20次/1s (AccessKey)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -5447,11 +5548,6 @@ Signature = base64.encode(Signature)
 <td>wss://ws.bitget.com/mix/v1/stream</td>
 <td>国际</td>
 </tr>
-<!--<tr>-->
-<!--<td>域名2</td>-->
-<!--<td>wss://ws.bitgetapi.com/mix/v1/stream</td>-->
-<!--<td>中国地区</td>-->
-<!--</tr>-->
 </tbody></table>
 
 <p>连接说明：</p>
@@ -7313,7 +7409,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7355,7 +7451,7 @@ Signature = base64.encode(Signature)
 <td>&gt; instId</td>
 <td>String</td>
 <td>否</td>
-<td>产品ID  <code>default</code> 全部交易对订单</td>
+<td>产品ID <code>symbolId</code> 或 <code>all</code> 全部交易对订单</td>
 </tr>
 </tbody></table>
 
@@ -7367,7 +7463,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
