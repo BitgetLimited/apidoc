@@ -312,7 +312,10 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#05-1-2022" class="toc-h2 toc-link" data-title="05/1/2022">07/1/2022</a>
+                <a href="#12-02-2022-ticker" class="toc-h2 toc-link" data-title="12/02/2022 【Ticker】">12/02/2022 【Ticker】</a>
+              </li>
+              <li>
+                <a href="#07-1-2022" class="toc-h2 toc-link" data-title="07/1/2022">07/1/2022</a>
               </li>
               <li>
                 <a href="#24-09-2021-websocket-api" class="toc-h2 toc-link" data-title="24/09/ 2021【WebSocket Api 】">24/09/ 2021【WebSocket Api 】</a>
@@ -548,7 +551,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='05-1-2022'>07/1/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='12-02-2022-ticker'>12/02/2022 【Ticker】</h2>
+<ul>
+<li>ticker add <code>buyOne</code>, <code>sellOne</code></li>
+</ul>
+<h2 id='07-1-2022'>07/1/2022</h2>
 <ul>
 <li>Removed domain name https://capi.bitgetapi.com</li>
 </ul>
@@ -676,7 +683,7 @@ clipboard.on('error', function(e) {
 <p>If you have any questions or suggestions, feel free to contact us:</p>
 
 <ul>
-<li>Email vip@bitget.com。</li>
+<li>Email API@bitget.com。</li>
 <li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
 </ul>
 <h1 id='quick-start'>Quick start</h1><h2 id='prepare-to-integrate'>Prepare to integrate</h2>
@@ -1552,6 +1559,8 @@ please delete the APIKey as soon as possible.
         "quoteVol":"0",
         "baseVol":"0",
         "usdtVol":"0",
+        "buyOne":"0",
+        "sellOne":"0",
         "ts":"1625125755277"
     },
     "msg":"success",
@@ -1595,6 +1604,14 @@ please delete the APIKey as soon as possible.
 <td>Denomination coin volume</td>
 </tr>
 <tr>
+<td>buyOne</td>
+<td>buy one price</td>
+</tr>
+<tr>
+<td>sellOne</td>
+<td>sell one price</td>
+</tr>
+<tr>
 <td>usdtVol</td>
 <td>USDT volume</td>
 </tr>
@@ -1624,6 +1641,8 @@ please delete the APIKey as soon as possible.
         "quoteVol":"0",
         "baseVol":"0",
         "usdtVol":"0",
+        "buyOne":"0",
+        "sellOne":"0",
         "ts":"1625125755277"
     }
     ]
@@ -1656,7 +1675,7 @@ please delete the APIKey as soon as possible.
 <td>24h lowest price</td>
 </tr>
 <tr>
-<td>timestamp</td>
+<td>ts</td>
 <td>System timestamp</td>
 </tr>
 <tr>
@@ -1666,6 +1685,14 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>quoteVol</td>
 <td>Denomination coin volume</td>
+</tr>
+<tr>
+<td>buyOne</td>
+<td>buy one price</td>
+</tr>
+<tr>
+<td>sellOne</td>
+<td>sell one price</td>
 </tr>
 <tr>
 <td>usdtVol</td>
@@ -3077,11 +3104,11 @@ please delete the APIKey as soon as possible.
 <td>wss://ws.bitget.com/spot/v1/stream</td>
 <td>internationality</td>
 </tr>
-<!--<tr>-->
-<!--<td>domain 2</td>-->
-<!--<td>wss://ws.bitgetapi.com/spot/v1/stream</td>-->
-<!--<td>China area</td>-->
-<!--</tr>-->
+<tr>
+<td>domain 2</td>
+<td>wss://ws.bitgetapi.com/spot/v1/stream</td>
+<td>China area</td>
+</tr>
 </tbody></table>
 <h2 id='connect'>Connect</h2>
 <p><strong>Connection instructions</strong>:</p>
@@ -5028,11 +5055,6 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td style="text-align: left">The current order price cannot be less than {0}</td>
 <td style="text-align: left">43011</td>
 <td style="text-align: center">400</td>
-</tr>
-<tr>
-    <td style="text-align: left">Insufficient balance</td>
-    <td style="text-align: left">43012</td>
-    <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
 <h1 id='websocket-error-code'>WebSocket error code</h1>

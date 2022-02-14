@@ -312,6 +312,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2021-9-24-ticker" class="toc-h2 toc-link" data-title="2021年9月24日 【Ticker】">2021年9月24日 【Ticker】</a>
+              </li>
+              <li>
                 <a href="#2022-1-07" class="toc-h2 toc-link" data-title="2022年1月07日">2022年1月07日</a>
               </li>
               <li>
@@ -554,7 +557,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-1-07'>2022年1月07日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2021-9-24-ticker'>2021年9月24日 【Ticker】</h2>
+<ul>
+<li>ticker 接口新增 <code>buyOne</code>, <code>sellOne</code></li>
+</ul>
+<h2 id='2022-1-07'>2022年1月07日</h2>
 <ul>
 <li>去掉 https://capi.bitgetapi.com</li>
 </ul>
@@ -682,7 +689,7 @@ clipboard.on('error', function(e) {
 <p>使用过程中如有问题或者建议，您可选择以下方式联系我们：</p>
 
 <ul>
-<li>发送邮件至vip@bitget.com。</li>
+<li>发送邮件至API@bitget.com。</li>
 <li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a></li>
 </ul>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
@@ -1561,6 +1568,8 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -1608,6 +1617,14 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">usdt成交额</td>
 </tr>
 <tr>
+<td style="text-align: left">buyOne</td>
+<td style="text-align: left">买一价</td>
+</tr>
+<tr>
+<td style="text-align: left">sellOne</td>
+<td style="text-align: left">卖一价</td>
+</tr>
+<tr>
 <td style="text-align: left">ts</td>
 <td style="text-align: left">时间戳</td>
 </tr>
@@ -1637,6 +1654,8 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1683,6 +1702,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">usdtVol</td>
 <td style="text-align: left">usdt币量</td>
+</tr>
+<tr>
+<td style="text-align: left">buyOne</td>
+<td style="text-align: left">买一价</td>
+</tr>
+<tr>
+<td style="text-align: left">sellOne</td>
+<td style="text-align: left">卖一价</td>
 </tr>
 </tbody></table>
 <h3 id='2fdd066e43'>获取成交数据</h3>
@@ -3091,11 +3118,6 @@ Signature = base64.encode(Signature)
 <td>wss://ws.bitget.com/spot/v1/stream</td>
 <td>国际</td>
 </tr>
-<!--<tr>-->
-<!--<td>域名2</td>-->
-<!--<td>wss://ws.bitgetapi.com/spot/v1/stream</td>-->
-<!--<td>中国地区</td>-->
-<!--</tr>-->
 </tbody></table>
 
 <p>连接说明：</p>
@@ -5032,11 +5054,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">当前委托价格不能小于{0}</td>
 <td style="text-align: left">43011</td>
 <td style="text-align: center">400</td>
-</tr>
-<tr>
-    <td style="text-align: left">账户余额不足</td>
-    <td style="text-align: left">43012</td>
-    <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
 <h1 id='websocket'>WebSocket错误代码</h1>
