@@ -1123,7 +1123,7 @@ please delete the APIKey as soon as possible.
 
 <p><strong> </strong></p>
 <h2 id='request-interaction'>Request interaction</h2>
-<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be standardized as: <code>application/json</code>.</p>
+<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be standardized as:&#39;application/json&#39;.</p>
 
 <p><strong>Request interaction description</strong></p>
 
@@ -1152,7 +1152,7 @@ please delete the APIKey as soon as possible.
 <h2 id='standard-specification'>Standard Specification</h2>
 <p><strong>Timestamp</strong></p>
 
-<p>The unit of <code>ACCESS-TIMESTAMP</code> in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected. If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected. If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
 
 <p><strong>Frequency limiting rules</strong></p>
 
@@ -1187,6 +1187,7 @@ please delete the APIKey as soon as possible.
 <pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
+    "requestTime": 1622097118135,
     "data": 1622097118134
 }
 
@@ -1315,7 +1316,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='basic-configuration-information-of-trading-pairs'>Basic configuration information of trading pairs</h3>
-<p>Speed limit rule: 20 times/1s</p>
+<p>Speed ​​limit rule: 20 times/1s</p>
 
 <p><strong>HTTP Request</strong> </p>
 
@@ -1426,7 +1427,7 @@ please delete the APIKey as soon as possible.
 <td>symbol</td>
 <td>String</td>
 <td>Yes</td>
-<td>Symbol ID</td>
+<td>Symbol Id</td>
 </tr>
 </tbody></table>
 
@@ -1463,7 +1464,7 @@ please delete the APIKey as soon as possible.
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>Symbol Id</td>
+<td>Symbol ID</td>
 </tr>
 <tr>
 <td>symbolName</td>
@@ -1507,7 +1508,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h2 id='public-market-interface'>Public market interface</h2><h3 id='obtain-a-ticker-information'>Obtain a Ticker information</h3>
-<p>Speed limit rule: 20 times/1s</p>
+<p>Speed ​​limit rule: 20 times/1s</p>
 
 <p><strong>HTTP Request</strong> </p>
 
@@ -1540,7 +1541,6 @@ please delete the APIKey as soon as possible.
 </blockquote>
 <pre class="highlight plaintext"><code>{
     "code":"00000",
-    "msg":"success",
     "data":{
         "symbol":"BTCUSDT",
         "high24h":"34413.1",
@@ -1552,7 +1552,8 @@ please delete the APIKey as soon as possible.
         "buyOne":"0",
         "sellOne":"0",
         "ts":"1625125755277"
-    }
+    },
+    "msg":"success"
 }
 </code></pre>
 <p><strong>Return value description</strong></p>
@@ -1565,7 +1566,7 @@ please delete the APIKey as soon as possible.
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>Symbol ID</td>
+<td>Symbol Id</td>
 </tr>
 <tr>
 <td>high24h</td>
@@ -1620,7 +1621,6 @@ please delete the APIKey as soon as possible.
 </blockquote>
 <pre class="highlight plaintext"><code>{
     "code":"00000",
-    "msg":"success",
     "data":[
       {
         "symbol":"BTCUSDT",
@@ -1635,6 +1635,7 @@ please delete the APIKey as soon as possible.
         "ts":"1625125755277"
     }
     ]
+    "msg":"success"
 }
 </code></pre>
 <p><strong>Return value description</strong></p>
@@ -1647,7 +1648,7 @@ please delete the APIKey as soon as possible.
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>Symbol ID</td>
+<td>Symbol Id</td>
 </tr>
 <tr>
 <td>high24h</td>
@@ -1687,7 +1688,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='obtain-transaction-data'>Obtain transaction data</h3>
-<p>Speed limit rule: 20 times/1s</p>
+<p>Speed ​​limit rule: 20 times/1s</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1757,7 +1758,7 @@ please delete the APIKey as soon as possible.
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>Contract name</td>
+<td>Symbol ID</td>
 </tr>
 <tr>
 <td>tradeId</td>
@@ -1805,7 +1806,7 @@ please delete the APIKey as soon as possible.
 <td>symbol</td>
 <td>String</td>
 <td>Yes</td>
-<td>Contract name</td>
+<td>Symbol Id</td>
 </tr>
 <tr>
 <td>period</td>
@@ -1929,7 +1930,7 @@ please delete the APIKey as soon as possible.
 <td>symbol</td>
 <td>String</td>
 <td>Yes</td>
-<td>Contract name</td>
+<td>Symbol ID</td>
 </tr>
 <tr>
 <td>type</td>
@@ -2232,7 +2233,6 @@ please delete the APIKey as soon as possible.
 </blockquote>
 <pre class="highlight plaintext"><code>{
     "code":"00000",
-    "msg":"success",
     "data":[
         {
             "coinName":"btc",
@@ -2244,7 +2244,8 @@ please delete the APIKey as soon as possible.
             "amount":"1000.00000000",
             "tradeTime":"1631070374488"
         }
-    ]
+    ],
+    "msg":"success"
 }
 </code></pre>
 <p><strong>Return value description</strong></p>
@@ -2513,12 +2514,13 @@ please delete the APIKey as soon as possible.
 <p>Return data</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
+
   "code":"00000",
    "message":"success",
-   "data":"102999924867" 
+  "data": "202934892814667"
 }   
 </code></pre><h3 id='cancel-order-in-batch-single-trading-pair'>Cancel order in batch (single trading pair)</h3>
-<p>Speed limit rule 50 times/2s</p>
+<p>Speed limit rule 5 times/1s</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2556,14 +2558,13 @@ please delete the APIKey as soon as possible.
 <p>Return data</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
   </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="s2">"102999924867"</span><span class="w">
-    </span><span class="p">]</span><span class="w"> 
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202934892814667"</span><span class="w">
 </span><span class="p">}</span><span class="w">   
 </span></code></pre><h3 id='obtain-order-details'>Obtain order details</h3>
-<p>Speed limit rule 20 times/1s</p>
+<p>Speed ​​limit rule 20 times/1s</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2688,7 +2689,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='obtain-unfilled-order-list'>Obtain unfilled order list</h3>
-<p>Speed limit rule 20 times/1s</p>
+<p>Speed ​​limit rule 20 times/1s</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2753,7 +2754,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>symbol</td>
-<td>Symbol Id</td>
+<td>Trading pair name</td>
 </tr>
 <tr>
 <td>orderId</td>
@@ -2932,7 +2933,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='obtain-transaction-details'>Obtain transaction details</h3>
-<p>Speed limit rule 20 times/1s</p>
+<p>Speed ​​limit rule 20 times/1s</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2988,8 +2989,8 @@ please delete the APIKey as soon as possible.
 <p>Return data</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
   </span><span class="s2">"accountId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt_spbl"</span><span class="p">,</span><span class="w">
@@ -3790,7 +3791,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel Name，<code>candle1W</code> <code>candle1D</code> <code>candle12H</code> <code>candle4H</code>  <code>candle1H</code> <code>candle30m</code> <code>candle15m</code> <code>candle5m</code> <code>candle1m</code></td>
+<td>Channel Name，<code>candle1W</code><code>candle1D</code><code>candle12H</code> <code>candle4H</code>  <code>candle1H</code><code>candle30m</code> <code>candle15m</code> <code>candle5m</code> <code>candle1m</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
@@ -3949,7 +3950,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Close price</td>
 </tr>
 <tr>
-<td>&gt; v</td>
+<td>&gt;v</td>
 <td>String</td>
 <td>Trading volume, with a unit of <code>contact</code>.</td>
 </tr>
