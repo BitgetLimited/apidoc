@@ -312,6 +312,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-02-25" class="toc-h2 toc-link" data-title="2022年02月25日">2022年02月25日</a>
+              </li>
+              <li>
                 <a href="#2022-02-12" class="toc-h2 toc-link" data-title="2022年02月12日">2022年02月12日</a>
               </li>
               <li>
@@ -651,7 +654,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-02-12'>2022年02月12日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-02-25'>2022年02月25日</h2>
+<ul>
+<li>止盈止损下单新增 根据数量下单 <code>size</code> 非必填</li>
+<li>获取全部成交明细新增 <code>lastEndId</code> 查询分页</li>
+</ul>
+<h2 id='2022-02-12'>2022年02月12日</h2>
 <ul>
 <li>新增查询交易对杠杆倍数 <a href="#获取交易对支持的杠杆">获取交易对支持的杠杆</a></li>
 <li>获取成交明细支持查询全部明细 <a href="#查询成交明细">查询成交明细</a></li>
@@ -1095,6 +1103,24 @@ clipboard.on('error', function(e) {
 <tr>
 <td>canceled</td>
 <td>已撤销</td>
+</tr>
+</tbody></table>
+
+<p><strong>isPlan(获取计划委托类型)</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>plan</td>
+<td>计划委托</td>
+</tr>
+<tr>
+<td>profit_loss</td>
+<td>止盈止损</td>
 </tr>
 </tbody></table>
 
@@ -3877,6 +3903,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">否</td>
 <td style="text-align: center">结束时间(时间戳毫秒) 如果查询全部明细此字段必传</td>
 </tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">查询上一次的tradeId</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -4277,6 +4309,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">否</td>
 <td style="text-align: center">本仓位是多仓还是空仓</td>
 </tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">下单数量 默认仓位数量</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -4482,7 +4520,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">isPlan</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">查询类型 plan/profit_loss</td>
+<td style="text-align: center">查询类型</td>
 </tr>
 </tbody></table>
 
@@ -7827,15 +7865,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">40018</td>
 <td style="text-align: center">400</td>
 </tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th style="text-align: left">错误提示</th>
-<th style="text-align: left">错误码</th>
-<th style="text-align: center">http状态码</th>
-</tr>
-</thead><tbody>
 <tr>
 <td style="text-align: left">止盈价格需要&gt;当前价格</td>
 <td style="text-align: left">43013</td>
@@ -7894,6 +7923,11 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">计划委托单已经处于结束状态</td>
 <td style="text-align: left">43026</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">您当前为交易员身份，请在当前带单下进行平仓</td>
+<td style="text-align: left">40728</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

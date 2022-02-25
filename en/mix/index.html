@@ -312,6 +312,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#february-25-2022" class="toc-h2 toc-link" data-title="February 25, 2022">February 25, 2022</a>
+              </li>
+              <li>
                 <a href="#february-12-2022" class="toc-h2 toc-link" data-title="February 12, 2022">February 12, 2022</a>
               </li>
               <li>
@@ -651,7 +654,13 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='february-12-2022'>February 12, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='february-25-2022'>February 25, 2022</h2>
+<ul>
+<li>Get position interface Added maintenance margin rate field <code>keepMarginRate</code></li>
+<li>Add Take Profit and Stop Loss order to place an order based on quantity <code>size</code> optional</li>
+<li>Get all transaction details and add <code>lastEndId</code> query pagination</li>
+</ul>
+<h2 id='february-12-2022'>February 12, 2022</h2>
 <ul>
 <li>add new interface get symbol supported leverage <a href="#get%20symbol%20supported%20leverage">get symbol supported leverage</a></li>
 <li>Get transaction details Support query all details <a href="#Check%20Transaction%20Details">Check Transaction Details</a></li>
@@ -1088,6 +1097,24 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <tr>
 <td>canceled</td>
 <td>Canceled</td>
+</tr>
+</tbody></table>
+
+<p><strong>isPlan</strong></p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>plan</td>
+<td>plan order</td>
+</tr>
+<tr>
+<td>profit_loss</td>
+<td>Tpsl order</td>
 </tr>
 </tbody></table>
 
@@ -2964,6 +2991,8 @@ If there is a large deviation between the local server time and the API server t
             </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -3038,6 +3067,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">liquidationPrice</td>
 <td style="text-align: left">Liquidation Price</td>
+</tr>
+<tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: left">keep margin rate</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -3863,8 +3896,48 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if querying all details</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">End time (timestamp in milliseconds) This field is required if querying all details</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query the data after this tradeId</td>
+</tr>
+</tbody></table>
+
 <blockquote>
-<p>Return Data</p>
+<p>Response Data</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
@@ -4261,6 +4334,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">No</td>
 <td style="text-align: center">Whether this position is long or short</td>
 </tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Order Quantity Default Position Quantity</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -4466,7 +4545,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">isPlan</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Query type  plan/profit_loss</td>
+<td style="text-align: center">Query type</td>
 </tr>
 </tbody></table>
 
@@ -7725,15 +7804,6 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td style="text-align: left">40018</td>
 <td style="text-align: center">400</td>
 </tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Error message</th>
-<th style="text-align: left">Error code</th>
-<th style="text-align: center">http status code</th>
-</tr>
-</thead><tbody>
 <tr>
 <td style="text-align: left">Take profit price needs to be &gt; current price</td>
 <td style="text-align: left">43013</td>
@@ -7792,6 +7862,11 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td style="text-align: left">The limit order has been closed</td>
 <td style="text-align: left">43026</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">You are currently a trader, please close the position under the current order</td>
+<td style="text-align: left">40728</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
