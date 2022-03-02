@@ -1194,7 +1194,7 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <p>Get contract depth information, take cmt_btcusdt as an example:</p>
 
 <ul>
-<li>Timestamp = 16273667805456</li>
+<li>Timestamp = 1627366780545</li>
 <li>Method = &quot;GET&quot;</li>
 <li>requestPath = &quot;/api/mix/V1/market/depth&quot;</li>
 <li>queryString= &quot;?symbol=BTCUSDT_UMCBL&amp;limit=20&quot;</li>
@@ -1203,13 +1203,13 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <p>Generate the string to be signed:</p>
 
 <p><code>
-&#39;16273667805456GET/api/mix/v1/market/depth?symbol=BTCUSDT_UMCBL&amp;limit=20&#39;
+&#39;1627366780545GET/api/mix/v1/market/depth?symbol=BTCUSDT_UMCBL&amp;limit=20&#39;
 </code></p>
 
 <p>Contract order, take cmt_btcusdt as an example:</p>
 
 <ul>
-<li>Timestamp = 16273667805456</li>
+<li>Timestamp = 1627366780545</li>
 <li>Method = &quot;POST&quot;</li>
 <li>requestPath = &quot;/api/mix/v1/order/placeOrder&quot;</li>
 <li>body = {&quot;symbol&quot;:&quot;BTCUSDT_UMCBL&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;open_long&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}</li>
@@ -1218,7 +1218,7 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <p>Generate the string to be signed:</p>
 
 <p><code>
-&#39;16273667805456POST/api/mix/v1/order/placeOrder{&quot;symbol&quot;:&quot;BTCUSDT_UMCBL&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;open_long&quot;,&quot;order_type&quot;:&quot;limit&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}&#39;  
+&#39;1627366780545POST/api/mix/v1/order/placeOrder{&quot;symbol&quot;:&quot;BTCUSDT_UMCBL&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;open_long&quot;,&quot;order_type&quot;:&quot;limit&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}&#39;
 </code></p>
 
 <p><strong>Steps to generate the final signature</strong> </p>
