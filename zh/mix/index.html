@@ -312,6 +312,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-03-04" class="toc-h2 toc-link" data-title="2022年03月04日">2022年03月04日</a>
+              </li>
+              <li>
                 <a href="#2022-02-25" class="toc-h2 toc-link" data-title="2022年02月25日">2022年02月25日</a>
               </li>
               <li>
@@ -641,6 +644,7 @@
 Clipboard script
 -->
 
+
 <script src="../../dist/clipboard.min-f99f064d.js"></script>
 
 <script>
@@ -654,7 +658,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-02-25'>2022年02月25日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-03-04'>2022年03月04日</h2>
+<ul>
+<li>仓位接口增加 <code>keepMarginRate</code> 维持保证金率</li>
+</ul>
+<h2 id='2022-02-25'>2022年02月25日</h2>
 <ul>
 <li>止盈止损下单新增 根据数量下单 <code>size</code> 非必填</li>
 <li>获取全部成交明细新增 <code>lastEndId</code> 查询分页</li>
@@ -831,7 +839,7 @@ clipboard.on('error', function(e) {
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">NodeJs</a> </p>
+<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-api">NodeJs</a> |  <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a> </p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -2859,6 +2867,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2933,6 +2942,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">liquidationPrice</td>
 <td style="text-align: left">预估爆仓价</td>
+</tr>
+<tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: left">维持保证金率</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -2994,6 +3007,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="s2">"0.0015"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1626232130664"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -3068,6 +3082,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">liquidationPrice</td>
 <td style="text-align: left">预估爆仓价</td>
+</tr>
+<tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: left">维持保证金率</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
