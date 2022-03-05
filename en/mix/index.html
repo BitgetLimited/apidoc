@@ -5621,11 +5621,11 @@ If there is a large deviation between the local server time and the API server t
 
 <p><strong>Example of timestamp</strong>: const timestamp =&#39;&#39; + Date.now() / 1000</p>
 
-<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/users/self/verify&#39;, secretKey))</p>
+<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/user/verify&#39;, secretKey))</p>
 
 <p><strong>method</strong>: always &#39;GET&#39;.</p>
 
-<p><strong>requestPath</strong> : always &#39;/users/self/verify&#39;</p>
+<p><strong>requestPath</strong> : always &#39;/user/verify&#39;</p>
 
 <p>The request will expire 30 seconds after the timestamp. If your server time differs from the API server time, we recommended using the REST API to query the API server time and then set the timestamp.</p>
 
