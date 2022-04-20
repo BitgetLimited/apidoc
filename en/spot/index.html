@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -312,6 +312,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#11-03-2022" class="toc-h2 toc-link" data-title="11/03/2022">11/03/2022</a>
+              </li>
+              <li>
                 <a href="#12-02-2022-ticker" class="toc-h2 toc-link" data-title="12/02/2022 【Ticker】">12/02/2022 【Ticker】</a>
               </li>
               <li>
@@ -551,8 +554,10 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1>
-
+<h1 id='update-log'>Update Log</h1><h2 id='11-03-2022'>11/03/2022</h2>
+<ul>
+<li>Added account transfer interface</li>
+</ul>
 <h2 id='12-02-2022-ticker'>12/02/2022 【Ticker】</h2>
 <ul>
 <li>ticker add <code>buyOne</code>, <code>sellOne</code></li>
@@ -850,7 +855,7 @@ please delete the APIKey as soon as possible.
 <td>Do not use special type order</td>
 </tr>
 <tr>
-<td>postOnly</td>
+<td>post_only</td>
 <td>postOnly type of order</td>
 </tr>
 <tr>
@@ -2912,12 +2917,6 @@ please delete the APIKey as soon as possible.
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>symbol</td>
-<td>String</td>
-<td>Yes</td>
-<td>Symbol Id</td>
-</tr>
 <tr>
 <td>orderId</td>
 <td>String</td>
