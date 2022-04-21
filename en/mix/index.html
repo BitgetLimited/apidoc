@@ -502,7 +502,7 @@
                         <a href="#get-order-details" class="toc-h3 toc-link" data-title="Get Order Details">Get Order Details</a>
                       </li>
                       <li>
-                        <a href="#get-order-detail" class="toc-h3 toc-link" data-title="Get Order detail">Get Order detail</a>
+                        <a href="#get-order-fill-detail" class="toc-h3 toc-link" data-title="Get Order fill detail">Get Order fill detail</a>
                       </li>
                       <li>
                         <a href="#place-plan-order" class="toc-h3 toc-link" data-title="Place Plan order">Place Plan order</a>
@@ -2297,7 +2297,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h2 id='account'>Account</h2><h3 id='get-single-account'>Get Single Account</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2425,7 +2425,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-account-list'>Get Account List</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2583,7 +2583,7 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293049406</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='change-leverage'>Change Leverage</h3>
-<p>Limit rule: 5 times/2s (AccessKey)</p>
+<p>Limit rule: 5 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2673,7 +2673,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='change-margin'>Change Margin</h3>
-<p>Limit rule: 5 times/2s (AccessKey)</p>
+<p>Limit rule: 5 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2729,7 +2729,7 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293357336</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='change-margin-mode'>Change Margin Mode</h3>
-<p>Limit rule: 5 times/2s (AccessKey)</p>
+<p>Limit rule: 5 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2813,7 +2813,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-symbol-position'>Get Symbol Position</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2948,7 +2948,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-all-position'>Get All Position</h3>
-<p>Limit rule: 5 times/2s (AccessKey)</p>
+<p>Limit rule: 5 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3083,7 +3083,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-account-bill'>Get Account Bill</h3>
-<p>Limit rule:  10次/1s (AccessKey)</p>
+<p>Limit rule:  10次/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3234,7 +3234,7 @@ If there is a large deviation between the local server time and the API server t
 </ul></li>
 </ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3345,7 +3345,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='batch-order'>Batch Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3476,7 +3476,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='cancel-order'>Cancel Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3545,7 +3545,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='batch-cancel-order'>Batch Cancel Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3616,7 +3616,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-open-order'>Get Open Order</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3736,7 +3736,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-history-orders'>Get History Orders</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3886,7 +3886,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-order-details'>Get Order Details</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4022,28 +4022,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Preset take profit price</td>
 </tr>
 <tr>
-<td style="text-align: left">presetStopLossPrice</td>
-<td style="text-align: left">preset stoploss price</td>
-</tr>
-<tr>
-<td style="text-align: left">filledAmount</td>
-<td style="text-align: left">order fill amount</td>
-</tr>
-<tr>
-<td style="text-align: left">orderType</td>
-<td style="text-align: left">order type limit/market</td>
-</tr>
-<tr>
-<td style="text-align: left">cTime</td>
-<td style="text-align: left">Create Time</td>
-</tr>
-<tr>
-<td style="text-align: left">uTime</td>
-<td style="text-align: left">Update time</td>
+<td style="text-align: left"></td>
+<td style="text-align: left"></td>
 </tr>
 </tbody></table>
-<h3 id='get-order-detail'>Get Order detail</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<h3 id='get-order-fill-detail'>Get Order fill detail</h3>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4156,7 +4140,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='place-plan-order'>Place Plan order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4267,7 +4251,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='modify-plan-order'>Modify Plan Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4360,7 +4344,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='modify-plan-order-tpsl'>Modify Plan Order TPSL</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4441,7 +4425,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='place-stop-order'>Place Stop Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p>At present, take-profit and stop-loss orders are only supported at market price, and the trigger type is transaction trigger price</p>
 
@@ -4530,7 +4514,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='modify-stop-order'>Modify Stop Order</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4605,7 +4589,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='cancel-plan-order-tpsl'>Cancel Plan Order (TPSL)</h3>
-<p>Limit rule: 10 times/1s (AccessKey)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4674,7 +4658,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4799,7 +4783,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-history-plan-orders-tpsl'>Get History Plan Orders (TPSL)</h3>
-<p>Limit rule: 20 times/2s (AccessKey)</p>
+<p>Limit rule: 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4945,7 +4929,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h2 id='copytrade'>CopyTrade</h2><h3 id='get-trader-open-order'>Get Trader Open order</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5062,7 +5046,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-followers-open-order'>Get Followers Open Order</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5194,7 +5178,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='trader-close-position'>Trader Close Position</h3>
-<p>Limit rule 10 times/1s (AccessKey)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5257,7 +5241,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-traders-history-orders'>Get Traders History Orders</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5389,7 +5373,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-trader-profit-summary'>Get Trader Profit Summary</h3>
-<p>Limit rule 20 times/2s (AccessKey)
+<p>Limit rule 20 times/2s (uid)
 <strong>HTTP Request</strong></p>
 
 <ul>
@@ -5437,7 +5421,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-profit-summary-according-to-settlement-currency'>Get Trader History Profit Summary (according to settlement currency)</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5478,7 +5462,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-profit-summary-according-to-settlement-currency-and-date'>Get Trader History Profit Summary (according to settlement currency and date)</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5524,7 +5508,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-trader-histroy-profit-detail'>Get Trader Histroy Profit Detail</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5606,7 +5590,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-trader-profits-details'>Get Trader Profits Details</h3>
-<p>Limit rule 20 times/2s (AccessKey)</p>
+<p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5676,7 +5660,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-copytrade-symbols'>Get  CopyTrade Symbols</h3>
-<p>Limit rule  20 Times/2s (AccessKey)</p>
+<p>Limit rule  20 Times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5720,7 +5704,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='trader-change-copytrade-symbol'>Trader Change CopyTrade symbol</h3>
-<p>Limit rule  10 Times/1s (AccessKey)</p>
+<p>Limit rule  10 Times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5784,11 +5768,6 @@ If there is a large deviation between the local server time and the API server t
 <td>domain 1</td>
 <td>wss://ws.bitget.com/mix/v1/stream</td>
 <td>internationality</td>
-</tr>
-<tr>
-<td>domain 2</td>
-<td>wss://ws.bitgetapi.com/mix/v1/stream</td>
-<td>China area</td>
 </tr>
 </tbody></table>
 <h2 id='connect'>Connect</h2>
