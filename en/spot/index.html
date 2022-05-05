@@ -312,7 +312,7 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#11-03-2022" class="toc-h2 toc-link" data-title="11/03/2022">11/03/2022</a>
+                <a href="#05-05-2022" class="toc-h2 toc-link" data-title="05/05/2022">05/05/2022</a>
               </li>
               <li>
                 <a href="#12-02-2022-ticker" class="toc-h2 toc-link" data-title="12/02/2022 【Ticker】">12/02/2022 【Ticker】</a>
@@ -414,6 +414,29 @@
                       </li>
                       <li>
                         <a href="#get-depth" class="toc-h3 toc-link" data-title="Get depth">Get depth</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#wallet" class="toc-h2 toc-link" data-title="Wallet">Wallet</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#transfer" class="toc-h3 toc-link" data-title="Transfer">Transfer</a>
+                      </li>
+                      <li>
+                        <a href="#get-coin-address" class="toc-h3 toc-link" data-title="Get Coin Address">Get Coin Address</a>
+                      </li>
+                      <li>
+                        <a href="#withdraw" class="toc-h3 toc-link" data-title="Withdraw">Withdraw</a>
+                      </li>
+                      <li>
+                        <a href="#inner-withdraw" class="toc-h3 toc-link" data-title="Inner Withdraw">Inner Withdraw</a>
+                      </li>
+                      <li>
+                        <a href="#get-withdraw-list" class="toc-h3 toc-link" data-title="Get Withdraw list">Get Withdraw list</a>
+                      </li>
+                      <li>
+                        <a href="#get-deposit-list" class="toc-h3 toc-link" data-title="Get Deposit List">Get Deposit List</a>
                       </li>
                   </ul>
               </li>
@@ -554,9 +577,9 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='11-03-2022'>11/03/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='05-05-2022'>05/05/2022</h2>
 <ul>
-<li>Added account transfer interface</li>
+<li>Added walllet interface</li>
 </ul>
 <h2 id='12-02-2022-ticker'>12/02/2022 【Ticker】</h2>
 <ul>
@@ -1972,7 +1995,546 @@ please delete the APIKey as soon as possible.
         "timestamp":"1622102974025"
     }
 }
-</code></pre><h2 id='account'>Account</h2><h3 id='get-account-assets'>Get account assets</h3>
+</code></pre><h2 id='wallet'>Wallet</h2><h3 id='transfer'>Transfer</h3>
+<p>Rate Limit：5次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/transfer</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>type</th>
+<th>Required</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>Yes</td>
+<td>out account type</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>Yes</td>
+<td>inner account type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer amount</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer coin</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success"
+}
+</code></pre>
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot</li>
+<li>mix_usdt</li>
+<li>mix_usd</li>
+</ul></li>
+</ul>
+<h3 id='get-coin-address'>Get Coin Address</h3>
+<p>Rate Limit：5次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/deposit-address</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>No</td>
+<td>chain name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "address": "1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv",
+    "chain": "BTC-Bitcoin",
+    "coin": "BTC",
+    "tag": "",
+    "url": "https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>currency address</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>chain name</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>url</td>
+<td>Blockchain browser address</td>
+</tr>
+</tbody></table>
+<h3 id='withdraw'>Withdraw</h3>
+<p>Just withdraw coins on the chain</p>
+
+<p>Rate Limit：5次/1s (Uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/asset/v1/withdrawal</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Yes</td>
+<td>withdraw address</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>Yes</td>
+<td>chain name</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>No</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>No</td>
+<td>remark</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": "888291686266343424"
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Order ID</td>
+</tr>
+</tbody></table>
+<h3 id='inner-withdraw'>Inner Withdraw</h3>
+<p>Internal withdrawal means that both users are on the Bitget platform</p>
+
+<p>Withdraw money directly in the form of uid, without going on the chain, no need to pass the address</p>
+
+<p>Rate Limit：5次/1s (Uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/asset/v1/withdrawal-inner</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>toUid</td>
+<td>String</td>
+<td>Yes</td>
+<td>target uid</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": "888291686266343424"
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Order ID</td>
+</tr>
+</tbody></table>
+<h3 id='get-withdraw-list'>Get Withdraw list</h3>
+<p>Rate Limit：20次/1s </p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/withdrawal-list</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>start Time</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>end Time</td>
+</tr>
+<tr>
+<td>pageNo</td>
+<td>String</td>
+<td>No</td>
+<td>pageNo default 1</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>No</td>
+<td>pageSize default20 Max100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "id": "24422",
+    "coin": "BTC",
+    "type": "desption",
+    "amount": "1",
+    "status": "new",
+    "cTime": "393929929292",
+    "uTime": "393929929292"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>order Id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>type</td>
+<td>type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>withdraw amount</td>
+</tr>
+<tr>
+<td>status</td>
+<td>status</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>create time</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>update time</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>Pending </li>
+<li>pending_review </li>
+<li>pending_fail </li>
+<li>pending_review_fail </li>
+<li>reject </li>
+<li>success </li>
+</ul></li>
+</ul>
+<h3 id='get-deposit-list'>Get Deposit List</h3>
+<p>Rate Limit：20次/1s </p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/deposit-list</li>
+</ul>
+
+<p><strong>Request Paramter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>start time</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>end time</td>
+</tr>
+<tr>
+<td>pageNo</td>
+<td>String</td>
+<td>No</td>
+<td>pageNo default 1</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>No</td>
+<td>pageSize default20  Max 100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "id": "24422",
+    "coin": "BTC",
+    "type": "desption",
+    "amount": "1",
+    "status": "new",
+    "cTime": "393929929292",
+    "uTime": "393929929292"
+  }
+}
+</code></pre>
+<p><strong>Response Data</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>order Id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>currnecy</td>
+</tr>
+<tr>
+<td>type</td>
+<td>type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>status</td>
+<td>status</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>create time</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>update time</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>Pending </li>
+<li>pending_review </li>
+<li>pending_fail </li>
+<li>pending_review_fail </li>
+<li>reject </li>
+<li>success </li>
+</ul></li>
+</ul>
+<h2 id='account'>Account</h2><h3 id='get-account-assets'>Get account assets</h3>
 <p>Rate Limit: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong> </p>

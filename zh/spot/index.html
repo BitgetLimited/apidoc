@@ -312,6 +312,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-5-5-wallet" class="toc-h2 toc-link" data-title="2022年5月5日 【Wallet】">2022年5月5日 【Wallet】</a>
+              </li>
+              <li>
                 <a href="#2022-2-12-ticker" class="toc-h2 toc-link" data-title="2022年2月12日 【Ticker】">2022年2月12日 【Ticker】</a>
               </li>
               <li>
@@ -414,6 +417,29 @@
                       </li>
                       <li>
                         <a href="#5139801b64" class="toc-h3 toc-link" data-title="获取深度数据">获取深度数据</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#ec5249e068" class="toc-h2 toc-link" data-title="钱包接口">钱包接口</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1045de04a1" class="toc-h3 toc-link" data-title="划转">划转</a>
+                      </li>
+                      <li>
+                        <a href="#263e170b4c" class="toc-h3 toc-link" data-title="获取充币地址">获取充币地址</a>
+                      </li>
+                      <li>
+                        <a href="#096be69702" class="toc-h3 toc-link" data-title="提币">提币</a>
+                      </li>
+                      <li>
+                        <a href="#6eb422678c" class="toc-h3 toc-link" data-title="内部提币">内部提币</a>
+                      </li>
+                      <li>
+                        <a href="#db22942d47" class="toc-h3 toc-link" data-title="获取提币记录">获取提币记录</a>
+                      </li>
+                      <li>
+                        <a href="#e2a027ceb6" class="toc-h3 toc-link" data-title="获取充值记录">获取充值记录</a>
                       </li>
                   </ul>
               </li>
@@ -557,7 +583,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-2-12-ticker'>2022年2月12日 【Ticker】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-5-5-wallet'>2022年5月5日 【Wallet】</h2>
+<ul>
+<li>新增提币接口</li>
+</ul>
+<h2 id='2022-2-12-ticker'>2022年2月12日 【Ticker】</h2>
 <ul>
 <li>ticker 接口新增 <code>buyOne</code>, <code>sellOne</code></li>
 </ul>
@@ -2000,7 +2030,536 @@ Signature = base64.encode(Signature)
         "timestamp":"1622102974025"
     }
 }
-</code></pre><h2 id='df03e301d5'>账户接口</h2><h3 id='6f78777a98'>获取账户资产</h3>
+</code></pre><h2 id='ec5249e068'>钱包接口</h2><h3 id='1045de04a1'>划转</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/transfer</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>是</td>
+<td>转出账户类型</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>是</td>
+<td>转入账户类型</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>划转金额</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>划转币种</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>用户自定义ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success"
+}
+</code></pre><h3 id='263e170b4c'>获取充币地址</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/deposit-address</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>否</td>
+<td>链名称</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "address": "1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv",
+    "chain": "BTC-Bitcoin",
+    "coin": "BTC",
+    "tag": "",
+    "url": "https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>充币地址</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>链名称</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>url</td>
+<td>区块链地址</td>
+</tr>
+</tbody></table>
+<h3 id='096be69702'>提币</h3>
+<p>只是链上提币</p>
+
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/asset/v1/withdrawal</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>是</td>
+<td>提币地址</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>是</td>
+<td>提币网路</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>否</td>
+<td>地址tag</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提币数量</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>否</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>客户端自定义Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": "888291686266343424"
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>订单id</td>
+</tr>
+</tbody></table>
+<h3 id='6eb422678c'>内部提币</h3>
+<p>内部提币 指双方用户都在Bitget平台</p>
+
+<p>通过uid形式直接提币，不走链上，不需要传地址</p>
+
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/asset/v1/withdrawal-inner</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>toUid</td>
+<td>String</td>
+<td>是</td>
+<td>传对方uid</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提币数量</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>客户端自定义ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": "888291686266343424"
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>订单id</td>
+</tr>
+</tbody></table>
+<h3 id='db22942d47'>获取提币记录</h3>
+<p>限速规则：20次/1s </p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/withdrawal-list</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>是</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>pageNo</td>
+<td>String</td>
+<td>否</td>
+<td>查询页数 默认1</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>否</td>
+<td>条数 默认20 最大100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "id": "24422",
+    "coin": "BTC",
+    "type": "desption",
+    "amount": "1",
+    "status": "new",
+    "cTime": "393929929292",
+    "uTime": "393929929292"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>订单id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>type</td>
+<td>提币类型</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>status</td>
+<td>提币状态</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>修改时间</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>Pending 待初审</li>
+<li>pending_review 待复审</li>
+<li>pending_fail 初审失败</li>
+<li>pending_review_fail 复审失败</li>
+<li>reject 拒绝</li>
+<li>success 成功</li>
+</ul></li>
+</ul>
+<h3 id='e2a027ceb6'>获取充值记录</h3>
+<p>限速规则：20次/1s </p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/wallet/deposit-list</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>是</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>pageNo</td>
+<td>String</td>
+<td>否</td>
+<td>查询页数 默认1</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>否</td>
+<td>条数 默认20 最大100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "id": "24422",
+    "coin": "BTC",
+    "type": "desption",
+    "amount": "1",
+    "status": "new",
+    "cTime": "393929929292",
+    "uTime": "393929929292"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>订单id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>type</td>
+<td>提币类型</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>status</td>
+<td>提币状态</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>修改时间</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>Pending 待初审</li>
+<li>pending_review 待复审</li>
+<li>pending_fail 初审失败</li>
+<li>pending_review_fail 复审失败</li>
+<li>reject 拒绝</li>
+<li>success 成功</li>
+</ul></li>
+</ul>
+<h2 id='df03e301d5'>账户接口</h2><h3 id='6f78777a98'>获取账户资产</h3>
 <p>限速规则：10次/1s</p>
 
 <p><strong>HTTP请求</strong>
