@@ -2721,16 +2721,16 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">保证金币种 必须大写</td>
 </tr>
 <tr>
-    <td style="text-align: left">amount</td>
-    <td style="text-align: left">String</td>
-    <td style="text-align: center"> 是</td>
-    <td style="text-align: center">保证金 正增加 负减少</td>
-</tr>
-<tr>
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
 <td style="text-align: center">持仓方向（全仓不传）</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">保证金金额 正增加 负减少</td>
 </tr>
 </tbody></table>
 
@@ -3423,7 +3423,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">下单价格</td>
 </tr>
 <tr>
-<td style="text-align: left">side</td>
+<td style="text-align: left">type</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">开单方向</td>
@@ -3445,6 +3445,18 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
 <td style="text-align: center">客户端标识 唯一</td>
+</tr>
+<tr>
+<td style="text-align: left">presetTakeProfitPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">预设止盈价格</td>
+</tr>
+<tr>
+<td style="text-align: left">presetStopLossPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">预设止损价格</td>
 </tr>
 </tbody></table>
 
@@ -4210,6 +4222,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开单方向</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
@@ -7926,7 +7944,7 @@ Signature = base64.encode(Signature)
 <td>成交均价，如果成交数量为0，该字段也为0</td>
 </tr>
 <tr>
-<td>&gt; state</td>
+<td>&gt; status</td>
 <td>String</td>
 <td>订单状态   <code>new：未成交</code>   <code>partial-fill： 部分成交</code>   <code>full-fill：完全成交</code>    <code>cancelled：已撤单</code></td>
 </tr>
