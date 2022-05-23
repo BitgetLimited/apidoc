@@ -287,6 +287,7 @@
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
+
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -3242,8 +3243,8 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>Yes</td>
-<td>Symbol Id</td>
+<td>No,</td>
+<td>Symbol Id, If query all, pass &quot; &quot;</td>
 </tr>
 </tbody></table>
 
@@ -3480,10 +3481,10 @@ please delete the APIKey as soon as possible.
 </tr>
 </thead><tbody>
 <tr>
-    <td>symbol</td>
-    <td>String</td>
-    <td>Yes</td>
-    <td>symbol</td>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol ID</td>
 </tr>
 <tr>
 <td>orderId</td>
@@ -5627,18 +5628,18 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     });
     var  currentUrl=window.location.href;
     var isEn=currentUrl.indexOf('en/')>-1;
-    var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
 
-    var $Swap=$("#swap"),
+    var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
-    if(isSwap){
-        $Swap.addClass('selected');
+    if(isBroker){
+        $Broker.addClass('selected');
     }
     if(isSpot){
         $Spot.addClass('selected');
@@ -5648,7 +5649,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     }
 
     if(!isEn){
-        $Swap.html($Swap.attr('data-text'))
+        $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
 
@@ -5659,22 +5660,22 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     }
     if(isLocal){
         if(isEn){
-            $Swap.attr('href','/en/swap/')
+            $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
         } else{
-            $Swap.attr('href','/zh/swap/')
+            $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
         }
 
     } else{
         if(isEn){
-            $Swap.attr('href','/apidoc/en/swap/')
+            $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
         } else{
-            $Swap.attr('href','/apidoc/zh/swap/')
+            $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
         }
