@@ -287,6 +287,7 @@
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
+
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -497,6 +498,9 @@
                       </li>
                       <li>
                         <a href="#cee6a1fd93" class="toc-h3 toc-link" data-title="获取当前委托">获取当前委托</a>
+                      </li>
+                      <li>
+                        <a href="#f77cd7b1e5" class="toc-h3 toc-link" data-title="获取全部当前委托">获取全部当前委托</a>
                       </li>
                       <li>
                         <a href="#4212d667d1" class="toc-h3 toc-link" data-title="获取历史委托">获取历史委托</a>
@@ -3423,7 +3427,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">下单价格</td>
 </tr>
 <tr>
-<td style="text-align: left">side</td>
+<td style="text-align: left">type</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">开单方向</td>
@@ -3764,6 +3768,144 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">最近更新时间</td>
 </tr>
 </tbody></table>
+<h3 id='f77cd7b1e5'>获取全部当前委托</h3>
+<p>限速规则:  20次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/order/marginCoinCurrent</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">保证金币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">交易对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">委托数量</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">客户端自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">filledQty</td>
+<td style="text-align: left">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">订单状态</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">开单方向</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForce</td>
+<td style="text-align: left">订单有效期</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: left">总盈亏</td>
+</tr>
+<tr>
+<td style="text-align: left">posSide</td>
+<td style="text-align: left">持仓方向</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">保证金币种</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">最近更新时间</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>productType</p>
+
+<ul>
+<li>umcbl  USDT合约</li>
+<li>dmcbl  混合合约</li>
+</ul></li>
+</ul>
 <h3 id='4212d667d1'>获取历史委托</h3>
 <p>限速规则:  20次/1s (uid)</p>
 
@@ -8228,18 +8370,18 @@ Signature = base64.encode(Signature)
     });
     var  currentUrl=window.location.href;
     var isEn=currentUrl.indexOf('en/')>-1;
-    var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
 
-    var $Swap=$("#swap"),
+    var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
-    if(isSwap){
-        $Swap.addClass('selected');
+    if(isBroker){
+        $Broker.addClass('selected');
     }
     if(isSpot){
         $Spot.addClass('selected');
@@ -8249,7 +8391,7 @@ Signature = base64.encode(Signature)
     }
 
     if(!isEn){
-        $Swap.html($Swap.attr('data-text'))
+        $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
 
@@ -8260,22 +8402,22 @@ Signature = base64.encode(Signature)
     }
     if(isLocal){
         if(isEn){
-            $Swap.attr('href','/en/swap/')
+            $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
         } else{
-            $Swap.attr('href','/zh/swap/')
+            $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
         }
 
     } else{
         if(isEn){
-            $Swap.attr('href','/apidoc/en/swap/')
+            $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
         } else{
-            $Swap.attr('href','/apidoc/zh/swap/')
+            $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
         }

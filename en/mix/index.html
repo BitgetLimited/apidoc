@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -287,6 +287,7 @@
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
+
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -494,6 +495,9 @@
                       </li>
                       <li>
                         <a href="#get-open-order" class="toc-h3 toc-link" data-title="Get Open Order">Get Open Order</a>
+                      </li>
+                      <li>
+                        <a href="#get-all-open-order" class="toc-h3 toc-link" data-title="Get All Open Order">Get All Open Order</a>
                       </li>
                       <li>
                         <a href="#get-history-orders" class="toc-h3 toc-link" data-title="Get History Orders">Get History Orders</a>
@@ -3613,7 +3617,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-open-order'>Get Open Order</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 20 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3732,6 +3736,141 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Last update time</td>
 </tr>
 </tbody></table>
+<h3 id='get-all-open-order'>Get All Open Order</h3>
+<p>Limit rule: 20 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/order/marginCoinCurrent</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required?</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">productType</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">margin coin</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ctime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Trading pair name</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">Order size</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom id</td>
+</tr>
+<tr>
+<td style="text-align: left">filledQty</td>
+<td style="text-align: left">Transaction volume</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">Order price</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">Order status</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">Order direction</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForce</td>
+<td style="text-align: left">Order validity period</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: left">Total profit and loss</td>
+</tr>
+<tr>
+<td style="text-align: left">posSide</td>
+<td style="text-align: left">Position direction</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin currency</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">Last update time</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>productType
+
+<ul>
+<li>umcbl     USDT swap</li>
+<li>dmcbl     Mix swap</li>
+</ul></li>
+</ul>
 <h3 id='get-history-orders'>Get History Orders</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 
@@ -8122,18 +8261,18 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     });
     var  currentUrl=window.location.href;
     var isEn=currentUrl.indexOf('en/')>-1;
-    var isSwap=currentUrl.indexOf('swap/')>-1;
+    var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
 
-    var $Swap=$("#swap"),
+    var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
-    if(isSwap){
-        $Swap.addClass('selected');
+    if(isBroker){
+        $Broker.addClass('selected');
     }
     if(isSpot){
         $Spot.addClass('selected');
@@ -8143,7 +8282,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     }
 
     if(!isEn){
-        $Swap.html($Swap.attr('data-text'))
+        $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
 
@@ -8154,22 +8293,22 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
     }
     if(isLocal){
         if(isEn){
-            $Swap.attr('href','/en/swap/')
+            $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
         } else{
-            $Swap.attr('href','/zh/swap/')
+            $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
         }
 
     } else{
         if(isEn){
-            $Swap.attr('href','/apidoc/en/swap/')
+            $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
         } else{
-            $Swap.attr('href','/apidoc/zh/swap/')
+            $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
         }
