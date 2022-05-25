@@ -1,0 +1,1628 @@
+
+<!doctype html>
+<html>
+<head>
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>bitget API Docs</title>
+
+  <style>
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+
+    .highlight .err {
+      color: #fff;
+    }
+    header.top-nav {
+      position:fixed;
+      display:flex;
+      flex:1;
+      width:100%;
+      z-index:100;
+      padding: 0 26px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      align-items: center;
+      background: #161B27;
+      -webkit-box-shadow: 0 1px 0 0 #000;
+              box-shadow: 0 1px 0 0 #000;
+    }
+    div.top-menu{
+      display:flex;
+      flex: 1;
+    }
+    a.logo-link{
+      line-height: 50px;
+    }
+    img.logo {
+      width: 109px;
+      height: 33px;
+      margin-top: 10px;
+      vertical-align: middle;
+    }
+    .con {
+      display: flex;
+      top: 0;
+      height: 55px;
+      margin: 0 0 0 96px;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    .con li{
+      text-align: center;
+      line-height: 55px;
+      border:0 solid #000;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+
+    .con a {
+      display: inline-block;
+      color: #B0B8DB;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 53px;
+      padding: 0 20px;
+    }
+
+    .con a.selected {
+      border-bottom: 2px solid transparent;
+      border-color: #357CE1;
+      color: #fff;
+    }
+
+    a.international{
+
+
+      width: 78px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border: 1px solid #383F66;
+      color: #ADC1D5;
+      text-decoration: none;
+      border-radius: 3px;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+    }
+  </style>
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
+    <script src="../../javascripts/all-0f81ae09.js"></script>
+</head>
+<header class="top-nav">
+  <div class="top-menu">
+      <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
+        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+      </a>
+    <ul class="con">
+         <li><a id="spot" data-text="现货" >Spot</a></li>
+         <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
+         <li><a id="broker" data-text="Broker" >Broker</a></li>
+    </ul>
+  </div>
+  <a class="international" id="international" href="javascript:void(0);">English</a>
+</header>
+
+<body class="en en_broker en_broker_index" data-languages="[&quot;console&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+</a>
+<div class="toc-wrapper">
+    <div class="lang-selector">
+          <a href="#" data-language-name="console">console</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+  <ul id="toc" class="toc-list-h1">
+      <li>
+        <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#may-27-2022-added-broker-document" class="toc-h2 toc-link" data-title="May 27, 2022 [Added Broker document]">May 27, 2022 [Added Broker document]</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#api-introduction" class="toc-h2 toc-link" data-title="API Introduction">API Introduction</a>
+              </li>
+              <li>
+                <a href="#updates" class="toc-h2 toc-link" data-title="Updates">Updates</a>
+              </li>
+              <li>
+                <a href="#contact-us" class="toc-h2 toc-link" data-title="Contact Us">Contact Us</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#access-preparation" class="toc-h2 toc-link" data-title="Access Preparation">Access Preparation</a>
+              </li>
+              <li>
+                <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
+              </li>
+              <li>
+                <a href="#access-restriction" class="toc-h2 toc-link" data-title="Access Restriction">Access Restriction</a>
+              </li>
+              <li>
+                <a href="#api-domain-name" class="toc-h2 toc-link" data-title="API Domain Name">API Domain Name</a>
+              </li>
+              <li>
+                <a href="#api-verification" class="toc-h2 toc-link" data-title="API Verification">API Verification</a>
+              </li>
+              <li>
+                <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
+              </li>
+              <li>
+                <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request Interaction">Request Interaction</a>
+              </li>
+              <li>
+                <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard Specification">Standard Specification</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi" class="toc-h1 toc-link" data-title="RestAPI">RestAPI</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#sub-account-interface" class="toc-h2 toc-link" data-title="Sub Account Interface">Sub Account Interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#get-broker-info" class="toc-h3 toc-link" data-title="Get Broker Info">Get Broker Info</a>
+                      </li>
+                      <li>
+                        <a href="#create-sub-account" class="toc-h3 toc-link" data-title="Create Sub Account">Create Sub Account</a>
+                      </li>
+                      <li>
+                        <a href="#modify-sub-account" class="toc-h3 toc-link" data-title="Modify Sub Account">Modify Sub Account</a>
+                      </li>
+                      <li>
+                        <a href="#get-sub-spot-assets" class="toc-h3 toc-link" data-title="Get Sub Spot Assets">Get Sub Spot Assets</a>
+                      </li>
+                      <li>
+                        <a href="#get-sub-future-assets" class="toc-h3 toc-link" data-title="Get Sub Future Assets">Get Sub Future Assets</a>
+                      </li>
+                      <li>
+                        <a href="#get-sub-deposit-address-only-broker" class="toc-h3 toc-link" data-title="Get Sub Deposit Address (Only Broker)">Get Sub Deposit Address (Only Broker)</a>
+                      </li>
+                      <li>
+                        <a href="#sub-withdrawal-only-broker" class="toc-h3 toc-link" data-title="Sub Withdrawal (Only Broker)">Sub Withdrawal (Only Broker)</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#sub-api-interface" class="toc-h2 toc-link" data-title="Sub API Interface">Sub API Interface</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#create-sub-apikey-only-broker" class="toc-h3 toc-link" data-title="Create Sub ApiKey (Only Broker)">Create Sub ApiKey (Only Broker)</a>
+                      </li>
+                      <li>
+                        <a href="#get-sub-apikey-list" class="toc-h3 toc-link" data-title="Get Sub ApiKey List">Get Sub ApiKey List</a>
+                      </li>
+                      <li>
+                        <a href="#modify-sub-apikey-only-broker" class="toc-h3 toc-link" data-title="Modify Sub ApiKey  (Only Broker)">Modify Sub ApiKey  (Only Broker)</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#error-codes" class="toc-h1 toc-link" data-title="Error Codes">Error Codes</a>
+      </li>
+  </ul>
+</div>
+<div class="page-wrapper">
+  <div class="dark-box"></div>
+  <div class="content">
+    <!---
+Clipboard script
+-->
+
+<script src="../../dist/clipboard.min-f99f064d.js"></script>
+
+<script>
+var clipboard = new ClipboardJS('.clipboard_button');
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
+<h1 id='update-log'>Update log</h1><h2 id='may-27-2022-added-broker-document'>May 27, 2022 [Added Broker document]</h2>
+<ul>
+<li>Added V1 documentation</li>
+<li>Error message support in Chinese/English</li>
+</ul>
+<h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
+<p>Welcome to Bitget Developer document!  </p>
+
+<p>This document is the only official document of Bitget API. We will constantly update the functionalities of Bitget API here. Please pay attention to it regularly.</p>
+
+<p>You can switch to access different business APIs by clicking the upper menu, and you can switch the document language by clicking the language button on the upper right.</p>
+
+<p>On the right side of the document is an example of request parameters and response results.</p>
+<h2 id='updates'>Updates</h2>
+<p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance to notify you. It is recommended that you follow and subscribe to our announcements to obtain relevant information in time. </p>
+
+<p>You can click <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91 %8A'>here</a> to subscribe to announcements.</p>
+<h2 id='contact-us'>Contact Us</h2>
+<p>If you have any questions or suggestions, you can contact us here:</p>
+
+<ul>
+<li>Send an email to API@bitget.com.</li>
+<li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
+</ul>
+<h1 id='quick-start'>Quick Start</h1><h2 id='access-preparation'>Access Preparation</h2>
+<p>This document is for brokers to access and use. If you have certain R&amp;D and operation capabilities, and want to build a unique trading platform and manage your users independently, the independent broker service Yes is the best choice. You are responsible for front-end development and user operations, while Bitget provides you with back-end technology and market liquidity to empower your transaction value-added services.</p>
+
+<ul>
+<li>The broker is sending an email requesting to become a Bitget broker</li>
+<li>Brokers create an API Key at <a href='https://www.bitget.com/zh-CN/account/newapi'>here </a>, be sure to set an IP whitelist,</li>
+<li>Brokers can create their own sub-accounts through this API, control permissions, create sub-account APIKeys, and place orders through sub-account APIKeys.</li>
+</ul>
+<h2 id='interface-type'>Interface Type</h2>
+<p>This chapter mainly divides the interface types into the following two aspects：</p>
+
+<ul>
+<li>Sub Account Interface</li>
+<li>Sub API Interface</li>
+</ul>
+
+<p><strong>Sub Account Interface</strong> </p>
+
+<p>Create sub-accounts, modify permissions and query the list of sub-account accounts。</p>
+
+<p><strong>Sub API Interface</strong> </p>
+
+<p>Create the APIKey of the sub-account, and set the permissions。</p>
+<h2 id='access-restriction'>Access Restriction</h2>
+<p>This chapter mainly focuses on access restrictions:</p>
+
+<ul>
+<li>Rest API will return 429 status when the access exceeds the frequency limit: the request is too frequent.</li>
+</ul>
+
+<p><strong>Rest API</strong> </p>
+
+<p>If the APIKey is valid, you can use the APIKey to limit the speed; if not, use the public network IP to limit the speed.</p>
+
+<p>Speed limit rules: There are separate instructions on each interface. If there is no general interface, the speed limit is 10 times per second.</p>
+
+<p>Special note: When placing orders in batches, if 4 currency pairs are placed, 10 orders per currency pair will be counted as one request.</p>
+<h2 id='api-domain-name'>API Domain Name</h2>
+<p>You can use the Rest API access method to operate by yourself.      </p>
+
+<table><thead>
+<tr>
+<th>Domain Name</th>
+<th>REST API</th>
+<th>Recommended To Use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Domain</td>
+<td>https://api.bitget.com</td>
+<td>Main Domain name</td>
+</tr>
+</tbody></table>
+<h2 id='api-verification'>API Verification</h2>
+<p><strong>Initiate a request</strong> </p>
+
+<p>The header of all REST requests must contain the following key：</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY as a string</li>
+<li>ACCESS-SIGN：Use base64 encoding to sign (see Signing messages).</li>
+<li>ACCESS-TIMESTAMP：Timestamp of your request</li>
+<li>ACCESS-PASSPHRASE：The password you set when creating the API KEY.</li>
+<li>Content-Type：Unified setting to application/json</li>
+<li>Locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
+</ul>
+<h2 id='signature'>Signature</h2>
+<p>The request header of ACCESS-SIGN is to <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> string (+ means string connection) encrypted with <strong>HMAC SHA256</strong> method, passed* <em>BASE64</em>* encoded output.</p>
+
+<p><strong>Description of each field of the signature</strong> </p>
+
+<ul>
+<li>timestamp：Same as ACCESS-TIMESTAMP request header。</li>
+<li>method：Request method (POST/GET), all uppercase letters。</li>
+<li>requestPath：Request interface path。</li>
+<li>queryString：The query string in the request URL (the request parameter after the ?).</li>
+<li>body：The string corresponding to the request body. If the request has no body (usually a GET request), the body can be omitted.</li>
+</ul>
+
+<p><strong>The queryString as empty, signature format</strong> </p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + body
+</code></p>
+
+<p><strong>The queryString not empty, signature format</strong> </p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
+</code></p>
+
+<p><strong>For example</strong> </p>
+
+<p>Get Broker Info :</p>
+
+<ul>
+<li>Timestamp = 16273667805456</li>
+<li>Method = &quot;GET&quot;</li>
+<li>requestPath = &quot;/api/v1/broker/account/sub-list&quot;</li>
+<li>queryString= &quot;?pageSize=10&amp;lastEndId=0&amp;status=normal&quot;</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p><code>
+&#39;16273667805456GET/api/v1/broker/account/sub-list?pageSize=10&amp;lastEndId=0&amp;status=normal&#39;
+</code></p>
+
+<p>Create Sub Account :</p>
+
+<ul>
+<li>Timestamp = 16273667805456</li>
+<li>Method = &quot;POST&quot;</li>
+<li>requestPath = &quot;/api/v1/broker/account/sub-create&quot;</li>
+<li>body = {&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}</li>
+</ul>
+
+<p>Generate the string to be signed:</p>
+
+<p><code>
+&#39;16273667805456POST/api/v1/broker/account/sub-create{&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}&#39;  
+</code></p>
+
+<p><strong>Steps to generate the final signature</strong> </p>
+
+<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
+
+<p><code>
+Signature = hmac_sha256(secretkey, Message)
+</code></p>
+
+<p>The second step is to base64 encode the Signature</p>
+
+<p><code>
+Signature = base64.encode(Signature)
+</code></p>
+<h2 id='request-interaction'>Request Interaction</h2>
+<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be all set to:&#39;application/json&#39;.</p>
+
+<p><strong>Request Interaction Description</strong></p>
+
+<ul>
+<li>Request parameters: Encapsulate parameters according to the interface request parameters.</li>
+<li>Submit request parameters: Submit the encapsulated request parameters to the server through GET/POST.</li>
+<li>Server Response：The server first performs parameter security verification on the user request data, and returns the response data to the user in JSON format according to the business logic after passing the verification.</li>
+<li>Data processing：Process the server response data.</li>
+</ul>
+
+<p><strong>Success</strong></p>
+
+<p>HTTP status code 200 indicates a successful response and may contain content. If the response contains content, it will be displayed in the corresponding return content.</p>
+
+<p><strong>Common Error Codes</strong></p>
+
+<ul>
+<li><p>400 Bad Request – Invalid request format </p></li>
+<li><p>401 Unauthorized – Invalid API Key </p></li>
+<li><p>403 Forbidden – You do not have access to the requested resource </p></li>
+<li><p>404 Not Found – No request found</p></li>
+<li><p>429 Too Many Requests – Requests are too frequent and are limited by the system</p></li>
+<li><p>500 Internal Server Error – We had a problem with our server </p></li>
+<li><p>If it fails, the body has an error description</p></li>
+</ul>
+<h2 id='standard-specification'>Standard Specification</h2>
+<p><strong>Timestamp</strong></p>
+
+<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected.
+If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+
+<p><strong>Request Format</strong></p>
+
+<p>There are currently only two request methods in formats: GET and POST</p>
+
+<ul>
+<li>GET:  The parameters are transmitted to the server in the path through queryString.</li>
+<li>POST: The parameters are sent to the server by sending the body in json format.</li>
+</ul>
+<h1 id='restapi'>RestAPI</h1><h2 id='sub-account-interface'>Sub Account Interface</h2><h3 id='get-broker-info'>Get Broker Info</h3>
+<p>Limit rule：10次/1s  (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/v1/broker/account/info</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAccountQty</td>
+<td style="text-align: center">Number of sub-accounts created by the broker</td>
+</tr>
+<tr>
+<td style="text-align: left">maxSubAccountQty</td>
+<td style="text-align: center">Maximum number of created sub-accounts</td>
+</tr>
+</tbody></table>
+<h3 id='create-sub-account'>Create Sub Account</h3>
+<p>Limit rule：1次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-create</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Name</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Rremark</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+<li>del </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>withdraw </li>
+<li>recharge </li>
+<li>transfer<br></li>
+<li>spot_trade </li>
+<li>contract_trade </li>
+<li>readonly </li>
+</ul></li>
+</ul>
+<h3 id='modify-sub-account'>Modify Sub Account</h3>
+<p>Limit rule：1次/1s (ApiKey)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-modify</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">permissions.(comma separated)</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub permissions</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+<li>del </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>withdraw </li>
+<li>recharge</li>
+<li>transfer </li>
+<li>spot_trade </li>
+<li>contract_trade </li>
+<li>readonly </li>
+</ul></li>
+</ul>
+<h3 id='get-sub-spot-assets'>Get Sub Spot Assets</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-spot-assets</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: center">currency Id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">currency name</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: center">available balance</td>
+</tr>
+<tr>
+<td style="text-align: left">frozen</td>
+<td style="text-align: center">Frozen balance</td>
+</tr>
+<tr>
+<td style="text-align: left">lock</td>
+<td style="text-align: center">lock balance</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: center">update time</td>
+</tr>
+</tbody></table>
+<h3 id='get-sub-future-assets'>Get Sub Future Assets</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-future-assets</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">umcbl usdt swap dmcbl mix swap</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin currency</td>
+</tr>
+<tr>
+<td style="text-align: left">locked</td>
+<td style="text-align: left">Locked amount (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: left">Number of accounts available</td>
+</tr>
+<tr>
+<td style="text-align: left">crossMaxAvailable</td>
+<td style="text-align: left">The maximum open position balance available for the whole position (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">fixedMaxAvailable</td>
+<td style="text-align: left">The maximum isolated margin can be used to open a position (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTransferOut</td>
+<td style="text-align: left">Maximum transferable</td>
+</tr>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: left">Account equity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtEquity</td>
+<td style="text-align: left">Convert USDT account equity</td>
+</tr>
+<tr>
+<td style="text-align: left">btcEquity</td>
+<td style="text-align: left">Convert BTC account equity</td>
+</tr>
+</tbody></table>
+<h3 id='get-sub-deposit-address-only-broker'>Get Sub Deposit Address (Only Broker)</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-address</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Currency name</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">chain name</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub uid</td>
+</tr>
+<tr>
+<td>address</td>
+<td>currency address</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>chain name</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>url</td>
+<td>Blockchain browser address</td>
+</tr>
+</tbody></table>
+<h3 id='sub-withdrawal-only-broker'>Sub Withdrawal (Only Broker)</h3>
+<p>Limit rule：10次/1s  (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-withdrawal</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>String</td>
+<td>Yes</td>
+<td>Sub Uid</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Yes</td>
+<td>withdraw address</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>Yes</td>
+<td>chain name</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>No</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>No</td>
+<td>remark</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='sub-api-interface'>Sub API Interface</h2><h3 id='create-sub-apikey-only-broker'>Create Sub ApiKey (Only Broker)</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/manage/sub-api-create</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Pass phrase</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">remark</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">ip</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Perm</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub Uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>remark</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>private key</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>real ip</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>read_only</li>
+<li>trade</li>
+<li>transfer</li>
+</ul></li>
+</ul>
+<h3 id='get-sub-apikey-list'>Get Sub ApiKey List</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/v1/broker/manage/sub-api-list</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub Uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>remark</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>private key</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>real IP</td>
+</tr>
+</tbody></table>
+<h3 id='modify-sub-apikey-only-broker'>Modify Sub ApiKey  (Only Broker)</h3>
+<p>Limit rule：10次/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/manage/sub-api-modify</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">sub apikey</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">remark</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">ip (override)</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Perm (override)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub Uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey remark</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>real IP</td>
+</tr>
+</tbody></table>
+<h1 id='error-codes'>Error Codes</h1>
+<table><thead>
+<tr>
+<th style="text-align: left">Error message</th>
+<th style="text-align: left">Error code</th>
+<th style="text-align: center">http status code</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">The request header &quot;ACCESS_KEY&quot; cannot be empty</td>
+<td style="text-align: left">40001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The request header &quot;ACCESS_SIGN&quot; cannot be empty</td>
+<td style="text-align: left">40002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The request header &quot;ACCESS_TIMESTAMP&quot; cannot be empty</td>
+<td style="text-align: left">40003</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_TIMESTAMP</td>
+<td style="text-align: left">40005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid ACCESS_KEY</td>
+<td style="text-align: left">40006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Invalid Content_Type，please use“application/json”format</td>
+<td style="text-align: left">40007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Requested timestamp expired</td>
+<td style="text-align: left">40008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">api verification failed</td>
+<td style="text-align: left">40009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Request is too frequent</td>
+<td style="text-align: left">429</td>
+<td style="text-align: center">429</td>
+</tr>
+<tr>
+<td style="text-align: left">The request header &quot;ACCESS_PASSPHRASE&quot; cannot be empty</td>
+<td style="text-align: left">40011</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey/passphrase is incorrect</td>
+<td style="text-align: left">40012</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">User has been frozen</td>
+<td style="text-align: left">40013</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Incorrect permissions</td>
+<td style="text-align: left">40014</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">System error</td>
+<td style="text-align: left">40015</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Parameter verification failed</td>
+<td style="text-align: left">40017</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Illegal IP request</td>
+<td style="text-align: left">40018</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">This subUid does not belong to this account</td>
+<td style="text-align: left">40028</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">This account is not Broker, please apply to become a Broker first</td>
+<td style="text-align: left">40029</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Sub-accounts do not have this permission</td>
+<td style="text-align: left">40030</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
+
+  </div>
+  <div class="dark-box">
+      <div class="lang-selector">
+            <a href="#" data-language-name="console">console</a>
+      </div>
+  </div>
+</div>
+</body>
+
+<script>
+    $(".con a").click(function(){
+        $(".con a").removeClass("selected");
+        $(this).addClass("selected")
+    });
+    $("#international").click(function(){
+        $this = $(this);
+        var currentUrl = window.location.href;
+        var index=currentUrl.indexOf("#");
+        currentUrl=currentUrl.substring(0,index);
+        if ($this.text() == 'English') {
+            window.location=currentUrl.replace(/\/zh/,"/en");
+        } else {
+            window.location=currentUrl.replace(/\/en/,"/zh");
+        }
+    });
+    var  currentUrl=window.location.href;
+    var isEn=currentUrl.indexOf('en/')>-1;
+    var isBroker=currentUrl.indexOf('broker/')>-1;
+    var isSpot=currentUrl.indexOf('spot/')>-1;
+    var isMix=currentUrl.indexOf('mix/')>-1;
+    var isLocal=currentUrl.indexOf('local')>-1;
+    var $international=$("#international");
+    var $search=$("#input-search");
+
+    var $Broker=$("#broker"),
+        $Spot=$("#spot");
+        $Mix=$("#mix");
+    if(isBroker){
+        $Broker.addClass('selected');
+    }
+    if(isSpot){
+        $Spot.addClass('selected');
+    }
+    if(isMix){
+        $Mix.addClass('selected');
+    }
+
+    if(!isEn){
+        $Broker.html($Broker.attr('data-text'))
+        $Spot.html($Spot.attr('data-text'))
+        $Mix.html($Mix.attr('data-text'))
+
+        $international.html('English')
+    }else {
+        $international.html('简体中文')
+        $search.html('搜索');
+    }
+    if(isLocal){
+        if(isEn){
+            $Broker.attr('href','/en/broker/')
+            $Spot.attr('href','/en/spot/')
+            $Mix.attr('href','/en/mix/')
+        } else{
+            $Broker.attr('href','/zh/broker/')
+            $Spot.attr('href','/zh/spot/')
+            $Mix.attr('href','/zh/mix/')
+        }
+
+    } else{
+        if(isEn){
+            $Broker.attr('href','/apidoc/en/broker/')
+            $Spot.attr('href','/apidoc/en/spot/')
+            $Mix.attr('href','/apidoc/en/mix/')
+        } else{
+            $Broker.attr('href','/apidoc/zh/broker/')
+            $Spot.attr('href','/apidoc/zh/spot/')
+            $Mix.attr('href','/apidoc/zh/mix/')
+        }
+    }
+</script>
+
+</html>

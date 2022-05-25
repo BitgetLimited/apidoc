@@ -1,0 +1,1638 @@
+
+<!doctype html>
+<html>
+<head>
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>bitget API Docs</title>
+
+  <style>
+    .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+
+    .highlight .err {
+      color: #fff;
+    }
+    header.top-nav {
+      position:fixed;
+      display:flex;
+      flex:1;
+      width:100%;
+      z-index:100;
+      padding: 0 26px;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      align-items: center;
+      background: #161B27;
+      -webkit-box-shadow: 0 1px 0 0 #000;
+              box-shadow: 0 1px 0 0 #000;
+    }
+    div.top-menu{
+      display:flex;
+      flex: 1;
+    }
+    a.logo-link{
+      line-height: 50px;
+    }
+    img.logo {
+      width: 109px;
+      height: 33px;
+      margin-top: 10px;
+      vertical-align: middle;
+    }
+    .con {
+      display: flex;
+      top: 0;
+      height: 55px;
+      margin: 0 0 0 96px;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    .con li{
+      text-align: center;
+      line-height: 55px;
+      border:0 solid #000;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+    }
+
+    .con a {
+      display: inline-block;
+      color: #B0B8DB;
+      font-size: 16px;
+      text-decoration: none;
+      line-height: 53px;
+      padding: 0 20px;
+    }
+
+    .con a.selected {
+      border-bottom: 2px solid transparent;
+      border-color: #357CE1;
+      color: #fff;
+    }
+
+    a.international{
+
+
+      width: 78px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border: 1px solid #383F66;
+      color: #ADC1D5;
+      text-decoration: none;
+      border-radius: 3px;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+    }
+  </style>
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
+    <script src="../../javascripts/all-0f81ae09.js"></script>
+</head>
+<header class="top-nav">
+  <div class="top-menu">
+      <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
+        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+      </a>
+    <ul class="con">
+         <li><a id="spot" data-text="现货" >Spot</a></li>
+         <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
+         <li><a id="broker" data-text="Broker" >Broker</a></li>
+    </ul>
+  </div>
+  <a class="international" id="international" href="javascript:void(0);">English</a>
+</header>
+
+<body class="zh zh_broker zh_broker_index" data-languages="[&quot;console&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+</a>
+<div class="toc-wrapper">
+    <div class="lang-selector">
+          <a href="#" data-language-name="console">console</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+  <ul id="toc" class="toc-list-h1">
+      <li>
+        <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#2022-5-27-broker" class="toc-h2 toc-link" data-title="2022年5月27日【新增Broker文档】">2022年5月27日【新增Broker文档】</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#5ea2e0cde2" class="toc-h1 toc-link" data-title="简介">简介</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#api" class="toc-h2 toc-link" data-title="API 简介">API 简介</a>
+              </li>
+              <li>
+                <a href="#58c52154b7" class="toc-h2 toc-link" data-title="市商/量化">市商/量化</a>
+              </li>
+              <li>
+                <a href="#7b3af22e1f" class="toc-h2 toc-link" data-title="更新关注">更新关注</a>
+              </li>
+              <li>
+                <a href="#152d3db758" class="toc-h2 toc-link" data-title="联系我们">联系我们</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#25e54147de" class="toc-h1 toc-link" data-title="快速入门">快速入门</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#c1ae0a8486" class="toc-h2 toc-link" data-title="接入准备">接入准备</a>
+              </li>
+              <li>
+                <a href="#5076603a3e" class="toc-h2 toc-link" data-title="接口类型">接口类型</a>
+              </li>
+              <li>
+                <a href="#12907e94be" class="toc-h2 toc-link" data-title="访问限制">访问限制</a>
+              </li>
+              <li>
+                <a href="#api-2" class="toc-h2 toc-link" data-title="API域名">API域名</a>
+              </li>
+              <li>
+                <a href="#api-3" class="toc-h2 toc-link" data-title="API验证">API验证</a>
+              </li>
+              <li>
+                <a href="#8ba46c43fe" class="toc-h2 toc-link" data-title="签名">签名</a>
+              </li>
+              <li>
+                <a href="#d9ed27b09f" class="toc-h2 toc-link" data-title="请求交互">请求交互</a>
+              </li>
+              <li>
+                <a href="#9a3f8fe408" class="toc-h2 toc-link" data-title="标准规范">标准规范</a>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi" class="toc-h1 toc-link" data-title="RestAPI">RestAPI</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#df03e301d5" class="toc-h2 toc-link" data-title="账户接口">账户接口</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#74b7b6c8e6" class="toc-h3 toc-link" data-title="经纪商账户信息">经纪商账户信息</a>
+                      </li>
+                      <li>
+                        <a href="#c6789f6fd9" class="toc-h3 toc-link" data-title="创建子账户">创建子账户</a>
+                      </li>
+                      <li>
+                        <a href="#a2cebfb9e2" class="toc-h3 toc-link" data-title="修改子账户权限">修改子账户权限</a>
+                      </li>
+                      <li>
+                        <a href="#ab8652ba96" class="toc-h3 toc-link" data-title="获取子现货账户列表">获取子现货账户列表</a>
+                      </li>
+                      <li>
+                        <a href="#f81e9b6c7a" class="toc-h3 toc-link" data-title="获取子合约账户列表">获取子合约账户列表</a>
+                      </li>
+                      <li>
+                        <a href="#d511dc43da" class="toc-h3 toc-link" data-title="创建子账户充值地址(仅适用主账户)">创建子账户充值地址(仅适用主账户)</a>
+                      </li>
+                      <li>
+                        <a href="#43de9ab9a8" class="toc-h3 toc-link" data-title="子账户提币(仅适用主账户)">子账户提币(仅适用主账户)</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#api-4" class="toc-h2 toc-link" data-title="子账户API">子账户API</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#apikey" class="toc-h3 toc-link" data-title="创建子账户ApiKey (主账户请求)">创建子账户ApiKey (主账户请求)</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-2" class="toc-h3 toc-link" data-title="查询子账户ApiKey 列表">查询子账户ApiKey 列表</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-3" class="toc-h3 toc-link" data-title="修改子账户ApiKey权限 (主账户请求)">修改子账户ApiKey权限 (主账户请求)</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>
+        <a href="#restapi-2" class="toc-h1 toc-link" data-title="RestAPI错误代码">RestAPI错误代码</a>
+      </li>
+  </ul>
+</div>
+<div class="page-wrapper">
+  <div class="dark-box"></div>
+  <div class="content">
+    <!---
+Clipboard script
+-->
+
+
+<script src="../../dist/clipboard.min-f99f064d.js"></script>
+
+<script>
+var clipboard = new ClipboardJS('.clipboard_button');
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-5-27-broker'>2022年5月27日【新增Broker文档】</h2>
+<ul>
+<li>新增V1文档</li>
+<li>错误信息支持中/英</li>
+</ul>
+<h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
+<p>欢迎使用Bitget开发者文档！  </p>
+
+<p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。  </p>
+
+<p>你可以通过点击上方菜单来切换获取不同业务的API，还可通过点击右上方的语言按钮来切换文档语言。  </p>
+
+<p>文档右侧是针对请求参数以及响应结果的示例。</p>
+<h2 id='58c52154b7'>市商/量化</h2>
+<p>欢迎有优秀 maker 策略且交易量大的用户参与长期做市商项目。请提供以下信息发送邮件至：</p>
+
+<ul>
+<li><a href="mailto:API@bitget.com">API@bitget.com</a> 合约做市商申请。</li>
+</ul>
+
+<ol>
+<li>提供 UID （需不存在返佣关系的 UID）；</li>
+<li>提供其他交易平台 maker 交易量截图证明（比如30天内成交量）；</li>
+<li>请简要阐述做市方法，不需要细节。 </li>
+</ol>
+<h2 id='7b3af22e1f'>更新关注</h2>
+<p>关于API新增、更新、下线等信息Bitget会提前发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。  </p>
+
+<p>您可以点击 <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>这里 </a> 订阅公告。</p>
+<h2 id='152d3db758'>联系我们</h2>
+<p>使用过程中如有问题或者建议，您可选择以下方式联系我们：</p>
+
+<ul>
+<li>发送邮件至 API@bitget.com。</li>
+<li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a> </li>
+</ul>
+<h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
+<p>此文档供经纪商接入使用，如果您有一定的研发运营能力，想要搭建独有的交易平台和自主管理您的用户，独立经纪商服务是最好的选择。您则负责前端开发和用户运营，而Bitget为您提供后端技术和市场的流动性，赋能您的交易增值服务.</p>
+
+<ul>
+<li><p>经纪人在 发送邮件 请求成为Bitget 经纪商</p></li>
+<li><p>经纪商在  <a href='https://www.bitget.com/zh-CN/account/newapi'>这里 </a> 创建 API Key, 一定要设置IP 白名单，</p></li>
+<li><p>经纪商通过此API 创建自己的子账户，控制权限，创建子账号APIKey，通过子账号APIKey 进行下单操作。</p></li>
+</ul>
+<h2 id='5076603a3e'>接口类型</h2>
+<p>本章节主要为接口类型分以下两个方面：</p>
+
+<ul>
+<li>账户接口</li>
+<li>子账户API接口</li>
+</ul>
+
+<p><strong>账户接口</strong> </p>
+
+<p>创建子账户，修改权限以及查询子账户账户列表。</p>
+
+<p><strong>子账户API接口</strong> </p>
+
+<p>创建子账户的APIKey, 并且设置权限。</p>
+<h2 id='12907e94be'>访问限制</h2>
+<p>本章节主要为访问限制：</p>
+
+<ul>
+<li>Rest API 当访问超过频率限制时，将返回429状态：请求太频繁。</li>
+</ul>
+
+<p><strong>Rest API</strong> </p>
+
+<p>如果传入有效的APIKey 用APIKey限速；如果没有则拿公网IP限速。</p>
+
+<p>限速规则：各个接口上有单独的说明，如果没有一般接口限速为 10次/秒。</p>
+
+<p>特殊说明：批量下单时，若下4个币对，每个币对10个订单时，计为一次请求。</p>
+<h2 id='api-2'>API域名</h2>
+<p>您可以自行使用Rest API接入方式进行操作。     </p>
+
+<table><thead>
+<tr>
+<th>域名</th>
+<th>REST API</th>
+<th>建议使用</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>域名1</td>
+<td>https://api.bitget.com</td>
+<td>国际</td>
+</tr>
+</tbody></table>
+<h2 id='api-3'>API验证</h2>
+<p><strong>发起请求</strong> </p>
+
+<p>所有REST请求的header都必须包含以下key：</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY作为一个字符串。</li>
+<li>ACCESS-SIGN：使用base64编码签名（请参阅签名消息）。</li>
+<li>ACCESS-TIMESTAMP：您请求的时间戳。</li>
+<li>ACCESS-PASSPHRASE：您在创建API KEY时设置的口令。</li>
+<li>Content-Type：统一设置为application/json。</li>
+<li>locale: 支持多语言, 如：中文(zh-CN),英语(en-US)</li>
+</ul>
+<h2 id='8ba46c43fe'>签名</h2>
+<p>ACCESS-SIGN的请求头是对 <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
+
+<p><strong>签名各字段说明</strong> </p>
+
+<ul>
+<li>timestamp：与 ACCESS-TIMESTAMP 请求头相同。</li>
+<li>method：请求方法(POST/GET)，字母全部大写。</li>
+<li>requestPath：请求接口路径。</li>
+<li>queryString：请求URL中(?后的请求参数)的查询字符串。</li>
+<li>body：请求主体对应的字符串，如果请求没有主体(通常为GET请求)则body可省略。</li>
+</ul>
+
+<p><strong>queryString为空时，签名格式</strong> </p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + body
+</code></p>
+
+<p><strong>queryString不为空时，签名格式</strong> </p>
+
+<p><code>
+timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
+</code></p>
+
+<p><strong>举例说明</strong> </p>
+
+<p>获取获取经纪人账户信息:</p>
+
+<ul>
+<li>Timestamp = 16273667805456</li>
+<li>Method = &quot;GET&quot;</li>
+<li>requestPath = &quot;/api/v1/broker/account/sub-list&quot;</li>
+<li>queryString= &quot;?pageSize=10&amp;lastEndId=0&amp;status=normal&quot;</li>
+</ul>
+
+<p>生成待签名的字符串:</p>
+
+<p><code>
+&#39;16273667805456GET/api/v1/broker/account/sub-list?pageSize=10&amp;lastEndId=0&amp;status=normal&#39;
+</code></p>
+
+<p>创建子账户 为例:</p>
+
+<ul>
+<li>Timestamp = 16273667805456</li>
+<li>Method = &quot;POST&quot;</li>
+<li>requestPath = &quot;/api/v1/broker/account/sub-create&quot;</li>
+<li>body = {&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}</li>
+</ul>
+
+<p>生成待签名的字符串:</p>
+
+<p><code>
+&#39;16273667805456POST/api/v1/broker/account/sub-create{&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}&#39;  
+</code></p>
+
+<p><strong>生成最终签名的步骤</strong> </p>
+
+<p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
+
+<p><code>
+Signature = hmac_sha256(secretkey, Message)
+</code></p>
+
+<p>第2步，对于Signature进行base64编码</p>
+
+<p><code>
+Signature = base64.encode(Signature)
+</code></p>
+<h2 id='d9ed27b09f'>请求交互</h2>
+<p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
+
+<p><strong>请求交互说明</strong></p>
+
+<ul>
+<li>请求参数：根据接口请求参数规定进行参数封装。</li>
+<li>提交请求参数：将封装好的请求参数通过GET/POST方式提交至服务器。</li>
+<li>服务器响应：服务器首先对用户请求数据进行参数安全校验，通过校验后根据业务逻辑将响应数据以JSON格式返回给用户。</li>
+<li>数据处理：对服务器响应数据进行处理。</li>
+</ul>
+
+<p><strong>成功</strong></p>
+
+<p>HTTP状态码200表示成功响应，并可能包含内容。如果响应含有内容，则将显示在相应的返回内容里面。</p>
+
+<p><strong>常见错误码</strong></p>
+
+<ul>
+<li>400 Bad Request – Invalid request format 请求格式无效</li>
+<li>401 Unauthorized – Invalid API Key 无效的API Key</li>
+<li>403 Forbidden – You do not have access to the requested resource 请求无权限</li>
+<li>404 Not Found 没有找到请求</li>
+<li>429 Too Many Requests 请求太频繁被系统限流</li>
+<li>500 Internal Server Error – We had a problem with our server 服务器内部错误</li>
+<li>如果失败body带有错误描述信息</li>
+</ul>
+<h2 id='9a3f8fe408'>标准规范</h2>
+<p><strong>时间戳</strong></p>
+
+<p>请求签名中的ACCESS-TIMESTAMP的单位是毫秒。请求的时间戳必须在API服务时间的30秒内，否则请求将被视为过期并被拒绝。
+如果本地服务器时间和API服务器时间之间存在较大的偏差，那么我们建议您使用通过查询API服务器时间来更新http header。</p>
+
+<p><strong>请求格式</strong></p>
+
+<p>目前只有两种格式的请求方法：GET和POST</p>
+
+<ul>
+<li>GET:  参数通过queryString在路径中传输到服务器。</li>
+<li>POST: 参数按照json格式发送body传输到服务器。</li>
+</ul>
+<h1 id='restapi'>RestAPI</h1><h2 id='df03e301d5'>账户接口</h2><h3 id='74b7b6c8e6'>经纪商账户信息</h3>
+<p>限速规则：10次/1s  (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/v1/broker/account/info</li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subAccountQty</td>
+<td style="text-align: center">当前经纪人子账户数量</td>
+</tr>
+<tr>
+<td style="text-align: left">maxSubAccountQty</td>
+<td style="text-align: center">最大创建子账户数量</td>
+</tr>
+</tbody></table>
+<h3 id='c6789f6fd9'>创建子账户</h3>
+<p>限速规则：1次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-create</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号邮箱</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">备注</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+<li>del 删除</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>trade   所有交易权限</li>
+<li>withdraw 提币权限</li>
+<li>transfer  划转</li>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
+<h3 id='a2cebfb9e2'>修改子账户权限</h3>
+<p>限速规则：1次/1s (ApiKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-modify</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">权限 逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号权限</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+<li>del 删除</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>trade   所有交易权限</li>
+<li>withdraw 提币权限</li>
+<li>transfer  划转</li>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
+<h3 id='ab8652ba96'>获取子现货账户列表</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-spot-assets</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: center">币种id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: center">可用资产</td>
+</tr>
+<tr>
+<td style="text-align: left">frozen</td>
+<td style="text-align: center">冻结资产</td>
+</tr>
+<tr>
+<td style="text-align: left">lock</td>
+<td style="text-align: center">锁仓资产</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: center">更新时间</td>
+</tr>
+</tbody></table>
+<h3 id='f81e9b6c7a'>获取子合约账户列表</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-future-assets</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">合约类型 umcbl usdt合约 dmcbl 混合合约</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">保证金币种</td>
+</tr>
+<tr>
+<td style="text-align: left">locked</td>
+<td style="text-align: left">锁定数量(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: left">账户可用数量</td>
+</tr>
+<tr>
+<td style="text-align: left">crossMaxAvailable</td>
+<td style="text-align: left">全仓最大可用来开仓余额(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">fixedMaxAvailable</td>
+<td style="text-align: left">逐仓最大可用来开仓余额(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTransferOut</td>
+<td style="text-align: left">最大可转出</td>
+</tr>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: left">账户权益(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtEquity</td>
+<td style="text-align: left">折算USDT账户权益</td>
+</tr>
+<tr>
+<td style="text-align: left">btcEquity</td>
+<td style="text-align: left">折算BTC账户权益</td>
+</tr>
+</tbody></table>
+<h3 id='d511dc43da'>创建子账户充值地址(仅适用主账户)</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-address</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币种</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">链类型 默认平台支持</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户Uid</td>
+</tr>
+<tr>
+<td>address</td>
+<td>提币地址</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>链名称</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>url</td>
+<td>区块链地址</td>
+</tr>
+</tbody></table>
+<h3 id='43de9ab9a8'>子账户提币(仅适用主账户)</h3>
+<p>限速规则：10次/1s  (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/account/sub-withdrawal</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">币种</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">链类型 默认平台支持</td>
+</tr>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">地址</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">提币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">tag</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">tag</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">客户端自定义Id 唯一</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='api-4'>子账户API</h2><h3 id='apikey'>创建子账户ApiKey (主账户请求)</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/manage/sub-api-create</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">口令</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">备注</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">ip</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">权限</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>私钥</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>请求ip</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>read_only</li>
+<li>trade</li>
+<li>transfer</li>
+</ul></li>
+</ul>
+<h3 id='apikey-2'>查询子账户ApiKey 列表</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/v1/broker/manage/sub-api-list</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>私钥</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>请求IP</td>
+</tr>
+</tbody></table>
+<h3 id='apikey-3'>修改子账户ApiKey权限 (主账户请求)</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/v1/broker/manage/sub-api-modify</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户apikey</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">备注</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">ip(覆盖)</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">权限 (覆盖)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>请求IP</td>
+</tr>
+</tbody></table>
+<h1 id='restapi-2'>RestAPI错误代码</h1>
+<table><thead>
+<tr>
+<th style="text-align: left">错误提示</th>
+<th style="text-align: left">错误码</th>
+<th style="text-align: center">http状态码</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_KEY&quot;不能为空</td>
+<td style="text-align: left">40001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_SIGN&quot;不能为空</td>
+<td style="text-align: left">40002</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_TIMESTAMP&quot;不能为空</td>
+<td style="text-align: left">40003</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_TIMESTAMP</td>
+<td style="text-align: left">40005</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的ACCESS_KEY</td>
+<td style="text-align: left">40006</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">无效的Content_Type，请使用“application/json”格式</td>
+<td style="text-align: left">40007</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求时间戳过期</td>
+<td style="text-align: left">40008</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">api 校验失败</td>
+<td style="text-align: left">40009</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求太频繁</td>
+<td style="text-align: left">429</td>
+<td style="text-align: center">429</td>
+</tr>
+<tr>
+<td style="text-align: left">请求头&quot;ACCESS_PASSPHRASE&quot;不能为空</td>
+<td style="text-align: left">40011</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">apikey/passphrase不正确</td>
+<td style="text-align: left">40012</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">用户被冻结</td>
+<td style="text-align: left">40013</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">权限不正确</td>
+<td style="text-align: left">40014</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">系统错误</td>
+<td style="text-align: left">40015</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数校验失败</td>
+<td style="text-align: left">40017</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">非法的ip请求</td>
+<td style="text-align: left">40018</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">此subUid不属于该账号</td>
+<td style="text-align: left">40028</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">此账号不是Broker,请先申请成为Broker</td>
+<td style="text-align: left">40029</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">子账号无此权限</td>
+<td style="text-align: left">40030</td>
+<td style="text-align: center">400</td>
+</tr>
+</tbody></table>
+
+  </div>
+  <div class="dark-box">
+      <div class="lang-selector">
+            <a href="#" data-language-name="console">console</a>
+      </div>
+  </div>
+</div>
+</body>
+
+<script>
+    $(".con a").click(function(){
+        $(".con a").removeClass("selected");
+        $(this).addClass("selected")
+    });
+    $("#international").click(function(){
+        $this = $(this);
+        var currentUrl = window.location.href;
+        var index=currentUrl.indexOf("#");
+        currentUrl=currentUrl.substring(0,index);
+        if ($this.text() == 'English') {
+            window.location=currentUrl.replace(/\/zh/,"/en");
+        } else {
+            window.location=currentUrl.replace(/\/en/,"/zh");
+        }
+    });
+    var  currentUrl=window.location.href;
+    var isEn=currentUrl.indexOf('en/')>-1;
+    var isBroker=currentUrl.indexOf('broker/')>-1;
+    var isSpot=currentUrl.indexOf('spot/')>-1;
+    var isMix=currentUrl.indexOf('mix/')>-1;
+    var isLocal=currentUrl.indexOf('local')>-1;
+    var $international=$("#international");
+    var $search=$("#input-search");
+
+    var $Broker=$("#broker"),
+        $Spot=$("#spot");
+        $Mix=$("#mix");
+    if(isBroker){
+        $Broker.addClass('selected');
+    }
+    if(isSpot){
+        $Spot.addClass('selected');
+    }
+    if(isMix){
+        $Mix.addClass('selected');
+    }
+
+    if(!isEn){
+        $Broker.html($Broker.attr('data-text'))
+        $Spot.html($Spot.attr('data-text'))
+        $Mix.html($Mix.attr('data-text'))
+
+        $international.html('English')
+    }else {
+        $international.html('简体中文')
+        $search.html('搜索');
+    }
+    if(isLocal){
+        if(isEn){
+            $Broker.attr('href','/en/broker/')
+            $Spot.attr('href','/en/spot/')
+            $Mix.attr('href','/en/mix/')
+        } else{
+            $Broker.attr('href','/zh/broker/')
+            $Spot.attr('href','/zh/spot/')
+            $Mix.attr('href','/zh/mix/')
+        }
+
+    } else{
+        if(isEn){
+            $Broker.attr('href','/apidoc/en/broker/')
+            $Spot.attr('href','/apidoc/en/spot/')
+            $Mix.attr('href','/apidoc/en/mix/')
+        } else{
+            $Broker.attr('href','/apidoc/zh/broker/')
+            $Spot.attr('href','/apidoc/zh/spot/')
+            $Mix.attr('href','/apidoc/zh/mix/')
+        }
+    }
+</script>
+
+</html>
