@@ -287,7 +287,7 @@
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
-
+         <li><a id="broker" data-text="Broker" >Broker</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -2388,20 +2388,28 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-  "code": "00000",
-  "msg": "success",
-  "data": {
-    "id": "24422",
-    "coin": "BTC",
-    "type": "desption",
-    "amount": "1",
-    "status": "new",
-    "cTime": "393929929292",
-    "uTime": "393929929292"
-  }
-}
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1654507973411</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"toAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erc20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -2413,6 +2421,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td>id</td>
 <td>订单id</td>
+</tr>
+<tr>
+<td>txId</td>
+<td>提现交易id</td>
 </tr>
 <tr>
 <td>coin</td>
@@ -2429,6 +2441,22 @@ Signature = base64.encode(Signature)
 <tr>
 <td>status</td>
 <td>提币状态</td>
+</tr>
+<tr>
+<td>toAddress</td>
+<td>提币地址</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>提币网络</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>确认块数</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -2507,17 +2535,24 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-  "code": "00000",
-  "msg": "success",
-  "data": {
-    "id": "24422",
-    "coin": "BTC",
-    "type": "desption",
-    "amount": "1",
-    "status": "new",
-    "cTime": "393929929292",
-    "uTime": "393929929292"
-  }
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1654507973411,
+    "data": [
+        {
+            "id": "912533114861326336",
+            "txId": "912533114861326336",
+            "coin": "USDT",
+            "type": "withdraw",
+            "amount": "10.00000000",
+            "status": "success",
+            "toAddress": "7713789662",
+            "fee": "0.00000000",
+            "chain": "erc20",
+            "cTime": "1653290769222",
+            "uTime": "1653290769222"
+        }
+    ]
 }
 </code></pre>
 <p><strong>返回值说明</strong></p>
@@ -2533,12 +2568,16 @@ Signature = base64.encode(Signature)
 <td>订单id</td>
 </tr>
 <tr>
+<td>txId</td>
+<td>交易id</td>
+</tr>
+<tr>
 <td>coin</td>
 <td>币种名称</td>
 </tr>
 <tr>
 <td>type</td>
-<td>提币类型</td>
+<td>充币类型</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2547,6 +2586,18 @@ Signature = base64.encode(Signature)
 <tr>
 <td>status</td>
 <td>提币状态</td>
+</tr>
+<tr>
+<td>toAddress</td>
+<td>充值地址</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>充币网络</td>
 </tr>
 <tr>
 <td>cTime</td>
