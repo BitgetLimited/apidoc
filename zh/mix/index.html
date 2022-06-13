@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-06-10" class="toc-h2 toc-link" data-title="2022年06月10日">2022年06月10日</a>
+              </li>
+              <li>
                 <a href="#2022-04-02" class="toc-h2 toc-link" data-title="2022年04月02日">2022年04月02日</a>
               </li>
               <li>
@@ -668,7 +671,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-04-02'>2022年04月02日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-06-10'>2022年06月10日</h2>
+<ul>
+<li><code>/api/mix/v1/order/detail</code> 增加 <code>clientOid</code> 参数</li>
+</ul>
+<h2 id='2022-04-02'>2022年04月02日</h2>
 <ul>
 <li>新增合约账户流水接口</li>
 <li><code>/followerOrder</code> 跟单交易接口增加保证金字段<br></li>
@@ -3456,7 +3463,7 @@ Signature = base64.encode(Signature)
 
 <ul>
 <li>normal<br></li>
-<li>postOnly</li>
+<li>post_only</li>
 <li>fok</li>
 <li>ioc</li>
 </ul></li>
@@ -8244,7 +8251,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td>&gt; ordType</td>
 <td>String</td>
-<td>订单类型<code>market</code>：市价单<code>limit</code>：限价单<code>post_only</code>： 只做maker单<code>fok</code>：全部成交或立即取消单<code>ioc</code>：立即成交并取消剩余单</td>
+<td>订单类型<code>market</code>：市价单<code>limit</code>：限价单</td>
 </tr>
 <tr>
 <td>&gt; force</td>
