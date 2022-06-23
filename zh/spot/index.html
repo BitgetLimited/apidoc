@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-6-24" class="toc-h2 toc-link" data-title="2022年6月24日">2022年6月24日</a>
+              </li>
+              <li>
                 <a href="#2022-5-5-wallet" class="toc-h2 toc-link" data-title="2022年5月5日 【Wallet】">2022年5月5日 【Wallet】</a>
               </li>
               <li>
@@ -447,6 +450,9 @@
               <li>
                 <a href="#df03e301d5" class="toc-h2 toc-link" data-title="账户接口">账户接口</a>
                   <ul class="toc-list-h3">
+                      <li>
+                        <a href="#apikey" class="toc-h3 toc-link" data-title="获取ApiKey信息">获取ApiKey信息</a>
+                      </li>
                       <li>
                         <a href="#6f78777a98" class="toc-h3 toc-link" data-title="获取账户资产">获取账户资产</a>
                       </li>
@@ -584,7 +590,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-5-5-wallet'>2022年5月5日 【Wallet】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-6-24'>2022年6月24日</h2>
+<ul>
+<li>新增获取apikey信息接口</li>
+<li>资产接口增加 币种查询条件 </li>
+</ul>
+<h2 id='2022-5-5-wallet'>2022年5月5日 【Wallet】</h2>
 <ul>
 <li>新增提币接口</li>
 </ul>
@@ -2621,7 +2632,58 @@ Signature = base64.encode(Signature)
 <li>success 成功</li>
 </ul></li>
 </ul>
-<h2 id='df03e301d5'>账户接口</h2><h3 id='6f78777a98'>获取账户资产</h3>
+<h2 id='df03e301d5'>账户接口</h2><h3 id='apikey'>获取ApiKey信息</h3>
+<p>限速规则：1次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET  /api/spot/v1/account/getInfo</li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "data": {
+        "user_id": "714229403",
+        "inviter_id": "682221498",
+        "ips": "172.23.88.91",
+        "authorities": [
+            "trade",
+            "readonly"
+        ]
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">user_id</td>
+<td style="text-align: center">uid</td>
+</tr>
+<tr>
+<td style="text-align: left">Inviter_id</td>
+<td style="text-align: center">邀请人id</td>
+</tr>
+<tr>
+<td style="text-align: left">ips</td>
+<td style="text-align: center">apikey 设置IP白名单</td>
+</tr>
+<tr>
+<td style="text-align: left">authorities</td>
+<td style="text-align: center">权限</td>
+</tr>
+</tbody></table>
+<h3 id='6f78777a98'>获取账户资产</h3>
 <p>限速规则：10次/1s</p>
 
 <p><strong>HTTP请求</strong>
@@ -2630,6 +2692,24 @@ Signature = base64.encode(Signature)
 <ul>
 <li>GET  /api/spot/v1/account/assets</li>
 </ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币种</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>返回数据</p>
