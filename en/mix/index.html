@@ -550,6 +550,9 @@
                         <a href="#trader-close-position" class="toc-h3 toc-link" data-title="Trader Close Position">Trader Close Position</a>
                       </li>
                       <li>
+                        <a href="#trader-modify-tpsl" class="toc-h3 toc-link" data-title="Trader Modify TPSL">Trader Modify TPSL</a>
+                      </li>
+                      <li>
                         <a href="#get-traders-history-orders" class="toc-h3 toc-link" data-title="Get Traders History Orders">Get Traders History Orders</a>
                       </li>
                       <li>
@@ -5616,7 +5619,61 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Tracking order number</td>
 </tr>
 </tbody></table>
-<h3 id='get-traders-history-orders'>Get Traders History Orders</h3>
+<h3 id='trader-modify-tpsl'>Trader Modify TPSL</h3>
+<p>Limit rule  10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/modifyTPSL</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order Id    From the /currentTrack   &quot;trackingNo&quot; field</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">stopProfitPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Take Profit Price</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">stop price</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656066841304</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">924176438170464256</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='get-traders-history-orders'>Get Traders History Orders</h3>
 <p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
