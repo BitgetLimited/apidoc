@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-07-8" class="toc-h2 toc-link" data-title="2022年07月8日">2022年07月8日</a>
+              </li>
+              <li>
                 <a href="#2022-06-24" class="toc-h2 toc-link" data-title="2022年06月24日">2022年06月24日</a>
               </li>
               <li>
@@ -644,6 +647,9 @@
                       <li>
                         <a href="#e9970cad9f" class="toc-h3 toc-link" data-title="订单频道">订单频道</a>
                       </li>
+                      <li>
+                        <a href="#ddd4a2ac94" class="toc-h3 toc-link" data-title="计划委托频道">计划委托频道</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -677,7 +683,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-06-24'>2022年06月24日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-07-8'>2022年07月8日</h2>
+<ul>
+<li>增加计划委托websocket频道</li>
+</ul>
+<h2 id='2022-06-24'>2022年06月24日</h2>
 <ul>
 <li><code>/api/mix/v1/trace/modifyTPSL</code> 增加交易员修改止盈止损接口</li>
 </ul>
@@ -8421,6 +8431,243 @@ Signature = base64.encode(Signature)
 <td>&gt; pnl</td>
 <td>String</td>
 <td>收益</td>
+</tr>
+<tr>
+<td>&gt; uTime</td>
+<td>String</td>
+<td>订单更新时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td>&gt; cTime</td>
+<td>String</td>
+<td>订单创建时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+</tbody></table>
+<h3 id='ddd4a2ac94'>计划委托频道</h3>
+<p>获取订单信息，首次订阅不推送，只有当下单、撤单、成交等事件触发时，推送数据</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>是</td>
+<td>操作，<code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>是</td>
+<td>请求订阅的频道列表</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名， <code>ordersAlgo</code></td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型 <code>UMCBL:专业合约私有频道</code>    <code>DMCBL:混合合约私有频道</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>目前只支持 <code>default</code> 全部交易对订单</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>成功返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>失败返回示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>是</td>
+<td>事件，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>否</td>
+<td>订阅的频道</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>是</td>
+<td>产品类型 <code>MC</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>否</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>否</td>
+<td>错误码</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>否</td>
+<td>错误消息</td>
+</tr>
+</tbody></table>
+
+<p><strong>推送数据参数</strong></p>
+
+<table><thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>订阅成功的频道</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>频道名</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>产品类型</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>订阅的数据</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>产品ID</td>
+</tr>
+<tr>
+<td>&gt; id</td>
+<td>String</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>&gt; cOid</td>
+<td>String</td>
+<td>由用户设置的订单ID来识别您的订单</td>
+</tr>
+<tr>
+<td>&gt; triggerPx</td>
+<td>String</td>
+<td>触发价格</td>
+</tr>
+<tr>
+<td>&gt; ordPx</td>
+<td>String</td>
+<td>委托价格</td>
+</tr>
+<tr>
+<td>&gt; sz</td>
+<td>String</td>
+<td>原始委托数量，以币为单位</td>
+</tr>
+<tr>
+<td>&gt; actualSz</td>
+<td>String</td>
+<td>实际委托数量 以币为单位</td>
+</tr>
+<tr>
+<td>&gt; ordType</td>
+<td>String</td>
+<td>订单类型<code>market</code>：市价单<code>limit</code>：限价单</td>
+</tr>
+<tr>
+<td>&gt; side</td>
+<td>String</td>
+<td>订单方向，<code>buy</code> <code>sell</code></td>
+</tr>
+<tr>
+<td>&gt; posSide</td>
+<td>String</td>
+<td>持仓方向<code>long</code>：双向持仓多头<code>short</code>：双向持仓空头<code>net</code>：单向持仓</td>
+</tr>
+<tr>
+<td>&gt; tgtCcy</td>
+<td>String</td>
+<td>保证金币种</td>
+</tr>
+<tr>
+<td>&gt; status</td>
+<td>String</td>
+<td>订单状态   <code>not_trigger：未触发</code>   <code>triggered： 已触发</code>   <code>fail_trigger：触发失败</code>    <code>cancel：已撤单</code></td>
 </tr>
 <tr>
 <td>&gt; uTime</td>
