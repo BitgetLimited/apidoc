@@ -568,14 +568,14 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <ul>
 <li>Timestamp = 16273667805456</li>
 <li>Method = &quot;GET&quot;</li>
-<li>requestPath = &quot;/api/v1/broker/account/sub-list&quot;</li>
+<li>requestPath = &quot;/api/broker/v1/account/sub-list&quot;</li>
 <li>queryString= &quot;?pageSize=10&amp;lastEndId=0&amp;status=normal&quot;</li>
 </ul>
 
 <p>生成待签名的字符串:</p>
 
 <p><code>
-&#39;16273667805456GET/api/v1/broker/account/sub-list?pageSize=10&amp;lastEndId=0&amp;status=normal&#39;
+&#39;16273667805456GET/api/broker/v1/account/sub-list?pageSize=10&amp;lastEndId=0&amp;status=normal&#39;
 </code></p>
 
 <p>创建子账户 为例:</p>
@@ -583,14 +583,14 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <ul>
 <li>Timestamp = 16273667805456</li>
 <li>Method = &quot;POST&quot;</li>
-<li>requestPath = &quot;/api/v1/broker/account/sub-create&quot;</li>
+<li>requestPath = &quot;/api/broker/v1/account/sub-create&quot;</li>
 <li>body = {&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}</li>
 </ul>
 
 <p>生成待签名的字符串:</p>
 
 <p><code>
-&#39;16273667805456POST/api/v1/broker/account/sub-create{&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}&#39;  
+&#39;16273667805456POST/api/broker/v1/account/sub-create{&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}&#39;  
 </code></p>
 
 <p><strong>生成最终签名的步骤</strong> </p>
@@ -653,7 +653,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>GET /api/v1/broker/account/info</li>
+<li>GET /api/broker/v1/account/info</li>
 </ul>
 
 <blockquote>
@@ -691,7 +691,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-create</li>
+<li>POST /api/broker/v1/account/sub-create</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -759,7 +759,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-modify</li>
+<li>POST /api/broker/v1/account/sub-modify</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -833,7 +833,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-spot-assets</li>
+<li>POST /api/broker/v1/account/sub-spot-assets</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -911,7 +911,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-future-assets</li>
+<li>POST /api/broker/v1/account/sub-future-assets</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -1011,7 +1011,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-address</li>
+<li>POST /api/broker/v1/account/sub-address</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -1099,7 +1099,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/account/sub-withdrawal</li>
+<li>POST /api/broker/v1/account/sub-withdrawal</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -1170,7 +1170,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/manage/sub-api-create</li>
+<li>POST /api/broker/v1/manage/sub-api-create</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
@@ -1282,7 +1282,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>GET /api/v1/broker/manage/sub-api-list</li>
+<li>GET /api/broker/v1/manage/sub-api-list</li>
 </ul>
 
 <p><strong>请求参数</strong></p>
@@ -1360,7 +1360,7 @@ Signature = base64.encode(Signature)
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>POST /api/v1/broker/manage/sub-api-modify</li>
+<li>POST /api/broker/v1/manage/sub-api-modify</li>
 </ul>
 
 <p><strong>请求参数(Request Body)</strong></p>
