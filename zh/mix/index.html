@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-07-20" class="toc-h2 toc-link" data-title="2022年07月20日">2022年07月20日</a>
+              </li>
+              <li>
                 <a href="#2022-07-8" class="toc-h2 toc-link" data-title="2022年07月8日">2022年07月8日</a>
               </li>
               <li>
@@ -683,7 +686,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-07-8'>2022年07月8日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-07-20'>2022年07月20日</h2>
+<ul>
+<li>接口响应 <code>requestTime</code> 字段已废弃，请不要在使用此字段</li>
+</ul>
+<h2 id='2022-07-8'>2022年07月8日</h2>
 <ul>
 <li>增加计划委托websocket频道</li>
 </ul>
@@ -4485,6 +4492,21 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">成交时间</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><p>side</p>
+
+<ul>
+<li>open_long<br></li>
+<li>open_short</li>
+<li>close_long</li>
+<li>close_short</li>
+<li>burst_close_long</li>
+<li>burst_close_short</li>
+<li>offset_close_long</li>
+<li>offset_close_short</li>
+</ul></li>
+</ul>
 <h3 id='03b4e6fa59'>计划委托下单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
