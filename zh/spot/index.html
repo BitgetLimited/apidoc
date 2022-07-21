@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-7-21" class="toc-h2 toc-link" data-title="2022年7月21日">2022年7月21日</a>
+              </li>
+              <li>
                 <a href="#2022-6-24" class="toc-h2 toc-link" data-title="2022年6月24日">2022年6月24日</a>
               </li>
               <li>
@@ -590,7 +593,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-6-24'>2022年6月24日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-7-21'>2022年7月21日</h2>
+<ul>
+<li>Websocket 连接增加规则, 请参考 <strong>连接</strong> 目录</li>
+</ul>
+<h2 id='2022-6-24'>2022年6月24日</h2>
 <ul>
 <li>新增获取apikey信息接口</li>
 <li>资产接口增加 币种查询条件 </li>
@@ -3823,6 +3830,15 @@ Signature = base64.encode(Signature)
 <li>每次接收到消息后，用户设置一个定时器，定时N秒，N 小于30。</li>
 <li>如果定时器被触发（N 秒内没有收到新消息），发送字符串 &#39;ping&#39;。</li>
 <li>期待一个文字字符串&#39;pong&#39;作为回应。如果在 N秒内未收到，请发出错误或重新连接。</li>
+<li>Websocket服务器每秒最多接受10个消息。消息包括:
+
+<ul>
+<li>PING帧</li>
+<li>JSON格式的消息，比如订阅，断开订阅。</li>
+</ul></li>
+<li>如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽；</li>
+<li>单个连接最多可以订阅 <strong>1000</strong> 个Streams；</li>
+<li>单个IP最多可以创建<strong>100</strong>个连接。</li>
 </ol>
 <h2 id='21f1e88275'>登录</h2>
 <p><strong>api_key</strong>:用于调用API的用户身份唯一标示，需要用户申请</p>

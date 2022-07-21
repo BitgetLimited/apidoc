@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#21-07-2022" class="toc-h2 toc-link" data-title="21/07/2022">21/07/2022</a>
+              </li>
+              <li>
                 <a href="#24-06-2022" class="toc-h2 toc-link" data-title="24/06/2022">24/06/2022</a>
               </li>
               <li>
@@ -584,7 +587,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='24-06-2022'>24/06/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='21-07-2022'>21/07/2022</h2>
+<ul>
+<li>Websocket connection addition rules, please refer to the <strong>Connection</strong> directory</li>
+</ul>
+<h2 id='24-06-2022'>24/06/2022</h2>
 <ul>
 <li><p>Added getInfo interface</p></li>
 <li><p><code>assets</code> add <code>coin</code> parameter</p></li>
@@ -3761,6 +3768,15 @@ please delete the APIKey as soon as possible.
 <li>Set a timer of N seconds whenever a response message is received, where N is less than 30.</li>
 <li>If the timer is triggered, which means that no new message is received within N seconds, send the String &#39;ping&#39;.</li>
 <li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error or reconnect.</li>
+<li>The Websocket server accepts up to 10 messages per second. The message includes:
+
+<ul>
+<li>PING frame</li>
+<li>Messages in JSON format, such as subscribe, unsubscribe.</li>
+</ul></li>
+<li>If the user sends more messages than the limit, the connection will be disconnected. IPs that are repeatedly disconnected may be blocked by the server;</li>
+<li>A single connection can subscribe up to <strong>1000</strong> Streams;</li>
+<li>A single IP can create up to <strong>100</strong> connections.</li>
 </ol>
 <h2 id='login'>Login</h2>
 <p><strong>api_key</strong>: Unique identification for invoking API. Requires user to apply one manually.</p>
