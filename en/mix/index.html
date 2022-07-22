@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#july-22-2022" class="toc-h2 toc-link" data-title="July, 22, 2022">July, 22, 2022</a>
+              </li>
+              <li>
                 <a href="#july-21-2022" class="toc-h2 toc-link" data-title="July, 21, 2022">July, 21, 2022</a>
               </li>
               <li>
@@ -524,6 +527,9 @@
                         <a href="#get-order-fill-detail" class="toc-h3 toc-link" data-title="Get Order fill detail">Get Order fill detail</a>
                       </li>
                       <li>
+                        <a href="#get-producttype-order-fill-detail" class="toc-h3 toc-link" data-title="Get ProductType Order fill detail">Get ProductType Order fill detail</a>
+                      </li>
+                      <li>
                         <a href="#place-plan-order" class="toc-h3 toc-link" data-title="Place Plan order">Place Plan order</a>
                       </li>
                       <li>
@@ -685,7 +691,13 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='july-21-2022'>July, 21, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='july-22-2022'>July, 22, 2022</h2>
+<ul>
+<li>Support USDC futures</li>
+<li>/api/mix/v1/order/marginCoinCurrent  <code>marginCoin</code> No Required</li>
+<li>/api/mix/v1/order/allFills   add new infertace get order fill by productType</li>
+</ul>
+<h2 id='july-21-2022'>July, 21, 2022</h2>
 <ul>
 <li>Websocket connection addition rules, please refer to the <strong>Connection</strong> directory</li>
 </ul>
@@ -1473,6 +1485,7 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>umcbl</li>
 <li>dmcbl</li>
+<li>cmcbl</li>
 </ul></li>
 </ul>
 <h3 id='get-depth'>Get Depth</h3>
@@ -1756,6 +1769,7 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>umcbl</li>
 <li>dmcbl</li>
+<li>cmcbl</li>
 </ul></li>
 </ul>
 <h3 id='get-fills'>Get Fills</h3>
@@ -2602,6 +2616,7 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>umcbl</li>
 <li>dmcbl</li>
+<li>cmcbl</li>
 </ul></li>
 </ul>
 <h3 id='get-open-count'>Get Open Count</h3>
@@ -3202,6 +3217,7 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>umcbl</li>
 <li>dmcbl</li>
+<li>cmcbl</li>
 </ul></li>
 </ul>
 <h3 id='get-account-bill'>Get Account Bill</h3>
@@ -3932,7 +3948,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">margin coin</td>
 </tr>
 </tbody></table>
@@ -4035,8 +4051,9 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl     USDT swap</li>
-<li>dmcbl     Mix swap</li>
+<li>umcbl<br></li>
+<li>dmcbl<br></li>
+<li>cmcbl</li>
 </ul></li>
 </ul>
 <h3 id='get-history-orders'>Get History Orders</h3>
@@ -4451,6 +4468,135 @@ If there is a large deviation between the local server time and the API server t
 </tbody></table>
 
 <ul>
+<li><p>side</p>
+
+<ul>
+<li>open_long<br></li>
+<li>open_short</li>
+<li>close_long</li>
+<li>close_short</li>
+<li>burst_close_long</li>
+<li>burst_close_short</li>
+<li>offset_close_long</li>
+<li>offset_close_short</li>
+</ul></li>
+</ul>
+<h3 id='get-producttype-order-fill-detail'>Get ProductType Order fill detail</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/order/allFills</li>
+</ul>
+
+<p><strong>Request Parameter (Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">productType (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if querying all details</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">End time (timestamp in milliseconds) This field is required if querying all details</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Query the data after this tradeId</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"802377534023585793"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802377533381816325"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627386245672</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: left">Trade Id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Trading pair name</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">Transaction price</td>
+</tr>
+<tr>
+<td style="text-align: left">sizeQty</td>
+<td style="text-align: left">Transaction volume</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">Trade type</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">Trade time</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>productType</p>
+
+<ul>
+<li>umcbl</li>
+<li>dmcbl</li>
+<li>cmcbl</li>
+</ul></li>
 <li><p>side</p>
 
 <ul>
