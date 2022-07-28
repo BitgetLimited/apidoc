@@ -3369,6 +3369,9 @@ If there is a large deviation between the local server time and the API server t
 <li>close_short </li>
 <li>trans_from_exchange transfer in from spot account</li>
 <li>trans_to_exchange transfer out to spot account</li>
+<li>contract_main_settle_fee    Funding rate for corssed</li>
+<li>contract_margin_settle_fee      fixed margin funding rate</li>
+<li>tracking_trader_income<br></li>
 </ul></li>
 </ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
@@ -4509,13 +4512,13 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">Start time (timestamp in milliseconds) This field is required if querying all details</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">End time (timestamp in milliseconds) This field is required if querying all details</td>
 </tr>
 <tr>
@@ -5208,6 +5211,7 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>profit_plan</li>
 <li>loss_plan</li>
+<li>normal_plan</li>
 </ul></li>
 </ul>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
@@ -8186,7 +8190,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; marginRate</td>
 <td>String</td>
-<td>Risk rate. </td>
+<td>Risk rate.</td>
 </tr>
 <tr>
 <td>&gt; cTime</td>

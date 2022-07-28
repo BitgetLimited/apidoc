@@ -3377,7 +3377,7 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <ul>
-<li>business
+<li><p>business</p>
 
 <ul>
 <li>open_long 开多</li>
@@ -3386,6 +3386,9 @@ Signature = base64.encode(Signature)
 <li>close_short 平空</li>
 <li>trans_from_exchange 由现货账户转入</li>
 <li>trans_to_exchange 转出至现货账户</li>
+<li>contract_main_settle_fee 全仓资金费率</li>
+<li>contract_margin_settle_fee 逐仓资金费率</li>
+<li>tracking_trader_income 带单分润</li>
 </ul></li>
 </ul>
 <h2 id='1ab2aacc04'>交易接口</h2><h3 id='fd6ce2a756'>下单</h3>
@@ -5251,6 +5254,7 @@ Signature = base64.encode(Signature)
 <ul>
 <li>profit_plan</li>
 <li>loss_plan</li>
+<li>normal_plan</li>
 </ul></li>
 </ul>
 <h3 id='2ac393739d'>获取当前计划委托(止盈止损)列表</h3>
@@ -8282,7 +8286,7 @@ Signature = base64.encode(Signature)
 <td>逐仓时，实际保证金率</td>
 </tr>
 <tr>
-<td>&gt; marginRate</td>
+<td>&gt;  marginRate</td>
 <td>String</td>
 <td>风险率</td>
 </tr>
