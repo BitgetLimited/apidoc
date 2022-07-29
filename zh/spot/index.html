@@ -1269,6 +1269,7 @@ Signature = base64.encode(Signature)
                     </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"extraWithDrawFee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
@@ -1288,6 +1289,7 @@ Signature = base64.encode(Signature)
                     </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"extraWithDrawFee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
@@ -1342,6 +1344,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">&gt; withdrawFee</td>
 <td style="text-align: left">提现手续费</td>
+</tr>
+<tr>
+    <td style="text-align: left">&gt; extraWithDrawFee</td>
+    <td style="text-align: left">归集手续费，平台额外收取百分之多少的费用（此值已除以100）</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; depositConfirm</td>
