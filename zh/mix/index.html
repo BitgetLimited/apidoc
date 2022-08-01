@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-01" class="toc-h2 toc-link" data-title="2022年8月01日">2022年8月01日</a>
+              </li>
+              <li>
                 <a href="#2022-7-22" class="toc-h2 toc-link" data-title="2022年7月22日">2022年7月22日</a>
               </li>
               <li>
@@ -496,6 +499,9 @@
                       </li>
                       <li>
                         <a href="#212cdaad08" class="toc-h3 toc-link" data-title="获取财务记录">获取财务记录</a>
+                      </li>
+                      <li>
+                        <a href="#1a9e1be972" class="toc-h3 toc-link" data-title="获取业务线财务记录">获取业务线财务记录</a>
                       </li>
                   </ul>
               </li>
@@ -695,7 +701,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-7-22'>2022年7月22日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-01'>2022年8月01日</h2>
+<ul>
+<li>/api/mix/v1/account/accountBusinessBill 新增根据业务线查询流水</li>
+</ul>
+<h2 id='2022-7-22'>2022年7月22日</h2>
 <ul>
 <li>新增支持USDC 合约</li>
 <li>/api/mix/v1/order/marginCoinCurrent 保证金参数改为 非必传, 可以获取当前业务线下所有当前委托</li>
@@ -3377,6 +3387,161 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <ul>
+<li><p>business</p>
+
+<ul>
+<li>open_long 开多</li>
+<li>open_short 开空</li>
+<li>close_long 平多</li>
+<li>close_short 平空</li>
+<li>trans_from_exchange 由现货账户转入</li>
+<li>trans_to_exchange 转出至现货账户</li>
+<li>contract_main_settle_fee 全仓资金费率</li>
+<li>contract_margin_settle_fee 逐仓资金费率</li>
+<li>tracking_trader_income 带单分润</li>
+</ul></li>
+</ul>
+<h3 id='1a9e1be972'>获取业务线财务记录</h3>
+<p>限速规则:  5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/account/accountBusinessBill</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">业务类型</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间 （时间戳毫秒）</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间 （时间戳毫秒）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">显示条数 默认20 最大 100</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">上次查询的id</td>
+</tr>
+<tr>
+<td style="text-align: left">next</td>
+<td style="text-align: left">boolean</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">是否查询下一页 默认false</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"892962903462432768"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.1765104"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"feeByCoupon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"feeCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1648624867354"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"endId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"885353495773458432"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">财务记录号</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">产品Id</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">保证金币种</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">金额</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">feeByCoupon</td>
+<td style="text-align: left">手续费抵扣</td>
+</tr>
+<tr>
+<td style="text-align: left">feeCoin</td>
+<td style="text-align: left">手续费币种</td>
+</tr>
+<tr>
+<td style="text-align: left">business</td>
+<td style="text-align: left">记录类型</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">上次查询的Id</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>productType</p>
+
+<ul>
+<li>umcbl</li>
+<li>dmcbl</li>
+<li>cmcbl</li>
+</ul></li>
 <li><p>business</p>
 
 <ul>
