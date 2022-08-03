@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#03-08-2022" class="toc-h2 toc-link" data-title="03/08/2022">03/08/2022</a>
+              </li>
+              <li>
                 <a href="#21-07-2022" class="toc-h2 toc-link" data-title="21/07/2022">21/07/2022</a>
               </li>
               <li>
@@ -587,7 +590,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='21-07-2022'>21/07/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='03-08-2022'>03/08/2022</h2>
+<ul>
+<li>add Request Example</li>
+</ul>
+<h2 id='21-07-2022'>21/07/2022</h2>
 <ul>
 <li>Websocket connection addition rules, please refer to the <strong>Connection</strong> directory</li>
 </ul>
@@ -1231,6 +1238,11 @@ please delete the APIKey as soon as possible.
 </ul>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/time"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -1251,6 +1263,11 @@ please delete the APIKey as soon as possible.
 <li>GET /api/spot/v1/public/currencies</li>
 </ul>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/currencies"</span>
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1357,6 +1374,11 @@ please delete the APIKey as soon as possible.
 </ul>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/products"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -1462,6 +1484,11 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/product?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -1565,6 +1592,11 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -1642,6 +1674,11 @@ please delete the APIKey as soon as possible.
 <li>GET /api/spot/v1/market/tickers</li>
 </ul>
 
+<blockquote>
+<p>Request Example </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/tickers"</span>
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1746,6 +1783,11 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example   </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/fills?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1859,6 +1901,11 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;after=1659076670000&amp;before=1659080270000&amp;limit=100"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -1969,6 +2016,11 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/depth?symbol=BTCUSDT_SPBL&amp;type=step0&amp;limit=100"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2066,6 +2118,18 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/transfer"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2115,6 +2179,17 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/deposit-address?coin=USDT&amp;chain=trc20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -2225,6 +2300,18 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"address"</span>: <span class="s2">"TBQ2LGFysnqkscvKqLBxnVVVw7ohiDvbdZ"</span>,<span class="s2">"chain"</span>: <span class="s2">"trc20"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2296,6 +2383,18 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-inner"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"toUid"</span>: <span class="s2">"6314497154"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2346,13 +2445,13 @@ please delete the APIKey as soon as possible.
 <td>startTime</td>
 <td>String</td>
 <td>Yes</td>
-<td>start Time</td>
+<td>start Time (timestamp ms)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>Yes</td>
-<td>end Time</td>
+<td>end Time(timestamp ms)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -2368,6 +2467,17 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -2492,13 +2602,13 @@ please delete the APIKey as soon as possible.
 <td>startTime</td>
 <td>String</td>
 <td>Yes</td>
-<td>start time</td>
+<td>start time(timestamp ms)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>Yes</td>
-<td>end time</td>
+<td>end time(timestamp ms)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -2514,6 +2624,17 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/deposit-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -2609,6 +2730,17 @@ please delete the APIKey as soon as possible.
 </ul>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/getInfo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2679,6 +2811,17 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets?coin=USDT"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2790,6 +2933,17 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills?coinId=2&amp;groupType=deposit&amp;bizType=deposit&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2853,6 +3007,30 @@ please delete the APIKey as soon as possible.
 <td>ID</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><p>groupType</p>
+
+<ul>
+<li>deposit</li>
+<li>withdraw</li>
+<li>transaction</li>
+<li>transfer</li>
+<li>other</li>
+</ul></li>
+<li><p>bizType</p>
+
+<ul>
+<li>deposit</li>
+<li>withdraw</li>
+<li>buy</li>
+<li>sell</li>
+<li>transfer-in</li>
+<li>transfer-out</li>
+<li>system-lock</li>
+<li>user-lock</li>
+</ul></li>
+</ul>
 <h3 id='get-transfer-record'>Get transfer record</h3>
 <p>Rate Limit: 20 times/1s (uid)</p>
 
@@ -2904,6 +3082,17 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2961,6 +3150,16 @@ please delete the APIKey as soon as possible.
 <td>Transfer time</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>fromType
+
+<ul>
+<li>exchange</li>
+<li>usdt_mix</li>
+<li>usd_mix</li>
+</ul></li>
+</ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place order</h3>
 <p>Rate Limit: 10 times/1s (uid)</p>
 
@@ -3024,6 +3223,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"side"</span>: <span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3137,6 +3348,18 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/batch-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderList"</span>:[<span class="o">{</span><span class="s2">"side"</span>:<span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}]</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -3181,6 +3404,18 @@ please delete the APIKey as soon as possible.
 </tbody></table>
 
 <blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-order"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -3222,6 +3457,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-batch-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderIds"</span>: <span class="o">[</span><span class="s2">"34923828882"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3270,6 +3517,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orderInfo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3381,6 +3640,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/open-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3510,6 +3781,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/history"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"after"</span>:<span class="s2">"1659076670000"</span>,<span class="s2">"before"</span>:<span class="s2">"1659076670000"</span>,<span class="s2">"limit"</span>:<span class="s2">"100"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3645,6 +3928,18 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/fills"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>:<span class="s2">"34923828882"</span>,<span class="s2">"after"</span>:<span class="s2">"349234552212"</span>,<span class="s2">"before"</span>:<span class="s2">"34923775522"</span>,<span class="s2">"limit"</span>:<span class="s2">"100"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>

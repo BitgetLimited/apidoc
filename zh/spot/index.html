@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-03" class="toc-h2 toc-link" data-title="2022年8月03日">2022年8月03日</a>
+              </li>
+              <li>
                 <a href="#2022-7-21" class="toc-h2 toc-link" data-title="2022年7月21日">2022年7月21日</a>
               </li>
               <li>
@@ -593,7 +596,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-7-21'>2022年7月21日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-03'>2022年8月03日</h2>
+<ul>
+<li>每个接口新增请求示例</li>
+</ul>
+<h2 id='2022-7-21'>2022年7月21日</h2>
 <ul>
 <li>Websocket 连接增加规则, 请参考 <strong>连接</strong> 目录</li>
 </ul>
@@ -1066,42 +1073,6 @@ clipboard.on('error', function(e) {
 <td>内部地址</td>
 </tr>
 </tbody></table>
-
-<p><strong>accountType(账户类型)</strong></p>
-
-<p>不区分大小写</p>
-
-<table><thead>
-<tr>
-<th>字段</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>EXCHANGE</td>
-<td>现货账户</td>
-</tr>
-<tr>
-<td>OTC_SGD</td>
-<td>OTC账户</td>
-</tr>
-<tr>
-<td>CONTRACT</td>
-<td>合约账户</td>
-</tr>
-<tr>
-<td>USD_MIX</td>
-<td>混合合约账户</td>
-</tr>
-<tr>
-<td>USDT_MIX</td>
-<td>USDT专业合约账户</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li></li>
-</ul>
 <h2 id='8ba46c43fe'>签名</h2>
 <p>ACCESS-SIGN的请求头是对 <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
 
@@ -1234,6 +1205,11 @@ Signature = base64.encode(Signature)
 </ul>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/time"</span>
+</code></pre>
+<blockquote>
 <p>返回数据：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1252,6 +1228,11 @@ Signature = base64.encode(Signature)
 </ul>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/currencies"</span>
+</code></pre>
+<blockquote>
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1264,7 +1245,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"transfer"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"chains"</span><span class="p">:[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"chain"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"chain"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
@@ -1275,26 +1256,6 @@ Signature = base64.encode(Signature)
                     </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"minWithdrawAmount"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"browserUrl"</span><span class="p">:</span><span class="s2">"https://blockchair.com/bitcoin/testnet/transaction/"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"transfer"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"chains"</span><span class="p">:[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"chain"</span><span class="p">:</span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"extraWithDrawFee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"minDepositAmount"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"minWithdrawAmount"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"browserUrl"</span><span class="p">:</span><span class="s2">"https://ropsten.etherscan.io/tx/"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -1346,8 +1307,8 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">提现手续费</td>
 </tr>
 <tr>
-    <td style="text-align: left">&gt; extraWithDrawFee</td>
-    <td style="text-align: left">归集手续费，平台额外收取百分之多少的费用（此值已除以100） 提币金额 * extraWithDrawFee</td>
+<td style="text-align: left">&gt; extraWithDrawFee</td>
+<td style="text-align: left"></td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; depositConfirm</td>
@@ -1380,6 +1341,11 @@ Signature = base64.encode(Signature)
 <li>GET /api/spot/v1/public/products</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/products"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -1483,6 +1449,11 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/product?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -1588,6 +1559,11 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/ticker?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
+<blockquote>
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1667,6 +1643,11 @@ Signature = base64.encode(Signature)
 <li>GET /api/spot/v1/market/tickers</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/tickers"</span>
+</code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -1773,6 +1754,11 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/fills?symbol=BTCUSDT_SPBL"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -1884,6 +1870,11 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;after=1659076670000&amp;before=1659080270000&amp;limit=100"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -2010,6 +2001,11 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/depth?symbol=BTCUSDT_SPBL&amp;type=step0&amp;limit=100"</span>
+</code></pre>
+<blockquote>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2107,6 +2103,18 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/transfer"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2156,6 +2164,17 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/deposit-address?coin=USDT&amp;chain=trc20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -2266,6 +2285,18 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"address"</span>: <span class="s2">"TBQ2LGFysnqkscvKqLBxnVVVw7ohiDvbdZ"</span>,<span class="s2">"chain"</span>: <span class="s2">"trc20"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2337,6 +2368,18 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-inner"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"toUid"</span>: <span class="s2">"6314497154"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2387,13 +2430,13 @@ Signature = base64.encode(Signature)
 <td>startTime</td>
 <td>String</td>
 <td>是</td>
-<td>开始时间</td>
+<td>开始时间(时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>是</td>
-<td>结束时间</td>
+<td>结束时间(时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -2409,6 +2452,17 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -2533,13 +2587,13 @@ Signature = base64.encode(Signature)
 <td>startTime</td>
 <td>String</td>
 <td>是</td>
-<td>开始时间</td>
+<td>开始时间(时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>是</td>
-<td>结束时间</td>
+<td>结束时间(时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -2555,6 +2609,17 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/deposit-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
@@ -2655,6 +2720,17 @@ Signature = base64.encode(Signature)
 </ul>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/getInfo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2724,6 +2800,17 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets?coin=USDT"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -2835,6 +2922,17 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills?coinId=2&amp;groupType=deposit&amp;bizType=deposit&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -2898,6 +2996,30 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">id</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>groupType
+
+<ul>
+<li>deposit</li>
+<li>withdraw</li>
+<li>transaction</li>
+<li>transfer</li>
+<li>other</li>
+</ul></li>
+<li>bizType
+
+<ul>
+<li>deposit</li>
+<li>withdraw</li>
+<li>buy</li>
+<li>sell</li>
+<li>transfer-in</li>
+<li>transfer-out</li>
+<li>system-lock</li>
+<li>user-lock</li>
+</ul></li>
+</ul>
 <h3 id='b0c7e2b4a5'>获取划转记录</h3>
 <p>限速规则 20次/1s</p>
 
@@ -2927,7 +3049,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">fromType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">账单大类型   <a href="#API公开参数">accountType</a></td>
+<td style="text-align: center">账单大类型</td>
 </tr>
 <tr>
 <td style="text-align: left">after</td>
@@ -2949,6 +3071,17 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -3011,6 +3144,16 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">交易时间(毫秒时间戳)</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>fromType
+
+<ul>
+<li>exchange</li>
+<li>usdt_mix</li>
+<li>usd_mix</li>
+</ul></li>
+</ul>
 <h2 id='fdf72688ac'>订单接口</h2><h3 id='fd6ce2a756'>下单</h3>
 <p>限速规则：10次/1s</p>
 
@@ -3075,6 +3218,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"side"</span>: <span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -3190,6 +3345,18 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/batch-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderList"</span>:[<span class="o">{</span><span class="s2">"side"</span>:<span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}]</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -3236,6 +3403,18 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-order"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -3279,6 +3458,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-batch-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderIds"</span>: <span class="o">[</span><span class="s2">"34923828882"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回参数</p>
 </blockquote>
@@ -3329,6 +3520,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orderInfo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回参数</p>
 </blockquote>
@@ -3442,6 +3645,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/open-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回参数</p>
 </blockquote>
@@ -3573,6 +3788,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/history"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"after"</span>:<span class="s2">"1659076670000"</span>,<span class="s2">"before"</span>:<span class="s2">"1659076670000"</span>,<span class="s2">"limit"</span>:<span class="s2">"100"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回参数</p>
 </blockquote>
@@ -3710,6 +3937,18 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/fills"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>:<span class="s2">"34923828882"</span>,<span class="s2">"after"</span>:<span class="s2">"349234552212"</span>,<span class="s2">"before"</span>:<span class="s2">"34923775522"</span>,<span class="s2">"limit"</span>:<span class="s2">"100"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>返回参数</p>
 </blockquote>
