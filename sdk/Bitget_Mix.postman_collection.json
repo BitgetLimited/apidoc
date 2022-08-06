@@ -2738,22 +2738,22 @@
 	"variable": [
 		{
 			"key": "apiKey",
-			"value": "bg_fcdae1a6714c08a554bf4f62a6da9563",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "secretKey",
-			"value": "5ccea28f627c4ac772a8044cbe0aa2792df6688414c062b3761cc3d6d692a298",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "passphrase",
-			"value": "1r1b6uX6PQ9tbKwb",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "host",
-			"value": "https://capi.bitget.bike",
+			"value": "https://api.bitget.com",
 			"type": "string"
 		}
 	]
