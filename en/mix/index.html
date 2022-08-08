@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#august-08-2022" class="toc-h2 toc-link" data-title="August, 08, 2022">August, 08, 2022</a>
+              </li>
+              <li>
                 <a href="#august-06-2022" class="toc-h2 toc-link" data-title="August, 06, 2022">August, 06, 2022</a>
               </li>
               <li>
@@ -417,6 +420,9 @@
               </li>
               <li>
                 <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
+              </li>
+              <li>
+                <a href="#signature-code-demo" class="toc-h2 toc-link" data-title="Signature Code Demo">Signature Code Demo</a>
               </li>
               <li>
                 <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request Interaction">Request Interaction</a>
@@ -703,7 +709,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='august-06-2022'>August, 06, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='august-08-2022'>August, 08, 2022</h2>
+<ul>
+<li>add Sign Code Demo <code>Signature Code Demo</code> </li>
+</ul>
+<h2 id='august-06-2022'>August, 06, 2022</h2>
 <ul>
 <li><p>add PostMan Example</p>
 <h2 id='august-03-2022'>August, 03, 2022</h2></li>
@@ -1327,7 +1337,51 @@ Signature = hmac_sha256(secretkey, Message)
 <p><code>
 Signature = base64.encode(Signature)
 </code></p>
-<h2 id='request-interaction'>Request Interaction</h2>
+<h2 id='signature-code-demo'>Signature Code Demo</h2>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+                                  <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+
+        <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">defaultIfBlank</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">);</span>
+        <span class="n">queryString</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isBlank</span><span class="o">(</span><span class="n">queryString</span><span class="o">)</span> <span class="o">?</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span> <span class="o">:</span> <span class="s">"?"</span> <span class="o">+</span> <span class="n">queryString</span><span class="o">;</span>
+
+        <span class="n">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">preHash</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">);</span>
+        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">HMAC_SHA256</span><span class="o">);</span>
+        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+        <span class="n">mac</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">secretKeySpec</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">)));</span>
+    <span class="o">}</span>
+
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">msg</span><span class="o">=</span><span class="n">generate</span><span class="o">(</span><span class="s">"1659927638003"</span><span class="o">,</span><span class="s">"POST"</span><span class="o">,</span><span class="s">"/api/mix/v1/order/placeOrder"</span> <span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">TRXUSDT_UMCBL</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span><span class="n">open_long</span><span class="s">","</span><span class="n">orderType</span><span class="s">":"</span><span class="n">limit</span><span class="s">","</span><span class="n">force</span><span class="s">":"</span><span class="n">normal</span><span class="s">","</span><span class="n">price</span><span class="s">":"</span><span class="mf">0.046317</span><span class="s">","</span><span class="n">quantity</span><span class="s">":"</span><span class="mi">1212</span><span class="s">"}"</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Python</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+    <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">signStr</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="s">'1659927638003'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">,</span> <span class="s">'/api/mix/v1/order/placeOrder'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s">'{"symbol":"TRXUSDT_SPBL","side":"open_long","orderType":"limit","force":"normal","price":"0.046317","quantity":"1212"}'</span><span class="p">)),</span> <span class="s">''</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
+</code></pre><h2 id='request-interaction'>Request Interaction</h2>
 <p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be all set to:&#39;application/json&#39;.</p>
 
 <p><strong>Request Interaction Description</strong></p>
@@ -3730,6 +3784,14 @@ If there is a large deviation between the local server time and the API server t
 </ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
+
+<p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <code>Trader close Position</code></p>
+
+<p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, this field is from <code>Market</code> -&gt; <code>Get All Symbols</code></p>
+
+<p>for example:</p>
+
+<p><code>pricePlace</code> of <code>BTCUSDT_UMCBL</code> is 1 and <code>priceEndStep</code> is 5, then the order price needs to satisfy a multiple of 0.5, for example, the price should be 23455.0, 23455.5, 23446.0</p>
 
 <p><strong>HTTP Request</strong></p>
 
