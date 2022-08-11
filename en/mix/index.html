@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#august-11-2022" class="toc-h2 toc-link" data-title="August, 11, 2022">August, 11, 2022</a>
+              </li>
+              <li>
                 <a href="#august-08-2022" class="toc-h2 toc-link" data-title="August, 08, 2022">August, 08, 2022</a>
               </li>
               <li>
@@ -709,7 +712,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='august-08-2022'>August, 08, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='august-11-2022'>August, 11, 2022</h2>
+<ul>
+<li><code>CopyTrade</code> -&gt; <code>Get CopyTrade Symbols</code> add response parameter <code>minOpenCount</code></li>
+</ul>
+<h2 id='august-08-2022'>August, 08, 2022</h2>
 <ul>
 <li>add Sign Code Demo <code>Signature Code Demo</code> </li>
 </ul>
@@ -3793,6 +3800,31 @@ If there is a large deviation between the local server time and the API server t
 
 <p><code>pricePlace</code> of <code>BTCUSDT_UMCBL</code> is 1 and <code>priceEndStep</code> is 5, then the order price needs to satisfy a multiple of 0.5, for example, the price should be 23455.0, 23455.5, 23446.0</p>
 
+<aside class="warning">
+
+```
+<red>
+    <b>Note</b> this error occurred when placing an order
+</red>
+
+{
+    "code":"40762",
+    "msg":"The order size is greater than the max open size",
+    "requestTime":1627293504612
+}
+```
+
+</aside> 
+
+<ul>
+<li><p>There are two situations where this error occurs</p>
+
+<ul>
+<li>Insufficient account balance</li>
+<li>The current leverage position gradient of the current trading pair is full, please refer to the specific position gradient <a href="https://www.bitget.com/mix/introduction/positionLevel?code=BTCUSDT_UMCBL?business=USDT_MIX_CONTRACT_BL">here</a></li>
+</ul></li>
+</ul>
+
 <p><strong>HTTP Request</strong></p>
 
 <ul>
@@ -4085,7 +4117,7 @@ If there is a large deviation between the local server time and the API server t
 
 <ul>
 <li>normal<br></li>
-<li>postOnly</li>
+<li>post_only</li>
 <li>fok</li>
 <li>ioc</li>
 </ul></li>
@@ -7051,11 +7083,9 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -7077,6 +7107,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">openTrade</td>
 <td style="text-align: left">Whether to open copy trade</td>
+</tr>
+<tr>
+<td style="text-align: left">minOpenCount</td>
+<td style="text-align: left">Trader min open size</td>
 </tr>
 </tbody></table>
 <h3 id='trader-change-copytrade-symbol'>Trader Change CopyTrade symbol</h3>

@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-11" class="toc-h2 toc-link" data-title="2022年8月11日">2022年8月11日</a>
+              </li>
+              <li>
                 <a href="#2022-8-08" class="toc-h2 toc-link" data-title="2022年8月08日">2022年8月08日</a>
               </li>
               <li>
@@ -610,7 +613,7 @@
                         <a href="#983dfacfba" class="toc-h3 toc-link" data-title="交易员待分润明细">交易员待分润明细</a>
                       </li>
                       <li>
-                        <a href="#dcdb3935e1" class="toc-h3 toc-link" data-title="获取平台跟单交易对信息">获取平台跟单交易对信息</a>
+                        <a href="#91fa8c6a21" class="toc-h3 toc-link" data-title="获取交易员跟单交易对">获取交易员跟单交易对</a>
                       </li>
                       <li>
                         <a href="#6b38cfe441" class="toc-h3 toc-link" data-title="交易员设置跟单交易对">交易员设置跟单交易对</a>
@@ -713,7 +716,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-08'>2022年8月08日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-11'>2022年8月11日</h2>
+<ul>
+<li><code>跟单接口</code> -&gt; <code>获取交易员跟单交易对</code> 新增响应参数，交易员最小开仓数量</li>
+</ul>
+<h2 id='2022-8-08'>2022年8月08日</h2>
 <ul>
 <li>增加加密代码示例</li>
 </ul>
@@ -3819,6 +3826,29 @@ Signature = base64.encode(Signature)
 
 <p><code>BTCUSDT_UMCBL</code>的 <code>pricePlace</code>  为 1 , <code>priceEndStep</code> 为 5, 则下单时委托的价格需要满足 0.5的倍数, 比如价格应该是 23455.0,  23455.5, 23446.0</p>
 
+<aside class="warning">
+
+```
+<red>
+    <b>注意</b>下单出现此错误
+</red>
+
+{
+    "code":"40762",
+    "msg":"The order size is greater than the max open size",
+    "requestTime":1627293504612
+}
+```
+
+</aside> 
+
+<p>会有两种情况出现此错误，</p>
+
+<ul>
+<li>账户余额不足</li>
+<li>当前交易对当前杠杆仓位梯度已满，具体仓位梯度请参考 <a href="https://www.bitget.com/mix/introduction/positionLevel?code=BTCUSDT_UMCBL?business=USDT_MIX_CONTRACT_BL">这里</a></li>
+</ul>
+
 <p><strong>HTTP请求</strong></p>
 
 <ul>
@@ -4123,7 +4153,7 @@ Signature = base64.encode(Signature)
 
 <ul>
 <li>normal<br></li>
-<li>postOnly</li>
+<li>post_only</li>
 <li>fok</li>
 <li>ioc</li>
 </ul></li>
@@ -7083,7 +7113,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">昵称</td>
 </tr>
 </tbody></table>
-<h3 id='dcdb3935e1'>获取平台跟单交易对信息</h3>
+<h3 id='91fa8c6a21'>获取交易员跟单交易对</h3>
 <p>限速规则  20次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -7110,12 +7140,9 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -7137,6 +7164,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">openTrade</td>
 <td style="text-align: left">是否开启跟单</td>
+</tr>
+<tr>
+<td style="text-align: left">minOpenCount</td>
+<td style="text-align: left">交易员最小开单数量</td>
 </tr>
 </tbody></table>
 <h3 id='6b38cfe441'>交易员设置跟单交易对</h3>
