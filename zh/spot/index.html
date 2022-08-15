@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-15" class="toc-h2 toc-link" data-title="2022年8月15日">2022年8月15日</a>
+              </li>
+              <li>
                 <a href="#2022-8-08" class="toc-h2 toc-link" data-title="2022年8月08日">2022年8月08日</a>
               </li>
               <li>
@@ -390,14 +393,6 @@
               </li>
               <li>
                 <a href="#90c3a93e7c" class="toc-h2 toc-link" data-title="加密示例">加密示例</a>
-                  <ul class="toc-list-h3">
-                      <li>
-                        <a href="#java" class="toc-h3 toc-link" data-title="Java">Java</a>
-                      </li>
-                      <li>
-                        <a href="#python" class="toc-h3 toc-link" data-title="Python">Python</a>
-                      </li>
-                  </ul>
               </li>
               <li>
                 <a href="#d9ed27b09f" class="toc-h2 toc-link" data-title="请求交互">请求交互</a>
@@ -613,9 +608,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-08'>2022年8月08日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-15'>2022年8月15日</h2>
 <ul>
-<li>新增加密代码示例 <code>加密示例</code></li>
+<li><p>Get 请求方式禁止在 <code>RequestBody</code> 传递参数, 请以 <code>QueryString</code> 方式传递参数</p>
+<h2 id='2022-8-08'>2022年8月08日</h2></li>
+<li><p>新增加密代码示例 <code>加密示例</code></p></li>
 </ul>
 <h2 id='2022-8-06'>2022年8月06日</h2>
 <ul>
@@ -843,8 +840,7 @@ clipboard.on('error', function(e) {
 <p>本章节主要为访问限制：</p>
 
 <ul>
-<li>Rest API
-当访问超过频率限制时，将返回429状态：请求太频繁。</li>
+<li>429  当访问超过频率限制时，将返回状态429：请求太频繁。</li>
 </ul>
 
 <p><strong>Rest API</strong></p>
@@ -1172,7 +1168,11 @@ Signature = hmac_sha256(secretkey, Message)
 <p><code>
 Signature = base64.encode(Signature)
 </code></p>
-<h2 id='90c3a93e7c'>加密示例</h2><h3 id='java'>Java</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+<h2 id='90c3a93e7c'>加密示例</h2>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
                                   <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
             <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
 
@@ -1195,7 +1195,11 @@ Signature = base64.encode(Signature)
       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
     <span class="o">}</span>
 
-</code></pre><h3 id='python'>Python</h3><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+</code></pre>
+<blockquote>
+<p>Python</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
     <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
@@ -2347,7 +2351,7 @@ Signature = base64.encode(Signature)
 <td>clientOid</td>
 <td>String</td>
 <td>否</td>
-<td>客户端自定义Id</td>
+<td>客户端自定义Id 唯一健</td>
 </tr>
 </tbody></table>
 
@@ -2430,7 +2434,7 @@ Signature = base64.encode(Signature)
 <td>clientOid</td>
 <td>String</td>
 <td>否</td>
-<td>客户端自定义ID</td>
+<td>客户端自定义ID 唯一健</td>
 </tr>
 </tbody></table>
 

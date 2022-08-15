@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-15" class="toc-h2 toc-link" data-title="2022年8月15日">2022年8月15日</a>
+              </li>
+              <li>
                 <a href="#2022-8-11" class="toc-h2 toc-link" data-title="2022年8月11日">2022年8月11日</a>
               </li>
               <li>
@@ -716,7 +719,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-11'>2022年8月11日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-15'>2022年8月15日</h2>
+<ul>
+<li>Get 请求方式禁止在 <code>RequestBody</code> 传递参数, 请以 <code>QueryString</code> 方式传递参数</li>
+</ul>
+<h2 id='2022-8-11'>2022年8月11日</h2>
 <ul>
 <li><code>跟单接口</code> -&gt; <code>获取交易员跟单交易对</code> 新增响应参数，交易员最小开仓数量</li>
 </ul>
@@ -1571,7 +1578,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">minTradeNum</td>
-<td style="text-align: left">最小开张数</td>
+<td style="text-align: left">最小开单数量(左币)</td>
 </tr>
 <tr>
 <td style="text-align: left">priceEndStep</td>

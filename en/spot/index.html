@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#15-08-2022" class="toc-h2 toc-link" data-title="15/08/2022">15/08/2022</a>
+              </li>
+              <li>
                 <a href="#08-08-2022" class="toc-h2 toc-link" data-title="08/08/2022">08/08/2022</a>
               </li>
               <li>
@@ -390,14 +393,6 @@
               </li>
               <li>
                 <a href="#signature-demo-code" class="toc-h2 toc-link" data-title="Signature Demo Code">Signature Demo Code</a>
-                  <ul class="toc-list-h3">
-                      <li>
-                        <a href="#java" class="toc-h3 toc-link" data-title="Java">Java</a>
-                      </li>
-                      <li>
-                        <a href="#python" class="toc-h3 toc-link" data-title="Python">Python</a>
-                      </li>
-                  </ul>
               </li>
               <li>
                 <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request interaction">Request interaction</a>
@@ -610,13 +605,15 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='08-08-2022'>08/08/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='15-08-2022'>15/08/2022</h2>
 <ul>
-<li>add <code>Signature Demo Code</code>  Example</li>
+<li>GET request It is forbidden to transmit parameters in the <code>Request Body</code>, please pass the parameters in <code>QueryString</code></li>
 </ul>
-<h2 id='06-08-2022'>06/08/2022</h2>
+<h2 id='08-08-2022'>08/08/2022</h2>
 <ul>
-<li>add PostMan Example</li>
+<li><p>add <code>Signature Demo Code</code>  Example</p>
+<h2 id='06-08-2022'>06/08/2022</h2></li>
+<li><p>add PostMan Example</p></li>
 </ul>
 <h2 id='03-08-2022'>03/08/2022</h2>
 <ul>
@@ -1203,7 +1200,11 @@ please delete the APIKey as soon as possible.
 <p>Step 2. Base64 encoding for Signature.</p>
 
 <p>Signature = base64.encode(Signature)</p>
-<h2 id='signature-demo-code'>Signature Demo Code</h2><h3 id='java'>Java</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+<h2 id='signature-demo-code'>Signature Demo Code</h2>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
                                   <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
             <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
 
@@ -1225,7 +1226,11 @@ please delete the APIKey as soon as possible.
       <span class="n">String</span> <span class="n">msg</span><span class="o">=</span><span class="n">generate</span><span class="o">(</span><span class="s">"1659927638003"</span><span class="o">,</span><span class="s">"POST"</span><span class="o">,</span><span class="s">"/api/spot/v1/trade/orders"</span> <span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">TRXUSDT_SPBL</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span><span class="n">buy</span><span class="s">","</span><span class="n">orderType</span><span class="s">":"</span><span class="n">limit</span><span class="s">","</span><span class="n">force</span><span class="s">":"</span><span class="n">normal</span><span class="s">","</span><span class="n">price</span><span class="s">":"</span><span class="mf">0.046317</span><span class="s">","</span><span class="n">quantity</span><span class="s">":"</span><span class="mi">1212</span><span class="s">"}"</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
     <span class="o">}</span>
-</code></pre><h3 id='python'>Python</h3><pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+</code></pre>
+<blockquote>
+<p>Python</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
     <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
