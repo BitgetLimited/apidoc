@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-19" class="toc-h2 toc-link" data-title="2022年8月19日">2022年8月19日</a>
+              </li>
+              <li>
                 <a href="#2022-8-15" class="toc-h2 toc-link" data-title="2022年8月15日">2022年8月15日</a>
               </li>
               <li>
@@ -608,7 +611,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-15'>2022年8月15日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-19'>2022年8月19日</h2>
+<ul>
+<li><code>公共行情接口</code> -&gt; <code>获取K线数据</code> 增加utc0 时区查询节点</li>
+<li><code>公共行情接口</code> -&gt; <code>获取某个Ticker信息</code>，<code>获取全部Ticker信息</code> 增加响应字段 <code>openUtc0</code> 零时区开盘价</li>
+</ul>
+<h2 id='2022-8-15'>2022年8月15日</h2>
 <ul>
 <li><p>Get 请求方式禁止在 <code>RequestBody</code> 传递参数, 请以 <code>QueryString</code> 方式传递参数</p>
 <h2 id='2022-8-08'>2022年8月08日</h2></li>
@@ -1638,20 +1646,21 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"34413.1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"buyOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24175.65"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23677.75"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24014.11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177689342.3025"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7421.5009"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177689342.302407"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660704288118"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24013.94"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24014.06"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -1699,6 +1708,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">卖一价</td>
 </tr>
 <tr>
+<td style="text-align: left">openUtc0</td>
+<td style="text-align: left">零时区 开盘价</td>
+</tr>
+<tr>
 <td style="text-align: left">ts</td>
 <td style="text-align: left">时间戳</td>
 </tr>
@@ -1735,6 +1748,7 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"buyOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1788,6 +1802,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">sellOne</td>
 <td style="text-align: left">卖一价</td>
+</tr>
+<tr>
+<td style="text-align: left">openUtc0</td>
+<td style="text-align: left">零时区 开盘价</td>
 </tr>
 </tbody></table>
 <h3 id='2fdd066e43'>获取成交数据</h3>
@@ -2027,9 +2045,18 @@ Signature = base64.encode(Signature)
 <li>30min(30分钟)</li>
 <li>1h(1小时)</li>
 <li>4h(4小时)</li>
+<li>6h(6小时)</li>
 <li>12h(12小时)</li>
 <li>1day(1天)</li>
+<li>3day (3天)</li>
 <li>1week(1周)</li>
+<li>1M (月线)</li>
+<li>6Hutc (零时区 6小时线)</li>
+<li>12Hutc (零时区12小时线)</li>
+<li>1Dutc (零时区 1日线)</li>
+<li>3Dutc (零时区 3日线)</li>
+<li>1Wutc (零时区 周线)</li>
+<li>1Mutc (零时区 月线)</li>
 </ul>
 <h3 id='5139801b64'>获取深度数据</h3>
 <p>限速规则：20次/1s</p>

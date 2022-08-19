@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-19" class="toc-h2 toc-link" data-title="2022年8月19日">2022年8月19日</a>
+              </li>
+              <li>
                 <a href="#2022-8-16" class="toc-h2 toc-link" data-title="2022年8月16日">2022年8月16日</a>
               </li>
               <li>
@@ -722,7 +725,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-16'>2022年8月16日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-19'>2022年8月19日</h2>
+<ul>
+<li><code>行情接口</code> -&gt; <code>获取K线数据</code> 新增UTC0 时区节点查询</li>
+<li><code>行情接口</code> -&gt; <code>单个Ticker行情获取</code> , <code>全部ticker行情获取</code> 新增 <code>openUtc</code>, <code>chgUtc</code> UTC0 时区价格</li>
+</ul>
+<h2 id='2022-8-16'>2022年8月16日</h2>
 <ul>
 <li><p><code>合约信息接口</code> 新增  <code>sizeMultiplier</code> 数量乘数字段</p>
 <h2 id='2022-8-15'>2022年8月15日</h2></li>
@@ -1721,22 +1729,23 @@ Signature = base64.encode(Signature)
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"30002"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="s2">"30000.5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="s2">"30000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"30002"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"30002"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1627115973334"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="s2">"0.15392308"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"68.4427"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1806816.7596"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="s2">"1806816.7596"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627115973334</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00442"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"156243.358"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23841.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -1791,6 +1800,14 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">usdtVolume</td>
 <td style="text-align: left">usdt成交量</td>
 </tr>
+<tr>
+<td style="text-align: left">openUtc</td>
+<td style="text-align: left">UTC0  开盘价</td>
+</tr>
+<tr>
+<td style="text-align: left">chgUtc</td>
+<td style="text-align: left">UTC0 24小时涨跌幅</td>
+</tr>
 </tbody></table>
 <h3 id='ticker-2'>全部Ticker行情获取</h3>
 <p>限速规则: 20次/1s (IP)</p>
@@ -1828,24 +1845,24 @@ Signature = base64.encode(Signature)
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"29990.5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="s2">"30000.5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="s2">"30000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"30007"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"30007"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1627116888108"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="s2">"0.15348077"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"73.4114"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1978178.35205"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="s2">"1978178.35205"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627116888119</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00442"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"156243.358"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23841.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -1899,6 +1916,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">usdtVolume</td>
 <td style="text-align: left">usdt成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">openUtc</td>
+<td style="text-align: left">UTC0 开盘价</td>
+</tr>
+<tr>
+<td style="text-align: left">chgUtc</td>
+<td style="text-align: left">UTC0 24小时价格涨跌幅</td>
 </tr>
 </tbody></table>
 
@@ -2079,18 +2104,29 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
-<p><strong>granularity(K线类别)</strong></p>
+<p><strong>granularity(candles interval)</strong></p>
 
 <ul>
-<li>60(1minute)</li>
-<li>300(5minute)</li>
-<li>900(15minute)</li>
-<li>1800(30minute)</li>
-<li>3600(1hour)</li>
-<li>14400(4hour)</li>
-<li>43200(12hour)</li>
-<li>86400(1day)</li>
-<li>604800(1week)</li>
+<li>1m(1minute)</li>
+<li>3m(3minute)</li>
+<li>5m(5minute)</li>
+<li>15m(15minute)</li>
+<li>30m(30minute)</li>
+<li>1H(1hour)</li>
+<li>2H (2hour)</li>
+<li>4H (4hour)</li>
+<li>6H (6hour)</li>
+<li>12H (12hour)</li>
+<li>1D (1day)</li>
+<li>3D (3day)</li>
+<li>1W(1week)</li>
+<li>1M (1month)</li>
+<li>6Hutc (UTC0 6hour)</li>
+<li>12Hutc (UTC0 12hour) </li>
+<li>1Dutc  (UTC0 1day)</li>
+<li>3Dutc (UTC0 3day)</li>
+<li>1Wutc (UTC0 1 week)</li>
+<li>1Mutc (UTC0 1 month)</li>
 </ul>
 <h3 id='b9d4674af5'>获取币种指数</h3>
 <p>限速规则: 20次/1s (IP)</p>
@@ -4773,6 +4809,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">委托价格</td>
 </tr>
 <tr>
+<td style="text-align: left">priceAvg</td>
+<td style="text-align: left">成交均价</td>
+</tr>
+<tr>
 <td style="text-align: left">state</td>
 <td style="text-align: left">订单状态</td>
 </tr>
@@ -4798,7 +4838,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: left">最近更新时间</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">更新时间</td>
 </tr>
 </tbody></table>
 <h3 id='f876a4e1f9'>获取订单详情</h3>

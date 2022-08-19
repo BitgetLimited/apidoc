@@ -2,7 +2,6 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -313,6 +312,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#19-08-2022" class="toc-h2 toc-link" data-title="19/08/2022">19/08/2022</a>
+              </li>
+              <li>
                 <a href="#15-08-2022" class="toc-h2 toc-link" data-title="15/08/2022">15/08/2022</a>
               </li>
               <li>
@@ -605,7 +607,12 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='15-08-2022'>15/08/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='19-08-2022'>19/08/2022</h2>
+<ul>
+<li><code>Market</code> -&gt; <code>Get Candles Data</code> add request parameter UTC0 </li>
+<li><code>Market</code> -&gt; <code>Get All Tickers</code> , <code>Get Single Ticker</code> add response  <code>openUtc0</code></li>
+</ul>
+<h2 id='15-08-2022'>15/08/2022</h2>
 <ul>
 <li>GET request It is forbidden to transmit parameters in the <code>Request Body</code>, please pass the parameters in <code>QueryString</code></li>
 </ul>
@@ -1666,20 +1673,21 @@ please delete the APIKey as soon as possible.
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "code":"00000",
-    "data":{
-        "symbol":"BTCUSDT",
-        "high24h":"34413.1",
-        "low24h":"34413.1",
-        "close":"34413.1",
-        "quoteVol":"0",
-        "baseVol":"0",
-        "usdtVol":"0",
-        "buyOne":"0",
-        "sellOne":"0",
-        "ts":"1625125755277"
-    },
-    "msg":"success"
+    "code": "00000",
+    "msg": "success",
+    "data": {
+        "symbol": "BTCUSDT",
+        "high24h": "24175.65",
+        "low24h": "23677.75",
+        "close": "24014.11",
+        "quoteVol": "177689342.3025",
+        "baseVol": "7421.5009",
+        "usdtVol": "177689342.302407",
+        "ts": "1660704288118",
+        "buyOne": "24013.94",
+        "sellOne": "24014.06",
+        "openUtc0": "23856.72"
+    }
 }
 </code></pre>
 <p><strong>Response Parameter</strong></p>
@@ -1730,6 +1738,10 @@ please delete the APIKey as soon as possible.
 <td>usdtVol</td>
 <td>USDT volume</td>
 </tr>
+<tr>
+<td>openUtc0</td>
+<td>UTC0 opening price</td>
+</tr>
 </tbody></table>
 <h3 id='get-all-tickers'>Get All Tickers</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -1749,22 +1761,21 @@ please delete the APIKey as soon as possible.
 <p>Response</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "code":"00000",
-    "data":[
-      {
-        "symbol":"BTCUSDT",
-        "high24h":"34413.1",
-        "low24h":"34413.1",
-        "close":"34413.1",
-        "quoteVol":"0",
-        "baseVol":"0",
-        "usdtVol":"0",
-        "buyOne":"0",
-        "sellOne":"0",
-        "ts":"1625125755277"
-    }
-    ]
-    "msg":"success"
+    "code": "00000",
+    "msg": "success",
+    "data": [{
+        "symbol": "BTCUSDT",
+        "high24h": "24175.65",
+        "low24h": "23677.75",
+        "close": "24014.11",
+        "quoteVol": "177689342.3025",
+        "baseVol": "7421.5009",
+        "usdtVol": "177689342.302407",
+        "ts": "1660704288118",
+        "buyOne": "24013.94",
+        "sellOne": "24014.06",
+        "openUtc0": "23856.72"
+    }]
 }
 </code></pre>
 <p><strong>Response Parameter</strong></p>
@@ -1814,6 +1825,10 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>usdtVol</td>
 <td>USDT volume</td>
+</tr>
+<tr>
+<td>openUtc0</td>
+<td>UTC0  open price</td>
 </tr>
 </tbody></table>
 <h3 id='get-market-trades'>Get Market Trades</h3>
@@ -2042,6 +2057,29 @@ please delete the APIKey as soon as possible.
 <td>USDT volume</td>
 </tr>
 </tbody></table>
+
+<p><strong>period</strong></p>
+
+<ul>
+<li>1min (1 minute)</li>
+<li>5min (5 minutes)</li>
+<li>15min (15 minutes)</li>
+<li>30min (30 minutes)</li>
+<li>1h (1 hour)</li>
+<li>4h (4 hours)</li>
+<li>6h (6 hours)</li>
+<li>12h (12 hours)</li>
+<li>1day (1 day)</li>
+<li>3day (3 days)</li>
+<li>1week (1 week)</li>
+<li>1M (monthly line)</li>
+<li>6Hutc (UTC0 6 hour)</li>
+<li>12Hutc (UTC0 12 hour)</li>
+<li>1Dutc (UTC0 1day)</li>
+<li>3Dutc (UTC0 3rd)</li>
+<li>1Wutc (UTC0 weekly)</li>
+<li>1Mutc (UTC0 monthly)</li>
+</ul>
 <h3 id='get-depth'>Get Depth</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
 
