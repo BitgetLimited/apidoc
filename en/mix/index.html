@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#august-29-2022" class="toc-h2 toc-link" data-title="August, 29, 2022">August, 29, 2022</a>
+              </li>
+              <li>
                 <a href="#august-19-2022" class="toc-h2 toc-link" data-title="August, 19, 2022">August, 19, 2022</a>
               </li>
               <li>
@@ -551,6 +554,9 @@
                         <a href="#get-history-orders" class="toc-h3 toc-link" data-title="Get History Orders">Get History Orders</a>
                       </li>
                       <li>
+                        <a href="#get-producttype-history-orders" class="toc-h3 toc-link" data-title="Get ProductType History Orders">Get ProductType History Orders</a>
+                      </li>
+                      <li>
                         <a href="#get-order-details" class="toc-h3 toc-link" data-title="Get Order Details">Get Order Details</a>
                       </li>
                       <li>
@@ -721,7 +727,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='august-19-2022'>August, 19, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='august-29-2022'>August, 29, 2022</h2>
+<ul>
+<li>Add new interface <code>Trade</code> - &gt;  <code>Get productType History Order</code> </li>
+</ul>
+<h2 id='august-19-2022'>August, 19, 2022</h2>
 <ul>
 <li> <code>Market</code> - &gt; <code>Get Candle Data</code> add UTC0  <code>granularity</code></li>
 <li><code>Market</code> -&gt; <code>Get Sinle Symbol Ticker</code>, <code>Get All Symbol Ticker</code> response <code>openUtc</code> <code>chgUtc</code>  UTC0 data</li>
@@ -4794,6 +4804,185 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">last update time</td>
 </tr>
 </tbody></table>
+<h3 id='get-producttype-history-orders'>Get ProductType History Orders</h3>
+<p>Limit rule: 5c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/order/historyProductType</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required?</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Start time (timestamp)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">End time (time stamp)</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Number of queries</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Last query orderId</td>
+</tr>
+<tr>
+<td style="text-align: left">isPre</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Whether to query the previous page (default false)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ctime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Trading pair name</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">Order size</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom id</td>
+</tr>
+<tr>
+<td style="text-align: left">filledQty</td>
+<td style="text-align: left">Transaction volume</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">Transaction fee</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">Order price</td>
+</tr>
+<tr>
+<td style="text-align: left">priceAvg</td>
+<td style="text-align: left">Order fill avg price</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">Order status</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">Order direction</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForce</td>
+<td style="text-align: left">Order validity period</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: left">Total profit and loss</td>
+</tr>
+<tr>
+<td style="text-align: left">posSide</td>
+<td style="text-align: left">Position direction</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin currency</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">create time</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">last update time</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>productType
+
+<ul>
+<li>umcbl</li>
+<li>dmcbl</li>
+<li>cmcbl</li>
+</ul></li>
+</ul>
 <h3 id='get-order-details'>Get Order Details</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 
@@ -5646,7 +5835,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">triggerPrice</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
+<td style="text-align: center">Yes</td>
 <td style="text-align: center">Trigger price</td>
 </tr>
 <tr>

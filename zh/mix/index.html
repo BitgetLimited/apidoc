@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-8-29" class="toc-h2 toc-link" data-title="2022年8月29日">2022年8月29日</a>
+              </li>
+              <li>
                 <a href="#2022-8-19" class="toc-h2 toc-link" data-title="2022年8月19日">2022年8月19日</a>
               </li>
               <li>
@@ -554,6 +557,9 @@
                         <a href="#4212d667d1" class="toc-h3 toc-link" data-title="获取历史委托">获取历史委托</a>
                       </li>
                       <li>
+                        <a href="#f01f8ad1de" class="toc-h3 toc-link" data-title="获取全部历史委托">获取全部历史委托</a>
+                      </li>
+                      <li>
                         <a href="#f876a4e1f9" class="toc-h3 toc-link" data-title="获取订单详情">获取订单详情</a>
                       </li>
                       <li>
@@ -725,7 +731,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-19'>2022年8月19日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-29'>2022年8月29日</h2>
+<ul>
+<li> 新增接口 <code>交易接口</code> -&gt; <code>获取全部历史委托</code></li>
+</ul>
+<h2 id='2022-8-19'>2022年8月19日</h2>
 <ul>
 <li><code>行情接口</code> -&gt; <code>获取K线数据</code> 新增UTC0 时区节点查询</li>
 <li><code>行情接口</code> -&gt; <code>单个Ticker行情获取</code> , <code>全部ticker行情获取</code> 新增 <code>openUtc</code>, <code>chgUtc</code> UTC0 时区价格</li>
@@ -4845,6 +4855,188 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">更新时间</td>
 </tr>
 </tbody></table>
+<h3 id='f01f8ad1de'>获取全部历史委托</h3>
+<p>限速规则:  5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/order/historyProductType</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间(时间戳)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间(时间戳)</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">查询条数</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">上一次的查询orderId</td>
+</tr>
+<tr>
+<td style="text-align: left">isPre</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">是否查询上一页(默认false)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?productType=umcbl&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">交易对名称</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">委托数量</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">客户端自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">filledQty</td>
+<td style="text-align: left">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">priceAvg</td>
+<td style="text-align: left">成交均价</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left">订单状态</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">开单方向</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForce</td>
+<td style="text-align: left">订单有效期</td>
+</tr>
+<tr>
+<td style="text-align: left">totalProfits</td>
+<td style="text-align: left">总盈亏</td>
+</tr>
+<tr>
+<td style="text-align: left">posSide</td>
+<td style="text-align: left">持仓方向</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">保证金币种</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">更新时间</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>productType
+
+<ul>
+<li>umcbl</li>
+<li>dmcbl</li>
+<li>cmcbl</li>
+</ul></li>
+</ul>
 <h3 id='f876a4e1f9'>获取订单详情</h3>
 <p>限速规则:  20次/1s (uid)</p>
 
@@ -5702,7 +5894,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">triggerPrice</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">触发价格</td>
 </tr>
 <tr>
