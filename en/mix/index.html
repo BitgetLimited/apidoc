@@ -3255,14 +3255,13 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition?symbol=BTCUSDT_UMCBL&marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -3407,14 +3406,13 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition?productType=umcbl&marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
