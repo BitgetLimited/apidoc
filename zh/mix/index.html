@@ -3278,14 +3278,14 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition?symbol=BTCUSDT_UMCBL&marginCoin=USDT"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition?symbol=BTCUSDT_UMCBL&amp;marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-</span></code></pre>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -3429,14 +3429,14 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition?productType=umcbl&marginCoin=USDT"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition?productType=umcbl&amp;marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-</span></code></pre>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -4751,7 +4751,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -4933,7 +4933,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?productType=umcbl&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/historyProductType?productType=umcbl&amp;startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>

@@ -1523,7 +1523,8 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0006"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"sizeMultiplier"</span><span class="p">:</span><span class="s2">"5"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -1597,6 +1598,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">pricePlace</td>
 <td style="text-align: left">Price decimal places</td>
+</tr>
+<tr>
+<td style="text-align: left">sizeMultiplier</td>
+<td style="text-align: left">Quantity Multiplier The order size must be greater than minTradeNum and satisfy the multiple of sizeMultiplier</td>
 </tr>
 </tbody></table>
 
@@ -3255,14 +3260,14 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition?symbol=BTCUSDT_UMCBL&marginCoin=USDT"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/singlePosition?symbol=BTCUSDT_UMCBL&amp;marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-</span></code></pre>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3406,14 +3411,14 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition?productType=umcbl&marginCoin=USDT"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/position/allPosition?productType=umcbl&amp;marginCoin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-</span></code></pre>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4703,7 +4708,7 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -4882,7 +4887,7 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/history?symbol=BTCUSDT_UMCBL&amp;startTime=1659403328000&amp;endTime=1659410528000"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/order/historyProductType?productType=umcbl&amp;startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
