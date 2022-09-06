@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-9-6" class="toc-h2 toc-link" data-title="2022年9月6日">2022年9月6日</a>
+              </li>
+              <li>
                 <a href="#2022-8-29" class="toc-h2 toc-link" data-title="2022年8月29日">2022年8月29日</a>
               </li>
               <li>
@@ -581,6 +584,9 @@
                         <a href="#a35f9bb9e4" class="toc-h3 toc-link" data-title="止盈止损下单">止盈止损下单</a>
                       </li>
                       <li>
+                        <a href="#a8355c89a0" class="toc-h3 toc-link" data-title="仓位止盈止损">仓位止盈止损</a>
+                      </li>
+                      <li>
                         <a href="#c582da3b9c" class="toc-h3 toc-link" data-title="修改止盈止损">修改止盈止损</a>
                       </li>
                       <li>
@@ -731,7 +737,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-29'>2022年8月29日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-6'>2022年9月6日</h2>
+<ul>
+<li> 新增接口 <code>交易接口</code> -&gt; <code>仓位止盈止损</code></li>
+</ul>
+<h2 id='2022-8-29'>2022年8月29日</h2>
 <ul>
 <li> 新增接口 <code>交易接口</code> -&gt; <code>获取全部历史委托</code></li>
 </ul>
@@ -5950,6 +5960,116 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">客户端自定义id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单号</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>planType
+
+<ul>
+<li>profit_plan</li>
+<li>loss_plan</li>
+</ul></li>
+<li>holdSide
+
+<ul>
+<li>long</li>
+<li>short</li>
+</ul></li>
+</ul>
+<h3 id='a8355c89a0'>仓位止盈止损</h3>
+<p>限速规则: 10次/1s (uid)</p>
+
+<p>仓位止盈止损触发时默认会以市价委托仓位全部数量</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/placePositionsTPSL</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">保证金币种 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">止盈止损类型</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">本仓位是多仓还是空仓</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placePositionsTPSL"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
