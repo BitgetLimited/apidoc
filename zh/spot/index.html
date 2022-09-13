@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-9-13" class="toc-h2 toc-link" data-title="2022年9月13日">2022年9月13日</a>
+              </li>
+              <li>
                 <a href="#2022-8-19" class="toc-h2 toc-link" data-title="2022年8月19日">2022年8月19日</a>
               </li>
               <li>
@@ -611,7 +614,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-8-19'>2022年8月19日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-13'>2022年9月13日</h2>
+<ul>
+<li><code>账户接口</code> -&gt; <code>获取ApiKey信息</code> 新增 <code>parentId</code></li>
+</ul>
+<h2 id='2022-8-19'>2022年8月19日</h2>
 <ul>
 <li><code>公共行情接口</code> -&gt; <code>获取K线数据</code> 增加utc0 时区查询节点</li>
 <li><code>公共行情接口</code> -&gt; <code>获取某个Ticker信息</code>，<code>获取全部Ticker信息</code> 增加响应字段 <code>openUtc0</code> 零时区开盘价</li>
@@ -2841,7 +2848,8 @@ Signature = base64.encode(Signature)
         "authorities": [
             "trade",
             "readonly"
-        ]
+        ],
+        "parentId":"566624801"
     }
 }
 </code></pre>
@@ -2868,6 +2876,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">authorities</td>
 <td style="text-align: center">权限</td>
+</tr>
+<tr>
+<td style="text-align: left">parentId</td>
+<td style="text-align: center">父账号uid</td>
 </tr>
 </tbody></table>
 <h3 id='6f78777a98'>获取账户资产</h3>
