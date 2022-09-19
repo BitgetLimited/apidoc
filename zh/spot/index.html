@@ -313,6 +313,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-9-19" class="toc-h2 toc-link" data-title="2022年9月19日">2022年9月19日</a>
+              </li>
+              <li>
                 <a href="#2022-9-13" class="toc-h2 toc-link" data-title="2022年9月13日">2022年9月13日</a>
               </li>
               <li>
@@ -614,7 +617,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-13'>2022年9月13日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-19'>2022年9月19日</h2>
+<ul>
+<li><code>账户接口</code> -&gt; <code>获取ApiKey信息</code> 新增 <code>trader</code></li>
+</ul>
+<h2 id='2022-9-13'>2022年9月13日</h2>
 <ul>
 <li><code>账户接口</code> -&gt; <code>获取ApiKey信息</code> 新增 <code>parentId</code></li>
 </ul>
@@ -2849,7 +2856,8 @@ Signature = base64.encode(Signature)
             "trade",
             "readonly"
         ],
-        "parentId":"566624801"
+        "parentId":"566624801",
+        "trader":false
     }
 }
 </code></pre>
@@ -2880,6 +2888,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">parentId</td>
 <td style="text-align: center">父账号uid</td>
+</tr>
+<tr>
+<td style="text-align: left">trader</td>
+<td style="text-align: center">是否是交易员</td>
 </tr>
 </tbody></table>
 <h3 id='6f78777a98'>获取账户资产</h3>

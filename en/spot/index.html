@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#19-09-2022" class="toc-h2 toc-link" data-title="19/09/2022">19/09/2022</a>
+              </li>
+              <li>
                 <a href="#13-09-2022" class="toc-h2 toc-link" data-title="13/09/2022">13/09/2022</a>
               </li>
               <li>
@@ -611,7 +614,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update Log</h1><h2 id='13-09-2022'>13/09/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='19-09-2022'>19/09/2022</h2>
+<ul>
+<li><code>Account</code> -&gt; <code>Get ApiKey Info</code> add Response <code>trader</code></li>
+</ul>
+<h2 id='13-09-2022'>13/09/2022</h2>
 <ul>
 <li><code>Account</code> -&gt; <code>Get ApiKey Info</code> add Response <code>parentId</code></li>
 </ul>
@@ -2866,7 +2873,8 @@ please delete the APIKey as soon as possible.
             "trade",
             "readonly"
         ],
-        "parentId":"566624801"
+        "parentId":"566624801",
+        "trader":false
     }
 }
 </code></pre>
@@ -2897,6 +2905,10 @@ please delete the APIKey as soon as possible.
 <tr>
 <td style="text-align: left">parentId</td>
 <td style="text-align: center">Parent Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">trader</td>
+<td style="text-align: center">true is Trader, false is not</td>
 </tr>
 </tbody></table>
 <h3 id='get-account'>Get Account</h3>
