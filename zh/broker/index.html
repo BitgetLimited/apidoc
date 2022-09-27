@@ -313,6 +313,12 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-9-27" class="toc-h2 toc-link" data-title="2022年9月27日">2022年9月27日</a>
+              </li>
+              <li>
+                <a href="#2022-7-1" class="toc-h2 toc-link" data-title="2022年7月1日【新增子账户列表接口】">2022年7月1日【新增子账户列表接口】</a>
+              </li>
+              <li>
                 <a href="#2022-5-27-broker" class="toc-h2 toc-link" data-title="2022年5月27日【新增Broker文档】">2022年5月27日【新增Broker文档】</a>
               </li>
           </ul>
@@ -376,7 +382,16 @@
                         <a href="#c6789f6fd9" class="toc-h3 toc-link" data-title="创建子账户">创建子账户</a>
                       </li>
                       <li>
+                        <a href="#aa61a259d2" class="toc-h3 toc-link" data-title="获取子账户列表">获取子账户列表</a>
+                      </li>
+                      <li>
                         <a href="#a2cebfb9e2" class="toc-h3 toc-link" data-title="修改子账户权限">修改子账户权限</a>
+                      </li>
+                      <li>
+                        <a href="#024f6474ba" class="toc-h3 toc-link" data-title="子账户绑定邮箱">子账户绑定邮箱</a>
+                      </li>
+                      <li>
+                        <a href="#7120ab2161" class="toc-h3 toc-link" data-title="获取子账户邮箱">获取子账户邮箱</a>
                       </li>
                       <li>
                         <a href="#ab8652ba96" class="toc-h3 toc-link" data-title="获取子现货账户列表">获取子现货账户列表</a>
@@ -434,7 +449,16 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-5-27-broker'>2022年5月27日【新增Broker文档】</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-27'>2022年9月27日</h2>
+<ul>
+<li>新增子账户绑定邮箱</li>
+<li>新增子账户获取邮箱</li>
+</ul>
+<h2 id='2022-7-1'>2022年7月1日【新增子账户列表接口】</h2>
+<ul>
+<li>新增子账户列表接口</li>
+</ul>
+<h2 id='2022-5-27-broker'>2022年5月27日【新增Broker文档】</h2>
 <ul>
 <li>新增V1文档</li>
 <li>错误信息支持中/英</li>
@@ -753,6 +777,94 @@ Signature = base64.encode(Signature)
 <li>readonly 只读权限</li>
 </ul></li>
 </ul>
+<h3 id='aa61a259d2'>获取子账户列表</h3>
+<p>限速规则：1次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/account/sub-list</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">默认10 最大100</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">Long</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">上次查询lastEndId</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">子账户状态</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"readonly"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"contract_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"transfer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"recharge"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+<li>del 删除</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>trade   所有交易权限</li>
+<li>withdraw 提币权限</li>
+<li>transfer  划转</li>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
 <h3 id='a2cebfb9e2'>修改子账户权限</h3>
 <p>限速规则：1次/1s (ApiKey)</p>
 
@@ -827,7 +939,88 @@ Signature = base64.encode(Signature)
 <li>readonly 只读权限</li>
 </ul></li>
 </ul>
-<h3 id='ab8652ba96'>获取子现货账户列表</h3>
+<h3 id='024f6474ba'>子账户绑定邮箱</h3>
+<p>限速规则：1次/1s (ApiKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/broker/v1/account/sub-modify-email</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">subEmail</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户邮箱</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='7120ab2161'>获取子账户邮箱</h3>
+<p>限速规则：1次/1s (ApiKey)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/account/sub-email</li>
+</ul>
+
+<p><strong>请求参数(Request Parameter)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号Uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="mi">7713789662</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ab8652ba96'>获取子现货账户列表</h3>
 <p>限速规则：10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -1273,9 +1466,9 @@ Signature = base64.encode(Signature)
 <ul>
 <li>readonly</li>
 <li>spot_trade</li>
-    <li>contract_trade</li>
-    <li>recharge</li>
+<li>contract_trade<br></li>
 <li>transfer</li>
+<li>recharge</li>
 </ul></li>
 </ul>
 <h3 id='apikey-2'>查询子账户ApiKey 列表</h3>
@@ -1451,6 +1644,18 @@ Signature = base64.encode(Signature)
 <td>请求IP</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>readonly</li>
+<li>spot_trade</li>
+<li>contract_trade</li>
+<li>transfer</li>
+<li>recharge</li>
+</ul></li>
+</ul>
 <h1 id='restapi-2'>RestAPI错误代码</h1>
 <table><thead>
 <tr>
