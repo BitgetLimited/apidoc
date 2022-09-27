@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>bitget API Docs</title>
 
+  <style>
     .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -428,9 +429,6 @@
               </li>
               <li>
                 <a href="#access-restriction" class="toc-h2 toc-link" data-title="Access Restriction">Access Restriction</a>
-              </li>
-              <li>
-                <a href="#api-public-parameters" class="toc-h2 toc-link" data-title="API Public Parameters">API Public Parameters</a>
               </li>
               <li>
                 <a href="#api-domain-name" class="toc-h2 toc-link" data-title="API Domain Name">API Domain Name</a>
@@ -1015,280 +1013,6 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <p>Speed limit rules: There are separate instructions on each interface. If there is no general interface, the speed limit is 10 times per second.</p>
 
 <p>Special note: When placing orders in batches, if 4 currency pairs are placed, 10 orders per currency pair will be counted as one request.</p>
-<h2 id='api-public-parameters'>API Public Parameters</h2>
-<p><strong>Side(Trade Direction)</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>open_long</td>
-<td>Open long position</td>
-</tr>
-<tr>
-<td>open_short</td>
-<td>Open short position</td>
-</tr>
-<tr>
-<td>close_long</td>
-<td>Close long position</td>
-</tr>
-<tr>
-<td>close_short</td>
-<td>Close short position</td>
-</tr>
-</tbody></table>
-
-<p><strong>orderType(Trading Type)</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>limit</td>
-<td>Limit order</td>
-</tr>
-<tr>
-<td>market</td>
-<td>Market order</td>
-</tr>
-</tbody></table>
-
-<p><strong>timeInForceValue(Order Validity Period)</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>normal</td>
-<td>Normal order</td>
-</tr>
-<tr>
-<td>post_only</td>
-<td>The order will remain valid until it is traded or cancelled</td>
-</tr>
-<tr>
-<td>Ioc</td>
-<td>The part that cannot be traded immediately has been cancelled</td>
-</tr>
-<tr>
-<td>fok</td>
-<td>Cannot be cancelled immediately</td>
-</tr>
-</tbody></table>
-
-<p><strong>triggerType(Trigger Type)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>fill_price</td>
-<td>Triggered by strike price</td>
-</tr>
-<tr>
-<td>market_price</td>
-<td>Triggered by mark price</td>
-</tr>
-</tbody></table>
-
-<p><strong>planType(Limit Order Type)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>normal_plan</td>
-<td>Normal limit</td>
-</tr>
-<tr>
-<td>profit_plan</td>
-<td>Take profit price</td>
-</tr>
-<tr>
-<td>loss_plan</td>
-<td>Stop loss price</td>
-</tr>
-</tbody></table>
-
-<p><strong>holdSide(Position Directon)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>long</td>
-<td>Long position</td>
-</tr>
-<tr>
-<td>short</td>
-<td>Short position</td>
-</tr>
-</tbody></table>
-
-<p><strong>marginMode(Position Mode)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>fixed</td>
-<td>Isolated margin</td>
-</tr>
-<tr>
-<td>crossed</td>
-<td>Cross margin</td>
-</tr>
-</tbody></table>
-
-<p><strong>holdMode(Position Mode)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>single_hold</td>
-<td>One-way position</td>
-</tr>
-<tr>
-<td>double_hold</td>
-<td>Two-way position</td>
-</tr>
-</tbody></table>
-
-<p><strong>status(Limit Order Status)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>no_trigger</td>
-<td>Not triggered</td>
-</tr>
-<tr>
-<td>triggered</td>
-<td>Triggered</td>
-</tr>
-<tr>
-<td>fail_trigger</td>
-<td>Triggered failed</td>
-</tr>
-<tr>
-<td>cancel</td>
-<td>Cancelled</td>
-</tr>
-</tbody></table>
-
-<p><strong>productType(Product Type )</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>umcbl</td>
-<td>USDT Unified Contract</td>
-</tr>
-<tr>
-<td>dmcbl</td>
-<td>Quanto Swap Contract</td>
-</tr>
-<tr>
-<td>sumcbl</td>
-<td>USDT Unified Contract Analog disk</td>
-</tr>
-<tr>
-<td>sdmcbl</td>
-<td>Quanto Swap Contract Analog disk</td>
-</tr>
-</tbody></table>
-
-<p><strong>state(order status)</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>new</td>
-<td>new order</td>
-</tr>
-<tr>
-<td>partially_filled</td>
-<td>Partially Filled</td>
-</tr>
-<tr>
-<td>filled</td>
-<td>Filled</td>
-</tr>
-<tr>
-<td>canceled</td>
-<td>Canceled</td>
-</tr>
-</tbody></table>
-
-<p><strong>isPlan</strong></p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>plan</td>
-<td>plan order</td>
-</tr>
-<tr>
-<td>profit_loss</td>
-<td>Tpsl order</td>
-</tr>
-</tbody></table>
-
-<p><strong>granularity(candles interval)</strong></p>
-
-<ul>
-<li>60(1minute)</li>
-<li>300(5minute)</li>
-<li>900(15minute)</li>
-<li>1800(30minute)</li>
-<li>3600(1hour)</li>
-<li>14400(4hour)</li>
-<li>43200(12hour)</li>
-<li>86400(1day)</li>
-<li>604800(1week)</li>
-</ul>
 <h2 id='api-domain-name'>API Domain Name</h2>
 <p>You can use the Rest API access method to operate by yourself.     </p>
 
@@ -1628,9 +1352,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl</li>
-<li>dmcbl</li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-depth'>Get Depth</h3>
@@ -1729,7 +1456,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">Symbol Id</td>
 </tr>
 </tbody></table>
 
@@ -1944,9 +1671,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl</li>
-<li>dmcbl</li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-fills'>Get Fills</h3>
@@ -1972,7 +1702,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -2036,7 +1766,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">granularity</td>
@@ -2164,7 +1894,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2231,7 +1961,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2293,7 +2023,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
@@ -2380,7 +2110,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2442,7 +2172,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2509,7 +2239,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2576,7 +2306,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -2643,13 +2373,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
+<td style="text-align: center">Margin coin</td>
 </tr>
 </tbody></table>
 
@@ -2774,7 +2504,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <th style="text-align: left">Parameter Name</th>
 <th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required?</th>
+<th style="text-align: center">Required</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
@@ -2869,9 +2599,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl</li>
-<li>dmcbl</li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-open-count'>Get Open Count</h3>
@@ -2891,7 +2624,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <th style="text-align: left">Parameter Name</th>
 <th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required?</th>
+<th style="text-align: center">Required</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
@@ -2915,7 +2648,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
-<td style="text-align: left">BigDecimal</td>
+<td style="text-align: left">Int</td>
 <td style="text-align: center">No</td>
 <td style="text-align: center">Default leverage is 20</td>
 </tr>
@@ -2973,7 +2706,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -2991,7 +2724,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Position direction ()</td>
+<td style="text-align: center">Position direction (the whole position is not transmitted）</td>
 </tr>
 </tbody></table>
 
@@ -3076,7 +2809,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <th style="text-align: left">Parameter Name</th>
 <th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required?</th>
+<th style="text-align: center">Required</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
@@ -3084,7 +2817,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3161,7 +2894,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3266,7 +2999,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -3550,9 +3283,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl</li>
-<li>dmcbl</li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-account-bill'>Get Account Bill</h3>
@@ -3865,6 +3601,16 @@ If there is a large deviation between the local server time and the API server t
 </tbody></table>
 
 <ul>
+<li>productType
+
+<ul>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
+</ul></li>
 <li>business
 
 <ul>
@@ -3935,7 +3681,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id</td>
+<td style="text-align: center">symbol Id</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -4083,7 +3829,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -4241,7 +3987,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -4322,7 +4068,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -4478,9 +4224,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl</li>
-<li>dmcbl</li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-open-order'>Get Open Order</h3>
@@ -4498,7 +4247,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <th style="text-align: left">Parameter Name</th>
 <th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required?</th>
+<th style="text-align: center">Required</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
@@ -4506,7 +4255,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">product Id (Must be capitalized)</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
 </tbody></table>
 
@@ -4560,7 +4309,7 @@ If there is a large deviation between the local server time and the API server t
 </thead><tbody>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">Trading pair name</td>
+<td style="text-align: left">symbol id</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -4634,7 +4383,7 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <th style="text-align: left">Parameter Name</th>
 <th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required?</th>
+<th style="text-align: center">Required</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
@@ -4766,9 +4515,12 @@ If there is a large deviation between the local server time and the API server t
 <li>productType
 
 <ul>
-<li>umcbl<br></li>
-<li>dmcbl<br></li>
-<li>cmcbl</li>
+<li>umcbl  <code>USDT future</code></li>
+<li>dmcbl  <code>Coin future</code></li>
+<li>cmcbl  <code>USDC future</code></li>
+<li>sumcbl  <code>USDT demo future</code></li>
+<li>sdmcbl  <code>Coin demo future</code></li>
+<li>scmcbl  <code>USDC demo future</code></li>
 </ul></li>
 </ul>
 <h3 id='get-history-orders'>Get History Orders</h3>
