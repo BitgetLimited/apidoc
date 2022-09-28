@@ -313,6 +313,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#september-28-2022" class="toc-h2 toc-link" data-title="September 28, 2022">September 28, 2022</a>
+              </li>
+              <li>
                 <a href="#september-27-2022" class="toc-h2 toc-link" data-title="September 27, 2022">September 27, 2022</a>
               </li>
               <li>
@@ -402,6 +405,9 @@
                       <li>
                         <a href="#sub-withdrawal-only-broker" class="toc-h3 toc-link" data-title="Sub Withdrawal (Only Broker)">Sub Withdrawal (Only Broker)</a>
                       </li>
+                      <li>
+                        <a href="#sub-deposit-auto-transfer-only-broker" class="toc-h3 toc-link" data-title="Sub Deposit Auto Transfer (Only Broker)">Sub Deposit Auto Transfer (Only Broker)</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -445,7 +451,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='update-log'>Update log</h1><h2 id='september-27-2022'>September 27, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='september-28-2022'>September 28, 2022</h2>
+<ul>
+<li>Add <code>Sub Account Interface</code> -&gt; <code>Sub Deposit Auto Transfer</code></li>
+</ul>
+<h2 id='september-27-2022'>September 27, 2022</h2>
 <ul>
 <li>Add sub-account binding email</li>
 <li>Add sub-account to get email</li>
@@ -1346,7 +1356,65 @@ If there is a large deviation between the local server time and the API server t
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='sub-api-interface'>Sub API Interface</h2><h3 id='create-sub-apikey-only-broker'>Create Sub ApiKey (Only Broker)</h3>
+</span></code></pre><h3 id='sub-deposit-auto-transfer-only-broker'>Sub Deposit Auto Transfer (Only Broker)</h3>
+<p>Limit rule：5次/1s  (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/broker/v1/account/sub-auto-transfer</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>String</td>
+<td>Yes</td>
+<td>Sub Uid</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>toAccountType</td>
+<td>String</td>
+<td>Yes</td>
+<td>account  type</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>toAccountType
+
+<ul>
+<li>spot</li>
+<li>mix_usdt</li>
+<li>mix_usd</li>
+<li>mix_usdc</li>
+</ul></li>
+</ul>
+<h2 id='sub-api-interface'>Sub API Interface</h2><h3 id='create-sub-apikey-only-broker'>Create Sub ApiKey (Only Broker)</h3>
 <p>Limit rule：10次/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
