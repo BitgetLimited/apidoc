@@ -310,6 +310,9 @@
     <ul class="search-results"></ul>
   <ul id="toc" class="toc-list-h1">
       <li>
+        <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+      </li>
+      <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
@@ -396,6 +399,38 @@
               </li>
               <li>
                 <a href="#api-public-parameters" class="toc-h2 toc-link" data-title="API Public parameters">API Public parameters</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#side" class="toc-h3 toc-link" data-title="side">side</a>
+                      </li>
+                      <li>
+                        <a href="#ordertype" class="toc-h3 toc-link" data-title="orderType">orderType</a>
+                      </li>
+                      <li>
+                        <a href="#force" class="toc-h3 toc-link" data-title="force">force</a>
+                      </li>
+                      <li>
+                        <a href="#status" class="toc-h3 toc-link" data-title="status">status</a>
+                      </li>
+                      <li>
+                        <a href="#grouptype" class="toc-h3 toc-link" data-title="groupType">groupType</a>
+                      </li>
+                      <li>
+                        <a href="#biztype" class="toc-h3 toc-link" data-title="bizType">bizType</a>
+                      </li>
+                      <li>
+                        <a href="#deposit-withdrawal-order-status" class="toc-h3 toc-link" data-title="deposit withdrawal order status">deposit withdrawal order status</a>
+                      </li>
+                      <li>
+                        <a href="#withdrawal-type" class="toc-h3 toc-link" data-title="withdrawal type">withdrawal type</a>
+                      </li>
+                      <li>
+                        <a href="#accounttype" class="toc-h3 toc-link" data-title="accountType">accountType</a>
+                      </li>
+                      <li>
+                        <a href="#candlestick-line-timeframe" class="toc-h3 toc-link" data-title="Candlestick line timeframe">Candlestick line timeframe</a>
+                      </li>
+                  </ul>
               </li>
               <li>
                 <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
@@ -614,6 +649,8 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
+<h1 id='welcome'>Welcome</h1>
+<p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1><h2 id='19-09-2022'>19/09/2022</h2>
 <ul>
 <li><code>Account</code> -&gt; <code>Get ApiKey Info</code> add Response <code>trader</code></li>
@@ -781,40 +818,42 @@ clipboard.on('error', function(e) {
 <h2 id='update-follow-up'>Update follow-up</h2>
 <p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance. It is recommended that users follow and subscribe to our announcements to obtain relevant information in a timely manner.</p>
 
-<p>You can click <a href='https://bitget.zendesk.com/hc/zh-cn/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A'>here </a> to subscribe to the announcement.</p>
+<p>You can click <a href='https://bitget.zendesk.com/hc/en-us/categories/360002621832-Latest-Announcements'>here </a> to subscribe to the announcement.</p>
 <h2 id='contact-us'>Contact us</h2>
 <p>If you have any questions or suggestions, feel free to contact us:</p>
 
 <ul>
-<li>Email API@bitget.com。</li>
+<li>Email API@bitget.com</li>
 <li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
 </ul>
 <h1 id='quick-start'>Quick start</h1><h2 id='prepare-to-integrate'>Prepare to integrate</h2>
-<p>If you need to use the API, please log in to the web page first, complete the API key application and permission configuration, and then develop and trade according to the details of this document.</p>
+<p>If you need to use the API, please log in to the <a href='https://www.bitget.com'>web page</a>, then apply the API key and complete the permission configuration, and then develop and trade according to the details of this document.</p>
 
-<p>You can click <a href='https://www.bitget.com/zh-CN/account/newapi'>here</a>  to create an API Key.</p>
+<p>You can click <a href='https://www.bitget.com/en/account/newapi'>here</a> to create the API Key after login.</p>
 
-<p>Each user can create 10 sets of Api Keys, and each Api Key can set two permissions for reading and trading.</p>
+<p>Each user can create 10 sets of Api Keys, and each Api Key can set permissions for reading and trading.</p>
 
 <p>The permissions are described as follows:</p>
 
 <ul>
-<li>Read permission: Read permission is used to query data, such as market data.</li>
-<li>Transaction permission: Transaction authority is used for the interface of placing and cancelling orders.</li>
+<li>Read-Only permission: Read permission authorized to query data, such as market data.</li>
+<li>Trade permission: Transaction permission authorized to call the interface of placing and cancelling orders.</li>
+<li>Transfer permission: With this permission it authorized to transfer coins between accounts inside Bitget.</li>
+<li>Withdraw permission: Authorized to withdraw assets from bitget account, <code>noted that you can only withdraw coins through an IP address bound to the platform</code></li>
 </ul>
 
-<p>After the API creation is successful, please remember the following information:</p>
+<p>After successfully created the API Key, please remember the following information:</p>
 
 <ul>
-<li><code>APIKey </code> The identity of API transactions, it is generated by a random algorithm.</li>
-<li><code>Secretkey</code>  The private key is randomly generated by the system and used for signature generation.</li>
-<li><code>Passphrase</code>  Passphrase is set by the user. It should be noted that if the Passphrase is forgotten, it cannot be retrieved, and the APIKey needs to be recreated.</li>
+<li><code>APIKey</code> The identity of API transactions, it is generated by a random algorithm.</li>
+<li><code>Secretkey</code> The private key is randomly generated by the system and used for <a href="#signature">Signature</a> generation.</li>
+<li><code>Passphrase</code> Passphrase is set by the user. It should be noted that if the Passphrase is forgotten, it cannot be retrieved, and the API Key needs to be recreated.</li>
 </ul>
 
 <aside class="notice">
 
 ```html
-User can bind IP address when he creates APIKey ，For the safety consideration of APIKe for unbind IP address，the binding of IP address is strongly recommended. 
+User can bind IP address when he creates APIKey, It is strongly recommended to bind IP for security reason. 
 ```
 
 </aside>
@@ -826,11 +865,9 @@ User can bind IP address when he creates APIKey ，For the safety consideratio
     <b> risk warning</b>
 </red>
 
-：These three keys are closely related to account security, please keep in mind<b>Passphrase</b>，Do not disclose to others at any time.
+：These three keys are highly related to account security, please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.
 
-Leaking any one of these three keys may cause loss of your assets. If you find that the APIKey is leaked,
-
-please delete the APIKey as soon as possible.
+Leaking any of these three keys may cause loss of your assets. If you find by any chance that the APIKey is compromised, please delete the APIKey as soon as possible.
 ```
 
 </aside> 
@@ -842,6 +879,8 @@ please delete the APIKey as soon as possible.
 <p><strong>PostMan Demo</strong></p>
 
 <p><a href="../../sdk/Biget_Spot.postman_collection.json">PostMan</a> </p>
+
+<p>You should first try to config the APIKey, Secretkey and Passphrase in the <code>Environments</code> tab on left of the PostMan</p>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter is consist of the following two aspects for the interface types:</p>
 
@@ -856,23 +895,25 @@ please delete the APIKey as soon as possible.
 
 <p><strong>Private interface</strong></p>
 
-<p>The private interface can be used for order management and account management. Every private request must be signed using a canonical form of verification.</p>
+<p>The private interface can be used for order management and account management. Every private request must be <a href="#signature">Signatured</a>.</p>
 
-<p>The private interface needs to be verified with your APIKey.</p>
+<p>The private interface will be verified from server side with your APIKey.</p>
 <h2 id='access-restriction'>Access restriction</h2>
 <p>This chapter mainly focuses on access restrictions:</p>
 
 <ul>
-<li>Rest API when the access exceeds the frequency limit, it will return to the 429 status: the request is too frequent.</li>
+<li>Rest API when the access exceeds the frequency limit, it will return the 429 status: the request is too frequent.</li>
 </ul>
 
 <p><strong>Rest API</strong></p>
 
-<p>If a valid APIKey is passed in, use APIKey to limit the speed; if not, use the public IP to limit the speed.</p>
+<p>If a valid APIKey is passed with the request, We will use APIKey to limit the frequency; if not, the public IP Address will be used to limit the frequency.</p>
 
-<p>Speed limit rules: There are separate instructions on each interface. If there is no specific instruction, the speed limit of general interface is 10 times per second.</p>
+<p>Frequency limit rules: There are separate instructions on each interface. If there is no specific instruction, the frequency limit of general interface is 10 times per second.</p>
+
+<p>Special note: When place orders in batches, 10 orders per currency pair will be counted as one request. For example, a batch order like: 1 order with ETHUSDT, 10 order with BTCUSDT, then the rate-limit will count this batch order as 2 requests.</p>
 <h2 id='api-domain'>API domain</h2>
-<p>You can use the Rest API access method by yourself.</p>
+<p>You can use different domain as below Rest API.</p>
 
 <table><thead>
 <tr>
@@ -884,7 +925,12 @@ please delete the APIKey as soon as possible.
 <tr>
 <td>Domain1</td>
 <td>https://api.bitget.com</td>
-<td>International</td>
+<td>Main Domain</td>
+</tr>
+<tr>
+<td>Domain2</td>
+<td>https://capi.bitget.com</td>
+<td>Old domain</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -893,15 +939,29 @@ please delete the APIKey as soon as possible.
 <p>The header of all REST requests must contain the following keys:</p>
 
 <ul>
-<li>ACCESS-KEY：API KEY as a string.</li>
-<li>ACCESS-SIGN： Sign with base64 encoding (see Signing messages).</li>
-<li>ACCESS-TIMESTAMP： The timestamp of your request.</li>
+<li>ACCESS-KEY：API KEY as a string.</li>
+<li>ACCESS-SIGN： Sign with base64 encoding (see <a href="#signature">Signature</a>).</li>
+<li>ACCESS-TIMESTAMP： The timestamp of your request. Value equals to milliseconds since Epoch.</li>
 <li>ACCESS-PASSPHRASE：The passphrase you set when creating the API KEY.</li>
 <li>Content-Type：Standardized setting to application/json.</li>
-<li>locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
+<li>locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
 </ul>
-<h2 id='api-public-parameters'>API Public parameters</h2>
-<p><strong>side(Trade direction)</strong></p>
+<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
+<span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+</code></pre><pre class="highlight plaintext"><code>//python
+import time
+time.time_ns() / 1000000
+</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+  </span><span class="s">"time"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+</code></pre><pre class="highlight php tab-php"><code>//PHP
+microtime(true) * 1000;
+</code></pre><h2 id='api-public-parameters'>API Public parameters</h2><h3 id='side'>side</h3>
+<p>Trade direction</p>
 
 <table><thead>
 <tr>
@@ -918,8 +978,8 @@ please delete the APIKey as soon as possible.
 <td>Buy</td>
 </tr>
 </tbody></table>
-
-<p><strong>orderType(Order type)</strong></p>
+<h3 id='ordertype'>orderType</h3>
+<p>Order type</p>
 
 <table><thead>
 <tr>
@@ -936,8 +996,8 @@ please delete the APIKey as soon as possible.
 <td>Market order</td>
 </tr>
 </tbody></table>
-
-<p><strong>force(Order type)</strong></p>
+<h3 id='force'>force</h3>
+<p>Order type</p>
 
 <table><thead>
 <tr>
@@ -947,11 +1007,11 @@ please delete the APIKey as soon as possible.
 </thead><tbody>
 <tr>
 <td>normal</td>
-<td>Do not use special type order</td>
+<td>Good till cancel</td>
 </tr>
 <tr>
 <td>post_only</td>
-<td>postOnly type of order</td>
+<td>Maker Only</td>
 </tr>
 <tr>
 <td>fok</td>
@@ -962,8 +1022,8 @@ please delete the APIKey as soon as possible.
 <td>Immediate-Or-Cancel（IOC）</td>
 </tr>
 </tbody></table>
-
-<p><strong>status(Order status)</strong></p>
+<h3 id='status'>status</h3>
+<p>Order status</p>
 
 <table><thead>
 <tr>
@@ -988,8 +1048,8 @@ please delete the APIKey as soon as possible.
 <td>Cancelled</td>
 </tr>
 </tbody></table>
-
-<p><strong>groupType(Major types of transaction)</strong></p>
+<h3 id='grouptype'>groupType</h3>
+<p>Major types of transaction</p>
 
 <table><thead>
 <tr>
@@ -1018,8 +1078,8 @@ please delete the APIKey as soon as possible.
 <td>Others</td>
 </tr>
 </tbody></table>
-
-<p><strong>bizType(Business type)</strong></p>
+<h3 id='biztype'>bizType</h3>
+<p>Business type</p>
 
 <table><thead>
 <tr>
@@ -1052,9 +1112,7 @@ please delete the APIKey as soon as possible.
 <td>Transfer-out</td>
 </tr>
 </tbody></table>
-
-<p><strong>status(deposit-withdrawal order status)</strong></p>
-
+<h3 id='deposit-withdrawal-order-status'>deposit withdrawal order status</h3>
 <table><thead>
 <tr>
 <th>String</th>
@@ -1087,19 +1145,19 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>recheck</td>
-<td>2nd audit</td>
+<td>2nd audit</td>
 </tr>
 <tr>
 <td>first-reject</td>
-<td>1st audit rejected</td>
+<td>1st audit rejected</td>
 </tr>
 <tr>
 <td>recheck-reject</td>
-<td>2nd audit rejected</td>
+<td>2nd audit rejected</td>
 </tr>
 </tbody></table>
-
-<p><strong>type(User withdrawal address query)</strong></p>
+<h3 id='withdrawal-type'>withdrawal type</h3>
+<p>User withdrawal address query</p>
 
 <table><thead>
 <tr>
@@ -1116,9 +1174,7 @@ please delete the APIKey as soon as possible.
 <td>Internal address</td>
 </tr>
 </tbody></table>
-
-<p><strong>accountType</strong></p>
-
+<h3 id='accounttype'>accountType</h3>
 <table><thead>
 <tr>
 <th>String</th>
@@ -1143,34 +1199,43 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>USDT_MIX</td>
-<td>USDT Futurre account</td>
+<td>USDT Future account</td>
 </tr>
 </tbody></table>
-
-<p><strong>Candlestick line timeframe (granularity)</strong></p>
+<h3 id='candlestick-line-timeframe'>Candlestick line timeframe</h3>
+<p>granularity</p>
 
 <ul>
-<li>1min(1min)</li>
-<li>5min(5mins)</li>
-<li>15min(15mins)</li>
-<li>30min(30mins)</li>
-<li>1h(1hr)</li>
-<li>4h(4hrs)</li>
-<li>12h(12hrs)</li>
-<li>1day(1day)</li>
-<li>1week(1week)</li>
+<li>1min (1 minute)</li>
+<li>5min (5 minutes)</li>
+<li>15min (15 minutes)</li>
+<li>30min (30 minutes)</li>
+<li>1h (1 hour)</li>
+<li>4h (4 hours)</li>
+<li>6h (6 hours)</li>
+<li>12h (12 hours)</li>
+<li>1day (1 day)</li>
+<li>3day (3 days)</li>
+<li>1week (1 week)</li>
+<li>1M (monthly line)</li>
+<li>6Hutc (UTC0 6 hour)</li>
+<li>12Hutc (UTC0 12 hour)</li>
+<li>1Dutc (UTC0 1day)</li>
+<li>3Dutc (UTC0 3rd)</li>
+<li>1Wutc (UTC0 weekly)</li>
+<li>1Mutc (UTC0 monthly)</li>
 </ul>
 <h2 id='signature'>Signature</h2>
-<p>The request header of ACCESS-SIGN is obtained by encrypting <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body **string (+ means string connection) using the **HMAC SHA256 **method, and outputting it through **BASE64</strong> encoding.</p>
+<p>The request header of ACCESS-SIGN is obtained by encrypting <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body **string (+ means string concat) encrypt by **HMAC SHA256 **algorithm, and encode the encrypted result through **BASE64</strong>.</p>
 
-<p><strong>Description of each string of the signature</strong></p>
+<p><strong>Description for each parameter of the signature</strong></p>
 
 <ul>
-<li>timestamp： Same as ACCESS-TIMESTAMP request header.</li>
+<li>timestamp： Same as ACCESS-TIMESTAMP request header. Value equals to milliseconds since Epoch.</li>
 <li>method：Request method (POST/GET), all uppercase letters.</li>
-<li>requestPath：Request interface path.</li>
-<li>queryString： The query string in the request URL (the request parameter after the ?).</li>
-<li>body： The string corresponding to the request body. If the request has no body (usually a GET request), the body can be omitted.</li>
+<li>requestPath：Request interface path. </li>
+<li>queryString：The query string in the request URL (the request parameter after the ?).</li>
+<li>body： The string corresponding to the request body. If the request has no body (usually a GET request), the body can be omitted.</li>
 </ul>
 
 <p><strong>When queryString is empty, the signature format</strong></p>
@@ -1183,11 +1248,11 @@ please delete the APIKey as soon as possible.
 </code></pre>
 <p><strong>For example</strong></p>
 
-<p>To obtain in-depth information, take btcusdt as an example:</p>
+<p>To obtain in-depth information, take <strong>BTCUSDT</strong> as an example:</p>
 
 <ul>
-<li>Timestamp = 1591089508404</li>
-<li>Method = &quot;GET&quot;</li>
+<li>timestamp = 1591089508404</li>
+<li>method = &quot;GET&quot;</li>
 <li>requestPath = &quot;/api/spot/v1/market/depth&quot;</li>
 <li>queryString= &quot;?symbol=btcusdt_spbl&amp;limit=20&quot;</li>
 </ul>
@@ -1196,11 +1261,11 @@ please delete the APIKey as soon as possible.
 
 <p>&#39;1591089508404GET/api/spot/v1/market/depth?symbol=btcusdt_spbl&amp;limit=20&#39;</p>
 
-<p>Place order，take btcusdt as an example:</p>
+<p>Place order，take BTCUSDT as an example:</p>
 
 <ul>
-<li>Timestamp = 1561022985382</li>
-<li>Method = &quot;POST&quot;</li>
+<li>timestamp = 1561022985382</li>
+<li>method = &quot;POST&quot;</li>
 <li>requestPath = &quot;/api/spot/v1/order/order&quot;</li>
 <li>body = {&quot;symbol&quot;:&quot;btcusdt_spbl&quot;,&quot;quantity&quot;:&quot;8&quot;,&quot;side&quot;:&quot;buy&quot;,&quot;price&quot;:&quot;1&quot;,&quot;orderType&quot;:&quot;limit&quot;,&quot;clientOrderId&quot;:&quot;bitget#123456&quot;}</li>
 </ul>
@@ -1213,16 +1278,14 @@ please delete the APIKey as soon as possible.
 
 <p><strong>Steps to generate the final signature</strong></p>
 
-<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
-
-<p>Signature = hmac_sha256(secretkey, Message)</p>
-
+<p>Step 1. Use the private key <strong>secretkey</strong> to encrypt the string to be signed with hmac sha256</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">hmac_sha256</span><span class="o">(</span><span class="n">secretkey</span><span class="o">,</span> <span class="n">Message</span><span class="o">);</span>
+</code></pre>
 <p> </p>
 
 <p>Step 2. Base64 encoding for Signature.</p>
-
-<p>Signature = base64.encode(Signature)</p>
-<h2 id='signature-demo-code'>Signature Demo Code</h2>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+</code></pre><h2 id='signature-demo-code'>Signature Demo Code</h2>
 <blockquote>
 <p>Java</p>
 </blockquote>
@@ -1266,7 +1329,9 @@ please delete the APIKey as soon as possible.
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
     <span class="n">signStr</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="s">'1659927638003'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">,</span> <span class="s">'/api/spot/v1/trade/orders'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s">'{"symbol":"TRXUSDT_SPBL","side":"buy","orderType":"limit","force":"normal","price":"0.046317","quantity":"1212"}'</span><span class="p">)),</span> <span class="s">''</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
-</code></pre><h2 id='request-interaction'>Request interaction</h2>
+</code></pre>
+<p>For more demo code on other languages, please refer to <a href='#sdk-code-example'>SDK/Code Example</a></p>
+<h2 id='request-interaction'>Request interaction</h2>
 <p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be standardized as:&#39;application/json&#39;.</p>
 
 <p><strong>Request interaction description</strong></p>
@@ -1291,28 +1356,28 @@ please delete the APIKey as soon as possible.
 <li>404 Not Found - The request is not found</li>
 <li>429 Too Many Requests - Requests are too frequent and are limited by the system</li>
 <li>500 Internal Server Error – Internal Server Error</li>
-<li>If it is failed, body has an error description</li>
+<li>If it is failed, return body usually have an error message</li>
 </ul>
 <h2 id='standard-specification'>Standard Specification</h2>
 <p><strong>Timestamp</strong></p>
 
-<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected. If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected. If there is a large deviation between the local server time and the API server time, we recommend that you update the timestamp by query and compare the time difference between <a href="#get-server-time">API server time</a> and the time in your code.</p>
 
 <p><strong>Frequency limiting rules</strong></p>
 
 <p>If the request is too frequent, the system will automatically limit the request and return the “429 too many requests” status code in the http header.</p>
 
-<p>· Public interface: such as the market information interface, the standardized frequency limit is 2 seconds with max. 20 requests.</p>
+<p>· Public interface: For the <a href="#market">market</a> information interfaces, the global rate limit is 2 seconds with max. 20 requests.</p>
 
-<p>· Authorization interface: restrict the call of the authorization interface through apikey, refer to the frequency limitation rule of each interface for frequency limitation.</p>
+<p>· Authorization interface: restrict the call of the authorization interface through apikey, refer to the <a href="#07-1-2022">frequency limitation</a> rule of each interface for frequency limitation.</p>
 
 <p><strong>Request format</strong></p>
 
-<p>There are currently only two request methods in formats: GET and POST</p>
+<p>There are currently only two supported request methods: GET and POST</p>
 
 <ul>
 <li>GET: The parameters are transmitted to the server in the path through queryString.</li>
-<li>POST: The parameters are sent to the server by sending the body in json format.</li>
+<li>POST: The parameters are sending to the server in json format.</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='public'>Public</h2><h3 id='get-server-time'>Get Server Time</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -1427,7 +1492,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>&gt; withdrawFee</td>
-<td>Withdrawal fee</td>
+<td>Withdrawal fee, 0.0006 means 0.06% BTC fee per BTC</td>
 </tr>
 <tr>
 <td>&gt; depositConfirm</td>
@@ -1439,11 +1504,11 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>&gt; minDepositAmount</td>
-<td>Min. deposit amount</td>
+<td>Min. deposit amount, BTC</td>
 </tr>
 <tr>
 <td>&gt; minWithdrawAmount</td>
-<td>Min. withdrawal amount</td>
+<td>Min. withdrawal amount, BTC</td>
 </tr>
 <tr>
 <td>&gt; browserUrl</td>
@@ -1604,7 +1669,7 @@ please delete the APIKey as soon as possible.
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Descrition</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1731,7 +1796,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>ts</td>
-<td>System timestamp</td>
+<td>System timestamp, milliseconds</td>
 </tr>
 <tr>
 <td>baseVol</td>
@@ -1928,15 +1993,15 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>side</td>
-<td>Trade direction</td>
+<td>Trade direction, &#39;buy&#39;, &#39;sell&#39;</td>
 </tr>
 <tr>
 <td>fillPrice</td>
-<td>Transaction price</td>
+<td>Transaction price, quote coin</td>
 </tr>
 <tr>
 <td>fillQuantity</td>
-<td>Transaction quantity</td>
+<td>Transaction quantity, base coin</td>
 </tr>
 <tr>
 <td>fillTime</td>
@@ -1974,19 +2039,19 @@ please delete the APIKey as soon as possible.
 <td>period</td>
 <td>String</td>
 <td>Yes</td>
-<td>Candlestick line time unit, granularity (​​refer to the following list for values)</td>
+<td>Candlestick line time unit, granularity (refer to the following list for values)</td>
 </tr>
 <tr>
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Time after</td>
+<td>Time after, milliseconds</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Time before</td>
+<td>Time before, milliseconds</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -2186,7 +2251,7 @@ please delete the APIKey as soon as possible.
     }
 }
 </code></pre><h2 id='wallet'>Wallet</h2><h3 id='transfer'>Transfer</h3>
-<p>Rate Limit：5次/1s (uid)</p>
+<p>Rate Limit：5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2266,7 +2331,7 @@ please delete the APIKey as soon as possible.
 </ul></li>
 </ul>
 <h3 id='get-coin-address'>Get Coin Address</h3>
-<p>Rate Limit：5次/1s (uid)</p>
+<p>Rate Limit：5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2356,7 +2421,7 @@ please delete the APIKey as soon as possible.
 <h3 id='withdraw'>Withdraw</h3>
 <p>Just withdraw coins on the chain</p>
 
-<p>Rate Limit：5次/1s (Uid)</p>
+<p>Rate Limit：5/sec (Uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2457,7 +2522,7 @@ please delete the APIKey as soon as possible.
 
 <p>Withdraw money directly in the form of uid, without going on the chain, no need to pass the address</p>
 
-<p>Rate Limit：5次/1s (Uid)</p>
+<p>Rate Limit：5/sec (Uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2582,7 +2647,7 @@ please delete the APIKey as soon as possible.
 <td>pageSize</td>
 <td>String</td>
 <td>No</td>
-<td>pageSize default20 Max100</td>
+<td>pageSize default 20, max 100</td>
 </tr>
 </tbody></table>
 
@@ -2664,7 +2729,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>chain</td>
-<td>Withfraw chain</td>
+<td>Withdraw chain</td>
 </tr>
 <tr>
 <td>confirm</td>
@@ -2837,10 +2902,11 @@ please delete the APIKey as soon as possible.
 <li>pending_review_fail </li>
 <li>reject </li>
 <li>success </li>
+<li>wallet_processing</li>
 </ul></li>
 </ul>
 <h2 id='account'>Account</h2><h3 id='get-apikey-info'>Get ApiKey Info</h3>
-<p>Rate Limit：1/1s</p>
+<p>Rate Limit：1/sec</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3064,13 +3130,21 @@ please delete the APIKey as soon as possible.
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills?coinId=2&amp;groupType=deposit&amp;bizType=deposit&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{ 
+    "coinId":"2",
+    "groupType":"deposit",
+    "bizType":"deposit",
+    "before":"1648627756000",
+    "after":"1646810529000",
+    "limit":"100"
+}'</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -3290,7 +3364,7 @@ please delete the APIKey as soon as possible.
 </ul></li>
 </ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place order</h3>
-<p>Rate Limit: 10 times/1s (uid)</p>
+<p>Rate Limit: 10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong> </p>
 
@@ -3318,13 +3392,13 @@ please delete the APIKey as soon as possible.
 <td>side</td>
 <td>String</td>
 <td>Yes</td>
-<td>Trade direction</td>
+<td>Trade direction: buy or sell</td>
 </tr>
 <tr>
 <td>orderType</td>
 <td>String</td>
 <td>Yes</td>
-<td>Order type limit/market</td>
+<td>Order type limit/market</td>
 </tr>
 <tr>
 <td>force</td>
@@ -3336,13 +3410,13 @@ please delete the APIKey as soon as possible.
 <td>price</td>
 <td>String</td>
 <td>No</td>
-<td>Limit pricing</td>
+<td>Limit pricing, null if orderType is market</td>
 </tr>
 <tr>
 <td>quantity</td>
 <td>String</td>
 <td>Yes</td>
-<td>Order quantity</td>
+<td>Order quantity, base coin</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
@@ -3394,7 +3468,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='batch-order'>Batch order</h3>
-<p>Rate Limit: 5 times/1s (uid)</p>
+<p>Rate Limit: 5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3460,13 +3534,13 @@ please delete the APIKey as soon as possible.
 <td style="text-align: left">price</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Limit price</td>
+<td style="text-align: center">Limit price, null if orderType is market</td>
 </tr>
 <tr>
 <td style="text-align: left">quantity</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Order quantity</td>
+<td style="text-align: center">Order quantity, base coin</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOrderId</td>
@@ -3500,7 +3574,7 @@ please delete the APIKey as soon as possible.
     }
 }
 </code></pre><h3 id='cancel-order'>Cancel order</h3>
-<p>Rate Limit: 10 times/1s (uid)</p>
+<p>Rate Limit: 10 times/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3608,7 +3682,7 @@ please delete the APIKey as soon as possible.
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202934892814667"</span><span class="w">
 </span><span class="p">}</span><span class="w">   
 </span></code></pre><h3 id='get-order-details'>Get order details</h3>
-<p>Rate Limit: 20 times/1s (uid)</p>
+<p>Rate Limit: 20 times/sec(uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3707,23 +3781,23 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>price</td>
-<td>Order price</td>
+<td>Order price, quote coin</td>
 </tr>
 <tr>
 <td>quantity</td>
-<td>Order quantity</td>
+<td>Order quantity, base coin</td>
 </tr>
 <tr>
 <td>orderType</td>
-<td>Order type</td>
+<td>Order type, limit/market</td>
 </tr>
 <tr>
 <td>side</td>
-<td>Order direction</td>
+<td>Order direction, buy/sell</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Order status</td>
+<td><a href="#status">Order status</a></td>
 </tr>
 <tr>
 <td>fillPrice</td>
@@ -3735,7 +3809,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>fillTotalAmount</td>
-<td>Total transcation volume</td>
+<td>Total transaction volume</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -3743,7 +3817,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='get-order-list'>Get order List</h3>
-<p>Rate Limit: 20 times/1s (uid)</p>
+<p>Rate Limit: 20 times/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3765,7 +3839,7 @@ please delete the APIKey as soon as possible.
 <td>symbol</td>
 <td>String</td>
 <td>No,</td>
-<td>Symbol Id, If query all, pass &quot; &quot;</td>
+<td>Symbol Id. If query all, pass empty string &quot;&quot;</td>
 </tr>
 </tbody></table>
 
@@ -3838,15 +3912,15 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>orderType</td>
-<td>Order type</td>
+<td>Order type, limit/market</td>
 </tr>
 <tr>
 <td>side</td>
-<td>Order direction</td>
+<td>Order direction, buy/sell</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Order status</td>
+<td><a href="#status">Order status</a></td>
 </tr>
 <tr>
 <td>fillPrice</td>
@@ -3858,7 +3932,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>fillTotalAmount</td>
-<td>Total transcation volume</td>
+<td>Total transaction volume</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -3866,7 +3940,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='get-order-history'>Get order history</h3>
-<p>Rate Limit: 20 times/1s (uid)</p>
+<p>Rate Limit: 20 times/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3979,15 +4053,15 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>orderType</td>
-<td>Order type</td>
+<td>Order type, limit/market</td>
 </tr>
 <tr>
 <td>side</td>
-<td>Order direction</td>
+<td>Order direction, buy/sell</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Order status</td>
+<td><a href="#status">Order status</a></td>
 </tr>
 <tr>
 <td>fillPrice</td>
@@ -3999,7 +4073,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>fillTotalAmount</td>
-<td>Total transcation volume</td>
+<td>Total transaction volume</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -4007,7 +4081,7 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h3 id='get-transaction-details'>Get transaction details</h3>
-<p>Rate Limit: 20 times/1s (uid)</p>
+<p>Rate Limit: 20 times/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4117,11 +4191,11 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>orderType</td>
-<td>Order type</td>
+<td>Order type, limit/market</td>
 </tr>
 <tr>
 <td>side</td>
-<td>Order direction</td>
+<td>Order direction, buy/sell</td>
 </tr>
 <tr>
 <td>fillPrice</td>
@@ -4133,7 +4207,7 @@ please delete the APIKey as soon as possible.
 </tr>
 <tr>
 <td>fillTotalAmount</td>
-<td>Total transaction volume</td>
+<td>Total transaction volume</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -4178,19 +4252,23 @@ please delete the APIKey as soon as possible.
 
 <p><strong>Connection limit</strong>: 1 time per second</p>
 
-<p>When subscribing to a public channel, use the address of the public service. When subscribing to a private channel, use the address of the private service</p>
+<p>When subscribing to a public channel, no login is required. </p>
+
+<p>When subscribing to a private channel, MUST <a href="#login">login</a> before subscribe to any channel(s)</p>
 
 <p><strong>Subscription limit</strong>: 240 times per hour</p>
 
-<p>If there’s a network problem, the system will automatically disable the connection.</p>
+<p>If there’s a network problem, the system will automatically close the connection.</p>
 
-<p>The connection will break automatically if the subscription is not established or data has not been pushed for more than 30 seconds.</p>
+<p>The connection will be closed automatically if the subscription is not established or, no data pushed from server for more than 30 seconds.</p>
+
+<p>Client should keep ping the server in every 30 seconds. Server will close the connections which has no ping over 120 seconds(even when the client is still receiving data from the server)</p>
 
 <p>To keep the connection stable:</p>
 
 <ol>
-<li>Set a timer of N seconds whenever a response message is received, where N is less than 30.</li>
-<li>If the timer is triggered, which means that no new message is received within N seconds, send the String &#39;ping&#39;.</li>
+<li>Set a timer of N seconds, where N is between 25 and 30.</li>
+<li>If the timer is triggered, send the String &#39;ping&#39;.</li>
 <li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error or reconnect.</li>
 <li>The Websocket server accepts up to 10 messages per second. The message includes:
 
@@ -4198,7 +4276,7 @@ please delete the APIKey as soon as possible.
 <li>PING frame</li>
 <li>Messages in JSON format, such as subscribe, unsubscribe.</li>
 </ul></li>
-<li>If the user sends more messages than the limit, the connection will be disconnected. IPs that are repeatedly disconnected may be blocked by the server;</li>
+<li>If the user sends more messages than the limitation, the connection will be disconnected. IPs that are repeatedly disconnected may be blocked by the server;</li>
 <li>A single connection can subscribe up to <strong>1000</strong> Streams;</li>
 <li>A single IP can create up to <strong>100</strong> connections.</li>
 </ol>
@@ -4207,23 +4285,31 @@ please delete the APIKey as soon as possible.
 
 <p><strong>passphrase</strong>: APIKey password</p>
 
-<p><strong>timestamp</strong>: the Unix Epoch time, the unit is seconds</p>
+<p><strong>timestamp</strong>: the Unix Epoch time, the unit is <strong>seconds</strong></p>
 
-<p><strong>sign</strong>: signature string, the signature algorithm is as follows:</p>
+<p><strong>sign</strong>: signature string</p>
 
-<p>First concatenate <code>timestamp</code>, <code>method</code>, <code>requestPath</code>, and <code>body</code> strings, then use HMAC SHA256 method to encrypt the concatenated string with SecretKey, and then perform Base64 encoding.</p>
+<p><strong>method</strong>: always &#39;GET&#39;</p>
+
+<p><strong>requestPath</strong>: always &#39;/user/verify&#39;</p>
 
 <p><strong>secretKey</strong>: The security key generated when the user applies for APIKey, e.g. : 22582BD0CFF14C41EDBF1AB98506286D</p>
 
-<p><strong>Example of timestamp</strong>: const timestamp =&#39;&#39; + Date.now() / 1000</p>
+<p>the signature algorithm is as follows:</p>
+<pre class="highlight plaintext"><code>Concatenate "timestamp", "method", "requestPath", and "body" as string
+Encrypt the string using Hmac_SHA256 with secretKey
+Base64 encode the Hmac_SHA256 output
+</code></pre>
+<blockquote>
+<p>Sign example
+<code>
+sign=CryptoJS.enc.Base64.Stringify(
+    CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/user/verify&#39;, secretKey)
+)
+</code></p>
+</blockquote>
 
-<p><strong>Among sign example</strong>: sign=CryptoJS.enc.Base64.Stringify(CryptoJS.HmacSHA256(timestamp +&#39;GET&#39;+&#39;/user/verify&#39;, secretKey))</p>
-
-<p><strong>method</strong>: always &#39;GET&#39;.</p>
-
-<p><strong>requestPath</strong> : always &#39;/user/verify&#39;</p>
-
-<p>The request will expire 30 seconds after the timestamp. If your server time differs from the API server time, we recommended using the REST API to query the API server time and then set the timestamp.</p>
+<p>The request will expire 30 seconds after the timestamp. If your server time differs from the API server time, we recommended using the REST API to query the <a href="#get-server-time">server time</a>(noted it return milliseconds, while in websocket login you should use seconds) and then set the timestamp.</p>
 
 <p>For the description of the signature method, refer to the verification section in the API overview</p>
 
@@ -4294,21 +4380,37 @@ please delete the APIKey as soon as possible.
 }
 
 </code></pre>
-<p>WebSocket channels are divided into two categories: <code>public</code> and <code>private</code> channels.</p>
+<p>WebSocket channels are divided into two categories: <code>public</code> and <code>private</code> channels.</p>
 
-<p><code>Public channels</code> -- include tickers channel, K-Line channel, limit price channel, order book channel, and mark price channel, etc -- do not require log in.</p>
+<p><code>Public channels</code> -- includes </p>
+
+<p><a href="#tickers-channel">Tickers channel</a></p>
+
+<p><a href="#candlesticks-channel">Candlesticks channel</a></p>
+
+<p><a href="#depth-channel">Depth channel</a></p>
+
+<p><a href="#trades-channel">Trades Channel</a></p>
+
+<p>etc -- do not require log in.</p>
 
 <ul>
-<li><code>instId</code> source    <a href="#Basic%20configuration%20information%20of%20trading%20pairs">/products</a>  in  <code>symbolName</code></li>
+<li><code>instId</code> refer to  <a href="#get-symbols">Get Symbols</a> in response field: <code>symbolName</code></li>
 </ul>
 
-<p><code>Private channels</code> -- including account channel, order channel, and position channel, etc -- require log in.</p>
+<p><code>Private channels</code> -- including </p>
+
+<p><a href="#account-channel">Account Channel</a></p>
+
+<p><a href="#order-channel">Order Channel</a></p>
+
+<p>etc -- require <a href="#login">login</a>.</p>
 
 <ul>
-<li>User account channel <code>instId</code> is <code>default</code> Get all currency assets</li>
+<li>User account channel <code>instId</code> is <code>default</code> : Get all currency assets</li>
 </ul>
 
-<p>Users can choose to subscribe to one or more channels, and the total length of multiple channels cannot exceed 4096 bytes.</p>
+<p>User can choose to subscribe to one or more channels, and the total length of multiple channels <strong>cannot exceed 4096 bytes</strong>.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -4340,13 +4442,13 @@ please delete the APIKey as soon as possible.
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>subscribe</code></td>
+<td>Operation, <code>subscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
 <td>Array</td>
 <td>Yes</td>
-<td>List of subscribed channels</td>
+<td>List of subscribe channels</td>
 </tr>
 <tr>
 <td>&gt; instType</td>
@@ -4358,13 +4460,13 @@ please delete the APIKey as soon as possible.
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name</td>
+<td>Channel name, please refer to each examples below</td>
 </tr>
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
 <td>No</td>
-<td>Instrument ID</td>
+<td>refer to <a href="#get-symbols">Get Symbols</a>  in response field: <code>symbolName</code>; at some cases &#39;default&#39;</td>
 </tr>
 </tbody></table>
 
@@ -4412,7 +4514,7 @@ please delete the APIKey as soon as possible.
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name</td>
+<td>Channel name, same as request</td>
 </tr>
 <tr>
 <td>&gt; instId</td>
@@ -4474,7 +4576,7 @@ please delete the APIKey as soon as possible.
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>unsubscribe</code></td>
+<td>Operation, <code>unsubscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
@@ -4486,19 +4588,19 @@ please delete the APIKey as soon as possible.
 <td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument type<code>SP</code></td>
+<td>Instrument type<code>SP</code>: Spot public channel  <code>SPBL</code> Spot private channel</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name</td>
+<td>Channel name, please refer to each examples below</td>
 </tr>
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument ID</td>
+<td>refer to <a href="#get-symbols">Get Symbols</a> in response field: <code>symbolName</code>; at some cases &#39;default&#39;</td>
 </tr>
 </tbody></table>
 
@@ -4568,55 +4670,59 @@ please delete the APIKey as soon as possible.
 </tr>
 </tbody></table>
 <h2 id='checksum'>Checksum</h2>
-<p>This mechanism can assist users in checking the accuracy of depth data.</p>
+<p>This mechanism will assist users to checking the accuracy of depth data.</p>
 <h3 id='merging-incremental-data-into-full-data'>Merging incremental data into full data</h3>
-<p>After subscribing to the incremental load push (such as <code>books</code> 400 levels) of Order Book Channel, users first receive the initial full load of market depth. After the incremental load is subsequently received, update the local full load.</p>
+<p>After subscribing to the incremental push channel (such as <code>books</code> 400 levels) of Order Book Channel, users first receive the initial snapshot of the market depth. Afterwards the incremental data is subsequently received, you are responsible to update the snapshot locally.</p>
 
 <ol>
-<li>If there is the same price, compare the amount. If the amount is 0, delete this depth data. If the amount changes, replace the original data.</li>
-<li>If there is no same price, sort by price (bid in descending order, ask in ascending order), and insert the depth information into the full load.</li>
+<li>If there is a same price, compare the amount. If the amount is 0, delete this depth data. If the amount changes, replace the original data.</li>
+<li>If there is no same price, sort by price (<strong>bids</strong> in descending order, <strong>asks</strong> in ascending order), and insert the depth information into the local snapshot.</li>
 </ol>
 <h3 id='calculate-checksum'>Calculate Checksum</h3>
-<p>Use the first 25 bids and asks in the full load to form a string (where a colon connects the price and amount in an ask or a bid), and then calculate the CRC32 value (32-bit signed integer).</p>
+<p>Use the first 25 bids and asks in the local snapshot to build a string (where a <strong>colon</strong> connects the price and amount in an ask or a bid), and then calculate the CRC32 value (32-bit signed integer).</p>
 
 <blockquote>
 <p>Calculate Checksum</p>
 </blockquote>
 <pre class="highlight plaintext"><code>1. More than 25 levels of bid and ask
-A full load of market depth (only 2 levels of data are shown here, while 25 levels of data should actually be intercepted):
-"bids": [
-  [ 43231.1, 4 ],
-  [ 43231, 6 ]
-]
-"asks": [
-  [ 43230.8, 9 ],
-  [ 43230.7, 8 ]
-]
-Check string:
-"43231.1:4:43231:6:43230.8:9:43230.7:8"
+A local snapshot of market depth (only 2 levels of the orderbook are shown here, while 25 levels of orderbook should actually be intercepted):
+    "bids": [
+      [ 43231.1, 4 ],
+      [ 43231, 6 ]
+    ]
+    "asks": [
+      [ 43230.8, 9 ],
+      [ 43230.7, 8 ]
+    ]
+Build the string to check CRC32:
+"43231:6:43230.8:9:43231.1:4:43230.7:8"
+The sequence:
+"bid1[price:amount]:ask1[price:amount]:bid2[price:amount]:ask2[price:amount]"
 
 2. Less than 25 levels of bid or ask
-A full load of market depth:
-"bids": [
-  [ 3366.1, 7, 0, 3 ]
-]
-"asks": [
-  [ 3366.8, 9, 10, 3 ],
-  [ 3368  , 8,  3, 4 ],
-  [ 3372  , 8,  3, 4 ]
-]
+A local snapshot of market depth:
+    "bids": [
+      [ 3366.1, 7, 0, 3 ]
+    ]
+    "asks": [
+      [ 3366.8, 9, 10, 3 ],
+      [ 3368  , 8,  3, 4 ],
+      [ 3372  , 8,  3, 4 ]
+    ]
 
-Check string:
+Build the string to check CRC32:
 "3366.1:7:3366.8:9:3368:8:3372:8"
+The sequence:
+"bid1[price:amount]:ask1[price:amount]:ask2[price:amount]:ask3[price:amount]"
 </code></pre>
 <ol>
 <li>When the bid and ask depth data exceeds 25 levels, each of them will intercept 25 levels of data, and the string to be checked is queued in a way that the bid and ask depth data are alternately arranged.
-Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>bid[price:amount]</code>:<code>ask[price:amount]</code>...</li>
+Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>bid2[price:amount]</code>:<code>ask2[price:amount]</code>...</li>
 <li>When the bid or ask depth data is less than 25 levels, the missing depth data will be ignored.
-Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>asks[price:amount]</code>:<code>asks[price:amount]</code>...</li>
+Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>ask2[price:amount]</code>:<code>ask3[price:amount]</code>...</li>
 </ol>
 <h2 id='public-channels'>Public Channels</h2><h3 id='tickers-channel'>Tickers Channel</h3>
-<p>Retrieve the last traded price, bid price, ask price and 24-hour trading volume of instruments. Data will be pushed every 100 ms.</p>
+<p>Retrieve the last traded price, bid price, ask price and 24-hour trading volume of the instruments. Data will be pushed every 100 ms.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -4644,7 +4750,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
@@ -4653,22 +4759,22 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>List of subscribed channels</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument Type，SP</td>
+<td>Instrument type<code>SP</code>: Spot public channel; <code>MC</code>: Contract/future channel</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name, <code>tickers</code></td>
+<td>Channel name, <code>ticker</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument ID</td>
+<td>Instrument ID, refer to <a href="#get-symbols">Get Symbols</a> in response field: <code>symbolName</code>, a sample value could be like <code>BTCUSDT</code></td>
 </tr>
 </tbody></table>
 
@@ -4716,7 +4822,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
 <td>Instrument Type</td>
@@ -4762,7 +4868,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Successfully subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Instrument Type</td>
 </tr>
@@ -4779,32 +4885,32 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>action</td>
 <td>String</td>
-<td>Push data action, incremental push data or full push data <code>snapshot</code>: full <code>update</code>: incremental</td>
+<td>Push data action, incremental or full data.  <code>update</code>: incremental; <code>snapshot</code>: full, channel &#39;ticker&#39; would only return &#39;snapshot&#39;</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array</td>
-<td>Subscribed data</td>
+<td>Subscribed data array</td>
 </tr>
 <tr>
 <td>&gt;instId</td>
 <td>String</td>
-<td>Instrument ID</td>
+<td>Instrument ID, BTCUSDT</td>
 </tr>
 <tr>
 <td>&gt;last</td>
 <td>String</td>
-<td>Last traded price</td>
+<td>Latest traded price from the moment this data generated</td>
 </tr>
 <tr>
 <td>&gt;bestAsk</td>
 <td>String</td>
-<td>Best ask price</td>
+<td>Best ask price or: ask1 price</td>
 </tr>
 <tr>
 <td>&gt;bestBid</td>
 <td>String</td>
-<td>Best bid price</td>
+<td>Best bid price or: bid1 price</td>
 </tr>
 <tr>
 <td>&gt;open24h</td>
@@ -4822,22 +4928,66 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Lowest price in the past 24 hours</td>
 </tr>
 <tr>
-<td>&gt;baseVol</td>
+<td>&gt;baseVolume</td>
 <td>String</td>
-<td>24h trading volume,  with a unit of <code>currency</code>.</td>
+<td>24h trading volume,  with a unit of <code>currency</code>. BTC is base currency in BTCUSDT</td>
 </tr>
 <tr>
-<td>&gt;quoteVol</td>
+<td>&gt;quoteVolume</td>
 <td>String</td>
-<td>24h trading volume, with a unit of <code>contact</code>.</td>
+<td>24h trading volume, with a unit of <code>contract</code>.USDT is quote contract in BTCUSDT</td>
 </tr>
 <tr>
 <td>&gt;ts</td>
 <td>String</td>
 <td>Ticker data generation time, Unix timestamp format in milliseconds</td>
 </tr>
+<tr>
+<td>&gt;labeId</td>
+<td>Long</td>
+<td>Label ID</td>
+</tr>
+<tr>
+<td>openUtc</td>
+<td>String</td>
+<td>Open price in UTC time</td>
+</tr>
+<tr>
+<td>chgUTC</td>
+<td>String</td>
+<td>Change rate since openUtc, that is: (last - openUtc) / openUtc, scale e-5</td>
+</tr>
 </tbody></table>
-<h3 id='candlesticks-channel'>Candlesticks Channel</h3>
+
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20193.17"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"open24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19112.64"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20374.29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18973.16"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20192.420000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20196.440000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13177.3815"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"261300702.3745"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1664292040025</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"labeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19226.5300000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chgUTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05028"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='candlesticks-channel'>Candlesticks Channel</h3>
 <p>Retrieve the candlesticks data of an instrument. Data will be pushed every 500 ms.</p>
 
 <blockquote>
@@ -4866,31 +5016,31 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
 <td>Array</td>
 <td>Yes</td>
-<td>List of subscribed channels</td>
+<td>List of subscription channels</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument Type <code>SP</code></td>
+<td>Instrument Type <code>SP</code>: spot; <code>MC</code>: contract/future</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel Name，<code>candle1W</code><code>candle1D</code><code>candle12H</code> <code>candle4H</code>  <code>candle1H</code><code>candle30m</code> <code>candle15m</code> <code>candle5m</code> <code>candle1m</code></td>
+<td>Channel Name，<code>candle1W, candle1D, candle12H, candle4H, candle1H, candle30, candle15m, candle5m, candle1m</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument name for example :BTCUSDT</td>
+<td>Instrument ID for example :BTCUSDT</td>
 </tr>
 </tbody></table>
 
@@ -4970,9 +5120,10 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 </tbody></table>
 
 <blockquote>
-<p>Push Data Example</p>
+<p>Push Data Example - snapshot</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
@@ -4998,7 +5149,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Successfully subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Instrument Type</td>
 </tr>
@@ -5015,7 +5166,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>data</td>
 <td>Array</td>
-<td>Subscribed data</td>
+<td>Subscription data array, format in String Array</td>
 </tr>
 <tr>
 <td>&gt; ts</td>
@@ -5045,17 +5196,55 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt;v</td>
 <td>String</td>
-<td>Trading volume, with a unit of <code>contact</code>.</td>
+<td>Trading volume, with a unit of <code>contact</code></td>
 </tr>
 </tbody></table>
 <h3 id='depth-channel'>Depth channel</h3>
-<p>Get depth data</p>
+<p>Subscribe depth(order book) data</p>
 
 <p><code>books</code>: Push the full snapshot data for the first time, push incrementally later, and push incrementally later, that is, if there is a change in depth, the data that has changed once is pushed</p>
 
 <p><code>books5</code>: Push 5 files of snapshot data for the first time, and then all the data will be pushed, and 5 files of data will be pushed once with in-depth changes, that is, 5 files of data will be pushed every time</p>
 
 <p><code>book15</code> 15 files of snapshot data are pushed for the first time, and then all of them will be pushed, and 15 files of data will be pushed once with in-depth changes, that is, 15 files of data will be pushed every time</p>
+
+<table><thead>
+<tr>
+<th>Channel</th>
+<th>Length of bids</th>
+<th>Length of asks</th>
+<th>Remark</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>books</td>
+<td>maximum 200</td>
+<td>maximum 200</td>
+<td>Snapshot and update might return less than 200 bids/asks as per symbol&#39;s orderbook various from each other；The number of bids/asks is not a fixed value and may vary in the future</td>
+</tr>
+<tr>
+<td>books5</td>
+<td>5</td>
+<td>5</td>
+<td>Top 5 order book of &quot;books&quot; that begins from bid1/ask1</td>
+</tr>
+<tr>
+<td>books15</td>
+<td>15</td>
+<td>15</td>
+<td>Top 15 order book of &quot;books&quot; that begins from bid1/ask1</td>
+</tr>
+</tbody></table>
+
+<p>For example, if the whole order book consist of 20 bids and 12 asks</p>
+
+<p>channel books return 20 bids and 12 asks</p>
+
+<p>channel books5 return 5 bids and 5 asks, both from index 0 to index 4</p>
+
+<p>channel books15 return 15 bids index from 0 to 14, and return 12 asks index from 0 to 11</p>
+
+<p>Noted that bids are in descending order, while asks are in ascending order</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -5083,7 +5272,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
@@ -5092,7 +5281,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>List of subscribed channels</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
 <td>Instrument Type <code>SP</code></td>
@@ -5101,7 +5290,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name, <code>books</code> <code>books5</code></td>
+<td>Channel name, <code>books</code> <code>books5</code> or <code>books15</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
@@ -5146,7 +5335,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>event</td>
 <td>String</td>
 <td>Yes</td>
-<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
 </tr>
 <tr>
 <td>arg</td>
@@ -5155,7 +5344,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
 <td>Instrument Type</td>
@@ -5170,7 +5359,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument name</td>
+<td>Instrument ID</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -5201,7 +5390,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Successfully subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Instrument Type</td>
 </tr>
@@ -5228,12 +5417,12 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; asks</td>
 <td>Array</td>
-<td>Order book on sell side</td>
+<td>Order book on sell side, ascending order</td>
 </tr>
 <tr>
 <td>&gt; bids</td>
 <td>Array</td>
-<td>Order book on buy side</td>
+<td>Order book on buy side, descending order</td>
 </tr>
 <tr>
 <td>&gt; ts</td>
@@ -5243,13 +5432,13 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; checksum</td>
 <td>Integer</td>
-<td>Checksum</td>
+<td><a href="#checksum">Checksum</a>, calculate and compare the checksum, re-subscribe if mis-match</td>
 </tr>
 </tbody></table>
 
-<p><strong>An example of the array of asks and bids values: [&quot;411.8&quot;, &quot;10&quot;, &quot;1&quot;, &quot;4&quot;] &quot;411.8&quot; is the depth price, &quot;10&quot; is the size</strong></p>
+<p><strong>An example of the array of asks and bids values: [&quot;411.8&quot;, &quot;10&quot;] &quot;411.8&quot; is the depth price, &quot;10&quot; is the size</strong></p>
 <h3 id='trades-channel'>Trades Channel</h3>
-<p>Retrieve the recent trades data. Data will be pushed whenever there is a trade.</p>
+<p>Retrieve the recent trading data. Data will be pushed whenever there is a trade.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -5277,7 +5466,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
-<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
 </tr>
 <tr>
 <td>args</td>
@@ -5286,10 +5475,10 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>List of subscribed channels</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument Type</td>
+<td>Instrument Type, <code>sp</code> : spot</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
@@ -5301,7 +5490,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Instrument ID</td>
+<td>Instrument ID, i.e. BTCUSDT</td>
 </tr>
 </tbody></table>
 
@@ -5488,7 +5677,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>&gt; instId</td>
 <td>String</td>
 <td>Yes</td>
-<td>Currency, all is default</td>
+<td>Currency, always &#39;default&#39;</td>
 </tr>
 </tbody></table>
 
@@ -5594,16 +5783,21 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <th>Parameter</th>
 <th>Type</th>
-<th>Decription</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>snapshot</code>: snapshot of current account, <code>update</code>: incremental changes</td>
+</tr>
 <tr>
 <td>arg</td>
 <td>Object</td>
 <td>Successfully subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Instrument Type</td>
 </tr>
@@ -5613,7 +5807,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Channel Name</td>
 </tr>
 <tr>
-<td>&gt; instId</td>
+<td>&gt; instId</td>
 <td>String</td>
 <td>Currency</td>
 </tr>
@@ -5630,7 +5824,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; coinName</td>
 <td>String</td>
-<td>Coin Name</td>
+<td>Coin Name, BTC, USDT</td>
 </tr>
 <tr>
 <td>&gt; available</td>
@@ -5668,12 +5862,6 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 </tr>
 </thead><tbody>
 <tr>
-<td>&gt; instId</td>
-<td>String</td>
-<td>No</td>
-<td>Instrument Id</td>
-</tr>
-<tr>
 <td>op</td>
 <td>String</td>
 <td>Yes</td>
@@ -5682,20 +5870,26 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>args</td>
 <td>Array</td>
-<td>是</td>
+<td>Yes</td>
 <td>List of subscribed channels</td>
 </tr>
 <tr>
 <td>&gt; instType</td>
 <td>String</td>
-<td>是</td>
+<td>Yes</td>
 <td>Instrument Type,spbl</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
-<td>是</td>
+<td>Yes</td>
 <td>Channel Name, <code>orders</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>No</td>
+<td>Instrument Id, BTCUSDT_SPBL</td>
 </tr>
 </tbody></table>
 
@@ -5724,7 +5918,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 
 <table><thead>
 <tr>
-<th>Paramters</th>
+<th>Parameters</th>
 <th>Type</th>
 <th>Required</th>
 <th>Description</th>
@@ -5733,43 +5927,43 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>event</td>
 <td>String</td>
-<td>是</td>
-<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
+<td>Yes</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>errror</code></td>
 </tr>
 <tr>
 <td>arg</td>
 <td>Object</td>
-<td>否</td>
+<td>No</td>
 <td>Subscribed Data</td>
 </tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
-<td>是</td>
+<td>Yes</td>
 <td>Channel Name</td>
 </tr>
 <tr>
 <td>&gt; instType</td>
 <td>String</td>
-<td>是</td>
-<td>Instrument Type<code>spbl：币币</code></td>
+<td>Yes</td>
+<td>Instrument Type`spbl：private spot</td>
 </tr>
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
-<td>否</td>
+<td>No</td>
 <td>Instrument Id</td>
 </tr>
 <tr>
 <td>code</td>
 <td>String</td>
-<td>否</td>
+<td>No</td>
 <td>Error Code</td>
 </tr>
 <tr>
 <td>msg</td>
 <td>String</td>
-<td>否</td>
+<td>No</td>
 <td>Error Message</td>
 </tr>
 </tbody></table>
@@ -5778,7 +5972,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 
 <table><thead>
 <tr>
-<th>Paramter</th>
+<th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -5816,7 +6010,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; clOrdId</td>
 <td>String</td>
-<td>Client-supplied order ID</td>
+<td>Client customized order ID</td>
 </tr>
 <tr>
 <td>&gt; px</td>
@@ -5824,12 +6018,12 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <td>Order price</td>
 </tr>
 <tr>
-<td>&gt; sz</td>
+<td>&gt; sz</td>
 <td>String</td>
 <td>The original order quantity</td>
 </tr>
 <tr>
-<td>&gt; notional</td>
+<td>&gt; notional</td>
 <td>String</td>
 <td>The purchase amount, which will be returned when the market price is purchased</td>
 </tr>
@@ -5846,7 +6040,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; side</td>
 <td>String</td>
-<td>order side，<code>buy</code> <code>sell</code></td>
+<td>order side，<code>buy</code> <code>sell</code></td>
 </tr>
 <tr>
 <td>&gt; fillPx</td>
@@ -5891,22 +6085,22 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt; avgPx</td>
 <td>String</td>
-<td>Average filled price. If none is filled, it will return <code>0</code>.</td>
+<td>Average filled price. If none is filled, it will return <code>0</code>.</td>
 </tr>
 <tr>
 <td>&gt; status</td>
 <td>String</td>
-<td>order state <code>new&#39; ‘partial-fill</code><code>full-fill</code>cancelled`</td>
+<td>order state <code>new</code>, <code>partial-fill</code>, <code>full-fill</code>, <code>cancelled</code></td>
 </tr>
 <tr>
 <td>&gt; cTime</td>
 <td>String</td>
-<td>Creation time, Unix timestamp format in milliseconds</td>
+<td>Created time, Unix timestamp format in milliseconds</td>
 </tr>
 <tr>
 <td>&gt; uTime</td>
 <td>String</td>
-<td>Update time, Unix timestamp format in milliseconds</td>
+<td>Updated time, Unix timestamp format in milliseconds</td>
 </tr>
 <tr>
 <td>&gt;orderFee</td>
@@ -5921,7 +6115,7 @@ Such as: <code>bid[price:amount]</code>:<code>ask[price:amount]</code>:<code>as
 <tr>
 <td>&gt;&gt; fee</td>
 <td>String</td>
-<td>FeeNegative number represents the user transaction fee charged by the platform.Positive number represents rebate.</td>
+<td>Negative fee: the user transaction fee charged by the platform. Positive fee means rebate.</td>
 </tr>
 </tbody></table>
 <h1 id='restapi-error-code'>RestAPI  error code</h1><h2 id='public-error-code'>Public error code</h2>
