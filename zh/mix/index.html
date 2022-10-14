@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -310,8 +310,14 @@
     <ul class="search-results"></ul>
   <ul id="toc" class="toc-list-h1">
       <li>
+        <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+      </li>
+      <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#2022-10-14" class="toc-h2 toc-link" data-title="2022年10月14日">2022年10月14日</a>
+              </li>
               <li>
                 <a href="#2022-9-15" class="toc-h2 toc-link" data-title="2022年9月15日">2022年9月15日</a>
               </li>
@@ -545,6 +551,9 @@
                         <a href="#fd6ce2a756" class="toc-h3 toc-link" data-title="下单">下单</a>
                       </li>
                       <li>
+                        <a href="#ecccb4a0c0" class="toc-h3 toc-link" data-title="一键反手">一键反手</a>
+                      </li>
+                      <li>
                         <a href="#de93fae07b" class="toc-h3 toc-link" data-title="批量下单">批量下单</a>
                       </li>
                       <li>
@@ -743,7 +752,13 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-15'>2022年9月15日</h2>
+<h1 id='welcome'>Welcome</h1>
+<p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-10-14'>2022年10月14日</h2>
+<ul>
+<li>Add new interface RestAPI - &gt;  交易接口 -&gt; 一键反手</li>
+</ul>
+<h2 id='2022-9-15'>2022年9月15日</h2>
 <ul>
 <li>新增接口 <code>交易接口</code> -&gt; <code>一键全撤</code></li>
 </ul>
@@ -3008,7 +3023,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">持仓方向(全仓不传)</td>
+<td style="text-align: center">持仓方向（全仓不传）</td>
 </tr>
 </tbody></table>
 
@@ -4086,6 +4101,209 @@ Signature = base64.encode(Signature)
 <li>market</li>
 </ul></li>
 </ul>
+<h3 id='ecccb4a0c0'>一键反手</h3>
+<p>反手操作：已有仓位会市价平仓，然后在反向开同样数量的仓位。</p>
+
+<p>如果平仓的结算金额+可用余额不足以开到指定的反向仓位，则市价平仓成功，开仓失败；</p>
+
+<p>反手操作可能因 保证金，市场波动或其它原因失败。</p>
+
+<p>你必须在已持仓的情况下进行反手操作，否则服务器会返回：&quot;可用仓位不足&quot;</p>
+
+<blockquote>
+<p>Not enough position</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40757"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"可用仓位不足"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1665454799692</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>反手的size参数通常应设置为原持仓的2倍。例如：原仓位数量为100， 反手下单时应将size设置为200，服务器会平仓100，然后反向市价开仓200-100=100</p>
+
+<ul>
+<li>反手 - 2倍size
+
+<ul>
+<li>[反手下单的size] = [市价平仓size] + [反向市价开仓size]</li>
+<li>原持仓:1 BTCUSDT long</li>
+<li>反手size: 2 close_long BTCUSDT</li>
+<li>理想状态下，原持仓1 BTCUSDT long会市价平仓，反手市价1 BTCUSDT short开仓</li>
+</ul></li>
+</ul>
+
+<p>反手的size也可以设置为原持仓的1.5倍或3倍，服务器会先行市价平仓，然后根据客户的保证金状况进行反向市价建仓（可能因保证金不足而开仓失败）</p>
+
+<ul>
+<li>反手 - 1.5倍size
+
+<ul>
+<li>原持仓:1 BTCUSDT long</li>
+<li>反手size: 1.50 close_long BTCUSDT</li>
+<li>理想状态下，原持仓1 BTCUSDT long会市价平仓，反手市价0.5 BTCUSDT short开仓</li>
+</ul></li>
+</ul>
+
+<p><code>orderType</code> 必须指定为 market, 限价单limit在反手中会被当做市价处理</p>
+
+<blockquote>
+<p>原开仓订单参数</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeInForceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>反手示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close_long"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeInForceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">   
+    </span><span class="s2">"reverse"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>如原持仓方向为open_long, 则反手操作中应设置参数<code>side</code>为 close_long; 如原持仓方向为open_short, 则反手操作中应设置参数<code>side</code>为 close_short; </p>
+
+<p>右边的示例演示了一个反手操作。理想状态下，你最终应该持仓 <code>100 TRXUSDT short</code> </p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/order/placeOrder</li>
+</ul>
+
+<p>一键反手与下单共享同一个接口</p>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">保证金币种 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">下单数量=平仓size+反手开仓size</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">开单方向 close_long 或 close_short</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">订单类型: market</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">客户端标识 唯一</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForceValue</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">订单有效期</td>
+</tr>
+<tr>
+<td style="text-align: left">reverse</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">是否反手订单： <code>true</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>反手请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/placeOrder"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"market"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"reverse@483939290002"</span>,<span class="s2">"reverse"</span>:true<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>反手返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='de93fae07b'>批量下单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 

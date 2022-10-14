@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -5202,11 +5202,11 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <h3 id='depth-channel'>Depth channel</h3>
 <p>Subscribe depth(order book) data</p>
 
-<p><code>books</code>: Push the full snapshot data for the first time, push incrementally later, and push incrementally later, that is, if there is a change in depth, the data that has changed once is pushed</p>
+<p><code>books</code>: Push the full snapshot data for the first time, push incrementally later, that is, if there is a change in depth, the depth data that has changed will be pushed</p>
 
-<p><code>books5</code>: Push 5 files of snapshot data for the first time, and then all the data will be pushed, and 5 files of data will be pushed once with in-depth changes, that is, 5 files of data will be pushed every time</p>
+<p><code>books5</code>: Push 5 levels of snapshot data every time</p>
 
-<p><code>book15</code> 15 files of snapshot data are pushed for the first time, and then all of them will be pushed, and 15 files of data will be pushed once with in-depth changes, that is, 15 files of data will be pushed every time</p>
+<p><code>book15</code> 15 levels of snapshot data  every time</p>
 
 <table><thead>
 <tr>
@@ -5220,7 +5220,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>books</td>
 <td>maximum 200</td>
 <td>maximum 200</td>
-<td>Snapshot and update might return less than 200 bids/asks as per symbol&#39;s orderbook various from each other；The number of bids/asks is not a fixed value and may vary in the future</td>
+<td>Snapshot and update might return less than 200 bids/asks as per symbol&#39;s orderbook various from each other; The number of bids/asks is not a fixed value and may vary in the future</td>
 </tr>
 <tr>
 <td>books5</td>
@@ -5240,9 +5240,9 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <p>channel books return 20 bids and 12 asks</p>
 
-<p>channel books5 return 5 bids and 5 asks, both from index 0 to index 4</p>
+<p>channel books5 return 5 bids and 5 asks, bids return from index 15 to 19(index 19 is bid1), asks return from index 0 to index 4</p>
 
-<p>channel books15 return 15 bids index from 0 to 14, and return 12 asks index from 0 to 11</p>
+<p>channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 12 asks index from 0 to 11</p>
 
 <p>Noted that bids are in descending order, while asks are in ascending order</p>
 
