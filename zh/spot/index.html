@@ -310,8 +310,14 @@
     <ul class="search-results"></ul>
   <ul id="toc" class="toc-list-h1">
       <li>
+        <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+      </li>
+      <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#2022-10-18" class="toc-h2 toc-link" data-title="2022年10月18日">2022年10月18日</a>
+              </li>
               <li>
                 <a href="#2022-9-19" class="toc-h2 toc-link" data-title="2022年9月19日">2022年9月19日</a>
               </li>
@@ -456,6 +462,9 @@
                   <ul class="toc-list-h3">
                       <li>
                         <a href="#1045de04a1" class="toc-h3 toc-link" data-title="划转">划转</a>
+                      </li>
+                      <li>
+                        <a href="#7bc510fe47" class="toc-h3 toc-link" data-title="母子账户划转">母子账户划转</a>
                       </li>
                       <li>
                         <a href="#263e170b4c" class="toc-h3 toc-link" data-title="获取充币地址">获取充币地址</a>
@@ -617,7 +626,13 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-19'>2022年9月19日</h2>
+<h1 id='welcome'>Welcome</h1>
+<p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-10-18'>2022年10月18日</h2>
+<ul>
+<li><code>钱包接口</code> -&gt; 新增 <a href="#7bc510fe47">母子账户划转</a></li>
+</ul>
+<h2 id='2022-9-19'>2022年9月19日</h2>
 <ul>
 <li><code>账户接口</code> -&gt; <code>获取ApiKey信息</code> 新增 <code>trader</code></li>
 </ul>
@@ -2102,7 +2117,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">type</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">默认：step0： 不合并，取值：step0,step1，step2，step3，step4，step5</td>
+<td style="text-align: center">默认：step0： 不合并，取值：step0，step1，step2，step3，step4，step5</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -2238,11 +2253,228 @@ Signature = base64.encode(Signature)
 <li>fromType, toType
 
 <ul>
-<li>spot</li>
-<li>mix_usdt</li>
-<li>mix_usd</li>
+<li>spot        接受转入转出多个币种</li>
+<li>mix_usdt        只接受转入转出USDT</li>
+<li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
+<li>mix_usdc       只接受转入转出USDC</li>
 </ul></li>
 </ul>
+<h3 id='7bc510fe47'>母子账户划转</h3>
+<p>母子账户划转支持以下划转方式</p>
+
+<table><thead>
+<tr>
+<th>划转方式</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>母账户到子账户</td>
+<td>需要存在母子关系</td>
+</tr>
+<tr>
+<td>子账户到子账户</td>
+<td>需要归属于同一个母账户</td>
+</tr>
+<tr>
+<td>子账户到母账户</td>
+<td>需要存在母子关系</td>
+</tr>
+</tbody></table>
+
+<p><strong>母子账户划转需要绑定IP白名单</strong></p>
+
+<p><strong>转入/转出账户UID必须存在母子关系/兄弟关系</strong></p>
+
+<p><strong>注意从交易账户转出时，全仓模式下保证金的减少会导致更大的交易风险</strong></p>
+
+<p>&nbsp;</p>
+
+<p>限速规则：2次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/subTransfer</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/subTransfer"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"12345"</span>,<span class="s2">"fromUserId"</span>:<span class="s2">"1"</span>,<span class="s2">"toUserId"</span>:<span class="s2">"2"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>是</td>
+<td>转出账户类型</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>是</td>
+<td>转入账户类型</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>划转金额</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>划转币种</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>是</td>
+<td>用户自定义ID，唯一键，幂等控制</td>
+</tr>
+<tr>
+<td>fromUserId</td>
+<td>String</td>
+<td>是</td>
+<td>转出账户UID</td>
+</tr>
+<tr>
+<td>toUserId</td>
+<td>String</td>
+<td>是</td>
+<td>转出账户UID</td>
+</tr>
+</tbody></table>
+
+<p>转入/转出账户UID必须存在母子关系，没有母子关系的操作会返回异常</p>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success"
+}
+</code></pre>
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot        接受转入转出多个币种</li>
+<li>mix_usdt        只接受转入转出USDT</li>
+<li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+</ul></li>
+</ul>
+
+<p>fromType/toType限制说明</p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>任意转</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+</tbody></table>
 <h3 id='263e170b4c'>获取充币地址</h3>
 <p>限速规则：5次/1s (uid)</p>
 

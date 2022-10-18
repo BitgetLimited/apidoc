@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#18-10-2022" class="toc-h2 toc-link" data-title="18/10/2022">18/10/2022</a>
+              </li>
+              <li>
                 <a href="#19-09-2022" class="toc-h2 toc-link" data-title="19/09/2022">19/09/2022</a>
               </li>
               <li>
@@ -395,9 +398,6 @@
                 <a href="#api-domain" class="toc-h2 toc-link" data-title="API domain">API domain</a>
               </li>
               <li>
-                <a href="#api-verification" class="toc-h2 toc-link" data-title="API Verification">API Verification</a>
-              </li>
-              <li>
                 <a href="#api-public-parameters" class="toc-h2 toc-link" data-title="API Public parameters">API Public parameters</a>
                   <ul class="toc-list-h3">
                       <li>
@@ -431,6 +431,9 @@
                         <a href="#candlestick-line-timeframe" class="toc-h3 toc-link" data-title="Candlestick line timeframe">Candlestick line timeframe</a>
                       </li>
                   </ul>
+              </li>
+              <li>
+                <a href="#api-verification" class="toc-h2 toc-link" data-title="API Verification">API Verification</a>
               </li>
               <li>
                 <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
@@ -491,6 +494,9 @@
                   <ul class="toc-list-h3">
                       <li>
                         <a href="#transfer" class="toc-h3 toc-link" data-title="Transfer">Transfer</a>
+                      </li>
+                      <li>
+                        <a href="#sub-transfer" class="toc-h3 toc-link" data-title="Sub Transfer">Sub Transfer</a>
                       </li>
                       <li>
                         <a href="#get-coin-address" class="toc-h3 toc-link" data-title="Get Coin Address">Get Coin Address</a>
@@ -651,7 +657,11 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-log'>Update Log</h1><h2 id='19-09-2022'>19/09/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='18-10-2022'>18/10/2022</h2>
+<ul>
+<li><code>Wallet</code> -&gt; add  <a href='#sub-transfer'>Sub Transfer</a></li>
+</ul>
+<h2 id='19-09-2022'>19/09/2022</h2>
 <ul>
 <li><code>Account</code> -&gt; <code>Get ApiKey Info</code> add Response <code>trader</code></li>
 </ul>
@@ -689,7 +699,7 @@ clipboard.on('error', function(e) {
 </ul>
 <h2 id='05-05-2022'>05/05/2022</h2>
 <ul>
-<li>Added walllet interface</li>
+<li>Added wallet interface</li>
 </ul>
 <h2 id='12-02-2022-ticker'>12/02/2022 【Ticker】</h2>
 <ul>
@@ -933,34 +943,7 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <td>Old domain</td>
 </tr>
 </tbody></table>
-<h2 id='api-verification'>API Verification</h2>
-<p><strong>Initiating request</strong></p>
-
-<p>The header of all REST requests must contain the following keys:</p>
-
-<ul>
-<li>ACCESS-KEY：API KEY as a string.</li>
-<li>ACCESS-SIGN： Sign with base64 encoding (see <a href="#signature">Signature</a>).</li>
-<li>ACCESS-TIMESTAMP： The timestamp of your request. Value equals to milliseconds since Epoch.</li>
-<li>ACCESS-PASSPHRASE：The passphrase you set when creating the API KEY.</li>
-<li>Content-Type：Standardized setting to application/json.</li>
-<li>locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
-</ul>
-<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
-<span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-</code></pre><pre class="highlight plaintext"><code>//python
-import time
-time.time_ns() / 1000000
-</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-  </span><span class="s">"time"</span><span class="x">
-</span><span class="p">)</span><span class="x">
-</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
-<span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
-</code></pre><pre class="highlight php tab-php"><code>//PHP
-microtime(true) * 1000;
-</code></pre><h2 id='api-public-parameters'>API Public parameters</h2><h3 id='side'>side</h3>
+<h2 id='api-public-parameters'>API Public parameters</h2><h3 id='side'>side</h3>
 <p>Trade direction</p>
 
 <table><thead>
@@ -1225,7 +1208,34 @@ microtime(true) * 1000;
 <li>1Wutc (UTC0 weekly)</li>
 <li>1Mutc (UTC0 monthly)</li>
 </ul>
-<h2 id='signature'>Signature</h2>
+<h2 id='api-verification'>API Verification</h2>
+<p><strong>Initiating request</strong></p>
+
+<p>The header of all REST requests must contain the following keys:</p>
+
+<ul>
+<li>ACCESS-KEY：API KEY as a string.</li>
+<li>ACCESS-SIGN： Sign with base64 encoding (see <a href="#signature">Signature</a>).</li>
+<li>ACCESS-TIMESTAMP： The timestamp of your request. Value equals to milliseconds since Epoch.</li>
+<li>ACCESS-PASSPHRASE：The passphrase you set when creating the API KEY.</li>
+<li>Content-Type：Standardized setting to application/json.</li>
+<li>locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
+</ul>
+<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
+<span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+</code></pre><pre class="highlight plaintext"><code>//python
+import time
+time.time_ns() / 1000000
+</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+  </span><span class="s">"time"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+</code></pre><pre class="highlight php tab-php"><code>//PHP
+microtime(true) * 1000;
+</code></pre><h2 id='signature'>Signature</h2>
 <p>The request header of ACCESS-SIGN is obtained by encrypting <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body **string (+ means string concat) encrypt by **HMAC SHA256 **algorithm, and encode the encrypted result through **BASE64</strong>.</p>
 
 <p><strong>Description for each parameter of the signature</strong></p>
@@ -2330,6 +2340,224 @@ microtime(true) * 1000;
 <li>mix_usd</li>
 </ul></li>
 </ul>
+<h3 id='sub-transfer'>Sub Transfer</h3>
+<p>This interface supports to transfer in below ways</p>
+
+<table><thead>
+<tr>
+<th>Transfer from</th>
+<th>Transfer to</th>
+<th>Desc</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>main account</td>
+<td>sub account</td>
+<td>Sub account belongs to the main account</td>
+</tr>
+<tr>
+<td>sub account</td>
+<td>sub account</td>
+<td>Two sub account belongs to the same main account</td>
+</tr>
+<tr>
+<td>sub account</td>
+<td>main account</td>
+<td>Sub account belongs to the main account</td>
+</tr>
+</tbody></table>
+
+<p>1). Main/Sub transfer requires IP whitelist</p>
+
+<p>2). Transfer between fromUserId and toUserId should have direct/brother relationship</p>
+
+<p>3). Note the risk may increase when transfer out from account with cross margin mode</p>
+
+<p>&nbsp;</p>
+
+<p>Rate Limit：2/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/subTransfer</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/subTransfer"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"12345"</span>,<span class="s2">"fromUserId"</span>:<span class="s2">"1"</span>,<span class="s2">"toUserId"</span>:<span class="s2">"2"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>type</th>
+<th>Required</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>Yes</td>
+<td>from account type</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>Yes</td>
+<td>to account type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer amount</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer coin</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>Yes</td>
+<td>unique custom id, idempotent control</td>
+</tr>
+<tr>
+<td>fromUserId</td>
+<td>String</td>
+<td>Yes</td>
+<td>from user ID</td>
+</tr>
+<tr>
+<td>toUserId</td>
+<td>String</td>
+<td>Yes</td>
+<td>to user ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success"
+}
+</code></pre>
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot            Accept all kinds of coins</li>
+<li>mix_usdt    Only USDT</li>
+<li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
+<li>mix_usdc    Only USDC</li>
+</ul></li>
+</ul>
+
+<p><strong>fromType/toType restriction</strong></p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>Desc</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>Good to go</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+</tbody></table>
 <h3 id='get-coin-address'>Get Coin Address</h3>
 <p>Rate Limit：5/sec (uid)</p>
 
@@ -2766,7 +2994,7 @@ microtime(true) * 1000;
 <li>GET /api/spot/v1/wallet/deposit-list</li>
 </ul>
 
-<p><strong>Request Paramter</strong></p>
+<p><strong>Request Parameter</strong></p>
 
 <table><thead>
 <tr>

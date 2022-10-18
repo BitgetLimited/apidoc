@@ -310,6 +310,9 @@
     <ul class="search-results"></ul>
   <ul id="toc" class="toc-list-h1">
       <li>
+        <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+      </li>
+      <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
@@ -366,6 +369,26 @@
               </li>
               <li>
                 <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard Specification">Standard Specification</a>
+              </li>
+              <li>
+                <a href="#api-common-parameters" class="toc-h2 toc-link" data-title="API Common parameters">API Common parameters</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#account-status" class="toc-h3 toc-link" data-title="account status">account status</a>
+                      </li>
+                      <li>
+                        <a href="#auth" class="toc-h3 toc-link" data-title="auth">auth</a>
+                      </li>
+                      <li>
+                        <a href="#producttype" class="toc-h3 toc-link" data-title="productType">productType</a>
+                      </li>
+                      <li>
+                        <a href="#marginmode" class="toc-h3 toc-link" data-title="marginMode">marginMode</a>
+                      </li>
+                      <li>
+                        <a href="#toaccounttype" class="toc-h3 toc-link" data-title="toAccountType">toAccountType</a>
+                      </li>
+                  </ul>
               </li>
           </ul>
       </li>
@@ -451,6 +474,8 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
+<h1 id='welcome'>Welcome</h1>
+<p>Welcome to Bitget API Document! Click <a href="#introduction">here</a> for a quick start</p>
 <h1 id='update-log'>Update log</h1><h2 id='september-28-2022'>September 28, 2022</h2>
 <ul>
 <li>Add <code>Sub Account Interface</code> -&gt; <code>Sub Deposit Auto Transfer</code></li>
@@ -472,13 +497,13 @@ clipboard.on('error', function(e) {
 <h1 id='introduction'>Introduction</h1><h2 id='api-introduction'>API Introduction</h2>
 <p>Welcome to Bitget Developer document!  </p>
 
-<p>This document is the only official document of Bitget API. We will constantly update the functionalities of Bitget API here. Please pay attention to it regularly.</p>
+<p>This document is the only official API document of Bitget API. We will constantly update the functionalities of Bitget API here. Please pay attention to it regularly.</p>
 
-<p>You can switch to access different business APIs by clicking the upper menu, and you can switch the document language by clicking the language button on the upper right.</p>
+<p>You can switch to access different API products by clicking the upper menu, and you can switch a preferred language by clicking the language button on the upper right.</p>
 
-<p>On the right side of the document is an example of request parameters and response results.</p>
+<p>On the right side of the document will display examples of request parameters and response results.</p>
 <h2 id='updates'>Updates</h2>
-<p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance to notify you. It is recommended that you follow and subscribe to our announcements to obtain relevant information in time. </p>
+<p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance. It is recommended that you follow and subscribe to our announcements to obtain relevant information in time. </p>
 
 <p>You can click <a href='https://bitget.zendesk.com/hc/en-us/categories/360002621832-%E6%9C%80%E6%96%B0%E5%85%AC%E5%91 %8A'>here</a> to subscribe to announcements.</p>
 <h2 id='contact-us'>Contact Us</h2>
@@ -489,28 +514,28 @@ clipboard.on('error', function(e) {
 <li>Telegram <a href='https://t.me/bitgetapi'>Join</a></li>
 </ul>
 <h1 id='quick-start'>Quick Start</h1><h2 id='access-preparation'>Access Preparation</h2>
-<p>This document is for brokers to access and use. If you have certain R&amp;D and operation capabilities, and want to build a unique trading platform and manage your users independently, the independent broker service Yes is the best choice. You are responsible for front-end development and user operations, while Bitget provides you with back-end technology and market liquidity to empower your transaction value-added services.</p>
+<p>This document is intended to clarify the API usage for brokers . If you have certain R&amp;D and operation capabilities, and want to build a trading platform and manage your user independently, the independent broker service Yes is the best choice. You are responsible for front-end development and user operations, while Bitget provides you with back-end technology and market liquidity to empower your transaction value-added services.</p>
 
 <ul>
-<li>The broker is sending an email requesting to become a Bitget broker</li>
-<li>Brokers create an API Key at <a href='https://www.bitget.com/en-US/account/newapi'>here </a>, be sure to set an IP whitelist,</li>
-<li>Brokers can create their own sub-accounts through this API, control permissions, create sub-account APIKeys, and place orders through sub-account APIKeys.</li>
+<li>The broker could send an <a href="#contact-us">email</a> to apply to become a Bitget broker</li>
+<li>Brokers could create APIKey at <a href='https://www.bitget.com/en-US/account/newapi'>here </a> after login, make sure to set an IP whitelist while creating the APIKey</li>
+<li>Brokers can create their own sub-accounts through this API, control permissions, create sub-account APIKeys, and place orders through sub-account APIKey.</li>
 </ul>
 <h2 id='interface-type'>Interface Type</h2>
 <p>This chapter mainly divides the interface types into the following two aspects：</p>
 
 <ul>
-<li>Sub Account Interface</li>
-<li>Sub API Interface</li>
+<li><a href="#sub-account-interface">Sub Account Interface</a></li>
+<li><a href="#sub-api-interface">Sub API Interface</a></li>
 </ul>
 
 <p><strong>Sub Account Interface</strong> </p>
 
-<p>Create sub-accounts, modify permissions and query the list of sub-account accounts。</p>
+<p>Create sub-accounts, modify permissions and query the list of sub-account information。</p>
 
 <p><strong>Sub API Interface</strong> </p>
 
-<p>Create the APIKey of the sub-account, and set the permissions。</p>
+<p>Create the APIKey for the sub-account, and set the permissions。</p>
 <h2 id='access-restriction'>Access Restriction</h2>
 <p>This chapter mainly focuses on access restrictions:</p>
 
@@ -524,7 +549,7 @@ clipboard.on('error', function(e) {
 
 <p>Speed limit rules: There are separate instructions on each interface. If there is no general interface, the speed limit is 10 times per second.</p>
 
-<p>Special note: When placing orders in batches, if 4 currency pairs are placed, 10 orders per currency pair will be counted as one request.</p>
+<p>Special note: When placing orders in batches, 10 orders per currency pair will be counted as one request.</p>
 <h2 id='api-domain-name'>API Domain Name</h2>
 <p>You can use the Rest API access method to operate by yourself.      </p>
 
@@ -538,7 +563,7 @@ clipboard.on('error', function(e) {
 <tr>
 <td>Domain</td>
 <td>https://api.bitget.com</td>
-<td>Main Domain name</td>
+<td>Main Domain</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -547,36 +572,69 @@ clipboard.on('error', function(e) {
 <p>The header of all REST requests must contain the following key：</p>
 
 <ul>
-<li>ACCESS-KEY：API KEY as a string</li>
-<li>ACCESS-SIGN：Use base64 encoding to sign (see Signing messages).</li>
-<li>ACCESS-TIMESTAMP：Timestamp of your request</li>
-<li>ACCESS-PASSPHRASE：The password you set when creating the API KEY.</li>
-<li>Content-Type：Unified setting to application/json</li>
-<li>Locale: Support multiple languages, such as: Chinese (zh-CN), English (en-US)</li>
+<li>ACCESS-KEY：apiKey as a string, click to apply  <a href='https://www.bitget.com/en-US/account/newapi'>here </a> after login</li>
+<li>ACCESS-SIGN：hmac SHA256 encrypt and base64 encoding(see  <a href='#signature'>signature </a>)</li>
+<li>ACCESS-TIMESTAMP：Timestamp of your request, milliseconds since epoch</li>
+<li>ACCESS-PASSPHRASE：The passphrase you set while create the apiKey</li>
+<li>Content-Type：Set to <code>application/json</code> for POST request</li>
+<li>locale: Support languages such as: English (en-US), Chinese (zh-CN)</li>
 </ul>
-<h2 id='signature'>Signature</h2>
-<p>The request header of ACCESS-SIGN is to <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> string (+ means string connection) encrypted with <strong>HMAC SHA256</strong> method, passed* <em>BASE64</em>* encoded output.</p>
+<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
+<span class="n">Long</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+</code></pre><pre class="highlight plaintext"><code>//python
+import time
+time.time_ns() / 1000000
+</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+  </span><span class="s">"time"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+</code></pre><pre class="highlight php tab-php"><code>//PHP
+microtime(true) * 1000;
+</code></pre><h2 id='signature'>Signature</h2>
+<blockquote>
+<p>Signature - build content</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="c1">//timestamp: milliseconds</span>
+<span class="c1">//method: GET or POST</span>
+<span class="c1">//requestPath: url path</span>
+<span class="c1">//queryString: '?uid=123&amp;startTime=16800001234&amp;endTime=16800004321'</span>
+<span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
+</code></pre>
+<p>The request header of ACCESS-SIGN is generated as follows </p>
 
-<p><strong>Description of each field of the signature</strong> </p>
+<p>1). Concatenate a string content like in the right console: </p>
+
+<blockquote>
+<p>Signature - encrypt and encode</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">encryptedString</span> <span class="o">=</span> <span class="n">hmacSHA256</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">encryptedString</span><span class="o">);</span>
+</code></pre>
+<p>2). Encrypt the content by <strong>HMAC SHA256</strong> algorithm with the <code>secretKey</code>, at the end use BASE64 to encode the hmac sha256 output.</p>
+
+<p><strong>Description of each fields in the signature</strong> </p>
 
 <ul>
-<li>timestamp：Same as ACCESS-TIMESTAMP request header。</li>
-<li>method：Request method (POST/GET), all uppercase letters。</li>
-<li>requestPath：Request interface path。</li>
-<li>queryString：The query string in the request URL (the request parameter after the ?).</li>
-<li>body：The string corresponding to the request body. If the request has no body (usually a GET request), the body can be omitted.</li>
+<li>timestamp：Same as ACCESS-TIMESTAMP request header, milliseconds since epoch</li>
+<li>method：Request http method (POST/GET), uppercase</li>
+<li>requestPath：Request url path</li>
+<li>queryString：The query string in the request URL (Usually the GET request parameters after the ?).</li>
+<li>body：The request body json string. If the request has no body (usually a GET request), the body can be omitted.</li>
 </ul>
 
-<p><strong>The queryString as empty, signature format</strong> </p>
+<p><strong>When the queryString is empty, signature content</strong> </p>
 
 <p><code>
-timestamp + method.toUpperCase() + requestPath + body
+String content = timestamp + method.toUpperCase() + requestPath + body;
 </code></p>
 
-<p><strong>The queryString not empty, signature format</strong> </p>
+<p><strong>When the queryString not empty, signature content</strong> </p>
 
 <p><code>
-timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
+String content = timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body;
 </code></p>
 
 <p><strong>For example</strong> </p>
@@ -590,7 +648,7 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <li>queryString= &quot;?pageSize=10&amp;lastEndId=0&amp;status=normal&quot;</li>
 </ul>
 
-<p>Generate the string to be signed:</p>
+<p>Generate the content string to be encrypted and encoded:</p>
 
 <p><code>
 &#39;16273667805456GET/api/broker/v1/account/sub-list?pageSize=10&amp;lastEndId=0&amp;status=normal&#39;
@@ -599,8 +657,8 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 <p>Create Sub Account :</p>
 
 <ul>
-<li>Timestamp = 16273667805456</li>
-<li>Method = &quot;POST&quot;</li>
+<li>timestamp = 16273667805456</li>
+<li>method = &quot;POST&quot;</li>
 <li>requestPath = &quot;/api/broker/v1/account/sub-create&quot;</li>
 <li>body = {&quot;subName&quot;:&quot;mySub01&quot;,&quot;remark&quot;:&quot;myBitgetSub&quot;}</li>
 </ul>
@@ -613,32 +671,32 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 
 <p><strong>Steps to generate the final signature</strong> </p>
 
-<p>Step 1. Use the private key secretkey to encrypt the string to be signed with hmac sha256</p>
+<p>Step 1. Use the secretkey to encrypt the content string via hmac sha256</p>
 
 <p><code>
-Signature = hmac_sha256(secretkey, Message)
+String encryptedString = hmacSHA256(content, secretkey)
 </code></p>
 
-<p>The second step is to base64 encode the Signature</p>
+<p>Base64 encode the encryptedString</p>
 
 <p><code>
-Signature = base64.encode(Signature)
+String signature = Base64.encode(encryptedString)
 </code></p>
 <h2 id='request-interaction'>Request Interaction</h2>
-<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be all set to:&#39;application/json&#39;.</p>
+<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to set to:&#39;application/json&#39; for all POST methods.</p>
 
 <p><strong>Request Interaction Description</strong></p>
 
 <ul>
-<li>Request parameters: Encapsulate parameters according to the interface request parameters.</li>
+<li>Request parameters: Encapsulate parameters according to the interface request method: queryString for GET and json body for POST.</li>
 <li>Submit request parameters: Submit the encapsulated request parameters to the server through GET/POST.</li>
-<li>Server Response：The server first performs parameter security verification on the user request data, and returns the response data to the user in JSON format according to the business logic after passing the verification.</li>
+<li>Server Response：The server first performs parameter security verification on the user request parameters, and returns the response data to the user in JSON format according to the business logic afterwards.</li>
 <li>Data processing：Process the server response data.</li>
 </ul>
 
 <p><strong>Success</strong></p>
 
-<p>HTTP status code 200 indicates a successful response and may contain content. If the response contains content, it will be displayed in the corresponding return content.</p>
+<p>HTTP status code 200 indicates a successful response and may contain content. If the response contains content, it will be displayed in the corresponding return json field.</p>
 
 <p><strong>Common Error Codes</strong></p>
 
@@ -648,25 +706,63 @@ Signature = base64.encode(Signature)
 <li><p>403 Forbidden – You do not have access to the requested resource </p></li>
 <li><p>404 Not Found – No request found</p></li>
 <li><p>429 Too Many Requests – Requests are too frequent and are limited by the system</p></li>
-<li><p>500 Internal Server Error – We had a problem with our server </p></li>
-<li><p>If it fails, the body has an error description</p></li>
+<li><p>500 Internal Server Error – We had a problem within our server </p></li>
+<li><p>If it fails, the return body usually have an error message</p></li>
 </ul>
 <h2 id='standard-specification'>Standard Specification</h2>
 <p><strong>Timestamp</strong></p>
 
-<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be considered expired and rejected.
-If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+<p>The unit of ACCESS-TIMESTAMP in the request signature is milliseconds. The timestamp of the request must be within 30 seconds of the API server time, otherwise the request will be considered expired and rejected.
+If there is a large deviation between the local server time and the API server time, we recommend that you update the http header by querying the <a href="https://bitgetlimited.github.io/apidoc/en/spot/#get-server-time">API server time</a>.</p>
 
 <p><strong>Request Format</strong></p>
 
-<p>There are currently only two request methods in formats: GET and POST</p>
+<p>There are currently only two supported request methods: GET and POST</p>
 
 <ul>
 <li>GET:  The parameters are transmitted to the server in the path through queryString.</li>
-<li>POST: The parameters are sent to the server by sending the body in json format.</li>
+<li>POST: The parameters are sending to the server in json format in request body.</li>
+</ul>
+<h2 id='api-common-parameters'>API Common parameters</h2><h3 id='account-status'>account status</h3>
+<ul>
+<li>normal</li>
+<li>freeze</li>
+<li>del</li>
+</ul>
+<h3 id='auth'>auth</h3>
+<ul>
+<li>withdraw</li>
+<li>recharge</li>
+<li>transfer</li>
+<li>spot_trade</li>
+<li>contract_trade</li>
+<li>readonly</li>
+</ul>
+<h3 id='producttype'>productType</h3>
+<ul>
+<li>umcbl  <code>USDT perpetual contract</code></li>
+<li>dmcbl  <code>Universal margin perpetual contract</code></li>
+<li>cmcbl  <code>USDC perpetual contract</code></li>
+<li>sumcbl  <code>USDT simulation perpetual contract</code></li>
+<li>sdmcbl  <code>Universal margin simulation perpetual contract</code></li>
+<li>scmcbl  <code>USDC simulation perpetual contract</code></li>
+</ul>
+<h3 id='marginmode'>marginMode</h3>
+<p>Position Mode</p>
+
+<ul>
+<li>fixed     Isolated margin
+crossed       Cross margin</li>
+</ul>
+<h3 id='toaccounttype'>toAccountType</h3>
+<ul>
+<li>spot</li>
+<li>mix_usdt</li>
+<li>mix_usd</li>
+<li>mix_usdc</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='sub-account-interface'>Sub Account Interface</h2><h3 id='get-broker-info'>Get Broker Info</h3>
-<p>Limit rule：10次/1s  (uid)</p>
+<p>Limit rule：10/sec  (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -700,11 +796,11 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">maxSubAccountQty</td>
-<td style="text-align: center">Maximum number of created sub-accounts</td>
+<td style="text-align: center">Maximum number of sub-accounts that could be created</td>
 </tr>
 </tbody></table>
 <h3 id='create-sub-account'>Create Sub Account</h3>
-<p>Limit rule：1次/1s (uid)</p>
+<p>Limit rule：1/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -726,13 +822,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">subName</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Sub Name</td>
+<td style="text-align: center">Sub account name, like email</td>
 </tr>
 <tr>
 <td style="text-align: left">remark</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Rremark</td>
+<td style="text-align: center">Remark, length &lt; 20</td>
 </tr>
 </tbody></table>
 
@@ -752,27 +848,64 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<ul>
-<li>status
+<p><strong>Response Parameter</strong></p>
 
-<ul>
-<li>normal </li>
-<li>freeze </li>
-<li>del </li>
-</ul></li>
-<li>auth
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account UID</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account name</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center"><a href="#account-status">Account Status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">auth</td>
+<td style="text-align: left">String Array</td>
+<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Remark</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Created timestamp, milliseconds</td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>withdraw </li>
-<li>recharge </li>
-<li>transfer<br></li>
-<li>spot_trade </li>
-<li>contract_trade </li>
-<li>readonly </li>
-</ul></li>
-</ul>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='get-sub-list'>Get Sub List</h3>
-<p>Limit rule：1次/1s (uid)</p>
+<p>Limit rule：1/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -794,19 +927,19 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default10 Max100</td>
+<td style="text-align: center">Default: 10, Max: 100</td>
 </tr>
 <tr>
 <td style="text-align: left">lastEndId</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">lastEndId</td>
+<td style="text-align: center">lastEndId, pagination</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">sub account status</td>
+<td style="text-align: center">sub <a href="#account-status">account status</a></td>
 </tr>
 </tbody></table>
 
@@ -840,27 +973,72 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<ul>
-<li>status
+<p>&nbsp;<strong>Response Parameter</strong></p>
 
-<ul>
-<li>normal</li>
-<li>freeze</li>
-<li>del</li>
-</ul></li>
-<li>auth
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account UID</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account name</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center"><a href="#account-status">Account Status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">auth</td>
+<td style="text-align: left">String Array</td>
+<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Remark</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Created timestamp, milliseconds</td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>withdraw</li>
-<li>recharge</li>
-<li>transfer</li>
-<li>spot_trade</li>
-<li>contract_trade</li>
-<li>readonly</li>
-</ul></li>
-</ul>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='modify-sub-account'>Modify Sub Account</h3>
-<p>Limit rule：1次/1s (ApiKey)</p>
+<p>Limit rule：1/sec (ApiKey)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -888,13 +1066,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">perm</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">permissions.(comma separated)</td>
+<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Sub permissions</td>
+<td style="text-align: center"><a href="#account-status">Account Status</a></td>
 </tr>
 </tbody></table>
 
@@ -914,27 +1092,64 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<ul>
-<li>status
+<p>&nbsp;<strong>Response Parameter</strong></p>
 
-<ul>
-<li>normal </li>
-<li>freeze </li>
-<li>del </li>
-</ul></li>
-<li>auth
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account UID</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Sub account name</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center"><a href="#account-status">Account Status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">auth</td>
+<td style="text-align: left">String Array</td>
+<td style="text-align: center"><a href="#auth">Permissions</a></td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Remark</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Created timestamp, milliseconds</td>
+</tr>
+</tbody></table>
 
-<ul>
-<li>withdraw </li>
-<li>recharge</li>
-<li>transfer </li>
-<li>spot_trade </li>
-<li>contract_trade </li>
-<li>readonly </li>
-</ul></li>
-</ul>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='modify-sub-email'>Modify Sub Email</h3>
-<p>Limit rule：1次/1s (ApiKey)</p>
+<p>Limit rule：1/sec (ApiKey)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -956,13 +1171,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">subUid</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Sub Uid</td>
+<td style="text-align: center">Sub account UID</td>
 </tr>
 <tr>
 <td style="text-align: left">subEmail</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">sub email</td>
+<td style="text-align: center">sub account email</td>
 </tr>
 </tbody></table>
 
@@ -973,8 +1188,36 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='get-sub-email'>GET Sub Email</h3>
-<p>Limit rule：1次/1s (ApiKey)</p>
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: center">response <a href="#error-codes">error code</a></td>
+</tr>
+<tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: center">result message</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-sub-email'>GET Sub Email</h3>
+<p>Limit rule：1/sec (ApiKey)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1013,8 +1256,36 @@ If there is a large deviation between the local server time and the API server t
         </span><span class="s2">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='get-sub-spot-assets'>Get Sub Spot Assets</h3>
-<p>Limit rule：10次/1s (uid)</p>
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: center">Sub UID</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: center">Sub account name</td>
+</tr>
+<tr>
+<td style="text-align: left">subEmail</td>
+<td style="text-align: center">Email</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-sub-spot-assets'>Get Sub Spot Assets</h3>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1088,11 +1359,19 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">uTime</td>
-<td style="text-align: center">update time</td>
+<td style="text-align: center">update time, seconds</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='get-sub-future-assets'>Get Sub Future Assets</h3>
-<p>Limit rule：10次/1s (uid)</p>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1120,7 +1399,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">umcbl usdt swap dmcbl mix swap</td>
+<td style="text-align: center"><a href="#producttype">Product type</a></td>
 </tr>
 </tbody></table>
 
@@ -1164,15 +1443,15 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">available</td>
-<td style="text-align: left">Number of accounts available</td>
+<td style="text-align: left">Available balance</td>
 </tr>
 <tr>
 <td style="text-align: left">crossMaxAvailable</td>
-<td style="text-align: left">The maximum open position balance available for the whole position (margin currency)</td>
+<td style="text-align: left">The maximum  available balance for the crossed <a href="#marginmode">Margin Mode</a> (margin currency)</td>
 </tr>
 <tr>
 <td style="text-align: left">fixedMaxAvailable</td>
-<td style="text-align: left">The maximum isolated margin can be used to open a position (margin currency)</td>
+<td style="text-align: left">The maximum  available balance for the fixed <a href="#marginmode">Margin Mode</a>(margin currency)</td>
 </tr>
 <tr>
 <td style="text-align: left">maxTransferOut</td>
@@ -1184,15 +1463,31 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
-<td style="text-align: left">Convert USDT account equity</td>
+<td style="text-align: left">Account equity in USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">btcEquity</td>
-<td style="text-align: left">Convert BTC account equity</td>
+<td style="text-align: left">Account equity in BTC</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='get-sub-deposit-address-only-broker'>Get Sub Deposit Address (Only Broker)</h3>
-<p>Limit rule：10次/1s (uid)</p>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1220,7 +1515,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">coin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Currency name</td>
+<td style="text-align: center">Currency name, &#39;BTC&#39;</td>
 </tr>
 <tr>
 <td style="text-align: left">chain</td>
@@ -1279,8 +1574,24 @@ If there is a large deviation between the local server time and the API server t
 <td>Blockchain browser address</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='sub-withdrawal-only-broker'>Sub Withdrawal (Only Broker)</h3>
-<p>Limit rule：10次/1s  (uid)</p>
+<p>Limit rule：10/sec  (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1344,7 +1655,7 @@ If there is a large deviation between the local server time and the API server t
 <td>clientOid</td>
 <td>String</td>
 <td>No</td>
-<td>custom id</td>
+<td>custom order ID</td>
 </tr>
 </tbody></table>
 
@@ -1356,8 +1667,28 @@ If there is a large deviation between the local server time and the API server t
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='sub-deposit-auto-transfer-only-broker'>Sub Deposit Auto Transfer (Only Broker)</h3>
-<p>Limit rule：5次/1s  (uid)</p>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='sub-deposit-auto-transfer-only-broker'>Sub Deposit Auto Transfer (Only Broker)</h3>
+<p>Limit rule：5/sec  (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1391,7 +1722,7 @@ If there is a large deviation between the local server time and the API server t
 <td>toAccountType</td>
 <td>String</td>
 <td>Yes</td>
-<td>account  type</td>
+<td><a href="#toaccounttype">toAccountType</a></td>
 </tr>
 </tbody></table>
 
@@ -1404,18 +1735,17 @@ If there is a large deviation between the local server time and the API server t
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<ul>
-<li>toAccountType
+<p>&nbsp;</p>
 
-<ul>
-<li>spot</li>
-<li>mix_usdt</li>
-<li>mix_usd</li>
-<li>mix_usdc</li>
-</ul></li>
-</ul>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h2 id='sub-api-interface'>Sub API Interface</h2><h3 id='create-sub-apikey-only-broker'>Create Sub ApiKey (Only Broker)</h3>
-<p>Limit rule：10次/1s (uid)</p>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1443,25 +1773,25 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">passphrase</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Pass phrase</td>
+<td style="text-align: center">Passphrase, length between 6 and 32</td>
 </tr>
 <tr>
 <td style="text-align: left">remark</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">remark</td>
+<td style="text-align: center">remark, length &lt; 20</td>
 </tr>
 <tr>
 <td style="text-align: left">ip</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">ip</td>
+<td style="text-align: center">IP whitelist</td>
 </tr>
 <tr>
 <td style="text-align: left">perm</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Perm</td>
+<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma</td>
 </tr>
 </tbody></table>
 
@@ -1505,31 +1835,27 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td>secretKey</td>
-<td>private key</td>
+<td>secret key</td>
 </tr>
 <tr>
 <td>perm</td>
-<td>perm</td>
+<td><a href="#auth">Permissions</a>, separated by comma</td>
 </tr>
 <tr>
 <td>ip</td>
-<td>real ip</td>
+<td>IP whitelist</td>
 </tr>
 </tbody></table>
 
-<ul>
-<li>perm
+<p>&nbsp;</p>
 
-<ul>
-<li>readonly</li>
-<li>spot_trade</li>
-<li>contract_trade</li>
-<li>transfer</li>
-<li>recharge</li>
-</ul></li>
-</ul>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='get-sub-apikey-list'>Get Sub ApiKey List</h3>
-<p>Limit rule：10次/1s (uid)</p>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1595,19 +1921,31 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td>secretKey</td>
-<td>private key</td>
+<td>Secret key</td>
 </tr>
 <tr>
 <td>perm</td>
-<td>perm</td>
+<td><a href="#auth">Permissions</a>, separated by comma</td>
 </tr>
 <tr>
 <td>ip</td>
-<td>real IP</td>
+<td>IP whitelist</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='modify-sub-apikey-only-broker'>Modify Sub ApiKey  (Only Broker)</h3>
-<p>Limit rule：10次/1s (uid)</p>
+<p>Limit rule：10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1641,19 +1979,19 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">remark</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">remark</td>
+<td style="text-align: center">remark, length &lt; 20</td>
 </tr>
 <tr>
 <td style="text-align: left">ip</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">ip (override)</td>
+<td style="text-align: center">IP whitelist (override)</td>
 </tr>
 <tr>
 <td style="text-align: left">perm</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Perm (override)</td>
+<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma (override)</td>
 </tr>
 </tbody></table>
 
@@ -1668,7 +2006,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1694,11 +2032,11 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td>perm</td>
-<td>perm</td>
+<td><a href="#auth">Permissions</a>, separated by comma</td>
 </tr>
 <tr>
 <td>ip</td>
-<td>real IP</td>
+<td>IP whitelist</td>
 </tr>
 </tbody></table>
 <h1 id='error-codes'>Error Codes</h1>

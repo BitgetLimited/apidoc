@@ -443,6 +443,18 @@
                 <a href="#api-verification" class="toc-h2 toc-link" data-title="API Verification">API Verification</a>
               </li>
               <li>
+                <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
+              </li>
+              <li>
+                <a href="#signature-code-demo" class="toc-h2 toc-link" data-title="Signature Code Demo">Signature Code Demo</a>
+              </li>
+              <li>
+                <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request Interaction">Request Interaction</a>
+              </li>
+              <li>
+                <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard Specification">Standard Specification</a>
+              </li>
+              <li>
                 <a href="#api-common-parameters" class="toc-h2 toc-link" data-title="API Common parameters">API Common parameters</a>
                   <ul class="toc-list-h3">
                       <li>
@@ -494,18 +506,6 @@
                         <a href="#stoptype" class="toc-h3 toc-link" data-title="stopType">stopType</a>
                       </li>
                   </ul>
-              </li>
-              <li>
-                <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
-              </li>
-              <li>
-                <a href="#signature-code-demo" class="toc-h2 toc-link" data-title="Signature Code Demo">Signature Code Demo</a>
-              </li>
-              <li>
-                <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request Interaction">Request Interaction</a>
-              </li>
-              <li>
-                <a href="#standard-specification" class="toc-h2 toc-link" data-title="Standard Specification">Standard Specification</a>
               </li>
           </ul>
       </li>
@@ -1141,188 +1141,7 @@ time.time_ns() / 1000000
 <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
 </code></pre><pre class="highlight php tab-php"><code>//PHP
 microtime(true) * 1000;
-</code></pre><h2 id='api-common-parameters'>API Common parameters</h2><h3 id='producttype'>productType</h3>
-<ul>
-<li>umcbl  <code>USDT perpetual contract</code></li>
-<li>dmcbl  <code>Universal margin perpetual contract</code></li>
-<li>cmcbl  <code>USDC perpetual contract</code></li>
-<li>sumcbl  <code>USDT simulation perpetual contract</code></li>
-<li>sdmcbl  <code>Universal margin simulation perpetual contract</code></li>
-<li>scmcbl  <code>USDC simulation perpetual contract</code></li>
-</ul>
-<h3 id='candlestick-interval'>candlestick interval</h3>
-<ul>
-<li>1m(1minute)</li>
-<li>3m(3minute)</li>
-<li>5m(5minute)</li>
-<li>15m(15minute)</li>
-<li>30m(30minute)</li>
-<li>1H(1hour)</li>
-<li>2H (2hour)</li>
-<li>4H (4hour)</li>
-<li>6H (6hour)</li>
-<li>12H (12hour)</li>
-<li>1D (1day)</li>
-<li>3D (3day)</li>
-<li>1W(1week)</li>
-<li>1M (1month)</li>
-<li>6Hutc (UTC0 6hour)</li>
-<li>12Hutc (UTC0 12hour) </li>
-<li>1Dutc  (UTC0 1day)</li>
-<li>3Dutc (UTC0 3day)</li>
-<li>1Wutc (UTC0 1 week)</li>
-<li>1Mutc (UTC0 1 month)</li>
-</ul>
-<h3 id='marginmode'>marginMode</h3>
-<p>Position Mode</p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>fixed</td>
-<td>Isolated margin</td>
-</tr>
-<tr>
-<td>crossed</td>
-<td>Cross margin</td>
-</tr>
-</tbody></table>
-<h3 id='holdmode'>holdMode</h3>
-<p>Position Mode</p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>single_hold</td>
-<td>One-way position</td>
-</tr>
-<tr>
-<td>double_hold</td>
-<td>Two-way position</td>
-</tr>
-</tbody></table>
-<h3 id='holdside'>holdSide</h3>
-<p>Position Directon</p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>long</td>
-<td>Long position</td>
-</tr>
-<tr>
-<td>short</td>
-<td>Short position</td>
-</tr>
-</tbody></table>
-<h3 id='business'>business</h3>
-<ul>
-<li>open_long </li>
-<li>open_short </li>
-<li>close_long </li>
-<li>close_short </li>
-<li>trans_from_exchange transfer in from spot account</li>
-<li>trans_to_exchange transfer out to spot account</li>
-<li>contract_main_settle_fee    Funding rate for crossed</li>
-<li>contract_margin_settle_fee      fixed margin funding rate</li>
-<li>tracking_trader_income<br></li>
-</ul>
-<h3 id='side'>side</h3>
-<ul>
-<li>open_long</li>
-<li>open_short</li>
-<li>close_long</li>
-<li>close_short</li>
-</ul>
-<h3 id='tradeside'>tradeSide</h3>
-<ul>
-<li>open_long</li>
-<li>open_short</li>
-<li>close_long</li>
-<li>close_short</li>
-<li>burst_close_long</li>
-<li>burst_close_short</li>
-<li>offset_close_long</li>
-<li>offset_close_short</li>
-</ul>
-<h3 id='timeinforcevalue'>timeInForceValue</h3>
-<ul>
-<li>normal        good till cancel, default value</li>
-<li>post_only       maker only</li>
-<li>fok                   fill or kill</li>
-<li>ioc                   immediately or cancel</li>
-</ul>
-<h3 id='ordertype'>orderType</h3>
-<ul>
-<li>limit</li>
-<li>market</li>
-</ul>
-<h3 id='state'>state</h3>
-<p>order status</p>
-
-<table><thead>
-<tr>
-<th>Words</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>new</td>
-<td>new order</td>
-</tr>
-<tr>
-<td>partially_filled</td>
-<td>Partially Filled</td>
-</tr>
-<tr>
-<td>filled</td>
-<td>Filled</td>
-</tr>
-<tr>
-<td>canceled</td>
-<td>Canceled</td>
-</tr>
-</tbody></table>
-<h3 id='triggertype'>triggerType</h3>
-<ul>
-<li>fill_price</li>
-<li>market_price</li>
-</ul>
-<h3 id='plantype'>planType</h3>
-<ul>
-<li>profit_plan</li>
-<li>loss_plan</li>
-</ul>
-<h3 id='isplan'>isPlan</h3>
-<ul>
-<li>plan</li>
-<li>profit_loss</li>
-</ul>
-<h3 id='planstatus'>planStatus</h3>
-<ul>
-<li>not_trigger</li>
-<li>triggered</li>
-<li>fail_trigger</li>
-<li>cancel</li>
-</ul>
-<h3 id='stoptype'>stopType</h3>
-<ul>
-<li>profit</li>
-<li>loss</li>
-</ul>
-<h2 id='signature'>Signature</h2>
+</code></pre><h2 id='signature'>Signature</h2>
 <p>The request header of ACCESS-SIGN is to encrypt <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> string (+ means string concat) by <strong>HMAC SHA256</strong> algorithm with <strong>secretKey</strong>. and encode the encrypted result through <strong>BASE64</strong>.</p>
 
 <p><strong>Description of each parameter in the signature</strong></p>
@@ -1487,6 +1306,187 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>GET:  The parameters are transmitted to the server in the path through queryString.</li>
 <li>POST: The parameters are sending to the server in json format.</li>
+</ul>
+<h2 id='api-common-parameters'>API Common parameters</h2><h3 id='producttype'>productType</h3>
+<ul>
+<li>umcbl  <code>USDT perpetual contract</code></li>
+<li>dmcbl  <code>Universal margin perpetual contract</code></li>
+<li>cmcbl  <code>USDC perpetual contract</code></li>
+<li>sumcbl  <code>USDT simulation perpetual contract</code></li>
+<li>sdmcbl  <code>Universal margin simulation perpetual contract</code></li>
+<li>scmcbl  <code>USDC simulation perpetual contract</code></li>
+</ul>
+<h3 id='candlestick-interval'>candlestick interval</h3>
+<ul>
+<li>1m(1minute)</li>
+<li>3m(3minute)</li>
+<li>5m(5minute)</li>
+<li>15m(15minute)</li>
+<li>30m(30minute)</li>
+<li>1H(1hour)</li>
+<li>2H (2hour)</li>
+<li>4H (4hour)</li>
+<li>6H (6hour)</li>
+<li>12H (12hour)</li>
+<li>1D (1day)</li>
+<li>3D (3day)</li>
+<li>1W(1week)</li>
+<li>1M (1month)</li>
+<li>6Hutc (UTC0 6hour)</li>
+<li>12Hutc (UTC0 12hour)</li>
+<li>1Dutc  (UTC0 1day)</li>
+<li>3Dutc (UTC0 3day)</li>
+<li>1Wutc (UTC0 1 week)</li>
+<li>1Mutc (UTC0 1 month)</li>
+</ul>
+<h3 id='marginmode'>marginMode</h3>
+<p>Position Mode</p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fixed</td>
+<td>Isolated margin</td>
+</tr>
+<tr>
+<td>crossed</td>
+<td>Cross margin</td>
+</tr>
+</tbody></table>
+<h3 id='holdmode'>holdMode</h3>
+<p>Position Mode</p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>single_hold</td>
+<td>One-way position</td>
+</tr>
+<tr>
+<td>double_hold</td>
+<td>Two-way position</td>
+</tr>
+</tbody></table>
+<h3 id='holdside'>holdSide</h3>
+<p>Position Direction</p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>long</td>
+<td>Long position</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short position</td>
+</tr>
+</tbody></table>
+<h3 id='business'>business</h3>
+<ul>
+<li>open_long</li>
+<li>open_short</li>
+<li>close_long</li>
+<li>close_short</li>
+<li>trans_from_exchange transfer in from spot account</li>
+<li>trans_to_exchange transfer out to spot account</li>
+<li>contract_main_settle_fee    Funding rate for crossed</li>
+<li>contract_margin_settle_fee      fixed margin funding rate</li>
+<li>tracking_trader_income</li>
+</ul>
+<h3 id='side'>side</h3>
+<ul>
+<li>open_long</li>
+<li>open_short</li>
+<li>close_long</li>
+<li>close_short</li>
+</ul>
+<h3 id='tradeside'>tradeSide</h3>
+<ul>
+<li>open_long</li>
+<li>open_short</li>
+<li>close_long</li>
+<li>close_short</li>
+<li>burst_close_long</li>
+<li>burst_close_short</li>
+<li>offset_close_long</li>
+<li>offset_close_short</li>
+</ul>
+<h3 id='timeinforcevalue'>timeInForceValue</h3>
+<ul>
+<li>normal        good till cancel, default value</li>
+<li>post_only       maker only</li>
+<li>fok                   fill or kill</li>
+<li>ioc                   immediately or cancel</li>
+</ul>
+<h3 id='ordertype'>orderType</h3>
+<ul>
+<li>limit</li>
+<li>market</li>
+</ul>
+<h3 id='state'>state</h3>
+<p>order status</p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>new</td>
+<td>new order</td>
+</tr>
+<tr>
+<td>partially_filled</td>
+<td>Partially Filled</td>
+</tr>
+<tr>
+<td>filled</td>
+<td>Filled</td>
+</tr>
+<tr>
+<td>canceled</td>
+<td>Canceled</td>
+</tr>
+</tbody></table>
+<h3 id='triggertype'>triggerType</h3>
+<ul>
+<li>fill_price</li>
+<li>market_price</li>
+</ul>
+<h3 id='plantype'>planType</h3>
+<ul>
+<li>profit_plan</li>
+<li>loss_plan</li>
+</ul>
+<h3 id='isplan'>isPlan</h3>
+<ul>
+<li>plan</li>
+<li>profit_loss</li>
+</ul>
+<h3 id='planstatus'>planStatus</h3>
+<ul>
+<li>not_trigger</li>
+<li>triggered</li>
+<li>fail_trigger</li>
+<li>cancel</li>
+</ul>
+<h3 id='stoptype'>stopType</h3>
+<ul>
+<li>profit</li>
+<li>loss</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
