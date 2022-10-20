@@ -4104,7 +4104,7 @@ Signature = base64.encode(Signature)
 <h3 id='ecccb4a0c0'>一键反手</h3>
 <p>反手操作：已有仓位会市价平仓，然后在反向开同样数量的仓位。</p>
 
-<p>如果平仓的结算金额+可用余额不足以开到指定的反向仓位，则市价平仓成功，开仓失败；</p>
+<p>如果平仓的结算金额+可用余额不足以开到指定的反向仓位，或者在开仓时仓位价值不足5U，则市价平仓成功，开仓失败；</p>
 
 <p>反手操作可能因 保证金，市场波动或其它原因失败。</p>
 
@@ -4120,28 +4120,40 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>反手的size参数通常应设置为原持仓的2倍。例如：原仓位数量为100， 反手下单时应将size设置为200，服务器会平仓100，然后反向市价开仓200-100=100</p>
+<p>反手的size参数通常应设置为原持仓的1倍。例如：原仓位数量为100， 反手下单时应将size设置为100，服务器会平仓100，然后反向市价开仓100</p>
 
 <ul>
-<li>反手 - 2倍size
+<li>反手 - 1倍size
 
 <ul>
-<li>[反手下单的size] = [市价平仓size] + [反向市价开仓size]</li>
-<li>原持仓:1 BTCUSDT long</li>
-<li>反手size: 2 close_long BTCUSDT</li>
-<li>理想状态下，原持仓1 BTCUSDT long会市价平仓，反手市价1 BTCUSDT short开仓</li>
+<li>[反手下单的size] = [市价平仓size] = [反向市价开仓size]</li>
+<li>原持仓:1 long BTCUSDT </li>
+<li>反手size: 1 close_long BTCUSDT</li>
+<li>理想状态下，原持仓1 long BTCUSDT 会市价平仓，反手市价1 short BTCUSDT 开仓</li>
 </ul></li>
 </ul>
 
-<p>反手的size也可以设置为原持仓的1.5倍或3倍，服务器会先行市价平仓，然后根据客户的保证金状况进行反向市价建仓（可能因保证金不足而开仓失败）</p>
+<p>反手的size可以设置为超过原持仓数量的1.5倍甚至3倍或更多，但反手行为和1倍size时一致：服务器会先行市价平仓，然后根据客户的保证金状况进行反向市价建仓，开仓仓位数量和原持仓数量一致（即反手的size超过原持仓1倍的，按1倍处理）</p>
 
 <ul>
 <li>反手 - 1.5倍size
 
 <ul>
-<li>原持仓:1 BTCUSDT long</li>
+<li>原持仓:1 long BTCUSDT </li>
 <li>反手size: 1.50 close_long BTCUSDT</li>
-<li>理想状态下，原持仓1 BTCUSDT long会市价平仓，反手市价0.5 BTCUSDT short开仓</li>
+<li>理想状态下，原持仓1 long BTCUSDT 会市价平仓，反手市价1 short BTCUSDT 开仓</li>
+</ul></li>
+</ul>
+
+<p>特别地：反手的size也可以设置为原持仓数量的0倍至1倍之间，假设反手指定0.5倍原持仓size，反手行为则有所不同：服务器会先行市价平多0.5倍的仓位，然后根据客户的保证金状况进行反向市价建仓0.5倍</p>
+
+<ul>
+<li>反手 - 0.5倍size
+
+<ul>
+<li>原持仓:1 long BTCUSDT </li>
+<li>反手size: 0.5 close_long BTCUSDT</li>
+<li>理想状态下，原持仓1 long BTCUSDT 会市价平多0.5，变成0.5个Long BTCUSDT；反手市价short开空0.5 BTCUSDT</li>
 </ul></li>
 </ul>
 
@@ -4163,7 +4175,7 @@ Signature = base64.encode(Signature)
 <p>反手示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close_long"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timeInForceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
@@ -4210,7 +4222,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">下单数量=平仓size+反手开仓size</td>
+<td style="text-align: center">下单数量=平仓size=反手开仓size</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -4240,7 +4252,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">reverse</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">是否反手订单： <code>true</code></td>
+<td style="text-align: center">是否反手订单： 不传时默认为false(正常下单操作)； true:表示这是反手操作</td>
 </tr>
 </tbody></table>
 

@@ -3940,7 +3940,7 @@ If there is a large deviation between the local server time and the API server t
 
 <p>Note: Your position will be closed at <strong>market price</strong> and open in reverse <a href="#side">side</a> for the specific amount. </p>
 
-<p>If the close position settled amount + available balance are insufficient to open the specific number of positions, the positions will be closed and the position open will fail. </p>
+<p>If the close position settled amount + available balance are insufficient to open the specific number of positions, or the reverse order value is less than 5 USDT, the specified size position will be closed and the position open will fail. </p>
 
 <p>Your operation may not be 100% successful due to margin, market conditions and other factors.</p>
 
@@ -3956,20 +3956,20 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The reverse order size usually should be double of the original size. For example: original position size 100, in reversal request you should set the size to 200, Server will then close your original position 100, and open extra 200-100=100 in reversal side in market price with the best efforts.</p>
+<p>The reverse order size usually should be same as the original size. For example: original position size 100, in reversal request you should set the size to 100, Server will then close your original position 100, and open extra 100 in reversal side in market price with the best efforts.</p>
 
 <ul>
-<li>Reversal - 2 times size
+<li>Reversal - 1 times size
 
 <ul>
-<li>[reverse size] = [close size] + [open reverse size]</li>
+<li>[reverse size] = [close size] = [open reverse size]</li>
 <li>original position size: 1 long BTCUSDT</li>
-<li>reverse order size: 2 close_long BTCUSDT</li>
+<li>reverse order size: 1 close_long BTCUSDT</li>
 <li>ideally the 1 long BTCUSDT will be closed, and 1 short BTCUSDT will be opened</li>
 </ul></li>
 </ul>
 
-<p>The reverse order size could also be set to 1.5 or 3 times of the original size, in reversal it will first close your position in market price, then try to open reverse position base on your margin conditions(may fail due to insufficient margin)</p>
+<p>The reverse order size could also be set to 1.5 or 3 times of the original size(or even more), in reversal it will first close all of your position in market price, then try to open reverse position with the original size (that is: if reversal size is bigger than the original position size, the reversal size will be treated as the original position size)</p>
 
 <ul>
 <li>Reversal - 1.5 times size
@@ -3977,7 +3977,19 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>original position size: 1 long BTCUSDT</li>
 <li>reverse order size: 1.50 close_long BTCUSDT</li>
-<li>ideally the 1 long BTCUSDT will be closed, and 0.5 short BTCUSDT will be opened</li>
+<li>ideally the 1 long BTCUSDT will be closed, and 1 short BTCUSDT will be opened</li>
+</ul></li>
+</ul>
+
+<p>The reverse order size could also be set to a number between 0 to 1 times of the original position size, in reversal it will first close your position with specific reversal size in market price, then try to open reverse position with the specific size</p>
+
+<ul>
+<li>Reversal - 0.5 times size
+
+<ul>
+<li>original position size: 1 long BTCUSDT</li>
+<li>reverse order size: 0.5 close_long BTCUSDT</li>
+<li>ideally the 0.5 long BTCUSDT will be closed, and 0.5 short BTCUSDT will be opened; So at the end you should be holding 0.5 long BTCUSDT, and 0.5 short BTCUSDT</li>
 </ul></li>
 </ul>
 
@@ -4001,7 +4013,7 @@ If there is a large deviation between the local server time and the API server t
 <p>Reversal Sample: reverse order</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"close_long"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"timeInForceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
@@ -4074,7 +4086,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">reverse</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Mandatory set to <code>true</code></td>
+<td style="text-align: center">Default <code>false</code>: <a href="#place-order">place order</a>; <code>true</code>: reversal order</td>
 </tr>
 </tbody></table>
 
