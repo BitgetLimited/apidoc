@@ -3518,6 +3518,30 @@ Signature = base64.encode(Signature)
 <li>POST  /api/spot/v1/trade/orders</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"side"</span>: <span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"hgXjh89AsxleMSw"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -3568,34 +3592,18 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">clientOrderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">自定义id</td>
+<td style="text-align: center">自定义订单ID</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>请求示例</p>
+<p>重复的 clientOrderId</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/orders"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"side"</span>: <span class="s2">"buy"</span>,<span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"force"</span>:<span class="s2">"normal"</span>,<span class="s2">"price"</span>:<span class="s2">"23222.5"</span>,<span class="s2">"quantity"</span>:<span class="s2">"1"</span>,<span class="s2">"clientOrderId"</span>:<span class="s2">"myorder_16569403333"</span><span class="o">}</span><span class="s1">'
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43118"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clientOrderId duplicate"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<blockquote>
-<p>返回数据</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-    "code":"00000",
-    "msg":"success",
-    "data":{
-        "orderId":"1001",
-        "clientOrderId":"hgXjh89AsxleMSw"
-    }
-}
-</code></pre>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -3606,13 +3614,33 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">orderId</td>
-<td style="text-align: center">订单id</td>
+<td style="text-align: center">订单ID</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOrderId</td>
-<td style="text-align: center">自定义id</td>
+<td style="text-align: center">自定义订单ID</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='de93fae07b'>批量下单</h3>
 <p>限速规则 5次/1s</p>
 
@@ -3694,7 +3722,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">clientOrderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">自定义id</td>
+<td style="text-align: center">自定义订单ID</td>
 </tr>
 </tbody></table>
 
@@ -3714,14 +3742,64 @@ Signature = base64.encode(Signature)
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "code":"00000",
-    "msg":"success",
-    "data":{
-        "orderId":"1001",
-        "clientOrderId":"hgXjh89AsxleMSw"
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1666336231317,
+    "data": {
+        "resultList": [
+            {
+                "orderId": "967249748427186178",
+                "clientOrderId": "1"
+            }
+        ],
+        "failure": [
+            {
+                "orderId": "967249748427186178",
+                "clientOrderId": "1",
+                "errorMsg": "clientOrderId duplicate"
+            }
+        ]
     }
 }
-</code></pre><h3 id='fc150cab0e'>撤单</h3>
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resultList</td>
+<td>成功订单数组</td>
+</tr>
+<tr>
+<td>&gt; orderId</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>&gt; clientOrderId</td>
+<td>客户端订单ID</td>
+</tr>
+<tr>
+<td>Failure</td>
+<td>失败订单数组</td>
+</tr>
+<tr>
+<td>&gt; orderId</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>&gt; clientOrderId</td>
+<td>客户端订单ID</td>
+</tr>
+<tr>
+<td>&gt; errorMsg</td>
+<td>错误信息</td>
+</tr>
+</tbody></table>
+<h3 id='fc150cab0e'>撤单</h3>
 <p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -6351,6 +6429,16 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">当前委托价格不能小于{0}</td>
 <td style="text-align: left">43011</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId重复</td>
+<td style="text-align: left">43118</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">请求超时</td>
+<td style="text-align: left">40010</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

@@ -3780,7 +3780,7 @@ If there is a large deviation between the local server time and the API server t
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
-<p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <code>Trader close Position</code></p>
+<p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <a href="#trader-close-position">Trader close Position</a></p>
 
 <p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, those fields could be found from the response of  <code>Market</code> -&gt; <a href="#get-all-symbols">Get All Symbols</a></p>
 
@@ -3811,9 +3811,71 @@ If there is a large deviation between the local server time and the API server t
 
 <ul>
 <li>Insufficient account balance</li>
-<li>The current maximum open leverage tier of the current trading pair is full, please refer to the specific tier position <a href="https://www.bitget.com/mix/introduction/positionLevel?code=BTCUSDT_UMCBL?business=USDT_MIX_CONTRACT_BL">here</a></li>
+<li>The current maximum openable leverage tier of the current trading pair is full, please refer to the specific tier position <a href="https://www.bitget.com/mix/introduction/positionLevel?code=BTCUSDT_UMCBL?business=USDT_MIX_CONTRACT_BL">here</a></li>
 </ul></li>
 </ul>
+
+<p>High frequency error when close position：</p>
+
+<aside class="warning">
+
+```
+<red>
+    <b>Note</b> if this error occurs when closing an order
+</red>
+
+{
+    "code": "40757",
+    "msg": "Not enough position is available.",
+    "requestTime": 1666268894074,
+    "data": null
+}
+```
+
+</aside> 
+
+<p>There are two scenarios where this error would happen</p>
+
+<ul>
+<li>0 position</li>
+<li>Position exists，but specify a wrong <code>side</code> param when closing. For example: you have a <code>long</code> position, and try to close it with <code>side=close_short</code></li>
+</ul>
+
+<p>Specially, if specify a <code>size</code> greater than the <code>position size</code>  when closing position, the order will success with <code>actual position size</code>,  that is, reduceOnly. </p>
+
+<p>For example, </p>
+
+<ul>
+<li>you are holding 1.0 long BTCUSDT</li>
+<li>try to close the long BTCUSDT with size: 2.0 in market price</li>
+<li>place order interface return success, but in Websocket channel <code>orders</code> will receive an order fill with size=1 instead of 2</li>
+</ul>
+
+<p>Unknown error</p>
+
+<aside class="warning">
+
+```
+<red>
+    <b>Note</b> if below two error occurs when operating an order, please DO query order with the clientOid to get the final result
+</red>
+
+{
+    "code": "40010",
+    "msg": "Request timed out",
+    "requestTime": 1666268894074,
+    "data": null
+}
+
+{
+    "code": "40725",
+    "msg": "service return an error",
+    "requestTime": 1666268894071,
+    "data": null
+}
+```
+
+</aside> 
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3924,18 +3986,43 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 
-<p>If client does not pass <code>clientOid</code> , the use should be aware that the order might be place twice or more, as this is the only idempotent promise field between client and server</p>
+<p>If client does not pass <code>clientOid</code> , the use should be aware that the order might be duplicated, as this is the only idempotent promise field between client and server</p>
+
+<p>&nbsp;</p>
 
 <blockquote>
 <p>Duplicate clientOid</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50055"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cannot place an order repeatedly"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1665428208139</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='reversal'>Reversal</h3>
+<pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"code"</span>:<span class="s2">"40786"</span>,
+    <span class="s2">"msg"</span>:<span class="s2">"Duplicate clientOid"</span>,
+    <span class="s2">"requestTime"</span>:1627293504612
+<span class="o">}</span>
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='reversal'>Reversal</h3>
 <p>Reversal share the same interface with Place order.</p>
 
 <p>Note: Your position will be closed at <strong>market price</strong> and open in reverse <a href="#side">side</a> for the specific amount. </p>
@@ -4260,7 +4347,14 @@ If there is a large deviation between the local server time and the API server t
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BITGET#1627293504612"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"failure"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1627293504611"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BITGET#1627293504611"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"errorMsg"</span><span class="p">:</span><span class="s2">"Duplicate clientOid"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1627293504612</span><span class="w">
@@ -4285,6 +4379,22 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">&gt; clientOid</td>
 <td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">failure</td>
+<td style="text-align: left">Failure order array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; orderId</td>
+<td style="text-align: left">Order Id, might be empty</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; errorMsg</td>
+<td style="text-align: left">Fail reason</td>
 </tr>
 </tbody></table>
 
@@ -6118,6 +6228,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">Trigger price</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#triggertype">Trigger type</a></td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
@@ -7963,30 +8079,30 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request format description</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-  "op": "unsubscribe",
-  "args": ["&lt; SubscriptionTopic&gt; "]
-}
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt; SubscriptionTopic&gt; "</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
-    "op":"unsubscribe",
-    "args":[
-        {
-            "instType":"mc",
-            "channel":"ticker",
-            "instId":"BTCUSDT"
-        },
-        {
-            "instType":"mc",
-            "channel":"candle1m",
-            "instId":"BTCUSDT"
-        }
-    ]
-}
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1m"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>Request parameters</strong></p>
 
 <table><thead>
@@ -10280,12 +10396,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">Stop loss price needs to be &lt;current price</td>
+<td style="text-align: left">Stop loss price needs to be &lt; current price</td>
 <td style="text-align: left">43015</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">Stop loss price needs to be &lt;current price</td>
+<td style="text-align: left">Stop loss price needs to be &lt;&lt; current price</td>
 <td style="text-align: left">43016</td>
 <td style="text-align: center">400</td>
 </tr>
@@ -10332,6 +10448,26 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">You are currently a trader, please close the position under the current order</td>
 <td style="text-align: left">40728</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Duplicate clientOid</td>
+<td style="text-align: left">40757</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Not enough position is available.</td>
+<td style="text-align: left">40786</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">service return an error</td>
+<td style="text-align: left">40725</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Request timed out</td>
+<td style="text-align: left">40010</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
