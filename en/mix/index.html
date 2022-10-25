@@ -3796,7 +3796,7 @@ If there is a large deviation between the local server time and the API server t
 <red>
     <b>Note</b> if this error occurs when placing an order
 </red>
-
+<br/>
 {
     "code":"40762",
     "msg":"The order size is greater than the max open size",
@@ -3823,7 +3823,7 @@ If there is a large deviation between the local server time and the API server t
 <red>
     <b>Note</b> if this error occurs when closing an order
 </red>
-
+<br/>
 {
     "code": "40757",
     "msg": "Not enough position is available.",
@@ -3857,16 +3857,16 @@ If there is a large deviation between the local server time and the API server t
 
 ```
 <red>
-    <b>Note</b> if below two error occurs when operating an order, please DO query order with the clientOid to get the final result
+    <b>Note</b> if below two error occurs when operating an order, please DO query order detail with the clientOid to get the final status
 </red>
-
+<br/>
 {
     "code": "40010",
     "msg": "Request timed out",
     "requestTime": 1666268894074,
     "data": null
 }
-
+<br/>
 {
     "code": "40725",
     "msg": "service return an error",
@@ -6329,10 +6329,10 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">Trigger price</td>
 </tr>
 <tr>
-    <td style="text-align: left">planType</td>
-    <td style="text-align: left">String</td>
-    <td style="text-align: center">Yes</td>
-    <td style="text-align: center">profit_plan (tp order)  loss_plan (sl order)</td>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">profit_plan (tp order)  loss_plan (sl order)</td>
 </tr>
 </tbody></table>
 
@@ -6346,7 +6346,7 @@ If there is a large deviation between the local server time and the API server t
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"planType"</span>:<span class="s2">"profit_plan"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>

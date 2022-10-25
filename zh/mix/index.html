@@ -3939,7 +3939,7 @@ Signature = base64.encode(Signature)
 <red>
     <b>注意</b>下单出现此错误
 </red>
-
+<br/>
 {
     "code":"40762",
     "msg":"The order size is greater than the max open size",
@@ -3964,7 +3964,7 @@ Signature = base64.encode(Signature)
 <red>
     <b>注意</b>平仓出现此错误
 </red>
-
+<br/>
 {
     "code": "40757",
     "msg": "Not enough position is available.",
@@ -3992,14 +3992,14 @@ Signature = base64.encode(Signature)
 <red>
     <b>注意</b> 操作订单时出现以下两个错误，请用clientOid查询订单详情，以确认操作的最终结果
 </red>
-
+<br/>
 {
     "code": "40010",
     "msg": "Request timed out",
     "requestTime": 1666268894074,
     "data": null
 }
-
+<br/>
 {
     "code": "40725",
     "msg": "service return an error",
@@ -6609,10 +6609,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">触发价格</td>
 </tr>
 <tr>
-    <td style="text-align: left">planType</td>
-    <td style="text-align: left">String</td>
-    <td style="text-align: center">是</td>
-    <td style="text-align: center">止盈止损类型 profit_plan 止盈  loss_plan 止损</td>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">profit_plan (止盈)  loss_plan (止损)</td>
 </tr>
 </tbody></table>
 
@@ -6626,7 +6626,7 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"planType"</span>:<span class="s2">"profit_plan"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
