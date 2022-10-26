@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#october-27-2022" class="toc-h2 toc-link" data-title="October, 27, 2022">October, 27, 2022</a>
+              </li>
+              <li>
                 <a href="#october-14-2022" class="toc-h2 toc-link" data-title="October, 14, 2022">October, 14, 2022</a>
               </li>
               <li>
@@ -504,6 +507,9 @@
                       </li>
                       <li>
                         <a href="#stoptype" class="toc-h3 toc-link" data-title="stopType">stopType</a>
+                      </li>
+                      <li>
+                        <a href="#websocket-plantype" class="toc-h3 toc-link" data-title="Websocket planType">Websocket planType</a>
                       </li>
                   </ul>
               </li>
@@ -749,6 +755,9 @@
                       <li>
                         <a href="#trades-channel" class="toc-h3 toc-link" data-title="Trades Channel">Trades Channel</a>
                       </li>
+                      <li>
+                        <a href="#new-trades-channel" class="toc-h3 toc-link" data-title="New Trades Channel">New Trades Channel</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -800,7 +809,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='october-14-2022'>October, 14, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='october-27-2022'>October, 27, 2022</h2>
+<ul>
+<li>Added channel on WebSocketAPI -&gt;  Public Channels -&gt; <a href="#new-trades-channel">New Trades Channel</a></li>
+<li>WebSocketAPI -&gt;  Public Channels -&gt; <a href="#order-book-channel">Order Book Channel</a> added channel value：books1</li>
+<li>WebSocketAPI -&gt;  Private Channels -&gt; <a href="#plan-order-channel">Plan Order Channel</a> added new push field:  <a href="#websocket-plantype">websocket plantype</a></li>
+</ul>
+<h2 id='october-14-2022'>October, 14, 2022</h2>
 <ul>
 <li>Add new interface RestAPI - &gt;  Trade -&gt; <a href="#reversal">Reversal</a> </li>
 </ul>
@@ -1487,6 +1502,14 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>profit</li>
 <li>loss</li>
+</ul>
+<h3 id='websocket-plantype'>Websocket planType</h3>
+<ul>
+<li>pl: default, push data whenever a <a href="#place-plan-order">plan order</a> is created/cancelled/modified/triggered</li>
+<li>tp: take profit event, push data when a <a href="#place-stop-order">take profit order</a>(partial position) is created/cancelled/modified/triggered</li>
+<li>sl: stop loss event, push data when a <a href="#place-stop-order">stop loss order</a>(partial position) is created/cancelled/modified/triggered</li>
+<li>ptp: position take profit event, push data when a <a href="#place-position-tpsl">position take profit order</a>(whole position) is created/cancelled/modified/triggered</li>
+<li>psl: position stop loss event, push data when a <a href="#place-position-tpsl">position stop loss order</a>(whole position) is created/cancelled/modified/triggered</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
@@ -8807,6 +8830,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <ul>
 <li><code>books</code>: Push the full <code>snapshot</code> data for the first time, push <code>update</code> afterwards, that is, if there is a change in depth, the depth data that has changed will be pushed.</li>
+<li><code>books1</code>: 1 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 <li><code>books5</code>: 5 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 <li><code>books15</code>: 15 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 </ul>
@@ -8826,6 +8850,12 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>Snapshot and update might return less than 200 bids/asks as per symbol&#39;s orderbook various from each other; The number of bids/asks is not a fixed value and may vary in the future</td>
 </tr>
 <tr>
+<td>books1</td>
+<td>1</td>
+<td>1</td>
+<td>Top 1 order book of &quot;books&quot; that begins from bid1/ask1</td>
+</tr>
+<tr>
 <td>books5</td>
 <td>5</td>
 <td>5</td>
@@ -8841,6 +8871,8 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <p>For example, if the whole order book consist of 20 bids and 12 asks</p>
 <pre class="highlight plaintext"><code>channel books return 20 bids and 12 asks
+
+channel books1 return 1 bids and 1 asks, bids return index 19(index 19 is bid1), asks return index 0 
 
 channel books5 return 5 bids and 5 asks, bids return from index 15 to 19(index 19 is bid1), asks return from index 0 to index 4
 
@@ -8894,7 +8926,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name, <code>books</code> , <code>books5</code>, <code>books15</code></td>
+<td>Channel name, <code>books</code> , <code>books1</code>, <code>books5</code>, <code>books15</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
@@ -9269,6 +9301,289 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Trade direction, <code>buy</code>, <code>sell</code></td>
 </tr>
 </tbody></table>
+<h3 id='new-trades-channel'>New Trades Channel</h3>
+<p>Retrieve the recent trades data. The first snapshot will push 50 trade records. Data will be pushed whenever there is a trade.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument type  <code>MC</code>: Perpetual contract public channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>tradeNew</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID, <code>BTCUSDT</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>InstrumentType</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Push data example - snaphsot</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.009"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054894406951028"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766611672</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054894406951026"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766611672</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradeNew"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Push data example - update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.249"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054896504102913"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766612172</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradeNew"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>snapshot</code> for the first push, afterwards push data will be <code>update</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data String array</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>Filled time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; p</td>
+<td>String</td>
+<td>Trade price</td>
+</tr>
+<tr>
+<td>&gt; c</td>
+<td>String</td>
+<td>Trade size</td>
+</tr>
+<tr>
+<td>&gt; ty</td>
+<td>String</td>
+<td>Trade direction, <code>buy</code>, <code>sell</code></td>
+</tr>
+<tr>
+<td>&gt; ti</td>
+<td>String</td>
+<td>Trade ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h2 id='private-channels'>Private Channels</h2><h3 id='account-channel'>Account Channel</h3>
 <p>Retrieve account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
 
@@ -10056,7 +10371,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </tr>
 </tbody></table>
 <h3 id='plan-order-channel'>Plan Order Channel</h3>
-<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling order.</p>
+<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as created/cancelled/modified/triggered.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -10242,6 +10557,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>trigger price</td>
 </tr>
 <tr>
+<td>&gt; planType</td>
+<td>String</td>
+<td><a href="#websocket-plantype">Websocket planType</a>, null means &#39;pl&#39;</td>
+</tr>
+<tr>
 <td>&gt; ordPx</td>
 <td>String</td>
 <td>actual price</td>
@@ -10264,7 +10584,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>&gt; side</td>
 <td>String</td>
-<td>Order Side ，<code>buy</code> <code>sell</code></td>
+<td>Order Side ，<code>buy</code> <code>sell</code>博哦</td>
 </tr>
 <tr>
 <td>&gt; posSide</td>
