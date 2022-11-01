@@ -8262,27 +8262,27 @@ If there is a large deviation between the local server time and the API server t
 <pre class="highlight plaintext"><code>1. More than 25 levels of bid and ask
 A local snapshot of market depth (only 2 levels of the orderbook are shown here, while 25 levels of orderbook should actually be intercepted):
     "bids": [
-      [ 43231.1, 4 ],   //bid2
-      [ 43231, 6 ]      //bid1
+      [ 43231.1, 4 ],   //bid1
+      [ 43231,   6 ]    //bid2
     ]
     "asks": [
-      [ 43230.8, 9 ],   //ask1
-      [ 43230.7, 8 ]    //ask2
+      [ 43232.8, 9 ],   //ask1
+      [ 43232.9, 8 ]    //ask2
     ]
 Build the string to check CRC32:
-"43231:6:43230.8:9:43231.1:4:43230.7:8"
+"43231.1:4:43232.8:9:43231:6:43232.9:8"
 The sequence:
 "bid1[price:amount]:ask1[price:amount]:bid2[price:amount]:ask2[price:amount]"
 
 2. Less than 25 levels of bid or ask
 A local snapshot of market depth:
     "bids": [
-      [ 3366.1, 7, 0, 3 ]   //bid1
+      [ 3366.1, 7 ] //bid1
     ]
     "asks": [
-      [ 3366.8, 9, 10, 3 ], //ask1
-      [ 3368  , 8,  3, 4 ], //ask2
-      [ 3372  , 8,  3, 4 ]  //ask3
+      [ 3366.8, 9 ],    //ask1
+      [ 3368  , 8 ],    //ask2
+      [ 3372  , 8 ]     //ask3
     ]
 
 Build the string to check CRC32:

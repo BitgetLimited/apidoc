@@ -3257,13 +3257,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">groupType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">账单大类型   <a href="#api-4">groupType</a></td>
+<td style="text-align: center">账单大类型   <a href="#grouptype">groupType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">bizType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">业务类型  <a href="#api-4">bizType</a></td>
+<td style="text-align: center">业务类型  <a href="#biztype">bizType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">after</td>
@@ -4896,18 +4896,18 @@ Signature = base64.encode(Signature)
 
 <ol>
 <li>如果有相同价格，则比较数量；数量为0删除此深度，数量有变化则替换此数据。</li>
-<li>如果没有相同价格，则按照价格优劣排序（bid为价格降序，ask为价格升序），将深度信息插入到全量数据中</li>
+<li>如果没有相同价格，则按照价格优劣排序（bids为价格降序，asks为价格升序），将深度信息插入到全量数据中</li>
 </ol>
 <h3 id='ba62be084b'>计算校验和</h3>
 <p>先用深度合并后前25档bids和asks组成一个字符串（其中ask和bid中的价格和数量以冒号连接），再计算其crc32值（32位有符号整型）。</p>
 <pre class="highlight json tab-json"><code><span class="mi">1</span><span class="err">.bid和ask超过</span><span class="mi">25</span><span class="err">档</span><span class="w">
-</span><span class="err">合并后全量深度数据（在此仅展示</span><span class="mi">2</span><span class="err">档数据，实际应截取</span><span class="mi">25</span><span class="err">档数据）：</span><span class="w">
+</span><span class="err">合并后全量深度数据（在此仅展示</span><span class="mi">2</span><span class="err">档数据，实际应截取前</span><span class="mi">25</span><span class="err">档数据）：</span><span class="w">
 </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w"> </span><span class="mf">3366.1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w"> </span><span class="mf">3366.1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">],</span><span class="w">   </span><span class="err">//bid</span><span class="mi">1</span><span class="w">
     </span><span class="p">[</span><span class="w"> </span><span class="mi">3366</span><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="w"> </span><span class="mf">3366.8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w"> </span><span class="mf">3366.8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">],</span><span class="w">  </span><span class="err">//ask</span><span class="mi">1</span><span class="w">
     </span><span class="p">[</span><span class="w"> </span><span class="mi">3368</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="err">校验字符串：</span><span class="w">
@@ -4927,8 +4927,8 @@ Signature = base64.encode(Signature)
 </span><span class="s2">"3366.1:7:3366.8:9:3368:8:3372:8"</span><span class="w">
 </span></code></pre>
 <ol>
-<li>当bid和ask深度数据超过25档时，截取各自25档数据，要校验的字符串按照bid、ask深度数据交替方式连接。如：bid[价格:数量]:ask[价格:数量]:bid[价格:数量]:ask[价格:数量]...</li>
-<li>bid或ask深度数据不足25档时，直接忽略缺失的深度。如：bid[价格:数量]:ask[价格:数量]:asks[价格:数量]:asks[价格:数量]...</li>
+<li>当bid和ask深度数据超过25档时，截取各自25档数据，要校验的字符串按照bid、ask深度数据交替方式连接。如：bid1[价格:数量]:ask1[价格:数量]:bid2[价格:数量]:ask2[价格:数量]...</li>
+<li>bid或ask深度数据不足25档时，直接忽略缺失的深度。如：bid1[价格:数量]:ask1[价格:数量]:ask2[价格:数量]:ask3[价格:数量]...</li>
 </ol>
 <h2 id='a6ff2d9336'>公共频道</h2><h3 id='9841eacefc'>行情频道</h3>
 <p>获取产品的最新成交价、买一价、卖一价和24小时交易量等信息，有数据更新推送一次数据</p>
