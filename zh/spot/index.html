@@ -402,6 +402,32 @@
               </li>
               <li>
                 <a href="#api-4" class="toc-h2 toc-link" data-title="API公开参数">API公开参数</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#side" class="toc-h3 toc-link" data-title="side(交易方向)">side(交易方向)</a>
+                      </li>
+                      <li>
+                        <a href="#ordertype" class="toc-h3 toc-link" data-title="orderType(订单类型)">orderType(订单类型)</a>
+                      </li>
+                      <li>
+                        <a href="#force" class="toc-h3 toc-link" data-title="force(订单类型)">force(订单类型)</a>
+                      </li>
+                      <li>
+                        <a href="#status" class="toc-h3 toc-link" data-title="status(订单状态)">status(订单状态)</a>
+                      </li>
+                      <li>
+                        <a href="#grouptype" class="toc-h3 toc-link" data-title="groupType(账单流水大类型)">groupType(账单流水大类型)</a>
+                      </li>
+                      <li>
+                        <a href="#biztype" class="toc-h3 toc-link" data-title="bizType(账单流水业务类型)">bizType(账单流水业务类型)</a>
+                      </li>
+                      <li>
+                        <a href="#status-2" class="toc-h3 toc-link" data-title="status(充提订单状态)">status(充提订单状态)</a>
+                      </li>
+                      <li>
+                        <a href="#type" class="toc-h3 toc-link" data-title="type(用户提币地址查询)">type(用户提币地址查询)</a>
+                      </li>
+                  </ul>
               </li>
               <li>
                 <a href="#8ba46c43fe" class="toc-h2 toc-link" data-title="签名">签名</a>
@@ -808,7 +834,7 @@ clipboard.on('error', function(e) {
 <li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a></li>
 </ul>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
-<p>如需使用API ，请先登录网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。</p>
+<p>如需使用API ，请先<a href='https://www.bitget.com/zh-CN/login'>登录</a>网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。</p>
 
 <p>您可以点击 <a href='https://www.bitget.com/zh-CN/account/newapi'>这里 </a> 创建 API Key。</p>
 
@@ -919,9 +945,7 @@ clipboard.on('error', function(e) {
 <li>Content-Type：统一设置为application/json。</li>
 <li>locale:支持多语言，如：中文(zh-CN),英语(en-US)</li>
 </ul>
-<h2 id='api-4'>API公开参数</h2>
-<p><strong>side(交易方向)</strong></p>
-
+<h2 id='api-4'>API公开参数</h2><h3 id='side'>side(交易方向)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -937,9 +961,7 @@ clipboard.on('error', function(e) {
 <td>买</td>
 </tr>
 </tbody></table>
-
-<p><strong>orderType(订单类型)</strong></p>
-
+<h3 id='ordertype'>orderType(订单类型)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -955,9 +977,7 @@ clipboard.on('error', function(e) {
 <td>市价</td>
 </tr>
 </tbody></table>
-
-<p><strong>force(订单类型)</strong></p>
-
+<h3 id='force'>force(订单类型)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -981,9 +1001,7 @@ clipboard.on('error', function(e) {
 <td>立即成交并取消剩余（IOC）</td>
 </tr>
 </tbody></table>
-
-<p><strong>status(订单状态)</strong></p>
-
+<h3 id='status'>status(订单状态)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -1007,9 +1025,7 @@ clipboard.on('error', function(e) {
 <td>已撤销</td>
 </tr>
 </tbody></table>
-
-<p><strong>groupType(账单流水大类型)</strong></p>
-
+<h3 id='grouptype'>groupType(账单流水大类型)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -1037,9 +1053,7 @@ clipboard.on('error', function(e) {
 <td>其他</td>
 </tr>
 </tbody></table>
-
-<p><strong>bizType(账单流水业务类型)</strong></p>
-
+<h3 id='biztype'>bizType(账单流水业务类型)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -1071,9 +1085,7 @@ clipboard.on('error', function(e) {
 <td>转出</td>
 </tr>
 </tbody></table>
-
-<p><strong>status(充提订单状态)</strong></p>
-
+<h3 id='status-2'>status(充提订单状态)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -1117,9 +1129,7 @@ clipboard.on('error', function(e) {
 <td>复审拒绝</td>
 </tr>
 </tbody></table>
-
-<p><strong>type(用户提币地址查询)</strong></p>
-
+<h3 id='type'>type(用户提币地址查询)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -3247,13 +3257,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">groupType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">账单大类型   <a href="#API公开参数">groupType</a></td>
+<td style="text-align: center">账单大类型   <a href="#api-4">groupType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">bizType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">业务类型  <a href="#API公开参数">bizType</a></td>
+<td style="text-align: center">业务类型  <a href="#api-4">bizType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">after</td>
@@ -3475,7 +3485,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">toType</td>
-<td style="text-align: center">转入账户类型 <a href="#API公开参数">accountType</a></td>
+<td style="text-align: center">转入账户类型 <a href="#api-4">accountType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">toSymbol</td>
@@ -3483,7 +3493,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">fromType</td>
-<td style="text-align: center">转出账户类型 <a href="#API公开参数">accountType</a></td>
+<td style="text-align: center">转出账户类型 <a href="#api-4">accountType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">fromSymbol</td>
@@ -4160,11 +4170,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">fillPrice</td>
-<td style="text-align: center">成交价格</td>
+<td style="text-align: center">累计成交价格</td>
 </tr>
 <tr>
 <td style="text-align: left">fillQuantity</td>
-<td style="text-align: center">成交数量</td>
+<td style="text-align: center">累计成交数量</td>
 </tr>
 <tr>
 <td style="text-align: left">fillTotalAmount</td>
@@ -4611,7 +4621,7 @@ Signature = base64.encode(Signature)
 <p><code>公共频道</code>无需登录，包括行情频道，K线频道，交易数据频道，深度数据频道等。</p>
 
 <ul>
-<li><code>instId</code> 来源    <a href="#获取全部产品信息">/products</a>  的 <code>symbolName</code></li>
+<li><code>instId</code> 来源    <a href="#d990beddee">/products</a>  的 <code>symbolName</code></li>
 </ul>
 
 <p><code>私有频道</code>需登录，包括用户账户频道，用户交易频道等。</p>
@@ -6198,7 +6208,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td>&gt; avgPx</td>
 <td>String</td>
-<td>成交均价，如果成交数量为0，该字段也为0</td>
+<td>累计成交均价，如果成交数量为0，该字段也为0</td>
 </tr>
 <tr>
 <td>&gt; status</td>
