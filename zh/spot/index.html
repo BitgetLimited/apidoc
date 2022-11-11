@@ -427,6 +427,9 @@
                       <li>
                         <a href="#type" class="toc-h3 toc-link" data-title="type(用户提币地址查询)">type(用户提币地址查询)</a>
                       </li>
+                      <li>
+                        <a href="#fromtype-totype" class="toc-h3 toc-link" data-title="fromType,toType(转入类型，转出类型)">fromType,toType(转入类型，转出类型)</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -1009,8 +1012,12 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
+<td>init</td>
+<td>初始化，插入DB</td>
+</tr>
+<tr>
 <td>new</td>
-<td>未成交</td>
+<td>未成交，orderbook中等待撮合</td>
 </tr>
 <tr>
 <td>partial_fill</td>
@@ -1143,6 +1150,30 @@ clipboard.on('error', function(e) {
 <tr>
 <td>inner-transfer</td>
 <td>内部地址</td>
+</tr>
+</tbody></table>
+<h3 id='fromtype-totype'>fromType,toType(转入类型，转出类型)</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>接受转入转出多个币种</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>只接受转入转出USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>只接受转入转出USDC</td>
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
@@ -3362,7 +3393,7 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <ul>
-<li>groupType
+<li><a href = "#grouptype">groupType</a>
 
 <ul>
 <li>deposit</li>
@@ -3371,7 +3402,7 @@ Signature = base64.encode(Signature)
 <li>transfer</li>
 <li>other</li>
 </ul></li>
-<li>bizType
+<li><a href = "#biztype">bizType</a>
 
 <ul>
 <li>deposit</li>
