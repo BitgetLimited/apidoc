@@ -684,6 +684,9 @@
                         <a href="#get-followers-open-order" class="toc-h3 toc-link" data-title="Get Followers Open Order">Get Followers Open Order</a>
                       </li>
                       <li>
+                        <a href="#get-followers-open-order-2" class="toc-h3 toc-link" data-title="Get Followers Open Order">Get Followers Open Order</a>
+                      </li>
+                      <li>
                         <a href="#trader-close-position" class="toc-h3 toc-link" data-title="Trader Close Position">Trader Close Position</a>
                       </li>
                       <li>
@@ -1675,7 +1678,8 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0006"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="s2">"delivery"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -1753,6 +1757,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">sizeMultiplier</td>
 <td style="text-align: left">Quantity Multiplier The order size must be greater than minTradeNum and satisfy the multiple of sizeMultiplier</td>
+</tr>
+<tr>
+<td style="text-align: left">symbolType</td>
+<td style="text-align: left">future type  <code>perpetual</code>  perpetual contract      <code>delivery</code>  delivery contract</td>
 </tr>
 </tbody></table>
 <h3 id='get-depth'>Get Depth</h3>
@@ -7349,6 +7357,170 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">closeTime</td>
 <td style="text-align: left">Close Position Time (milliseconds)</td>
+</tr>
+</tbody></table>
+<h3 id='get-followers-open-order-2'>Get Followers Open Order</h3>
+<p>Limit rule 20 times/2s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/followerHistoryOrders</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Start time  timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page size</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Current page number</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerHistoryOrders?startTime=1668073994000&amp;endTime=1668073994206&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"682799071840175632"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openLevel"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="s2">"11366.50"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627356444000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">1626838044000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeAvgPrice"</span><span class="p">:</span><span class="s2">"11272.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stopType"</span><span class="p">:</span><span class="s2">"profit"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"achievedProfits"</span><span class="p">:</span><span class="s2">"-0.07650000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openFee"</span><span class="p">:</span><span class="s2">"-0.00680910"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeFee"</span><span class="p">:</span><span class="s2">"0.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profitRate"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"netProfit"</span><span class="p">:</span><span class="s2">"1"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">openOrderNo</td>
+<td style="text-align: left">Open Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">closeOrderNo</td>
+<td style="text-align: left">Close Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Current <a href="#holdside">Position direction</a></td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Opening leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">openAvgPrice</td>
+<td style="text-align: left">Average opening price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Position opening time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">openSize</td>
+<td style="text-align: left">Open order size</td>
+</tr>
+<tr>
+<td style="text-align: left">closeAvgPrice</td>
+<td style="text-align: left">Average close price</td>
+</tr>
+<tr>
+<td style="text-align: left">closeFee</td>
+<td style="text-align: left">close fee</td>
+</tr>
+<tr>
+<td style="text-align: left">openFee</td>
+<td style="text-align: left">open fee</td>
+</tr>
+<tr>
+<td style="text-align: left">closeSize</td>
+<td style="text-align: left">close order size</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">close positions time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">profitRate</td>
+<td style="text-align: left">Profit Rate</td>
+</tr>
+<tr>
+<td style="text-align: left">netProfit</td>
+<td style="text-align: left">follow net income</td>
+</tr>
+<tr>
+<td style="text-align: left">achievedProfits</td>
+<td style="text-align: left">Realized profit and loss</td>
 </tr>
 </tbody></table>
 <h3 id='trader-close-position'>Trader Close Position</h3>
