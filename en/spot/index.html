@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#15-11-2022" class="toc-h2 toc-link" data-title="15/11/2022">15/11/2022</a>
+              </li>
+              <li>
                 <a href="#18-10-2022" class="toc-h2 toc-link" data-title="18/10/2022">18/10/2022</a>
               </li>
               <li>
@@ -562,6 +565,21 @@
                       <li>
                         <a href="#get-transaction-details" class="toc-h3 toc-link" data-title="Get transaction details">Get transaction details</a>
                       </li>
+                      <li>
+                        <a href="#place-plan-order" class="toc-h3 toc-link" data-title="Place plan order">Place plan order</a>
+                      </li>
+                      <li>
+                        <a href="#modify-plan-order" class="toc-h3 toc-link" data-title="Modify plan order">Modify plan order</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-plan-order" class="toc-h3 toc-link" data-title="Cancel plan order">Cancel plan order</a>
+                      </li>
+                      <li>
+                        <a href="#get-current-plan-orders" class="toc-h3 toc-link" data-title="Get current plan orders">Get current plan orders</a>
+                      </li>
+                      <li>
+                        <a href="#get-history-plan-orders" class="toc-h3 toc-link" data-title="Get history plan orders">Get history plan orders</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -660,7 +678,19 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-log'>Update Log</h1><h2 id='18-10-2022'>18/10/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='15-11-2022'>15/11/2022</h2>
+<ul>
+<li>RestAPI -&gt; Trade -&gt; added 
+
+<ul>
+<li><a href='#place-plan-order'>Place plan order</a></li>
+<li><a href='#modify-plan-order'>Modify plan order</a></li>
+<li><a href='#cancel-plan-order'>Cancel plan order</a></li>
+<li><a href='#get-current-plan-orders'>Get current plan orders</a></li>
+<li><a href='#get-history-plan-orders'>Get history plan orders</a></li>
+</ul></li>
+</ul>
+<h2 id='18-10-2022'>18/10/2022</h2>
 <ul>
 <li><code>Wallet</code> -&gt; add  <a href='#sub-transfer'>Sub Transfer</a></li>
 </ul>
@@ -4502,6 +4532,147 @@ microtime(true) * 1000;
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='place-plan-order'>Place plan order</h3>
+<p>Rate Limit: 20 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/plan/placePlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>side</td>
+<td>String</td>
+<td>Yes</td>
+<td>order side (buy/ sell)</td>
+</tr>
+<tr>
+<td>triggerPrice</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>order trigger price</td>
+</tr>
+<tr>
+<td>executePrice</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>order   execute price</td>
+</tr>
+<tr>
+<td>size</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>purchase quantity</td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>String</td>
+<td>Yes</td>
+<td>order trigger type (fill_price/market_price )</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>String</td>
+<td>Yes</td>
+<td>order type  (limit/market )</td>
+</tr>
+<tr>
+<td>timeInForceValue</td>
+<td>String</td>
+<td>No</td>
+<td>Order validity</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/placePlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134576535,
+  "data": {
+    "orderId": "974792555020390400",
+    "clientOrderId": "974792554995224576"
+  }
+}
+</code></pre>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -4511,54 +4682,533 @@ microtime(true) * 1000;
 </tr>
 </thead><tbody>
 <tr>
-<td>accountId</td>
-<td>Account ID</td>
+<td>orderId</td>
+<td>order ID</td>
 </tr>
 <tr>
-<td>symbol</td>
-<td>Symbol Id</td>
+<td>clientOrderId</td>
+<td>Custom ID</td>
 </tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='modify-plan-order'>Modify plan order</h3>
+<p>Rate Limit: 20 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/plan/modifyPlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>Yes</td>
+<td>order ID</td>
+</tr>
+<tr>
+<td>triggerPrice</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>order trigger price</td>
+</tr>
+<tr>
+<td>executePrice</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>order execute price</td>
+</tr>
+<tr>
+<td>size</td>
+<td>String</td>
+<td>No</td>
+<td>purchase quantity</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>String</td>
+<td>No</td>
+<td>order type (limit/market)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/modifyPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>: <span class="s2">"974792060738441216"</span>, <span class="s2">"triggerPrice"</span>: 0.041222, <span class="s2">"executePrice"</span>:<span class="s2">"0.041272"</span>, <span class="s2">"size"</span>: 156, <span class="s2">"orderType"</span>:<span class="s2">"limit"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668136575920,
+  "data": {
+    "orderId": "974792060738441216",
+    "clientOrderId": "974792554995224576"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Custom ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='cancel-plan-order'>Cancel plan order</h3>
+<p>Rate Limit: 20 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/plan/cancelPlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>Yes</td>
+<td>order ID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/cancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>: <span class="s2">"974792060738441216"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134497496,
+  "data": "974792060738441216"
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>order ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-current-plan-orders'>Get current plan orders</h3>
+<p>Rate Limit: 20 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/plan/currentPlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>No</td>
+<td>Page Size</td>
+</tr>
+<tr>
+<td>lastEndId</td>
+<td>String</td>
+<td>No</td>
+<td>last end ID （Pagination needs）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/currentPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"pageSize"</span>:<span class="s2">"20"</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134581005,
+  "data": {
+    "nextFlag": false,
+    "endId": 974792555020390400,
+    "orderList": [
+      {
+        "orderId": "974792555020390400",
+        "symbol": "TRXUSDT_SPBL",
+        "size": "151",
+        "executePrice": "0.041572",
+        "triggerPrice": "0.041572",
+        "status": "not_trigger",
+        "orderType": "limit",
+        "side": "buy",
+        "triggerType": "fill_price",
+        "cTime": "1668134576563"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>orderId</td>
 <td>Order ID</td>
 </tr>
 <tr>
-<td>fillId</td>
-<td>Transaction ID</td>
+<td>symbol</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Purchase quantity</td>
+</tr>
+<tr>
+<td>executePrice</td>
+<td>Order execute price</td>
+</tr>
+<tr>
+<td>triggerPrice</td>
+<td>Order   trigger price</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Order status</td>
 </tr>
 <tr>
 <td>orderType</td>
-<td>Order type, limit/market</td>
+<td>Order type</td>
 </tr>
 <tr>
 <td>side</td>
-<td>Order direction, buy/sell</td>
+<td>Buying direction</td>
 </tr>
 <tr>
-<td>fillPrice</td>
-<td>Transaction price</td>
-</tr>
-<tr>
-<td>fillQuantity</td>
-<td>Transaction quantity</td>
-</tr>
-<tr>
-<td>fillTotalAmount</td>
-<td>Total transaction volume</td>
+<td>triggerType</td>
+<td>Order trigger type</td>
 </tr>
 <tr>
 <td>cTime</td>
-<td>Creation time</td>
-</tr>
-<tr>
-<td>feeCcy</td>
-<td>Coin for transaction fee</td>
-</tr>
-<tr>
-<td>fees</td>
-<td>Transaction fees</td>
+<td>Create time</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-history-plan-orders'>Get history plan orders</h3>
+<p>Rate Limit: 20 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/plan/historyPlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>No</td>
+<td>Page Size</td>
+</tr>
+<tr>
+<td>lastEndId</td>
+<td>String</td>
+<td>No</td>
+<td>last end ID （Pagination needs）</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>No</td>
+<td>start time</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>No</td>
+<td>end time</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/historyPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"pageSize"</span>:<span class="s2">"20"</span>, <span class="s2">"startTime"</span>:<span class="s2">"1667889483000"</span>, <span class="s2">"endTime"</span>:<span class="s2">"1668134732000"</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134626684,
+  "data": {
+    "nextFlag": false,
+    "endId": 974792060738441216,
+    "orderList": [
+      {
+        "orderId": "974792060738441216",
+        "symbol": "TRXUSDT_SPBL",
+        "size": "156",
+        "executePrice": "0.041272",
+        "triggerPrice": "0.041222",
+        "status": "cancel",
+        "orderType": "limit",
+        "side": "buy",
+        "triggerType": "fill_price",
+        "cTime": "1668134458717"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Purchase quantity</td>
+</tr>
+<tr>
+<td>executePrice</td>
+<td>Order execute price</td>
+</tr>
+<tr>
+<td>triggerPrice</td>
+<td>Order   trigger price</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Order status</td>
+</tr>
+<tr>
+<td>orderType</td>
+<td>Order type</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Buying direction</td>
+</tr>
+<tr>
+<td>triggerType</td>
+<td>Order trigger type</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>Create time</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
 <p>WebSocket is a new HTML5 protocol that achieves full-duplex data transmission between the client and server, allowing data to be transferred effectively in both directions. A connection between the client and server can be established with just one handshake. The server will then be able to push data to the client according to preset rules. Its advantages include:</p>
 

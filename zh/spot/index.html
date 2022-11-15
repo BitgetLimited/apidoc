@@ -316,6 +316,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-11-15" class="toc-h2 toc-link" data-title="2022年11月15日">2022年11月15日</a>
+              </li>
+              <li>
                 <a href="#2022-10-18" class="toc-h2 toc-link" data-title="2022年10月18日">2022年10月18日</a>
               </li>
               <li>
@@ -556,6 +559,21 @@
                       <li>
                         <a href="#106a02279b" class="toc-h3 toc-link" data-title="获取成交明细">获取成交明细</a>
                       </li>
+                      <li>
+                        <a href="#a1704d99ff" class="toc-h3 toc-link" data-title="下计划委托">下计划委托</a>
+                      </li>
+                      <li>
+                        <a href="#f4e3ac1d5c" class="toc-h3 toc-link" data-title="修改计划委托">修改计划委托</a>
+                      </li>
+                      <li>
+                        <a href="#cfb749d406" class="toc-h3 toc-link" data-title="撤销计划委托">撤销计划委托</a>
+                      </li>
+                      <li>
+                        <a href="#a40d8a54f9" class="toc-h3 toc-link" data-title="获取当前计划委托">获取当前计划委托</a>
+                      </li>
+                      <li>
+                        <a href="#1c62db0f32" class="toc-h3 toc-link" data-title="获取历史计划委托">获取历史计划委托</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -657,7 +675,19 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-10-18'>2022年10月18日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-11-15'>2022年11月15日</h2>
+<ul>
+<li>RestAPI -&gt; 订单接口 -&gt; 新增计划委托相关接口： 
+
+<ul>
+<li><a href='#a1704d99ff'>下计划委托</a></li>
+<li><a href='#f4e3ac1d5c'>修改计划委托</a></li>
+<li><a href='#cfb749d406'>撤销计划委托</a></li>
+<li><a href='#a40d8a54f9'>获取当前计划委托</a></li>
+<li><a href='#1c62db0f32'>获取历史计划委托</a></li>
+</ul></li>
+</ul>
+<h2 id='2022-10-18'>2022年10月18日</h2>
 <ul>
 <li><code>钱包接口</code> -&gt; 新增 <a href="#7bc510fe47">母子账户划转</a></li>
 </ul>
@@ -4503,6 +4533,654 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">手续费</td>
 </tr>
 </tbody></table>
+<h3 id='a1704d99ff'>下计划委托</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>下计划委托</p>
+
+<ul>
+<li> POST /api/spot/v1/plan/placePlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品Id</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">方向   buy sell</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">executePrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">执行价格                ｜</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">购买数量</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">触发类型 fill_price/market_price</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单类型 limit/market</td>
+</tr>
+<tr>
+<td style="text-align: left">timeInForceValue</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单有效期</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/placePlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134576535,
+  "data": {
+    "orderId": "974792555020390400",
+    "clientOrderId": "974792554995224576"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='f4e3ac1d5c'>修改计划委托</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li> POST /api/spot/v1/plan/modifyPlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">executePrice</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">执行价格</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">购买数量</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单类型 （limit/market）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/modifyPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>: <span class="s2">"974792060738441216"</span>, <span class="s2">"triggerPrice"</span>: 0.041222, <span class="s2">"executePrice"</span>:<span class="s2">"0.041272"</span>, <span class="s2">"size"</span>: 156, <span class="s2">"orderType"</span>:<span class="s2">"limit"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668136575920,
+  "data": {
+    "orderId": "974792060738441216",
+    "clientOrderId": "974792554995224576"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOrderId</td>
+<td style="text-align: center">自定义ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='cfb749d406'>撤销计划委托</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>修改计划委托</p>
+
+<ul>
+<li> POST /api/spot/v1/plan/cancelPlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/cancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>: <span class="s2">"974792060738441216"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134497496,
+  "data": "974792060738441216"
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='a40d8a54f9'>获取当前计划委托</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取当前计划委托</p>
+
+<ul>
+<li> POST /api/spot/v1/plan/currentPlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">产品Id</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">分页</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">最后ID （分页需要）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/currentPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"pageSize"</span>:<span class="s2">"20"</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134581005,
+  "data": {
+    "nextFlag": false,
+    "endId": 974792555020390400,
+    "orderList": [
+      {
+        "orderId": "974792555020390400",
+        "symbol": "TRXUSDT_SPBL",
+        "size": "151",
+        "executePrice": "0.041572",
+        "triggerPrice": "0.041572",
+        "status": "not_trigger",
+        "orderType": "limit",
+        "side": "buy",
+        "triggerType": "fill_price",
+        "cTime": "1668134576563"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">购买数量</td>
+</tr>
+<tr>
+<td style="text-align: left">executePrice</td>
+<td style="text-align: center">执行价格</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">状态</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">购买方向</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerType</td>
+<td style="text-align: center">触发类型</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='1c62db0f32'>获取历史计划委托</h3>
+<p>限速规则 20次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取历史改计划委托</p>
+
+<ul>
+<li> POST /api/spot/v1/plan/historyPlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">产品Id</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">分页</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">最后ID （分页需要）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/historyPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"pageSize"</span>:<span class="s2">"20"</span>, <span class="s2">"startTime"</span>:<span class="s2">"1667889483000"</span>, <span class="s2">"endTime"</span>:<span class="s2">"1668134732000"</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1668134626684,
+  "data": {
+    "nextFlag": false,
+    "endId": 974792060738441216,
+    "orderList": [
+      {
+        "orderId": "974792060738441216",
+        "symbol": "TRXUSDT_SPBL",
+        "size": "156",
+        "executePrice": "0.041272",
+        "triggerPrice": "0.041222",
+        "status": "cancel",
+        "orderType": "limit",
+        "side": "buy",
+        "triggerType": "fill_price",
+        "cTime": "1668134458717"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: center">购买数量</td>
+</tr>
+<tr>
+<td style="text-align: left">executePrice</td>
+<td style="text-align: center">执行价格</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: center">触发价格</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: center">状态</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: center">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">购买方向</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerType</td>
+<td style="text-align: center">触发类型</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: center">创建时间</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
 <p>WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务器全双工通信， 使得数据可以快速地双向传播。通过一次简单的握手就
  可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
