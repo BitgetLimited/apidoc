@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#nov-23-2022" class="toc-h2 toc-link" data-title="Nov, 23, 2022">Nov, 23, 2022</a>
+              </li>
+              <li>
                 <a href="#nov-11-2022" class="toc-h2 toc-link" data-title="Nov, 11, 2022">Nov, 11, 2022</a>
               </li>
               <li>
@@ -658,6 +661,9 @@
                         <a href="#place-stop-order" class="toc-h3 toc-link" data-title="Place Stop Order">Place Stop Order</a>
                       </li>
                       <li>
+                        <a href="#place-trailing-stop-order" class="toc-h3 toc-link" data-title="Place Trailing Stop Order">Place Trailing Stop Order</a>
+                      </li>
+                      <li>
                         <a href="#place-position-tpsl" class="toc-h3 toc-link" data-title="Place Position TPSL">Place Position TPSL</a>
                       </li>
                       <li>
@@ -665,6 +671,9 @@
                       </li>
                       <li>
                         <a href="#cancel-plan-order-tpsl" class="toc-h3 toc-link" data-title="Cancel Plan Order (TPSL)">Cancel Plan Order (TPSL)</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-all-trigger-order-tpsl" class="toc-h3 toc-link" data-title="Cancel All trigger Order (TPSL)">Cancel All trigger Order (TPSL)</a>
                       </li>
                       <li>
                         <a href="#get-plan-order-tpsl-list" class="toc-h3 toc-link" data-title="Get Plan Order (TPSL) List">Get Plan Order (TPSL) List</a>
@@ -681,10 +690,10 @@
                         <a href="#get-trader-open-order" class="toc-h3 toc-link" data-title="Get Trader Open order">Get Trader Open order</a>
                       </li>
                       <li>
-                        <a href="#get-followers-open-order" class="toc-h3 toc-link" data-title="Get Followers Open Order">Get Followers Open Order</a>
+                        <a href="#get-follower-open-orders" class="toc-h3 toc-link" data-title="Get Follower Open Orders">Get Follower Open Orders</a>
                       </li>
                       <li>
-                        <a href="#get-followers-open-order-2" class="toc-h3 toc-link" data-title="Get Followers Open Order">Get Followers Open Order</a>
+                        <a href="#get-follower-history-orders" class="toc-h3 toc-link" data-title="Get Follower History Orders">Get Follower History Orders</a>
                       </li>
                       <li>
                         <a href="#trader-close-position" class="toc-h3 toc-link" data-title="Trader Close Position">Trader Close Position</a>
@@ -818,7 +827,12 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='nov-11-2022'>Nov, 11, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='nov-23-2022'>Nov, 23, 2022</h2>
+<ul>
+<li>Added new interface  RestAPI -&gt; <code>trade</code>  -&gt; <a href="#cancel-all-trigger-order-tpsl">Cancel All trigger order</a> | <a href="#place-trailing-stop-order">Place trailing stop order</a></li>
+<li>Account -&gt; <a href="#change-hold-mode">Change Hold Mode</a>    change request parameter    <code>productType</code></li>
+</ul>
+<h2 id='nov-11-2022'>Nov, 11, 2022</h2>
 <ul>
 <li>Add new interface RestAPI -&gt; Account -&gt; <a href="#change-hold-mode">Change Hold Mode</a> </li>
 <li>Supplementary clause on the <a href="#place-order">Place Order</a> logic with single_hold mode</li>
@@ -1595,8 +1609,13 @@ If there is a large deviation between the local server time and the API server t
 </ul>
 <h3 id='plantype'>planType</h3>
 <ul>
-<li>profit_plan</li>
-<li>loss_plan</li>
+<li>profit_plan     (profit order)</li>
+<li>loss_plan       (loss order)</li>
+<li>normal_plan   (plan order)</li>
+<li>pos_profit     (position profit)</li>
+<li>pos_loss        (position loss)</li>
+<li>moving_plan   (Trailing TP/SL)</li>
+<li>track_plan   (Trailing Stop)</li>
 </ul>
 <h3 id='isplan'>isPlan</h3>
 <ul>
@@ -2242,7 +2261,7 @@ If there is a large deviation between the local server time and the API server t
 <td>3</td>
 </tr>
 <tr>
-<td style="text-align: left">Closing price, value of the latest candle stick might change, please try subscribe the websocket <a href="candlesticks-channel">candlestick channel</a> for the updates</td>
+<td style="text-align: left">Closing price, value of the latest candle stick might change, please try subscribe the websocket <a href="#candlesticks-channel">candlestick channel</a> for the updates</td>
 <td>4</td>
 </tr>
 <tr>
@@ -3387,16 +3406,10 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">symbol</td>
+<td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
-</tr>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">margin coin, USDT</td>
+<td style="text-align: center">product type</td>
 </tr>
 <tr>
 <td style="text-align: left">holdMode</td>
@@ -4199,7 +4212,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Order quantity</td>
+<td style="text-align: center">Order quantity, base coin</td>
 </tr>
 <tr>
 <td style="text-align: left">price</td>
@@ -5873,13 +5886,13 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if querying all details</td>
+<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if orderId is empty</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">End time (timestamp in milliseconds) This field is required if querying all details</td>
+<td style="text-align: center">End time (timestamp in milliseconds) This field is required if orderId is empty</td>
 </tr>
 <tr>
 <td style="text-align: left">lastEndId</td>
@@ -6464,6 +6477,111 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: center">No</td>
 <td style="text-align: center">Order Quantity Default Position Quantity</td>
 </tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Only works when planType is trailing order, &quot;1&quot; means 1.0% price correction, two decimal places</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placeTPSL"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+</tbody></table>
+<h3 id='place-trailing-stop-order'>Place Trailing Stop Order</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/placeTrailStop</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trigger price</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Whether this position is long or short</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Order Quantity Default Position Quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">&quot;1&quot; means 1.0% price correction, two decimal places</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -6789,6 +6907,95 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Order Id</td>
 </tr>
 </tbody></table>
+<h3 id='cancel-all-trigger-order-tpsl'>Cancel All trigger Order (TPSL)</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/cancelAllPlan</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+<tr>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/cancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>:<span class="s2">"umcbl"</span>,<span class="s2">"planType"</span>:<span class="s2">"loss_plan"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>planType
+
+<ul>
+<li>profit_plan</li>
+<li>loss_plan</li>
+<li>normal_plan</li>
+<li>pos_profit</li>
+<li>pos_loss</li>
+<li>track_plan </li>
+<li>moving_plan<br></li>
+</ul></li>
+</ul>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 
@@ -7216,7 +7423,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Stop price</td>
 </tr>
 </tbody></table>
-<h3 id='get-followers-open-order'>Get Followers Open Order</h3>
+<h3 id='get-follower-open-orders'>Get Follower Open Orders</h3>
 <p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -7359,7 +7566,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Close Position Time (milliseconds)</td>
 </tr>
 </tbody></table>
-<h3 id='get-followers-open-order-2'>Get Followers Open Order</h3>
+<h3 id='get-follower-history-orders'>Get Follower History Orders</h3>
 <p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -8298,9 +8505,9 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <p>To keep the connection stable:</p>
 
 <ol>
-<li>Set a timer of N seconds whenever a response message is received, where N is less than 30.</li>
-<li>If the timer is triggered, which means that no new message is received within N seconds, send the String &#39;ping&#39;.</li>
-<li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error and/or reconnect.</li>
+<li>Set a timer of 30 seconds.</li>
+<li>If the timer is triggered, send the String &#39;ping&#39;.</li>
+<li>Expect a &#39;pong&#39; as a response. If the response message is not received within 30 seconds, please raise an error and/or reconnect.</li>
 <li>The Websocket server accepts up to 10 messages per second. The message includes:
 
 <ul>

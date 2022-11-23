@@ -4475,7 +4475,7 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 <td>Order ID</td>
 </tr>
 <tr>
@@ -4641,6 +4641,12 @@ microtime(true) * 1000;
 <td>order type  (limit/market )</td>
 </tr>
 <tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>Customized client order ID, idempotent control</td>
+</tr>
+<tr>
 <td>timeInForceValue</td>
 <td>String</td>
 <td>No</td>
@@ -4658,7 +4664,7 @@ microtime(true) * 1000;
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"clientOid"</span>: <span class="s2">"12345"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -5254,9 +5260,9 @@ microtime(true) * 1000;
 <p>To keep the connection stable:</p>
 
 <ol>
-<li>Set a timer of N seconds, where N is between 25 and 30.</li>
+<li>Set a timer of 30 seconds.</li>
 <li>If the timer is triggered, send the String &#39;ping&#39;.</li>
-<li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error or reconnect.</li>
+<li>Expect a &#39;pong&#39; as a response. If the response message is not received within 30 seconds, please raise an error and/or reconnect.</li>
 <li>The Websocket server accepts up to 10 messages per second. The message includes:
 
 <ul>
@@ -6875,7 +6881,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Instrument Id, BTCUSDT_SPBL</td>
 </tr>
 </tbody></table>

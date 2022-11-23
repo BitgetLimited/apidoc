@@ -1578,7 +1578,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">maxTradeAmount</td>
-<td style="text-align: center">最小交易数量</td>
+<td style="text-align: center">最大交易数量</td>
 </tr>
 <tr>
 <td style="text-align: left">takerFeeRate</td>
@@ -4419,7 +4419,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">订单ID</td>
 </tr>
 <tr>
@@ -4597,6 +4597,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">订单类型 limit/market</td>
 </tr>
 <tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">客户自定义order ID, 幂等控制</td>
+</tr>
+<tr>
 <td style="text-align: left">timeInForceValue</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
@@ -4614,7 +4620,7 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"clientOid"</span>: <span class="s2">"12345"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回参数</p>
@@ -5225,9 +5231,9 @@ Signature = base64.encode(Signature)
 <p>为了保持连接有效且稳定，建议您进行以下操作：</p>
 
 <ol>
-<li>每次接收到消息后，用户设置一个定时器，定时N秒，N 小于30。</li>
-<li>如果定时器被触发（N 秒内没有收到新消息），发送字符串 &#39;ping&#39;。</li>
-<li>期待一个文字字符串&#39;pong&#39;作为回应。如果在 N秒内未收到，请发出错误或重新连接。</li>
+<li>每次接收到消息后，用户设置一个定时器，定时30秒。</li>
+<li>如果定时器被触发（30秒内没有收到新消息），发送字符串 &#39;ping&#39;。</li>
+<li>期待一个文字字符串&#39;pong&#39;作为回应。如果在30秒内未收到，请发出错误或重新连接。</li>
 <li>Websocket服务器每秒最多接受10个消息。消息包括:
 
 <ul>
@@ -6694,7 +6700,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td>&gt; instId</td>
 <td>String</td>
-<td>否</td>
+<td>是</td>
 <td>产品ID</td>
 </tr>
 <tr>
