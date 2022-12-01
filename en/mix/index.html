@@ -316,6 +316,15 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#nov-23-2022" class="toc-h2 toc-link" data-title="Nov, 23, 2022">Nov, 23, 2022</a>
+              </li>
+              <li>
+                <a href="#nov-11-2022" class="toc-h2 toc-link" data-title="Nov, 11, 2022">Nov, 11, 2022</a>
+              </li>
+              <li>
+                <a href="#october-27-2022" class="toc-h2 toc-link" data-title="October, 27, 2022">October, 27, 2022</a>
+              </li>
+              <li>
                 <a href="#october-14-2022" class="toc-h2 toc-link" data-title="October, 14, 2022">October, 14, 2022</a>
               </li>
               <li>
@@ -505,6 +514,9 @@
                       <li>
                         <a href="#stoptype" class="toc-h3 toc-link" data-title="stopType">stopType</a>
                       </li>
+                      <li>
+                        <a href="#websocket-plantype" class="toc-h3 toc-link" data-title="Websocket planType">Websocket planType</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -578,6 +590,9 @@
                         <a href="#change-margin-mode" class="toc-h3 toc-link" data-title="Change Margin Mode">Change Margin Mode</a>
                       </li>
                       <li>
+                        <a href="#change-hold-mode" class="toc-h3 toc-link" data-title="Change Hold Mode">Change Hold Mode</a>
+                      </li>
+                      <li>
                         <a href="#get-symbol-position" class="toc-h3 toc-link" data-title="Get Symbol Position">Get Symbol Position</a>
                       </li>
                       <li>
@@ -646,6 +661,9 @@
                         <a href="#place-stop-order" class="toc-h3 toc-link" data-title="Place Stop Order">Place Stop Order</a>
                       </li>
                       <li>
+                        <a href="#place-trailing-stop-order" class="toc-h3 toc-link" data-title="Place Trailing Stop Order">Place Trailing Stop Order</a>
+                      </li>
+                      <li>
                         <a href="#place-position-tpsl" class="toc-h3 toc-link" data-title="Place Position TPSL">Place Position TPSL</a>
                       </li>
                       <li>
@@ -653,6 +671,9 @@
                       </li>
                       <li>
                         <a href="#cancel-plan-order-tpsl" class="toc-h3 toc-link" data-title="Cancel Plan Order (TPSL)">Cancel Plan Order (TPSL)</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-all-trigger-order-tpsl" class="toc-h3 toc-link" data-title="Cancel All trigger Order (TPSL)">Cancel All trigger Order (TPSL)</a>
                       </li>
                       <li>
                         <a href="#get-plan-order-tpsl-list" class="toc-h3 toc-link" data-title="Get Plan Order (TPSL) List">Get Plan Order (TPSL) List</a>
@@ -669,7 +690,10 @@
                         <a href="#get-trader-open-order" class="toc-h3 toc-link" data-title="Get Trader Open order">Get Trader Open order</a>
                       </li>
                       <li>
-                        <a href="#get-followers-open-order" class="toc-h3 toc-link" data-title="Get Followers Open Order">Get Followers Open Order</a>
+                        <a href="#get-follower-open-orders" class="toc-h3 toc-link" data-title="Get Follower Open Orders">Get Follower Open Orders</a>
+                      </li>
+                      <li>
+                        <a href="#get-follower-history-orders" class="toc-h3 toc-link" data-title="Get Follower History Orders">Get Follower History Orders</a>
                       </li>
                       <li>
                         <a href="#trader-close-position" class="toc-h3 toc-link" data-title="Trader Close Position">Trader Close Position</a>
@@ -749,6 +773,9 @@
                       <li>
                         <a href="#trades-channel" class="toc-h3 toc-link" data-title="Trades Channel">Trades Channel</a>
                       </li>
+                      <li>
+                        <a href="#new-trades-channel" class="toc-h3 toc-link" data-title="New Trades Channel">New Trades Channel</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -800,25 +827,44 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='october-14-2022'>October, 14, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='nov-23-2022'>Nov, 23, 2022</h2>
 <ul>
-<li>Add new interface RestAPI - &gt;  Trade -&gt; <a href="#reversal">Reversal</a> </li>
+<li>Added new interface  RestAPI -&gt; <code>trade</code>  -&gt; <a href="#cancel-all-trigger-order-tpsl">Cancel All trigger order</a> | <a href="#place-trailing-stop-order">Place trailing stop order</a></li>
+<li>Account -&gt; <a href="#change-hold-mode">Change Hold Mode</a>    change request parameter    <code>productType</code></li>
+</ul>
+<h2 id='nov-11-2022'>Nov, 11, 2022</h2>
+<ul>
+<li>Add new interface RestAPI -&gt; Account -&gt; <a href="#change-hold-mode">Change Hold Mode</a> </li>
+<li>Supplementary clause on the <a href="#place-order">Place Order</a> logic with single_hold mode</li>
+<li>Supplementary clause on the <a href="#reversal">Reversal</a> logic with single_hold mode</li>
+<li>Add &#39;init&#39; to <a href="#state">order status</a></li>
+<li>New values added to <a href="#side">side</a>, added <a href="#tradeside">trade side</a></li>
+</ul>
+<h2 id='october-27-2022'>October, 27, 2022</h2>
+<ul>
+<li>Added channel on WebSocketAPI -&gt;  Public Channels -&gt; <a href="#new-trades-channel">New Trades Channel</a></li>
+<li>WebSocketAPI -&gt;  Public Channels -&gt; <a href="#order-book-channel">Order Book Channel</a> added channel value：books1</li>
+<li>WebSocketAPI -&gt;  Private Channels -&gt; <a href="#plan-order-channel">Plan Order Channel</a> added new push field:  <a href="#websocket-plantype">websocket plantype</a></li>
+</ul>
+<h2 id='october-14-2022'>October, 14, 2022</h2>
+<ul>
+<li>Add new interface RestAPI -&gt;  Trade -&gt; <a href="#reversal">Reversal</a> </li>
 </ul>
 <h2 id='september-15-2022'>September, 15, 2022</h2>
 <ul>
-<li>Add new interface <code>Trade</code> - &gt;  <code>Cancle All Order</code></li>
+<li>Add new interface <code>Trade</code> -&gt;  <code>Cancle All Order</code></li>
 </ul>
 <h2 id='september-06-2022'>September, 06, 2022</h2>
 <ul>
-<li>Add new interface <code>Trade</code> - &gt;  <code>Place Position TPSL</code></li>
+<li>Add new interface <code>Trade</code> -&gt;  <code>Place Position TPSL</code></li>
 </ul>
 <h2 id='august-29-2022'>August, 29, 2022</h2>
 <ul>
-<li>Add new interface <code>Trade</code> - &gt;  <code>Get productType History Order</code> </li>
+<li>Add new interface <code>Trade</code> -&gt;  <code>Get productType History Order</code> </li>
 </ul>
 <h2 id='august-19-2022'>August, 19, 2022</h2>
 <ul>
-<li> <code>Market</code> - &gt; <code>Get Candle Data</code> add UTC0  <code>granularity</code></li>
+<li> <code>Market</code> -&gt; <code>Get Candle Data</code> add UTC0  <code>granularity</code></li>
 <li><code>Market</code> -&gt; <code>Get Sinle Symbol Ticker</code>, <code>Get All Symbol Ticker</code> response <code>openUtc</code> <code>chgUtc</code>  UTC0 data</li>
 </ul>
 <h2 id='august-16-2022'>August, 16, 2022</h2>
@@ -1411,18 +1457,109 @@ If there is a large deviation between the local server time and the API server t
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
+<li>buy_single      open long under <a href="#holdside">single_hold</a> mode</li>
+<li>sell_single     open short under <a href="#holdside">single_hold</a> mode</li>
 </ul>
 <h3 id='tradeside'>tradeSide</h3>
-<ul>
-<li>open_long</li>
-<li>open_short</li>
-<li>close_long</li>
-<li>close_short</li>
-<li>burst_close_long</li>
-<li>burst_close_short</li>
-<li>offset_close_long</li>
-<li>offset_close_short</li>
-</ul>
+<p>Values for <a href="#holdmode">double_hold</a></p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open_long</td>
+<td>open long</td>
+</tr>
+<tr>
+<td>open_short</td>
+<td>open short</td>
+</tr>
+<tr>
+<td>close_long</td>
+<td>close ong</td>
+</tr>
+<tr>
+<td>close_short</td>
+<td>close short</td>
+</tr>
+<tr>
+<td>reduce_close_long</td>
+<td>Force reduce long position</td>
+</tr>
+<tr>
+<td>reduce_close_short</td>
+<td>Force reduce short position</td>
+</tr>
+<tr>
+<td>offset_close_long</td>
+<td>Force netting: close long position</td>
+</tr>
+<tr>
+<td>offset_close_short</td>
+<td>Force netting: close short position</td>
+</tr>
+<tr>
+<td>burst_close_long</td>
+<td>Force liquidation: close long position</td>
+</tr>
+<tr>
+<td>burst_close_short</td>
+<td>Force liquidation: close short position</td>
+</tr>
+<tr>
+<td>delivery_close_long</td>
+<td>Future delivery close long</td>
+</tr>
+<tr>
+<td>delivery_close_short</td>
+<td>Future delivery close short</td>
+</tr>
+</tbody></table>
+
+<p>Values for <a href="#holdmode">single_hold</a></p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buy_single</td>
+<td>Buy in single_hold mode</td>
+</tr>
+<tr>
+<td>sell_single</td>
+<td>Sell in single_hold mode</td>
+</tr>
+<tr>
+<td>reduce_buy_single</td>
+<td>Force reduce buy in single_hold mode</td>
+</tr>
+<tr>
+<td>reduce_sell_single</td>
+<td>Force reduce sell in single_hold mode</td>
+</tr>
+<tr>
+<td>burst_buy_single</td>
+<td>Force liquidation: buy in single_hold mode</td>
+</tr>
+<tr>
+<td>burst_sell_single</td>
+<td>Force liquidation: sell in single_hold mode</td>
+</tr>
+<tr>
+<td>delivery_buy_single</td>
+<td>Future delivery buy in single_hold mode</td>
+</tr>
+<tr>
+<td>delivery_sell_single</td>
+<td>Future delivery sell in single_hold mode</td>
+</tr>
+</tbody></table>
 <h3 id='timeinforcevalue'>timeInForceValue</h3>
 <ul>
 <li>normal        good till cancel, default value</li>
@@ -1445,8 +1582,12 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </thead><tbody>
 <tr>
+<td>init</td>
+<td>initial order, inserted into DB</td>
+</tr>
+<tr>
 <td>new</td>
-<td>new order</td>
+<td>new order, pending match in orderbook</td>
 </tr>
 <tr>
 <td>partially_filled</td>
@@ -1468,8 +1609,13 @@ If there is a large deviation between the local server time and the API server t
 </ul>
 <h3 id='plantype'>planType</h3>
 <ul>
-<li>profit_plan</li>
-<li>loss_plan</li>
+<li>profit_plan     (profit order)</li>
+<li>loss_plan       (loss order)</li>
+<li>normal_plan   (plan order)</li>
+<li>pos_profit     (position profit)</li>
+<li>pos_loss        (position loss)</li>
+<li>moving_plan   (Trailing TP/SL)</li>
+<li>track_plan   (Trailing Stop)</li>
 </ul>
 <h3 id='isplan'>isPlan</h3>
 <ul>
@@ -1487,6 +1633,14 @@ If there is a large deviation between the local server time and the API server t
 <ul>
 <li>profit</li>
 <li>loss</li>
+</ul>
+<h3 id='websocket-plantype'>Websocket planType</h3>
+<ul>
+<li>pl: default, push data whenever a <a href="#place-plan-order">plan order</a> is created/cancelled/modified/triggered</li>
+<li>tp: take profit event, push data when a <a href="#place-stop-order">take profit order</a>(partial position) is created/cancelled/modified/triggered</li>
+<li>sl: stop loss event, push data when a <a href="#place-stop-order">stop loss order</a>(partial position) is created/cancelled/modified/triggered</li>
+<li>ptp: position take profit event, push data when a <a href="#place-position-tpsl">position take profit order</a>(whole position) is created/cancelled/modified/triggered</li>
+<li>psl: position stop loss event, push data when a <a href="#place-position-tpsl">position stop loss order</a>(whole position) is created/cancelled/modified/triggered</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
@@ -1543,7 +1697,8 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0006"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="w">
+      </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="s2">"delivery"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -1621,6 +1776,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">sizeMultiplier</td>
 <td style="text-align: left">Quantity Multiplier The order size must be greater than minTradeNum and satisfy the multiple of sizeMultiplier</td>
+</tr>
+<tr>
+<td style="text-align: left">symbolType</td>
+<td style="text-align: left">future type  <code>perpetual</code>  perpetual contract      <code>delivery</code>  delivery contract</td>
 </tr>
 </tbody></table>
 <h3 id='get-depth'>Get Depth</h3>
@@ -2102,7 +2261,7 @@ If there is a large deviation between the local server time and the API server t
 <td>3</td>
 </tr>
 <tr>
-<td style="text-align: left">Closing price, value of the latest candle stick might change, please try subscribe the websocket <a href="candlesticks-channel">candlestick channel</a> for the updates</td>
+<td style="text-align: left">Closing price, value of the latest candle stick might change, please try subscribe the websocket <a href="#candlesticks-channel">candlestick channel</a> for the updates</td>
 <td>4</td>
 </tr>
 <tr>
@@ -3085,7 +3244,29 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293357336</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='change-margin-mode'>Change Margin Mode</h3>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='change-margin-mode'>Change Margin Mode</h3>
 <p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -3181,6 +3362,128 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left"><a href="#marginmode">Margin mode</a></td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='change-hold-mode'>Change Hold Mode</h3>
+<p>Please DO NOT change the hold mode with existing position under the symbol</p>
+
+<p>Limit rule: 5 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/account/setPositionMode</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#holdmode">Hold mode</a></td>
+</tr>
+</tbody></table>
+
+<p>Might fail if intended to change hold mode when the &quot;symbol&quot; has positions on any side </p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/account/setPositionMode"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"holdMode"</span>: <span class="s2">"double_hold"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dualSidePosition"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293445916</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin currency</td>
+</tr>
+<tr>
+<td style="text-align: left">dualSidePosition</td>
+<td style="text-align: left">boolean, true: &quot;double_hold&quot;; false: &quot;single_hold&quot;</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='get-symbol-position'>Get Symbol Position</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 
@@ -3796,7 +4099,7 @@ If there is a large deviation between the local server time and the API server t
 <red>
     <b>Note</b> if this error occurs when placing an order
 </red>
-
+<br/>
 {
     "code":"40762",
     "msg":"The order size is greater than the max open size",
@@ -3823,7 +4126,7 @@ If there is a large deviation between the local server time and the API server t
 <red>
     <b>Note</b> if this error occurs when closing an order
 </red>
-
+<br/>
 {
     "code": "40757",
     "msg": "Not enough position is available.",
@@ -3857,16 +4160,16 @@ If there is a large deviation between the local server time and the API server t
 
 ```
 <red>
-    <b>Note</b> if below two error occurs when operating an order, please DO query order with the clientOid to get the final result
+    <b>Note</b> if below two error occurs when operating an order, please DO query order detail with the clientOid to get the final status
 </red>
-
+<br/>
 {
     "code": "40010",
     "msg": "Request timed out",
     "requestTime": 1666268894074,
     "data": null
 }
-
+<br/>
 {
     "code": "40725",
     "msg": "service return an error",
@@ -3909,7 +4212,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Order quantity</td>
+<td style="text-align: center">Order quantity, base coin</td>
 </tr>
 <tr>
 <td style="text-align: left">price</td>
@@ -3954,6 +4257,25 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">Preset stop loss price</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+
+```
+For single hold mode:
+
+orderType could be either limited or market
+
+<a href="#side">Order direction</a> could be either buy_single or sell_single, the position could ONLY exists on one side: long or short
+
+For example
+
+Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructions step by step to placeOrder:<br/>
+1) first time sell_single size=0.05: 0.05 position will be closed, you still have buy_single size=0.05<br/>
+2) seconds order: sell_single 0.1: remain position 0.05 will be closed, buy_single size=0, sell_single size=0.05 will be opened<br/>
+3) final order: sell_single 0.15: sell_single position size will increase 0.15, at the end sell_single size=0.2<br/>
+```
+
+</aside> 
 
 <blockquote>
 <p>Response Data</p>
@@ -4023,11 +4345,23 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 <h3 id='reversal'>Reversal</h3>
+<p>Limit rule: 10 times/1s (uid), counted together with placeOrder</p>
+
 <p>Reversal share the same interface with Place order.</p>
+
+<p>Reversal logic is different under &quot;double_hold&quot;/&quot;single_hold&quot; hold mode: </p>
+
+<p>double_hold: 
+1) You could usually specify a size(size &gt; 0 and size &lt;= position size), which the size will be closed from your current position and a same size will be opened on the opposite side
+2) &quot;side&quot; value: close_short or close_long</p>
+
+<p>single_hold: 
+1) The size parameter is omitted, that means you could only close the whole position, then try to open on the opposite side with market price, the open position might fail due to margin condition
+2) &quot;side&quot; value: sell_single when position side is buy_single, buy_single when position side is sell_single</p>
 
 <p>Note: Your position will be closed at <strong>market price</strong> and open in reverse <a href="#side">side</a> for the specific amount. </p>
 
-<p>If the close position settled amount + available balance are insufficient to open the specific number of positions, or the reverse order value is less than 5 USDT, the specified size position will be closed and the position open will fail. </p>
+<p>If the close position settled amount + available balance are insufficient to open the specific size of positions, or the reverse order value is less than 5 USDT, the specified size position will be closed and the position open will fail. </p>
 
 <p>Your operation may not be 100% successful due to margin, market conditions and other factors.</p>
 
@@ -4082,8 +4416,6 @@ If there is a large deviation between the local server time and the API server t
 
 <p><code>orderType</code> must be market price, a limit price order will be treated as market price order in reversal</p>
 
-<p>If originally <code>side</code> is open_long, then in reversal you should set the <code>side</code> to close_long; If originally <code>side</code> is open_short, then in reversal you should set the <code>side</code> to close_short; </p>
-
 <blockquote>
 <p>Reversal Sample: original order</p>
 </blockquote>
@@ -4109,6 +4441,11 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"reverse"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>If originally <code>side</code> is open_long, then in reversal you should set the <code>side</code> to close_long; 
+If originally <code>side</code> is open_short, then in reversal you should set the <code>side</code> to close_short; 
+Use <code>sell_single</code> when original position <code>side</code> is <code>buy_single</code>, 
+Use <code>buy_single</code> when original position <code>side</code> is <code>sell_single</code>;</p>
+
 <p>Samples on the right side demonstrate a reversal operation. Ideally at the end you should be holding <code>100 TRXUSDT short</code> position</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -4142,14 +4479,14 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Order quantity size=close_size+open_reverse_size</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Order quantity size = close_size = open_reverse_size; this param will be omitted in single_hold mode</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#side">Order direction</a>, set to close_long or close_short</td>
+<td style="text-align: center"><a href="#side">Order direction</a>, set to close_long or close_short in double_hold mode; set to buy_single or sell_single in single_hold mode</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
@@ -4210,8 +4547,6 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 
-<p>&nbsp;&nbsp;</p>
-
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -4228,7 +4563,9 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 
-<p>&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -4272,7 +4609,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">orderDataList</td>
 <td style="text-align: left">List</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Order data list</td>
+<td style="text-align: center">Order data list, maximum size: 50</td>
 </tr>
 </tbody></table>
 
@@ -4813,7 +5150,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Order direction</a></td>
+<td style="text-align: left"><a href="#tradeside">Order direction</a></td>
 </tr>
 <tr>
 <td style="text-align: left">timeInForce</td>
@@ -4957,7 +5294,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Order direction</a></td>
+<td style="text-align: left"><a href="#tradeside">Order direction</a></td>
 </tr>
 <tr>
 <td style="text-align: left">timeInForce</td>
@@ -5135,7 +5472,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Order direction</a></td>
+<td style="text-align: left"><a href="#tradeside">Order direction</a></td>
 </tr>
 <tr>
 <td style="text-align: left">timeInForce</td>
@@ -5321,7 +5658,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Order direction</a></td>
+<td style="text-align: left"><a href="#tradeside">Order direction</a></td>
 </tr>
 <tr>
 <td style="text-align: left">timeInForce</td>
@@ -5487,7 +5824,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Order direction</a></td>
+<td style="text-align: left"><a href="#tradeside">Order direction</a></td>
 </tr>
 <tr>
 <td style="text-align: left">timeInForce</td>
@@ -5549,13 +5886,13 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if querying all details</td>
+<td style="text-align: center">Start time (timestamp in milliseconds) This field is required if orderId is empty</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">End time (timestamp in milliseconds) This field is required if querying all details</td>
+<td style="text-align: center">End time (timestamp in milliseconds) This field is required if orderId is empty</td>
 </tr>
 <tr>
 <td style="text-align: left">lastEndId</td>
@@ -6140,6 +6477,111 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">No</td>
 <td style="text-align: center">Order Quantity Default Position Quantity</td>
 </tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Only works when planType is trailing order, &quot;1&quot; means 1.0% price correction, two decimal places</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placeTPSL"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+</tbody></table>
+<h3 id='place-trailing-stop-order'>Place Trailing Stop Order</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/placeTrailStop</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trigger price</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Whether this position is long or short</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Order Quantity Default Position Quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">&quot;1&quot; means 1.0% price correction, two decimal places</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -6329,10 +6771,10 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">Trigger price</td>
 </tr>
 <tr>
-    <td style="text-align: left">planType</td>
-    <td style="text-align: left">String</td>
-    <td style="text-align: center">Yes</td>
-    <td style="text-align: center">profit_plan (tp order)  loss_plan (sl order)</td>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">profit_plan (tp order)  loss_plan (sl order)</td>
 </tr>
 </tbody></table>
 
@@ -6346,7 +6788,7 @@ If there is a large deviation between the local server time and the API server t
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"planType"</span>:<span class="s2">"profit_plan"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -6465,6 +6907,95 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Order Id</td>
 </tr>
 </tbody></table>
+<h3 id='cancel-all-trigger-order-tpsl'>Cancel All trigger Order (TPSL)</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/cancelAllPlan</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">product type</td>
+</tr>
+<tr>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/cancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>:<span class="s2">"umcbl"</span>,<span class="s2">"planType"</span>:<span class="s2">"loss_plan"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>planType
+
+<ul>
+<li>profit_plan</li>
+<li>loss_plan</li>
+<li>normal_plan</li>
+<li>pos_profit</li>
+<li>pos_loss</li>
+<li>track_plan </li>
+<li>moving_plan<br></li>
+</ul></li>
+</ul>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 
@@ -6757,7 +7288,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">side</td>
-<td style="text-align: left"><a href="#side">Side</a></td>
+<td style="text-align: left"><a href="#tradeside">Side</a></td>
 </tr>
 <tr>
 <td style="text-align: left">triggerType</td>
@@ -6892,7 +7423,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Stop price</td>
 </tr>
 </tbody></table>
-<h3 id='get-followers-open-order'>Get Followers Open Order</h3>
+<h3 id='get-follower-open-orders'>Get Follower Open Orders</h3>
 <p>Limit rule 20 times/2s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -7033,6 +7564,170 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">closeTime</td>
 <td style="text-align: left">Close Position Time (milliseconds)</td>
+</tr>
+</tbody></table>
+<h3 id='get-follower-history-orders'>Get Follower History Orders</h3>
+<p>Limit rule 20 times/2s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/followerHistoryOrders</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Start time  timestamp</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Page size</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">int</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Current page number</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerHistoryOrders?startTime=1668073994000&amp;endTime=1668073994206&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"682799071840175632"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openLevel"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="s2">"11366.50"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627356444000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">1626838044000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeAvgPrice"</span><span class="p">:</span><span class="s2">"11272.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stopType"</span><span class="p">:</span><span class="s2">"profit"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"achievedProfits"</span><span class="p">:</span><span class="s2">"-0.07650000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openFee"</span><span class="p">:</span><span class="s2">"-0.00680910"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"closeFee"</span><span class="p">:</span><span class="s2">"0.000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profitRate"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"netProfit"</span><span class="p">:</span><span class="s2">"1"</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">openOrderNo</td>
+<td style="text-align: left">Open Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">closeOrderNo</td>
+<td style="text-align: left">Close Position Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Current <a href="#holdside">Position direction</a></td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Opening leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">openAvgPrice</td>
+<td style="text-align: left">Average opening price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Position opening time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">openSize</td>
+<td style="text-align: left">Open order size</td>
+</tr>
+<tr>
+<td style="text-align: left">closeAvgPrice</td>
+<td style="text-align: left">Average close price</td>
+</tr>
+<tr>
+<td style="text-align: left">closeFee</td>
+<td style="text-align: left">close fee</td>
+</tr>
+<tr>
+<td style="text-align: left">openFee</td>
+<td style="text-align: left">open fee</td>
+</tr>
+<tr>
+<td style="text-align: left">closeSize</td>
+<td style="text-align: left">close order size</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">close positions time (milliseconds)</td>
+</tr>
+<tr>
+<td style="text-align: left">profitRate</td>
+<td style="text-align: left">Profit Rate</td>
+</tr>
+<tr>
+<td style="text-align: left">netProfit</td>
+<td style="text-align: left">follow net income</td>
+</tr>
+<tr>
+<td style="text-align: left">achievedProfits</td>
+<td style="text-align: left">Realized profit and loss</td>
 </tr>
 </tbody></table>
 <h3 id='trader-close-position'>Trader Close Position</h3>
@@ -7810,9 +8505,9 @@ If there is a large deviation between the local server time and the API server t
 <p>To keep the connection stable:</p>
 
 <ol>
-<li>Set a timer of N seconds whenever a response message is received, where N is less than 30.</li>
-<li>If the timer is triggered, which means that no new message is received within N seconds, send the String &#39;ping&#39;.</li>
-<li>Expect a &#39;pong&#39; as a response. If the response message is not received within N seconds, please raise an error and/or reconnect.</li>
+<li>Set a timer of 30 seconds.</li>
+<li>If the timer is triggered, send the String &#39;ping&#39;.</li>
+<li>Expect a &#39;pong&#39; as a response. If the response message is not received within 30 seconds, please raise an error and/or reconnect.</li>
 <li>The Websocket server accepts up to 10 messages per second. The message includes:
 
 <ul>
@@ -8239,27 +8934,27 @@ If there is a large deviation between the local server time and the API server t
 <pre class="highlight plaintext"><code>1. More than 25 levels of bid and ask
 A local snapshot of market depth (only 2 levels of the orderbook are shown here, while 25 levels of orderbook should actually be intercepted):
     "bids": [
-      [ 43231.1, 4 ],   //bid2
-      [ 43231, 6 ]      //bid1
+      [ 43231.1, 4 ],   //bid1
+      [ 43231,   6 ]    //bid2
     ]
     "asks": [
-      [ 43230.8, 9 ],   //ask1
-      [ 43230.7, 8 ]    //ask2
+      [ 43232.8, 9 ],   //ask1
+      [ 43232.9, 8 ]    //ask2
     ]
 Build the string to check CRC32:
-"43231:6:43230.8:9:43231.1:4:43230.7:8"
+"43231.1:4:43232.8:9:43231:6:43232.9:8"
 The sequence:
 "bid1[price:amount]:ask1[price:amount]:bid2[price:amount]:ask2[price:amount]"
 
 2. Less than 25 levels of bid or ask
 A local snapshot of market depth:
     "bids": [
-      [ 3366.1, 7, 0, 3 ]   //bid1
+      [ 3366.1, 7 ] //bid1
     ]
     "asks": [
-      [ 3366.8, 9, 10, 3 ], //ask1
-      [ 3368  , 8,  3, 4 ], //ask2
-      [ 3372  , 8,  3, 4 ]  //ask3
+      [ 3366.8, 9 ],    //ask1
+      [ 3368  , 8 ],    //ask2
+      [ 3372  , 8 ]     //ask3
     ]
 
 Build the string to check CRC32:
@@ -8807,6 +9502,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <ul>
 <li><code>books</code>: Push the full <code>snapshot</code> data for the first time, push <code>update</code> afterwards, that is, if there is a change in depth, the depth data that has changed will be pushed.</li>
+<li><code>books1</code>: 1 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 <li><code>books5</code>: 5 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 <li><code>books15</code>: 15 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
 </ul>
@@ -8826,6 +9522,12 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>Snapshot and update might return less than 200 bids/asks as per symbol&#39;s orderbook various from each other; The number of bids/asks is not a fixed value and may vary in the future</td>
 </tr>
 <tr>
+<td>books1</td>
+<td>1</td>
+<td>1</td>
+<td>Top 1 order book of &quot;books&quot; that begins from bid1/ask1</td>
+</tr>
+<tr>
 <td>books5</td>
 <td>5</td>
 <td>5</td>
@@ -8841,6 +9543,8 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <p>For example, if the whole order book consist of 20 bids and 12 asks</p>
 <pre class="highlight plaintext"><code>channel books return 20 bids and 12 asks
+
+channel books1 return 1 bids and 1 asks, bids return index 19(index 19 is bid1), asks return index 0 
 
 channel books5 return 5 bids and 5 asks, bids return from index 15 to 19(index 19 is bid1), asks return from index 0 to index 4
 
@@ -8894,7 +9598,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>&gt; channel</td>
 <td>String</td>
 <td>Yes</td>
-<td>Channel name, <code>books</code> , <code>books5</code>, <code>books15</code></td>
+<td>Channel name, <code>books</code> , <code>books1</code>, <code>books5</code>, <code>books15</code></td>
 </tr>
 <tr>
 <td>&gt; instId</td>
@@ -9269,6 +9973,289 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Trade direction, <code>buy</code>, <code>sell</code></td>
 </tr>
 </tbody></table>
+<h3 id='new-trades-channel'>New Trades Channel</h3>
+<p>Retrieve the recent trades data. The first snapshot will push 50 trade records. Data will be pushed whenever there is a trade.</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>op</td>
+<td>String</td>
+<td>Yes</td>
+<td>Operation, <code>subscribe</code> <code>unsubscribe</code></td>
+</tr>
+<tr>
+<td>args</td>
+<td>Array</td>
+<td>Yes</td>
+<td>List of subscribed channels</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument type  <code>MC</code>: Perpetual contract public channel</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name，<code>tradeNew</code></td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID, <code>BTCUSDT</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Successful Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Failure Response Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>String</td>
+<td>Yes</td>
+<td>Event，<code>subscribe</code> <code>unsubscribe</code> <code>error</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>No</td>
+<td>Subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Yes</td>
+<td>InstrumentType</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Yes</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>No</td>
+<td>Error Code</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>String</td>
+<td>No</td>
+<td>Error Message</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Push data example - snaphsot</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.009"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054894406951028"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766611672</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054894406951026"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766611672</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradeNew"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Push data example - update</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20221.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.249"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969054896504102913"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666766612172</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tradeNew"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Push data parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td><code>snapshot</code> for the first push, afterwards push data will be <code>update</code></td>
+</tr>
+<tr>
+<td>arg</td>
+<td>Object</td>
+<td>Successfully subscribed channel</td>
+</tr>
+<tr>
+<td>&gt; instType</td>
+<td>String</td>
+<td>Instrument Type</td>
+</tr>
+<tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>Channel Name</td>
+</tr>
+<tr>
+<td>&gt; instId</td>
+<td>String</td>
+<td>Instrument ID</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array</td>
+<td>Subscribed data String array</td>
+</tr>
+<tr>
+<td>&gt; ts</td>
+<td>String</td>
+<td>Filled time, Unix timestamp format in milliseconds</td>
+</tr>
+<tr>
+<td>&gt; p</td>
+<td>String</td>
+<td>Trade price</td>
+</tr>
+<tr>
+<td>&gt; c</td>
+<td>String</td>
+<td>Trade size</td>
+</tr>
+<tr>
+<td>&gt; ty</td>
+<td>String</td>
+<td>Trade direction, <code>buy</code>, <code>sell</code></td>
+</tr>
+<tr>
+<td>&gt; ti</td>
+<td>String</td>
+<td>Trade ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h2 id='private-channels'>Private Channels</h2><h3 id='account-channel'>Account Channel</h3>
 <p>Retrieve account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
 
@@ -10056,7 +11043,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </tr>
 </tbody></table>
 <h3 id='plan-order-channel'>Plan Order Channel</h3>
-<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling order.</p>
+<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as created/cancelled/modified/triggered.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -10240,6 +11227,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>&gt; triggerPx</td>
 <td>String</td>
 <td>trigger price</td>
+</tr>
+<tr>
+<td>&gt; planType</td>
+<td>String</td>
+<td><a href="#websocket-plantype">Websocket planType</a>, null means &#39;pl&#39;</td>
 </tr>
 <tr>
 <td>&gt; ordPx</td>
