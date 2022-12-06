@@ -316,6 +316,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-12-03" class="toc-h2 toc-link" data-title="2022年12月03日">2022年12月03日</a>
+              </li>
+              <li>
                 <a href="#2022-11-23" class="toc-h2 toc-link" data-title="2022年11月23日">2022年11月23日</a>
               </li>
               <li>
@@ -575,6 +578,9 @@
                         <a href="#ca1e923f0e" class="toc-h3 toc-link" data-title="获取账户信息列表">获取账户信息列表</a>
                       </li>
                       <li>
+                        <a href="#98972a8d59" class="toc-h3 toc-link" data-title="获取所有子账户合约资产信息">获取所有子账户合约资产信息</a>
+                      </li>
+                      <li>
                         <a href="#4472f6d613" class="toc-h3 toc-link" data-title="获取可开数量">获取可开数量</a>
                       </li>
                       <li>
@@ -825,7 +831,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-11-23'>2022年11月23日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-03'>2022年12月03日</h2>
+<ul>
+<li>RestAPI -&gt; 账户接口 -&gt; added <a href="#98972a8d59">获取所有子账户合约资产信息</a></li>
+<li>WebsocketAPI -&gt; 私有频道 -&gt; 订单频道 -&gt; 推送数据参数 -&gt; &#39;status&#39; 补充枚举: &#39;init&#39;</li>
+<li>WebsocketAPI -&gt; 公共频道 -&gt; 行情频道 -&gt; 推送数据参数 -&gt; 新增 &#39;bidSz&#39;, &#39;askSz&#39;等字段</li>
+</ul>
+<h2 id='2022-11-23'>2022年11月23日</h2>
 <ul>
 <li>新增接口 RestAPI -&gt; 交易接口 -&gt; <a href="#00d1edc409">追踪委托下单</a> | <a href="#5f9d69dc37">策略一键撤单</a></li>
 <li>账户接口 -&gt; <a href="#d7d4465c80">调节单双向持仓模式</a>  修改参数 <code>productType</code></li>
@@ -1988,6 +2000,8 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.623"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
@@ -2023,6 +2037,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">bestBid</td>
 <td style="text-align: left">买一价</td>
+</tr>
+<tr>
+<td style="text-align: left">bidSz</td>
+<td style="text-align: left">买一量</td>
+</tr>
+<tr>
+<td style="text-align: left">askSz</td>
+<td style="text-align: left">卖一量</td>
 </tr>
 <tr>
 <td style="text-align: left">high24h</td>
@@ -2105,6 +2127,8 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.623"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
@@ -2140,6 +2164,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">bestBid</td>
 <td style="text-align: left">买一价</td>
+</tr>
+<tr>
+<td style="text-align: left">bidSz</td>
+<td style="text-align: left">买一量</td>
+</tr>
+<tr>
+<td style="text-align: left">askSz</td>
+<td style="text-align: left">卖一量</td>
 </tr>
 <tr>
 <td style="text-align: left">high24h</td>
@@ -3053,6 +3085,145 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">保证金币种</td>
+</tr>
+<tr>
+<td style="text-align: left">locked</td>
+<td style="text-align: left">锁定数量(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: left">账户可用数量</td>
+</tr>
+<tr>
+<td style="text-align: left">crossMaxAvailable</td>
+<td style="text-align: left">全仓最大可用来开仓余额(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">fixedMaxAvailable</td>
+<td style="text-align: left">逐仓最大可用来开仓余额(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTransferOut</td>
+<td style="text-align: left">最大可转出</td>
+</tr>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: left">账户权益(保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtEquity</td>
+<td style="text-align: left">折算USDT账户权益</td>
+</tr>
+<tr>
+<td style="text-align: left">btcEquity</td>
+<td style="text-align: left">折算BTC账户权益</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>productType
+
+<ul>
+<li>umcbl   USDT合约</li>
+<li>dmcbl   混合合约</li>
+<li>cmcbl  USDC 合约</li>
+</ul></li>
+</ul>
+<h3 id='98972a8d59'>获取所有子账户合约资产信息</h3>
+<p>限速规则: 1次/10s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/account/sub-account-contract-assets</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品类型</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/account/sub-account-contract-assets"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4351550450</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contractAssetsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001403612744"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9465254769</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contractAssetsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000667722189"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
@@ -4425,6 +4596,33 @@ Signature = base64.encode(Signature)
 ```
 
 </aside> 
+
+<aside class="warning">
+
+```
+{
+    "code":"45116",
+    "msg":"The count of positions hold by the account exceeds the maximum count 60",
+    "requestTime":1669910904315,
+    "data":null
+}
+如USDT永续合约，如果持仓数量+open orders超过了60，就会收到上面的响应；
+USDT永续合约和币本位合约会分别计算持仓数量+open orders
+
+```
+</aside> 
+
+<p>单向持仓模式下:<br/>
+可以市价也可以限价下单<br/>
+只能同时存在一个方向仓位：buy_single 或 sell_single<br/>
+例如<br/>
+当前持仓：buy_single BTCUSDT_UMCBL size=0.1， 按如下顺序依次下单<br/>
+1）sell_single 0.05 那只会平掉多仓 0.05，多仓还剩 0.05<br/>
+2）第二次sell_single 0.1， 会平掉多仓 0.05  多仓还剩 0,空仓新开0.05<br/>
+3）第三次sell_single 0.15, 空仓会新增仓位0.15，最终变成0.2<br/>
+```</p>
+
+<p></aside> </p>
 
 <blockquote>
 <p>请求示例</p>
@@ -9442,7 +9640,14 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="s2">"44959.23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holding"</span><span class="p">:</span><span class="s2">"1825.822"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"39746.470"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="w">
+            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17088.5000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chgUTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00778"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deliveryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.344"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.024"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9561,6 +9766,41 @@ Signature = base64.encode(Signature)
 <td>String</td>
 <td>右币交易量</td>
 </tr>
+<tr>
+<td>&gt;openUtc</td>
+<td>String</td>
+<td>UTC 00:00时刻价格</td>
+</tr>
+<tr>
+<td>&gt;chgUTC</td>
+<td>String</td>
+<td>自UTC 00:00涨跌幅</td>
+</tr>
+<tr>
+<td>&gt;symbolType</td>
+<td>String</td>
+<td>SymbolType：perpetual-&gt;永续 delivery-&gt;交割</td>
+</tr>
+<tr>
+<td>&gt;symbolId</td>
+<td>String</td>
+<td>Symbol Id</td>
+</tr>
+<tr>
+<td>&gt;deliveryPrice</td>
+<td>String</td>
+<td>交割合约交割价，SymbolType=perpetual时为0</td>
+</tr>
+<tr>
+<td>&gt;bidSz</td>
+<td>String</td>
+<td>Best bid size</td>
+</tr>
+<tr>
+<td>&gt;askSz</td>
+<td>String</td>
+<td>Best ask size</td>
+</tr>
 </tbody></table>
 <h3 id='k-2'>K线频道</h3>
 <p>获取产品的K线数据。</p>
@@ -9639,7 +9879,7 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:candle1D,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -10593,7 +10833,7 @@ Signature = base64.encode(Signature)
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:account,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
 </span><span class="p">}</span><span class="err"> </span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -11701,6 +11941,11 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">计划委托单已经处于结束状态</td>
 <td style="text-align: left">43026</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">持仓数量 + 委托订单大于60</td>
+<td style="text-align: left">45116</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>

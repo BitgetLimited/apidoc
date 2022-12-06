@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#dec-06-2022" class="toc-h2 toc-link" data-title="Dec, 06, 2022">Dec, 06, 2022</a>
+              </li>
+              <li>
                 <a href="#nov-23-2022" class="toc-h2 toc-link" data-title="Nov, 23, 2022">Nov, 23, 2022</a>
               </li>
               <li>
@@ -578,6 +581,9 @@
                         <a href="#get-account-list" class="toc-h3 toc-link" data-title="Get Account List">Get Account List</a>
                       </li>
                       <li>
+                        <a href="#get-sub-account-contract-assets" class="toc-h3 toc-link" data-title="Get sub Account Contract Assets">Get sub Account Contract Assets</a>
+                      </li>
+                      <li>
                         <a href="#get-open-count" class="toc-h3 toc-link" data-title="Get Open Count">Get Open Count</a>
                       </li>
                       <li>
@@ -827,7 +833,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='nov-23-2022'>Nov, 23, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='dec-06-2022'>Dec, 06, 2022</h2>
+<ul>
+<li>RestAPI -&gt; Account -&gt; added <a href="#get-sub-account-contract-assets">Get sub Account Contract Assets</a></li>
+<li>WebsocketAPI -&gt; Private Channel -&gt; Order Channel -&gt; Push data parameters -&gt; &#39;status&#39; supplement enum: &#39;init&#39;</li>
+<li>WebsocketAPI -&gt; Public Channel -&gt; Ticker Channel -&gt; Push data parameters -&gt; Added &#39;bidSz&#39;, &#39;askSz&#39;</li>
+</ul>
+<h2 id='nov-23-2022'>Nov, 23, 2022</h2>
 <ul>
 <li>Added new interface  RestAPI -&gt; <code>trade</code>  -&gt; <a href="#cancel-all-trigger-order-tpsl">Cancel All trigger order</a> | <a href="#place-trailing-stop-order">Place trailing stop order</a></li>
 <li>Account -&gt; <a href="#change-hold-mode">Change Hold Mode</a>    change request parameter    <code>productType</code></li>
@@ -1906,6 +1918,8 @@ If there is a large deviation between the local server time and the API server t
         </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.623"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
@@ -1941,6 +1955,14 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">bestBid</td>
 <td style="text-align: left">Bid1 price</td>
+</tr>
+<tr>
+<td style="text-align: left">bidSz</td>
+<td style="text-align: left">Ask1 size</td>
+</tr>
+<tr>
+<td style="text-align: left">askSz</td>
+<td style="text-align: left">Bid1 size</td>
 </tr>
 <tr>
 <td style="text-align: left">high24h</td>
@@ -2023,6 +2045,8 @@ If there is a large deviation between the local server time and the API server t
         </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23990.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23991"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23989.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.154"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176.623"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"high24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24131.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"low24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23660.5"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1660705778888"</span><span class="p">,</span><span class="w">
@@ -2058,6 +2082,14 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">bestBid</td>
 <td style="text-align: left">Bid price</td>
+</tr>
+<tr>
+<td style="text-align: left">bidSz</td>
+<td style="text-align: left">Ask1 size</td>
+</tr>
+<tr>
+<td style="text-align: left">askSz</td>
+<td style="text-align: left">Bid1 size</td>
 </tr>
 <tr>
 <td style="text-align: left">high24h</td>
@@ -2946,6 +2978,135 @@ If there is a large deviation between the local server time and the API server t
             </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin currency</td>
+</tr>
+<tr>
+<td style="text-align: left">locked</td>
+<td style="text-align: left">Locked amount (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: left">Available balance(margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">crossMaxAvailable</td>
+<td style="text-align: left">The maximum available balance for crossed <a href="#marginmode">margin mode</a>(margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">fixedMaxAvailable</td>
+<td style="text-align: left">The maximum available balance for isolated(fixed) <a href="#marginmode">margin mode</a>(margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">maxTransferOut</td>
+<td style="text-align: left">Maximum transferable</td>
+</tr>
+<tr>
+<td style="text-align: left">equity</td>
+<td style="text-align: left">Account equity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">usdtEquity</td>
+<td style="text-align: left">Account equity convert to USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">btcEquity</td>
+<td style="text-align: left">Account equity convert to BTC</td>
+</tr>
+</tbody></table>
+<h3 id='get-sub-account-contract-assets'>Get sub Account Contract Assets</h3>
+<p>Limit rule: 1 times/10s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/account/sub-account-contract-assets</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/account/sub-account-contract-assets"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4351550450</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contractAssetsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001403612744"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">9465254769</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contractAssetsList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000667722189"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
@@ -4277,6 +4438,23 @@ Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructi
 
 </aside> 
 
+<aside class="warning">
+
+```
+If receive a response like below: 
+{
+    "code":"45116",
+    "msg":"The count of positions hold by the account exceeds the maximum count 60",
+    "requestTime":1669910904315,
+    "data":null
+}
+Please noted that for a business line like: USDT perpetual contract, if counted existing positions + open orders > 60, you will get above response
+PS: USDC perpetual contract will be counted separately, same as universal margin perpetual contract
+
+```
+
+</aside> 
+
 <blockquote>
 <p>Response Data</p>
 </blockquote>
@@ -4308,7 +4486,7 @@ Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructi
 </tr>
 </tbody></table>
 
-<p>If client does not pass <code>clientOid</code> , the use should be aware that the order might be duplicated, as this is the only idempotent promise field between client and server</p>
+<p>If client does not pass <code>clientOid</code> , the user should be awared that the order might be duplicated, as this is the only idempotent promise field between client and server</p>
 
 <p>&nbsp;</p>
 
@@ -4539,6 +4717,24 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order Id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+</tbody></table>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -9008,7 +9204,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>List of subscribed channels</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
 <td>Instrument Type    <code>MC</code>: Perpetual contract public channel</td>
@@ -9064,7 +9260,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>Subscribed channel</td>
 </tr>
 <tr>
-<td>&gt; instType</td>
+<td>&gt; instType</td>
 <td>String</td>
 <td>Yes</td>
 <td>Instrument type</td>
@@ -9121,7 +9317,14 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
             </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="s2">"44959.23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holding"</span><span class="p">:</span><span class="s2">"1825.822"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"39746.470"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="w">
+            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17088.5000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chgUTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00778"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"deliveryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.344"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.024"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9233,12 +9436,47 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <tr>
 <td>&gt;baseVolume</td>
 <td>String</td>
-<td>24h trading volume, with a unit of <code>base</code>.</td>
+<td>24h trading volume, with a unit of <code>base</code>.</td>
 </tr>
 <tr>
 <td>&gt;quoteVolume</td>
 <td>String</td>
-<td>24h trading volume, with a unit of <code>quote</code></td>
+<td>24h trading volume, with a unit of <code>quote</code></td>
+</tr>
+<tr>
+<td>&gt;openUtc</td>
+<td>String</td>
+<td>Open price at UTC 00:00</td>
+</tr>
+<tr>
+<td>&gt;chgUTC</td>
+<td>String</td>
+<td>Price change since UTC 00:00</td>
+</tr>
+<tr>
+<td>&gt;symbolType</td>
+<td>String</td>
+<td>SymbolType: delivery: Settled Futures; perpetual: Perpetual Futures</td>
+</tr>
+<tr>
+<td>&gt;symbolId</td>
+<td>String</td>
+<td>Symbol Id</td>
+</tr>
+<tr>
+<td>&gt;deliveryPrice</td>
+<td>String</td>
+<td>Delivery price - 0 when SymbolType=perpetual</td>
+</tr>
+<tr>
+<td>&gt;bidSz</td>
+<td>String</td>
+<td>Best bid size</td>
+</tr>
+<tr>
+<td>&gt;askSz</td>
+<td>String</td>
+<td>Best ask size</td>
 </tr>
 </tbody></table>
 <h3 id='candlesticks-channel'>Candlesticks Channel</h3>
@@ -10331,7 +10569,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,account:ticker,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
 </span><span class="p">}</span><span class="err"> </span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
@@ -11435,6 +11673,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">The limit order has been closed</td>
 <td style="text-align: left">43026</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Existing positions + open orders bigger than 60.</td>
+<td style="text-align: left">45116</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
