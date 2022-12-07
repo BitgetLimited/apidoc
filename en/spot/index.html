@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#07-12-2022" class="toc-h2 toc-link" data-title="07/12/2022">07/12/2022</a>
+              </li>
+              <li>
                 <a href="#06-12-2022" class="toc-h2 toc-link" data-title="06/12/2022">06/12/2022</a>
               </li>
               <li>
@@ -429,6 +432,9 @@
                       </li>
                       <li>
                         <a href="#withdrawal-type" class="toc-h3 toc-link" data-title="withdrawal type">withdrawal type</a>
+                      </li>
+                      <li>
+                        <a href="#triggertype" class="toc-h3 toc-link" data-title="triggerType">triggerType</a>
                       </li>
                       <li>
                         <a href="#accounttype" class="toc-h3 toc-link" data-title="accountType">accountType</a>
@@ -684,7 +690,18 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-log'>Update Log</h1><h2 id='06-12-2022'>06/12/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='07-12-2022'>07/12/2022</h2>
+<ul>
+<li>Specify the planType value in below interfaces: 
+
+<ul>
+<li>/api/mix/v1/plan/placeTPSL</li>
+<li>/api/mix/v1/plan/placePositionsTPSL</li>
+<li>/api/mix/v1/plan/modifyTPSLPlan</li>
+<li>/api/mix/v1/plan/cancelPlan</li>
+</ul></li>
+</ul>
+<h2 id='06-12-2022'>06/12/2022</h2>
 <ul>
 <li>RestAPI -&gt; Account -&gt; added <a href="#get-sub-account-spot-assets">Get sub Account Spot Assets</a></li>
 <li>RestAPI -&gt; Public -&gt; added <a href="#get-coin-list">Get Coin List</a> rateLimit updated to 3/s(IP)</li>
@@ -1206,6 +1223,22 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <tr>
 <td>inner-transfer</td>
 <td>Internal address</td>
+</tr>
+</tbody></table>
+<h3 id='triggertype'>triggerType</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fill_price</td>
+<td>fill price</td>
+</tr>
+<tr>
+<td>market_price</td>
+<td>mark price</td>
 </tr>
 </tbody></table>
 <h3 id='accounttype'>accountType</h3>

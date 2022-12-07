@@ -1616,8 +1616,8 @@ If there is a large deviation between the local server time and the API server t
 </tbody></table>
 <h3 id='triggertype'>triggerType</h3>
 <ul>
-<li>fill_price</li>
-<li>market_price</li>
+<li>fill_price: fill price</li>
+<li>market_price: mark price</li>
 </ul>
 <h3 id='plantype'>planType</h3>
 <ul>
@@ -6653,7 +6653,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#plantype">plan type</a></td>
+<td style="text-align: center"><a href="#plantype">plan type</a>, please use &quot;profit_plan&quot;, &quot;loss_plan&quot; and &quot;moving_plan&quot;</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6677,7 +6677,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">rangeRate</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Only works when planType is trailing order, &quot;1&quot; means 1.0% price correction, two decimal places</td>
+<td style="text-align: center">Only works when planType is &quot;moving_plan&quot;, &quot;1&quot; means 1.0% price correction, two decimal places</td>
 </tr>
 </tbody></table>
 
@@ -6783,14 +6783,14 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placeTPSL"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placeTrailStop"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span>,<span class="s2">"rangeRate"</span>:<span class="s2">"10"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -6859,7 +6859,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#plantype">plan type</a></td>
+<td style="text-align: center"><a href="#plantype">plan type</a>, please use &quot;pos_profit&quot;, &quot;pos_loss&quot;</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6891,7 +6891,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"planType"</span>: <span class="s2">"pos_profit"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -6970,7 +6970,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">profit_plan (tp order)  loss_plan (sl order)</td>
+<td style="text-align: center">Refer to <a href="#plantype">plan type</a>: &quot;pos_profit&quot; or &quot;profit_plan&quot;; &quot;pos_loss&quot; or &quot;loss_plan&quot;</td>
 </tr>
 </tbody></table>
 
@@ -6984,7 +6984,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"planType"</span>:<span class="s2">"profit_plan"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"803521986049314816"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"planType"</span>:<span class="s2">"pos_profit"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -7057,7 +7057,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#plantype">plan type</a> or <code>normal_plan</code></td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
 </tr>
 </tbody></table>
 
@@ -7178,20 +7178,6 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Order Id</td>
 </tr>
 </tbody></table>
-
-<ul>
-<li>planType
-
-<ul>
-<li>profit_plan</li>
-<li>loss_plan</li>
-<li>normal_plan</li>
-<li>pos_profit</li>
-<li>pos_loss</li>
-<li>track_plan </li>
-<li>moving_plan<br></li>
-</ul></li>
-</ul>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
 <p>Limit rule: 20 times/2s (uid)</p>
 

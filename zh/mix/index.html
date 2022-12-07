@@ -316,7 +316,10 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#2022-12-03" class="toc-h2 toc-link" data-title="2022年12月03日">2022年12月03日</a>
+                <a href="#2022-12-07" class="toc-h2 toc-link" data-title="2022年12月07日">2022年12月07日</a>
+              </li>
+              <li>
+                <a href="#2022-12-06" class="toc-h2 toc-link" data-title="2022年12月06日">2022年12月06日</a>
               </li>
               <li>
                 <a href="#2022-11-23" class="toc-h2 toc-link" data-title="2022年11月23日">2022年11月23日</a>
@@ -831,7 +834,18 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-03'>2022年12月03日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-07'>2022年12月07日</h2>
+<ul>
+<li>以下接口指定限定planType值: 
+
+<ul>
+<li>/api/mix/v1/plan/placeTPSL</li>
+<li>/api/mix/v1/plan/placePositionsTPSL</li>
+<li>/api/mix/v1/plan/modifyTPSLPlan</li>
+<li>/api/mix/v1/plan/cancelPlan</li>
+</ul></li>
+</ul>
+<h2 id='2022-12-06'>2022年12月06日</h2>
 <ul>
 <li>RestAPI -&gt; 账户接口 -&gt; added <a href="#98972a8d59">获取所有子账户合约资产信息</a></li>
 <li>WebsocketAPI -&gt; 私有频道 -&gt; 订单频道 -&gt; 推送数据参数 -&gt; &#39;status&#39; 补充枚举: &#39;init&#39;</li>
@@ -1533,7 +1547,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td>market_price</td>
-<td>标记价触发</td>
+<td>标记价 mark price 触发</td>
 </tr>
 </tbody></table>
 <h3 id='plantype'>planType(计划委托类型)</h3>
@@ -6923,7 +6937,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">止盈止损类型 <a href="#planType">planType</a></td>
+<td style="text-align: center">止盈止损类型 <a href="#planType">planType</a>，请使用&quot;profit_plan&quot;、&quot;loss_plan&quot; and &quot;moving_plan&quot;</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6953,7 +6967,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">rangeRate</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">回调幅度(只限移动止盈止损使用)，“1” 表示 1.0%的价格回调, 最多两位小数</td>
+<td style="text-align: center">回调幅度(planType=&quot;moving_plan&quot;时使用)，“1” 表示 1.0%的价格回调, 最多两位小数</td>
 </tr>
 </tbody></table>
 
@@ -7067,7 +7081,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">rangeRate</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">回调幅度，“1” 表示 1.0%的价格回调, 最多两位小数</td>
+<td style="text-align: center">回调幅度，planType=&quot;moving_plan&quot;时使用；&quot;1&quot; 表示 1.0%的价格回调, 最多两位小数</td>
 </tr>
 </tbody></table>
 
@@ -7081,7 +7095,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span>,<span class="s2">"rangeRate"</span>:<span class="s2">"10"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
@@ -7150,7 +7164,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">止盈止损类型</td>
+<td style="text-align: center">仓位止盈止损<a href="#plantype">plan type</a>: 请使用&quot;pos_profit&quot;, &quot;pos_loss&quot;</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -7182,7 +7196,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"planType"</span>: <span class="s2">"pos_profit"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
@@ -7276,7 +7290,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">profit_plan (止盈)  loss_plan (止损)</td>
+<td style="text-align: center">参考<a href="#plantype">plan type</a>：取值：&quot;pos_profit&quot;、&quot;profit_plan&quot;、&quot;pos_loss&quot;、&quot;loss_plan&quot;</td>
 </tr>
 </tbody></table>
 
@@ -7363,7 +7377,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">撤单类型</td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
 </tr>
 </tbody></table>
 
@@ -7409,20 +7423,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">订单号</td>
 </tr>
 </tbody></table>
-
-<ul>
-<li>planType
-
-<ul>
-<li>profit_plan</li>
-<li>loss_plan</li>
-<li>normal_plan</li>
-<li>pos_profit</li>
-<li>pos_loss</li>
-<li>track_plan </li>
-<li>moving_plan<br></li>
-</ul></li>
-</ul>
 <h3 id='5f9d69dc37'>策略一键撤单</h3>
 <p>限速规则: 1次/1s (uid)</p>
 
