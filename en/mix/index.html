@@ -313,7 +313,7 @@
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
       </li>
       <li>
-        <a href="#update-log" class="toc-h1 toc-link" data-title="Update log\">Update log\</a>
+        <a href="#update-log" class="toc-h1 toc-link" data-title="Update log\">Update log</a>
           <ul class="toc-list-h2">
               <li>
                 <a href="#dec-07-2022" class="toc-h2 toc-link" data-title="Dec, 07, 2022">Dec, 07, 2022</a>
@@ -836,7 +836,7 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log\</h1><h2 id='dec-07-2022'>Dec, 07, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='dec-07-2022'>Dec, 07, 2022</h2>
 <ul>
 <li>Specify the usage on planType in below interfaces: 
 
@@ -6108,7 +6108,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">lastEndId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Query the data after this tradeId</td>
+<td style="text-align: center">Pagination parameter; Query the data after this tradeId; works when orderId is null</td>
 </tr>
 </tbody></table>
 
@@ -6229,6 +6229,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: center">Query the data after this tradeId</td>
 </tr>
 </tbody></table>
+
+<p>Default pageSize: 100</p>
 
 <blockquote>
 <p>Request Example</p>
