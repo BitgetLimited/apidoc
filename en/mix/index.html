@@ -313,7 +313,7 @@
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
       </li>
       <li>
-        <a href="#update-log" class="toc-h1 toc-link" data-title="Update log\">Update log</a>
+        <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
                 <a href="#dec-07-2022" class="toc-h2 toc-link" data-title="Dec, 07, 2022">Dec, 07, 2022</a>
@@ -3386,7 +3386,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">amount</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin amount</td>
+<td style="text-align: center">Margin amount, positive: add margin, negative: reduce margin</td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
@@ -3606,7 +3606,7 @@ If there is a large deviation between the local server time and the API server t
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"holdMode"</span>: <span class="s2">"double_hold"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span>,<span class="s2">"holdMode"</span>: <span class="s2">"double_hold"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -4258,6 +4258,8 @@ If there is a large deviation between the local server time and the API server t
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
+<p>Trader Limit rule: 1 times/1s (uid)</p>
+
 <p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <a href="#trader-close-position">Trader close Position</a></p>
 
 <p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, those fields could be found from the response of  <code>Market</code> -&gt; <a href="#get-all-symbols">Get All Symbols</a></p>
@@ -4417,7 +4419,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">clientOid</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Unique client order ID, The idempotent is promised but only within 24 hours</td>
+<td style="text-align: center">Unique client order ID, The idempotent is promised but only within 30 days</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -4787,6 +4789,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <h3 id='batch-order'>Batch Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
+<p>Trader Limit rule: 1 times/1s (uid)</p>
+
 <p><strong>HTTP Request</strong></p>
 
 <ul>
@@ -4824,6 +4828,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tbody></table>
 
 <p><strong>orderDataList</strong></p>
+
+<p>Maximum 50 orders</p>
 
 <table><thead>
 <tr>
@@ -7528,7 +7534,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">int</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size</td>
+<td style="text-align: center">Page size; Max 100</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>

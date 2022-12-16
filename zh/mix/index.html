@@ -1629,7 +1629,7 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td>single_hold</td>
-<td>单项持仓</td>
+<td>单向持仓</td>
 </tr>
 <tr>
 <td>double_hold</td>
@@ -1676,12 +1676,20 @@ Signature = base64.encode(Signature)
 <td>混合合约</td>
 </tr>
 <tr>
+<td>cmcbl</td>
+<td>USDC专业合约</td>
+</tr>
+<tr>
 <td>sumcbl</td>
 <td>USDT专业合约模拟盘</td>
 </tr>
 <tr>
 <td>sdmcbl</td>
 <td>混合合约模拟盘</td>
+</tr>
+<tr>
+<td>scmcbl</td>
+<td>USDC专业合约模拟盘</td>
 </tr>
 </tbody></table>
 <h3 id='state'>state(订单状态)</h3>
@@ -3732,7 +3740,7 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"holdMode"</span>: <span class="s2">"double_hold"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span>,<span class="s2">"holdMode"</span>: <span class="s2">"double_hold"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
@@ -4431,6 +4439,8 @@ Signature = base64.encode(Signature)
 <h2 id='1ab2aacc04'>交易接口</h2><h3 id='fd6ce2a756'>下单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
+<p>交易员限速规则: 1次/1s (uid)</p>
+
 <p>如果你是交易员只能使用此接口进行开仓， 平仓操作需要调用 <code>跟单接口</code> -&gt; <code>交易员平仓接口</code></p>
 
 <p>下单的价格和数量需要满足  <code>pricePlace</code>  和 <code>priceEndStep</code>  <code>volumePlace</code>    <code>sizeMultiplier</code>   <code>minTradeNum</code> ，    此字段从 <code>行情接口</code> -&gt;  <code>合约信息接口</code></p>
@@ -4949,6 +4959,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <h3 id='de93fae07b'>批量下单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
+<p>交易员限速规则: 1次/1s (uid)</p>
+
 <p><strong>HTTP请求</strong></p>
 
 <ul>
@@ -4986,6 +4998,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </tbody></table>
 
 <p><strong>orderDataList</strong></p>
+
+<p>最多50个订单</p>
 
 <table><thead>
 <tr>
