@@ -3489,13 +3489,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">after</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入billId， 在这 billId 之前的数据</td>
+<td style="text-align: center">传入 billId， 返回小于该 billId 的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">before</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 billId 在这 billId 之后的数据。</td>
+<td style="text-align: center">传入 billId， 返回大于该 billId 的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -3508,13 +3508,21 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills?coinId=2&amp;groupType=deposit&amp;bizType=deposit&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/bills"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{ 
+    "coinId":"2",
+    "groupType":"deposit",
+    "bizType":"deposit",
+    "before":"987952085712531455",
+    "after":"987952085712531457",
+    "limit":"100"
+}'</span>
 </code></pre>
 <blockquote>
 <p>返回数据</p>

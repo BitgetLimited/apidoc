@@ -316,6 +316,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2022-12-21" class="toc-h2 toc-link" data-title="2022年12月21日">2022年12月21日</a>
+              </li>
+              <li>
                 <a href="#2022-12-16" class="toc-h2 toc-link" data-title="2022年12月16日">2022年12月16日</a>
               </li>
               <li>
@@ -837,7 +840,11 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-16'>2022年12月16日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-21'>2022年12月21日</h2>
+<ul>
+<li>/api/mix/v1/plan/placeTrailStop 补充参数side</li>
+</ul>
+<h2 id='2022-12-16'>2022年12月16日</h2>
 <ul>
 <li>/api/mix/v1/account/setPositionMode 更新curl示例中的请求参数</li>
 <li>/api/mix/v1/order/placeOrder clientOid 幂等有效期 30 天</li>
@@ -2318,7 +2325,41 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627116936176</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='k'>获取K线数据</h3>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='k'>获取K线数据</h3>
 <p>限速规则: 20次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -5442,6 +5483,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <li>GET /api/mix/v1/order/current</li>
 </ul>
 
+<p>获取一个symbol的当前委托</p>
+
+<p>注意，历史委托请使用 <a href="#4212d667d1">获取历史委托</a> 接口</p>
+
+<p>止盈止损委托请使用 <a href="#2ac393739d">获取当前计划委托(止盈止损)列表</a> 接口</p>
+
 <p><strong>请求参数(Request Param)</strong></p>
 
 <table><thead>
@@ -7098,6 +7145,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
 <td style="text-align: center">触发类型 fill_price(成交价)/market_price(标记价) 默认成交价</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开单方向</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
