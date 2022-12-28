@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -256,7 +256,7 @@
 
     .con a.selected {
       border-bottom: 2px solid transparent;
-      border-color: #357CE1;
+      border-color: #30D9E8;
       color: #fff;
     }
 
@@ -275,14 +275,14 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-c8d6d8da.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
-        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+        <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
@@ -312,6 +312,9 @@
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#2022-12-28" class="toc-h2 toc-link" data-title="2022年12月28日">2022年12月28日</a>
+              </li>
               <li>
                 <a href="#2022-9-28" class="toc-h2 toc-link" data-title="2022年9月28日">2022年9月28日</a>
               </li>
@@ -455,7 +458,11 @@ clipboard.on('error', function(e) {
     console.log(e);
 });
 </script>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-9-28'>2022年9月28日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-28'>2022年12月28日</h2>
+<ul>
+<li>切换官方telegram群</li>
+</ul>
+<h2 id='2022-9-28'>2022年9月28日</h2>
 <ul>
 <li>新增 <code>账户接口</code> -&gt; <code>充币自动划转</code></li>
 </ul>
@@ -502,7 +509,7 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>发送邮件至 API@bitget.com。</li>
-<li>Telegram <a href='https://t.me/bitgetapi'>点击加入</a> </li>
+<li>Telegram <a href='https://t.me/bitgetOpenapi'>点击加入</a> </li>
 </ul>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
 <p>此文档供经纪商接入使用，如果您有一定的研发运营能力，想要搭建独有的交易平台和自主管理您的用户，独立经纪商服务是最好的选择。您则负责前端开发和用户运营，而Bitget为您提供后端技术和市场的流动性，赋能您的交易增值服务.</p>
@@ -1039,7 +1046,7 @@ Signature = base64.encode(Signature)
 <li>GET /api/broker/v1/account/sub-spot-assets</li>
 </ul>
 
-<p><strong>请求参数(Request Param)</strong></p>
+<p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
 <tr>
@@ -1117,7 +1124,7 @@ Signature = base64.encode(Signature)
 <li>GET /api/broker/v1/account/sub-future-assets</li>
 </ul>
 
-<p><strong>请求参数(Request Param)</strong></p>
+<p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
 <tr>
