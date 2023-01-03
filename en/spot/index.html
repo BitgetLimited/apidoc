@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -315,6 +315,9 @@
       <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#28-12-2022" class="toc-h2 toc-link" data-title="28/12/2022">28/12/2022</a>
+              </li>
               <li>
                 <a href="#16-12-2022" class="toc-h2 toc-link" data-title="16/12/2022">16/12/2022</a>
               </li>
@@ -690,7 +693,11 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-log'>Update Log</h1><h2 id='16-12-2022'>16/12/2022</h2>
+<h1 id='update-log'>Update Log</h1><h2 id='28-12-2022'>28/12/2022</h2>
+<ul>
+<li>Provide brand new telegram group for Openapi technical support</li>
+</ul>
+<h2 id='16-12-2022'>16/12/2022</h2>
 <ul>
 <li>added new enums on &#39;bizType&#39;</li>
 </ul>
@@ -3919,7 +3926,7 @@ microtime(true) * 1000;
 <td>quantity</td>
 <td>String</td>
 <td>Yes</td>
-<td>Order quantity, base coin</td>
+<td>Order quantity, base coin when orderType is limit; quote coin when orderType is market</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
@@ -4968,7 +4975,7 @@ microtime(true) * 1000;
 <tr>
 <td>orderType</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>order type (limit/market)</td>
 </tr>
 </tbody></table>
@@ -5131,7 +5138,7 @@ microtime(true) * 1000;
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Symbol ID</td>
 </tr>
 <tr>
@@ -5290,13 +5297,13 @@ microtime(true) * 1000;
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Symbol ID</td>
 </tr>
 <tr>
 <td>pageSize</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Page Size</td>
 </tr>
 <tr>
@@ -5308,13 +5315,13 @@ microtime(true) * 1000;
 <tr>
 <td>startTime</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>start time</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>end time</td>
 </tr>
 </tbody></table>

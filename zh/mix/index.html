@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -315,6 +315,9 @@
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#2022-12-28" class="toc-h2 toc-link" data-title="2022年12月28日">2022年12月28日</a>
+              </li>
               <li>
                 <a href="#2022-12-21" class="toc-h2 toc-link" data-title="2022年12月21日">2022年12月21日</a>
               </li>
@@ -840,7 +843,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-21'>2022年12月21日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2022-12-28'>2022年12月28日</h2>
+<ul>
+<li>切换官方telegram群</li>
+<li>business 添加 &#39;burst_long_loss_query&#39;, &#39;burst_short_loss_query&#39;</li>
+<li>Websocket -&gt; account channel -&gt; 推送数据：删除crossMaxAvailable和fixedMaxAvailable，替换成maxOpenPosAvailable</li>
+</ul>
+<h2 id='2022-12-21'>2022年12月21日</h2>
 <ul>
 <li>/api/mix/v1/plan/placeTrailStop 补充参数side</li>
 </ul>
@@ -855,7 +864,7 @@ clipboard.on('error', function(e) {
 </ul>
 <h2 id='2022-12-07'>2022年12月07日</h2>
 <ul>
-<li>以下接口指定限定planType值:
+<li>以下接口指定限定planType值: 
 
 <ul>
 <li>/api/mix/v1/plan/placeTPSL</li>
@@ -2368,6 +2377,8 @@ Signature = base64.encode(Signature)
 <li>GET /api/mix/v1/market/candles</li>
 </ul>
 
+<p>支持查询30天内的数据，默认返回100条记录</p>
+
 <p><strong>请求参数(Request Param)</strong></p>
 
 <table><thead>
@@ -2394,13 +2405,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">开始时间（时间戳毫秒）</td>
+<td style="text-align: center">开始时间（时间戳毫秒，大于等于），根据granularity向下取整, 即granularity=1m时： 1672410799436(2022-12-30 22:33:19) 向下取整为 1672410780000 (2022-12-30 22:33:00)</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">结束时间（时间戳毫秒）</td>
+<td style="text-align: center">结束时间（时间戳毫秒，小于等于），根据granularity向下取整, 即granularity=1m时： 1672410799436(2022-12-30 22:33:19) 向下取整为 1672408800000 (2022-12-30 22:00:00)</td>
 </tr>
 </tbody></table>
 
@@ -4321,6 +4332,8 @@ Signature = base64.encode(Signature)
 <li>contract_main_settle_fee 全仓资金费率</li>
 <li>contract_margin_settle_fee 逐仓资金费率</li>
 <li>tracking_trader_income 带单分润</li>
+<li>burst_long_loss_query 爆仓平多</li>
+<li>burst_short_loss_query 爆仓平空</li>
 </ul></li>
 </ul>
 <h3 id='1a9e1be972'>获取业务线财务记录</h3>
@@ -4487,6 +4500,8 @@ Signature = base64.encode(Signature)
 <li>contract_main_settle_fee 全仓资金费率</li>
 <li>contract_margin_settle_fee 逐仓资金费率</li>
 <li>tracking_trader_income 带单分润</li>
+<li>burst_long_loss_query 爆仓平多</li>
+<li>burst_short_loss_query 爆仓平空</li>
 </ul></li>
 </ul>
 <h2 id='1ab2aacc04'>交易接口</h2><h3 id='fd6ce2a756'>下单</h3>
@@ -4687,7 +4702,7 @@ Signature = base64.encode(Signature)
 USDT永续合约和币本位合约会分别计算持仓数量+open orders
 
 ```
-</aside>
+</aside> 
 
 <p>单向持仓模式下:<br/>
 可以市价也可以限价下单<br/>
@@ -11021,14 +11036,9 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td>当前可用资产</td>
 </tr>
 <tr>
-<td>crossMaxAvailable</td>
+<td>maxOpenPosAvailable</td>
 <td>String</td>
-<td>全仓最大可用来开仓余额</td>
-</tr>
-<tr>
-<td>fixedMaxAvailable</td>
-<td>String</td>
-<td>逐仓最大可用来开仓余额</td>
+<td>最大可用开仓余额</td>
 </tr>
 <tr>
 <td>maxTransferOut</td>

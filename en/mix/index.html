@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-  <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-c8d6d8da1.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -315,6 +315,9 @@
       <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#dec-28-2022" class="toc-h2 toc-link" data-title="Dec 28, 2022">Dec 28, 2022</a>
+              </li>
               <li>
                 <a href="#dec-21-2022" class="toc-h2 toc-link" data-title="Dec, 21, 2022">Dec, 21, 2022</a>
               </li>
@@ -842,7 +845,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='dec-21-2022'>Dec, 21, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='dec-28-2022'>Dec 28, 2022</h2>
+<ul>
+<li>Provide brand new telegram group for Openapi technical support</li>
+<li>business added &#39;burst_long_loss_query&#39; and &#39;b&#39;urst_short_loss_query&#39;</li>
+<li>websocket -&gt; account channel -&gt; push data：delete &#39;crossMaxAvailable&#39; and &#39;fixedMaxAvailable&#39;, added &#39;maxOpenPosAvailable&#39;</li>
+</ul>
+<h2 id='dec-21-2022'>Dec, 21, 2022</h2>
 <ul>
 <li>/api/mix/v1/plan/placeTrailStop added request param: &#39;side&#39;</li>
 </ul>
@@ -857,7 +866,7 @@ clipboard.on('error', function(e) {
 </ul>
 <h2 id='dec-07-2022'>Dec, 07, 2022</h2>
 <ul>
-<li>Specify the usage on planType in below interfaces:
+<li>Specify the usage on planType in below interfaces: 
 
 <ul>
 <li>/api/mix/v1/plan/placeTPSL</li>
@@ -2266,6 +2275,8 @@ If there is a large deviation between the local server time and the API server t
 <h3 id='get-candle-data'>Get Candle Data</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
 
+<p>Could only get data within 30 days, default return 100 rows</p>
+
 <p><strong>HTTP Request</strong></p>
 
 <ul>
@@ -2292,19 +2303,19 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">granularity</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Types of <a href="#candlestick-interval">candlestick interval</a></td>
+<td style="text-align: center">Types of <a href="#candlestick-interval">candlestick interval</a></td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Start time (Timestamp ms)</td>
+<td style="text-align: center">Start time (Timestamp ms, bigger or equals), will round-down as per granularity, which is: 1672410799436(2022-12-30 22:33:19) will rounded down to 1672410780000 (2022-12-30 22:33:00) if granularity=1m</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">End time (Timestamp ms）</td>
+<td style="text-align: center">End time (Timestamp ms, less or equals), will round-down as per granularity, which is: 1672410799436(2022-12-30 22:33:19) will rounded down to 1672408800000 (2022-12-30 22:00:00) if granularity=1H</td>
 </tr>
 </tbody></table>
 
@@ -4361,6 +4372,8 @@ If there is a large deviation between the local server time and the API server t
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
+<p>Trader Limit rule: 1 times/1s (uid)</p>
+
 <p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <a href="#trader-close-position">Trader close Position</a></p>
 
 <p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, those fields could be found from the response of  <code>Market</code> -&gt; <a href="#get-all-symbols">Get All Symbols</a></p>
@@ -4553,12 +4566,12 @@ Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructi
 3) final order: sell_single 0.15: sell_single position size will increase 0.15, at the end sell_single size=0.2<br/>
 ```
 
-</aside>
+</aside> 
 
 <aside class="warning">
 
 ```
-If receive a response like below:
+If receive a response like below: 
 {
     "code":"45116",
     "msg":"The count of positions hold by the account exceeds the maximum count 60",
@@ -4570,7 +4583,7 @@ PS: USDC perpetual contract will be counted separately, same as universal margin
 
 ```
 
-</aside>
+</aside> 
 
 <blockquote>
 <p>Response Data</p>
@@ -10797,14 +10810,9 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Available balance</td>
 </tr>
 <tr>
-<td>crossMaxAvailable</td>
+<td>maxOpenPosAvailable</td>
 <td>String</td>
-<td>Cross Liabilities of the currency</td>
-</tr>
-<tr>
-<td>fixedMaxAvailable</td>
-<td>String</td>
-<td>Isolated Liabilities of the currency</td>
+<td>Max available to open position</td>
 </tr>
 <tr>
 <td>maxTransferOut</td>
