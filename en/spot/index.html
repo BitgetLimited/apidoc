@@ -540,7 +540,7 @@
                         <a href="#get-apikey-info" class="toc-h3 toc-link" data-title="Get ApiKey Info">Get ApiKey Info</a>
                       </li>
                       <li>
-                        <a href="#get-account" class="toc-h3 toc-link" data-title="Get Account">Get Account</a>
+                        <a href="#get-account-assets" class="toc-h3 toc-link" data-title="Get Account Assets">Get Account Assets</a>
                       </li>
                       <li>
                         <a href="#get-sub-account-spot-assets" class="toc-h3 toc-link" data-title="Get sub Account Spot Assets">Get sub Account Spot Assets</a>
@@ -1695,6 +1695,7 @@ microtime(true) * 1000;
             </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1752,6 +1753,10 @@ microtime(true) * 1000;
 <td>status</td>
 <td>Status</td>
 </tr>
+<tr>
+<td>minTradeUSDT</td>
+<td>Min trade USDT amount</td>
+</tr>
 </tbody></table>
 <h3 id='get-single-symbol'>Get Single Symbol</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -1805,6 +1810,7 @@ microtime(true) * 1000;
             </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1862,6 +1868,10 @@ microtime(true) * 1000;
 <td>status</td>
 <td>Status</td>
 </tr>
+<tr>
+<td>minTradeUSDT</td>
+<td>Min trade USDT amount</td>
+</tr>
 </tbody></table>
 <h2 id='market'>Market</h2><h3 id='get-single-ticker'>Get Single Ticker</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -1914,7 +1924,9 @@ microtime(true) * 1000;
         </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24014.06"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0663"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0119"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="w">
+        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"changeUtc"</span><span class="p">:</span><span class="s2">"0.00301"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="s2">"0.00069"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1978,6 +1990,14 @@ microtime(true) * 1000;
 <td>openUtc0</td>
 <td>UTC0 opening price</td>
 </tr>
+<tr>
+<td>changeUtc</td>
+<td>change since UTC0, 0.01 means 1%</td>
+</tr>
+<tr>
+<td>change</td>
+<td>change, 0.01 means 1%</td>
+</tr>
 </tbody></table>
 <h3 id='get-all-tickers'>Get All Tickers</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -2012,7 +2032,9 @@ microtime(true) * 1000;
         </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24014.06"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0663"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0119"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="w">
+        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"changeUtc"</span><span class="p">:</span><span class="s2">"0.00301"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="s2">"0.00069"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2075,6 +2097,14 @@ microtime(true) * 1000;
 <tr>
 <td>openUtc0</td>
 <td>UTC0  open price</td>
+</tr>
+<tr>
+<td>changeUtc</td>
+<td>change since UTC0, 0.01 means 1%</td>
+</tr>
+<tr>
+<td>change</td>
+<td>change, 0.01 means 1%</td>
 </tr>
 </tbody></table>
 <h3 id='get-market-trades'>Get Market Trades</h3>
@@ -2487,6 +2517,108 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot            Accept all kinds of coins</li>
+<li>mix_usdt    Only USDT</li>
+<li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
+<li>mix_usdc    Only USDC</li>
+</ul></li>
+</ul>
+
+<p><strong>fromType/toType restriction</strong></p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>Desc</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>Good to go</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+</tbody></table>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -2756,7 +2888,7 @@ microtime(true) * 1000;
 <tr>
 <td>chain</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>chain name</td>
 </tr>
 </tbody></table>
@@ -3233,7 +3365,9 @@ microtime(true) * 1000;
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"toAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erc20"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirm"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -3275,6 +3409,14 @@ microtime(true) * 1000;
 <tr>
 <td>toAddress</td>
 <td>deposit address</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>fee, might be null</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>confirm, might be null</td>
 </tr>
 <tr>
 <td>chain</td>
@@ -3355,8 +3497,16 @@ microtime(true) * 1000;
 <td style="text-align: center">uid</td>
 </tr>
 <tr>
-<td style="text-align: left">Inviter_id</td>
+<td style="text-align: left">inviter_id</td>
 <td style="text-align: center">Inviter ID</td>
+</tr>
+<tr>
+<td style="text-align: left">agent_inviter_code</td>
+<td style="text-align: center">agent inviter code</td>
+</tr>
+<tr>
+<td style="text-align: left">channel</td>
+<td style="text-align: center">channel</td>
 </tr>
 <tr>
 <td style="text-align: left">ips</td>
@@ -3375,7 +3525,7 @@ microtime(true) * 1000;
 <td style="text-align: center">true is Trader, false is not</td>
 </tr>
 </tbody></table>
-<h3 id='get-account'>Get Account</h3>
+<h3 id='get-account-assets'>Get Account Assets</h3>
 <p>Rate Limit: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong> </p>
@@ -3455,11 +3605,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>frozen</td>
-<td>Frozen assets</td>
+<td>Frozen: create order frozen margin</td>
 </tr>
 <tr>
 <td>lock</td>
-<td>Locked assets</td>
+<td>Locked assets, like become a fiat/p2p merchant</td>
 </tr>
 <tr>
 <td>uTime</td>
@@ -3585,25 +3735,25 @@ microtime(true) * 1000;
 <td>groupType</td>
 <td>String</td>
 <td>No</td>
-<td>Transaction group type</td>
+<td>Transaction group type <a href = "#grouptype">groupType</a></td>
 </tr>
 <tr>
 <td>bizType</td>
 <td>String</td>
 <td>No</td>
-<td>Business type</td>
+<td>Business type <a href = "#biztype">bizType</a></td>
 </tr>
 <tr>
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Send in billId, return the data less than this billId</td>
+<td>BillId, return the data less than this billId</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Send in billId, return the data greater than this billId</td>
+<td>BillId, return the data greater than this billId</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3696,30 +3846,6 @@ microtime(true) * 1000;
 <td>ID</td>
 </tr>
 </tbody></table>
-
-<ul>
-<li><p><a href = "#grouptype">groupType</a></p>
-
-<ul>
-<li>deposit</li>
-<li>withdraw</li>
-<li>transaction</li>
-<li>transfer</li>
-<li>other</li>
-</ul></li>
-<li><p><a href = "#biztype">bizType</a></p>
-
-<ul>
-<li>deposit</li>
-<li>withdraw</li>
-<li>buy</li>
-<li>sell</li>
-<li>transfer-in</li>
-<li>transfer-out</li>
-<li>system-lock</li>
-<li>user-lock</li>
-</ul></li>
-</ul>
 <h3 id='get-transfer-list'>Get Transfer List</h3>
 <p>Rate Limit: 20 times/1s (uid)</p>
 
@@ -3755,13 +3881,13 @@ microtime(true) * 1000;
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Send in billId, the data before this tradeTime</td>
+<td>BillId, the data less  or equals or equals to &#39;tradeTime&#39;, seconds</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Send in billId, the data after this tradeTime</td>
+<td>BillId, the data greater than or equals &#39;tradeTime&#39;, seconds</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3829,6 +3955,10 @@ microtime(true) * 1000;
 <tr>
 <td>fromType</td>
 <td>Transfer out account type</td>
+</tr>
+<tr>
+<td>fromSymbol</td>
+<td>Transfer from account Symbol</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -4145,6 +4275,34 @@ microtime(true) * 1000;
 <td>error message</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='cancel-order'>Cancel order</h3>
 <p>Rate Limit: 10 times/sec (uid)</p>
 
@@ -4199,7 +4357,21 @@ microtime(true) * 1000;
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202934892814667"</span><span class="w">
 </span><span class="p">}</span><span class="w">   
-</span></code></pre><h3 id='cancel-order-in-batch-single-instruments'>Cancel order in batch (single instruments)</h3>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='cancel-order-in-batch-single-instruments'>Cancel order in batch (single instruments)</h3>
 <p>Rate Limit: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -4253,7 +4425,21 @@ microtime(true) * 1000;
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202934892814667"</span><span class="w">
 </span><span class="p">}</span><span class="w">   
-</span></code></pre><h3 id='get-order-details'>Get order details</h3>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-order-details'>Get order details</h3>
 <p>Rate Limit: 20 times/sec(uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -4292,7 +4478,7 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 
-<p>User could query cancelled/filled order details within 24 hours; Noted that after 24 hours should query via <a href="#Get order history">history</a> interface</p>
+<p>User could query cancelled/filled order details within 24 hours; Noted that after 24 hours should query via <a href="#get-order-history">history</a> interface</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -4412,7 +4598,7 @@ microtime(true) * 1000;
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>No,</td>
+<td>No</td>
 <td>Symbol Id. If query all, pass empty string &quot;&quot;</td>
 </tr>
 </tbody></table>
@@ -4542,13 +4728,13 @@ microtime(true) * 1000;
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Send in orderId, the data before this orderId desc</td>
+<td>orderId, return the data less than or equals this orderId</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Send in the orderId, the data after this orderId asc</td>
+<td>orderId, return the data greater than or equals to this orderId</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -4843,7 +5029,7 @@ microtime(true) * 1000;
 <td>size</td>
 <td>BigDecimal</td>
 <td>Yes</td>
-<td>purchase quantity</td>
+<td>purchase quantity, base coin amount when orderType=limit, quote coin amount when orderType=market</td>
 </tr>
 <tr>
 <td>triggerType</td>
@@ -5096,7 +5282,7 @@ microtime(true) * 1000;
 </tr>
 </thead><tbody>
 <tr>
-<td>orderId</td>
+<td>data</td>
 <td>order ID</td>
 </tr>
 </tbody></table>

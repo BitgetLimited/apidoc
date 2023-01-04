@@ -1807,7 +1807,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">产品类型</td>
+<td style="text-align: center"><a href="#producttype">产品类型</a></td>
 </tr>
 </tbody></table>
 
@@ -2335,6 +2335,40 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627116936176</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: left">tradeId</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">价格</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">数量</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">交易方向</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">时间,ms</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">币对名称</td>
+</tr>
+</tbody></table>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -2449,28 +2483,36 @@ Signature = base64.encode(Signature)
 <table><thead>
 <tr>
 <th style="text-align: left">返回字段</th>
+<th>Index</th>
 </tr>
 </thead><tbody>
 <tr>
 <td style="text-align: left">时间戳</td>
+<td>0</td>
 </tr>
 <tr>
 <td style="text-align: left">开盘价</td>
+<td>1</td>
 </tr>
 <tr>
 <td style="text-align: left">最高价</td>
+<td>2</td>
 </tr>
 <tr>
 <td style="text-align: left">最低价</td>
+<td>3</td>
 </tr>
 <tr>
-<td style="text-align: left">收盘价</td>
+<td style="text-align: left">收盘价，最新一个收盘价可能还在持续更新，请订阅<a href="#candlesticks-channel">websocket</a>跟踪最新价</td>
+<td>4</td>
 </tr>
 <tr>
 <td style="text-align: left">交易币成交量</td>
+<td>5</td>
 </tr>
 <tr>
 <td style="text-align: left">计价币成交量</td>
+<td>6</td>
 </tr>
 </tbody></table>
 
@@ -2978,7 +3020,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='df03e301d5'>账户接口</h2><h3 id='86b3aa37f0'>单个币种账户信息</h3>
-<p>限速规则: 20次/1s (uid)</p>
+<p>限速规则: 10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -3061,7 +3103,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">locked</td>
-<td style="text-align: left">锁定数量(保证金币种)</td>
+<td style="text-align: left">锁定数量(保证金币种)，有平仓单时会lock</td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -3647,6 +3689,8 @@ Signature = base64.encode(Signature)
 
 <p><strong>请求参数(Request Body)</strong></p>
 
+<p>有持仓或委托时不能调用本接口</p>
+
 <table><thead>
 <tr>
 <th style="text-align: left">参数名</th>
@@ -3858,7 +3902,7 @@ Signature = base64.encode(Signature)
 
 <p>&nbsp;</p>
 <h3 id='f1e69afa43'>获取单个合约仓位信息</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4009,7 +4053,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='2cedacc22e'>获取全部合约仓位信息</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -4704,18 +4748,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 ```
 </aside> 
 
-<p>单向持仓模式下:<br/>
-可以市价也可以限价下单<br/>
-只能同时存在一个方向仓位：buy_single 或 sell_single<br/>
-例如<br/>
-当前持仓：buy_single BTCUSDT_UMCBL size=0.1， 按如下顺序依次下单<br/>
-1）sell_single 0.05 那只会平掉多仓 0.05，多仓还剩 0.05<br/>
-2）第二次sell_single 0.1， 会平掉多仓 0.05  多仓还剩 0,空仓新开0.05<br/>
-3）第三次sell_single 0.15, 空仓会新增仓位0.15，最终变成0.2<br/>
-```</p>
-
-<p></aside> </p>
-
 <blockquote>
 <p>请求示例</p>
 </blockquote>
@@ -4989,6 +5021,24 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单Id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client custom Id</td>
+</tr>
+</tbody></table>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -5790,7 +5840,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </ul></li>
 </ul>
 <h3 id='4212d667d1'>获取历史委托</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -6174,7 +6224,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </ul></li>
 </ul>
 <h3 id='f876a4e1f9'>获取订单详情</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -6344,7 +6394,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </tr>
 </tbody></table>
 <h3 id='b546ba2cec'>查询成交明细</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -6658,7 +6708,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">executePrice</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">执行价格</td>
+<td style="text-align: center">执行价格, orderType=limit时, 必填</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6818,7 +6868,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">executePrice</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">执行价格</td>
+<td style="text-align: center">执行价格, orderType=limit时, 必填</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -7044,7 +7094,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">本仓位是多仓还是空仓</td>
 </tr>
 <tr>
@@ -7520,7 +7570,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </tr>
 </tbody></table>
 <h3 id='5f9d69dc37'>策略一键撤单</h3>
-<p>限速规则: 1次/1s (uid)</p>
+<p>限速规则: 10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -7630,7 +7680,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
@@ -7760,7 +7810,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </ul></li>
 </ul>
 <h3 id='b279486965'>获取历史计划委托(止盈止损)列表</h3>
-<p>限速规则:  20次/1s (uid)</p>
+<p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -7930,7 +7980,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </ul></li>
 </ul>
 <h2 id='fddf776a08'>跟单接口</h2><h3 id='863e64ec14'>交易员获取当前带单</h3>
-<p>限速规则  20次/1s (uid)</p>
+<p>限速规则  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -8058,7 +8108,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 </tr>
 </tbody></table>
 <h3 id='e008da145c'>跟随者获取跟单信息</h3>
-<p>限速规则  20次/1s (uid)</p>
+<p>限速规则  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -8508,7 +8558,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">924176438170464256</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='f81de52fbe'>交易员获取历史带单</h3>
-<p>限速规则  20次/1s (uid)</p>
+<p>限速规则  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 

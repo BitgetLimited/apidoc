@@ -2239,6 +2239,40 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627116936176</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: left">tradeId</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">price</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">size</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: left">side</td>
+</tr>
+<tr>
+<td style="text-align: left">timestamp</td>
+<td style="text-align: left">timestamp, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+</tbody></table>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -2913,7 +2947,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h2 id='account'>Account</h2><h3 id='get-single-account'>Get Single Account</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2996,7 +3030,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">locked</td>
-<td style="text-align: left">Locked amount (margin currency)</td>
+<td style="text-align: left">Locked amount (margin currency), system will lock when close position</td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -3362,7 +3396,7 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293049406</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='change-leverage'>Change Leverage</h3>
-<p>Limit rule: 5 times/2s (uid)</p>
+<p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3466,7 +3500,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='change-margin'>Change Margin</h3>
-<p>Limit rule: 5 times/2s (uid)</p>
+<p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3565,6 +3599,8 @@ If there is a large deviation between the local server time and the API server t
 </ul>
 
 <p><strong>Request Parameter(Request Body)</strong></p>
+
+<p>Server will return error if you call this interface with any exists position/order</p>
 
 <table><thead>
 <tr>
@@ -3774,7 +3810,7 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 <h3 id='get-symbol-position'>Get Symbol Position</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -3925,7 +3961,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-all-position'>Get All Position</h3>
-<p>Limit rule: 5 times/2s (uid)</p>
+<p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4225,7 +4261,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-business-account-bill'>Get Business Account Bill</h3>
-<p>Limit rule:  10/sec (uid)</p>
+<p>Limit rule:  5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5848,7 +5884,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-producttype-history-orders'>Get ProductType History Orders</h3>
-<p>Limit rule: 5c/1s (uid)</p>
+<p>Limit rule: 5/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -6183,8 +6219,24 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">create time</td>
 </tr>
 <tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">update time</td>
+</tr>
+<tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
 <td style="text-align: left">Preset take profit price</td>
+</tr>
+<tr>
+<td style="text-align: left">presetStopLossPrice</td>
+<td style="text-align: left">Preset stop loss price</td>
+</tr>
+<tr>
+<td style="text-align: left">filledAmount</td>
+<td style="text-align: left">filled amount, limit/market</td>
+</tr>
+<tr>
+<td style="text-align: left">orderType</td>
+<td style="text-align: left">order type</td>
 </tr>
 </tbody></table>
 <h3 id='get-order-fill-detail'>Get Order fill detail</h3>
@@ -6472,7 +6524,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">executePrice</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Strike price</td>
+<td style="text-align: center">Execute price, cuold not be null when orderType=limit</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6601,7 +6653,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">executePrice</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Strike price</td>
+<td style="text-align: center">Strike price, cuold not be null when orderType=limit</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -6806,8 +6858,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Whether this position is long or short</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#holdside">Hold Side</a>, Whether this position is long or short</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -6903,10 +6955,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: center">Trigger price</td>
 </tr>
 <tr>
-<td style="text-align: left">holdSide</td>
+<td style="text-align: left">triggerType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Whether this position is long or short</td>
+<td style="text-align: center"><a href="#triggertype">Trigger Type</a></td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -7327,7 +7379,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-plan-order-tpsl-list'>Get Plan Order (TPSL) List</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 20 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -7469,7 +7521,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-history-plan-orders-tpsl'>Get History Plan Orders (TPSL)</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -7626,7 +7678,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h2 id='copytrade'>CopyTrade</h2><h3 id='get-trader-open-order'>Get Trader Open order</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -7754,7 +7806,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-follower-open-orders'>Get Follower Open Orders</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8202,7 +8254,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">924176438170464256</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='get-traders-history-orders'>Get Traders History Orders</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8345,7 +8397,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-trader-profit-summary'>Get Trader Profit Summary</h3>
-<p>Limit rule 20 times/2s (uid)
+<p>Limit rule 20 times/1s (uid)
 <strong>HTTP Request</strong></p>
 
 <ul>
@@ -8404,7 +8456,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-profit-summary-according-to-settlement-currency'>Get Trader History Profit Summary (according to settlement currency)</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 20 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8456,7 +8508,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-profit-summary-according-to-settlement-currency-and-date'>Get Trader History Profit Summary (according to settlement currency and date)</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 20 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8606,7 +8658,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-trader-profits-details'>Get Trader Profits Details</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 20 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8687,7 +8739,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-copytrade-symbols'>Get  CopyTrade Symbols</h3>
-<p>Limit rule  20 Times/2s (uid)</p>
+<p>Limit rule  20 Times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 

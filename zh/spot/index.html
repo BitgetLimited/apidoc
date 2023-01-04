@@ -1535,7 +1535,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">&gt; rechargeAble</td>
-<td style="text-align: left">是否可提现是否可充值</td>
+<td style="text-align: left">是否可充值</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; withdrawFee</td>
@@ -1599,6 +1599,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1651,6 +1652,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">minTradeUSDT</td>
+<td style="text-align: center">最小USDT交易额</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
@@ -1707,6 +1712,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -1759,6 +1765,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">minTradeUSDT</td>
+<td style="text-align: center">最小USDT交易额</td>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
@@ -1817,7 +1827,9 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"sellOne"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24014.06"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0663"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0119"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="w">
+        </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"changeUtc"</span><span class="p">:</span><span class="s2">"0.00301"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="s2">"0.00069"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1881,6 +1893,14 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">ts</td>
 <td style="text-align: left">时间戳</td>
 </tr>
+<tr>
+<td style="text-align: left">changeUtc</td>
+<td style="text-align: left">UTC0时涨跌幅, 0.01表示1%</td>
+</tr>
+<tr>
+<td style="text-align: left">change</td>
+<td style="text-align: left">24小时涨跌幅, 0.01表示1%</td>
+</tr>
 </tbody></table>
 <h3 id='ticker-2'>获取全部Ticker信息</h3>
 <p>限速规则：20次/1s (IP)</p>
@@ -1917,7 +1937,9 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0663"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0119"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openUtc0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23856.72"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1625125755277"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"changeUtc"</span><span class="p">:</span><span class="s2">"0.00301"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="s2">"0.00069"</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
@@ -1982,6 +2004,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">openUtc0</td>
 <td style="text-align: left">零时区 开盘价</td>
+</tr>
+<tr>
+<td style="text-align: left">changeUtc</td>
+<td style="text-align: left">UTC0时涨跌幅, 0.01表示1%</td>
+</tr>
+<tr>
+<td style="text-align: left">change</td>
+<td style="text-align: left">24小时涨跌幅, 0.01表示1%</td>
 </tr>
 </tbody></table>
 <h3 id='2fdd066e43'>获取成交数据</h3>
@@ -2376,6 +2406,108 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot        接受转入转出多个币种</li>
+<li>mix_usdt        只接受转入转出USDT</li>
+<li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+</ul></li>
+</ul>
+
+<p>fromType/toType限制说明</p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>任意转</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>请求示例</p>
 </blockquote>
@@ -2650,7 +2782,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td>chain</td>
 <td>String</td>
-<td>否</td>
+<td>是</td>
 <td>链名称</td>
 </tr>
 </tbody></table>
@@ -3128,6 +3260,7 @@ Signature = base64.encode(Signature)
             "status": "success",
             "toAddress": "7713789662",
             "fee": "0.00000000",
+            "confirm":null,
             "chain": "erc20",
             "cTime": "1653290769222",
             "uTime": "1653290769222"
@@ -3174,6 +3307,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td>fee</td>
 <td>手续费</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td>confirm, might be null</td>
 </tr>
 <tr>
 <td>chain</td>
@@ -3230,6 +3367,8 @@ Signature = base64.encode(Signature)
     "data": {
         "user_id": "714229403",
         "inviter_id": "682221498",
+        "agent_inviter_code":null,
+        "channel":null,
         "ips": "172.23.88.91",
         "authorities": [
             "trade",
@@ -3253,8 +3392,16 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">uid</td>
 </tr>
 <tr>
-<td style="text-align: left">Inviter_id</td>
+<td style="text-align: left">inviter_id</td>
 <td style="text-align: center">邀请人id</td>
+</tr>
+<tr>
+<td style="text-align: left">agent_inviter_code</td>
+<td style="text-align: center">渠道邀请码</td>
+</tr>
+<tr>
+<td style="text-align: left">channel</td>
+<td style="text-align: center">渠道</td>
 </tr>
 <tr>
 <td style="text-align: left">ips</td>
@@ -3352,11 +3499,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">frozen</td>
-<td style="text-align: center">冻结资产</td>
+<td style="text-align: center">冻结资产, 通常是下单时冻结</td>
 </tr>
 <tr>
 <td style="text-align: left">lock</td>
-<td style="text-align: center">锁仓资产</td>
+<td style="text-align: center">锁仓资产，成为法币商家等的锁仓</td>
 </tr>
 <tr>
 <td style="text-align: left">uTime</td>
@@ -3654,13 +3801,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">after</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入tradeTime, 在这 tradeTime 之前的数据</td>
+<td style="text-align: center">传入秒, 返回小于等于&#39;tradeTime&#39;的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">before</td>
 <td style="text-align: left">Long</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 tradeTime, 在这 tradeTime 之后的数据</td>
+<td style="text-align: center">传入秒,返回大于等于tradeTime的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -4100,7 +4247,35 @@ Signature = base64.encode(Signature)
    "message":"success",
   "data":"34923828882"
 }
-</code></pre><h3 id='8cc3c3d64a'>批量撤单(单对)</h3>
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='8cc3c3d64a'>批量撤单(单对)</h3>
 <p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -4156,7 +4331,21 @@ Signature = base64.encode(Signature)
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="s2">"34923828882"</span><span class="w">
 </span><span class="p">}</span><span class="w">   
-</span></code></pre><h3 id='f876a4e1f9'>获取订单详情</h3>
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='f876a4e1f9'>获取订单详情</h3>
 <p>限速规则 20次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -4451,13 +4640,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">after</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 orderId， 在这 orderId 之前的数据 desc</td>
+<td style="text-align: center">orderId， 返回 小于等于该orderId 数据</td>
 </tr>
 <tr>
 <td style="text-align: left">before</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 orderId 在这 orderId 之后的数据 asc</td>
+<td style="text-align: center">orderId， 返回 大于等于orderId 数据</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -4756,7 +4945,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">size</td>
 <td style="text-align: left">BigDecimal</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">购买数量</td>
+<td style="text-align: center">购买数量，orderType=limit时为base coin数量；orderType=market时为quote coin数量</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerType</td>
@@ -4964,7 +5153,7 @@ Signature = base64.encode(Signature)
 
 <p><strong>HTTP请求</strong></p>
 
-<p>修改计划委托</p>
+<p>撤销计划委托</p>
 
 <ul>
 <li> POST /api/spot/v1/plan/cancelPlan</li>
