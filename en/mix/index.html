@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#jan-11-2023" class="toc-h2 toc-link" data-title="Jan 11, 2023">Jan 11, 2023</a>
+              </li>
+              <li>
                 <a href="#dec-28-2022" class="toc-h2 toc-link" data-title="Dec 28, 2022">Dec 28, 2022</a>
               </li>
               <li>
@@ -531,6 +534,9 @@
                       </li>
                       <li>
                         <a href="#websocket-plantype" class="toc-h3 toc-link" data-title="Websocket planType">Websocket planType</a>
+                      </li>
+                      <li>
+                        <a href="#symbolstatus" class="toc-h3 toc-link" data-title="symbolStatus">symbolStatus</a>
                       </li>
                   </ul>
               </li>
@@ -845,7 +851,12 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='dec-28-2022'>Dec 28, 2022</h2>
+<h1 id='update-log'>Update log</h1><h2 id='jan-11-2023'>Jan 11, 2023</h2>
+<ul>
+<li><a href="#place-order">Place Order</a> add parameter: reduceOnly</li>
+<li><a href="#get-all-symbols">Get All Symbols</a> add response fields symbolStatus|offTime|limitOpenTime</li>
+</ul>
+<h2 id='dec-28-2022'>Dec 28, 2022</h2>
 <ul>
 <li>Provide brand new telegram group for Openapi technical support</li>
 <li>business added &#39;burst_long_loss_query&#39; and &#39;b&#39;urst_short_loss_query&#39;</li>
@@ -1535,7 +1546,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td>close_long</td>
-<td>close ong</td>
+<td>close long</td>
 </tr>
 <tr>
 <td>close_short</td>
@@ -1698,6 +1709,12 @@ If there is a large deviation between the local server time and the API server t
 <li>ptp: position take profit event, push data when a <a href="#place-position-tpsl">position take profit order</a>(whole position) is created/cancelled/modified/triggered</li>
 <li>psl: position stop loss event, push data when a <a href="#place-position-tpsl">position stop loss order</a>(whole position) is created/cancelled/modified/triggered</li>
 </ul>
+<h3 id='symbolstatus'>symbolStatus</h3>
+<ul>
+<li>normal    normal</li>
+<li>maintain  symbol is under maintenance</li>
+<li>off       offline</li>
+</ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
 
@@ -1754,7 +1771,10 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0006"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"volumePlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="s2">"delivery"</span><span class="w">
+      </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="s2">"delivery"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"offTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limitOpenTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -1836,6 +1856,18 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">symbolType</td>
 <td style="text-align: left">future type  <code>perpetual</code>  perpetual contract      <code>delivery</code>  delivery contract</td>
+</tr>
+<tr>
+<td style="text-align: left">symbolStatus</td>
+<td style="text-align: left"><a href="#symbolstatus">Symbol Status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">offTime</td>
+<td style="text-align: left">delist time, &#39;-1&#39; means online symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">limitOpenTime</td>
+<td style="text-align: left">prohibit create order time, &#39;-1&#39; means normal; other value means symbol is under maintenance, and is not allow to create order afterwards</td>
 </tr>
 </tbody></table>
 <h3 id='get-depth'>Get Depth</h3>
@@ -4570,6 +4602,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
 <td style="text-align: center">Unique client order ID, The idempotent is promised but only within 30 days</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceOnly</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Default false; set to true when try to reduce position when close position with value less than 5USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
