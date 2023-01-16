@@ -1524,8 +1524,8 @@ If there is a large deviation between the local server time and the API server t
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
-<li>buy_single      open long under <a href="#holdside">single_hold</a> mode</li>
-<li>sell_single     open short under <a href="#holdside">single_hold</a> mode</li>
+<li>buy_single      buy under <a href="#holdside">single_hold</a> mode</li>
+<li>sell_single     sell under <a href="#holdside">single_hold</a> mode</li>
 </ul>
 <h3 id='tradeside'>tradeSide</h3>
 <p>Values for <a href="#holdmode">double_hold</a></p>
@@ -4607,7 +4607,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">reduceOnly</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default false; set to true when try to reduce position when close position with value less than 5USDT</td>
+<td style="text-align: center">Default false; set to true when try to reduce position in &#39;single_hold&#39; mode and when close position with value less than 5USDT, DOES NOT WORK under &#39;double_hold&#39; mode</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
