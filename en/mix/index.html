@@ -316,6 +316,9 @@
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#jan-27-2023" class="toc-h2 toc-link" data-title="Jan 27, 2023">Jan 27, 2023</a>
+              </li>
+              <li>
                 <a href="#jan-11-2023" class="toc-h2 toc-link" data-title="Jan 11, 2023">Jan 11, 2023</a>
               </li>
               <li>
@@ -851,7 +854,10 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h1 id='update-log'>Update log</h1><h2 id='jan-11-2023'>Jan 11, 2023</h2>
+<h1 id='update-log'>Update log</h1><h2 id='jan-27-2023'>Jan 27, 2023</h2>
+<p><a href="#get-sub-account-contract-assets">Get sub Account Contract Assets</a> add response field: unrealizedPL
+<a href="#place-stop-order">Place Stop Order</a> triggerType desciption updated</p>
+<h2 id='jan-11-2023'>Jan 11, 2023</h2>
 <ul>
 <li><a href="#place-order">Place Order</a> add parameter: reduceOnly</li>
 <li><a href="#get-all-symbols">Get All Symbols</a> add response fields symbolStatus|offTime|limitOpenTime</li>
@@ -3349,6 +3355,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">btcEquity</td>
 <td style="text-align: left">Account equity convert to BTC</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealizedPL</td>
+<td style="text-align: left">Unrealized Profit or Lost</td>
 </tr>
 </tbody></table>
 <h3 id='get-open-count'>Get Open Count</h3>
@@ -6892,6 +6902,12 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">Trigger price</td>
+</tr>
+<tr>
+<td style="text-align: left">triggerType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#triggertype">Trigger Type</a> default &#39;fill_price&#39;</td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
@@ -11922,6 +11938,21 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">Request timed out</td>
 <td style="text-align: left">40010</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">Parameter verification exception {0}</td>
+<td style="text-align: left">40808</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The parameter {0} should not be null</td>
+<td style="text-align: left">40811</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The condition {0} is not met</td>
+<td style="text-align: left">40812</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

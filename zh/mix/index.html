@@ -316,6 +316,9 @@
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
           <ul class="toc-list-h2">
               <li>
+                <a href="#2023-01-27" class="toc-h2 toc-link" data-title="2023年01月27日">2023年01月27日</a>
+              </li>
+              <li>
                 <a href="#2023-01-11" class="toc-h2 toc-link" data-title="2023年01月11日">2023年01月11日</a>
               </li>
               <li>
@@ -849,7 +852,12 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h1 id='185368440e'>更新日志</h1><h2 id='2023-01-11'>2023年01月11日</h2>
+<h1 id='185368440e'>更新日志</h1><h2 id='2023-01-27'>2023年01月27日</h2>
+<ul>
+<li><a href="#98972a8d59">获取所有子账户合约资产信息</a> 响应参数添加unrealizedPL</li>
+<li><a href="#a35f9bb9e4">止盈止损下单</a> 请求参数triggerType描述更新</li>
+</ul>
+<h2 id='2023-01-11'>2023年01月11日</h2>
 <ul>
 <li><a href="#1a9e1be972">下单</a> 请求参数添加reduceOnly：只减仓</li>
 <li><a href="#237aec9981">合约信息接口</a> 新增响应字段 symbolStatus|offTime|limitOpenTime</li>
@@ -3432,6 +3440,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">btcEquity</td>
 <td style="text-align: left">折算BTC账户权益</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealizedPL</td>
+<td style="text-align: left">未平仓损益</td>
 </tr>
 </tbody></table>
 
@@ -7127,7 +7139,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">triggerType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">触发类型 fill_price(成交价)/market_price(标记价) 默认成交价</td>
+<td style="text-align: center"><a href="#triggertype">触发类型</a>, fill_price(成交价)/market_price(标记价) 默认成交价</td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
@@ -12150,6 +12162,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td style="text-align: left">请求超时</td>
 <td style="text-align: left">40010</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数校验异常</td>
+<td style="text-align: left">40808</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数 {0} 不应该为null</td>
+<td style="text-align: left">40811</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">条件 {0} 未满足</td>
+<td style="text-align: left">40812</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
