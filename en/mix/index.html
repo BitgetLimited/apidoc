@@ -311,6 +311,11 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update log">Update log</a>
@@ -446,6 +451,9 @@
                       </li>
                       <li>
                         <a href="#get-all-symbol-ticker" class="toc-h3 toc-link" data-title="Get All Symbol Ticker">Get All Symbol Ticker</a>
+                      </li>
+                      <li>
+                        <a href="#vip-fee-rate" class="toc-h3 toc-link" data-title="VIP fee rate">VIP fee rate</a>
                       </li>
                       <li>
                         <a href="#get-fills" class="toc-h3 toc-link" data-title="Get Fills">Get Fills</a>
@@ -738,7 +746,24 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
+<h2 id='coming-soon'>Coming Soon</h2>
+<table><thead>
+<tr>
+<th style="text-align: center"><strong>No.</strong></th>
+<th style="text-align: center"><strong>Interface</strong></th>
+<th style="text-align: center"><strong>Launch Date</strong></th>
+<th style="text-align: center"><strong>Remark</strong></th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Feb 13, 2023</strong></p>
+
+<ul>
+<li>Added new interface  RestAPI -&gt; Market  -&gt; <a href="#vip-fee-rate">VIP fee rate</a></li>
+<li>Interface /api/mix/v1/order/fills /api/mix/v1/order/allFills added response field: profit/fillAmount</li>
+</ul>
+
 <p><strong>Jan 30, 2023</strong></p>
 
 <ul>
@@ -2180,6 +2205,111 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">UTC0 price change (24hour)</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='vip-fee-rate'>VIP fee rate</h3>
+<p>Rate Limit: 10 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/contract-vip-level</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/contract-vip-level"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1675759699382</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dealAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"assetAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000475"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"withdrawAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"withdrawAmountUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>level</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>VIP level</td>
+</tr>
+<tr>
+<td>dealAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>Transaction volume (USDT) within 30 days</td>
+</tr>
+<tr>
+<td>assetAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>Asset amount (USDT)</td>
+</tr>
+<tr>
+<td>takerFeeRate</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>Taker fee rate, actual fee rate please refer to official announcement when &#39;0&#39;</td>
+</tr>
+<tr>
+<td>makerFeeRate</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>Maker fee rate, actual fee rate please refer to official announcement when &#39;0&#39;</td>
+</tr>
+<tr>
+<td>withdrawAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>24 hours withdraw amount (BTC)</td>
+</tr>
+<tr>
+<td>withdrawAmountUSDT</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>24 hours withdraw amount (USDT)</td>
+</tr>
+</tbody></table>
 <h3 id='get-fills'>Get Fills</h3>
 <p>Get recent trades.</p>
 
@@ -3094,7 +3224,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-account-list'>Get Account List</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -5712,7 +5842,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-history-orders'>Get History Orders</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -6088,7 +6218,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-order-details'>Get Order Details</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -6258,7 +6388,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-order-fill-detail'>Get Order fill detail</h3>
-<p>Limit rule: 20 times/2s (uid)</p>
+<p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -6333,6 +6463,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
             </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6375,6 +6507,14 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: left"><a href="#tradeside">Trade side</a></td>
+</tr>
+<tr>
+<td style="text-align: left">fillAmount</td>
+<td style="text-align: left">fill Amount</td>
+</tr>
+<tr>
+<td style="text-align: left">profit</td>
+<td style="text-align: left">profit</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6453,6 +6593,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
             </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6495,6 +6637,14 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: left"><a href="#tradeside">Trade side</a></td>
+</tr>
+<tr>
+<td style="text-align: left">fillAmount</td>
+<td style="text-align: left">fill Amount</td>
+</tr>
+<tr>
+<td style="text-align: left">profit</td>
+<td style="text-align: left">profit</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7979,7 +8129,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-follower-history-orders'>Get Follower History Orders</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -8595,7 +8745,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-profit-detail'>Get Trader History Profit Detail</h3>
-<p>Limit rule 20 times/2s (uid)</p>
+<p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -9035,7 +9185,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 
 <p><code>Public channels</code> -- include </p>
 
-<p><a href="#tickers-channels">Tickers channel</a></p>
+<p><a href="#tickers-channel">Tickers channel</a></p>
 
 <p><a href="#candlesticks-channel">Candlesticks channel</a></p>
 
@@ -11423,7 +11573,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>&gt; fillFee</td>
 <td>String</td>
-<td>last filled fee</td>
+<td>last filled fee, negative</td>
 </tr>
 <tr>
 <td>&gt; fillFeeCcy</td>

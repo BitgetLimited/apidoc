@@ -311,6 +311,11 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#b8627ec132" class="toc-h2 toc-link" data-title="近期接口变更预告">近期接口变更预告</a>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
@@ -440,6 +445,9 @@
                       </li>
                       <li>
                         <a href="#ticker-2" class="toc-h3 toc-link" data-title="全部Ticker行情获取">全部Ticker行情获取</a>
+                      </li>
+                      <li>
+                        <a href="#vip" class="toc-h3 toc-link" data-title="VIP费率">VIP费率</a>
                       </li>
                       <li>
                         <a href="#106a02279b" class="toc-h3 toc-link" data-title="获取成交明细">获取成交明细</a>
@@ -733,7 +741,24 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档，点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
+<h2 id='b8627ec132'>近期接口变更预告</h2>
+<table><thead>
+<tr>
+<th style="text-align: center"><strong>编号</strong></th>
+<th style="text-align: center"><strong>接口</strong></th>
+<th style="text-align: center"><strong>上线日期</strong></th>
+<th style="text-align: center"><strong>功能描述</strong></th>
+</tr>
+</thead><tbody>
+</tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年02月13日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#vip">VIP 费率</a></li>
+<li>接口 /api/mix/v1/order/fills /api/mix/v1/order/allFills 文档补充响应字段 profit/fillAmount</li>
+</ul>
+
 <p><strong>2023年01月30日</strong></p>
 
 <ul>
@@ -2279,6 +2304,131 @@ Signature = base64.encode(Signature)
 <li>cmcbl  USDC 合约</li>
 </ul></li>
 </ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='vip'>VIP费率</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取VIP费率数据</p>
+
+<ul>
+<li>GET /api/mix/v1/market/contract-vip-level</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/contract-vip-level"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1676254232207,
+    "data": [
+        {
+            "level": 1,
+            "dealAmount": "1000000",
+            "assetAmount": "50000",
+            "takerFeeRate": "0.000475",
+            "makerFeeRate": "0.00006",
+            "withdrawAmount": "300",
+            "withdrawAmountUSDT": "5000000"
+        }
+    ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">VIP等级</td>
+</tr>
+<tr>
+<td style="text-align: left">dealAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">近30日累计成交额，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">assetAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">资产总额，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">takerFeeRate</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">taker费率, &#39;0.000425&#39; 表示 万4.25</td>
+</tr>
+<tr>
+<td style="text-align: left">makerFeeRate</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">maker费率, &#39;0.00006&#39; 表示 万0.6</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">24小时提币限额 (BTC)</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawAmountUSDT</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">24小时提币限额 (USDT)</td>
+</tr>
+</tbody></table>
 <h3 id='106a02279b'>获取成交明细</h3>
 <p>限速规则: 20次/1s (IP)</p>
 
@@ -3849,8 +3999,14 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
-<p>指定symbol任意side存在仓位的情况下，请求会失败</p>
-
+<p>指定productType任意币对任意side存在仓位的情况下，请求会失败</p>
+<pre class="highlight plaintext"><code>{
+    "code": "40920",
+    "msg": "Currently holding a position, the position mode cannot be switched",
+    "requestTime": 1675335833730,
+    "data": null
+}
+</code></pre>
 <blockquote>
 <p>请求示例</p>
 </blockquote>
@@ -6488,6 +6644,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
             </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6530,6 +6688,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: left">成交类型</td>
+</tr>
+<tr>
+<td style="text-align: left">fillAmount</td>
+<td style="text-align: left">成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">profit</td>
+<td style="text-align: left">利润</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6623,6 +6789,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
             </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6665,6 +6833,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: left">成交类型</td>
+</tr>
+<tr>
+<td style="text-align: left">fillAmount</td>
+<td style="text-align: left">成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">profit</td>
+<td style="text-align: left">利润</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6721,7 +6897,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">下单数量(市价时不传)</td>
+<td style="text-align: center">下单数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -6830,6 +7006,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
+<li>buy_single</li>
+<li>sell_single</li>
 </ul></li>
 <li><p>timeInForceValue</p>
 
@@ -11646,7 +11824,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 <tr>
 <td>&gt; fillFee</td>
 <td>String</td>
-<td>最新一笔成交的手续费</td>
+<td>最新一笔成交的手续费, 负数</td>
 </tr>
 <tr>
 <td>&gt; fillFeeCcy</td>

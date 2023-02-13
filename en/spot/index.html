@@ -311,6 +311,11 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
@@ -442,6 +447,9 @@
                       </li>
                       <li>
                         <a href="#get-depth" class="toc-h3 toc-link" data-title="Get Depth">Get Depth</a>
+                      </li>
+                      <li>
+                        <a href="#vip-fee-rate" class="toc-h3 toc-link" data-title="VIP fee rate">VIP fee rate</a>
                       </li>
                   </ul>
               </li>
@@ -631,7 +639,30 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
+<h2 id='coming-soon'>Coming Soon</h2>
+<table><thead>
+<tr>
+<th style="text-align: center"><strong>No.</strong></th>
+<th style="text-align: center"><strong>Interface</strong></th>
+<th style="text-align: center"><strong>Launch Date</strong></th>
+<th style="text-align: center"><strong>Remark</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center"><a href="#transfer">Transfer</a></td>
+<td style="text-align: center">Near future</td>
+<td style="text-align: center">Transfer will support Margin account</td>
+</tr>
+</tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>13/02/2023</strong></p>
+
+<ul>
+<li>RestAPI -&gt; Market -&gt; added <a href="#vip-fee-rate">VIP fee rate</a></li>
+<li>RestAPI -&gt; Account -&gt; <a href="#get-bills">Get Bills</a> modify param &#39;coinId&#39; to non-required</li>
+</ul>
+
 <p><strong>28/12/2022</strong></p>
 
 <ul>
@@ -2339,7 +2370,7 @@ microtime(true) * 1000;
 <h3 id='get-depth'>Get Depth</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
 
-<p><strong>HTTP Request</strong> </p>
+<p><strong>HTTP Request</strong></p>
 
 <ul>
 <li>GET /api/spot/v1/market/depth</li>
@@ -2424,6 +2455,129 @@ microtime(true) * 1000;
 <td>String</td>
 <td>No</td>
 <td>default 150</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='vip-fee-rate'>VIP fee rate</h3>
+<p>Rate Limit: 10 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/market/spot-vip-level</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/spot-vip-level"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1675759699382</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dealAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"assetAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"withdrawAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"withdrawAmountUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>level</td>
+<td>Integer</td>
+<td>Yes</td>
+<td>VIP level</td>
+</tr>
+<tr>
+<td>dealAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>Transaction volume (USDT) within 30 days</td>
+</tr>
+<tr>
+<td>assetAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>Asset amount (USDT)</td>
+</tr>
+<tr>
+<td>takerFeeRate</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>Taker fee rate, actual fee rate please refer to official announcement when &#39;0&#39;</td>
+</tr>
+<tr>
+<td>makerFeeRate</td>
+<td>BigDecimal</td>
+<td>No</td>
+<td>Maker fee rate, actual fee rate please refer to official announcement when &#39;0&#39;</td>
+</tr>
+<tr>
+<td>withdrawAmount</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>24 hours withdraw amount (BTC)</td>
+</tr>
+<tr>
+<td>withdrawAmountUSDT</td>
+<td>BigDecimal</td>
+<td>Yes</td>
+<td>24 hours withdraw amount (USDT)</td>
 </tr>
 </tbody></table>
 <h2 id='wallet'>Wallet</h2><h3 id='transfer'>Transfer</h3>
@@ -3709,7 +3863,7 @@ microtime(true) * 1000;
 <tr>
 <td>coinId</td>
 <td>Integer</td>
-<td>No</td>
+<td>Yes</td>
 <td>Coin ID</td>
 </tr>
 <tr>
@@ -3849,26 +4003,26 @@ microtime(true) * 1000;
 <tr>
 <td>coinId</td>
 <td>Integer</td>
-<td>No</td>
+<td>Yes</td>
 <td>Coin ID</td>
 </tr>
 <tr>
 <td>fromType</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Major type of bill accountType</td>
 </tr>
 <tr>
 <td>after</td>
 <td>String</td>
-<td>No</td>
-<td>BillId, the data less  or equals or equals to &#39;tradeTime&#39;, seconds</td>
+<td>Yes</td>
+<td>End time, seconds</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
-<td>No</td>
-<td>BillId, the data greater than or equals &#39;tradeTime&#39;, seconds</td>
+<td>Yes</td>
+<td>Start time, seconds</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3881,7 +4035,7 @@ microtime(true) * 1000;
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670&amp;before=1659076670&amp;limit=100"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -3947,7 +4101,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>tradeTime</td>
-<td>Transfer time</td>
+<td>Transfer time, ms</td>
 </tr>
 </tbody></table>
 
@@ -4527,7 +4681,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>quantity</td>
-<td>Order quantity, base coin</td>
+<td>Order quantity (base coin when orderType=limit; quote coin when orderType=market)</td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -4650,7 +4804,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>quantity</td>
-<td>Order quantity</td>
+<td>Order quantity (base coin when orderType=limit; quote coin when orderType=market)</td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -4791,7 +4945,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>quantity</td>
-<td>Order quantity</td>
+<td>Order quantity (base coin when orderType=limit; quote coin when orderType=market)</td>
 </tr>
 <tr>
 <td>orderType</td>
@@ -4857,13 +5011,13 @@ microtime(true) * 1000;
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Send in orderId, the data before this orderId desc</td>
+<td>Max orderId, return data less than this &#39;orderId&#39;</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Send in the orderId, the data after this orderId asc</td>
+<td>Min orderId, return data greater or equals to this &#39;orderId&#39;</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -5380,7 +5534,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>size</td>
-<td>Purchase quantity</td>
+<td>Purchase quantity, base coin amount when orderType=limit, quote coin amount when orderType=market</td>
 </tr>
 <tr>
 <td>executePrice</td>
@@ -5551,7 +5705,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>size</td>
-<td>Purchase quantity</td>
+<td>Purchase quantity, base coin amount when orderType=limit, quote coin amount when orderType=market</td>
 </tr>
 <tr>
 <td>executePrice</td>
@@ -7455,7 +7609,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <tr>
 <td>&gt; fillFee</td>
 <td>String</td>
-<td>last filled fee</td>
+<td>last filled fee, negative</td>
 </tr>
 <tr>
 <td>&gt; fillFeeCcy</td>

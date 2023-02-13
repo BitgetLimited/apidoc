@@ -311,6 +311,11 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#b8627ec132" class="toc-h2 toc-link" data-title="近期接口变更预告">近期接口变更预告</a>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
@@ -433,6 +438,9 @@
                       </li>
                       <li>
                         <a href="#5139801b64" class="toc-h3 toc-link" data-title="获取深度数据">获取深度数据</a>
+                      </li>
+                      <li>
+                        <a href="#vip" class="toc-h3 toc-link" data-title="VIP费率">VIP费率</a>
                       </li>
                   </ul>
               </li>
@@ -625,7 +633,30 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
+<h2 id='b8627ec132'>近期接口变更预告</h2>
+<table><thead>
+<tr>
+<th style="text-align: center"><strong>编号</strong></th>
+<th style="text-align: center"><strong>接口</strong></th>
+<th style="text-align: center"><strong>上线日期</strong></th>
+<th style="text-align: center"><strong>功能描述</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">划转</td>
+<td style="text-align: center">近期</td>
+<td style="text-align: center">支持现货与杠杆账户之间的划转</td>
+</tr>
+</tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年02月13日</strong></p>
+
+<ul>
+<li>新增接口：RestAPI -&gt; 公共行情接口 -&gt; <a href="#vip">VIP费率</a></li>
+<li>RestAPI -&gt; 账户接口 -&gt; <a href="#23f9acd1d3">获取账单流水</a> 参数 &#39;coinId&#39; 改为非必需</li>
+</ul>
+
 <p><strong>2022年12月28日</strong></p>
 
 <ul>
@@ -858,7 +889,7 @@ clipboard.on('error', function(e) {
 <h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
 <p>欢迎使用Bitget开发者文档！</p>
 
-<p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。</p>
+<p>此文档是Bitget API的唯一官方文档，Bitget API提供的功能会在此持续更新，请大家及时关注。</p>
 
 <p>你可以通过点击上方菜单来切换获取不同业务的API，还可通过点击右上方的语言按钮来切换文档语言。</p>
 
@@ -898,27 +929,26 @@ clipboard.on('error', function(e) {
 
 <aside class="notice">
 
-```
 创建 APIKey 时可以绑定 IP 地址，未绑定 IP 地址的 APIKey出于安全考虑，强烈建议您绑定 IP 地址。
-```
 
 </aside>
 
 <aside class="warning">
 
-```
+
 <red>
     <b>风险提示</b>
 </red>
 ：这三个密钥与账号安全密切相关，请牢记<b>Passphrase</b>，无论何时都请勿向他人透露。
 这三个密钥任意一个泄露可能会造成您的资产损失，若发现APIKey泄露请尽快删除该APIKey。
-```
 
 </aside> 
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://www.npmjs.com/package/bitget-api">Node Js</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a> </p>
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://www.npmjs.com/package/bitget-api">Node Js</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
+
+<p>注意：PHP暂不支持WebSocket</p>
 
 <p><strong>PostMan 示例</strong></p>
 
@@ -1243,7 +1273,7 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
-<p>ACCESS-SIGN的请求头是对 <strong>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</strong> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
+<p>ACCESS-SIGN的请求头是对 <code>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</code> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
 
 <p><strong>签名各字段说明</strong></p>
 
@@ -1523,7 +1553,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">&gt; extraWithDrawFee</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">额外钱包收取</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; depositConfirm</td>
@@ -2335,7 +2365,132 @@ Signature = base64.encode(Signature)
         "timestamp":"1622102974025"
     }
 }
-</code></pre><h2 id='ec5249e068'>钱包接口</h2><h3 id='1045de04a1'>划转</h3>
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='vip'>VIP费率</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取VIP费率数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/spot-vip-level</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/spot-vip-level"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1675759699382,
+    "data": [
+        {
+            "level": 1,
+            "dealAmount": "1000000",
+            "assetAmount": "50000",
+            "takerFeeRate": "0",
+            "makerFeeRate": "0",
+            "withdrawAmount": "300",
+            "withdrawAmountUSDT": "5000000"
+        }
+    ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">Integer</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">VIP等级</td>
+</tr>
+<tr>
+<td style="text-align: left">dealAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">近30日累计成交额，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">assetAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">资产总额，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">takerFeeRate</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">taker费率, 0值时真实费率请参考官方公告</td>
+</tr>
+<tr>
+<td style="text-align: left">makerFeeRate</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">maker费率, 0值时真实费率请参考官方公告</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawAmount</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">24小时提币限额 (BTC)</td>
+</tr>
+<tr>
+<td style="text-align: left">withdrawAmountUSDT</td>
+<td style="text-align: left">BigDecimal</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">24小时提币限额 (USDT)</td>
+</tr>
+</tbody></table>
+<h2 id='ec5249e068'>钱包接口</h2><h3 id='1045de04a1'>划转</h3>
 <p>限速规则：5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -2954,7 +3109,7 @@ Signature = base64.encode(Signature)
 <td>toUid</td>
 <td>String</td>
 <td>是</td>
-<td>传对方uid</td>
+<td>收款方uid</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -3033,13 +3188,13 @@ Signature = base64.encode(Signature)
 <td>startTime</td>
 <td>String</td>
 <td>是</td>
-<td>开始时间(时间戳 毫秒)</td>
+<td>开始时间 (时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>是</td>
-<td>结束时间(时间戳 毫秒)</td>
+<td>结束时间 (时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -3153,7 +3308,7 @@ Signature = base64.encode(Signature)
 <li>status
 
 <ul>
-<li>Pending 待初审</li>
+<li>pending 待初审</li>
 <li>pending_review 待复审</li>
 <li>pending_fail 初审失败</li>
 <li>pending_review_fail 复审失败</li>
@@ -3190,13 +3345,13 @@ Signature = base64.encode(Signature)
 <td>startTime</td>
 <td>String</td>
 <td>是</td>
-<td>开始时间(时间戳 毫秒)</td>
+<td>开始时间 (时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>String</td>
 <td>是</td>
-<td>结束时间(时间戳 毫秒)</td>
+<td>结束时间 (时间戳 毫秒)</td>
 </tr>
 <tr>
 <td>pageNo</td>
@@ -3393,7 +3548,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">parentId</td>
-<td style="text-align: center">父账号uid</td>
+<td style="text-align: center">母账户uid</td>
 </tr>
 <tr>
 <td style="text-align: left">trader</td>
@@ -3605,7 +3760,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">coinId</td>
 <td style="text-align: left">Integer</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">币种ID</td>
 </tr>
 <tr>
@@ -3769,26 +3924,26 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">coinId</td>
 <td style="text-align: left">Integer</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">币种ID</td>
 </tr>
 <tr>
 <td style="text-align: left">fromType</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">账单大类型</td>
 </tr>
 <tr>
 <td style="text-align: left">after</td>
 <td style="text-align: left">Long</td>
-<td style="text-align: center">否</td>
-<td style="text-align: center">传入秒, 返回小于等于&#39;tradeTime&#39;的数据</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">传入<strong>终止</strong>时间，格式为时间戳，单位为秒</td>
 </tr>
 <tr>
 <td style="text-align: left">before</td>
 <td style="text-align: left">Long</td>
-<td style="text-align: center">否</td>
-<td style="text-align: center">传入秒,返回大于等于tradeTime的数据</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">传入<strong>起始</strong>时间，格式为时间戳，单位为秒</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -3801,7 +3956,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670000&amp;before=1659076670000&amp;limit=100"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/transferRecords?coinId=2&amp;fromType=exchange&amp;after=1659076670&amp;before=1659076670&amp;limit=100"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -3868,7 +4023,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">tradeTime</td>
-<td style="text-align: center">交易时间(毫秒时间戳)</td>
+<td style="text-align: center">交易时间 (毫秒时间戳)</td>
 </tr>
 </tbody></table>
 
@@ -3878,6 +4033,7 @@ Signature = base64.encode(Signature)
 <ul>
 <li>exchange 现货</li>
 <li>usdt_mix U本位合约账户</li>
+<li>usdc_mix USDC本位合约账户</li>
 <li>usd_mix 币本位合约账户</li>
 </ul></li>
 </ul>
@@ -4434,7 +4590,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">quantity</td>
-<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+<td style="text-align: center">委托数量(orderType=limit时表示base coin; orderType=market时表示quote coin)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
@@ -4559,7 +4715,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">quantity</td>
-<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+<td style="text-align: center">委托数量(orderType=limit时表示base coin; orderType=market时表示quote coin)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
@@ -4702,7 +4858,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">quantity</td>
-<td style="text-align: center">委托数量(市价 买，表示金额)</td>
+<td style="text-align: center">委托数量(orderType=limit时表示base coin; orderType=market时表示quote coin)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
@@ -4730,7 +4886,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间(时间戳秒)</td>
+<td style="text-align: center">创建时间 (时间戳秒)</td>
 </tr>
 </tbody></table>
 <h3 id='106a02279b'>获取成交明细</h3>
@@ -4770,13 +4926,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">after</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 orderId， 在这 orderId 之前的数据 desc</td>
+<td style="text-align: center">Max orderId， 返回小于 orderId 的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">before</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">传入 orderId 在这 orderId 之后的数据 asc</td>
+<td style="text-align: center">Min orderId 返回大于等于 orderId 的数据</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -4866,7 +5022,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: center">创建时间(时间戳秒)</td>
+<td style="text-align: center">创建时间 (时间戳秒)</td>
 </tr>
 <tr>
 <td style="text-align: left">feeCcy</td>
@@ -4908,7 +5064,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">side</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">方向   buy sell</td>
+<td style="text-align: center">方向 (buy/sell)</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -4920,7 +5076,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">executePrice</td>
 <td style="text-align: left">BigDecimal</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">执行价格                ｜</td>
+<td style="text-align: center">执行价格</td>
 </tr>
 <tr>
 <td style="text-align: left">size</td>
@@ -4932,13 +5088,13 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">triggerType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">触发类型 fill_price/market_price</td>
+<td style="text-align: center">触发类型 (fill_price/market_price)</td>
 </tr>
 <tr>
 <td style="text-align: left">orderType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">订单类型 limit/market</td>
+<td style="text-align: center">订单类型 (limit/market)</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>
@@ -5311,7 +5467,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: center">购买数量</td>
+<td style="text-align: center">购买数量，orderType=limit时为base coin数量；orderType=market时为quote coin数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -5480,7 +5636,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">size</td>
-<td style="text-align: center">购买数量</td>
+<td style="text-align: center">购买数量，orderType=limit时为base coin数量；orderType=market时为quote coin数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -7303,7 +7459,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td>&gt; fillFee</td>
 <td>String</td>
-<td>最新一笔成交的手续费</td>
+<td>最新一笔成交的手续费, 负数</td>
 </tr>
 <tr>
 <td>&gt; fillFeeCcy</td>
