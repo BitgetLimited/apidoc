@@ -275,14 +275,14 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
-        <img src="../../images/log-kj876719nd9.jpg" class="logo" alt="" />
+        <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
@@ -2252,13 +2252,13 @@ microtime(true) * 1000;
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>Time after, milliseconds</td>
+<td>Time after, milliseconds, return greater than or equals</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>Time before, milliseconds</td>
+<td>Time before, milliseconds, return less than or equals</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3888,7 +3888,7 @@ microtime(true) * 1000;
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>BillId, return the data greater than this billId</td>
+<td>BillId, return the data greater than or equals to this billId</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -4864,13 +4864,13 @@ microtime(true) * 1000;
 <td>after</td>
 <td>String</td>
 <td>No</td>
-<td>orderId, return the data less than or equals this orderId</td>
+<td>orderId, return the data less than this orderId</td>
 </tr>
 <tr>
 <td>before</td>
 <td>String</td>
 <td>No</td>
-<td>orderId, return the data greater than or equals to this orderId</td>
+<td>orderId, return the data greater than this orderId</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -7169,7 +7169,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 </tr>
 </tbody></table>
 <h2 id='private-channel'>Private Channel</h2><h3 id='account-channel'>Account Channel</h3>
-<p>Retrieve account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
+<p>Subscribe account information. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed when transfer in/out or withdraw/deposit.</p>
 
 <blockquote>
 <p>Request Example</p>
