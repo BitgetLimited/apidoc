@@ -757,6 +757,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Feb 28, 2023</strong></p>
+
+<ul>
+<li><a href="#business">business</a> added new value: &#39;contract_settle_fee&#39;: settle funding fee</li>
+</ul>
+
 <p><strong>Feb 13, 2023</strong></p>
 
 <ul>
@@ -1511,13 +1517,14 @@ If there is a large deviation between the local server time and the API server t
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
-<li>trans_from_exchange transfer in from spot account</li>
-<li>trans_to_exchange transfer out to spot account</li>
-<li>contract_main_settle_fee    Funding rate for crossed</li>
-<li>contract_margin_settle_fee      fixed margin funding rate</li>
-<li>tracking_trader_income</li>
-<li>burst_long_loss_query liquidated close long</li>
-<li>burst_short_loss_query liquidated close short</li>
+<li>trans_from_exchange           Transfer in from spot account</li>
+<li>trans_to_exchange             Transfer out to spot account</li>
+<li>contract_settle_fee           Funding fee</li>
+<li>contract_main_settle_fee      Funding fee for &#39;crossed&#39;</li>
+<li>contract_margin_settle_fee    Funding fee for &#39;isolated&#39;</li>
+<li>tracking_trader_income        Trader &#39;copy trade&#39; income</li>
+<li>burst_long_loss_query         Liquidated close long</li>
+<li>burst_short_loss_query        Liquidated close short</li>
 </ul>
 <h3 id='side'>side</h3>
 <ul>
@@ -2447,7 +2454,7 @@ If there is a large deviation between the local server time and the API server t
 <h3 id='get-candle-data'>Get Candle Data</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
 
-<p>Could only get data within 30 days, default return 100 rows</p>
+<p>Could only get data within 30 days for &#39;1m&#39; data, default return 100 rows</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -11067,7 +11074,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 
 <p>Incremental push: push transaction changes</p>
 <h3 id='positions-channel'>Positions Channel</h3>
-<p>Retrieve position information. Initial snapshot will be pushed according to subscription granularity. Data will be pushed when triggered by events such as placing/canceling order, and will also be pushed in regular interval according to subscription granularity.</p>
+<p>Retrieve position information. Initial snapshot will be pushed once subscribed. Data will be pushed when triggered by events such as placing/canceling order.</p>
 
 <blockquote>
 <p>Request Example</p>

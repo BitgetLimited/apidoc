@@ -752,6 +752,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年02月28日</strong></p>
+
+<ul>
+<li><a href="#business">business</a> 新增类型: &#39;contract_settle_fee&#39;: 资金费率</li>
+</ul>
+
 <p><strong>2023年02月13日</strong></p>
 
 <ul>
@@ -2570,7 +2576,7 @@ Signature = base64.encode(Signature)
 <li>GET /api/mix/v1/market/candles</li>
 </ul>
 
-<p>支持查询30天内的数据，默认返回100条记录</p>
+<p>支持‘1m’查询30天内的数据，默认返回100条记录</p>
 
 <p><strong>请求参数(Request Param)</strong></p>
 
@@ -4542,6 +4548,7 @@ Signature = base64.encode(Signature)
 <li>close_short 平空</li>
 <li>trans_from_exchange 由现货账户转入</li>
 <li>trans_to_exchange 转出至现货账户</li>
+<li>contract_settle_fee 资金费率</li>
 <li>contract_main_settle_fee 全仓资金费率</li>
 <li>contract_margin_settle_fee 逐仓资金费率</li>
 <li>tracking_trader_income 带单分润</li>
@@ -11314,7 +11321,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders
 
 <p>增量推送: 推送交易变化</p>
 <h3 id='7ba26f77f3'>持仓频道</h3>
-<p>获取持仓信息，首次订阅按照订阅维度推送数据，此外，当下单、撤单等事件触发时，推送数据以及按照订阅维度定时推送数据</p>
+<p>获取持仓信息，首次订阅推送数据，此外，当下单、撤单等事件触发时，推送数据</p>
 
 <blockquote>
 <p>请求示例</p>
