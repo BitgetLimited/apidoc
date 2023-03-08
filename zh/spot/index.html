@@ -917,6 +917,8 @@ clipboard.on('error', function(e) {
 <ul>
 <li>读取权限：读取权限用于对数据的查询，例如：行情数据。</li>
 <li>交易权限：交易权限用于下单、撤单等接口。</li>
+<li>划转权限：划转权限用于在Bitget用户账户之间划转加密货币。</li>
+<li>提币权限：提币权限用于从Bitget账户转出资产。<code>请注意，您只能通过IP白名单提币。</code></li>
 </ul>
 
 <p>创建成功后请务必记住以下信息：</p>
@@ -953,6 +955,8 @@ clipboard.on('error', function(e) {
 <p><strong>PostMan 示例</strong></p>
 
 <p><a href="../../sdk/Biget_Spot.postman_collection.json">PostMan</a> </p>
+
+<p>您应该首先在 PostMan 左侧的环境选项卡中配置 apiKey、passphrase和secretKey。</p>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>本章节主要为接口类型分以下两个方面：</p>
 
@@ -967,7 +971,7 @@ clipboard.on('error', function(e) {
 
 <p><strong>私有接口</strong></p>
 
-<p>私有接口可用于订单管理和账户管理。每个私有请求必须使用规范的验证形式进行签名。</p>
+<p>私有接口可用于订单管理和账户管理。每个私有请求必须使用规范的验证形式进行<a href="#8ba46c43fe">签名</a>。</p>
 
 <p>私有接口需要使用您的APIKey进行验证。</p>
 <h2 id='12907e94be'>访问限制</h2>
@@ -1000,7 +1004,7 @@ clipboard.on('error', function(e) {
 <tr>
 <td>域名2</td>
 <td>https://capi.bitget.com</td>
-<td>备用域名</td>
+<td>旧域名，测试用</td>
 </tr>
 </tbody></table>
 <h2 id='api-3'>API验证</h2>
@@ -1016,7 +1020,21 @@ clipboard.on('error', function(e) {
 <li>Content-Type：统一设置为application/json。</li>
 <li>locale:支持多语言，如：中文(zh-CN),英语(en-US)</li>
 </ul>
-<h2 id='api-4'>API公开参数</h2><h3 id='side'>side(交易方向)</h3>
+<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
+<span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+</code></pre><pre class="highlight plaintext"><code>//python
+import time
+time.time_ns() / 1000000
+</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+  </span><span class="s">"time"</span><span class="x">
+</span><span class="p">)</span><span class="x">
+</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
+</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+</code></pre><pre class="highlight php tab-php"><code>//PHP
+microtime(true) * 1000;
+</code></pre><h2 id='api-4'>API公开参数</h2><h3 id='side'>side(交易方向)</h3>
 <table><thead>
 <tr>
 <th>字段</th>
@@ -1389,7 +1407,7 @@ Signature = base64.encode(Signature)
     <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
 
 </code></pre><h2 id='d9ed27b09f'>请求交互</h2>
-<p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
+<p>所有请求基于Https协议，POST 请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
 <p><strong>请求交互说明</strong></p>
 
@@ -3760,7 +3778,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">coinId</td>
 <td style="text-align: left">Integer</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">币种ID</td>
 </tr>
 <tr>

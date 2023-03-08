@@ -924,7 +924,7 @@ clipboard.on('error', function(e) {
 <li>Read-Only permission: Read permission authorized to query data, such as market data.</li>
 <li>Trade permission: Transaction permission authorized to call the interface of placing and cancelling orders.</li>
 <li>Transfer permission: With this permission it authorized to transfer coins between accounts inside Bitget.</li>
-<li>Withdraw permission: Authorized to withdraw assets from bitget account, <code>noted that you can only withdraw coins through an IP address bound to the platform</code></li>
+<li>Withdraw permission: Authorized to withdraw assets from Bitget account, <code>noted that you can only withdraw coins through an whitelisted IP address.</code></li>
 </ul>
 
 <p>After successfully created the API Key, please remember the following information:</p>
@@ -937,23 +937,23 @@ clipboard.on('error', function(e) {
 
 <aside class="notice">
 
-```html
+
 User can bind IP address when he creates APIKey, It is strongly recommended to bind IP for security reason. 
-```
+
 
 </aside>
 
 <aside class="warning">
 
-```Html
+
 <red>
-    <b> risk warning</b>
+<b>risk warning</b><br/>
 </red>
 
-：These three keys are highly related to account security, please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.
+：These three keys are highly related to account security, please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.<br/>
 
 Leaking any of these three keys may cause loss of your assets. If you find by any chance that the APIKey is compromised, please delete the APIKey as soon as possible.
-```
+
 
 </aside> 
 <h2 id='sdk-code-example'>SDK / Code example</h2>
@@ -1489,7 +1489,7 @@ microtime(true) * 1000;
 </code></pre>
 <p>For more demo code on other languages, please refer to <a href='#sdk-code-example'>SDK/Code Example</a></p>
 <h2 id='request-interaction'>Request interaction</h2>
-<p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to be standardized as:&#39;application/json&#39;.</p>
+<p>All requests are based on the Https protocol, and the Content-Type in the POST request header information needs to be standardized as:&#39;application/json&#39;.</p>
 
 <p><strong>Request interaction description</strong></p>
 
@@ -3863,7 +3863,7 @@ microtime(true) * 1000;
 <tr>
 <td>coinId</td>
 <td>Integer</td>
-<td>Yes</td>
+<td>No</td>
 <td>Coin ID</td>
 </tr>
 <tr>

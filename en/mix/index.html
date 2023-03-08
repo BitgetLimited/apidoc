@@ -275,7 +275,7 @@
       transition: all 300ms;
     }
   </style>
-    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+  <link href="../../stylesheets/screen-5ace9541.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -1132,7 +1132,7 @@ clipboard.on('error', function(e) {
 <li>Read-Only permission: Read permission authorized to query data, such as market data.</li>
 <li>Trade permission: Transaction permission authorized to call the interface of placing and cancelling orders.</li>
 <li>Transfer permission: With this permission it authorized to transfer coins between accounts inside Bitget.</li>
-<li>Withdraw permission: Authorized to withdraw assets from bitget account, <code>noted that you can only withdraw coins through an IP address bound to the platform</code></li>
+<li>Withdraw permission: Authorized to withdraw assets from Bitget account, <code>noted that you can only withdraw coins through an whitelisted IP address.</code></li>
 </ul>
 
 <p>After successfully created the API key, please remember the following information:</p>
@@ -1145,21 +1145,21 @@ clipboard.on('error', function(e) {
 
 <aside class="notice">
 
-```
+
 When creating an APIKey, you can bind to an IP address. For security reasons, it is strongly recommended that you bind to an IP address。
-```
+
 
 </aside>
 
 <aside class="warning">
 
-```
+
 <red>
     <b>Risk Warning</b>
 </red>
 ：These three keys are highly related to account security. Please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.
 Leaking any one of these three keys may cause the loss of your assets. If you find by any chance that the APIKey is compromized, please delete the APIKey as soon as possible.
-```
+
 
 </aside> 
 <h2 id='sdk-code-example'>SDK/Code Example</h2>
@@ -1203,14 +1203,6 @@ Leaking any one of these three keys may cause the loss of your assets. If you fi
 <p>Frequency limit rules: There are separate instructions on each interface. If the limitation is not specified , the default frequency limit is 10 times per second.</p>
 
 <p>Special note: When place orders in batch, 10 orders per currency pair will be counted as one request. </p>
-
-<p>For example: </p>
-
-<p>1~10 orders in a batch with ETHUSDT will be counted as one request</p>
-
-<p>11~20 orders in a batch with BTCUSDT, then the rate-limit will count this batch order as 2 requests</p>
-
-<p>21~30 orders in a batch with BTCUSDT, then the rate-limit will count this batch order as 3 requests</p>
 <h2 id='api-domain-name'>API Domain Name</h2>
 <p>You can use different domain as below Rest API.</p>
 
@@ -1636,12 +1628,29 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='timeinforcevalue'>timeInForceValue</h3>
-<ul>
-<li>normal        good till cancel, default value</li>
-<li>post_only       maker only</li>
-<li>fok                   fill or kill</li>
-<li>ioc                   immediately or cancel</li>
-</ul>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal</td>
+<td>good till cancel, default value</td>
+</tr>
+<tr>
+<td>post_only</td>
+<td>maker only</td>
+</tr>
+<tr>
+<td>fok</td>
+<td>fill or kill</td>
+</tr>
+<tr>
+<td>ioc</td>
+<td>immediately or cancel</td>
+</tr>
+</tbody></table>
 <h3 id='ordertype'>orderType</h3>
 <ul>
 <li>limit</li>
@@ -1678,32 +1687,97 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='triggertype'>triggerType</h3>
-<ul>
-<li>fill_price: fill price</li>
-<li>market_price: mark price</li>
-</ul>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fill_price</td>
+<td>fill price</td>
+</tr>
+<tr>
+<td>market_price</td>
+<td>mark price</td>
+</tr>
+</tbody></table>
 <h3 id='plantype'>planType</h3>
-<ul>
-<li>profit_plan     (profit order)</li>
-<li>loss_plan       (loss order)</li>
-<li>normal_plan   (plan order)</li>
-<li>pos_profit     (position profit)</li>
-<li>pos_loss        (position loss)</li>
-<li>moving_plan   (Trailing TP/SL)</li>
-<li>track_plan   (Trailing Stop)</li>
-</ul>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>profit_plan</td>
+<td>profit order</td>
+</tr>
+<tr>
+<td>loss_plan</td>
+<td>loss order</td>
+</tr>
+<tr>
+<td>normal_plan</td>
+<td>plan order</td>
+</tr>
+<tr>
+<td>pos_profit</td>
+<td>position profit</td>
+</tr>
+<tr>
+<td>pos_loss</td>
+<td>position loss</td>
+</tr>
+<tr>
+<td>moving_plan</td>
+<td>Trailing TP/SL</td>
+</tr>
+<tr>
+<td>track_plan</td>
+<td>Trailing Stop</td>
+</tr>
+</tbody></table>
 <h3 id='isplan'>isPlan</h3>
-<ul>
-<li>plan</li>
-<li>profit_loss</li>
-</ul>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>plan</td>
+<td>plan order, Trailing Stop</td>
+</tr>
+<tr>
+<td>profit_loss</td>
+<td>profit order, loss order, position profit, position loss, Trailing TP/SL</td>
+</tr>
+</tbody></table>
 <h3 id='planstatus'>planStatus</h3>
-<ul>
-<li>not_trigger</li>
-<li>triggered</li>
-<li>fail_trigger</li>
-<li>cancel</li>
-</ul>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>not_trigger</td>
+<td>order not yet trigger</td>
+</tr>
+<tr>
+<td>triggered</td>
+<td>order triggered</td>
+</tr>
+<tr>
+<td>fail_trigger</td>
+<td>order trigger failed</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td>order cancel</td>
+</tr>
+</tbody></table>
 <h3 id='stoptype'>stopType</h3>
 <ul>
 <li>profit</li>
@@ -3859,7 +3933,7 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 <h3 id='change-hold-mode'>Change Hold Mode</h3>
-<p>Please DO NOT change the hold mode with existing position under the symbol</p>
+<p>Please DO NOT change the hold mode with existing position/order under any symbols within the &#39;productType&#39;</p>
 
 <p>Limit rule: 5 times/1s (uid)</p>
 
@@ -3893,7 +3967,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 
-<p>Might fail if intended to change hold mode when the &quot;symbol&quot; has positions on any side </p>
+<p>Might fail if intended to change hold mode when the &quot;symbol&quot; has positions/orders on any side</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -4541,7 +4615,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">business</td>
-<td style="text-align: left"><a href="#business">business</a></td>
+<td style="text-align: left"><a href="#business">business</a> type</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -4571,7 +4645,7 @@ If there is a large deviation between the local server time and the API server t
 
 <aside class="warning">
 
-```
+
 <red>
     <b>Note</b> if this error occurs when placing an order
 </red>
@@ -4581,7 +4655,7 @@ If there is a large deviation between the local server time and the API server t
     "msg":"The order size is greater than the max open size",
     "requestTime":1627293504612
 }
-```
+
 
 </aside> 
 
@@ -4598,7 +4672,7 @@ If there is a large deviation between the local server time and the API server t
 
 <aside class="warning">
 
-```
+
 <red>
     <b>Note</b> if this error occurs when closing an order
 </red>
@@ -4609,7 +4683,7 @@ If there is a large deviation between the local server time and the API server t
     "requestTime": 1666268894074,
     "data": null
 }
-```
+
 
 </aside> 
 
@@ -4634,7 +4708,7 @@ If there is a large deviation between the local server time and the API server t
 
 <aside class="warning">
 
-```
+
 <red>
     <b>Note</b> if below two error occurs when operating an order, please DO query order detail with the clientOid to get the final status
 </red>
@@ -4652,7 +4726,7 @@ If there is a large deviation between the local server time and the API server t
     "requestTime": 1666268894071,
     "data": null
 }
-```
+
 
 </aside> 
 
@@ -4742,37 +4816,38 @@ If there is a large deviation between the local server time and the API server t
 
 <aside class="warning">
 
-```
-For single hold mode:
 
-orderType could be either limited or market
+For single hold mode:<br/>
+
+orderType could be either limited or market<br/>
 
 <a href="#side">Order direction</a> could be either buy_single or sell_single, the position could ONLY exists on one side: long or short
 
-For example
+For example<br/>
 
 Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructions step by step to placeOrder:<br/>
 1) first time sell_single size=0.05: 0.05 position will be closed, you still have buy_single size=0.05<br/>
 2) seconds order: sell_single 0.1: remain position 0.05 will be closed, buy_single size=0, sell_single size=0.05 will be opened<br/>
 3) final order: sell_single 0.15: sell_single position size will increase 0.15, at the end sell_single size=0.2<br/>
-```
+
 
 </aside> 
 
 <aside class="warning">
 
-```
-If receive a response like below: 
-{
-    "code":"45116",
-    "msg":"The count of positions hold by the account exceeds the maximum count 60",
-    "requestTime":1669910904315,
-    "data":null
-}
-Please noted that for a business line like: USDT perpetual contract, if counted existing positions + open orders > 60, you will get above response
+
+If receive a response like below: <br/>
+
+{<br/>
+    "code":"45116",<br/>
+    "msg":"The count of positions hold by the account exceeds the maximum count 60",<br/>
+    "requestTime":1669910904315,<br/>
+    "data":null<br/>
+}<br/>
+<br/>
+Please noted that for a business line like: USDT perpetual contract, if counted existing positions + open orders > 60, you will get above response<br/>
 PS: USDC perpetual contract will be counted separately, same as universal margin perpetual contract
 
-```
 
 </aside> 
 
@@ -7177,7 +7252,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"holdSide"</span>:<span class="s2">"long"</span>,<span class="s2">"rangeRate"</span>:<span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"rangeRate"</span>:<span class="s2">"10"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
