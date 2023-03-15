@@ -460,6 +460,9 @@
                         <a href="#transfer" class="toc-h3 toc-link" data-title="Transfer">Transfer</a>
                       </li>
                       <li>
+                        <a href="#transfer-v2" class="toc-h3 toc-link" data-title="Transfer V2">Transfer V2</a>
+                      </li>
+                      <li>
                         <a href="#sub-transfer" class="toc-h3 toc-link" data-title="Sub Transfer">Sub Transfer</a>
                       </li>
                       <li>
@@ -469,7 +472,13 @@
                         <a href="#withdraw" class="toc-h3 toc-link" data-title="Withdraw">Withdraw</a>
                       </li>
                       <li>
+                        <a href="#withdraw-v2" class="toc-h3 toc-link" data-title="Withdraw V2">Withdraw V2</a>
+                      </li>
+                      <li>
                         <a href="#inner-withdraw" class="toc-h3 toc-link" data-title="Inner Withdraw">Inner Withdraw</a>
+                      </li>
+                      <li>
+                        <a href="#inner-withdraw-v2" class="toc-h3 toc-link" data-title="Inner Withdraw v2">Inner Withdraw v2</a>
                       </li>
                       <li>
                         <a href="#get-withdraw-list" class="toc-h3 toc-link" data-title="Get Withdraw list">Get Withdraw list</a>
@@ -512,7 +521,13 @@
                         <a href="#cancel-order" class="toc-h3 toc-link" data-title="Cancel order">Cancel order</a>
                       </li>
                       <li>
+                        <a href="#cancel-order-v2" class="toc-h3 toc-link" data-title="Cancel order V2">Cancel order V2</a>
+                      </li>
+                      <li>
                         <a href="#cancel-order-in-batch-single-instruments" class="toc-h3 toc-link" data-title="Cancel order in batch (single instruments)">Cancel order in batch (single instruments)</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-order-in-batch-v2-single-instruments" class="toc-h3 toc-link" data-title="Cancel order in batch V2 (single instruments)">Cancel order in batch V2 (single instruments)</a>
                       </li>
                       <li>
                         <a href="#get-order-details" class="toc-h3 toc-link" data-title="Get order details">Get order details</a>
@@ -656,6 +671,25 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>15/03/2023</strong></p>
+
+<ul>
+<li><a href="#get-symbols">Get Symbols</a> and <a href="#get-single-symbol">Get Single Symbol</a> added response fields: &#39;buyLimitPriceRatio&#39;, &#39;sellLimitPriceRatio&#39;</li>
+<li><a href="#get-candle-data">Get Candle Data</a> request field &#39;limit&#39;: max 1000</li>
+<li>New interface <a href="#transfer-v2">Transfer V2</a>, <a href="#withdraw-v2">Transfer V2</a>, <a href="#inner-withdraw-v2">Inner Withdraw v2</a> to support &#39;clientOid&#39;</li>
+<li><a href="#get-withdraw-list">Get Withdraw list</a> added request field: &#39;clientOid&#39;, added response fields: &#39;clientOid&#39;, &#39;tag&#39;</li>
+<li><a href="#get-deposit-list">Get Deposit list</a> added response fields: &#39;tag&#39;</li>
+<li><a href="#get-transfer-list">Get Transfer List</a> added response fields: &#39;clientOid&#39;, &#39;transferId&#39;, added request param: &#39;clientOid&#39;</li>
+<li>New interface <a href="#cancel-order-v2">Cancel order V2</a> cancel by &#39;clientOid&#39;</li>
+<li>New interface <a href="#cancel-order-in-batch-single-instruments">Cancel order in batch V2 (single instruments)</a> cancel by &#39;clientOids&#39;</li>
+<li><a href="#get-order-details">Get order details</a>, <a href="#get-order-list">Get order List</a>, <a href="#get-order-history">Get order history</a> added response fields: &#39;enterPointSource&#39;</li>
+<li><a href="#modify-plan-order">Get Symbols</a> added request fields: &#39;clientOid&#39;</li>
+<li><a href="#cancel-plan-order">Cancel plan order</a> added request fields: &#39;clientOid&#39;</li>
+<li><a href="#get-current-plan-orders">Get current plan orders</a> <a href="#get-history-plan-orders">Get history plan orders</a> added request/response fields: &#39;clientOid&#39;, added response fields: &#39;enterPointSource&#39;</li>
+<li><a href="#order-channel">Order Channel</a> push data added field: &#39;eps&#39;</li>
+<li><a href="#websocket-error-codes">WebSocket error codes</a> added new error code</li>
+</ul>
+
 <p><strong>13/02/2023</strong></p>
 
 <ul>
@@ -947,10 +981,10 @@ User can bind IP address when he creates APIKey, It is strongly recommended to b
 
 
 <red>
-<b>risk warning</b><br/>
+<b>risk warning：</b><br/>
 </red>
 
-：These three keys are highly related to account security, please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.<br/>
+These three keys are highly related to account security, please keep in mind DO NOT DISCLOSE <b>Secretkey and Passphrase</b> to anyone at any circumstances, even with BitGet employees.<br/>
 
 Leaking any of these three keys may cause loss of your assets. If you find by any chance that the APIKey is compromised, please delete the APIKey as soon as possible.
 
@@ -1707,7 +1741,9 @@ microtime(true) * 1000;
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1768,6 +1804,14 @@ microtime(true) * 1000;
 <td>minTradeUSDT</td>
 <td>Min trade USDT amount</td>
 </tr>
+<tr>
+<td>buyLimitPriceRatio</td>
+<td>Buy price gap from market price, &quot;0.05&quot; means: 5%</td>
+</tr>
+<tr>
+<td>sellLimitPriceRatio</td>
+<td>Sell price gap from market price, &quot;0.05&quot; means: 5%</td>
+</tr>
 </tbody></table>
 <h3 id='get-single-symbol'>Get Single Symbol</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
@@ -1822,7 +1866,9 @@ microtime(true) * 1000;
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1882,6 +1928,14 @@ microtime(true) * 1000;
 <tr>
 <td>minTradeUSDT</td>
 <td>Min trade USDT amount</td>
+</tr>
+<tr>
+<td>buyLimitPriceRatio</td>
+<td>Buy price gap from market price, &quot;0.05&quot; means: 5%</td>
+</tr>
+<tr>
+<td>sellLimitPriceRatio</td>
+<td>Sell price gap from market price, &quot;0.05&quot; means: 5%</td>
 </tr>
 </tbody></table>
 <h2 id='market'>Market</h2><h3 id='get-single-ticker'>Get Single Ticker</h3>
@@ -2264,7 +2318,7 @@ microtime(true) * 1000;
 <td>limit</td>
 <td>String</td>
 <td>No</td>
-<td>Default 100, max 100</td>
+<td>Default 100, max 1000</td>
 </tr>
 </tbody></table>
 
@@ -2764,6 +2818,218 @@ microtime(true) * 1000;
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
+<h3 id='transfer-v2'>Transfer V2</h3>
+<p>Rate Limit：5/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/transfer-v2</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/transfer-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "data": {
+        "transferId":"123456",
+        "clientOrderId":"x123"
+    }
+}
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>type</th>
+<th>Required</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>Yes</td>
+<td>out account type</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>Yes</td>
+<td>inner account type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer amount</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>transfer coin</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Transfer ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>String</td>
+<td>Yes</td>
+<td>Client Order ID</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot            Accept all kinds of coins</li>
+<li>mix_usdt    Only USDT</li>
+<li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
+<li>mix_usdc    Only USDC</li>
+</ul></li>
+</ul>
+
+<p><strong>fromType/toType restriction</strong></p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>Desc</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>Good to go</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>Only USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>Only  margin Coin like BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>Not allow</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>Only USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>Only USDC</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='sub-transfer'>Sub Transfer</h3>
 <p>This interface supports to transfer in below ways</p>
 
@@ -3147,6 +3413,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 
+<p>&#39;address&#39; should be in your main-account&#39;s address book</p>
+
 <blockquote>
 <p>Request Example</p>
 </blockquote>
@@ -3179,6 +3447,114 @@ microtime(true) * 1000;
 <tr>
 <td>data</td>
 <td>Order ID</td>
+</tr>
+</tbody></table>
+<h3 id='withdraw-v2'>Withdraw V2</h3>
+<p>Just withdraw coins on the chain</p>
+
+<p>Rate Limit：5/sec (Uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/withdrawal-v2</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency name</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Yes</td>
+<td>withdraw address</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>Yes</td>
+<td>chain name</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>No</td>
+<td>tag</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>No</td>
+<td>remark</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<p>&#39;address&#39; should be in your main-account&#39;s address book</p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"address"</span>: <span class="s2">"TBQ2LGFysnqkscvKqLBxnVVVw7ohiDvbdZ"</span>,<span class="s2">"chain"</span>: <span class="s2">"trc20"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "orderId":888291686266343424",
+    "clientOrderId":"123"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>client order ID</td>
 </tr>
 </tbody></table>
 <h3 id='inner-withdraw'>Inner Withdraw</h3>
@@ -3264,6 +3640,96 @@ microtime(true) * 1000;
 <td>Order ID</td>
 </tr>
 </tbody></table>
+<h3 id='inner-withdraw-v2'>Inner Withdraw v2</h3>
+<p>Internal withdrawal means that both users are on the Bitget platform</p>
+
+<p>Withdraw money directly in the form of uid, without going on the chain, no need to pass the address</p>
+
+<p>Rate Limit：5/sec (Uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/withdrawal-inner-v2</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>Yes</td>
+<td>currency</td>
+</tr>
+<tr>
+<td>toUid</td>
+<td>String</td>
+<td>Yes</td>
+<td>target uid</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>Yes</td>
+<td>Withdraw amount</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>custom id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-inner-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"toUid"</span>: <span class="s2">"6314497154"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "orderId":888291686266343424",
+    "clientOrderId":"123"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>client order ID</td>
+</tr>
+</tbody></table>
 <h3 id='get-withdraw-list'>Get Withdraw list</h3>
 <p>Rate Limit：20/1s (Uid)</p>
 
@@ -3288,6 +3754,12 @@ microtime(true) * 1000;
 <td>String</td>
 <td>Yes</td>
 <td>currency</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>clientOid</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -3318,7 +3790,7 @@ microtime(true) * 1000;
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;clientOid=123&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -3338,6 +3810,7 @@ microtime(true) * 1000;
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -3345,6 +3818,7 @@ microtime(true) * 1000;
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erc20"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"confirm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -3370,6 +3844,10 @@ microtime(true) * 1000;
 <tr>
 <td>coin</td>
 <td>currency</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>clientOid</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3398,6 +3876,10 @@ microtime(true) * 1000;
 <tr>
 <td>confirm</td>
 <td>confirm times for withdraw</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -3501,7 +3983,8 @@ microtime(true) * 1000;
             </span><span class="s2">"toAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erc20"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"confirm"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"confirm"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -3555,6 +4038,10 @@ microtime(true) * 1000;
 <tr>
 <td>chain</td>
 <td>deposit chain</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -4025,6 +4512,12 @@ microtime(true) * 1000;
 <td>Start time, seconds</td>
 </tr>
 <tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>clientOid, match record that equals to the provided value</td>
+</tr>
+<tr>
 <td>limit</td>
 <td>Integer</td>
 <td>No</td>
@@ -4057,7 +4550,9 @@ microtime(true) * 1000;
             </span><span class="s2">"fromType"</span><span class="p">:</span><span class="s2">"CONTRACT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fromSymbol"</span><span class="p">:</span><span class="s2">"BTC/USD"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"1000.00000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeTime"</span><span class="p">:</span><span class="s2">"1631070374488"</span><span class="w">
+            </span><span class="s2">"tradeTime"</span><span class="p">:</span><span class="s2">"1631070374488"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transferId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"997381107487641600"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
@@ -4102,6 +4597,14 @@ microtime(true) * 1000;
 <tr>
 <td>tradeTime</td>
 <td>Transfer time, ms</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>client order ID</td>
+</tr>
+<tr>
+<td>transferId</td>
+<td>Transfer ID</td>
 </tr>
 </tbody></table>
 
@@ -4507,6 +5010,83 @@ microtime(true) * 1000;
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
+<h3 id='cancel-order-v2'>Cancel order V2</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-order-v2</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol Id</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>String</td>
+<td>No</td>
+<td>Order ID, &#39;clientOid&#39; &amp; &#39;orderId&#39; must have one</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>Client Order ID, &#39;clientOid&#39; &amp; &#39;orderId&#39; must have one</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-order-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"34923828881"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xx001"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='cancel-order-in-batch-single-instruments'>Cancel order in batch (single instruments)</h3>
 <p>Rate Limit: 5 times/1s (uid)</p>
 
@@ -4561,6 +5141,94 @@ microtime(true) * 1000;
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"202934892814667"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='cancel-order-in-batch-v2-single-instruments'>Cancel order in batch V2 (single instruments)</h3>
+<p>Rate Limit: 5 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-batch-orders-v2</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol Id</td>
+</tr>
+<tr>
+<td>orderIds</td>
+<td>String[]</td>
+<td>No</td>
+<td>Order ID array, &#39;orderIds&#39; or &#39;clientOids&#39; must have one</td>
+</tr>
+<tr>
+<td>clientOids</td>
+<td>String[]</td>
+<td>No</td>
+<td>clientOid array, &#39;orderIds&#39; or &#39;clientOids&#39; must have one</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-batch-orders-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderIds"</span>: <span class="o">[</span><span class="s2">"34923828882"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"resultList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"34923828882"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxx002"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"failure"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"errorMsg"</span><span class="p">:</span><span class="s2">"duplicate clientOrderId"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="s2">"40725"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
 </span></code></pre>
 <p>&nbsp;</p>
 
@@ -4647,6 +5315,7 @@ microtime(true) * 1000;
   </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4706,6 +5375,10 @@ microtime(true) * 1000;
 <tr>
 <td>fillTotalAmount</td>
 <td>Total transaction volume</td>
+</tr>
+<tr>
+<td>enterPointSource</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -4770,6 +5443,7 @@ microtime(true) * 1000;
   </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4829,6 +5503,10 @@ microtime(true) * 1000;
 <tr>
 <td>fillTotalAmount</td>
 <td>Total transaction volume</td>
+</tr>
+<tr>
+<td>enterPointSource</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -4911,6 +5589,7 @@ microtime(true) * 1000;
   </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"34982.12"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"34982.12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4970,6 +5649,10 @@ microtime(true) * 1000;
 <tr>
 <td>fillTotalAmount</td>
 <td>Total transaction volume</td>
+</tr>
+<tr>
+<td>enterPointSource</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -5273,8 +5956,14 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>String</td>
-<td>Yes</td>
-<td>order ID</td>
+<td>No</td>
+<td>Order ID, &#39;orderId&#39; or &#39;clientOid&#39; must have one</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>Client Order ID, &#39;orderId&#39; or &#39;clientOid&#39; must have one</td>
 </tr>
 <tr>
 <td>triggerPrice</td>
@@ -5382,8 +6071,14 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>String</td>
-<td>Yes</td>
-<td>order ID</td>
+<td>No</td>
+<td>Order ID, &#39;orderId&#39; or &#39;clientOid&#39; must have one</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>Client Order ID, &#39;orderId&#39; or &#39;clientOid&#39; must have one</td>
 </tr>
 </tbody></table>
 
@@ -5502,6 +6197,7 @@ microtime(true) * 1000;
     "orderList": [
       {
         "orderId": "974792555020390400",
+        "clientOid":"xxx001",
         "symbol": "TRXUSDT_SPBL",
         "size": "151",
         "executePrice": "0.041572",
@@ -5510,6 +6206,7 @@ microtime(true) * 1000;
         "orderType": "limit",
         "side": "buy",
         "triggerType": "fill_price",
+        "enterPointSource": "API",
         "cTime": "1668134576563"
       }
     ]
@@ -5527,6 +6224,10 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>Order ID</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>Client Order ID</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -5559,6 +6260,10 @@ microtime(true) * 1000;
 <tr>
 <td>triggerType</td>
 <td>Order trigger type</td>
+</tr>
+<tr>
+<td>enterPointSource</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -5673,6 +6378,7 @@ microtime(true) * 1000;
     "orderList": [
       {
         "orderId": "974792060738441216",
+        "clientOid":"xxx001",
         "symbol": "TRXUSDT_SPBL",
         "size": "156",
         "executePrice": "0.041272",
@@ -5681,6 +6387,7 @@ microtime(true) * 1000;
         "orderType": "limit",
         "side": "buy",
         "triggerType": "fill_price",
+        "enterPointSource": "API",
         "cTime": "1668134458717"
       }
     ]
@@ -5698,6 +6405,10 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>Order ID</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>Client Order ID</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -5730,6 +6441,10 @@ microtime(true) * 1000;
 <tr>
 <td>triggerType</td>
 <td>Order trigger type</td>
+</tr>
+<tr>
+<td>enterPointSource</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -7512,6 +8227,40 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Push data Example</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"notional"</span><span class="p">:</span><span class="s2">"6.290480"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sz"</span><span class="p">:</span><span class="s2">"0.0040"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"px"</span><span class="p">:</span><span class="s2">"1572.62"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderFee"</span><span class="p">:[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"eps"</span><span class="p">:</span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1678789919603</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ordId"</span><span class="p">:</span><span class="s2">"10194123402951243161"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"ETHUSDT_SPBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clOrdId"</span><span class="p">:</span><span class="s2">"b712d4e8-bec1-4124-ae83-e7aa44cfcdd2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accFillSz"</span><span class="p">:</span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avgPx"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"force"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1678789919603</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ordType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"new"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"orders"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>Push data parameters</strong></p>
 
 <table><thead>
@@ -7521,6 +8270,16 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>action</td>
+<td>String</td>
+<td>&#39;snapshot&#39;</td>
+</tr>
+<tr>
+<td>arg</td>
+<td>String</td>
+<td>Subscribe arg</td>
+</tr>
 <tr>
 <td>&gt; channel</td>
 <td>String</td>
@@ -7637,6 +8396,11 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>order state <code>init</code>,<code>new</code>, <code>partial-fill</code>, <code>full-fill</code>, <code>cancelled</code></td>
 </tr>
 <tr>
+<td>&gt; eps</td>
+<td>String</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
 <td>&gt; cTime</td>
 <td>String</td>
 <td>Created time, Unix timestamp format in milliseconds</td>
@@ -7647,7 +8411,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <td>Updated time, Unix timestamp format in milliseconds</td>
 </tr>
 <tr>
-<td>&gt;orderFee</td>
+<td>&gt; orderFee</td>
 <td>Array</td>
 <td>fee list</td>
 </tr>
@@ -7887,6 +8651,14 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <tr>
 <td style="text-align: left">Login failed</td>
 <td style="text-align: left">30005</td>
+</tr>
+<tr>
+<td style="text-align: left">request too many</td>
+<td style="text-align: left">30006</td>
+</tr>
+<tr>
+<td style="text-align: left">request over limit,connection close</td>
+<td style="text-align: left">30007</td>
 </tr>
 <tr>
 <td style="text-align: left">Invalid ACCESS_KEY</td>

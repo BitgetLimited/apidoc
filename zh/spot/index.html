@@ -451,6 +451,9 @@
                         <a href="#1045de04a1" class="toc-h3 toc-link" data-title="划转">划转</a>
                       </li>
                       <li>
+                        <a href="#v2" class="toc-h3 toc-link" data-title="划转V2">划转V2</a>
+                      </li>
+                      <li>
                         <a href="#7bc510fe47" class="toc-h3 toc-link" data-title="母子账户划转">母子账户划转</a>
                       </li>
                       <li>
@@ -460,7 +463,13 @@
                         <a href="#096be69702" class="toc-h3 toc-link" data-title="提币">提币</a>
                       </li>
                       <li>
+                        <a href="#v2-2" class="toc-h3 toc-link" data-title="提币V2">提币V2</a>
+                      </li>
+                      <li>
                         <a href="#6eb422678c" class="toc-h3 toc-link" data-title="内部提币">内部提币</a>
+                      </li>
+                      <li>
+                        <a href="#v2-3" class="toc-h3 toc-link" data-title="内部提币V2">内部提币V2</a>
                       </li>
                       <li>
                         <a href="#db22942d47" class="toc-h3 toc-link" data-title="获取提币记录">获取提币记录</a>
@@ -503,7 +512,13 @@
                         <a href="#fc150cab0e" class="toc-h3 toc-link" data-title="撤单">撤单</a>
                       </li>
                       <li>
-                        <a href="#8cc3c3d64a" class="toc-h3 toc-link" data-title="批量撤单(单对)">批量撤单(单对)</a>
+                        <a href="#v2-4" class="toc-h3 toc-link" data-title="撤单V2">撤单V2</a>
+                      </li>
+                      <li>
+                        <a href="#01fc615ded" class="toc-h3 toc-link" data-title="批量撤单(单币对)">批量撤单(单币对)</a>
+                      </li>
+                      <li>
+                        <a href="#v2-5" class="toc-h3 toc-link" data-title="批量撤单V2(单币对)">批量撤单V2(单币对)</a>
                       </li>
                       <li>
                         <a href="#f876a4e1f9" class="toc-h3 toc-link" data-title="获取订单详情">获取订单详情</a>
@@ -650,6 +665,25 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年03月15日</strong></p>
+
+<ul>
+<li><a href="#d990beddee">获取全部产品信息</a> and <a href="#84a4efea8f">获取单个产品信息</a> 新增响应字段: &#39;buyLimitPriceRatio&#39;, &#39;sellLimitPriceRatio&#39;</li>
+<li><a href="#k">获取K线数据</a> 新增请求参数 &#39;limit&#39;: max 1000</li>
+<li>新增接口 <a href="#v2">划转V2</a>, <a href="#v2-2">提币V2</a>, <a href="#v2-3">内部提币V2</a> 新增字段 &#39;clientOid&#39;</li>
+<li><a href="#db22942d47">获取提币记录</a> 新增请求参数: &#39;clientOid&#39;, added response fields: &#39;clientOid&#39;, &#39;tag&#39;</li>
+<li><a href="#e2a027ceb6">获取充值记录</a> 新增响应字段: &#39;tag&#39;</li>
+<li><a href="#b0c7e2b4a5">获取划转记录</a> 新增响应字段: &#39;clientOid&#39;, &#39;transferId&#39;, 新增请求参数: &#39;clientOid&#39;</li>
+<li>新增接口 <a href="#v2-4">撤单V2</a> 按 &#39;clientOid&#39; 撤单</li>
+<li>新增接口 <a href="#v2-5">批量撤单V2(单币对)</a> 按 &#39;clientOids&#39; 撤单</li>
+<li><a href="#f876a4e1f9">获取订单详情</a>, <a href="#19671a1099">获取未成交列表</a>, <a href="#b9220b5487">获取历史委托列表</a> 新增响应字段: &#39;enterPointSource&#39;</li>
+<li><a href="#f4e3ac1d5c">/api/spot/v1/plan/modifyPlan</a> 新增请求参数: &#39;clientOid&#39;</li>
+<li><a href="#cfb749d406">撤销计划委托</a> 新增请求参数: &#39;clientOid&#39;</li>
+<li><a href="#a40d8a54f9">获取当前计划委托</a> <a href="#1c62db0f32">获取历史计划委托</a> 新增请求/响应字段 fields: &#39;clientOid&#39;, 新增请求参数: &#39;enterPointSource&#39;</li>
+<li><a href="#e9970cad9f">订单频道</a> 推送数据新增字段: &#39;eps&#39;</li>
+<li><a href="#websocket">WebSocket错误代码</a> 增加 错误码</li>
+</ul>
+
 <p><strong>2023年02月13日</strong></p>
 
 <ul>
@@ -1628,7 +1662,9 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1689,6 +1725,14 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">status</td>
 <td style="text-align: center">状态</td>
 </tr>
+<tr>
+<td style="text-align: left">buyLimitPriceRatio</td>
+<td style="text-align: center">买入与现价的价差, &quot;0.05&quot; 表示: 5%</td>
+</tr>
+<tr>
+<td style="text-align: left">sellLimitPriceRatio</td>
+<td style="text-align: center">卖出与现价的价差, &quot;0.05&quot; 表示: 5%</td>
+</tr>
 </tbody></table>
 <h3 id='84a4efea8f'>获取单个产品信息</h3>
 <p>限速规则：20次/1s (IP)</p>
@@ -1741,7 +1785,9 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1801,6 +1847,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">status</td>
 <td style="text-align: center">状态</td>
+</tr>
+<tr>
+<td style="text-align: left">buyLimitPriceRatio</td>
+<td style="text-align: center">买入与现价的价差, &quot;0.05&quot; 表示: 5%</td>
+</tr>
+<tr>
+<td style="text-align: left">sellLimitPriceRatio</td>
+<td style="text-align: center">卖出与现价的价差, &quot;0.05&quot; 表示: 5%</td>
 </tr>
 </tbody></table>
 <h2 id='dd1d4ee749'>公共行情接口</h2><h3 id='ticker'>获取某个Ticker信息</h3>
@@ -2189,7 +2243,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">查询条数 默认100，最大100</td>
+<td style="text-align: center">查询条数 默认100，最大1000</td>
 </tr>
 </tbody></table>
 
@@ -2691,6 +2745,211 @@ Signature = base64.encode(Signature)
 <li>mix_usdc       只接受转入转出USDC</li>
 </ul></li>
 </ul>
+<h3 id='v2'>划转V2</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/transfer-v2</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromType</td>
+<td>String</td>
+<td>是</td>
+<td>转出账户类型</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>是</td>
+<td>转入账户类型</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>划转金额</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>划转币种</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>用户自定义ID</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot        接受转入转出多个币种</li>
+<li>mix_usdt        只接受转入转出USDT</li>
+<li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+</ul></li>
+</ul>
+
+<p>fromType/toType限制说明</p>
+
+<table><thead>
+<tr>
+<th>fromType</th>
+<th>toType</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>spot</td>
+<td>spot</td>
+<td>任意转</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>spot</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>spot</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usd</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdc</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdt</td>
+<td>mix_usdt</td>
+<td>只接受 USDT</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>spot</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usd</td>
+<td>mix_usd</td>
+<td>如 BTC, ETH, EOS, XRP, USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>spot</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdt</td>
+<td>禁止</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usd</td>
+<td>只接受 USDC</td>
+</tr>
+<tr>
+<td>mix_usdc</td>
+<td>mix_usdc</td>
+<td>只接受 USDC</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/transfer-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"fromType"</span>: <span class="s2">"spot"</span>,<span class="s2">"toType"</span>: <span class="s2">"mix_usdt"</span>,<span class="s2">"amount"</span>: <span class="s2">"100"</span>,<span class="s2">"coin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "msg":"success",
+    "data": {
+        "transferId":"123456",
+        "clientOrderId":"x123"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferId</td>
+<td>划转ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Client Order ID</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>fromType, toType
+
+<ul>
+<li>spot        接受转入转出多个币种</li>
+<li>mix_usdt        只接受转入转出USDT</li>
+<li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+</ul></li>
+</ul>
 <h3 id='7bc510fe47'>母子账户划转</h3>
 <p>母子账户划转支持以下划转方式</p>
 
@@ -3060,6 +3319,8 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
+<p>&#39;address&#39; 应该在提币的 address book 里</p>
+
 <blockquote>
 <p>请求示例</p>
 </blockquote>
@@ -3092,6 +3353,114 @@ Signature = base64.encode(Signature)
 <tr>
 <td>data</td>
 <td>订单id</td>
+</tr>
+</tbody></table>
+<h3 id='v2-2'>提币V2</h3>
+<p>只是链上提币</p>
+
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/withdrawal-v2</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>是</td>
+<td>提币地址</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>String</td>
+<td>是</td>
+<td>提币网路</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>否</td>
+<td>地址tag</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提币数量</td>
+</tr>
+<tr>
+<td>remark</td>
+<td>String</td>
+<td>否</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>客户端自定义Id 唯一健</td>
+</tr>
+</tbody></table>
+
+<p>&#39;address&#39; 应该在提币的 address book 里</p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"address"</span>: <span class="s2">"TBQ2LGFysnqkscvKqLBxnVVVw7ohiDvbdZ"</span>,<span class="s2">"chain"</span>: <span class="s2">"trc20"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "orderId":888291686266343424",
+    "clientOrderId":"123"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>client order ID</td>
 </tr>
 </tbody></table>
 <h3 id='6eb422678c'>内部提币</h3>
@@ -3177,6 +3546,96 @@ Signature = base64.encode(Signature)
 <td>订单id</td>
 </tr>
 </tbody></table>
+<h3 id='v2-3'>内部提币V2</h3>
+<p>内部提币 指双方用户都在Bitget平台</p>
+
+<p>通过uid形式直接提币，不走链上，不需要传地址</p>
+
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/wallet/withdrawal-inner-v2</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>是</td>
+<td>币种</td>
+</tr>
+<tr>
+<td>toUid</td>
+<td>String</td>
+<td>是</td>
+<td>收款方uid</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>String</td>
+<td>是</td>
+<td>提币数量</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>否</td>
+<td>客户端自定义ID 唯一健</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-inner-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"coin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"toUid"</span>: <span class="s2">"6314497154"</span>,<span class="s2">"amount"</span>: <span class="s2">"10"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "data": {
+    "orderId":888291686266343424",
+    "clientOrderId":"123"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>client order ID</td>
+</tr>
+</tbody></table>
 <h3 id='db22942d47'>获取提币记录</h3>
 <p>限速规则：20次/1s </p>
 
@@ -3201,6 +3660,12 @@ Signature = base64.encode(Signature)
 <td>String</td>
 <td>是</td>
 <td>币种</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>String</td>
+<td>No</td>
+<td>clientOid</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -3231,7 +3696,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/wallet/withdrawal-list?coin=USDT&amp;clientOid=123&amp;startTime=1659036670000&amp;endTime=1659076670000&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -3251,6 +3716,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"912533114861326336"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -3258,6 +3724,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erc20"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"confirm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653290769222"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -3283,6 +3750,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td>coin</td>
 <td>币种名称</td>
+</tr>
+<tr>
+<td>clientOid</td>
+<td>clientOid</td>
 </tr>
 <tr>
 <td>type</td>
@@ -3311,6 +3782,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td>confirm</td>
 <td>确认块数</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -3413,8 +3888,9 @@ Signature = base64.encode(Signature)
             "status": "success",
             "toAddress": "7713789662",
             "fee": "0.00000000",
-            "confirm":null,
+            "confirm":"10",
             "chain": "erc20",
+            "tag": null,
             "cTime": "1653290769222",
             "uTime": "1653290769222"
         }
@@ -3463,11 +3939,15 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td>confirm</td>
-<td>confirm, might be null</td>
+<td>confirm, 可能为null</td>
 </tr>
 <tr>
 <td>chain</td>
 <td>充币网络</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>tag</td>
 </tr>
 <tr>
 <td>cTime</td>
@@ -3964,6 +4444,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">传入<strong>起始</strong>时间，格式为时间戳，单位为秒</td>
 </tr>
 <tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid，精确匹配</td>
+</tr>
+<tr>
 <td style="text-align: left">limit</td>
 <td style="text-align: left">Integer</td>
 <td style="text-align: center">否</td>
@@ -3996,7 +4482,9 @@ Signature = base64.encode(Signature)
             "fromType":"CONTRACT",
             "fromSymbol":"BTC/USD",
             "amount":"1000.00000000",
-            "tradeTime":"1631070374488"
+            "tradeTime":"1631070374488",
+            "clientOid": "1",
+            "transferId": "997381107487641600"
         }
     ],
     "msg":"success",
@@ -4043,10 +4531,18 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">tradeTime</td>
 <td style="text-align: center">交易时间 (毫秒时间戳)</td>
 </tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: center">client order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">transferId</td>
+<td style="text-align: center">Transfer ID</td>
+</tr>
 </tbody></table>
 
 <ul>
-<li>fromType
+<li>fromType / toType
 
 <ul>
 <li>exchange 现货</li>
@@ -4402,6 +4898,71 @@ Signature = base64.encode(Signature)
    "message":"success",
   "data":"34923828882"
 }
+</code></pre><h3 id='v2-4'>撤单V2</h3>
+<p>限速规则 10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>撤单操作</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-order-v2</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单id，和clientOid必填其中一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid，和orderId必填其中一个</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-order-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderId"</span>: <span class="s2">"34923828882"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+
+  "code":"00000",
+   "message":"success",
+  "data":{
+    "orderId":"34923828881",
+    "clientOrderId":"xx001"
+  }
+}
 </code></pre>
 <p>&nbsp;</p>
 
@@ -4430,7 +4991,7 @@ Signature = base64.encode(Signature)
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-<h3 id='8cc3c3d64a'>批量撤单(单对)</h3>
+<h3 id='01fc615ded'>批量撤单(单币对)</h3>
 <p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -4485,6 +5046,96 @@ Signature = base64.encode(Signature)
   </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="s2">"34923828882"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='v2-5'>批量撤单V2(单币对)</h3>
+<p>限速规则 10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>批量撤单请求</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-batch-orders-v2</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">orderIds</td>
+<td style="text-align: left">String[]</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单id数组，与clientOids必填一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOids</td>
+<td style="text-align: left">String[]</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid数组，与orderIds必填一个</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-batch-orders-v2"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span>,<span class="s2">"orderIds"</span>: <span class="o">[</span><span class="s2">"34923828882"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"resultList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"34923828882"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxx002"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"failure"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"errorMsg"</span><span class="p">:</span><span class="s2">"duplicate clientOrderId"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="s2">"40725"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">   
 </span></code></pre>
 <p>&nbsp;</p>
@@ -4574,6 +5225,7 @@ Signature = base64.encode(Signature)
   </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4633,6 +5285,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">fillTotalAmount</td>
 <td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: center"><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -4699,6 +5355,7 @@ Signature = base64.encode(Signature)
   </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
 </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4758,6 +5415,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">fillTotalAmount</td>
 <td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: center"><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -4842,6 +5503,7 @@ Signature = base64.encode(Signature)
   "fillPrice":"34982.12",
   "fillQuantity":"1",
   "fillTotalAmount":"34982.12",
+  "enterPointSource": "WEB",
   "cTime":"1622697148"
 }]
 }
@@ -4901,6 +5563,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">fillTotalAmount</td>
 <td style="text-align: center">成交总额</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: center"><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -5212,8 +5878,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">订单ID</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单ID, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">triggerPrice</td>
@@ -5327,8 +5999,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">订单Id</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单ID, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 </tbody></table>
 
@@ -5453,6 +6131,7 @@ Signature = base64.encode(Signature)
     "orderList": [
       {
         "orderId": "974792555020390400",
+        "clientOid":"xxx001",
         "symbol": "TRXUSDT_SPBL",
         "size": "151",
         "executePrice": "0.041572",
@@ -5461,6 +6140,7 @@ Signature = base64.encode(Signature)
         "orderType": "limit",
         "side": "buy",
         "triggerType": "fill_price",
+        "enterPointSource": "API",
         "cTime": "1668134576563"
       }
     ]
@@ -5478,6 +6158,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: center">Client Order ID</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
@@ -5510,6 +6194,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">triggerType</td>
 <td style="text-align: center">触发类型</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: center"><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -5622,6 +6310,7 @@ Signature = base64.encode(Signature)
     "orderList": [
       {
         "orderId": "974792060738441216",
+        "clientOid":"xxx001",
         "symbol": "TRXUSDT_SPBL",
         "size": "156",
         "executePrice": "0.041272",
@@ -5630,6 +6319,7 @@ Signature = base64.encode(Signature)
         "orderType": "limit",
         "side": "buy",
         "triggerType": "fill_price",
+        "enterPointSource": "API",
         "cTime": "1668134458717"
       }
     ]
@@ -5647,6 +6337,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: center">Client Order ID</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
@@ -5679,6 +6373,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">triggerType</td>
 <td style="text-align: center">触发类型</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: center"><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7380,6 +8078,42 @@ Signature = base64.encode(Signature)
 
 <p> </p>
 
+<blockquote>
+<p>推送数据示例</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"notional"</span><span class="p">:</span><span class="s2">"6.290480"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sz"</span><span class="p">:</span><span class="s2">"0.0040"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"px"</span><span class="p">:</span><span class="s2">"1572.62"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderFee"</span><span class="p">:[</span><span class="w">
+
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"eps"</span><span class="p">:</span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1678789919603</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ordId"</span><span class="p">:</span><span class="s2">"10194123402951243161"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"ETHUSDT_SPBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clOrdId"</span><span class="p">:</span><span class="s2">"b712d4e8-bec1-4124-ae83-e7aa44cfcdd2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accFillSz"</span><span class="p">:</span><span class="s2">"0.0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avgPx"</span><span class="p">:</span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"force"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1678789919603</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ordType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"new"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"orders"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>&nbsp;</p>
+
 <p><strong>推送数据参数</strong></p>
 
 <table><thead>
@@ -7503,6 +8237,11 @@ Signature = base64.encode(Signature)
 <td>&gt; status</td>
 <td>String</td>
 <td>订单状态 <code>init 插入DB</code>, <code>new:orderbook未成交</code>    <code>partial-fill 部分成交</code>      <code>full-fill：完全成交</code>   <code>cancelled：已撤单</code></td>
+</tr>
+<tr>
+<td>&gt; eps</td>
+<td>String</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
 </tr>
 <tr>
 <td>&gt; cTime</td>

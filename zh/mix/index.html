@@ -427,6 +427,9 @@
                       <li>
                         <a href="#symbolstatus" class="toc-h3 toc-link" data-title="symbolStatus">symbolStatus</a>
                       </li>
+                      <li>
+                        <a href="#enterpointsource" class="toc-h3 toc-link" data-title="enterPointSource">enterPointSource</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -755,6 +758,29 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年03月15日</strong></p>
+
+<ul>
+<li><a href="#ticker">/api/mix/v1/market/ticker</a> 与 <a href="#ticker-2">/api/mix/v1/market/tickers</a> 新增响应字段: &#39;indexPrice&#39;, &#39;fundingRate&#39;, &#39;holdingAmount&#39;
+
+<ul>
+<li><a href="#k">/api/mix/v1/market/candles</a> 请求参数 &#39;limit&#39; 最大值: 1000</li>
+<li><a href="#86b3aa37f0">/api/mix/v1/account/account</a> and <a href="#ca1e923f0e">/api/mix/v1/account/accounts</a> 新增响应字段 &#39;unrealizedPL&#39;, &#39;bonus&#39;</li>
+<li><a href="#98972a8d59">/api/mix/v1/account/sub-account-contract-assets</a> 新增响应字段 &#39;bonus&#39;</li>
+<li><a href="#fc150cab0e">/api/mix/v1/order/cancel-order</a> 新增请求参数 &#39;clientOid&#39;</li>
+<li><a href="#0d236c6a2b">/api/mix/v1/order/cancel-batch-orders</a> 新增请求字段: &#39;clientOids&#39;, 新增响应字段: &#39;client_order_ids&#39;</li>
+<li><a href="#cee6a1fd93">/api/mix/v1/order/current</a> 新增响应字段: &#39;priceAvg&#39;, &#39;filledAmount&#39;, &#39;leverage&#39;, &#39;marginMode&#39;, &#39;reduceOnly&#39;, &#39;enterPointSource&#39;, &#39;tradeSide&#39;, &#39;holdMode&#39;, &#39;uTime&#39;</li>
+<li><a href="#4212d667d1">/api/mix/v1/order/history</a> and <a href="#f01f8ad1de">/api/mix/v1/order/historyProductType</a> 新增请求字段: &#39;clientOid&#39;; 新增响应字段: : reduceOnly&#39;, &#39;enterPointSource&#39;, &#39;tradeSide&#39;, &#39;holdMode&#39;</li>
+<li><a href="#f876a4e1f9">/api/mix/v1/order/detail</a> 新增响应字段: &#39;leverage&#39;, &#39;marginMode&#39;, &#39;reduceOnly&#39;, &#39;enterPointSource&#39;, &#39;tradeSide&#39;, &#39;holdMode&#39;</li>
+<li><a href="#b546ba2cec">/api/mix/v1/order/fills</a> and <a href="#get-producttype-order-fill-detail">/api/mix/v1/order/allFills</a> 新增响应字段:: &#39;enterPointSource&#39;, &#39;tradeSide&#39;, &#39;holdMode&#39;,&#39;takerMakerFlag&#39;</li>
+<li><a href="#f4e3ac1d5c">/api/mix/v1/plan/modifyPlan</a>, <a href="#1fd8ca3b0e">/api/mix/v1/plan/modifyPlanPreset</a>, <a href="#a35f9bb9e4">/api/mix/v1/plan/placeTPSL</a>, <a href="#00d1edc409">/api/mix/v1/plan/placeTrailStop</a>, <a href="#a8355c89a0">/api/mix/v1/plan/placePositionsTPSL</a>, <a href="#c582da3b9c">/api/mix/v1/plan/modifyTPSLPlan</a>, <a href="#3a83e29c61">/api/mix/v1/plan/cancelPlan</a>, 新增请求字段 &#39;clientOid&#39;</li>
+<li><a href="#2ac393739d">/api/mix/v1/plan/currentPlan</a> and <a href="#b279486965">/api/mix/v1/plan/historyPlan</a> added response fields: &#39;clientOid&#39;, &#39;rangeRate&#39;, &#39;enterPointSource&#39;, &#39;tradeSide&#39;, &#39;holdMode&#39;</li>
+<li><a href="#e9970cad9f">订单频道</a> 新增推送字段 &#39;hM&#39;, &#39;eps&#39;, &#39;tS&#39;, &#39;low&#39;,</li>
+<li><a href="#ddd4a2ac94">计划委托频道</a> 新增推送字段 &#39;hM&#39;, &#39;eps&#39;, &#39;triggerTime&#39;, &#39;userId&#39;, &#39;version&#39;, &#39;triggerPxType&#39;, &#39;key&#39;</li>
+<li><a href="#restapi-2">RestAPI错误代码</a> 与 <a href="#websocket">WebSocket错误代码</a> 新增error code</li>
+</ul></li>
+</ul>
+
 <p><strong>2023年02月28日</strong></p>
 
 <ul>
@@ -1909,6 +1935,34 @@ Signature = base64.encode(Signature)
 <li>maintain  维护</li>
 <li>off       下架</li>
 </ul>
+<h3 id='enterpointsource'>enterPointSource</h3>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WEB</td>
+<td>自Web端创建的订单</td>
+</tr>
+<tr>
+<td>API</td>
+<td>自API端创建的订单</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>系统托管订单, 通常由强制平仓逻辑生成</td>
+</tr>
+<tr>
+<td>ANDROID</td>
+<td>自Android系统端创建的订单</td>
+</tr>
+<tr>
+<td>IOS</td>
+<td>自IOS系统端创建的订单</td>
+</tr>
+</tbody></table>
 <h1 id='restapi'>RestAPI</h1><h2 id='ed913b7357'>行情接口</h2><h3 id='237aec9981'>合约信息接口</h3>
 <p>限速规则: 20次/1s (IP)</p>
 
@@ -2198,7 +2252,10 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23841.5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="w">
+        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22381.253737"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000072"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdingAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85862.241"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2270,6 +2327,18 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">chgUtc</td>
 <td style="text-align: left">UTC0 24小时涨跌幅</td>
 </tr>
+<tr>
+<td style="text-align: left">indexPrice</td>
+<td style="text-align: left">指数价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fundingRate</td>
+<td style="text-align: left">资金费率</td>
+</tr>
+<tr>
+<td style="text-align: left">holdingAmount</td>
+<td style="text-align: left">当前持仓, 单位是base coin</td>
+</tr>
 </tbody></table>
 <h3 id='ticker-2'>全部Ticker行情获取</h3>
 <p>限速规则: 20次/1s (IP)</p>
@@ -2325,7 +2394,10 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"usdtVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3735854069.908"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23841.5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="w">
+        </span><span class="s2">"chgUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00625"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22381.253737"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000072"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdingAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85862.241"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2396,6 +2468,18 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">chgUtc</td>
 <td style="text-align: left">UTC0 24小时价格涨跌幅</td>
+</tr>
+<tr>
+<td style="text-align: left">indexPrice</td>
+<td style="text-align: left">指数价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fundingRate</td>
+<td style="text-align: left">资金费率</td>
+</tr>
+<tr>
+<td style="text-align: left">holdingAmount</td>
+<td style="text-align: left">当前持仓, 单位是base coin</td>
 </tr>
 </tbody></table>
 
@@ -2699,6 +2783,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">结束时间（时间戳毫秒，小于等于），根据granularity向下取整, 即granularity=1m时： 1672410799436(2022-12-30 22:33:19) 向下取整为 1672408800000 (2022-12-30 22:00:00)</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">默认 100, 最大 1000</td>
 </tr>
 </tbody></table>
 
@@ -3336,7 +3426,9 @@ Signature = base64.encode(Signature)
         </span><span class="s2">"fixedLongLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="s2">"fixedShortLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
         </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="w">
+        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627292199523</span><span class="w">
@@ -3410,6 +3502,14 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">持仓模式</td>
 </tr>
+<tr>
+<td style="text-align: left">unrealizedPL</td>
+<td style="text-align: left">未实现盈亏</td>
+</tr>
+<tr>
+<td style="text-align: left">bonus</td>
+<td style="text-align: left">体验金</td>
+</tr>
 </tbody></table>
 <h3 id='ca1e923f0e'>获取账户信息列表</h3>
 <p>限速规则: 10次/1s (uid)</p>
@@ -3464,7 +3564,10 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
+            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"crossRiskRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -3514,6 +3617,18 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">btcEquity</td>
 <td style="text-align: left">折算BTC账户权益</td>
+</tr>
+<tr>
+<td style="text-align: left">crossRiskRate</td>
+<td style="text-align: left">全仓时风险率</td>
+</tr>
+<tr>
+<td style="text-align: left">unrealizedPL</td>
+<td style="text-align: left">未实现盈亏</td>
+</tr>
+<tr>
+<td style="text-align: left">bonus</td>
+<td style="text-align: left">体验金</td>
 </tr>
 </tbody></table>
 <h3 id='98972a8d59'>获取所有子账户合约资产信息</h3>
@@ -3574,7 +3689,8 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23.123"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001403612744"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -3591,7 +3707,8 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"equity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000667722189"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -3647,6 +3764,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">unrealizedPL</td>
 <td style="text-align: left">未平仓损益</td>
+</tr>
+<tr>
+<td style="text-align: left">bonus</td>
+<td style="text-align: left">体验金</td>
 </tr>
 </tbody></table>
 <h3 id='4472f6d613'>获取可开数量</h3>
@@ -5515,8 +5636,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">订单号</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单号, int64类型字符串, &#39;orderId&#39; or &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">用户自定义ID, &#39;orderId&#39; or &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 </tbody></table>
 
@@ -5599,6 +5726,18 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">是</td>
 <td style="text-align: center">订单号集合</td>
 </tr>
+<tr>
+<td style="text-align: left">orderIds</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单ID list, 字符串类型的int64, &#39;orderIds&#39; 或 &#39;clientOids&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOids</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">Client Order Id list, &#39;orderIds&#39; 或 &#39;clientOids&#39; 必需提供一个</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -5622,6 +5761,9 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"1627293504612"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"client_order_ids"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"xxx001"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fail_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -5650,6 +5792,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">order_ids</td>
 <td style="text-align: left">订单号数组</td>
+</tr>
+<tr>
+<td style="text-align: left">client_order_ids</td>
+<td style="text-align: left">ClientOid 数组</td>
 </tr>
 <tr>
 <td style="text-align: left">fail_infos</td>
@@ -5812,14 +5958,23 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.00</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.4520</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464831"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464891"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -5853,7 +6008,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td style="text-align: left">filledQty</td>
-<td style="text-align: left">成交数量</td>
+<td style="text-align: left">成交数量，左币</td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
@@ -5862,6 +6017,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">price</td>
 <td style="text-align: left">委托价格</td>
+</tr>
+<tr>
+<td style="text-align: left">priceAvg</td>
+<td style="text-align: left">平均成交价格</td>
 </tr>
 <tr>
 <td style="text-align: left">state</td>
@@ -5888,11 +6047,43 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">保证金币种</td>
 </tr>
 <tr>
+<td style="text-align: left">filledAmount</td>
+<td style="text-align: left">成交金额, 右币</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">杠杆倍数</td>
+</tr>
+<tr>
+<td style="text-align: left">marginMode</td>
+<td style="text-align: left"><a href="#marginmode">Margin mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left">reduceOnly</td>
+<td style="text-align: left">是否只减仓</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">Trade Side</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left"><a href="#holdmode">Hold mode</a></td>
+</tr>
+<tr>
 <td style="text-align: left">orderType</td>
 <td style="text-align: left">订单类型</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
 <td style="text-align: left">最近更新时间</td>
 </tr>
 </tbody></table>
@@ -6091,6 +6282,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">上一次的查询orderId</td>
 </tr>
 <tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">精确匹配</td>
+</tr>
+<tr>
 <td style="text-align: left">isPre</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">否</td>
@@ -6126,16 +6323,23 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">31.4421</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+                </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -6169,7 +6373,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td style="text-align: left">filledQty</td>
-<td style="text-align: left">成交数量</td>
+<td style="text-align: left">成交数量，左币</td>
 </tr>
 <tr>
 <td style="text-align: left">fee</td>
@@ -6208,6 +6412,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">保证金币种</td>
 </tr>
 <tr>
+<td style="text-align: left">filledAmount</td>
+<td style="text-align: left">成交金额，右币</td>
+</tr>
+<tr>
 <td style="text-align: left">leverage</td>
 <td style="text-align: left">杠杆倍数</td>
 </tr>
@@ -6218,6 +6426,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderType</td>
 <td style="text-align: left">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceOnly</td>
+<td style="text-align: left">只减仓</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">交易方向</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6278,6 +6502,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">上一次的查询orderId</td>
 </tr>
 <tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">精确匹配</td>
+</tr>
+<tr>
 <td style="text-align: left">isPre</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">否</td>
@@ -6322,7 +6552,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
+                </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -6407,6 +6642,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">订单类型</td>
 </tr>
 <tr>
+<td style="text-align: left">reduceOnly</td>
+<td style="text-align: left">只减仓</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">交易方向</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">创建时间</td>
 </tr>
@@ -6444,13 +6695,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">订单号</td>
+<td style="text-align: center">订单号, int64类型字符串, &#39;orderId&#39; or &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">用户自定义ID</td>
+<td style="text-align: center">用户自定义ID, &#39;orderId&#39; or &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 </tbody></table>
 
@@ -6489,6 +6740,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
         </span><span class="s2">"presetStopLossPrice"</span><span class="p">:</span><span class="mf">21432.5</span><span class="p">,</span><span class="w">
         </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="mi">45838</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="p">,</span><span class="w">
         </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1627028717807</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -6577,12 +6834,36 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">交易类型 limit 限价  market 市价</td>
 </tr>
 <tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">杠杆倍数</td>
+</tr>
+<tr>
+<td style="text-align: left">marginMode</td>
+<td style="text-align: left"><a href="#marginmode">Margin Mode(仓位模式)</a></td>
+</tr>
+<tr>
+<td style="text-align: left">reduceOnly</td>
+<td style="text-align: left">是否只减仓</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">交易方向(交易方向)</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left"><a href="#holdmode">Hold mode(持仓模式)</a></td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: left">创建时间</td>
+<td style="text-align: left">创建时间, ms</td>
 </tr>
 <tr>
 <td style="text-align: left">uTime</td>
-<td style="text-align: left">更新时间</td>
+<td style="text-align: left">更新时间, ms</td>
 </tr>
 </tbody></table>
 <h3 id='b546ba2cec'>查询成交明细</h3>
@@ -6663,6 +6944,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6713,6 +6998,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">profit</td>
 <td style="text-align: left">利润</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">交易方向</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
+</tr>
+<tr>
+<td style="text-align: left">takerMakerFlag</td>
+<td style="text-align: left">taker</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6808,6 +7109,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -6858,6 +7163,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">profit</td>
 <td style="text-align: left">利润</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">交易方向</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
+</tr>
+<tr>
+<td style="text-align: left">takerMakerFlag</td>
+<td style="text-align: left">taker</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7069,8 +7390,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">计划委托订单号</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">计划委托订单号, &#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">&#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -7189,8 +7516,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">计划委托订单号</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">计划委托订单号, &#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">&#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -7329,6 +7662,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">否</td>
 <td style="text-align: center">回调幅度(planType=&quot;moving_plan&quot;时使用)，“1” 表示 1.0%的价格回调, 最多两位小数</td>
 </tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">Client order ID, 幂等控制</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -7449,6 +7788,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">否</td>
 <td style="text-align: center">回调幅度，planType=&quot;moving_plan&quot;时使用；&quot;1&quot; 表示 1.0%的价格回调, 最多两位小数</td>
 </tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">Client order ID, 幂等控制</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -7550,6 +7895,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">否</td>
 <td style="text-align: center">本仓位是多仓还是空仓</td>
 </tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">Client order ID, 幂等控制</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -7631,8 +7982,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">止盈止损订单号</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">止盈止损订单号, &#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">&#39;orderId&#39; 与 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -7724,8 +8081,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">计划委托订单号</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">计划委托订单ID, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">clientOid, &#39;orderId&#39; 或 &#39;clientOid&#39; 必需提供一个</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
@@ -7936,6 +8299,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -7948,6 +8312,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -7966,6 +8334,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client Order Id</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
@@ -8014,6 +8386,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">presetTakeLossPrice</td>
 <td style="text-align: left">预设止损价格</td>
+</tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">回调幅度(planType=&quot;moving_plan&quot;时有值)，“1” 表示 1.0%的价格回调, 最多两位小数</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">Trade Side</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left"><a href="#holdmode">Hold Mode</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -8105,6 +8493,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"executeOrderId"</span><span class="p">:</span><span class="s2">"3036219460491"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
@@ -8118,6 +8507,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -8136,6 +8529,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderId</td>
 <td style="text-align: left">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Client Order Id</td>
 </tr>
 <tr>
 <td style="text-align: left">executeOrderId</td>
@@ -8188,6 +8585,30 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
 <td style="text-align: left">预设止盈价格</td>
+</tr>
+<tr>
+<td style="text-align: left">presetTakeLossPrice</td>
+<td style="text-align: left">预设止损价格</td>
+</tr>
+<tr>
+<td style="text-align: left">rangeRate</td>
+<td style="text-align: left">回调幅度(planType=&quot;moving_plan&quot;时有值)，“1” 表示 1.0%的价格回调, 最多两位小数</td>
+</tr>
+<tr>
+<td style="text-align: left">enterPointSource</td>
+<td style="text-align: left"><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td style="text-align: left">tradeSide</td>
+<td style="text-align: left"><a href="#tradeside">Trade Side</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left"><a href="#holdmode">Hold Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">最近更新时间</td>
 </tr>
 </tbody></table>
 
@@ -11784,6 +12205,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>原始委托数量，以币为单位</td>
 </tr>
 <tr>
+<td>&gt; hM</td>
+<td>String</td>
+<td><a href="#holdmode">Hold Mode</a></td>
+</tr>
+<tr>
+<td>&gt; eps</td>
+<td>String</td>
+<td><a href="#enterpointsource">enterPointSource</a></td>
+</tr>
+<tr>
+<td>&gt; tS</td>
+<td>String</td>
+<td><a href="#tradeside">Trade Side</a></td>
+</tr>
+<tr>
 <td>&gt; notionalUsd</td>
 <td>String</td>
 <td>委托单预估美元价值</td>
@@ -12136,9 +12572,44 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>保证金币种</td>
 </tr>
 <tr>
-<td>&gt; status</td>
+<td>&gt; state</td>
 <td>String</td>
 <td>订单状态   <code>not_trigger：未触发</code>   <code>triggered： 已触发</code>   <code>fail_trigger：触发失败</code>    <code>cancel：已撤单</code></td>
+</tr>
+<tr>
+<td>&gt; hM</td>
+<td>String</td>
+<td><a href="#holdmode">Hold mode</a></td>
+</tr>
+<tr>
+<td>&gt; eps</td>
+<td>String</td>
+<td><a href="#enterpointsource">enterPointSource</a>.</td>
+</tr>
+<tr>
+<td>&gt; triggerTime</td>
+<td>String</td>
+<td>触发时间, ms</td>
+</tr>
+<tr>
+<td>&gt; userId</td>
+<td>String</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>&gt; version</td>
+<td>Long</td>
+<td>版本号，内部使用</td>
+</tr>
+<tr>
+<td>&gt; triggerPxType</td>
+<td>String</td>
+<td>&#39;mark&#39;</td>
+</tr>
+<tr>
+<td>&gt; key</td>
+<td>String</td>
+<td>内部使用</td>
 </tr>
 <tr>
 <td>&gt; uTime</td>
@@ -12349,6 +12820,76 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">40812</td>
 <td style="text-align: center">400</td>
 </tr>
+<tr>
+<td style="text-align: left">参数 {0} 异常</td>
+<td style="text-align: left">40020</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">用户禁止提币</td>
+<td style="text-align: left">40021</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: left">40022</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: left">40023</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数 {0} 不能为空</td>
+<td style="text-align: left">40019</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">账户余额不足</td>
+<td style="text-align: left">43012</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">该交易对已下线</td>
+<td style="text-align: left">41113</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">当前交易对停盘中，具体开放时间请留意官方公告</td>
+<td style="text-align: left">41114</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">参数错误 {0}</td>
+<td style="text-align: left">43111</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">提币金额小于手续费 {0}</td>
+<td style="text-align: left">43112</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">委托价格高于最高买价</td>
+<td style="text-align: left">40815</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">委托价格低于于最低卖价</td>
+<td style="text-align: left">40816</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">触发最小下单数量</td>
+<td style="text-align: left">45111</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">您输入的价格应该是 {0} 的倍数</td>
+<td style="text-align: left">45115</td>
+<td style="text-align: center">400</td>
+</tr>
 </tbody></table>
 <h1 id='websocket'>WebSocket错误代码</h1>
 <table><thead>
@@ -12376,6 +12917,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">登录失败</td>
 <td style="text-align: left">30005</td>
+</tr>
+<tr>
+<td style="text-align: left">请求频繁</td>
+<td style="text-align: left">30006</td>
+</tr>
+<tr>
+<td style="text-align: left">请求超限,连接关闭</td>
+<td style="text-align: left">30007</td>
 </tr>
 <tr>
 <td style="text-align: left">无效的ACCESS_KEY</td>
