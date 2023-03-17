@@ -443,6 +443,9 @@
                         <a href="#get-market-trades" class="toc-h3 toc-link" data-title="Get Market Trades">Get Market Trades</a>
                       </li>
                       <li>
+                        <a href="#get-history-trades" class="toc-h3 toc-link" data-title="Get History Trades">Get History Trades</a>
+                      </li>
+                      <li>
                         <a href="#get-candle-data" class="toc-h3 toc-link" data-title="Get Candle Data">Get Candle Data</a>
                       </li>
                       <li>
@@ -2255,6 +2258,124 @@ microtime(true) * 1000;
 <tr>
 <td>side</td>
 <td>Trade direction, &#39;buy&#39;, &#39;sell&#39;</td>
+</tr>
+<tr>
+<td>fillPrice</td>
+<td>Transaction price, quote coin</td>
+</tr>
+<tr>
+<td>fillQuantity</td>
+<td>Transaction quantity, base coin</td>
+</tr>
+<tr>
+<td>fillTime</td>
+<td>Transaction time</td>
+</tr>
+</tbody></table>
+<h3 id='get-history-trades'>Get History Trades</h3>
+<p>Fetch trade history within 30 days, response will be cached with same param for 10 minutes, please revise &#39;endTime&#39; to get the latest records</p>
+
+<p>Rate Limit: 10 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/market/fills-history</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>No</td>
+<td>Default is 500, Max is 1000</td>
+</tr>
+<tr>
+<td>tradeId</td>
+<td>String</td>
+<td>No</td>
+<td>tradeId, return records with &#39;tradeId&#39; less than the provided value</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>No</td>
+<td>startTime, ms</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>No</td>
+<td>endTime, ms</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/fills-history?symbol=btcusdt_spbl&amp;limit=2&amp;tradeId=1020221685304578123&amp;startTime=1678965010861&amp;endTime=1678965910861"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1678965934811</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1020221668657385473"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21120"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5985"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678965721000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1020221660121976833"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21120"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3119"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678965719000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Symbol ID</td>
+</tr>
+<tr>
+<td>tradeId</td>
+<td>Filled order ID, desc</td>
+</tr>
+<tr>
+<td>side</td>
+<td>Trade direction, &#39;Buy&#39;, &#39;Sell&#39;</td>
 </tr>
 <tr>
 <td>fillPrice</td>
@@ -6114,7 +6235,7 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>order ID</td>
+<td>orderId or clientOid, same as input param</td>
 </tr>
 </tbody></table>
 
@@ -8622,6 +8743,11 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 <tr>
 <td>clientOrderId duplicate</td>
 <td>43118</td>
+<td>400</td>
+</tr>
+<tr>
+<td>The purchase limit of this currency is {0}, and there is still {1} left</td>
+<td>43122</td>
 <td>400</td>
 </tr>
 </tbody></table>

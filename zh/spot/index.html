@@ -434,6 +434,9 @@
                         <a href="#2fdd066e43" class="toc-h3 toc-link" data-title="获取成交数据">获取成交数据</a>
                       </li>
                       <li>
+                        <a href="#ad8473e52d" class="toc-h3 toc-link" data-title="获取历史成交数据">获取历史成交数据</a>
+                      </li>
+                      <li>
                         <a href="#k" class="toc-h3 toc-link" data-title="获取K线数据">获取K线数据</a>
                       </li>
                       <li>
@@ -2097,11 +2100,11 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='2fdd066e43'>获取成交数据</h3>
-<p>限速规则：20次/1s (IP)</p>
+<p>限速规则：10次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
 
-<p>获取成交数据</p>
+<p>获取最近的成交数据</p>
 
 <ul>
 <li>GET /api/spot/v1/market/fills</li>
@@ -2181,6 +2184,123 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">side</td>
 <td style="text-align: center">交易方向</td>
+</tr>
+<tr>
+<td style="text-align: left">fillPrice</td>
+<td style="text-align: center">成交价格</td>
+</tr>
+<tr>
+<td style="text-align: left">fillQuantity</td>
+<td style="text-align: center">成交数量</td>
+</tr>
+<tr>
+<td style="text-align: left">fillTime</td>
+<td style="text-align: center">成交时间</td>
+</tr>
+</tbody></table>
+<h3 id='ad8473e52d'>获取历史成交数据</h3>
+<p>限速规则：10次/1s (IP)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取近30天成交数据，数据会按请求参数缓存10分钟，请修改endTime以获取最近的成交记录</p>
+
+<ul>
+<li>GET /api/spot/v1/market/fills-history</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">默认500，最大1000</td>
+</tr>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">成交ID，返回小于指定&#39;tradeId&#39;的记录</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">startTime, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">endTime, ms</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/fills-history?symbol=btcusdt_spbl&amp;limit=2&amp;tradeId=1020221685304578123&amp;startTime=1678965010861&amp;endTime=1678965910861"</span>
+</code></pre>
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1020221668657385473"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sell"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21341"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5985"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678965721000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1020221660121976833"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21341"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3119"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678965719000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">tradeId</td>
+<td style="text-align: center">成交单id, 降序排列</td>
+</tr>
+<tr>
+<td style="text-align: left">side</td>
+<td style="text-align: center">交易方向, Sell/Buy</td>
 </tr>
 <tr>
 <td style="text-align: left">fillPrice</td>
@@ -6042,7 +6162,7 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td style="text-align: left">data</td>
-<td style="text-align: center">订单ID</td>
+<td style="text-align: center">orderId或clientOid，原值返回</td>
 </tr>
 </tbody></table>
 
@@ -8479,6 +8599,11 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">请求超时</td>
 <td style="text-align: left">40010</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">该币种限制买入额度{0}，还剩{1}</td>
+<td style="text-align: left">43122</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
