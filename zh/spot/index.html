@@ -431,10 +431,10 @@
                         <a href="#ticker-2" class="toc-h3 toc-link" data-title="获取全部Ticker信息">获取全部Ticker信息</a>
                       </li>
                       <li>
-                        <a href="#2fdd066e43" class="toc-h3 toc-link" data-title="获取成交数据">获取成交数据</a>
+                        <a href="#0ec8239beb" class="toc-h3 toc-link" data-title="获取最近成交数据">获取最近成交数据</a>
                       </li>
                       <li>
-                        <a href="#ad8473e52d" class="toc-h3 toc-link" data-title="获取历史成交数据">获取历史成交数据</a>
+                        <a href="#2fdd066e43" class="toc-h3 toc-link" data-title="获取成交数据">获取成交数据</a>
                       </li>
                       <li>
                         <a href="#k" class="toc-h3 toc-link" data-title="获取K线数据">获取K线数据</a>
@@ -516,6 +516,9 @@
                       </li>
                       <li>
                         <a href="#v2-4" class="toc-h3 toc-link" data-title="撤单V2">撤单V2</a>
+                      </li>
+                      <li>
+                        <a href="#d086f19b09" class="toc-h3 toc-link" data-title="按币对撤单">按币对撤单</a>
                       </li>
                       <li>
                         <a href="#01fc615ded" class="toc-h3 toc-link" data-title="批量撤单(单币对)">批量撤单(单币对)</a>
@@ -668,6 +671,13 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年03月17日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#2fdd066e43">获取成交数据</a></li>
+<li>新增接口 <a href="#d086f19b09">按币对撤单</a></li>
+</ul>
+
 <p><strong>2023年03月15日</strong></p>
 
 <ul>
@@ -2099,12 +2109,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">24小时涨跌幅, 0.01表示1%</td>
 </tr>
 </tbody></table>
-<h3 id='2fdd066e43'>获取成交数据</h3>
+<h3 id='0ec8239beb'>获取最近成交数据</h3>
 <p>限速规则：10次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
 
-<p>获取最近的成交数据</p>
+<p>获取最近的500条成交数据</p>
 
 <ul>
 <li>GET /api/spot/v1/market/fills</li>
@@ -2198,7 +2208,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">成交时间</td>
 </tr>
 </tbody></table>
-<h3 id='ad8473e52d'>获取历史成交数据</h3>
+<h3 id='2fdd066e43'>获取成交数据</h3>
 <p>限速规则：10次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -4719,7 +4729,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">产品ID</td>
+<td style="text-align: center">symbol</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -4829,7 +4839,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">产品ID</td>
+<td style="text-align: center">symbol</td>
 </tr>
 <tr>
 <td style="text-align: left">orderList</td>
@@ -4987,7 +4997,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">产品ID</td>
+<td style="text-align: center">symbol</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -5043,7 +5053,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">产品ID</td>
+<td style="text-align: center">symbol</td>
 </tr>
 <tr>
 <td style="text-align: left">orderId</td>
@@ -5084,6 +5094,102 @@ Signature = base64.encode(Signature)
   }
 }
 </code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='d086f19b09'>按币对撤单</h3>
+<p>限速规则 10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>撤单操作</p>
+
+<ul>
+<li>POST /api/spot/v1/trade/cancel-symbol-order</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">symbol</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/trade/cancel-symbol-order"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_SPBL"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+
+  "code":"00000",
+   "message":"success",
+  "data":"BTCUSDT_SPBL"
+}
+</code></pre>
+<p>撤单结果应做二次确认</p>
+
+<p>&nbsp;</p>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>

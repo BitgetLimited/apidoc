@@ -459,10 +459,10 @@
                         <a href="#vip-fee-rate" class="toc-h3 toc-link" data-title="VIP fee rate">VIP fee rate</a>
                       </li>
                       <li>
-                        <a href="#get-fills" class="toc-h3 toc-link" data-title="Get Fills">Get Fills</a>
+                        <a href="#get-recent-fills" class="toc-h3 toc-link" data-title="Get Recent Fills">Get Recent Fills</a>
                       </li>
                       <li>
-                        <a href="#get-fills-history" class="toc-h3 toc-link" data-title="Get Fills history">Get Fills history</a>
+                        <a href="#get-fills" class="toc-h3 toc-link" data-title="Get Fills">Get Fills</a>
                       </li>
                       <li>
                         <a href="#get-candle-data" class="toc-h3 toc-link" data-title="Get Candle Data">Get Candle Data</a>
@@ -550,6 +550,9 @@
                         <a href="#batch-cancel-order" class="toc-h3 toc-link" data-title="Batch Cancel Order">Batch Cancel Order</a>
                       </li>
                       <li>
+                        <a href="#cancel-order-by-symbol" class="toc-h3 toc-link" data-title="Cancel Order By Symbol">Cancel Order By Symbol</a>
+                      </li>
+                      <li>
                         <a href="#cancel-all-order" class="toc-h3 toc-link" data-title="Cancel All Order">Cancel All Order</a>
                       </li>
                       <li>
@@ -596,6 +599,9 @@
                       </li>
                       <li>
                         <a href="#cancel-plan-order-tpsl" class="toc-h3 toc-link" data-title="Cancel Plan Order (TPSL)">Cancel Plan Order (TPSL)</a>
+                      </li>
+                      <li>
+                        <a href="#cancel-plan-order-tpsl-by-symbol" class="toc-h3 toc-link" data-title="Cancel Plan Order (TPSL) By Symbol">Cancel Plan Order (TPSL) By Symbol</a>
                       </li>
                       <li>
                         <a href="#cancel-all-trigger-order-tpsl" class="toc-h3 toc-link" data-title="Cancel All trigger Order (TPSL)">Cancel All trigger Order (TPSL)</a>
@@ -763,6 +769,14 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Mar 17, 2023</strong></p>
+
+<ul>
+<li>New interface <a href="#get-fills">Get Fills</a></li>
+<li>New interface <a href="#cancel-order-by-symbol">Cancel Order By Symbol</a></li>
+<li>New interface <a href="#cancel-plan-order-tpsl-by-symbol">Cancel Plan Order (TPSL) By Symbol</a></li>
+</ul>
+
 <p><strong>Mar 15, 2023</strong></p>
 
 <ul>
@@ -2475,8 +2489,8 @@ If there is a large deviation between the local server time and the API server t
 <td>24 hours withdraw amount (USDT)</td>
 </tr>
 </tbody></table>
-<h3 id='get-fills'>Get Fills</h3>
-<p>Get recent trades.</p>
+<h3 id='get-recent-fills'>Get Recent Fills</h3>
+<p>Get recent 100 trades.</p>
 
 <p>Limit rule: 20 times/1s (IP)</p>
 
@@ -2609,7 +2623,7 @@ If there is a large deviation between the local server time and the API server t
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-<h3 id='get-fills-history'>Get Fills history</h3>
+<h3 id='get-fills'>Get Fills</h3>
 <p>Fetch trade history within 30 days, response will be cached with same param for 10 minutes, please revise &#39;endTime&#39; to get the latest records</p>
 
 <p>Limit rule: 10 times/1s (IP)</p>
@@ -5827,6 +5841,113 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">error msg</td>
 </tr>
 </tbody></table>
+<h3 id='cancel-order-by-symbol'>Cancel Order By Symbol</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/order/cancel-symbol-orders</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/cancel-symbol-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1627293504612"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"client_order_ids"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"xxx001"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"fail_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1627293504612</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
+<td style="text-align: left">order_ids</td>
+<td style="text-align: left">Order Id array</td>
+</tr>
+<tr>
+<td style="text-align: left">client_order_ids</td>
+<td style="text-align: left">Client Order Id array</td>
+</tr>
+<tr>
+<td style="text-align: left">fail_infos</td>
+<td style="text-align: left">Failed information array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; order_id</td>
+<td style="text-align: left">Failed order id</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_code</td>
+<td style="text-align: left">Error code</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_msg</td>
+<td style="text-align: left">error msg</td>
+</tr>
+</tbody></table>
 <h3 id='cancel-all-order'>Cancel All Order</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
@@ -8074,6 +8195,76 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Order Id</td>
 </tr>
 </tbody></table>
+<h3 id='cancel-plan-order-tpsl-by-symbol'>Cancel Plan Order (TPSL) By Symbol</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/cancelSymbolPlan</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id  (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/cancelSymbolPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"planType"</span>:<span class="s2">"loss_plan"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">Whether &#39;cancel&#39; is received</td>
+</tr>
+</tbody></table>
+
+<p>Final cancel result should be confirmed via websocket or <a href="#get-plan-order-tpsl-list">/api/mix/v1/plan/currentPlan</a></p>
 <h3 id='cancel-all-trigger-order-tpsl'>Cancel All trigger Order (TPSL)</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 

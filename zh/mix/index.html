@@ -547,6 +547,9 @@
                         <a href="#0d236c6a2b" class="toc-h3 toc-link" data-title="批量撤单">批量撤单</a>
                       </li>
                       <li>
+                        <a href="#symbol" class="toc-h3 toc-link" data-title="按symbol撤单">按symbol撤单</a>
+                      </li>
+                      <li>
                         <a href="#7665dda031" class="toc-h3 toc-link" data-title="一键全撤">一键全撤</a>
                       </li>
                       <li>
@@ -593,6 +596,9 @@
                       </li>
                       <li>
                         <a href="#3a83e29c61" class="toc-h3 toc-link" data-title="计划委托(止盈止损)撤单">计划委托(止盈止损)撤单</a>
+                      </li>
+                      <li>
+                        <a href="#symbol-2" class="toc-h3 toc-link" data-title="计划委托(止盈止损)按symbol撤单">计划委托(止盈止损)按symbol撤单</a>
                       </li>
                       <li>
                         <a href="#5f9d69dc37" class="toc-h3 toc-link" data-title="策略一键撤单">策略一键撤单</a>
@@ -761,12 +767,18 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年03月17日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#106a02279b">获取成交明细</a></li>
+<li>新增接口 <a href="#symbol">按symbol撤单</a></li>
+<li>新增接口 <a href="#symbol-2">计划委托(止盈止损)按symbol撤单</a></li>
+</ul>
+
 <p><strong>2023年03月15日</strong></p>
 
 <ul>
-<li><a href="#ticker">/api/mix/v1/market/ticker</a> 与 <a href="#ticker-2">/api/mix/v1/market/tickers</a> 新增响应字段: &#39;indexPrice&#39;, &#39;fundingRate&#39;, &#39;holdingAmount&#39;
-
-<ul>
+<li><a href="#ticker">/api/mix/v1/market/ticker</a> 与 <a href="#ticker-2">/api/mix/v1/market/tickers</a> 新增响应字段: &#39;indexPrice&#39;, &#39;fundingRate&#39;, &#39;holdingAmount&#39;</li>
 <li><a href="#k">/api/mix/v1/market/candles</a> 请求参数 &#39;limit&#39; 最大值: 1000</li>
 <li><a href="#86b3aa37f0">/api/mix/v1/account/account</a> and <a href="#ca1e923f0e">/api/mix/v1/account/accounts</a> 新增响应字段 &#39;unrealizedPL&#39;, &#39;bonus&#39;</li>
 <li><a href="#98972a8d59">/api/mix/v1/account/sub-account-contract-assets</a> 新增响应字段 &#39;bonus&#39;</li>
@@ -781,7 +793,6 @@ clipboard.on('error', function(e) {
 <li><a href="#e9970cad9f">订单频道</a> 新增推送字段 &#39;hM&#39;, &#39;eps&#39;, &#39;tS&#39;, &#39;low&#39;,</li>
 <li><a href="#ddd4a2ac94">计划委托频道</a> 新增推送字段 &#39;hM&#39;, &#39;eps&#39;, &#39;triggerTime&#39;, &#39;userId&#39;, &#39;version&#39;, &#39;triggerPxType&#39;, &#39;key&#39;</li>
 <li><a href="#restapi-2">RestAPI错误代码</a> 与 <a href="#websocket">WebSocket错误代码</a> 新增error code</li>
-</ul></li>
 </ul>
 
 <p><strong>2023年02月28日</strong></p>
@@ -2610,7 +2621,9 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">24小时提币限额 (USDT)</td>
 </tr>
 </tbody></table>
-<h3 id='106a02279b'>获取成交明细</h3>
+<h3 id='31ece0e16d'>获取最近成交明细</h3>
+<p>获取最近100条成交记录</p>
+
 <p>限速规则: 20次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -2742,7 +2755,7 @@ Signature = base64.encode(Signature)
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-<h3 id='1e62da538b'>获取历史成交</h3>
+<h3 id='106a02279b'>获取成交明细</h3>
 <p>限速规则: 10次/1s (IP)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -5969,6 +5982,113 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">错误消息</td>
 </tr>
 </tbody></table>
+<h3 id='symbol'>按symbol撤单</h3>
+<p>限速规则: 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/order/cancel-symbol-orders</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">保证金币种 必须大写</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/cancel-symbol-orders"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1627293504612"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"client_order_ids"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"xxx001"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"fail_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1627293504612</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">order_ids</td>
+<td style="text-align: left">订单号数组</td>
+</tr>
+<tr>
+<td style="text-align: left">client_order_ids</td>
+<td style="text-align: left">ClientOid 数组</td>
+</tr>
+<tr>
+<td style="text-align: left">fail_infos</td>
+<td style="text-align: left">失败信息集合</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; order_id</td>
+<td style="text-align: left">失败单号</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_code</td>
+<td style="text-align: left">错误代码</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_msg</td>
+<td style="text-align: left">错误消息</td>
+</tr>
+</tbody></table>
 <h3 id='7665dda031'>一键全撤</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
@@ -8307,6 +8427,76 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">订单号</td>
 </tr>
 </tbody></table>
+<h3 id='symbol-2'>计划委托(止盈止损)按symbol撤单</h3>
+<p>限速规则: 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/plan/cancelSymbolPlan</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">planType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center"><a href="#plantype">plan type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/cancelSymbolPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"planType"</span>:<span class="s2">"loss_plan"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">撤单指定是否成功接收</td>
+</tr>
+</tbody></table>
+
+<p>最终的撤单结果需要通过websocket/<a href="#2ac393739d">当前计划委托</a>查询以确定</p>
 <h3 id='5f9d69dc37'>策略一键撤单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
