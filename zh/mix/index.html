@@ -12359,7 +12359,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 <p>定时推送，只推用户持有的仓位。</p>
 <h3 id='e9970cad9f'>订单频道</h3>
-<p>获取订单信息，首次订阅不推送，只有当下单、撤单、成交等事件触发时，推送数据</p>
+<p>获取订单信息，首次订阅不推送，只有当下单、撤单、强平、成交等事件触发时，推送数据</p>
 
 <blockquote>
 <p>请求示例</p>
@@ -12647,7 +12647,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td>&gt; avgPx</td>
 <td>String</td>
-<td>成交均价，如果成交数量为0，该字段也为0</td>
+<td>成交均价，如果成交数量为0，该字段为0；若未成交，该字段也为0</td>
 </tr>
 <tr>
 <td>&gt; status</td>
@@ -12832,6 +12832,11 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </thead><tbody>
 <tr>
+<td>action</td>
+<td>String</td>
+<td>&#39;snapshot&#39;</td>
+</tr>
+<tr>
 <td>arg</td>
 <td>Object</td>
 <td>订阅成功的频道</td>
@@ -12909,7 +12914,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td>&gt; posSide</td>
 <td>String</td>
-<td>持仓方向<code>long</code>：双向持仓多头<code>short</code>：双向持仓空头<code>net</code>：单向持仓</td>
+<td>持仓方向；<code>long</code>：双向持仓多头，<code>short</code>：双向持仓空头；<code>net</code>：单向持仓</td>
 </tr>
 <tr>
 <td>&gt; tgtCcy</td>
@@ -12949,12 +12954,17 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td>&gt; triggerPxType</td>
 <td>String</td>
-<td>&#39;mark&#39;</td>
+<td>&#39;mark&#39;：标记价格触发； &#39;last&#39;：市价触发</td>
 </tr>
 <tr>
 <td>&gt; key</td>
 <td>String</td>
 <td>内部使用</td>
+</tr>
+<tr>
+<td>&gt; tS</td>
+<td>String</td>
+<td><a href="#tradeside">Trade Side(交易方向)</a></td>
 </tr>
 <tr>
 <td>&gt; uTime</td>

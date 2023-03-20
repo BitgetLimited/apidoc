@@ -12169,7 +12169,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 
 <p>When multiple orders are being executed at the same time, the changes of position data will be aggregated into one as much as possible.</p>
 <h3 id='order-channel'>Order Channel</h3>
-<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling order.</p>
+<p>Retrieve order information. Data will not be pushed when first subscribed. Data will only be pushed when triggered by events such as placing/canceling/force liquidate order.</p>
 
 <blockquote>
 <p>Request Example</p>
@@ -12462,7 +12462,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>&gt; avgPx</td>
 <td>String</td>
-<td>Average filled price. If none is filled, it will return <code>0</code>.</td>
+<td>Average filled price. If none is filled, it will return <code>0</code></td>
 </tr>
 <tr>
 <td>&gt; status</td>
@@ -12654,7 +12654,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>action</td>
 <td>String</td>
-<td>Snapshot</td>
+<td>&#39;snapshot&#39;</td>
 </tr>
 <tr>
 <td>arg</td>
@@ -12722,6 +12722,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>actual size</td>
 </tr>
 <tr>
+<td>&gt; actualPx</td>
+<td>String</td>
+<td>Actual price</td>
+</tr>
+<tr>
 <td>&gt; ordType</td>
 <td>String</td>
 <td>Order Type <code>market</code>  <code>limit</code></td>
@@ -12729,12 +12734,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>&gt; side</td>
 <td>String</td>
-<td>Order Side ，<code>buy</code> <code>sell</code></td>
+<td>Order Side, <code>buy</code> <code>sell</code></td>
 </tr>
 <tr>
 <td>&gt; posSide</td>
 <td>String</td>
-<td>Position side    <code>long</code>  or  <code>short</code></td>
+<td>Position side; &#39;double_hold&#39;:<code>long</code> or <code>short</code>; &#39;single_hold&#39;: <code>net</code></td>
 </tr>
 <tr>
 <td>&gt; tgtCcy</td>
@@ -12774,12 +12779,17 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>&gt; triggerPxType</td>
 <td>String</td>
-<td>&#39;mark&#39;</td>
+<td>&#39;mark&#39;: mark price; &#39;last&#39;: fill price(market price)</td>
 </tr>
 <tr>
 <td>&gt; key</td>
 <td>String</td>
 <td>key ID</td>
+</tr>
+<tr>
+<td>&gt; tS</td>
+<td>String</td>
+<td><a href="#tradeside">Trade Side</a></td>
 </tr>
 <tr>
 <td>&gt; uTime</td>
