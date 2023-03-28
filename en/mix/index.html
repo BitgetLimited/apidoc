@@ -288,6 +288,7 @@
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
+         <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -433,6 +434,27 @@
                       <li>
                         <a href="#symbolstatus" class="toc-h3 toc-link" data-title="symbolStatus">symbolStatus</a>
                       </li>
+                      <li>
+                        <a href="#fullstatus" class="toc-h3 toc-link" data-title="fullStatus">fullStatus</a>
+                      </li>
+                      <li>
+                        <a href="#sortrule" class="toc-h3 toc-link" data-title="sortRule">sortRule</a>
+                      </li>
+                      <li>
+                        <a href="#sortflag" class="toc-h3 toc-link" data-title="sortFlag">sortFlag</a>
+                      </li>
+                      <li>
+                        <a href="#languagetype" class="toc-h3 toc-link" data-title="languageType">languageType</a>
+                      </li>
+                      <li>
+                        <a href="#margintype" class="toc-h3 toc-link" data-title="marginType">marginType</a>
+                      </li>
+                      <li>
+                        <a href="#levertype" class="toc-h3 toc-link" data-title="leverType">leverType</a>
+                      </li>
+                      <li>
+                        <a href="#tracetype" class="toc-h3 toc-link" data-title="traceType">traceType</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -487,6 +509,9 @@
                       </li>
                       <li>
                         <a href="#get-symbol-leverage" class="toc-h3 toc-link" data-title="Get Symbol Leverage">Get Symbol Leverage</a>
+                      </li>
+                      <li>
+                        <a href="#get-position-tier" class="toc-h3 toc-link" data-title="Get Position Tier">Get Position Tier</a>
                       </li>
                   </ul>
               </li>
@@ -656,6 +681,27 @@
                       <li>
                         <a href="#trader-change-copytrade-symbol" class="toc-h3 toc-link" data-title="Trader Change CopyTrade symbol">Trader Change CopyTrade symbol</a>
                       </li>
+                      <li>
+                        <a href="#get-trader-list" class="toc-h3 toc-link" data-title="Get Trader List">Get Trader List</a>
+                      </li>
+                      <li>
+                        <a href="#trader-get-trading-statistics" class="toc-h3 toc-link" data-title="Trader get trading statistics">Trader get trading statistics</a>
+                      </li>
+                      <li>
+                        <a href="#follower-query-trace-config" class="toc-h3 toc-link" data-title="Follower query Trace Config">Follower query Trace Config</a>
+                      </li>
+                      <li>
+                        <a href="#follower-set-copytrade-config" class="toc-h3 toc-link" data-title="Follower Set copyTrade Config">Follower Set copyTrade Config</a>
+                      </li>
+                      <li>
+                        <a href="#follower-close-position-by-tracking-number" class="toc-h3 toc-link" data-title="Follower Close Position By Tracking Number">Follower Close Position By Tracking Number</a>
+                      </li>
+                      <li>
+                        <a href="#follower-close-position-by-symbol-margincoin-marginmode-holdside" class="toc-h3 toc-link" data-title="Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide">Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide</a>
+                      </li>
+                      <li>
+                        <a href="#follower-set-tpsl" class="toc-h3 toc-link" data-title="Follower Set Tpsl">Follower Set Tpsl</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -769,6 +815,18 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Mar 28, 2023</strong></p>
+
+<ul>
+<li>New interface <a href="#get-position-tier">Get Position Tier</a></li>
+<li>New interface <a href="#get-trader-list">Get Trader List</a></li>
+<li>New interface <a href="#follower-query-trace-config">Follower query Trace Config</a></li>
+<li>New interface <a href="#follower-set-copytrade-config">Follower Set copyTrade Config</a></li>
+<li>New interface <a href="#follower-close-position-by-tracking-number">Follower Close Position By Tracking Number</a></li>
+<li>New interface <a href="#follower-close-position-by-symbol-margincoin-marginmode-holdside">Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide</a></li>
+<li>New interface <a href="#follower-set-tpsl">Follower Set Tpsl</a></li>
+</ul>
+
 <p><strong>Mar 17, 2023</strong></p>
 
 <ul>
@@ -1864,6 +1922,45 @@ If there is a large deviation between the local server time and the API server t
 <li>normal    normal</li>
 <li>maintain  symbol is under maintenance</li>
 <li>off       offline</li>
+</ul>
+<h3 id='fullstatus'>fullStatus</h3>
+<ul>
+<li>full    full followers trader</li>
+<li>all     all trader</li>
+</ul>
+<h3 id='sortrule'>sortRule</h3>
+<ul>
+<li>composite  default</li>
+<li> roi       sort by roi</li>
+<li> totalPL   sort by totalPL</li>
+<li> aum       sort by aum</li>
+</ul>
+<h3 id='sortflag'>sortFlag</h3>
+<ul>
+<li>asc</li>
+<li>desc</li>
+</ul>
+<h3 id='languagetype'>languageType</h3>
+<ul>
+<li>zh-CN   Chinese</li>
+<li>en-US   English</li>
+</ul>
+<h3 id='margintype'>marginType</h3>
+<ul>
+<li>trader    Margin Type follow trader</li>
+<li>specify     Set Margin Type By yourself</li>
+</ul>
+<h3 id='levertype'>leverType</h3>
+<ul>
+<li>position    leverage use position</li>
+<li>specify     set leverage By yourself</li>
+<li>trader      leverage follow trader</li>
+</ul>
+<h3 id='tracetype'>traceType</h3>
+<ul>
+<li>percent    Set the ratio of the copy amount to the trader&#39;s opening amount, for example, 1 means the same amount as the trader&#39;s opening amount, 2 means the opening amount is twice the trader&#39;s opening amount</li>
+<li>amount     Set copy amount by fixed amount</li>
+<li>count      Set Copy Amount by fixed count</li>
 </ul>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
@@ -3421,6 +3518,85 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">max leverage</td>
 </tr>
 </tbody></table>
+<h3 id='get-position-tier'>Get Position Tier</h3>
+<p>Limit rule: 20/sec (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/queryPositionLever</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">symbol Id (Must be capitalized)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/queryPositionLever?symbol=BTCUSDT_UMCBL&amp;productType=UMCBL"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"startUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"endUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627292076687</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">level</td>
+<td style="text-align: left">Tier</td>
+</tr>
+<tr>
+<td style="text-align: left">startUnit</td>
+<td style="text-align: left">Start value</td>
+</tr>
+<tr>
+<td style="text-align: left">endUnit</td>
+<td style="text-align: left">End value</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Leverage multiple</td>
+</tr>
+<tr>
+<td style="text-align: left">keepMarginRate</td>
+<td style="text-align: left">Margin Rate, The value corresponding to the position, when the margin rate of the position is less than the maintenance margin rate, forced decreased or liquidation will be triggered</td>
+</tr>
+</tbody></table>
 <h2 id='account'>Account</h2><h3 id='get-single-account'>Get Single Account</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
@@ -4705,7 +4881,7 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"892962903462432768"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.1765104"</span><span class="p">,</span><span class="w">
@@ -7831,8 +8007,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">size</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Order Quantity Default Position Quantity</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Order Quantity, please provide value less than &#39;available position size&#39;</td>
 </tr>
 <tr>
 <td style="text-align: left">side</td>
@@ -7843,8 +8019,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">rangeRate</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">&quot;1&quot; means 1.0% price correction, two decimal places</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">&quot;1&quot; means 1.0% price correction, max &quot;10&quot;</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>
@@ -8995,25 +9171,25 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Start time  timestamp</td>
+<td style="text-align: center">Start time  ms</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
+<td style="text-align: center">End time  ms</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">int</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size</td>
+<td style="text-align: center">Page size, default 100</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">int</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number</td>
+<td style="text-align: center">Current page number, default 1</td>
 </tr>
 </tbody></table>
 
@@ -9873,7 +10049,869 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
+</span></code></pre><h3 id='get-trader-list'>Get Trader List</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/traderList</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">fullStatus</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#fullstatus">fullStatus</a> &#39;full&#39; or &#39;all&#39; default all</td>
+</tr>
+<tr>
+<td style="text-align: left">sortRule</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#sortrule">Sort Rule</a></td>
+</tr>
+<tr>
+<td style="text-align: left">sortFlag</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#sortflag">Sort Flag</a></td>
+</tr>
+<tr>
+<td style="text-align: left">languageType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#languagetype">language type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Page size, default 100</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Page No, default 1</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderList?sortRule=composite&amp;sortFlag=asc&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679453151215</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5913396676"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VuDucThanhLong"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ETHUSD"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"columnList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"describe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROI"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.78"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5560017617"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jason"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ETHUSDT"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"columnList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"describe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROI"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909.94"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">canTrace</td>
+<td style="text-align: left">true or false</td>
+</tr>
+<tr>
+<td style="text-align: left">traderUid</td>
+<td style="text-align: left">Trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">Trader nickName</td>
+</tr>
+<tr>
+<td style="text-align: left">maxFollowCount</td>
+<td style="text-align: left">The Maximum followers</td>
+</tr>
+<tr>
+<td style="text-align: left">followCount</td>
+<td style="text-align: left">Number of Follower who is followed</td>
+</tr>
+<tr>
+<td style="text-align: left">profile</td>
+<td style="text-align: left">Introduction</td>
+</tr>
+<tr>
+<td style="text-align: left">tradingPairsAvailable</td>
+<td style="text-align: left">trading Pairs Available</td>
+</tr>
+<tr>
+<td style="text-align: left">myTrader</td>
+<td style="text-align: left">Am I followed The Trader?</td>
+</tr>
+<tr>
+<td style="text-align: left">columnList</td>
+<td style="text-align: left">Trading Indicator Data of Trader</td>
+</tr>
+</tbody></table>
+
+<p><strong>columnList</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">describe</td>
+<td style="text-align: left">Indicator Description, return different value by <a href="#languagetype">languageType</a></td>
+</tr>
+<tr>
+<td style="text-align: left">value</td>
+<td style="text-align: left">Indicator Value</td>
+</tr>
+</tbody></table>
+<h3 id='trader-get-trading-statistics'>Trader get trading statistics</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/traderDetail</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderDetail"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679456559180</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"roi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332.61"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tradingOrders"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"accFollowers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalpl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95.65"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gainNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lossNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"winRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.67"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ETHUSDT"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lastWeekRoi"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.285216"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678809600000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lastWeekProfit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6389000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678809600000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lastMonthRoi"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.414266"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1676822400000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lastMonthProfit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6389000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1676822400000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">roi</td>
+<td style="text-align: left">roi</td>
+</tr>
+<tr>
+<td style="text-align: left">tradingOrders</td>
+<td style="text-align: left">Total Trading Order Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">accFollowers</td>
+<td style="text-align: left">The current Follower Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">totalpl</td>
+<td style="text-align: left">Total profits</td>
+</tr>
+<tr>
+<td style="text-align: left">gainNum</td>
+<td style="text-align: left">Profit Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">lossNum</td>
+<td style="text-align: left">Loss Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">winRate</td>
+<td style="text-align: left">winning percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">tradingPairsAvailable</td>
+<td style="text-align: left">Trading Pairs Available  array</td>
+</tr>
+<tr>
+<td style="text-align: left">lastWeekRoi</td>
+<td style="text-align: left">Last 7 days   roi array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; rate</td>
+<td style="text-align: left">rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">ctime</td>
+</tr>
+<tr>
+<td style="text-align: left">lastMonthRoi</td>
+<td style="text-align: left">Last 30 days   roi array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; rate</td>
+<td style="text-align: left">rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">ctime</td>
+</tr>
+<tr>
+<td style="text-align: left">lastWeekProfit</td>
+<td style="text-align: left">Last 7 days  profits array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; amount</td>
+<td style="text-align: left">amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">ctime</td>
+</tr>
+<tr>
+<td style="text-align: left">lastMonthProfit</td>
+<td style="text-align: left">Last 30 days  profits array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; amount</td>
+<td style="text-align: left">amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">ctime</td>
+</tr>
+</tbody></table>
+<h3 id='follower-query-trace-config'>Follower query Trace Config</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/trace/queryTraceConfig</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trader UID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=5741955503"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679465100798</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"specify"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"leverType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trader"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longLeverage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shortLeverage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxHoldCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stopProfitRation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stopLossRation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">marginType</td>
+<td style="text-align: left"><a href="#margintype">margin type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin Coin</td>
+</tr>
+<tr>
+<td style="text-align: left">leverType</td>
+<td style="text-align: left"><a href="#levertype">Leverage Type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">longLeverage</td>
+<td style="text-align: left">Long Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">shortLeverage</td>
+<td style="text-align: left">Short Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">traceType</td>
+<td style="text-align: left"><a href="#tracetype">Trace Type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">traceValue</td>
+<td style="text-align: left">Trace Type Value</td>
+</tr>
+<tr>
+<td style="text-align: left">maxHoldCount</td>
+<td style="text-align: left">Maximum copy number</td>
+</tr>
+<tr>
+<td style="text-align: left">stopProfitRation</td>
+<td style="text-align: left">Take Profit Ratio</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRation</td>
+<td style="text-align: left">Stop loss ratio</td>
+</tr>
+</tbody></table>
+<h3 id='follower-set-copytrade-config'>Follower Set copyTrade Config</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/followerSetBatchTraceConfig</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">settings</td>
+<td style="text-align: left">array</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trace Settings</td>
+</tr>
+</tbody></table>
+
+<p><strong>settings</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">marginType</td>
+<td style="text-align: left"><a href="#margintype">margin type</a></td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">Margin Coin</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">leverType</td>
+<td style="text-align: left"><a href="#levertype">Leverage Type</a></td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">longLeverage</td>
+<td style="text-align: left">Long Leverage</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">shortLeverage</td>
+<td style="text-align: left">Short Leverage</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">traceType</td>
+<td style="text-align: left"><a href="#tracetype">Trace Type</a></td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">traceValue</td>
+<td style="text-align: left">Trace Type Value</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">maxHoldCount</td>
+<td style="text-align: left">Maximum copy number</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">stopProfitRation</td>
+<td style="text-align: left">Take Profit Ratio</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRation</td>
+<td style="text-align: left">Stop loss ratio</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerSetBatchTraceConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"3559776384"</span>,
+    <span class="s2">"settings"</span>: <span class="o">[{</span>
+        <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
+        <span class="s2">"marginType"</span>: <span class="s2">"specify"</span>,
+        <span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,
+        <span class="s2">"leverType"</span>: <span class="s2">"specify"</span>,
+        <span class="s2">"longLeverage"</span>: <span class="s2">"12"</span>,
+        <span class="s2">"shortLeverage"</span>: <span class="s2">"10"</span>,
+        <span class="s2">"traceType"</span>: <span class="s2">"amount"</span>,
+        <span class="s2">"traceValue"</span>: <span class="s2">"1000"</span>,
+        <span class="s2">"maxHoldCount"</span>: <span class="s2">""</span>,
+        <span class="s2">"stopProfitRation"</span>: <span class="s2">""</span>,
+        <span class="s2">"stopLossRation"</span>: <span class="s2">""</span>
+    <span class="o">}]</span>
+<span class="o">}</span>
+
+<span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data":true
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='follower-close-position-by-tracking-number'>Follower Close Position By Tracking Number</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/followerCloseByTrackingNo</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Tracking Number</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerCloseByTrackingNo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"trackingNo"</span>: <span class="s2">"35586868769776384"</span>,
+    <span class="s2">"productType"</span>: <span class="s2">"UMCBL"</span>
+<span class="o">}</span>
+
+<span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data":true
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='follower-close-position-by-symbol-margincoin-marginmode-holdside'>Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/followerCloseByAll</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Margin Coin</td>
+</tr>
+<tr>
+<td style="text-align: left">marginMode</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#marginmode">margin mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#holdmode">Hold Side</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerCloseByAll"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
+    <span class="s2">"productType"</span>: <span class="s2">"UMCBL"</span>
+<span class="o">}</span>
+
+<span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data":true
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='follower-set-tpsl'>Follower Set Tpsl</h3>
+<p>Limit rule: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/followerSetTpsl</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Tracking Number</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">stopProfitPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Stop Profit Price</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Stop Loss Price</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerSetTpsl"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
+    <span class="s2">"trackingNo"</span>: <span class="s2">"3284728347239874"</span>,
+    <span class="s2">"stopProfitPrice"</span>:<span class="s2">"2400"</span>,
+    <span class="s2">"stopLossPrice"</span>:<span class="s2">"1600"</span>
+<span class="o">}</span>
+
+<span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data":true
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
 <p>WebSocket is a new HTML5 protocol that achieves full-duplex data transmission between the client and server, allowing data to be transferred effectively in both directions. A connection between the client and server can be established with just one handshake. The server will then be able to push data to the client according to preset rules. Its advantages include:</p>
 
 <ul>
@@ -13075,6 +14113,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td style="text-align: left">43122</td>
 <td style="text-align: center">400</td>
 </tr>
+<tr>
+<td style="text-align: left">Unknown error</td>
+<td style="text-align: left">45001</td>
+<td style="text-align: center">400</td>
+</tr>
 </tbody></table>
 <h1 id='websocket-error-codes'>WebSocket error codes</h1>
 <table><thead>
@@ -13163,6 +14206,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
     var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
+    var isMargin=currentUrl.indexOf('margin/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -13170,6 +14214,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
     var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
+        $Margin=$("#margin");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -13179,11 +14224,15 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
     if(isMix){
         $Mix.addClass('selected');
     }
+    if(isMargin){
+         $Margin.addClass('selected');
+    }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
+        $Margin.html($Margin.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -13195,10 +14244,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
             $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
+            $Margin.attr('href','/en/margin/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
+            $Margin.attr('href','/zh/margin/')
         }
 
     } else{
@@ -13206,10 +14257,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
             $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
+            $Margin.attr('href','/apidoc/en/margin/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
+            $Margin.attr('href','/apidoc/zh/margin/')
         }
     }
 </script>
