@@ -288,6 +288,7 @@
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
+         <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -390,6 +391,9 @@
                       </li>
                       <li>
                         <a href="#fromtype-totype-transfer-in-type-transfer-out-type" class="toc-h3 toc-link" data-title="fromType,toType(transfer in type，transfer out type)">fromType,toType(transfer in type，transfer out type)</a>
+                      </li>
+                      <li>
+                        <a href="#enterpointsource" class="toc-h3 toc-link" data-title="enterPointSource">enterPointSource</a>
                       </li>
                   </ul>
               </li>
@@ -669,18 +673,6 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>Remark</strong></th>
 </tr>
 </thead><tbody>
-<tr>
-<td style="text-align: center">1</td>
-<td style="text-align: center"><a href="#transfer">Transfer</a></td>
-<td style="text-align: center">End of Mar</td>
-<td style="text-align: center">Transfer will support Margin account</td>
-</tr>
-<tr>
-<td style="text-align: center">1</td>
-<td style="text-align: center">Margin</td>
-<td style="text-align: center">End of Mar</td>
-<td style="text-align: center">Margin trading API</td>
-</tr>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
 <p><strong>17/03/2023</strong></p>
@@ -1345,20 +1337,28 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <td>spot account</td>
 </tr>
 <tr>
-<td>OTC_SGD</td>
-<td>Otc account</td>
-</tr>
-<tr>
 <td>CONTRACT</td>
 <td>contract account</td>
+</tr>
+<tr>
+<td>USDT_MIX</td>
+<td>USDT Future account</td>
 </tr>
 <tr>
 <td>USD_MIX</td>
 <td>Mix account</td>
 </tr>
 <tr>
-<td>USDT_MIX</td>
-<td>USDT Future account</td>
+<td>USDC_MIX</td>
+<td>usdc futures</td>
+</tr>
+<tr>
+<td>MARGIN_CROSS</td>
+<td>margin cross</td>
+</tr>
+<tr>
+<td>MARGIN_ISOLATED</td>
+<td>margin isolated</td>
 </tr>
 </tbody></table>
 <h3 id='candlestick-line-timeframe'>Candlestick line timeframe</h3>
@@ -1406,6 +1406,46 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <tr>
 <td>mix_usdc</td>
 <td>USDC transfer only</td>
+</tr>
+<tr>
+<td>margin_cross</td>
+<td>cross margin account</td>
+</tr>
+<tr>
+<td>margin_isolated</td>
+<td>isolated margin account</td>
+</tr>
+</tbody></table>
+<h3 id='enterpointsource'>enterPointSource</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WEB</td>
+<td>WEB Client</td>
+</tr>
+<tr>
+<td>APP</td>
+<td>APP Client</td>
+</tr>
+<tr>
+<td>API</td>
+<td>API Client</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>SYS Client</td>
+</tr>
+<tr>
+<td>ANDROID</td>
+<td>ANDROID Client</td>
+</tr>
+<tr>
+<td>IOS</td>
+<td>IOS Client</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -2852,6 +2892,8 @@ microtime(true) * 1000;
 <li>mix_usdt    Only USDT</li>
 <li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
 <li>mix_usdc    Only USDC</li>
+<li>margin_cross    Coins supported by spot cross-margin</li>
+<li>margin_isolated   Coins supported by spot isolated-margin</li>
 </ul></li>
 </ul>
 
@@ -2943,6 +2985,16 @@ microtime(true) * 1000;
 <td>mix_usdc</td>
 <td>mix_usdc</td>
 <td>Only USDC</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_cross</td>
+<td>Only coins that supported by spot cross-margin</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_isolated</td>
+<td>Only coins that supported by spot isolated-margin</td>
 </tr>
 </tbody></table>
 
@@ -3064,6 +3116,8 @@ microtime(true) * 1000;
 <li>mix_usdt    Only USDT</li>
 <li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
 <li>mix_usdc    Only USDC</li>
+<li>margin_cross    Coins supported by spot cross-margin</li>
+<li>margin_isolated   Coins supported by spot isolated-margin</li>
 </ul></li>
 </ul>
 
@@ -3155,6 +3209,16 @@ microtime(true) * 1000;
 <td>mix_usdc</td>
 <td>mix_usdc</td>
 <td>Only USDC</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_cross</td>
+<td>Only coins that supported by spot cross-margin</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_isolated</td>
+<td>Only coins that supported by spot isolated-margin</td>
 </tr>
 </tbody></table>
 
@@ -3306,6 +3370,8 @@ microtime(true) * 1000;
 <li>mix_usdt    Only USDT</li>
 <li>mix_usd      Coins like BTC, ETH, EOS, XRP, USDC</li>
 <li>mix_usdc    Only USDC</li>
+<li>margin_cross    Coins supported by spot cross-margin</li>
+<li>margin_isolated   Coins supported by spot isolated-margin</li>
 </ul></li>
 </ul>
 
@@ -3397,6 +3463,16 @@ microtime(true) * 1000;
 <td>mix_usdc</td>
 <td>mix_usdc</td>
 <td>Only USDC</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_cross</td>
+<td>Only coins that supported by spot cross-margin</td>
+</tr>
+<tr>
+<td>xxx</td>
+<td>margin_isolated</td>
+<td>Only coins that supported by spot isolated-margin</td>
 </tr>
 </tbody></table>
 <h3 id='get-coin-address'>Get Coin Address</h3>
@@ -4715,7 +4791,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>toType</td>
-<td>Transfer in account type</td>
+<td>Transfer in account type  <a href="#accounttype">accountType</a></td>
 </tr>
 <tr>
 <td>toSymbol</td>
@@ -4723,7 +4799,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>fromType</td>
-<td>Transfer out account type</td>
+<td>Transfer out account type  <a href="#accounttype">accountType</a></td>
 </tr>
 <tr>
 <td>fromSymbol</td>
@@ -4755,6 +4831,8 @@ microtime(true) * 1000;
 <li>usdt_mix: future USDT</li>
 <li>usdc_mix: future USDC</li>
 <li>usd_mix: future coins</li>
+<li>margin_cross: cross margin account</li>
+<li>margin_isolated: isolated margin account</li>
 </ul></li>
 </ul>
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place order</h3>
@@ -6356,7 +6434,7 @@ microtime(true) * 1000;
 <tr>
 <td>pageSize</td>
 <td>String</td>
-<td>No</td>
+<td>Yes</td>
 <td>Page Size</td>
 </tr>
 <tr>
@@ -8912,6 +8990,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
     var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
+    var isMargin=currentUrl.indexOf('margin/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -8919,6 +8998,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
     var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
+        $Margin=$("#margin");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -8928,11 +9008,15 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
     if(isMix){
         $Mix.addClass('selected');
     }
+    if(isMargin){
+         $Margin.addClass('selected');
+    }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
+        $Margin.html($Margin.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -8944,10 +9028,12 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
             $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
+            $Margin.attr('href','/en/margin/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
+            $Margin.attr('href','/zh/margin/')
         }
 
     } else{
@@ -8955,10 +9041,12 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
             $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
+            $Margin.attr('href','/apidoc/en/margin/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
+            $Margin.attr('href','/apidoc/zh/margin/')
         }
     }
 </script>

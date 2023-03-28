@@ -1,0 +1,2690 @@
+{
+	"info": {
+		"_postman_id": "43632d2c-0011-4b68-a68c-b512ba79a45d",
+		"name": "Biget_margin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "cross",
+					"item": [
+						{
+							"name": "interestRateAndLimit",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/cross/public/interestRateAndLimit?coin=USDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"public",
+										"interestRateAndLimit"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "USDT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tierData",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/cross/public/tierData?coin=USDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"public",
+										"tierData"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "USDT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "isolated",
+					"item": [
+						{
+							"name": "interestRateAndLimit",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/isolated/public/interestRateAndLimit?symbol=BTCUSDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"public",
+										"interestRateAndLimit"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "margin_isolated_RepayQuery",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/isolated/repay/list?startTime=1678193338000&endTime=1678696974000",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"repay",
+										"list"
+									],
+									"query": [
+										{
+											"key": "startTime",
+											"value": "1678193338000"
+										},
+										{
+											"key": "endTime",
+											"value": "1678696974000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tierData",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/isolated/public/tierData?symbol=BTCUSDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"public",
+										"tierData"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "currencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/public/currencies",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"public",
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "cross",
+					"item": [
+						{
+							"name": "maxBorrowableAmount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/cross/account/maxBorrowableAmount",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"maxBorrowableAmount"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "repay",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\",\n    \"repayAmount\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/cross/account/repay",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"repay"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "riskRate",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/cross/account/riskRate",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"riskRate"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrow",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\",\n    \"borrowAmount\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/cross/account/borrow",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"borrow"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assets",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/cross/account/assets?coin=USDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"assets"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "USDT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "maxTransferOutAmount Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/cross/account/maxTransferOutAmount?coin=USDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"cross",
+										"account",
+										"maxTransferOutAmount"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "USDT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "isolated",
+					"item": [
+						{
+							"name": "maxBorrowableAmount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\",\n    \"symbol\":\"BTCUSDT\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/maxBorrowableAmount",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"maxBorrowableAmount"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "repay",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\",\n    \"symbol\":\"BTCUSDT\",\n    \"repayAmount\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/repay",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"repay"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "riskRate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"symbol\":\"BTCUSDT\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/riskRate",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"riskRate"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrow",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"coin\":\"USDT\",\n    \"symbol\":\"BTCUSDT\",\n    \"borrow\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/borrow",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"borrow"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "BTC",
+											"disabled": true
+										},
+										{
+											"key": "symbol",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assets",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/assets?symbol=BTCUSDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"assets"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "maxTransferOutAmount",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "ACCESS-KEY",
+										"value": "{{apiKey}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-SIGN",
+										"value": "{{sign}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-TIMESTAMP",
+										"value": "{{timestamp}}",
+										"type": "text"
+									},
+									{
+										"key": "ACCESS-PASSPHRASE",
+										"value": "{{passphrase}}",
+										"type": "text"
+									},
+									{
+										"key": "locale",
+										"value": "zh-CN",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "/api/margin/v1/isolated/account/maxTransferOutAmount?coin=USDT&symbol=BTCUSDT",
+									"path": [
+										"api",
+										"margin",
+										"v1",
+										"isolated",
+										"account",
+										"maxTransferOutAmount"
+									],
+									"query": [
+										{
+											"key": "coin",
+											"value": "USDT"
+										},
+										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trade",
+			"item": [
+				{
+					"name": "Place order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"sell\",\n    \n    \"orderType\": \"market\",\n    \"timeInForce\": \"gtc\",\n    \"baseQuantity\": \"0.1\",\n\n    \"loanType\":\"normal\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/placeOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"placeOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place order Cross",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"side\": \"sell\",\n    \n    \"orderType\": \"market\",\n    \"timeInForce\": \"gtc\",\n    \"baseQuantity\": \"0.1\",\n\n    \"loanType\":\"normal\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/placeOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"placeOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batch order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"orderList\": [\n        {\n    \"side\": \"buy\",\n    \"price\":\"23100\",\n    \"orderType\": \"limit\",\n    \"timeInForce\": \"gtc\",\n    \"baseQuantity\": \"0.1\",\n    \"loanType\":\"normal\"\n}\n\n\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/batchPlaceOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"batchPlaceOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Batch order Cross",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"orderList\": [\n        {\n    \"side\": \"buy\",\n    \"price\":\"23100\",\n    \"orderType\": \"limit\",\n    \"timeInForce\": \"gtc\",\n    \"baseQuantity\": \"0.1\",\n    \"loanType\":\"normal\"\n}\n\n\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/batchPlaceOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"batchPlaceOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"BTCUSDT\",\n    \"orderId\":\"1024183101855035392\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/cancelOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"cancelOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order Cross",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"BTCUSDT\",\n    \"orderId\":\"1024183313956794368\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/cancelOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"cancelOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order in batch (single instruments)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"orderIds\": [\n        \"1016452854657249281\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/batchCancelOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"batchCancelOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order in batch (single instruments) Cross",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"BTCUSDT\",\n    \"orderIds\": [\n        \"1016439785679941634\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/batchCancelOrder",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"batchCancelOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/openOrders?symbol=ETHUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "ETHUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order List Cross",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/margin/v1/cross/order/openOrders?symbol=ETHUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "ETHUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order history",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/history?symbol=BTCUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"history"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "TRXUSDT_SPBL",
+									"disabled": true
+								},
+								{
+									"key": "after",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "before",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "1640230706000",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "1640227106000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order history Cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/order/history?startTime=1679046420000&symbol=BTCUSDT",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"history"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "1679046420000"
+								},
+								{
+									"key": "endTime",
+									"value": "1678240785776",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transaction details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/order/fills?symbol=ETHUSDT&startTime=1679354812000",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"order",
+								"fills"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "ETHUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1679354812000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transaction details Cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/order/fills?symbol=BTCUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"order",
+								"fills"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "borrow-repay",
+			"item": [
+				{
+					"name": "borrow-iso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/loan/list?symbol=BTCUSDT&startTime=1679350657000",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"loan",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1679350657000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrow-cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/loan/list?startTime=1679350657000",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"loan",
+								"list"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "1679350657000"
+								},
+								{
+									"key": "coin",
+									"value": "xxxx",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "repay-iso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/repay/list?symbol=BTCUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"repay",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "repay-cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/repay/list?startTime=1679046420000",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"repay",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "1679046420000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "interest-iso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/interest/list?coin=ARB&startTime=1679350657000",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"interest",
+								"list"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "ARB"
+								},
+								{
+									"key": "startTime",
+									"value": "1679350657000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "interest-cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/interest/list?symbol=BTCUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"interest",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "liquidation-iso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/liquidation/list?symbol=BTCUSDT&startTime=1677274167003&endTime=1679910420698",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"liquidation",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								},
+								{
+									"key": "endTime",
+									"value": "1679910420698"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fin-iso",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/isolated/fin/list?symbol=BTCUSDT&startTime=1677274167003",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"isolated",
+								"fin",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "liquidation-cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/liquidation/list?symbol=BTCUSDT&startTime=1677274167003&endTime=1679910420698",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"liquidation",
+								"list"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1677274167003"
+								},
+								{
+									"key": "endTime",
+									"value": "1679910420698"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fin-cross",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/margin/v1/cross/fin/list?coin=USDT&startTime=1678240785776&endTime=1778413572000&marginType=transfer_in&pageSize=100",
+							"path": [
+								"api",
+								"margin",
+								"v1",
+								"cross",
+								"fin",
+								"list"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "USDT"
+								},
+								{
+									"key": "startTime",
+									"value": "1678240785776"
+								},
+								{
+									"key": "endTime",
+									"value": "1778413572000"
+								},
+								{
+									"key": "marginType",
+									"value": "transfer_in"
+								},
+								{
+									"key": "pageSize",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var CryptoJS = require('crypto-js')",
+					"",
+					"",
+					"var apiSecret = pm.environment.get(\"secretKey\");",
+					"var apiKey = pm.environment.get(\"apiKey\");",
+					"var passphrase = pm.environment.get(\"passphrase\");",
+					"var url = pm.environment.get(\"url\");",
+					"var uri = pm.request.url.getPath();",
+					"var method = pm.request.method;",
+					"var expires = Date.now()",
+					"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+					"var jsonBody = pm.request.body.raw;",
+					"",
+					"//设置变量",
+					"pm.environment.set(\"timestamp\", expires);",
+					"pm.environment.set(\"apikey\", apiKey);",
+					"pm.environment.set(\"passphrase\", passphrase);",
+					"",
+					"",
+					"var body = \"\";",
+					"var requestUrl = url+uri;",
+					"if(method == 'GET'){",
+					"    if(getBody != ''){",
+					"        body = \"?\"+getBody;",
+					"    }",
+					"    requestUrl = requestUrl+body;",
+					"}else{",
+					"    ",
+					"    body = jsonBody;",
+					"}",
+					"var message = expires+method+uri+body;",
+					"",
+					"",
+					"console.info(\"sign-value:\"+message)",
+					"console.info(\"request-url:\"+requestUrl)",
+					"pm.request.url = requestUrl;",
+					"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+					"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+					"pm.environment.set(\"sign\", base64);",
+					"console.info(\"sign:\"+base64)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiKey",
+			"value": "pls fill in apiKey of Bitget",
+			"type": "string"
+		},
+		{
+			"key": "secretKey",
+			"value": "pls fill in secretKey of Bitget",
+			"type": "string"
+		},
+		{
+			"key": "passphrase",
+			"value": "pls fill in passphrase of Bitget",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "https://api.bitget.com",
+			"type": "string"
+		}
+	]
+}

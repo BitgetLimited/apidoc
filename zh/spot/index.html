@@ -288,6 +288,7 @@
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
+         <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -384,6 +385,12 @@
                       </li>
                       <li>
                         <a href="#fromtype-totype" class="toc-h3 toc-link" data-title="fromType,toType(转入类型，转出类型)">fromType,toType(转入类型，转出类型)</a>
+                      </li>
+                      <li>
+                        <a href="#enterpointsource" class="toc-h3 toc-link" data-title="enterPointSource">enterPointSource</a>
+                      </li>
+                      <li>
+                        <a href="#accounttype" class="toc-h3 toc-link" data-title="accountType">accountType</a>
                       </li>
                   </ul>
               </li>
@@ -663,14 +670,14 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>功能描述</strong></th>
 </tr>
 </thead><tbody>
-<tr>
-<td style="text-align: center">1</td>
-<td style="text-align: center">划转</td>
-<td style="text-align: center">近期</td>
-<td style="text-align: center">支持现货与杠杆账户之间的划转</td>
-</tr>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年03月27日</strong></p>
+
+<ul>
+<li>划转接口支持账户类型新增：现货杠杆</li>
+</ul>
+
 <p><strong>2023年03月17日</strong></p>
 
 <ul>
@@ -1335,6 +1342,82 @@ microtime(true) * 1000;
 <tr>
 <td>mix_usdc</td>
 <td>只接受转入转出USDC</td>
+</tr>
+<tr>
+<td>margin_cross</td>
+<td>全仓杠杆账户转入转出</td>
+</tr>
+<tr>
+<td>margin_isolated</td>
+<td>逐仓杠杆账户转入转出</td>
+</tr>
+</tbody></table>
+<h3 id='enterpointsource'>enterPointSource</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WEB</td>
+<td>WEB 客户端</td>
+</tr>
+<tr>
+<td>APP</td>
+<td>APP 客户端</td>
+</tr>
+<tr>
+<td>API</td>
+<td>API 客户端</td>
+</tr>
+<tr>
+<td>SYS</td>
+<td>SYS 客户端</td>
+</tr>
+<tr>
+<td>ANDROID</td>
+<td>ANDROID 客户端</td>
+</tr>
+<tr>
+<td>IOS</td>
+<td>IOS 客户端</td>
+</tr>
+</tbody></table>
+<h3 id='accounttype'>accountType</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EXCHANGE</td>
+<td>现货</td>
+</tr>
+<tr>
+<td>CONTRACT</td>
+<td>U本位合约账户</td>
+</tr>
+<tr>
+<td>USDT_MIX</td>
+<td>USDT 合约账户</td>
+</tr>
+<tr>
+<td>USD_MIX</td>
+<td>USD 合约账户</td>
+</tr>
+<tr>
+<td>USDC_MIX</td>
+<td>USDC  合约账户</td>
+</tr>
+<tr>
+<td>margin_cross</td>
+<td>全仓杠杆账户</td>
+</tr>
+<tr>
+<td>margin_isolated</td>
+<td>逐仓杠杆账户</td>
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
@@ -2751,6 +2834,8 @@ Signature = base64.encode(Signature)
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
 <li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated        接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -2843,6 +2928,16 @@ Signature = base64.encode(Signature)
 <td>mix_usdc</td>
 <td>只接受 USDC</td>
 </tr>
+<tr>
+<td>其它</td>
+<td>margin_cross</td>
+<td>只接受支持全仓现货杠杆的币种</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>margin_isolated</td>
+<td>只接受支持逐仓现货杠杆的币种</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -2873,6 +2968,8 @@ Signature = base64.encode(Signature)
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
 <li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='v2'>划转V2</h3>
@@ -2934,6 +3031,8 @@ Signature = base64.encode(Signature)
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
 <li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -3026,6 +3125,16 @@ Signature = base64.encode(Signature)
 <td>mix_usdc</td>
 <td>只接受 USDC</td>
 </tr>
+<tr>
+<td>其它</td>
+<td>margin_cross</td>
+<td>只接受支持全仓现货杠杆的币种</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>margin_isolated</td>
+<td>只接受支持逐仓现货杠杆的币种</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -3078,6 +3187,8 @@ Signature = base64.encode(Signature)
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
 <li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='7bc510fe47'>母子账户划转</h3>
@@ -3203,6 +3314,8 @@ Signature = base64.encode(Signature)
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
 <li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -3294,6 +3407,16 @@ Signature = base64.encode(Signature)
 <td>mix_usdc</td>
 <td>mix_usdc</td>
 <td>只接受 USDC</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>margin_cross</td>
+<td>只接受支持全仓现货杠杆的币种</td>
+</tr>
+<tr>
+<td>其它</td>
+<td>margin_isolated</td>
+<td>只接受支持逐仓现货杠杆的币种</td>
 </tr>
 </tbody></table>
 <h3 id='263e170b4c'>获取充币地址</h3>
@@ -4639,7 +4762,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">toType</td>
-<td style="text-align: center">转入账户类型 <a href="#api-4">accountType</a></td>
+<td style="text-align: center">转入账户类型 <a href="#accounttype">accountType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">toSymbol</td>
@@ -4647,7 +4770,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">fromType</td>
-<td style="text-align: center">转出账户类型 <a href="#api-4">accountType</a></td>
+<td style="text-align: center">转出账户类型 <a href="#accounttype">accountType</a></td>
 </tr>
 <tr>
 <td style="text-align: left">fromSymbol</td>
@@ -4678,7 +4801,8 @@ Signature = base64.encode(Signature)
 <li>exchange 现货</li>
 <li>usdt_mix U本位合约账户</li>
 <li>usdc_mix USDC本位合约账户</li>
-<li>usd_mix 币本位合约账户</li>
+<li>margin_cross 全仓杠杆账户</li>
+<li>margin_isolated 逐仓杠杆账户</li>
 </ul></li>
 </ul>
 <h2 id='fdf72688ac'>订单接口</h2><h3 id='fd6ce2a756'>下单</h3>
@@ -6321,7 +6445,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">分页</td>
 </tr>
 <tr>
@@ -8214,16 +8338,22 @@ Signature = base64.encode(Signature)
 <td>请求订阅的频道列表</td>
 </tr>
 <tr>
+<td>&gt; channel</td>
+<td>String</td>
+<td>是</td>
+<td>频道名, <code>orders</code></td>
+</tr>
+<tr>
 <td>&gt; instType</td>
 <td>String</td>
 <td>是</td>
 <td>产品类型,<code>spbl</code></td>
 </tr>
 <tr>
-<td>&gt; channel</td>
+<td>&gt; instId</td>
 <td>String</td>
 <td>是</td>
-<td>频道名, <code>orders</code></td>
+<td>BTCUSDT_SPBL</td>
 </tr>
 </tbody></table>
 
@@ -8792,6 +8922,7 @@ Signature = base64.encode(Signature)
     var isBroker=currentUrl.indexOf('broker/')>-1;
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
+    var isMargin=currentUrl.indexOf('margin/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -8799,6 +8930,7 @@ Signature = base64.encode(Signature)
     var $Broker=$("#broker"),
         $Spot=$("#spot");
         $Mix=$("#mix");
+        $Margin=$("#margin");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -8808,11 +8940,15 @@ Signature = base64.encode(Signature)
     if(isMix){
         $Mix.addClass('selected');
     }
+    if(isMargin){
+         $Margin.addClass('selected');
+    }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
+        $Margin.html($Margin.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -8824,10 +8960,12 @@ Signature = base64.encode(Signature)
             $Broker.attr('href','/en/broker/')
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
+            $Margin.attr('href','/en/margin/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
+            $Margin.attr('href','/zh/margin/')
         }
 
     } else{
@@ -8835,10 +8973,12 @@ Signature = base64.encode(Signature)
             $Broker.attr('href','/apidoc/en/broker/')
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
+            $Margin.attr('href','/apidoc/en/margin/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
+            $Margin.attr('href','/apidoc/zh/margin/')
         }
     }
 </script>
