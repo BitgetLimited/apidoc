@@ -3543,6 +3543,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">symbol Id (Must be capitalized)</td>
 </tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><a href="#producttype">product type</a></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -10127,7 +10133,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5913396676"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash(5913396676)"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VuDucThanhLong"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
@@ -10148,7 +10154,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5560017617"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash(5560017617)"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jason"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
@@ -10182,7 +10188,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 <tr>
 <td style="text-align: left">traderUid</td>
-<td style="text-align: left">Trader UID</td>
+<td style="text-align: left">Trader UID, String</td>
 </tr>
 <tr>
 <td style="text-align: left">traderNickName</td>
@@ -10428,7 +10434,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=5741955503"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=abc123"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -10635,7 +10641,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"traderId"</span>: <span class="s2">"3559776384"</span>,
+    <span class="s2">"traderId"</span>: <span class="s2">"abc123"</span>,
     <span class="s2">"settings"</span>: <span class="o">[{</span>
         <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
         <span class="s2">"marginType"</span>: <span class="s2">"specify"</span>,

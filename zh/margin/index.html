@@ -337,6 +337,9 @@
                 <a href="#c1ae0a8486" class="toc-h2 toc-link" data-title="接入准备">接入准备</a>
               </li>
               <li>
+                <a href="#sdk" class="toc-h2 toc-link" data-title="SDK/代码示例">SDK/代码示例</a>
+              </li>
+              <li>
                 <a href="#5076603a3e" class="toc-h2 toc-link" data-title="接口类型">接口类型</a>
               </li>
               <li>
@@ -621,6 +624,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年04月11日</strong></p>
+
+<ul>
+<li>新增<a href="#sdk">SDK</a>示例</li>
+</ul>
+
 <p><strong>2023年03月28日</strong></p>
 
 <ul>
@@ -690,6 +699,10 @@ clipboard.on('error', function(e) {
 ```
 
 </aside> 
+<h2 id='sdk'>SDK/代码示例</h2>
+<p><strong>SDK（推荐）</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-open-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-open-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-goland-sdk-open-api">GoLang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-open-api">NodeJs</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-open-api">PHP</a></p>
 
 <p><strong>PostMan 示例</strong></p>
 
@@ -771,6 +784,22 @@ clipboard.on('error', function(e) {
 <tr>
 <td>buy</td>
 <td>买</td>
+</tr>
+<tr>
+<td>liquidation-buy</td>
+<td>结算-买入</td>
+</tr>
+<tr>
+<td>liquidation-sell</td>
+<td>结算-卖出</td>
+</tr>
+<tr>
+<td>systemRepay-buy</td>
+<td>系统还款-买入</td>
+</tr>
+<tr>
+<td>systemRepay-sell</td>
+<td>系统还款-卖出</td>
 </tr>
 </tbody></table>
 <h3 id='ordertype'>orderType(订单类型)</h3>
@@ -903,6 +932,22 @@ clipboard.on('error', function(e) {
 <tr>
 <td>confiscated</td>
 <td>穿仓扣除</td>
+</tr>
+<tr>
+<td>exchange_in</td>
+<td>兑换收入，由系统帐户支出</td>
+</tr>
+<tr>
+<td>exchange_out</td>
+<td>兑换支出，由系统帐户收入</td>
+</tr>
+<tr>
+<td>sys_exchange_in</td>
+<td>系统帐户兑换收入，与兑换支出同时出现</td>
+</tr>
+<tr>
+<td>sys_exchange_out</td>
+<td>系统帐户兑换支出，与兑换收入同时出现</td>
 </tr>
 </tbody></table>
 <h3 id='source'>source</h3>
@@ -4136,6 +4181,7 @@ Signature = base64.encode(Signature)
 <li>autoRepay    自动还款</li>
 <li>manualRepay  手动还款</li>
 <li>liqRepay     爆仓还款</li>
+<li>forceRepay     强制还款</li>
 </ul></li>
 </ul>
 <h3 id='75287b36af'>逐仓借贷利息记录</h3>
@@ -5833,6 +5879,7 @@ Signature = base64.encode(Signature)
 <li>autoRepay    自动还款</li>
 <li>manualRepay  手动还款</li>
 <li>liqRepay     爆仓还款</li>
+<li>forceRepay   强制还款</li>
 </ul></li>
 </ul>
 <h3 id='9c784df88e'>获取全仓利息利息记录</h3>

@@ -314,9 +314,6 @@
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
       </li>
       <li>
-        <a href="#update-logs" class="toc-h1 toc-link" data-title="Update Logs">Update Logs</a>
-      </li>
-      <li>
         <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
       </li>
       <li>
@@ -338,6 +335,9 @@
           <ul class="toc-list-h2">
               <li>
                 <a href="#prepare-to-integrate" class="toc-h2 toc-link" data-title="Prepare to integrate">Prepare to integrate</a>
+              </li>
+              <li>
+                <a href="#sdk-code-example" class="toc-h2 toc-link" data-title="SDK/Code Example">SDK/Code Example</a>
               </li>
               <li>
                 <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
@@ -622,7 +622,13 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-logs'>Update Logs</h1><h1 id='update-log'>Update Log</h1>
+<h1 id='update-log'>Update Log</h1>
+<p><strong>11/04/2023</strong></p>
+
+<ul>
+<li>add <a href="#sdk-code-example">SDK</a></li>
+</ul>
+
 <p><strong>28/03/2023</strong></p>
 
 <ul>
@@ -695,6 +701,10 @@ User can bind IP address when he creates APIKey, It is strongly recommended to b
 Leaking any of these three keys may cause loss of your assets. If you find by any chance that the APIKey is compromised, please delete the APIKey as soon as possible.
 ```
 </aside> 
+<h2 id='sdk-code-example'>SDK/Code Example</h2>
+<p><strong>SDK（Recommended）</strong></p>
+
+<p><a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-java-sdk-open-api">Java</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-python-sdk-open-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-goland-sdk-open-api">GoLang</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-node-sdk-open-api">NodeJs</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-open-api">PHP</a></p>
 
 <p><strong>PostMan Demo</strong></p>
 
@@ -767,6 +777,22 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <tr>
 <td>buy</td>
 <td>Buy</td>
+</tr>
+<tr>
+<td>liquidation-buy</td>
+<td>liquidation buy</td>
+</tr>
+<tr>
+<td>liquidation-sell</td>
+<td>liquidation sell</td>
+</tr>
+<tr>
+<td>systemRepay-buy</td>
+<td>systemRepay buy</td>
+</tr>
+<tr>
+<td>systemRepay-sell</td>
+<td>systemRepay sell</td>
 </tr>
 </tbody></table>
 <h3 id='ordertype'>orderType</h3>
@@ -899,6 +925,22 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <tr>
 <td>confiscated</td>
 <td>Wearout deduction</td>
+</tr>
+<tr>
+<td>exchange_in</td>
+<td>Exchange income, disbursed from the system account</td>
+</tr>
+<tr>
+<td>exchange_out</td>
+<td>Exchange expenses received from the system account</td>
+</tr>
+<tr>
+<td>sys_exchange_in</td>
+<td>The system account exchange income occurs simultaneously with the exchange expense</td>
+</tr>
+<tr>
+<td>sys_exchange_out</td>
+<td>The system account exchange expense occurs simultaneously with the exchange income</td>
 </tr>
 </tbody></table>
 <h3 id='source'>source</h3>
@@ -4031,6 +4073,7 @@ microtime(true) * 1000;
 <li>autoRepay    Auto repay</li>
 <li>manualRepay  Manual repay</li>
 <li>liqRepay     Force liquidation repay</li>
+<li>forceRepay     Force  repay</li>
 </ul></li>
 </ul>
 <h3 id='get-isolated-interest-records'>Get isolated interest records</h3>
@@ -5727,6 +5770,7 @@ microtime(true) * 1000;
 <li>autoRepay    Auto repay</li>
 <li>manualRepay  manual repay</li>
 <li>liqRepay     liquidation repay</li>
+<li>forceRepay     force repay</li>
 </ul></li>
 </ul>
 <h3 id='get-cross-interest-records'>Get cross interest records</h3>

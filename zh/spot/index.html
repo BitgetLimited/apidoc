@@ -1129,11 +1129,11 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td>normal</td>
-<td>不用特殊控制类型订单</td>
+<td>普通订单, 订单会一直有效，直到被成交或者取消</td>
 </tr>
 <tr>
 <td>post_only</td>
-<td>postOnly类型订单</td>
+<td>只做 maker 订单</td>
 </tr>
 <tr>
 <td>fok</td>
@@ -1640,7 +1640,7 @@ Signature = base64.encode(Signature)
                 </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"chain"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"withdrawAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"withdrawable"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"extraWithDrawFee"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -1688,7 +1688,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">是否需要tag</td>
 </tr>
 <tr>
-<td style="text-align: left">&gt; withdrawAble</td>
+<td style="text-align: left">&gt; withdrawable</td>
 <td style="text-align: left">是否可提现</td>
 </tr>
 <tr>

@@ -1720,11 +1720,11 @@ Signature = base64.encode(Signature)
 </thead><tbody>
 <tr>
 <td>normal</td>
-<td>普通订单</td>
+<td>普通订单, 订单会一直有效，直到被成交或者取消</td>
 </tr>
 <tr>
 <td>post_only</td>
-<td>订单会一直有效，直到被成交或者取消</td>
+<td>只做 maker 订单</td>
 </tr>
 <tr>
 <td>ioc</td>
@@ -10369,7 +10369,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5913396676"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VuDucThanhLong"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
@@ -10410,7 +10410,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5560017617"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jason"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
@@ -10464,7 +10464,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td style="text-align: left">traderUid</td>
-<td style="text-align: left">交易员ID</td>
+<td style="text-align: left">交易员ID，字符串</td>
 </tr>
 <tr>
 <td style="text-align: left">traderNickName</td>
@@ -10710,7 +10710,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=5741955503"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=abc123"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -10963,7 +10963,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"traderId"</span>: <span class="s2">"3559776384"</span>,
+    <span class="s2">"traderId"</span>: <span class="s2">"abc123"</span>,
     <span class="s2">"settings"</span>: <span class="o">[{</span>
         <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
         <span class="s2">"marginType"</span>: <span class="s2">"specify"</span>,
