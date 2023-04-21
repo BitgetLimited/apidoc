@@ -1758,7 +1758,7 @@ Signature = base64.encode(Signature)
 获取账户资产</p>
 
 <ul>
-<li>GET  /api/margin/v1/cross/account/assets</li>
+<li>GET /api/margin/v1/cross/account/assets</li>
 </ul>
 
 <p><strong>请求参数</strong></p>
@@ -1848,8 +1848,8 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">净资产 = available + frozen - borrow  - interest, 到了mmr(维持保证金率)就爆仓</td>
 </tr>
 <tr>
-<td style="text-align: left">uTime</td>
-<td style="text-align: center">更新时间</td>
+<td style="text-align: left">ctime</td>
+<td style="text-align: center">创建时间</td>
 </tr>
 </tbody></table>
 <h3 id='93d957742c'>获取逐仓杠杆账户资产</h3>
@@ -1954,8 +1954,8 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">净资产 = available + frozen - borrow  - interest, 风险率达到1就爆仓</td>
 </tr>
 <tr>
-<td style="text-align: left">uTime</td>
-<td style="text-align: center">更新时间</td>
+<td style="text-align: left">ctime</td>
+<td style="text-align: center">创建时间</td>
 </tr>
 </tbody></table>
 <h3 id='3c26ed084b'>全仓借款接口</h3>

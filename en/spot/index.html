@@ -395,6 +395,12 @@
                       <li>
                         <a href="#enterpointsource" class="toc-h3 toc-link" data-title="enterPointSource">enterPointSource</a>
                       </li>
+                      <li>
+                        <a href="#p2padvertisementstatus" class="toc-h3 toc-link" data-title="p2pAdvertisementStatus">p2pAdvertisementStatus</a>
+                      </li>
+                      <li>
+                        <a href="#p2porderstatus" class="toc-h3 toc-link" data-title="p2pOrderStatus">p2pOrderStatus</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -568,6 +574,23 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#p2p-endpoint" class="toc-h2 toc-link" data-title="P2P endpoint">P2P endpoint</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#p2p-merchant-list" class="toc-h3 toc-link" data-title="P2P merchant list">P2P merchant list</a>
+                      </li>
+                      <li>
+                        <a href="#get-merchant-information" class="toc-h3 toc-link" data-title="get merchant information">get merchant information</a>
+                      </li>
+                      <li>
+                        <a href="#get-advertisement-list" class="toc-h3 toc-link" data-title="get advertisement list">get advertisement list</a>
+                      </li>
+                      <li>
+                        <a href="#merchant-get-p2p-order-list" class="toc-h3 toc-link" data-title="merchant get P2P order list">merchant get P2P order list</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
       </li>
       <li>
@@ -675,6 +698,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>21/04/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#p2p-endpoint">P2P endpoint</a></li>
+</ul>
+
 <p><strong>28/03/2023</strong></p>
 
 <ul>
@@ -1454,6 +1483,58 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <td>IOS Client</td>
 </tr>
 </tbody></table>
+<h3 id='p2padvertisementstatus'>p2pAdvertisementStatus</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>online</td>
+<td>p2p advertisement online</td>
+</tr>
+<tr>
+<td>offline</td>
+<td>p2p advertisement offline</td>
+</tr>
+<tr>
+<td>editing</td>
+<td>p2p advertisement editing</td>
+</tr>
+<tr>
+<td>completed</td>
+<td>p2p advertisement completed</td>
+</tr>
+</tbody></table>
+<h3 id='p2porderstatus'>p2pOrderStatus</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pending_pay</td>
+<td>p2p order pending pay</td>
+</tr>
+<tr>
+<td>paid</td>
+<td>p2p order paid</td>
+</tr>
+<tr>
+<td>appeal</td>
+<td>p2p order appeal</td>
+</tr>
+<tr>
+<td>completed</td>
+<td>p2p order completed</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>p2p order cancelled</td>
+</tr>
+</tbody></table>
 <h2 id='api-verification'>API Verification</h2>
 <p><strong>Initiating request</strong></p>
 
@@ -1863,7 +1944,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>status</td>
-<td>Status</td>
+<td>Status: offline,gray,online</td>
 </tr>
 <tr>
 <td>minTradeUSDT</td>
@@ -6730,6 +6811,887 @@ microtime(true) * 1000;
 <td>Create time</td>
 </tr>
 </tbody></table>
+<h2 id='p2p-endpoint'>P2P endpoint</h2><h3 id='p2p-merchant-list'>P2P merchant list</h3>
+<p>Limit rule 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/p2p/v1/merchant/merchantList</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">online</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">is online (yes/no)</td>
+</tr>
+<tr>
+<td style="text-align: left">merchantId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">merchant ID</td>
+</tr>
+<tr>
+<td style="text-align: left">lastMinId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">minId</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Page Size(default 100)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Reversal Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/p2p/v1/merchant/merchantList?online=yes&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Reversal Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1681195810516,
+  "data": {
+    "resultList": [
+      {
+        "registerTime": "1678674575000",
+        "nickName": "zed-test1",
+        "isOnline": "no",
+        "merchantId": "3784051421",
+        "averagePayment": "3",
+        "averageRelease": "2",
+        "totalTrades": "23",
+        "totalBuy": "10",
+        "totalSell": "13",
+        "totalCompletionRate": "0.9",
+        "thirtyTrades": "8",
+        "thirtySell": "4",
+        "thirtyBuy": "4",
+        "thirtyCompletionRate": "0.8"
+      }
+    ],
+    "minId": "594"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">resultList</td>
+<td style="text-align: left">response array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; registerTime</td>
+<td style="text-align: left">register time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; nickName</td>
+<td style="text-align: left">nick name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; isOnline</td>
+<td style="text-align: left">is online, yes/no</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; merchantId</td>
+<td style="text-align: left">merchant ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; averagePayment</td>
+<td style="text-align: left">average payment time, min</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; averageRealese</td>
+<td style="text-align: left">average realese coin time, min</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalTrades</td>
+<td style="text-align: left">total No. of trades</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalBuy</td>
+<td style="text-align: left">total No. of buy</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalSell</td>
+<td style="text-align: left">total No. of sell</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalCompletionRate</td>
+<td style="text-align: left">total completion rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; thirtyTrades</td>
+<td style="text-align: left">thirty days total No. of trades</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; thirtySell</td>
+<td style="text-align: left">thirty days total No. of sell</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; thirtyBuy</td>
+<td style="text-align: left">thirty days total No. of buy</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; thirtyCompletionRate</td>
+<td style="text-align: left">thirty days total completion rate</td>
+</tr>
+<tr>
+<td style="text-align: left">minId</td>
+<td style="text-align: left">response data minimum &#39;merchantId&#39; in resultList</td>
+</tr>
+</tbody></table>
+<h3 id='get-merchant-information'>get merchant information</h3>
+<p>Limit rule 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/p2p/v1/merchant/merchantInfo</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<blockquote>
+<p>Reversal Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/p2p/v1/merchant/merchantInfo"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Reversal Response Data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1681194805204,
+  "data": {
+    "registerTime": "1672039640000",
+    "nickName": "Mark",
+    "realName": "M***K",
+    "merchantId": "2569373299",
+    "averagePayment": "2",
+    "averageRealese": "3",
+    "totalTrades": "2",
+    "totalBuy": "1",
+    "totalSell": "0",
+    "totalCompletionRate": "1",
+    "thirtyTrades": "12",
+    "thirtySell": "4",
+    "thirtyBuy": "8",
+    "thirtyCompletionRate": "0.71",
+    "kycFlag": true,
+    "emailBindFlag": true,
+    "mobileBindFlag": true,
+    "email": "****@gmail.com",
+    "mobile": "107****434"
+  }
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">registerTime</td>
+<td style="text-align: left">register time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">nickName</td>
+<td style="text-align: left">nick name</td>
+</tr>
+<tr>
+<td style="text-align: left">realName</td>
+<td style="text-align: left">kyc name</td>
+</tr>
+<tr>
+<td style="text-align: left">merchantId</td>
+<td style="text-align: left">merchant ID</td>
+</tr>
+<tr>
+<td style="text-align: left">kycFlag</td>
+<td style="text-align: left">is kyc: true/false</td>
+</tr>
+<tr>
+<td style="text-align: left">emailBindFlag</td>
+<td style="text-align: left">is bind email: true/false</td>
+</tr>
+<tr>
+<td style="text-align: left">mobileBindFlag</td>
+<td style="text-align: left">is bind mobile: true/false</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left">email</td>
+</tr>
+<tr>
+<td style="text-align: left">mobile</td>
+<td style="text-align: left">mobile</td>
+</tr>
+<tr>
+<td style="text-align: left">averagePayment</td>
+<td style="text-align: left">average payment time, min</td>
+</tr>
+<tr>
+<td style="text-align: left">averageRealese</td>
+<td style="text-align: left">average realese coin time, min</td>
+</tr>
+<tr>
+<td style="text-align: left">totalTrades</td>
+<td style="text-align: left">total No. of trade</td>
+</tr>
+<tr>
+<td style="text-align: left">totalBuy</td>
+<td style="text-align: left">total No. of buy</td>
+</tr>
+<tr>
+<td style="text-align: left">totalSell</td>
+<td style="text-align: left">total No. of sell</td>
+</tr>
+<tr>
+<td style="text-align: left">totalCompletionRate</td>
+<td style="text-align: left">total completion rate</td>
+</tr>
+<tr>
+<td style="text-align: left">thirtyTrades</td>
+<td style="text-align: left">thirty days total No. of trade</td>
+</tr>
+<tr>
+<td style="text-align: left">thirtySell</td>
+<td style="text-align: left">thirty days total No. of sell</td>
+</tr>
+<tr>
+<td style="text-align: left">thirtyBuy</td>
+<td style="text-align: left">thirty days total No. of buy</td>
+</tr>
+<tr>
+<td style="text-align: left">thirtyCompletionRate</td>
+<td style="text-align: left">thirty days total completion rate</td>
+</tr>
+</tbody></table>
+<h3 id='get-advertisement-list'>get advertisement list</h3>
+<p>Limit rule 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/p2p/v1/merchant/advList</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">advNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">advertisement No</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">buy/sell</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center"><a href="#p2padvertisementstatus">advertisement status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">languageType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">zh-CN/en-US</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">fiat</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">fiat</td>
+</tr>
+<tr>
+<td style="text-align: left">orderBy</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">order by desc：createTime/price (default createTime)</td>
+</tr>
+<tr>
+<td style="text-align: left">lastMinId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">The minId returned by the previous query, will return records with advId less than the given &#39;lastMinId&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">start time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">end time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">page Size(default 100)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Reversal Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/p2p/v1/merchant/advList?startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Reversal Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681198612226</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"advList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"advId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"advNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1012099637487755264"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dealAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiatCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiatPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiatSymbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"maxAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"turnoverNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"turnoverRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"userLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minCompleteNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxCompleteNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"placeOrderNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowMerchantPlace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"thirtyCompleteRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"paymentMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1677029278156"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"minId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">advList</td>
+<td style="text-align: left">response array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; advId</td>
+<td style="text-align: left">ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; advNo</td>
+<td style="text-align: left">advertisement No</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; type</td>
+<td style="text-align: left">sell/buy</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; amount</td>
+<td style="text-align: left">advertisement buy/sell amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; dealAmount</td>
+<td style="text-align: left">deal amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; coin</td>
+<td style="text-align: left">buy/sell coin (BGB,USDT,BTC,ETH)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; price</td>
+<td style="text-align: left">payment fiat (USD, JPY, CNY)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; coinPrecision</td>
+<td style="text-align: left">coin precision</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; fiatCode</td>
+<td style="text-align: left">fiat code</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; fiatPrecision</td>
+<td style="text-align: left">fiat precision</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; fiatSymbol</td>
+<td style="text-align: left">fiat symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; status</td>
+<td style="text-align: left"><a href="#p2padvertisementstatus">advertisement status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; hide</td>
+<td style="text-align: left">advertisement hide: yes/no</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; maxAmount</td>
+<td style="text-align: left">Maximum Order Quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; minAmount</td>
+<td style="text-align: left">Minimum Order Quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; payDuration</td>
+<td style="text-align: left">order payment duration, min</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; turnoverNum</td>
+<td style="text-align: left">merchant total trade Number</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; turnoverRate</td>
+<td style="text-align: left">merchant total trade completion</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; remark</td>
+<td style="text-align: left">remark</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">create time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; userLimit</td>
+<td style="text-align: left">user place order limit</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; minCompleteNum</td>
+<td style="text-align: left">user minimum completion orders</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; maxCompleteNum</td>
+<td style="text-align: left">user maximum completion orders</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; placeOrderNum</td>
+<td style="text-align: left">user maximum place orders in this advertisement</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; allowMerchantPlace</td>
+<td style="text-align: left">allow merchant place order: yes/no</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; thirtyCompleteRate</td>
+<td style="text-align: left">thirty days completion rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; paymentMethod</td>
+<td style="text-align: left">payment method</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymentMethod</td>
+<td style="text-align: left">payment method name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymentId</td>
+<td style="text-align: left">payment id</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymentInfo</td>
+<td style="text-align: left">payment information</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; required</td>
+<td style="text-align: left">required: true/false</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; name</td>
+<td style="text-align: left">pay detail description</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; type</td>
+<td style="text-align: left">pay detail type, file/number, please ignore this field</td>
+</tr>
+<tr>
+<td style="text-align: left">minId</td>
+<td style="text-align: left">response data minimum &#39;advId&#39;</td>
+</tr>
+</tbody></table>
+<h3 id='merchant-get-p2p-order-list'>merchant get P2P order list</h3>
+<p>Limit rule 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/p2p/v1/merchant/orderList</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">advNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">advertisement No</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">buy/sell</td>
+</tr>
+<tr>
+<td style="text-align: left">orderNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">order No</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#p2porderstatus">p2p order status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">languageType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">zh-CN/en-US</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">fiat</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">fiat</td>
+</tr>
+<tr>
+<td style="text-align: left">lastMinId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">The minId returned by the previous query, will return records with advNo less than the given &#39;lastMinId&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">end time, ms</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">page size(default 100)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Reversal Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/p2p/v1/merchant/orderList?startTime=1659403328000&amp;endTime=1659410528000&amp;pageSize=20"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Reversal Response Data</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681201761390</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"orderList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"557"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1029222647482966017"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"advNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1027001359783845889"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"withdrawTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"representTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"releaseCoinTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buyerRealName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jordan"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sellerRealName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mark"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"paymethodName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paypal"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"paymethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"paymethodInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IBC"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11****"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paypal"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://bitgetapp.com/otc/images/20230116/498ab1b8-3ba6-44bd-9570-b3e5c118233f.jpg"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1681111722251"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"minId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"557"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderList</td>
+<td style="text-align: left">response array</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; orderId</td>
+<td style="text-align: left">ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; orderNo</td>
+<td style="text-align: left">order No</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; advNo</td>
+<td style="text-align: left">advertisement No</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; type</td>
+<td style="text-align: left">buy/sell</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; count</td>
+<td style="text-align: left">order coin amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; coin</td>
+<td style="text-align: left">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; price</td>
+<td style="text-align: left">price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; fiat</td>
+<td style="text-align: left">fiat</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; withdrawTime</td>
+<td style="text-align: left">withdraw time</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; representTime</td>
+<td style="text-align: left">order appeal time</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; releaseCoinTime</td>
+<td style="text-align: left">release coin time</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; paymentTime</td>
+<td style="text-align: left">payment time</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; amount</td>
+<td style="text-align: left">order fiat amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; status</td>
+<td style="text-align: left"><a href="#p2porderstatus">p2p order status</a></td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; buyerRealName</td>
+<td style="text-align: left">buyer kyc name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; sellerRealName</td>
+<td style="text-align: left">seller kyc name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; ctime</td>
+<td style="text-align: left">create time</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; paymentInfo</td>
+<td style="text-align: left">payment information</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymethodName</td>
+<td style="text-align: left">pay method name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymethodId</td>
+<td style="text-align: left">pay method ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; paymethodInfo</td>
+<td style="text-align: left">pay method information</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; name</td>
+<td style="text-align: left">name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; required</td>
+<td style="text-align: left">required: true/false</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; type</td>
+<td style="text-align: left">type, number/file, please ignore this field</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;&gt; value</td>
+<td style="text-align: left">value</td>
+</tr>
+<tr>
+<td style="text-align: left">minId</td>
+<td style="text-align: left">response data minimum &#39;orderId&#39;</td>
+</tr>
+</tbody></table>
 
 <p>&nbsp;</p>
 
@@ -7248,7 +8210,7 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>b
 Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>ask2[price:amount]</code>:<code>ask3[price:amount]</code>...</li>
 </ol>
 <h2 id='public-channels'>Public Channels</h2><h3 id='tickers-channel'>Tickers Channel</h3>
-<p>Retrieve the last traded price, bid price, ask price and 24-hour trading volume of the instruments. Data will be pushed every 100 ms.</p>
+<p>Retrieve the last traded price, bid price, ask price and 24-hour trading volume of the instruments. Data will be pushed every 200 ms.</p>
 
 <blockquote>
 <p>Request Example</p>
