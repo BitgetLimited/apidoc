@@ -5223,12 +5223,6 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: center">No</td>
 <td style="text-align: center">last end Id of last query</td>
 </tr>
-<tr>
-<td style="text-align: left">next</td>
-<td style="text-align: left">boolean</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Whether query return lastEndId? default false</td>
-</tr>
 </tbody></table>
 
 <blockquote>
@@ -5263,8 +5257,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"endId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"885353495773458432"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"preFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8497,7 +8490,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
+<td style="text-align: center">Yes</td>
 <td style="text-align: center">Whether this position is long or short</td>
 </tr>
 <tr>
@@ -11782,6 +11775,7 @@ The sequence:
 Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>bid2[price:amount]</code>:<code>ask2[price:amount]</code>...</li>
 <li>When the bid or ask depth data is less than 25 levels, the missing depth data will be ignored.
 Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>ask2[price:amount]</code>:<code>ask3[price:amount]</code>...</li>
+<li>If price is &#39;0.50000&#39;, DO NOT calculate the checksum by &#39;0.5&#39;, please DO use the original value</li>
 </ol>
 <h2 id='public-channels'>Public Channels</h2><h3 id='tickers-channel'>Tickers Channel</h3>
 <p>Retrieve the latest traded price, bid price, ask price and 24-hour trading volume of the instruments. Data will be pushed every 150 ms.</p>
