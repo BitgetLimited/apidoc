@@ -282,7 +282,7 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
-        <img src="../../images/log-jk382.svg" class="logo" alt="" />
+          <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
@@ -684,6 +684,9 @@
                       <li>
                         <a href="#6ccdfb3263" class="toc-h3 toc-link" data-title="跟单用户设置止盈止损">跟单用户设置止盈止损</a>
                       </li>
+                      <li>
+                        <a href="#50259674af" class="toc-h3 toc-link" data-title="跟单用户取消跟随交易员">跟单用户取消跟随交易员</a>
+                      </li>
                   </ul>
               </li>
           </ul>
@@ -798,6 +801,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年05月06日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#v2">跟随者取消跟随交易员</a></li>
+</ul>
+
 <p><strong>2023年04月21日</strong></p>
 
 <ul>
@@ -5704,7 +5713,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">reduceOnly</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">默认false; 只减仓，单项持仓平仓时仓位价值小于5USDT则需要设置为true, 双向持仓时不生效</td>
+<td style="text-align: center">默认false; 只减仓，单向持仓平仓时仓位价值小于5USDT则需要设置为true, 双向持仓时不生效</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -8073,7 +8082,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">reduceOnly</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">默认false; 只减仓，单项持仓平仓时仓位价值小于5USDT则需要设置为true, 双向持仓时不生效</td>
+<td style="text-align: center">默认false; 只减仓，单向持仓平仓时仓位价值小于5USDT则需要设置为true, 双向持仓时不生效</td>
 </tr>
 </tbody></table>
 
@@ -9035,7 +9044,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">planType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">撤单类型</td>
+<td style="text-align: center">撤单类型, default &#39;plan&#39;</td>
 </tr>
 </tbody></table>
 
@@ -11622,7 +11631,56 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </thead><tbody>
 </tbody></table>
-<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
+<h3 id='50259674af'>跟单用户取消跟随交易员</h3>
+<p>限速规则 5次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/cancelCopyTrader</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易员uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/cancelCopyTrader"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"traderId"</span>: <span class="s2">"456772182"</span><span class="o">}</span>
+
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data":true
+}
+</code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
 <p>WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务器全双工通信， 使得数据可以快速地双向传播。通过一次简单的握手就
  可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
 
@@ -11655,7 +11713,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <h2 id='7328deebb5'>连接</h2>
 <p><strong>连接说明</strong>：</p>
 
-<p><strong>连接限制</strong>：1次/秒</p>
+<p><strong>连接限制</strong>：100个/IP</p>
 
 <p><strong>订阅限制</strong>：240次/小时</p>
 
