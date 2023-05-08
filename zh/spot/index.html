@@ -7748,7 +7748,7 @@ Signature = base64.encode(Signature)
 <h2 id='7328deebb5'>连接</h2>
 <p><strong>连接说明</strong>：</p>
 
-<p><strong>连接限制</strong>：1次/秒</p>
+<p><strong>连接限制</strong>：100个/IP</p>
 
 <p><strong>订阅限制</strong>：240次/小时</p>
 
@@ -8172,6 +8172,7 @@ Signature = base64.encode(Signature)
 <ol>
 <li>当bid和ask深度数据超过25档时，截取各自25档数据，要校验的字符串按照bid、ask深度数据交替方式连接。如：bid1[价格:数量]:ask1[价格:数量]:bid2[价格:数量]:ask2[价格:数量]...</li>
 <li>bid或ask深度数据不足25档时，直接忽略缺失的深度。如：bid1[价格:数量]:ask1[价格:数量]:ask2[价格:数量]:ask3[价格:数量]...</li>
+<li>如果返回的价格为0.5000, 请注意使用原始值计算checksum，不要使用trim掉0后的0.5</li>
 </ol>
 <h2 id='a6ff2d9336'>公共频道</h2><h3 id='9841eacefc'>行情频道</h3>
 <p>获取产品的最新成交价、买一价、卖一价和24小时交易量等信息，有数据更新推送一次数据</p>

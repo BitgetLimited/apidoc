@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -805,6 +805,13 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>新增接口 <a href="#50259674af">跟随者取消跟随交易员</a></li>
+</ul>
+
+<p><strong>2023年05月08日</strong></p>
+
+<ul>
+<li>接口 <a href="#k">获取K线数据</a> 新增参数&#39;kLineType&#39; 支持指数/标记价格k线</li>
+<li>接口 <a href="#863e64ec14">交易员获取当前带单</a> 参数symbol改为非必填</li>
 </ul>
 
 <p><strong>2023年04月21日</strong></p>
@@ -3010,6 +3017,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">结束时间（时间戳毫秒，小于等于），根据granularity向下取整, 即granularity=1m时： 1672410799436(2022-12-30 22:33:19) 向下取整为 1672408800000 (2022-12-30 22:00:00)</td>
+</tr>
+<tr>
+<td style="text-align: left">kLineType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">k线类型：market mark index；默认 market</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -5280,10 +5293,16 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center"><a href="#producttype">产品类型</a>，与symbol二选一</td>
+</tr>
+<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">产品ID 必须大写</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">产品ID 必须大写，废弃，不建议使用</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -5320,7 +5339,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/account/accountBill?symbol=BTCUSDT_UMCBL&amp;marginCoin=USDT&amp;startTime=1659403328000&amp;endTime=1659406928000&amp;pageSize=20"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/account/accountBill?productType=UMCBL&amp;marginCoin=USDT&amp;startTime=1659403328000&amp;endTime=1659406928000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -5367,7 +5386,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">产品Id</td>
+<td style="text-align: left">产品Id, 可能为null</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -8096,7 +8115,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>返回数据</p>
@@ -8143,10 +8162,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li><p>timeInForceValue</p>
 
 <ul>
-<li>normal<br></li>
-<li>postOnly</li>
-<li>fok</li>
-<li>ioc</li>
+<li>normal  good till cancel</li>
+<li>post_only maker only</li>
+<li>fok full or kill</li>
+<li>ioc instant or cancel</li>
 </ul></li>
 <li><p>orderType</p>
 
@@ -9505,7 +9524,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
@@ -12706,6 +12725,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 <p><code>books15</code> 首次推15档快照数据，以后全量推送，有深度变化推送一次15档数据，即每次都推送15档数据</p>
 
+<p>数据根据币对的不同在 100 ~ 200 ms内推送一次</p>
+
 <blockquote>
 <p>请求示例</p>
 </blockquote>
@@ -14229,6 +14250,11 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>&gt; cTime</td>
 <td>String</td>
 <td>订单创建时间，Unix时间戳的毫秒数格式，如 <code>1597026383085</code></td>
+</tr>
+<tr>
+<td>&gt; low</td>
+<td>Boolean</td>
+<td>Is reduceOnly</td>
 </tr>
 </tbody></table>
 <h3 id='ddd4a2ac94'>计划委托频道</h3>

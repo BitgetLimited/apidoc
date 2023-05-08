@@ -824,10 +824,17 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>May 08, 2023</strong></p>
+
+<ul>
+<li><a href="#get-candle-data">Get Candle Data</a> add parameter: &#39;kLineType&#39; support index/mark price k-line</li>
+<li><a href="#get-trader-open-order">Get Trader Open order</a> parameter: &#39;symbol&#39; changed to non-mandatory </li>
+</ul>
+
 <p><strong>May 6, 2023</strong></p>
 
 <ul>
-<li>New interface <a href="#get-symbol-position-v2">Cancel Follower Trader</a></li>
+<li>New interface <a href="#cancel-follower-trader">Cancel Follower Trader</a></li>
 </ul>
 
 <p><strong>Apr 21, 2023</strong></p>
@@ -2938,6 +2945,12 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
 <td style="text-align: center">End time (Timestamp ms, less or equals), will round-down as per granularity, which is: 1672410799436(2022-12-30 22:33:19) will rounded down to 1672408800000 (2022-12-30 22:00:00) if granularity=1H</td>
+</tr>
+<tr>
+<td style="text-align: left">kLineType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">k-line type: &#39;market mark index&#39;; Default &#39;market&#39;</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -5197,10 +5210,16 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#producttype">Product Type</a>, choose one in: &#39;symbol&#39; and &#39;productType&#39;</td>
+</tr>
+<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Symbol Id (Deprecated)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -5237,7 +5256,7 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/account/accountBill?symbol=BTCUSDT_UMCBL&amp;marginCoin=USDT&amp;startTime=1659403328000&amp;endTime=1659406928000&amp;pageSize=20"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/account/accountBill?productType=UMCBL&amp;marginCoin=USDT&amp;startTime=1659403328000&amp;endTime=1659406928000&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -5284,7 +5303,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
+<td style="text-align: left">Symbol Id, might be null</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
@@ -7973,7 +7992,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -9272,7 +9291,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">Symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
@@ -12412,9 +12431,10 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 
 <ul>
 <li><code>books</code>: Push the full <code>snapshot</code> data for the first time, push <code>update</code> afterwards, that is, if there is a change in depth, the depth data that has changed will be pushed.</li>
-<li><code>books1</code>: 1 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
-<li><code>books5</code>: 5 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
-<li><code>books15</code>: 15 depth levels will be pushed every time(all snapshot, no update). Data will be pushed every 200 ms when there is change in order book.</li>
+<li><code>books1</code>: 1 depth levels will be pushed every time(all snapshot, no update). </li>
+<li><code>books5</code>: 5 depth levels will be pushed every time(all snapshot, no update).</li>
+<li><code>books15</code>: 15 depth levels will be pushed every time(all snapshot, no update).
+Data will be pushed every 100 ~ 200 ms when there is change in order book.</li>
 </ul>
 
 <table><thead>
