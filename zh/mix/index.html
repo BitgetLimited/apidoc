@@ -798,6 +798,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年05月12日</strong></p>
+
+<ul>
+<li>接口 <a href="#09c23f077f">获取交易员列表</a> 新增参数 <code>traderUid</code>  交易员uid 和  <code>traderNickName</code>   交易员昵称 </li>
+</ul>
+
 <p><strong>2023年05月08日</strong></p>
 
 <ul>
@@ -10681,6 +10687,18 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <th style="text-align: center">描述</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">traderUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">交易员uid</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">交易员昵称 (模糊匹配)</td>
+</tr>
 <tr>
 <td style="text-align: left">fullStatus</td>
 <td style="text-align: left">String</td>

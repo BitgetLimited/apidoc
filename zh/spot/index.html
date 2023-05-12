@@ -282,7 +282,7 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
-        <img src="../../images/log-jk382.svg" class="logo" alt="" />
+          <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
@@ -493,6 +493,9 @@
                       <li>
                         <a href="#e2a027ceb6" class="toc-h3 toc-link" data-title="获取充值记录">获取充值记录</a>
                       </li>
+                      <li>
+                        <a href="#34196645ac" class="toc-h3 toc-link" data-title="获取交易手续费率">获取交易手续费率</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -566,6 +569,9 @@
                       <li>
                         <a href="#1c62db0f32" class="toc-h3 toc-link" data-title="获取历史计划委托">获取历史计划委托</a>
                       </li>
+                      <li>
+                        <a href="#149d59fc6d" class="toc-h3 toc-link" data-title="批量撤销计划委托单">批量撤销计划委托单</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -582,6 +588,32 @@
                       </li>
                       <li>
                         <a href="#p2p-3" class="toc-h3 toc-link" data-title="商家获取P2P订单">商家获取P2P订单</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#f9487b45a0" class="toc-h2 toc-link" data-title="子母账户">子母账户</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#33369849da" class="toc-h3 toc-link" data-title="创建虚拟子账户">创建虚拟子账户</a>
+                      </li>
+                      <li>
+                        <a href="#262d332866" class="toc-h3 toc-link" data-title="修改虚拟子账户">修改虚拟子账户</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-2" class="toc-h3 toc-link" data-title="批量创建虚拟子账户和ApiKey">批量创建虚拟子账户和ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#6b99ff68e6" class="toc-h3 toc-link" data-title="获取虚拟子账户列表">获取虚拟子账户列表</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-3" class="toc-h3 toc-link" data-title="创建虚拟子账户ApiKey">创建虚拟子账户ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-4" class="toc-h3 toc-link" data-title="修改虚拟子账户ApiKey">修改虚拟子账户ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#apikey-5" class="toc-h3 toc-link" data-title="查询子账户ApiKey 列表">查询子账户ApiKey 列表</a>
                       </li>
                   </ul>
               </li>
@@ -695,6 +727,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年05月12日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#34196645ac">获取交易手续费率</a></li>
+</ul>
+
 <p><strong>2023年04月21日</strong></p>
 
 <ul>
@@ -3048,9 +3086,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC</li>
-<li>margin_cross        接受转入转出多个币种</li>
-<li>margin_isolated     接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC
+margin_cross       接受转入转出多个币种
+margin_isolated        接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='v2'>划转V2</h3>
@@ -3111,9 +3149,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC</li>
-<li>margin_cross        接受转入转出多个币种</li>
-<li>margin_isolated     接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC
+margin_cross       接受转入转出多个币种
+margin_isolated        接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -3267,9 +3305,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC</li>
-<li>margin_cross        接受转入转出多个币种</li>
-<li>margin_isolated     接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC
+margin_cross       接受转入转出多个币种
+margin_isolated        接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='7bc510fe47'>母子账户划转</h3>
@@ -3394,9 +3432,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC</li>
-<li>margin_cross        接受转入转出多个币种</li>
-<li>margin_isolated     接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC
+margin_cross       接受转入转出多个币种
+margin_isolated        接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -4305,6 +4343,80 @@ Signature = base64.encode(Signature)
 <li>success 成功</li>
 </ul></li>
 </ul>
+<h3 id='34196645ac'>获取交易手续费率</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/user/v1/fee/query</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>币对（合约：BTCUSDT_UMCBL， 现货：BTCUSDT_SPBL， 杠杆：BTCUSDT）</td>
+</tr>
+<tr>
+<td>business</td>
+<td>String</td>
+<td>是</td>
+<td>业务类型（合约：mix， 现货：spot， 杠杆：margin）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/fee/query&amp;symbol=BTCUSDT_UMCBL&amp;business=mix"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1683875302853,
+    "data": {
+        "makerRate": "0.0002",
+        "takerRate": "0.0006"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>makerRate</td>
+<td>maker fee</td>
+</tr>
+<tr>
+<td>takerRate</td>
+<td>taker fee</td>
+</tr>
+</tbody></table>
 <h2 id='df03e301d5'>账户接口</h2><h3 id='apikey'>获取ApiKey信息</h3>
 <p>限速规则：1次/1s</p>
 
@@ -6814,6 +6926,97 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">创建时间</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='149d59fc6d'>批量撤销计划委托单</h3>
+<p>限速规则 10次/1s</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<p>获取历史改计划委托</p>
+
+<ul>
+<li> POST /api/spot/v1/plan/batchCancelPlan</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbols</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币对集合：[&quot;BTCUSDT_SPBL&quot;, &quot;ETHUSDT_SPNL&quot;], 请注意，没传币对的时候会撤销所有现货计划委托单</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/batchCancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbols"</span>: <span class="o">[</span><span class="s2">"BTCUSDT_SPBL"</span>, <span class="s2">"ETHUSDT_SPNL"</span><span class="o">]</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回参数</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1683876261117,
+  "data": [
+    {
+      "orderId": "10401817882538259200",
+      "clientOid": "10408117882913093376",
+      "result": true
+    },
+    {
+      "orderId": "10401817887238259200",
+      "clientOid": "10401817882213193376",
+      "result": true
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">委托订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: center">委托订单 Client Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">撤销成功</td>
+</tr>
+</tbody></table>
 <h2 id='p2p'>P2P接口</h2><h3 id='p2p-2'>P2P商家列表</h3>
 <p>限速规则 10次/1s</p>
 
@@ -7697,8 +7900,689 @@ Signature = base64.encode(Signature)
 </tbody></table>
 
 <p>&nbsp;</p>
+<h2 id='f9487b45a0'>子母账户</h2>
+<ul>
+<li><p>以下接口只限于母账户请求，并且只限于创建/修改虚拟子账户</p></li>
+<li><p>母账户ApiKey 需要绑定ip 白名单</p></li>
+</ul>
+<h3 id='33369849da'>创建虚拟子账户</h3>
+<p>限速规则：5次/1s  (uid)</p>
 
-<p>&nbsp;</p>
+<p><strong>HTTP请求</strong>
+下单接口</p>
+
+<ul>
+<li>POST  /api/user/v1/sub/virtual-create</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">虚拟昵称 长度为8位的英文字母 全局唯一</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subName"</span>: <span class="o">[</span><span class="s2">"bitgeton"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682660169412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"failAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"guningfh@virtual-bitget.com"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"successAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guningfk@virtual-bitget.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"contract_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"spot_trade"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682660169573"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">虚拟邮箱</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">子账户状态</td>
+</tr>
+<tr>
+<td style="text-align: left">auth</td>
+<td style="text-align: left">子账户权限</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">备注</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">子账户创建时间</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>read_only</li>
+</ul></li>
+<li>failAccounts 创建失败的账户
+
+<ul>
+<li>账户昵称存在重复</li>
+<li>创建子账户创建数量达到限制</li>
+</ul></li>
+</ul>
+<h3 id='262d332866'>修改虚拟子账户</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-modify</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号Uid</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">权限 逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账号状态</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>: <span class="s2">""</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade"</span>, <span class="s2">"status"</span>:<span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682660666458</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
+<h3 id='apikey-2'>批量创建虚拟子账户和ApiKey</h3>
+<p>此接口可以把虚拟子账户和子账户apikey 一起进行创建，创建的虚拟子账户默认是合约和现货权限都有</p>
+
+<p>限速规则：1次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-batch-create</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">list</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">-- subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">虚拟昵称 长度为8位的英文字母</td>
+</tr>
+<tr>
+<td style="text-align: left">-- passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">口令 长度为 8~32位的英文字母+数字</td>
+</tr>
+<tr>
+<td style="text-align: left">-- label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户备注 长度20</td>
+</tr>
+<tr>
+<td style="text-align: left">-- ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">虚拟子账户ApiKey ip 白名单</td>
+</tr>
+<tr>
+<td style="text-align: left">-- perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">子账户apiKey 权限</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-api-batch-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"list"</span>:[<span class="o">{</span><span class="s2">"subName"</span>:<span class="s2">"armendon"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6uX6PQ9tbKwa"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade"</span>,<span class="s2">"remark"</span>:<span class="s2">"1681808312065"</span><span class="o">}]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682662465346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4236327146"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"armendon@virtual-bitget.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1681808312065"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_d32ff9d9**********c3d2bc5e23"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af22848395e3d97e08dbd9a876a1XXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade,contract_trade"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>perm
+
+<ul>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
+<h3 id='6b99ff68e6'>获取虚拟子账户列表</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET  /api/user/v1/sub/virtual-list</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">默认20 最大100</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">页码 默认 1</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">子账户状态</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"readonly"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"contract_trade"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal 正常</li>
+<li>freeze 冻结</li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade 只能现货交易</li>
+<li>contract_trade 只能合约交易</li>
+<li>readonly 只读权限</li>
+</ul></li>
+</ul>
+<h3 id='apikey-3'>创建虚拟子账户ApiKey</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-create</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">口令 长度为 8~32位的英文字母+数字</td>
+</tr>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">备注  长度20</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">ip，英文逗号分隔，最多30个</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">权限</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>私钥</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>请求ip</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>spot_trade</li>
+<li>contract_trade<br></li>
+</ul></li>
+</ul>
+<h3 id='apikey-4'>修改虚拟子账户ApiKey</h3>
+<p>限速规则：5次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-modify</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+<tr>
+<td style="text-align: left">subApiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户apikey</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户apikey口令 用来验证apiKey</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">备注</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">ip(覆盖),英文逗号分隔，最多30个，如果不传则ip白名单设置为空</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">权限 (覆盖) 英文逗号分隔</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682661350849</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682396356594"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_19aab20aafdb177408faf3fba6580656"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>子账户apikey  ip白名单</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>readonly</li>
+<li>spot_trade</li>
+<li>contract_trade</li>
+</ul></li>
+</ul>
+<h3 id='apikey-5'>查询子账户ApiKey 列表</h3>
+<p>限速规则：10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/user/v1/sub/virtual-api-list</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">子账户uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682661432874</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682396356594"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_ab5735b8a90f2d4c02771b36e8dbebf4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>子账户uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey备注</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>权限</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>子账户ApiKey  ip 白名单</td>
+</tr>
+</tbody></table>
 
 <p>&nbsp;</p>
 

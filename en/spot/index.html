@@ -499,6 +499,9 @@
                       <li>
                         <a href="#get-deposit-list" class="toc-h3 toc-link" data-title="Get Deposit List">Get Deposit List</a>
                       </li>
+                      <li>
+                        <a href="#get-user-fee-ratio" class="toc-h3 toc-link" data-title="Get User Fee Ratio">Get User Fee Ratio</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -572,6 +575,9 @@
                       <li>
                         <a href="#get-history-plan-orders" class="toc-h3 toc-link" data-title="Get history plan orders">Get history plan orders</a>
                       </li>
+                      <li>
+                        <a href="#batch-cancel-plan-orders" class="toc-h3 toc-link" data-title="batch cancel plan orders">batch cancel plan orders</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -588,6 +594,32 @@
                       </li>
                       <li>
                         <a href="#merchant-get-p2p-order-list" class="toc-h3 toc-link" data-title="merchant get P2P order list">merchant get P2P order list</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#sub-account-endpoints" class="toc-h2 toc-link" data-title="Sub-Account Endpoints">Sub-Account Endpoints</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#create-virtual-sub-account" class="toc-h3 toc-link" data-title="Create Virtual Sub Account">Create Virtual Sub Account</a>
+                      </li>
+                      <li>
+                        <a href="#modify-virtual-account" class="toc-h3 toc-link" data-title="Modify Virtual Account">Modify Virtual Account</a>
+                      </li>
+                      <li>
+                        <a href="#batch-create-virtual-account-and-apikey" class="toc-h3 toc-link" data-title="Batch Create Virtual Account And ApiKey">Batch Create Virtual Account And ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#get-virtual-account-list" class="toc-h3 toc-link" data-title="Get Virtual Account List">Get Virtual Account List</a>
+                      </li>
+                      <li>
+                        <a href="#create-virtual-account-apikey" class="toc-h3 toc-link" data-title="Create Virtual Account ApiKey">Create Virtual Account ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#modify-virtual-account-apikey" class="toc-h3 toc-link" data-title="Modify Virtual Account ApiKey">Modify Virtual Account ApiKey</a>
+                      </li>
+                      <li>
+                        <a href="#get-virtual-sub-apikey-list" class="toc-h3 toc-link" data-title="Get Virtual Sub  ApiKey List">Get Virtual Sub  ApiKey List</a>
                       </li>
                   </ul>
               </li>
@@ -698,6 +730,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>12/05/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#get-user-fee-ratio">Get User Fee Ratio</a></li>
+</ul>
+
 <p><strong>21/04/2023</strong></p>
 
 <ul>
@@ -4368,6 +4406,80 @@ microtime(true) * 1000;
 <li>wallet_processing</li>
 </ul></li>
 </ul>
+<h3 id='get-user-fee-ratio'>Get User Fee Ratio</h3>
+<p>Rate Limit：10/sec (Uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/user/v1/fee/query</li>
+</ul>
+
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>yes</td>
+<td>symbol（mix：BTCUSDT_UMCBL， spot：BTCUSDT_SPBL， spot margin：BTCUSDT）</td>
+</tr>
+<tr>
+<td>business</td>
+<td>String</td>
+<td>yes</td>
+<td>business type（mix：mix， spot：spot， spot margin：margin）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/fee/query?symbol=BTCUSDT_UMCBL&amp;business=mix"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1683875302853</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"makerRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"takerRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0006"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>makerRate</td>
+<td>maker fee</td>
+</tr>
+<tr>
+<td>takerRate</td>
+<td>taker fee</td>
+</tr>
+</tbody></table>
 <h2 id='account'>Account</h2><h3 id='get-apikey-info'>Get ApiKey Info</h3>
 <p>Rate Limit：1/sec (Uid)</p>
 
@@ -6811,6 +6923,95 @@ microtime(true) * 1000;
 <td>Create time</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='batch-cancel-plan-orders'>batch cancel plan orders</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li> POST /api/spot/v1/plan/batchCancelPlan</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbols</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">symbols：[&quot;BTCUSDT_SPBL&quot;, &quot;ETHUSDT_SPNL&quot;], when symbols is empty, will cancel all spot plan open orders</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/batchCancelPlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span> <span class="s2">"symbols"</span>: <span class="o">[</span><span class="s2">"BTCUSDT_SPBL"</span>, <span class="s2">"ETHUSDT_SPNL"</span><span class="o">]</span> <span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1683876261117,
+  "data": [
+    {
+      "orderId": "10401817882538259200",
+      "clientOid": "10408117882913093376",
+      "result": true
+    },
+    {
+      "orderId": "10401817887238259200",
+      "clientOid": "10401817882213193376",
+      "result": true
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: center">spot plan order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: center">spot plan order Client Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">result</td>
+<td style="text-align: center">true is success</td>
+</tr>
+</tbody></table>
 <h2 id='p2p-endpoint'>P2P endpoint</h2><h3 id='p2p-merchant-list'>P2P merchant list</h3>
 <p>Limit rule 10 times/1s (uid)</p>
 
@@ -7690,6 +7891,736 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">minId</td>
 <td style="text-align: left">response data minimum &#39;orderId&#39;</td>
+</tr>
+</tbody></table>
+<h2 id='sub-account-endpoints'>Sub-Account Endpoints</h2>
+<ul>
+<li><p>The endpoints documented in this section are for Main-Account, and <strong>only allowed to create/modify virtual sub-accounts</strong> </p></li>
+<li><p>The master account ApiKey needs to be bound to the ip whitelist</p></li>
+</ul>
+<h3 id='create-virtual-sub-account'>Create Virtual Sub Account</h3>
+<p>Limit Rule：5c/1s  (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST  /api/user/v1/sub/virtual-create</li>
+</ul>
+
+<p><strong>Request Pam</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Virtual nickname English letters with a length of 8 characters</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subName"</span>: <span class="o">[</span><span class="s2">"bitgeton"</span><span class="o">]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682660169412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"failAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"guningfh@virtual-bitget.com"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"successAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guningfk@virtual-bitget.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"contract_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"spot_trade"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682660169573"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">virtual sub uid</td>
+</tr>
+<tr>
+<td style="text-align: left">subName</td>
+<td style="text-align: left">Virtual Email</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">virtual account status</td>
+</tr>
+<tr>
+<td style="text-align: left">auth</td>
+<td style="text-align: left">Virtual auth</td>
+</tr>
+<tr>
+<td style="text-align: left">remark</td>
+<td style="text-align: left">account label</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">Create time timestamp</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade </li>
+<li>contract_trade </li>
+</ul></li>
+<li>failAccounts   create fail accounts
+
+<ul>
+<li>subName is duplicated</li>
+<li>The number of created sub-accounts has reached the limit</li>
+</ul></li>
+</ul>
+<h3 id='modify-virtual-account'>Modify Virtual Account</h3>
+<p>Limit Rule：5c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-modify</li>
+</ul>
+
+<p><strong>Request (Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">virtual sub uid</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Perm  ,</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Virtual account status</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-modify"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>: <span class="s2">"9837924274"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade"</span>, <span class="s2">"status"</span>:<span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682660666458</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade </li>
+<li>contract_trade </li>
+</ul></li>
+</ul>
+<h3 id='batch-create-virtual-account-and-apikey'>Batch Create Virtual Account And ApiKey</h3>
+<p>This interface can create a virtual sub-account and a sub-account apikey together. The created virtual sub-account has contract and spot permissions by default.</p>
+
+<p>Limit Rule：1c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-batch-create</li>
+</ul>
+
+<p><strong>Request (Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">List</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center"></td>
+<td style="text-align: center"></td>
+</tr>
+<tr>
+<td style="text-align: left">-- subName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Virtual nickname (letters with a length of 8 characters)</td>
+</tr>
+<tr>
+<td style="text-align: left">-- passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Password (Password length is 8~32 letters + numbers) case sensitive</td>
+</tr>
+<tr>
+<td style="text-align: left">-- label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">label limit 20</td>
+</tr>
+<tr>
+<td style="text-align: left">-- ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Virtual sub-account ApiKey ip whitelist</td>
+</tr>
+<tr>
+<td style="text-align: left">-- perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Sub-account apiKey permissions</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-api-batch-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"list"</span>:[<span class="o">{</span><span class="s2">"subName"</span>:<span class="s2">"armendon"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6uX6PQ9tbKwa"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade,readonly,spot_trade"</span>,<span class="s2">"remark"</span>:<span class="s2">"1681808312065"</span><span class="o">}]}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682662465346</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4236327146"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"armendon@virtual-bitget.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1681808312065"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_d32ff9d9**********c3d2bc5e23"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af22848395e3d97e08dbd9a876a1XXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"readonly,spot_trade,contract_trade"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade </li>
+<li>contract_trade </li>
+<li>readonly </li>
+</ul></li>
+</ul>
+<h3 id='get-virtual-account-list'>Get Virtual Account List</h3>
+<p>Limit Rule：10c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET  /api/user/v1/sub/virtual-list</li>
+</ul>
+
+<p><strong>Request (Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Default20 Max100</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">PageNo Default  1</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">virtual status</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-list"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"readonly"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"contract_trade"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<ul>
+<li>status
+
+<ul>
+<li>normal </li>
+<li>freeze </li>
+</ul></li>
+<li>auth
+
+<ul>
+<li>spot_trade </li>
+<li>contract_trade </li>
+</ul></li>
+</ul>
+<h3 id='create-virtual-account-apikey'>Create Virtual Account ApiKey</h3>
+<p>Limit Rule：5c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-create</li>
+</ul>
+
+<p><strong>Request (Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Paarameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">virtual sub uid</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Password (Password length is 8~32 letters + numbers) case sensitive</td>
+</tr>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">label</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">ip，Max 30</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">perm，default readonly</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-api-create"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"remark"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Paarameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>sub apikey label</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>apikey</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>sub apikey secretKey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>Perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>subApiKey ip whileList</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>spot_trade</li>
+<li>contract_trade<br></li>
+</ul></li>
+</ul>
+<h3 id='modify-virtual-account-apikey'>Modify Virtual Account ApiKey</h3>
+<p>Limit Rule：5c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/user/v1/sub/virtual-api-modify</li>
+</ul>
+
+<p><strong>Request (Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">sub account uid</td>
+</tr>
+<tr>
+<td style="text-align: left">subApiKey</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">sub account apikey</td>
+</tr>
+<tr>
+<td style="text-align: left">passphrase</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">subApiKey passphrase</td>
+</tr>
+<tr>
+<td style="text-align: left">label</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Sub Apikey label</td>
+</tr>
+<tr>
+<td style="text-align: left">ip</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Will overwrite the previous ip information(If no ip is passed, the whitelist is set to empty)  Max 30</td>
+</tr>
+<tr>
+<td style="text-align: left">perm</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">perm</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-api-modify"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"subApiKey"</span>:<span class="s2">"bg_ab5735b8a90f2d4"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"remark"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682661350849</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682396356594"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_19aab20aafdb177408faf3fba6580656"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Desciption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>apikey lable</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>sub apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>sub apikey ip whitelist</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>perm
+
+<ul>
+<li>spot_trade</li>
+<li>contract_trade</li>
+</ul></li>
+</ul>
+<h3 id='get-virtual-sub-apikey-list'>Get Virtual Sub  ApiKey List</h3>
+<p>Limit Rule：10c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/user/v1/sub/virtual-api-list</li>
+</ul>
+
+<p><strong>Request</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Sub uid</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/sub/virtual-api-list?subUid=1111111"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1682661432874</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9837924274"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1682396356594"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_ab5735b8a90f2d4c02771b36e8dbebf4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Desciption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subUid</td>
+<td>Sub virtual Uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>Apikey label</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>sub apikey</td>
+</tr>
+<tr>
+<td>perm</td>
+<td>Perm</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>sub ApiKey  ip whilelist</td>
 </tr>
 </tbody></table>
 

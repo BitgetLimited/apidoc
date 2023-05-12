@@ -821,7 +821,13 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
-<p><strong>May 08, 2023</strong></p>
+<p><strong>May 12, 2023</strong></p>
+
+<ul>
+<li><a href="#get-trader-list">Get Tader List</a> add parameter: <code>traderUid</code>  trader uid and  <code>traderNickName</code> trader nickname</li>
+</ul>
+
+<p>May 08, 2023**</p>
 
 <ul>
 <li><a href="#get-candle-data">Get Candle Data</a> add parameter: &#39;kLineType&#39; support index/mark price k-line</li>
@@ -1205,7 +1211,6 @@ clipboard.on('error', function(e) {
 <p>You can switch to access different APIs business line by clicking the upper menu, and you can switch the document language by clicking the language button on the upper right.</p>
 
 <p>On the right side of the document usually displays example of request parameters and response results.</p>
-
 <h2 id='updates'>Updates</h2>
 <p>Regarding API additions, updates, and offline information, Bitget will issue announcements in advance to notify you. It is recommended that you follow and subscribe to our announcements to obtain relevant information in time. </p>
 
@@ -10446,6 +10451,18 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">traderUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Trader uid</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Trader nickName (prefix match)</td>
+</tr>
 <tr>
 <td style="text-align: left">fullStatus</td>
 <td style="text-align: left">String</td>
