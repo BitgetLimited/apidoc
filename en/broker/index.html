@@ -289,6 +289,7 @@
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
          <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
+         <li><a id="copyTrade" data-text="跟单交易" >Copy Trading</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -2176,6 +2177,7 @@ crossed       Cross margin</li>
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isMargin=currentUrl.indexOf('margin/')>-1;
+    var isCopyTrade=currentUrl.indexOf('copyTrade/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -2184,6 +2186,7 @@ crossed       Cross margin</li>
         $Spot=$("#spot");
         $Mix=$("#mix");
         $Margin=$("#margin");
+        $CopyTrade=$("#copyTrade");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -2196,12 +2199,16 @@ crossed       Cross margin</li>
     if(isMargin){
          $Margin.addClass('selected');
     }
+    if(isCopyTrade){
+          $CopyTrade.addClass('selected');
+        }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
         $Margin.html($Margin.attr('data-text'))
+        $CopyTrade.html($CopyTrade.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -2214,11 +2221,13 @@ crossed       Cross margin</li>
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
             $Margin.attr('href','/en/margin/')
+            $CopyTrade.attr('href','/en/copyTrade/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
             $Margin.attr('href','/zh/margin/')
+            $CopyTrade.attr('href','/zh/copyTrade/')
         }
 
     } else{
@@ -2227,11 +2236,13 @@ crossed       Cross margin</li>
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
             $Margin.attr('href','/apidoc/en/margin/')
+            $CopyTrade.attr('href','/apidoc/en/copyTrade/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
             $Margin.attr('href','/apidoc/zh/margin/')
+            $CopyTrade.attr('href','/apidoc/zh/copyTrade/')
         }
     }
 </script>
