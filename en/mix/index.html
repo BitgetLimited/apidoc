@@ -282,13 +282,14 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
-          <img src="../../images/log-jk382.svg" class="logo" alt="" />
+        <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
          <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
+         <li><a id="copyTrade" data-text="跟单交易" >Copy Trading</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -451,6 +452,9 @@
                       </li>
                       <li>
                         <a href="#tracetype" class="toc-h3 toc-link" data-title="traceType">traceType</a>
+                      </li>
+                      <li>
+                        <a href="#ordersource" class="toc-h3 toc-link" data-title="orderSource">orderSource</a>
                       </li>
                   </ul>
               </li>
@@ -642,74 +646,6 @@
                       </li>
                   </ul>
               </li>
-              <li>
-                <a href="#copytrade" class="toc-h2 toc-link" data-title="CopyTrade">CopyTrade</a>
-                  <ul class="toc-list-h3">
-                      <li>
-                        <a href="#get-trader-open-order" class="toc-h3 toc-link" data-title="Get Trader Open order">Get Trader Open order</a>
-                      </li>
-                      <li>
-                        <a href="#get-follower-open-orders" class="toc-h3 toc-link" data-title="Get Follower Open Orders">Get Follower Open Orders</a>
-                      </li>
-                      <li>
-                        <a href="#get-follower-history-orders" class="toc-h3 toc-link" data-title="Get Follower History Orders">Get Follower History Orders</a>
-                      </li>
-                      <li>
-                        <a href="#trader-close-position" class="toc-h3 toc-link" data-title="Trader Close Position">Trader Close Position</a>
-                      </li>
-                      <li>
-                        <a href="#trader-modify-tpsl" class="toc-h3 toc-link" data-title="Trader Modify TPSL">Trader Modify TPSL</a>
-                      </li>
-                      <li>
-                        <a href="#get-traders-history-orders" class="toc-h3 toc-link" data-title="Get Traders History Orders">Get Traders History Orders</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-profit-summary" class="toc-h3 toc-link" data-title="Get Trader Profit Summary">Get Trader Profit Summary</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-history-profit-summary-according-to-settlement-currency" class="toc-h3 toc-link" data-title="Get Trader History Profit Summary (according to settlement currency)">Get Trader History Profit Summary (according to settlement currency)</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-history-profit-summary-according-to-settlement-currency-and-date" class="toc-h3 toc-link" data-title="Get Trader History Profit Summary (according to settlement currency and date)">Get Trader History Profit Summary (according to settlement currency and date)</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-history-profit-detail" class="toc-h3 toc-link" data-title="Get Trader History Profit Detail">Get Trader History Profit Detail</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-profits-details" class="toc-h3 toc-link" data-title="Get Trader Profits Details">Get Trader Profits Details</a>
-                      </li>
-                      <li>
-                        <a href="#get-copytrade-symbols" class="toc-h3 toc-link" data-title="Get  CopyTrade Symbols">Get  CopyTrade Symbols</a>
-                      </li>
-                      <li>
-                        <a href="#trader-change-copytrade-symbol" class="toc-h3 toc-link" data-title="Trader Change CopyTrade symbol">Trader Change CopyTrade symbol</a>
-                      </li>
-                      <li>
-                        <a href="#get-trader-list" class="toc-h3 toc-link" data-title="Get Trader List">Get Trader List</a>
-                      </li>
-                      <li>
-                        <a href="#trader-get-trading-statistics" class="toc-h3 toc-link" data-title="Trader get trading statistics">Trader get trading statistics</a>
-                      </li>
-                      <li>
-                        <a href="#follower-query-trace-config" class="toc-h3 toc-link" data-title="Follower query Trace Config">Follower query Trace Config</a>
-                      </li>
-                      <li>
-                        <a href="#follower-set-copytrade-config" class="toc-h3 toc-link" data-title="Follower Set copyTrade Config">Follower Set copyTrade Config</a>
-                      </li>
-                      <li>
-                        <a href="#follower-close-position-by-tracking-number" class="toc-h3 toc-link" data-title="Follower Close Position By Tracking Number">Follower Close Position By Tracking Number</a>
-                      </li>
-                      <li>
-                        <a href="#follower-close-position-by-symbol-margincoin-marginmode-holdside" class="toc-h3 toc-link" data-title="Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide">Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide</a>
-                      </li>
-                      <li>
-                        <a href="#follower-set-tpsl" class="toc-h3 toc-link" data-title="Follower Set Tpsl">Follower Set Tpsl</a>
-                      </li>
-                      <li>
-                        <a href="#cancel-follower-trader" class="toc-h3 toc-link" data-title="Cancel Follower Trader">Cancel Follower Trader</a>
-                      </li>
-                  </ul>
-              </li>
           </ul>
       </li>
       <li>
@@ -821,6 +757,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>May 20, 2023</strong></p>
+
+<ul>
+<li><a href="#get-history-order">Get History Order</a>     <a href="#get-order-details">get Order Detail</a>added response field <code>orderSource</code></li>
+</ul>
+
 <p><strong>May 12, 2023</strong></p>
 
 <ul>
@@ -1630,8 +1572,8 @@ If there is a large deviation between the local server time and the API server t
 <li>trans_from_exchange           Transfer in from spot account</li>
 <li>trans_to_exchange             Transfer out to spot account</li>
 <li>contract_settle_fee           Funding fee</li>
-<li>contract_main_settle_fee      Funding fee for &#39;crossed&#39;</li>
-<li>contract_margin_settle_fee    Funding fee for &#39;isolated&#39;</li>
+<li>contract_main_settle_fee      Funding fee for &#39;crossed&#39;. deprecated, please don&#39;t use in query</li>
+<li>contract_margin_settle_fee    Funding fee for &#39;isolated&#39;. deprecated, please don&#39;t use in query</li>
 <li>tracking_trader_income        Trader &#39;copy trade&#39; income</li>
 <li>burst_long_loss_query         Liquidated close long</li>
 <li>burst_short_loss_query        Liquidated close short</li>
@@ -1982,6 +1924,86 @@ If there is a large deviation between the local server time and the API server t
 <li>amount     Set copy amount by fixed amount</li>
 <li>count      Set Copy Amount by fixed count</li>
 </ul>
+<h3 id='ordersource'>orderSource</h3>
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal</td>
+<td>normal order</td>
+</tr>
+<tr>
+<td>market</td>
+<td>market order</td>
+</tr>
+<tr>
+<td>profit_market</td>
+<td>market profit order</td>
+</tr>
+<tr>
+<td>loss_market</td>
+<td>market loss order</td>
+</tr>
+<tr>
+<td>Trader_delegate</td>
+<td>trader copy trader</td>
+</tr>
+<tr>
+<td>trader_profit</td>
+<td>trader profit</td>
+</tr>
+<tr>
+<td>trader_loss</td>
+<td>trader loss</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>reverse order</td>
+</tr>
+<tr>
+<td>trader_reverse</td>
+<td>trader reverse order</td>
+</tr>
+<tr>
+<td>profit_limit</td>
+<td>limit profit order</td>
+</tr>
+<tr>
+<td>loss_limit</td>
+<td>limit  loss order</td>
+</tr>
+<tr>
+<td>liquidation</td>
+<td>liquidation order</td>
+</tr>
+<tr>
+<td>delivery_close_long</td>
+<td>delivery close long order</td>
+</tr>
+<tr>
+<td>delivery_close_short</td>
+<td>delivery close short order</td>
+</tr>
+<tr>
+<td>pos_profit_limit</td>
+<td>position limit profit order</td>
+</tr>
+<tr>
+<td>pos_profit_market</td>
+<td>position market profit order</td>
+</tr>
+<tr>
+<td>pos_loss_limit</td>
+<td>position limit loss order</td>
+</tr>
+<tr>
+<td>pos_loss_market</td>
+<td>position market loss order</td>
+</tr>
+</tbody></table>
 <h1 id='restapi'>RestAPI</h1><h2 id='market'>Market</h2><h3 id='get-all-symbols'>Get All Symbols</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
 
@@ -3229,7 +3251,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">int</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Page No</td>
+<td style="text-align: center">Page No.</td>
 </tr>
 <tr>
 <td style="text-align: left">nextPage</td>
@@ -3735,7 +3757,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">Account equity (margin currency)</td>
+<td style="text-align: left">Account equity (margin currency) , includes uPnL (calculated by mark price)</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -3875,7 +3897,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">Account equity (margin currency)</td>
+<td style="text-align: left">Account equity (margin currency), includes uPnL (calculated by mark price)</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -4675,10 +4697,12 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: left">Last update time Timestamp milliseconds</td>
+<td style="text-align: left">Created time Timestamp milliseconds</td>
 </tr>
 </tbody></table>
 <h3 id='get-symbol-position-v2'>Get Symbol Position V2</h3>
+<p>Only return the position information of the position, and return the liquidation price</p>
+
 <p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5006,6 +5030,8 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-all-position-v2'>Get All Position V2</h3>
+<p>Only return the position information of the position, and return the liquidation price</p>
+
 <p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5182,6 +5208,8 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-account-bill'>Get Account Bill</h3>
+<p>Records within 90 days</p>
+
 <p>Limit rule:  10/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5330,6 +5358,8 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 </tbody></table>
 <h3 id='get-business-account-bill'>Get Business Account Bill</h3>
+<p>Records within 90 days</p>
+
 <p>Limit rule:  5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5488,6 +5518,8 @@ If there is a large deviation between the local server time and the API server t
 <p><code>pricePlace</code> of <code>BTCUSDT_UMCBL</code> is 1 and <code>priceEndStep</code> is 5, then the order price needs to satisfy a multiple of 0.5, for example, the price should be 23455.0, 23455.5, 23446.0</p>
 
 <p><code>pricePlace</code> of <code>ETHUSDT_UMCBL</code> is 2 and <code>priceEndStep</code> is 1, then the order price needs to satisfy a multiple of 0.01, for example, the price should be 1325.00, 1325.01, 1325.02</p>
+
+<p>If the position quantity is less than the minimum order quantity, the position can be closed by entering the order quantity into the remaining quantity of the position when closing the position. However, if the position quantity is greater than the minimum order quantity, the minimum order quantity must be met when placing an order.</p>
 
 <aside class="warning">
 
@@ -7048,6 +7080,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
       </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452903781"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452917467"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -7146,6 +7179,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left"><a href="#holdmode">Hold mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#orderSource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7260,6 +7297,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
                 </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"ctime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -7360,6 +7398,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left"><a href="#holdmode">Hold mode</a></td>
 </tr>
 <tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#orderSource">orderSource</a></td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">create time</td>
 </tr>
@@ -7448,6 +7490,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
         </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="p">,</span><span class="w">
         </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1627028717807</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -7566,6 +7609,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left"><a href="#holdmode">Hold mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#orderSource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -9260,2103 +9307,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Order creation time</td>
 </tr>
 </tbody></table>
-<h2 id='copytrade'>CopyTrade</h2><h3 id='get-trader-open-order'>Get Trader Open order</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/currentTrack</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
-</tr>
-<tr>
-<td style="text-align: left">productType</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#producttype">Product type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size; Max 100</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page number</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/currentTrack?symbol=BTCUSDT_UMCBL&amp;productType=umcbl&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"699848017573842632"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"4839999132328"</span><span class="p">,</span><span class="w">  
-            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mf">11451.5</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1602582690614</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stopProfitPrice"</span><span class="p">:</span><span class="s2">"123.14"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stopLossPrice"</span><span class="p">:</span><span class="s2">"20.52"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left">openOrderId</td>
-<td style="text-align: left">Trader’s order number; This order number cannot be used when the trader closes a position, instead a tracking order number is required to close order</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">holdSide</td>
-<td style="text-align: left"><a href="#holdside">Position direction</a></td>
-</tr>
-<tr>
-<td style="text-align: left">openLeverage</td>
-<td style="text-align: left">Opening leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">openAvgPrice</td>
-<td style="text-align: left">Average opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">openTime</td>
-<td style="text-align: left">Position opening time (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">openDealCount</td>
-<td style="text-align: left">Number of positions opened</td>
-</tr>
-<tr>
-<td style="text-align: left">stopProfitPrice</td>
-<td style="text-align: left">Take profit price</td>
-</tr>
-<tr>
-<td style="text-align: left">stopLossPrice</td>
-<td style="text-align: left">Stop price</td>
-</tr>
-</tbody></table>
-<h3 id='get-follower-open-orders'>Get Follower Open Orders</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/followerOrder</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
-</tr>
-<tr>
-<td style="text-align: left">productType</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerOrder?symbol=BTCUSDT_UMCBL&amp;productType=umcbl&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"804641389214179330"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"804641382428463106"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeOrderId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"short"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openLeverage"</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="mi">39827</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627567376984</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openDealCount"</span><span class="p">:</span><span class="s2">"0.0010000000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openMargin"</span><span class="p">:</span><span class="s2">"21"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"averageClosePrice"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"0.0000000000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634107646972</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left">openOrderId</td>
-<td style="text-align: left">Open Position Order Id</td>
-</tr>
-<tr>
-<td style="text-align: left">closeOrderId</td>
-<td style="text-align: left">Close Position Order Id</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">holdSide</td>
-<td style="text-align: left">Current <a href="#holdside">Position direction</a></td>
-</tr>
-<tr>
-<td style="text-align: left">openLeverage</td>
-<td style="text-align: left">Opening leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">openAvgPrice</td>
-<td style="text-align: left">Average opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">openTime</td>
-<td style="text-align: left">Position opening time (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">openDealCount</td>
-<td style="text-align: left">Number of positions opened</td>
-</tr>
-<tr>
-<td style="text-align: left">openMargin</td>
-<td style="text-align: left">Open margin in quote coin</td>
-</tr>
-<tr>
-<td style="text-align: left">averageClosePrice</td>
-<td style="text-align: left">Average Close Price</td>
-</tr>
-<tr>
-<td style="text-align: left">closeDealCount</td>
-<td style="text-align: left">Close Count</td>
-</tr>
-<tr>
-<td style="text-align: left">closeTime</td>
-<td style="text-align: left">Close Position Time (milliseconds)</td>
-</tr>
-</tbody></table>
-<h3 id='get-follower-history-orders'>Get Follower History Orders</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/followerHistoryOrders</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">startTime</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Start time  ms</td>
-</tr>
-<tr>
-<td style="text-align: left">endTime</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">End time  ms</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size, default 100</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number, default 1</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerHistoryOrders?startTime=1668073994000&amp;endTime=1668073994206&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"682799071840175632"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeSize"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openLevel"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="s2">"11366.50"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627356444000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">1626838044000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeAvgPrice"</span><span class="p">:</span><span class="s2">"11272.00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stopType"</span><span class="p">:</span><span class="s2">"profit"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"achievedProfits"</span><span class="p">:</span><span class="s2">"-0.07650000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openFee"</span><span class="p">:</span><span class="s2">"-0.00680910"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeFee"</span><span class="p">:</span><span class="s2">"0.000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profitRate"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"netProfit"</span><span class="p">:</span><span class="s2">"1"</span><span class="w">
-
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left">openOrderNo</td>
-<td style="text-align: left">Open Position Order Id</td>
-</tr>
-<tr>
-<td style="text-align: left">closeOrderNo</td>
-<td style="text-align: left">Close Position Order Id</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">holdSide</td>
-<td style="text-align: left">Current <a href="#holdside">Position direction</a></td>
-</tr>
-<tr>
-<td style="text-align: left">leverage</td>
-<td style="text-align: left">Opening leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">openAvgPrice</td>
-<td style="text-align: left">Average opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">openTime</td>
-<td style="text-align: left">Position opening time (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">openSize</td>
-<td style="text-align: left">Open order size</td>
-</tr>
-<tr>
-<td style="text-align: left">closeAvgPrice</td>
-<td style="text-align: left">Average close price</td>
-</tr>
-<tr>
-<td style="text-align: left">closeFee</td>
-<td style="text-align: left">close fee</td>
-</tr>
-<tr>
-<td style="text-align: left">openFee</td>
-<td style="text-align: left">open fee</td>
-</tr>
-<tr>
-<td style="text-align: left">closeSize</td>
-<td style="text-align: left">close order size</td>
-</tr>
-<tr>
-<td style="text-align: left">closeTime</td>
-<td style="text-align: left">close positions time (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">profitRate</td>
-<td style="text-align: left">Profit Rate</td>
-</tr>
-<tr>
-<td style="text-align: left">netProfit</td>
-<td style="text-align: left">follow net income</td>
-</tr>
-<tr>
-<td style="text-align: left">achievedProfits</td>
-<td style="text-align: left">Realized profit and loss</td>
-</tr>
-</tbody></table>
-<h3 id='trader-close-position'>Trader Close Position</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST  /api/mix/v1/trace/closeTrackOrder</li>
-</ul>
-
-<p><strong>Request Parameter (Request Body)</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
-</tr>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Tracking Order Id, From the <a href="#get-trader-open-order">/currentTrack</a> in response the &quot;trackingNo&quot; field</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/trace/closeTrackOrder"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"trackingNo"</span>: <span class="s2">"6258224712558517"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="mi">6258224712558517</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"result"</span><span class="p">:</span><span class="kc">true</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left">result</td>
-<td style="text-align: left">Close result</td>
-</tr>
-</tbody></table>
-<h3 id='trader-modify-tpsl'>Trader Modify TPSL</h3>
-<p>Limit rule  10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/modifyTPSL</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Long</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Order Id, From the <a href="#get-trader-open-order">/currentTrack</a> in response the &quot;trackingNo&quot; field</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">stopProfitPrice</td>
-<td style="text-align: left">BigDecimal</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Take Profit Price, set to null means to disable/cancel TP</td>
-</tr>
-<tr>
-<td style="text-align: left">stopLossPrice</td>
-<td style="text-align: left">BigDecimal</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Stop Loss price,  set to null means to disable/cancel SL</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/trace/modifyTPSL"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"trackingNo"</span>: <span class="s2">"6258224712558517"</span>,<span class="s2">"stopProfitPrice"</span>:<span class="s2">"24123.5"</span>,<span class="s2">"stopLossPrice"</span>:<span class="s2">"21487.5"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656066841304</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">924176438170464256</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='get-traders-history-orders'>Get Traders History Orders</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/historyTrack</li>
-</ul>
-
-<p><strong>Request Parameter (Request Param)</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">startTime</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Start time timestamp (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">endTime</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">End time timestamp (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/historyTrack?startTime=1659406928000&amp;endTime=1659414128000&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"682799071840175632"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openLevel"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openAvgPrice"</span><span class="p">:</span><span class="s2">"11366.50"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTime"</span><span class="p">:</span><span class="mi">1627356444000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeDealCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeTime"</span><span class="p">:</span><span class="mi">1626838044000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeAvgPrice"</span><span class="p">:</span><span class="s2">"11272.00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"stopType"</span><span class="p">:</span><span class="s2">"profit"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"achievedProfits"</span><span class="p">:</span><span class="s2">"-0.07650000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openFee"</span><span class="p">:</span><span class="s2">"-0.00680910"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"closeFee"</span><span class="p">:</span><span class="s2">"0.000000"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">Tracking order number</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">holdSide</td>
-<td style="text-align: left"><a href="#holdside">Position direction</a></td>
-</tr>
-<tr>
-<td style="text-align: left">openLeverage</td>
-<td style="text-align: left">Opening leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">openAvgPrice</td>
-<td style="text-align: left">Average opening price</td>
-</tr>
-<tr>
-<td style="text-align: left">openTime</td>
-<td style="text-align: left">Position opening time (milliseconds）</td>
-</tr>
-<tr>
-<td style="text-align: left">close</td>
-<td style="text-align: left">Closing time (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align: left">closeAvgPrice</td>
-<td style="text-align: left">Average closing price</td>
-</tr>
-<tr>
-<td style="text-align: left">stopType</td>
-<td style="text-align: left"><a href="#stoptype">Stop type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">achievedProfits</td>
-<td style="text-align: left">Realized profit and loss</td>
-</tr>
-<tr>
-<td style="text-align: left">openFee</td>
-<td style="text-align: left">Opening fee</td>
-</tr>
-<tr>
-<td style="text-align: left">closeFee</td>
-<td style="text-align: left">Closing fee</td>
-</tr>
-<tr>
-<td style="text-align: left">closeDealCount</td>
-<td style="text-align: left">Number of closed Positions</td>
-</tr>
-</tbody></table>
-<h3 id='get-trader-profit-summary'>Get Trader Profit Summary</h3>
-<p>Limit rule 20 times/1s (uid)
-<strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/summary</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/summary"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"yesterdaySplitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sumProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"waitProfit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"yesterdayTimeStamp"</span><span class="p">:</span><span class="s2">"1627354109502"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">yesterdaySplitProfit</td>
-<td style="text-align: left">Yesterday&#39;s Profit Sharing (Trader)</td>
-</tr>
-<tr>
-<td style="text-align: left">yesterdayTimeStamp</td>
-<td style="text-align: left">Yesterday&#39;s profit sharing time (milliseconds): the moment that calculated the yesterdaySplitProfit</td>
-</tr>
-<tr>
-<td style="text-align: left">sumProfit</td>
-<td style="text-align: left">Cumulative profit</td>
-</tr>
-<tr>
-<td style="text-align: left">waitProfit</td>
-<td style="text-align: left">Profits to be shared</td>
-</tr>
-</tbody></table>
-<h3 id='get-trader-history-profit-summary-according-to-settlement-currency'>Get Trader History Profit Summary (according to settlement currency)</h3>
-<p>Limit rule 20 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/profitSettleTokenIdGroup</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/profitSettleTokenIdGroup"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">settleTokenId</td>
-<td style="text-align: left">Settlement currency</td>
-</tr>
-<tr>
-<td style="text-align: left">profit</td>
-<td style="text-align: left">Profit</td>
-</tr>
-</tbody></table>
-<h3 id='get-trader-history-profit-summary-according-to-settlement-currency-and-date'>Get Trader History Profit Summary (according to settlement currency and date)</h3>
-<p>Limit rule 20 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/profitDateGroupList</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/profitDateGroupList"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"date"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">settleTokenId</td>
-<td style="text-align: left">Settlement currency</td>
-</tr>
-<tr>
-<td style="text-align: left">profit</td>
-<td style="text-align: left">Profit</td>
-</tr>
-<tr>
-<td style="text-align: left">date</td>
-<td style="text-align: left">Date (milliseconds)</td>
-</tr>
-</tbody></table>
-<h3 id='get-trader-history-profit-detail'>Get Trader History Profit Detail</h3>
-<p>Limit rule 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/profitDateList</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Margin currency</td>
-</tr>
-<tr>
-<td style="text-align: left">date</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Profit sharing time</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page Size</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">int</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/profitDateList?marginCoin=USDT&amp;date=1627354109502&amp;pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"bitget"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">settleTokenId</td>
-<td style="text-align: left">Settlement currency</td>
-</tr>
-<tr>
-<td style="text-align: left">profit</td>
-<td style="text-align: left">Profit has been shared</td>
-</tr>
-<tr>
-<td style="text-align: left">nickName</td>
-<td style="text-align: left">Nickname</td>
-</tr>
-</tbody></table>
-<h3 id='get-trader-profits-details'>Get Trader Profits Details</h3>
-<p>Limit rule 20 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/waitProfitDateList</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Page size</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">Integer</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Current page number</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/waitProfitDateList?pageSize=20&amp;pageNo=1"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"settleTokenId"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"bitget"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">settleTokenId</td>
-<td style="text-align: left">Settlement currency</td>
-</tr>
-<tr>
-<td style="text-align: left">profit</td>
-<td style="text-align: left">Profit</td>
-</tr>
-<tr>
-<td style="text-align: left">nickName</td>
-<td style="text-align: left">Nickname</td>
-</tr>
-</tbody></table>
-<h3 id='get-copytrade-symbols'>Get  CopyTrade Symbols</h3>
-<p>Limit rule  20 Times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/traderSymbols</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderSymbols"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1634723284625</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbolId</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
-<td style="text-align: left">openTrader</td>
-<td style="text-align: left">Whether enabled copy trading</td>
-</tr>
-<tr>
-<td style="text-align: left">minOpenCount</td>
-<td style="text-align: left">Trader min open size</td>
-</tr>
-</tbody></table>
-<h3 id='trader-change-copytrade-symbol'>Trader Change CopyTrade symbol</h3>
-<p>Limit rule  10 Times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/setUpCopySymbols</li>
-</ul>
-
-<p><strong>Request Param(Request Body)</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id, <a href="#get-all-symbols">symbol detail</a><code>symbol</code></td>
-</tr>
-<tr>
-<td style="text-align: left">operation</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Add or delete  <code>add</code>  <code>delete</code></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/trace/setUpCopySymbols"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"operation"</span>: <span class="s2">"add"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='get-trader-list'>Get Trader List</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/traderList</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">traderUid</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Trader uid</td>
-</tr>
-<tr>
-<td style="text-align: left">traderNickName</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Trader nickName (prefix match)</td>
-</tr>
-<tr>
-<td style="text-align: left">fullStatus</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#fullstatus">fullStatus</a> &#39;full&#39; or &#39;all&#39; default all</td>
-</tr>
-<tr>
-<td style="text-align: left">sortRule</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#sortrule">Sort Rule</a></td>
-</tr>
-<tr>
-<td style="text-align: left">sortFlag</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#sortflag">Sort Flag</a></td>
-</tr>
-<tr>
-<td style="text-align: left">languageType</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#languagetype">language type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Page size, default 100</td>
-</tr>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Page No, default 1</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderList?sortRule=composite&amp;sortFlag=asc&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679453151215</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash(5913396676)"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VuDucThanhLong"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"BTCUSD"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ETHUSD"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"columnList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"describe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROI"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.78"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hash(5560017617)"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jason"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxFollowCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"followCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"484"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ETHUSDT"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"columnList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"describe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ROI"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909.94"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">canTrace</td>
-<td style="text-align: left">true or false</td>
-</tr>
-<tr>
-<td style="text-align: left">traderUid</td>
-<td style="text-align: left">Trader UID, String</td>
-</tr>
-<tr>
-<td style="text-align: left">traderNickName</td>
-<td style="text-align: left">Trader nickName</td>
-</tr>
-<tr>
-<td style="text-align: left">maxFollowCount</td>
-<td style="text-align: left">The Maximum followers</td>
-</tr>
-<tr>
-<td style="text-align: left">followCount</td>
-<td style="text-align: left">Number of Follower who is followed</td>
-</tr>
-<tr>
-<td style="text-align: left">profile</td>
-<td style="text-align: left">Introduction</td>
-</tr>
-<tr>
-<td style="text-align: left">tradingPairsAvailable</td>
-<td style="text-align: left">trading Pairs Available</td>
-</tr>
-<tr>
-<td style="text-align: left">myTrader</td>
-<td style="text-align: left">Am I followed The Trader?</td>
-</tr>
-<tr>
-<td style="text-align: left">columnList</td>
-<td style="text-align: left">Trading Indicator Data of Trader</td>
-</tr>
-</tbody></table>
-
-<p><strong>columnList</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">describe</td>
-<td style="text-align: left">Indicator Description, return different value by <a href="#languagetype">languageType</a></td>
-</tr>
-<tr>
-<td style="text-align: left">value</td>
-<td style="text-align: left">Indicator Value</td>
-</tr>
-</tbody></table>
-<h3 id='trader-get-trading-statistics'>Trader get trading statistics</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/traderDetail</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderDetail"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679456559180</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"roi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"332.61"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tradingOrders"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"accFollowers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"totalpl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$95.65"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gainNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lossNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"winRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.67"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ETHUSDT"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"lastWeekRoi"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.285216"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678809600000"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"lastWeekProfit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6389000000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678809600000"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"lastMonthRoi"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52.414266"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1676822400000"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"lastMonthProfit"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6389000000000000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ctime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1676822400000"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">roi</td>
-<td style="text-align: left">roi</td>
-</tr>
-<tr>
-<td style="text-align: left">tradingOrders</td>
-<td style="text-align: left">Total Trading Order Numbers</td>
-</tr>
-<tr>
-<td style="text-align: left">accFollowers</td>
-<td style="text-align: left">The current Follower Numbers</td>
-</tr>
-<tr>
-<td style="text-align: left">totalpl</td>
-<td style="text-align: left">Total profits</td>
-</tr>
-<tr>
-<td style="text-align: left">gainNum</td>
-<td style="text-align: left">Profit Numbers</td>
-</tr>
-<tr>
-<td style="text-align: left">lossNum</td>
-<td style="text-align: left">Loss Numbers</td>
-</tr>
-<tr>
-<td style="text-align: left">winRate</td>
-<td style="text-align: left">winning percentage</td>
-</tr>
-<tr>
-<td style="text-align: left">tradingPairsAvailable</td>
-<td style="text-align: left">Trading Pairs Available  array</td>
-</tr>
-<tr>
-<td style="text-align: left">lastWeekRoi</td>
-<td style="text-align: left">Last 7 days   roi array</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; rate</td>
-<td style="text-align: left">rate</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; ctime</td>
-<td style="text-align: left">ctime</td>
-</tr>
-<tr>
-<td style="text-align: left">lastMonthRoi</td>
-<td style="text-align: left">Last 30 days   roi array</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; rate</td>
-<td style="text-align: left">rate</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; ctime</td>
-<td style="text-align: left">ctime</td>
-</tr>
-<tr>
-<td style="text-align: left">lastWeekProfit</td>
-<td style="text-align: left">Last 7 days  profits array</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; amount</td>
-<td style="text-align: left">amount</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; ctime</td>
-<td style="text-align: left">ctime</td>
-</tr>
-<tr>
-<td style="text-align: left">lastMonthProfit</td>
-<td style="text-align: left">Last 30 days  profits array</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; amount</td>
-<td style="text-align: left">amount</td>
-</tr>
-<tr>
-<td style="text-align: left">&gt; ctime</td>
-<td style="text-align: left">ctime</td>
-</tr>
-</tbody></table>
-<h3 id='follower-query-trace-config'>Follower query Trace Config</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>GET /api/mix/v1/trace/queryTraceConfig</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">traderId</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Trader UID</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraceConfig?traderId=abc123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679465100798</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"specify"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"leverType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trader"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"longLeverage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shortLeverage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"traceValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxHoldCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stopProfitRation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"stopLossRation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">symbol</td>
-</tr>
-<tr>
-<td style="text-align: left">marginType</td>
-<td style="text-align: left"><a href="#margintype">margin type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">Margin Coin</td>
-</tr>
-<tr>
-<td style="text-align: left">leverType</td>
-<td style="text-align: left"><a href="#levertype">Leverage Type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">longLeverage</td>
-<td style="text-align: left">Long Leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">shortLeverage</td>
-<td style="text-align: left">Short Leverage</td>
-</tr>
-<tr>
-<td style="text-align: left">traceType</td>
-<td style="text-align: left"><a href="#tracetype">Trace Type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">traceValue</td>
-<td style="text-align: left">Trace Type Value</td>
-</tr>
-<tr>
-<td style="text-align: left">maxHoldCount</td>
-<td style="text-align: left">Maximum copy number</td>
-</tr>
-<tr>
-<td style="text-align: left">stopProfitRation</td>
-<td style="text-align: left">Take Profit Ratio</td>
-</tr>
-<tr>
-<td style="text-align: left">stopLossRation</td>
-<td style="text-align: left">Stop loss ratio</td>
-</tr>
-</tbody></table>
-<h3 id='follower-set-copytrade-config'>Follower Set copyTrade Config</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/followerSetBatchTraceConfig</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">traderId</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Trader UID</td>
-</tr>
-<tr>
-<td style="text-align: left">settings</td>
-<td style="text-align: left">array</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Trace Settings</td>
-</tr>
-</tbody></table>
-
-<p><strong>settings</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol</td>
-</tr>
-<tr>
-<td style="text-align: left">marginType</td>
-<td style="text-align: left"><a href="#margintype">margin type</a></td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">Margin Coin</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">leverType</td>
-<td style="text-align: left"><a href="#levertype">Leverage Type</a></td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">longLeverage</td>
-<td style="text-align: left">Long Leverage</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">shortLeverage</td>
-<td style="text-align: left">Short Leverage</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">traceType</td>
-<td style="text-align: left"><a href="#tracetype">Trace Type</a></td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">traceValue</td>
-<td style="text-align: left">Trace Type Value</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">maxHoldCount</td>
-<td style="text-align: left">Maximum copy number</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">stopProfitRation</td>
-<td style="text-align: left">Take Profit Ratio</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-<tr>
-<td style="text-align: left">stopLossRation</td>
-<td style="text-align: left">Stop loss ratio</td>
-<td style="text-align: center"></td>
-<td style="text-align: center"></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerSetBatchTraceConfig"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"traderId"</span>: <span class="s2">"abc123"</span>,
-    <span class="s2">"settings"</span>: <span class="o">[{</span>
-        <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
-        <span class="s2">"marginType"</span>: <span class="s2">"specify"</span>,
-        <span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,
-        <span class="s2">"leverType"</span>: <span class="s2">"specify"</span>,
-        <span class="s2">"longLeverage"</span>: <span class="s2">"12"</span>,
-        <span class="s2">"shortLeverage"</span>: <span class="s2">"10"</span>,
-        <span class="s2">"traceType"</span>: <span class="s2">"amount"</span>,
-        <span class="s2">"traceValue"</span>: <span class="s2">"1000"</span>,
-        <span class="s2">"maxHoldCount"</span>: <span class="s2">""</span>,
-        <span class="s2">"stopProfitRation"</span>: <span class="s2">""</span>,
-        <span class="s2">"stopLossRation"</span>: <span class="s2">""</span>
-    <span class="o">}]</span>
-<span class="o">}</span>
-
-<span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "msg":"success",
-  "requestTime":163123213132,
-  "data":true
-}
-</code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='follower-close-position-by-tracking-number'>Follower Close Position By Tracking Number</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/followerCloseByTrackingNo</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Tracking Number</td>
-</tr>
-<tr>
-<td style="text-align: left">productType</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerCloseByTrackingNo"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"trackingNo"</span>: <span class="s2">"35586868769776384"</span>,
-    <span class="s2">"productType"</span>: <span class="s2">"UMCBL"</span>
-<span class="o">}</span>
-
-<span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "msg":"success",
-  "requestTime":163123213132,
-  "data":true
-}
-</code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='follower-close-position-by-symbol-margincoin-marginmode-holdside'>Follower Close Position By Symbol, MarginCoin, MarginMode, HoldSide</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/followerCloseByAll</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">productType</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">Symbol</td>
-</tr>
-<tr>
-<td style="text-align: left">marginCoin</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Margin Coin</td>
-</tr>
-<tr>
-<td style="text-align: left">marginMode</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#marginmode">margin mode</a></td>
-</tr>
-<tr>
-<td style="text-align: left">holdSide</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#holdmode">Hold Side</a></td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerCloseByAll"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
-    <span class="s2">"productType"</span>: <span class="s2">"UMCBL"</span>
-<span class="o">}</span>
-
-<span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "msg":"success",
-  "requestTime":163123213132,
-  "data":true
-}
-</code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='follower-set-tpsl'>Follower Set Tpsl</h3>
-<p>Limit rule: 10 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/followerSetTpsl</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">trackingNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Tracking Number</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol</td>
-</tr>
-<tr>
-<td style="text-align: left">stopProfitPrice</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Stop Profit Price</td>
-</tr>
-<tr>
-<td style="text-align: left">stopLossPrice</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">Stop Loss Price</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/followerSetTpsl"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"symbol"</span>: <span class="s2">"ETHUSDT_UMCBL"</span>,
-    <span class="s2">"trackingNo"</span>: <span class="s2">"3284728347239874"</span>,
-    <span class="s2">"stopProfitPrice"</span>:<span class="s2">"2400"</span>,
-    <span class="s2">"stopLossPrice"</span>:<span class="s2">"1600"</span>
-<span class="o">}</span>
-
-<span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "msg":"success",
-  "requestTime":163123213132,
-  "data":true
-}
-</code></pre>
-<p><strong>Response Description</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='cancel-follower-trader'>Cancel Follower Trader</h3>
-<p>Limit rule: 5 times/1s (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/cancelCopyTrader</li>
-</ul>
-
-<p><strong>Request Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter Name</th>
-<th style="text-align: left">Parameter Type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">traderId</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Trader Uid</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/cancelCopyTrader"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"traderId"</span>: <span class="s2">"64317811357"</span><span class="o">}</span>
-
-<span class="s1">'
-</span></code></pre>
-<blockquote>
-<p>Response Data</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "msg":"success",
-  "requestTime":163123213132,
-  "data":true
-}
-</code></pre><h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
+<h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>
 <p>WebSocket is a new HTML5 protocol that achieves full-duplex data transmission between the client and server, allowing data to be transferred effectively in both directions. A connection between the client and server can be established with just one handshake. The server will then be able to push data to the client according to preset rules. Its advantages include:</p>
 
 <ul>
@@ -14654,6 +12605,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isMargin=currentUrl.indexOf('margin/')>-1;
+    var isCopyTrade=currentUrl.indexOf('copyTrade/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -14662,6 +12614,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
         $Spot=$("#spot");
         $Mix=$("#mix");
         $Margin=$("#margin");
+        $CopyTrade=$("#copyTrade");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -14674,12 +12627,16 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
     if(isMargin){
          $Margin.addClass('selected');
     }
+    if(isCopyTrade){
+          $CopyTrade.addClass('selected');
+        }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
         $Margin.html($Margin.attr('data-text'))
+        $CopyTrade.html($CopyTrade.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -14692,11 +12649,13 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
             $Margin.attr('href','/en/margin/')
+            $CopyTrade.attr('href','/en/copyTrade/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
             $Margin.attr('href','/zh/margin/')
+            $CopyTrade.attr('href','/zh/copyTrade/')
         }
 
     } else{
@@ -14705,11 +12664,13 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
             $Margin.attr('href','/apidoc/en/margin/')
+            $CopyTrade.attr('href','/apidoc/en/copyTrade/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
             $Margin.attr('href','/apidoc/zh/margin/')
+            $CopyTrade.attr('href','/apidoc/zh/copyTrade/')
         }
     }
 </script>

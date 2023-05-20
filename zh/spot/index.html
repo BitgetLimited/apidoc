@@ -282,13 +282,14 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/zh-CN/" class="logo-link" target="_self">
-          <img src="../../images/log-jk382.svg" class="logo" alt="" />
+        <img src="../../images/log-jk382.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
          <li><a id="mix" data-text="专业合约" >FuturesⓂ(USDT/Coin)</a></li>
          <li><a id="broker" data-text="Broker" >Broker</a></li>
          <li><a id="margin" data-text="现货杠杆" >Spot Margin</a></li>
+         <li><a id="copyTrade" data-text="跟单交易" >Copy Trading</a></li>
     </ul>
   </div>
   <a class="international" id="international" href="javascript:void(0);">English</a>
@@ -397,6 +398,9 @@
                       </li>
                       <li>
                         <a href="#p2porderstatus" class="toc-h3 toc-link" data-title="p2pOrderStatus">p2pOrderStatus</a>
+                      </li>
+                      <li>
+                        <a href="#ordersource" class="toc-h3 toc-link" data-title="orderSource">orderSource</a>
                       </li>
                   </ul>
               </li>
@@ -727,6 +731,10 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年05月20日</strong></p>
+
+<p><a href="#f876a4e1f9">获取订单详情</a>, <a href="#b9220b5487">获取历史委托列表</a> 新增响应字段: &#39;feeDetail&#39; and <code>orderSource</code></p>
+
 <p><strong>2023年05月12日</strong></p>
 
 <ul>
@@ -1537,6 +1545,38 @@ microtime(true) * 1000;
 <tr>
 <td>cancelled</td>
 <td>已取消</td>
+</tr>
+</tbody></table>
+<h3 id='ordersource'>orderSource</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>normal</td>
+<td>正常下单</td>
+</tr>
+<tr>
+<td>market</td>
+<td>市价单</td>
+</tr>
+<tr>
+<td>spot_trader_buy</td>
+<td>现货带单买 (交易员)</td>
+</tr>
+<tr>
+<td>spot_follower_buy</td>
+<td>现货跟单买 (跟随者)</td>
+</tr>
+<tr>
+<td>spot_trader_sell</td>
+<td>现货带单卖(交易员)</td>
+</tr>
+<tr>
+<td>spot_follower_sell</td>
+<td>现货跟单卖(跟随者)</td>
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
@@ -4030,13 +4070,13 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td>coin</td>
 <td>String</td>
-<td>是</td>
+<td>否</td>
 <td>币种</td>
 </tr>
 <tr>
 <td>clientOid</td>
 <td>String</td>
-<td>No</td>
+<td>否</td>
 <td>clientOid</td>
 </tr>
 <tr>
@@ -4203,7 +4243,7 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td>coin</td>
 <td>String</td>
-<td>是</td>
+<td>否</td>
 <td>币种</td>
 </tr>
 <tr>
@@ -5753,24 +5793,29 @@ margin_isolated        接受转入转出多个币种</li>
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"data"</span><span class="p">:[{</span><span class="w">
-  </span><span class="s2">"accountId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"btcusdt_spbl"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"2222222"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="s2">"xxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"34245.12"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">  
-  </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"new"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
-</span><span class="p">}]</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684492945476</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222222222"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1041901704004947968"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5e8a5e1-a07f-4202-8061-b88bd598b264"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full_fill"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0699782527055350"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"142.9015000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.9999972790000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726}}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684134644509"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -5836,6 +5881,14 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: center">创建时间 (时间戳秒)</td>
+</tr>
+<tr>
+<td style="text-align: left">feeDetail</td>
+<td style="text-align: center">手续费明细</td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: center"><a href="#orderSource">orderSource</a></td>
 </tr>
 </tbody></table>
 <h3 id='19671a1099'>获取未成交列表</h3>
@@ -6031,24 +6084,29 @@ margin_isolated        接受转入转出多个币种</li>
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "message":"success",
-"data":[{
-  "accountId":"10012",
-  "symbol":"btcusdt_spbl",
-  "orderId":"2222222",
-  "clientOrderId":"xxxxxxx",
-  "price":"34982.12",
-  "quantity":"1",  
-  "orderType":"limit",
-  "side":"buy",
-  "status":"new",
-  "fillPrice":"34982.12",
-  "fillQuantity":"1",
-  "fillTotalAmount":"34982.12",
-  "enterPointSource": "WEB",
-  "cTime":"1622697148"
-}]
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684493060724,
+  "data": [
+    {
+      "accountId": "2222222222",
+      "symbol": "TRXUSDT_SPBL",
+      "orderId": "1041901704004947968",
+      "clientOrderId": "c5e8a5e1-a07f-4202-8061-b88bd598b264",
+      "price": "0",
+      "quantity": "10.0000000000000000",
+      "orderType": "market",
+      "side": "buy",
+      "status": "full_fill",
+      "fillPrice": "0.0699782527055350",
+      "fillQuantity": "142.9015000000000000",
+      "fillTotalAmount": "9.9999972790000000",
+      "enterPointSource": "API",
+      "feeDetail": "{\"BGB\":{\"deduction\":true,\"feeCoinCode\":\"BGB\",\"totalDeductionFee\":-0.017118519726,\"totalFee\":-0.017118519726}}",
+      "orderSource": "market",
+      "cTime": "1684134644509"
+    }
+  ]
 }
 </code></pre>
 <p><strong>返回值说明</strong></p>
@@ -6114,6 +6172,14 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: center">创建时间 (时间戳秒)</td>
+</tr>
+<tr>
+<td style="text-align: left">feeDetail</td>
+<td style="text-align: center">手续费明细</td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: center"><a href="#orderSource">orderSource</a></td>
 </tr>
 </tbody></table>
 <h3 id='106a02279b'>获取成交明细</h3>
@@ -10770,6 +10836,7 @@ margin_isolated        接受转入转出多个币种</li>
     var isSpot=currentUrl.indexOf('spot/')>-1;
     var isMix=currentUrl.indexOf('mix/')>-1;
     var isMargin=currentUrl.indexOf('margin/')>-1;
+    var isCopyTrade=currentUrl.indexOf('copyTrade/')>-1;
     var isLocal=currentUrl.indexOf('local')>-1;
     var $international=$("#international");
     var $search=$("#input-search");
@@ -10778,6 +10845,7 @@ margin_isolated        接受转入转出多个币种</li>
         $Spot=$("#spot");
         $Mix=$("#mix");
         $Margin=$("#margin");
+        $CopyTrade=$("#copyTrade");
     if(isBroker){
         $Broker.addClass('selected');
     }
@@ -10790,12 +10858,16 @@ margin_isolated        接受转入转出多个币种</li>
     if(isMargin){
          $Margin.addClass('selected');
     }
+    if(isCopyTrade){
+          $CopyTrade.addClass('selected');
+        }
 
     if(!isEn){
         $Broker.html($Broker.attr('data-text'))
         $Spot.html($Spot.attr('data-text'))
         $Mix.html($Mix.attr('data-text'))
         $Margin.html($Margin.attr('data-text'))
+        $CopyTrade.html($CopyTrade.attr('data-text'))
 
         $international.html('English')
     }else {
@@ -10808,11 +10880,13 @@ margin_isolated        接受转入转出多个币种</li>
             $Spot.attr('href','/en/spot/')
             $Mix.attr('href','/en/mix/')
             $Margin.attr('href','/en/margin/')
+            $CopyTrade.attr('href','/en/copyTrade/')
         } else{
             $Broker.attr('href','/zh/broker/')
             $Spot.attr('href','/zh/spot/')
             $Mix.attr('href','/zh/mix/')
             $Margin.attr('href','/zh/margin/')
+            $CopyTrade.attr('href','/zh/copyTrade/')
         }
 
     } else{
@@ -10821,11 +10895,13 @@ margin_isolated        接受转入转出多个币种</li>
             $Spot.attr('href','/apidoc/en/spot/')
             $Mix.attr('href','/apidoc/en/mix/')
             $Margin.attr('href','/apidoc/en/margin/')
+            $CopyTrade.attr('href','/apidoc/en/copyTrade/')
         } else{
             $Broker.attr('href','/apidoc/zh/broker/')
             $Spot.attr('href','/apidoc/zh/spot/')
             $Mix.attr('href','/apidoc/zh/mix/')
             $Margin.attr('href','/apidoc/zh/margin/')
+            $CopyTrade.attr('href','/apidoc/zh/copyTrade/')
         }
     }
 </script>
