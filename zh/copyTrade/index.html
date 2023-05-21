@@ -488,34 +488,34 @@
                 <a href="#0d754733c2" class="toc-h2 toc-link" data-title="现货跟单">现货跟单</a>
                   <ul class="toc-list-h3">
                       <li>
-                        <a href="#d08f7d2a3f" class="toc-h3 toc-link" data-title="查询当前带单列表（跟随者/交易员 调用）">查询当前带单列表（跟随者/交易员 调用）</a>
+                        <a href="#fe23403d70" class="toc-h3 toc-link" data-title="查询当前带单列表">查询当前带单列表</a>
                       </li>
                       <li>
-                        <a href="#8bdb197c5d" class="toc-h3 toc-link" data-title="查询历史带单列表（跟随者/交易员 调用）">查询历史带单列表（跟随者/交易员 调用）</a>
+                        <a href="#260770a233" class="toc-h3 toc-link" data-title="查询历史带单列表">查询历史带单列表</a>
                       </li>
                       <li>
-                        <a href="#95dea0deb8" class="toc-h3 toc-link" data-title="卖出和批量卖出 （跟随者/交易员 调用）">卖出和批量卖出 （跟随者/交易员 调用）</a>
+                        <a href="#985e531286" class="toc-h3 toc-link" data-title="卖出和批量卖出">卖出和批量卖出</a>
                       </li>
                       <li>
-                        <a href="#5b60df9d82" class="toc-h3 toc-link" data-title="修改止盈止损 （跟随者/交易员 调用）">修改止盈止损 （跟随者/交易员 调用）</a>
+                        <a href="#c582da3b9c" class="toc-h3 toc-link" data-title="修改止盈止损">修改止盈止损</a>
                       </li>
                       <li>
-                        <a href="#b3c25e22cc" class="toc-h3 toc-link" data-title="跟随者结束跟单（跟随者 调用）">跟随者结束跟单（跟随者 调用）</a>
+                        <a href="#cf01d19c74" class="toc-h3 toc-link" data-title="跟随者结束跟单">跟随者结束跟单</a>
                       </li>
                       <li>
                         <a href="#f9ff9b8cae" class="toc-h3 toc-link" data-title="带单信息查询-带单额度">带单信息查询-带单额度</a>
                       </li>
                       <li>
-                        <a href="#70626538b1" class="toc-h3 toc-link" data-title="查询带单设置-带单币对设置">查询带单设置-带单币对设置</a>
+                        <a href="#93ab621326" class="toc-h3 toc-link" data-title="交易员查询带单设置">交易员查询带单设置</a>
                       </li>
                       <li>
-                        <a href="#331ef2a32d" class="toc-h3 toc-link" data-title="查询修改跟随配置">查询修改跟随配置</a>
+                        <a href="#ed9359822f" class="toc-h3 toc-link" data-title="跟随者查询跟随配置">跟随者查询跟随配置</a>
                       </li>
                       <li>
                         <a href="#43fb1c8e0f" class="toc-h3 toc-link" data-title="我的交易员列表">我的交易员列表</a>
                       </li>
                       <li>
-                        <a href="#1da6a4e856" class="toc-h3 toc-link" data-title="跟随者修改跟随配置">跟随者修改跟随配置</a>
+                        <a href="#23829a7fc1" class="toc-h3 toc-link" data-title="跟随者新增或修改跟随配置">跟随者新增或修改跟随配置</a>
                       </li>
                       <li>
                         <a href="#728d4786b0" class="toc-h3 toc-link" data-title="我的跟随者列表">我的跟随者列表</a>
@@ -1051,7 +1051,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
@@ -3238,7 +3238,9 @@ Signature = base64.encode(Signature)
   "requestTime":163123213132,
   "data":true
 }
-</code></pre><h2 id='0d754733c2'>现货跟单</h2><h3 id='d08f7d2a3f'>查询当前带单列表（跟随者/交易员 调用）</h3>
+</code></pre><h2 id='0d754733c2'>现货跟单</h2><h3 id='fe23403d70'>查询当前带单列表</h3>
+<p>跟随者/交易员 调用</p>
+
 <p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3383,7 +3385,9 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">返回条目最小ID</td>
 </tr>
 </tbody></table>
-<h3 id='8bdb197c5d'>查询历史带单列表（跟随者/交易员 调用）</h3>
+<h3 id='260770a233'>查询历史带单列表</h3>
+<p>跟随者/交易员 调用</p>
+
 <p>限速规则 10次/1s</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3534,7 +3538,9 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">返回条目最小ID</td>
 </tr>
 </tbody></table>
-<h3 id='95dea0deb8'>卖出和批量卖出 （跟随者/交易员 调用）</h3>
+<h3 id='985e531286'>卖出和批量卖出</h3>
+<p>跟随者/交易员 调用</p>
+
 <p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3605,7 +3611,9 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">true成功，全部成功或全部失败</td>
 </tr>
 </tbody></table>
-<h3 id='5b60df9d82'>修改止盈止损 （跟随者/交易员 调用）</h3>
+<h3 id='c582da3b9c'>修改止盈止损</h3>
+<p>跟随者/交易员 调用</p>
+
 <p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3683,7 +3691,9 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">成功为true</td>
 </tr>
 </tbody></table>
-<h3 id='b3c25e22cc'>跟随者结束跟单（跟随者 调用）</h3>
+<h3 id='cf01d19c74'>跟随者结束跟单</h3>
+<p>跟随者 调用</p>
+
 <p>限速规则:  10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3823,7 +3833,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">币对名称</td>
 </tr>
 </tbody></table>
-<h3 id='70626538b1'>查询带单设置-带单币对设置</h3>
+<h3 id='93ab621326'>交易员查询带单设置</h3>
 <p>交易员 角色 调用</p>
 
 <p>限速规则:  10次/1s (uid)</p>
@@ -3943,7 +3953,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">币对symbol</td>
 </tr>
 </tbody></table>
-<h3 id='331ef2a32d'>查询修改跟随配置</h3>
+<h3 id='ed9359822f'>跟随者查询跟随配置</h3>
 <p>跟随者 调用</p>
 
 <p>限速规则:  10次/1s (uid)</p>
@@ -4252,8 +4262,10 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">交易员ID</td>
 </tr>
 </tbody></table>
-<h3 id='1da6a4e856'>跟随者修改跟随配置</h3>
+<h3 id='23829a7fc1'>跟随者新增或修改跟随配置</h3>
 <p>跟随者 调用</p>
+
+<p>用于新增跟随关系，也可以用于修改跟随配置</p>
 
 <p>限速规则:  10次/1s (uid)</p>
 

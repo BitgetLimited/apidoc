@@ -760,7 +760,7 @@ clipboard.on('error', function(e) {
 <p><strong>May 20, 2023</strong></p>
 
 <ul>
-<li><a href="#get-history-order">Get History Order</a>     <a href="#get-order-details">get Order Detail</a>added response field <code>orderSource</code></li>
+<li><a href="#get-open-order">Get Open Order</a>, <a href="#get-all-open-order">Get All Open Order</a>, <a href="#get-history-orders">Get History Orders</a>, <a href="#get-producttype-history-orders">Get ProductType History Orders</a>, and  <a href="#get-order-details">get Order Detail</a> added response field <code>orderSource</code></li>
 </ul>
 
 <p><strong>May 12, 2023</strong></p>
@@ -5572,15 +5572,32 @@ If there is a large deviation between the local server time and the API server t
 <li>Position exists，but specify a wrong <code>side</code> param when closing. For example: you have a <code>long</code> position, and try to close it with <code>side=close_short</code></li>
 </ul>
 
-<p>Specially, if specify a <code>size</code> greater than the <code>position size</code>  when closing position, the order will success with <code>actual position size</code>,  that is, reduceOnly. </p>
+<p>Hold mode = double_hold
+- if specify a <code>size</code> greater than the <code>position size</code>  when closing position, the order will success with <code>actual position size</code>,  that is, reduceOnly.</p>
 
-<p>For example, </p>
+<p>Hold mode = single_hold + reduceOnly=false
+- you are holding 1.0 long BTCUSDT
+- try to close the long BTCUSDT with size: 3.0 in market price
+- place order interface return success, 1.0 long position will be closed, and 2.0 short position will be opened</p>
 
-<ul>
-<li>you are holding 1.0 long BTCUSDT</li>
-<li>try to close the long BTCUSDT with size: 2.0 in market price</li>
-<li>place order interface return success, but in Websocket channel <code>orders</code> will receive an order fill with size=1 instead of 2</li>
-</ul>
+<p>Hold mode = single_hold + reduceOnly=true
+- you are holding 1.0 long BTCUSDT
+- try to close the long BTCUSDT with size: 2.0 in market price
+- place order interface return failure
+- try to close the long BTCUSDT with size: 0.5 in market price
+- place order interface return success, position changes to 0.5 long BTCUSDT
+- try to close the long BTCUSDT with size: 0.5 in market price
+- place order interface return success, position changes to 0</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 
 <p>Unknown error</p>
 
@@ -5588,7 +5605,7 @@ If there is a large deviation between the local server time and the API server t
 
 
 <red>
-    <b>Note</b> if below two error occurs when operating an order, please DO query order detail with the clientOid to get the final status
+    <b>Note</b> if below error occurs when operating an order, please DO query order detail with the clientOid to get the final status
 </red>
 <br/>
 {
@@ -5604,7 +5621,13 @@ If there is a large deviation between the local server time and the API server t
     "requestTime": 1666268894071,
     "data": null
 }
-
+<br/>
+{
+    "code": "45001",
+    "msg": "Unknown error",
+    "requestTime": 1666268894071,
+    "data": null
+}
 
 </aside> 
 
@@ -5676,7 +5699,7 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">reduceOnly</td>
 <td style="text-align: left">Boolean</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default false; set to true when try to reduce position in &#39;single_hold&#39; mode and when close position with value less than 5USDT, DOES NOT WORK under &#39;double_hold&#39; mode</td>
+<td style="text-align: center">Default false; set to true when try to reduce position in &#39;single_hold&#39; mode and when close position with value less than 5 USDT, DOES NOT WORK under &#39;double_hold&#39; mode</td>
 </tr>
 <tr>
 <td style="text-align: left">presetTakeProfitPrice</td>
@@ -5704,9 +5727,9 @@ orderType could be either limited or market<br/>
 For example<br/>
 
 Assumed you're holding buy_single BTCUSDT_UMCBL size=0.1, follow below instructions step by step to placeOrder:<br/>
-1) first time sell_single size=0.05: 0.05 position will be closed, you still have buy_single size=0.05<br/>
-2) seconds order: sell_single 0.1: remain position 0.05 will be closed, buy_single size=0, sell_single size=0.05 will be opened<br/>
-3) final order: sell_single 0.15: sell_single position size will increase 0.15, at the end sell_single size=0.2<br/>
+1) first time sell_single + reduceOnly=false size=0.05: 0.05 position will be closed, you still have buy_single size=0.05<br/>
+2) seconds order: sell_single + reduceOnly=false size=0.1: remain position 0.05 will be closed, buy_single size=0, sell_single size=0.05 will be opened<br/>
+3) final order: sell_single + reduceOnly=false size=0.15: sell_single position size will increase 0.15, at the end sell_single size=0.2<br/>
 
 
 </aside> 
@@ -5718,14 +5741,14 @@ If receive a response like below: <br/>
 
 {<br/>
     "code":"45116",<br/>
-    "msg":"The count of positions hold by the account exceeds the maximum count 60",<br/>
+    "msg":"The count of positions hold by the account exceeds the maximum count 150",<br/>
     "requestTime":1669910904315,<br/>
     "data":null<br/>
 }<br/>
 <br/>
-Please noted that for a business line like: USDT perpetual contract, if counted existing positions + open orders > 60, you will get above response<br/>
+Please noted that for a business line like: USDT perpetual contract, if counted existing positions + open orders > 150, you will get above response<br/>
 PS: USDC perpetual contract will be counted separately, same as universal margin perpetual contract
-
+The limitation would change with time, please be alert with our notifications
 
 </aside> 
 
@@ -6715,6 +6738,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
                 </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464831"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464891"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -6820,6 +6844,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left"><a href="#ordertype">Order type</a></td>
 </tr>
 <tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">Created update time</td>
 </tr>
@@ -6896,6 +6924,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
                 </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"ctime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -6966,6 +6995,10 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">orderType</td>
 <td style="text-align: left"><a href="#ordertype">Order type</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7182,7 +7215,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 <tr>
 <td style="text-align: left">orderSource</td>
-<td style="text-align: left"><a href="#orderSource">orderSource</a></td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7612,7 +7645,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 <tr>
 <td style="text-align: left">orderSource</td>
-<td style="text-align: left"><a href="#orderSource">orderSource</a></td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
