@@ -558,6 +558,9 @@
                         <a href="#0d236c6a2b" class="toc-h3 toc-link" data-title="批量撤单">批量撤单</a>
                       </li>
                       <li>
+                        <a href="#89e5b08e91" class="toc-h3 toc-link" data-title="修改订单">修改订单</a>
+                      </li>
+                      <li>
                         <a href="#symbol" class="toc-h3 toc-link" data-title="按symbol撤单">按symbol撤单</a>
                       </li>
                       <li>
@@ -734,6 +737,13 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年05月22日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#">修改订单</a></li>
+<li>接口 <a href="#212cdaad08">获取财务记录</a> 和 <a href="#1a9e1be972"> 获取业务线财务记录</a> 新增请求参数 <code>business</code></li>
+</ul>
+
 <p><strong>2023年05月20日</strong></p>
 
 <ul>
@@ -1538,11 +1548,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td>contract_main_settle_fee</td>
-<td>全仓资金费率。废弃，请勿在查询中使用</td>
+<td>全仓资金费率</td>
 </tr>
 <tr>
 <td>contract_margin_settle_fee</td>
-<td>逐仓资金费率。废弃，请勿在查询中使用</td>
+<td>逐仓资金费率</td>
 </tr>
 <tr>
 <td>tracking_trader_income</td>
@@ -3806,7 +3816,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">账户权益(保证金币种)，包含未实现盈亏（根据mark price计算）</td>
+<td style="text-align: left">账户权益(保证金币种)</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -3946,7 +3956,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">账户权益(保证金币种)，包含未实现盈亏（根据mark price计算）</td>
+<td style="text-align: left">账户权益(保证金币种)</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -5324,6 +5334,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">产品ID 必须大写，废弃，不建议使用</td>
 </tr>
 <tr>
+<td style="text-align: left">business</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">账户流水类型</td>
+</tr>
+<tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
@@ -5466,6 +5482,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
 <td style="text-align: center"><a href="#producttype">产品类型</a></td>
+</tr>
+<tr>
+<td style="text-align: left">business</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">账户流水操作类型</td>
 </tr>
 <tr>
 <td style="text-align: left">startTime</td>
@@ -6542,7 +6564,109 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">错误消息</td>
 </tr>
 </tbody></table>
-<h3 id='symbol'>按symbol撤单</h3>
+<h3 id='89e5b08e91'>修改订单</h3>
+<ul>
+<li><p>修改 <code>size</code> 和 <code>price</code> 会取消之前的订单；异步生成一个新订单, 修改预设止盈止损不会取消之前的订单。</p></li>
+<li><p>根据 <code>orderId</code> 或者  <code>clientOId</code>  修改订单价格，数量和预设止盈止损</p></li>
+<li><p>只允许修改未成交的限价单，如果修改订单的价格和数量则会取消之前订单重新生成一笔订单，如果 <code>size</code> 和 <code>price</code> 和 预设止盈止损同时传入，则 预设止盈止损不生效</p></li>
+<li><p>修改限价单 <code>price</code> 和 <code>size</code> 请务必传入 <code>newClientOid</code>  因为新订单 <code>orderId</code>  无法同步返回,  因此需要根据 <code>newClientOid</code> 来帮助您查询订单信息</p></li>
+<li><p>修改订单数量 需要满足最小下单数量</p></li>
+<li><p>如果只修改预设止盈止损，请不要传入 <code>price</code> 和 <code>size</code> ，只传止损或止盈则 另外一个会被取消</p></li>
+</ul>
+
+<p>限速规则: 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/order/modifyOrder</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">客户端自定义id 如果两个都传 则以orderId 为主</td>
+</tr>
+<tr>
+<td style="text-align: left">newClientOid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">新clientOid</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID 必须大写</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单数量</td>
+</tr>
+<tr>
+<td style="text-align: left">price</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">订单价格</td>
+</tr>
+<tr>
+<td style="text-align: left">presetTakeProfitPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">预设止盈价格</td>
+</tr>
+<tr>
+<td style="text-align: left">presetStopLossPrice</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">预设止损价格</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/modifyOrder"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"orderId"</span>:<span class="s2">"1627293504612"</span>,<span class="s2">"newClientOid"</span>:<span class="s2">"BITGET#1627293504612"</span>,<span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"size"</span>:<span class="s2">"0.001"</span>,<span class="s2">"price"</span>:<span class="s2">"26775.5"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='symbol'>按symbol撤单</h3>
 <p>限速规则: 10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
