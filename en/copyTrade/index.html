@@ -468,7 +468,7 @@
                         <a href="#follower-query-trace-config" class="toc-h3 toc-link" data-title="Follower query Trace Config">Follower query Trace Config</a>
                       </li>
                       <li>
-                        <a href="#follower-set-copytrade-config" class="toc-h3 toc-link" data-title="Follower Set copyTrade Config">Follower Set copyTrade Config</a>
+                        <a href="#follower-follow-the-trader" class="toc-h3 toc-link" data-title="Follower follow the Trader">Follower follow the Trader</a>
                       </li>
                       <li>
                         <a href="#follower-close-position-by-tracking-number" class="toc-h3 toc-link" data-title="Follower Close Position By Tracking Number">Follower Close Position By Tracking Number</a>
@@ -480,7 +480,7 @@
                         <a href="#follower-set-tpsl" class="toc-h3 toc-link" data-title="Follower Set Tpsl">Follower Set Tpsl</a>
                       </li>
                       <li>
-                        <a href="#cancel-follower-trader" class="toc-h3 toc-link" data-title="Cancel Follower Trader">Cancel Follower Trader</a>
+                        <a href="#follower-unfollow-the-trader" class="toc-h3 toc-link" data-title="Follower Unfollow The Trader">Follower Unfollow The Trader</a>
                       </li>
                   </ul>
               </li>
@@ -515,7 +515,7 @@
                         <a href="#my-trader-list" class="toc-h3 toc-link" data-title="my trader list">my trader list</a>
                       </li>
                       <li>
-                        <a href="#follower-update-trace-config" class="toc-h3 toc-link" data-title="follower update trace config">follower update trace config</a>
+                        <a href="#follower-follow-the-trader-2" class="toc-h3 toc-link" data-title="Follower Follow The Trader">Follower Follow The Trader</a>
                       </li>
                       <li>
                         <a href="#my-follower-list" class="toc-h3 toc-link" data-title="My follower list">My follower list</a>
@@ -524,7 +524,7 @@
                         <a href="#copy-trade-symbol-config" class="toc-h3 toc-link" data-title="Copy trade symbol config">Copy trade symbol config</a>
                       </li>
                       <li>
-                        <a href="#follower-unfollow-the-trader" class="toc-h3 toc-link" data-title="Follower unfollow the trader">Follower unfollow the trader</a>
+                        <a href="#follower-unfollow-the-trader-2" class="toc-h3 toc-link" data-title="Follower unfollow the trader">Follower unfollow the trader</a>
                       </li>
                       <li>
                         <a href="#get-trader-profit-summary-2" class="toc-h3 toc-link" data-title="Get Trader Profit Summary">Get Trader Profit Summary</a>
@@ -1061,7 +1061,7 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
+<td style="text-align: center">Yes</td>
 <td style="text-align: center">Symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
@@ -2691,7 +2691,7 @@ microtime(true) * 1000;
 <td style="text-align: left">Stop loss ratio</td>
 </tr>
 </tbody></table>
-<h3 id='follower-set-copytrade-config'>Follower Set copyTrade Config</h3>
+<h3 id='follower-follow-the-trader'>Follower follow the Trader</h3>
 <p>Limit rule: 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -3089,7 +3089,7 @@ microtime(true) * 1000;
 </tr>
 </thead><tbody>
 </tbody></table>
-<h3 id='cancel-follower-trader'>Cancel Follower Trader</h3>
+<h3 id='follower-unfollow-the-trader'>Follower Unfollow The Trader</h3>
 <p>Limit rule: 5 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -3174,7 +3174,7 @@ microtime(true) * 1000;
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">page Size(default 30, max 30)</td>
+<td style="text-align: center">Page Size(default 30, max 30)</td>
 </tr>
 </tbody></table>
 
@@ -3229,7 +3229,7 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">resultList</td>
-<td style="text-align: left">response array</td>
+<td style="text-align: left">Response array</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; trackingNo</td>
@@ -3241,7 +3241,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyDelegateCount</td>
-<td style="text-align: left">buy amount (base currency)</td>
+<td style="text-align: left">Buy amount (base currency)</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; holdCount</td>
@@ -3249,23 +3249,23 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyPrice</td>
-<td style="text-align: left">buy price</td>
+<td style="text-align: left">Buy price</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; profit</td>
-<td style="text-align: left">profit</td>
+<td style="text-align: left">Profit</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyTime</td>
-<td style="text-align: left">buy time</td>
+<td style="text-align: left">Buy time</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; profitRate</td>
-<td style="text-align: left">profit rate</td>
+<td style="text-align: left">Profit rate</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; stopLossPrice</td>
@@ -3277,11 +3277,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; trackingType</td>
-<td style="text-align: left">order type: LEAD_ORDER/FOLLOW_ORDER</td>
+<td style="text-align: left">Order type: LEAD_ORDER/FOLLOW_ORDER</td>
 </tr>
 <tr>
 <td style="text-align: left">minId</td>
-<td style="text-align: left">response data minimum ID</td>
+<td style="text-align: left">Response data minimum ID</td>
 </tr>
 </tbody></table>
 <h3 id='get-trader-history-order'>Get Trader History order</h3>
@@ -3319,7 +3319,7 @@ microtime(true) * 1000;
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">page Size(default 30, max 30)</td>
+<td style="text-align: center">Page Size(default 30, max 30)</td>
 </tr>
 </tbody></table>
 
@@ -3376,7 +3376,7 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">resultList</td>
-<td style="text-align: left">response array</td>
+<td style="text-align: left">Response array</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; trackingNo</td>
@@ -3384,7 +3384,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; traderUserId</td>
-<td style="text-align: left">trader UID</td>
+<td style="text-align: left">Trader UID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; dealCount</td>
@@ -3392,47 +3392,47 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyPrice</td>
-<td style="text-align: left">buy price</td>
+<td style="text-align: left">Buy price</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; sellPrice</td>
-<td style="text-align: left">sell price</td>
+<td style="text-align: left">Sell price</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; profit</td>
-<td style="text-align: left">profit</td>
+<td style="text-align: left">Profit</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyTime</td>
-<td style="text-align: left">buy time</td>
+<td style="text-align: left">Buy time</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; sellTime</td>
-<td style="text-align: left">sell time</td>
+<td style="text-align: left">Sell time</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; profitRate</td>
-<td style="text-align: left">profit rate</td>
+<td style="text-align: left">Profit rate</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyLeftTokenId</td>
-<td style="text-align: left">buy left yoken ID</td>
+<td style="text-align: left">Buy left yoken ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; buyRightTokenId</td>
-<td style="text-align: left">buy right yoken ID</td>
+<td style="text-align: left">Buy right yoken ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; netProfit</td>
-<td style="text-align: left">net profit</td>
+<td style="text-align: left">Net profit</td>
 </tr>
 <tr>
 <td style="text-align: left">minId</td>
-<td style="text-align: left">response data minimum ID</td>
+<td style="text-align: left">Response data minimum ID</td>
 </tr>
 </tbody></table>
 <h3 id='close-tracking-order'>close tracking order</h3>
@@ -3458,13 +3458,13 @@ microtime(true) * 1000;
 <td style="text-align: left">trackingNos</td>
 <td style="text-align: left">List<String></td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">tracking Order Numbers array, max size 50, either &#39;all success&#39; or &#39;all fail&#39;</td>
+<td style="text-align: center">Tracking Order Numbers array, max size 50, either &#39;all success&#39; or &#39;all fail&#39;</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">symbol</td>
+<td style="text-align: center">Symbol</td>
 </tr>
 </tbody></table>
 
@@ -3529,7 +3529,7 @@ microtime(true) * 1000;
 <td style="text-align: left">trackingNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">Yes</td>
-<td style="text-align: center">tracking order number</td>
+<td style="text-align: center">Tracking order number</td>
 </tr>
 <tr>
 <td style="text-align: left">takeProfitPrice</td>
@@ -3607,7 +3607,7 @@ microtime(true) * 1000;
 <td style="text-align: left">trackingOrderNos</td>
 <td style="text-align: left">List<String></td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">tracking order number array, either all success or all failed</td>
+<td style="text-align: center">Tracking order number array, either all success or all failed</td>
 </tr>
 </tbody></table>
 
@@ -3713,15 +3713,15 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">maxCount</td>
-<td style="text-align: left">maximum amount, quote coin</td>
+<td style="text-align: left">Maximum amount, quote coin</td>
 </tr>
 <tr>
 <td style="text-align: left">surplusCount</td>
-<td style="text-align: left">surplus amount, quote coin</td>
+<td style="text-align: left">Surplus amount, quote coin</td>
 </tr>
 <tr>
 <td style="text-align: left">symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 </tbody></table>
 <h3 id='trader-get-copy-trade-settings'>trader get copy trade settings</h3>
@@ -3809,19 +3809,19 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">labels</td>
-<td style="text-align: left">label array</td>
+<td style="text-align: left">Label array</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; id</td>
-<td style="text-align: left">label  ID</td>
+<td style="text-align: left">Label  ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; name</td>
-<td style="text-align: left">label name</td>
+<td style="text-align: left">Label name</td>
 </tr>
 <tr>
 <td style="text-align: left">openProduct</td>
-<td style="text-align: left">is copy trade enabled?（false-no，true-yes）</td>
+<td style="text-align: left">Is copy trade enabled?（false-no，true-yes）</td>
 </tr>
 <tr>
 <td style="text-align: left">showAssetsMap</td>
@@ -3841,7 +3841,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 </tbody></table>
 <h3 id='follower-get-copy-trace-config'>follower get copy trace config</h3>
@@ -3867,7 +3867,7 @@ microtime(true) * 1000;
 <td style="text-align: left">traderUserId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">trader UID</td>
+<td style="text-align: center">Trader UID</td>
 </tr>
 </tbody></table>
 
@@ -3939,7 +3939,7 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">isMyTrader</td>
-<td style="text-align: left">is following</td>
+<td style="text-align: left">Is following</td>
 </tr>
 <tr>
 <td style="text-align: left">profitRate</td>
@@ -3955,15 +3955,15 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">traderHeadPic</td>
-<td style="text-align: left">trader head picture</td>
+<td style="text-align: left">Trader head picture</td>
 </tr>
 <tr>
 <td style="text-align: left">traderNickName</td>
-<td style="text-align: left">trader nick name</td>
+<td style="text-align: left">Trader nick name</td>
 </tr>
 <tr>
 <td style="text-align: left">copyTradeBatchDetails</td>
-<td style="text-align: left">my copy trade config</td>
+<td style="text-align: left">My copy trade config</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; maxTraceAmount</td>
@@ -3979,7 +3979,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; traceType</td>
@@ -3987,7 +3987,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">myCopyTradeConfList</td>
-<td style="text-align: left">symbol trace config</td>
+<td style="text-align: left">Symbol trace config</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; maxStopLossRation</td>
@@ -4007,11 +4007,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; maxTraceCount</td>
-<td style="text-align: left">maximum number of trace</td>
+<td style="text-align: left">Maximum number of trace</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; maxTraceRation</td>
-<td style="text-align: left">maximum ratio of trace, 2 decimal， 0.11 means 11%</td>
+<td style="text-align: left">Maximum ratio of trace, 2 decimal， 0.11 means 11%</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; minStopLossRation</td>
@@ -4043,7 +4043,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
-<td style="text-align: left">symbol ID</td>
+<td style="text-align: left">Symbol ID</td>
 </tr>
 </tbody></table>
 <h3 id='my-trader-list'>my trader list</h3>
@@ -4069,13 +4069,13 @@ microtime(true) * 1000;
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">page No, default 1</td>
+<td style="text-align: center">Page No, default 1</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">page Size, default 30, max 30</td>
+<td style="text-align: center">Page Size, default 30, max 30</td>
 </tr>
 </tbody></table>
 
@@ -4126,30 +4126,32 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">certificationType</td>
-<td style="text-align: left">certification Type(Uncertified-Uncertified, Certified-Certified)</td>
+<td style="text-align: left">Certification Type(Uncertified-Uncertified, Certified-Certified)</td>
 </tr>
 <tr>
 <td style="text-align: left">traceTotalAmount</td>
-<td style="text-align: left">trace Total Amount, USDT</td>
+<td style="text-align: left">Trace Total Amount, USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">traceTotalNetProfit</td>
-<td style="text-align: left">total net profit, USDT</td>
+<td style="text-align: left">Total net profit, USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">traceTotalProfit</td>
-<td style="text-align: left">total profit, USDT</td>
+<td style="text-align: left">Total profit, USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">tradeNickName</td>
-<td style="text-align: left">trader nickname</td>
+<td style="text-align: left">Trader nickname</td>
 </tr>
 <tr>
 <td style="text-align: left">traderUid</td>
-<td style="text-align: left">trader UID</td>
+<td style="text-align: left">Trader UID</td>
 </tr>
 </tbody></table>
-<h3 id='follower-update-trace-config'>follower update trace config</h3>
+<h3 id='follower-follow-the-trader-2'>Follower Follow The Trader</h3>
+<p>This could also be used to update the follow rules of the follower</p>
+
 <p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -4172,19 +4174,19 @@ microtime(true) * 1000;
 <td style="text-align: left">traderUserId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">trader UID</td>
+<td style="text-align: center">Trader UID</td>
 </tr>
 <tr>
 <td style="text-align: left">setting</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">setting array</td>
+<td style="text-align: center">Setting array</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; symbol</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">symbol ID</td>
+<td style="text-align: center">Symbol ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; traceType</td>
@@ -4202,7 +4204,7 @@ microtime(true) * 1000;
 <td style="text-align: left">&gt; traceValue</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">follow trace value (corresponding to traceType), refer to <a href="#follower-get-copy-trace-config">follower get copy trace config</a> the response field: maxTraceAmount/minTraceAmount/minTraceRation</td>
+<td style="text-align: center">Follow trace value (corresponding to traceType), refer to <a href="#follower-get-copy-trace-config">follower get copy trace config</a> the response field: maxTraceAmount/minTraceAmount/minTraceRation</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; stopLossRation</td>
@@ -4288,13 +4290,13 @@ microtime(true) * 1000;
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageNo pageNo (default 1)</td>
+<td style="text-align: center">PageNo  (default 1)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageSize (default 30 max 1000)</td>
+<td style="text-align: center">PageSize (default 30 max 1000)</td>
 </tr>
 </tbody></table>
 
@@ -4351,7 +4353,7 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">accountEquity</td>
-<td style="text-align: left">account Equity</td>
+<td style="text-align: left">Account Equity</td>
 </tr>
 <tr>
 <td style="text-align: left">canRemoveTraceUser</td>
@@ -4359,15 +4361,15 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">followerHeadPic</td>
-<td style="text-align: left">follower head picture</td>
+<td style="text-align: left">Follower head picture</td>
 </tr>
 <tr>
 <td style="text-align: left">followerNickName</td>
-<td style="text-align: left">follower nickname</td>
+<td style="text-align: left">Follower nickname</td>
 </tr>
 <tr>
 <td style="text-align: left">followerUserId</td>
-<td style="text-align: left">follower UID</td>
+<td style="text-align: left">Follower UID</td>
 </tr>
 </tbody></table>
 <h3 id='copy-trade-symbol-config'>Copy trade symbol config</h3>
@@ -4438,7 +4440,7 @@ microtime(true) * 1000;
 <td style="text-align: left">true is success</td>
 </tr>
 </tbody></table>
-<h3 id='follower-unfollow-the-trader'>Follower unfollow the trader</h3>
+<h3 id='follower-unfollow-the-trader-2'>Follower unfollow the trader</h3>
 <p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -4461,7 +4463,7 @@ microtime(true) * 1000;
 <td style="text-align: left">traderUserId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">trader UID</td>
+<td style="text-align: center">Trader UID</td>
 </tr>
 </tbody></table>
 
@@ -4600,13 +4602,13 @@ microtime(true) * 1000;
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageNo (default 1)</td>
+<td style="text-align: center">PageNo (default 1)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageSize (default 100 max 100)</td>
+<td style="text-align: center">PageSize (default 100 max 100)</td>
 </tr>
 </tbody></table>
 
@@ -4686,13 +4688,13 @@ microtime(true) * 1000;
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageNo (default 1)</td>
+<td style="text-align: center">PageNo (default 1)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageSize (default 100 max 100)</td>
+<td style="text-align: center">PageSize (default 100 max 100)</td>
 </tr>
 </tbody></table>
 
@@ -4778,25 +4780,25 @@ microtime(true) * 1000;
 <td style="text-align: left">date</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">timestamp, ms value in yyyy-MM-dd (ignore HH-mm-ss), will return data in the same day in GMT+8</td>
+<td style="text-align: center">Timestamp, ms value in yyyy-MM-dd (ignore HH-mm-ss), will return data in the same day in GMT+8</td>
 </tr>
 <tr>
 <td style="text-align: left">coin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">yes</td>
-<td style="text-align: center">coin name</td>
+<td style="text-align: center">Coin name</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageNo (default 1)</td>
+<td style="text-align: center">PageNo (default 1)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageSize (default 100 max 100)</td>
+<td style="text-align: center">PageSize (default 100 max 100)</td>
 </tr>
 </tbody></table>
 
@@ -4844,15 +4846,15 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">coin</td>
-<td style="text-align: left">coin name</td>
+<td style="text-align: left">Coin name</td>
 </tr>
 <tr>
 <td style="text-align: left">distributeRatio</td>
-<td style="text-align: left">distribute Ratio, 2 decimal place, 0.11 means 11%</td>
+<td style="text-align: left">Commission rate, 2 decimal place, 0.11 means 11%</td>
 </tr>
 <tr>
 <td style="text-align: left">profit</td>
-<td style="text-align: left">profit</td>
+<td style="text-align: left">Profit</td>
 </tr>
 </tbody></table>
 <h3 id='trader-39-s-pending-profit-details'>Trader&#39;s pending profit details</h3>
@@ -4882,13 +4884,13 @@ microtime(true) * 1000;
 <td style="text-align: left">pageNo</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageNo (default 1)</td>
+<td style="text-align: center">PageNo (default 1)</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
-<td style="text-align: center">pageSize (default 100 max 100)</td>
+<td style="text-align: center">PageSize (default 100 max 100)</td>
 </tr>
 </tbody></table>
 
@@ -4930,15 +4932,15 @@ microtime(true) * 1000;
 </thead><tbody>
 <tr>
 <td style="text-align: left">distributeRatio</td>
-<td style="text-align: left">distribute Ratio, 2 decimal place, 0.11 means 11%</td>
+<td style="text-align: left">Commission rate, 2 decimal place, 0.11 means 11%</td>
 </tr>
 <tr>
 <td style="text-align: left">profit</td>
-<td style="text-align: left">profit</td>
+<td style="text-align: left">Profit</td>
 </tr>
 <tr>
 <td style="text-align: left">coin</td>
-<td style="text-align: left">coin</td>
+<td style="text-align: left">Coin</td>
 </tr>
 </tbody></table>
 <h3 id='get-trader-information'>Get Trader Information</h3>
@@ -5008,11 +5010,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">status</td>
-<td style="text-align: left">trader status:  &#39;Enable&#39;: follower can copy trade &#39;UnEnable&#39;: follower can not copy trade（can close position）; &#39;Ordinary&#39;: general user</td>
+<td style="text-align: left">Trader status:  &#39;Enable&#39;: follower can copy trade &#39;UnEnable&#39;: follower can not copy trade（can close position）; &#39;Ordinary&#39;: general user</td>
 </tr>
 <tr>
 <td style="text-align: left">openProduct</td>
-<td style="text-align: left">is enabled copy trade</td>
+<td style="text-align: left">Is enabled copy trade</td>
 </tr>
 </tbody></table>
 <h1 id='restapi-error-code'>RestAPI error code</h1><h2 id='public-error-code'>Public error code</h2>

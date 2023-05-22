@@ -747,7 +747,7 @@ clipboard.on('error', function(e) {
 <p><strong>2023年05月20日</strong></p>
 
 <ul>
-<li><a href="#cee6a1fd93">/api/mix/v1/order/current</a> 新增响应字段: <code>orderSource</code></li>
+<li><a href="#cee6a1fd93">/api/mix/v1/order/current</a>, <a href="#f77cd7b1e5">/api/mix/v1/order/marginCoinCurrent</a> , <a href="#f876a4e1f9">/api/mix/v1/order/detail</a> 和 <a href="#4212d667d1">/api/mix/v1/order/history</a> 新增响应字段: <code>orderSource</code></li>
 </ul>
 
 <p><strong>2023年05月12日</strong></p>
@@ -5673,15 +5673,21 @@ Signature = base64.encode(Signature)
 <li>仓位不为0，但平仓时指定的side错误，如当前持多仓，但平仓指令side=close_short</li>
 </ul>
 
-<p>特别地，当平仓时指定的size大于持仓size时，下单会成功，持仓仓位会全平，即：只减仓，不会反向开仓。</p>
+<p>双向持仓时，当平仓时指定的size大于持仓size时，下单会成功，持仓仓位会全平，即：只减仓，不会反向开仓。</p>
 
-<p>示例：</p>
+<p>单向持仓+非只减仓
+- 您持有 1.0 个 BTCUSDT 多仓
+- 尝试以市场价(Market Price) sell 3.0个 BTCUSDT
+- 下单接口会返回成功，1.0 个 BTCUSDT 多仓会平仓，空仓开 2.0个BTCUSDT</p>
 
-<ul>
-<li>您持有 1.0 个 BTCUSDT 多仓</li>
-<li>尝试以市场价(Market Price)平多 2.0个 BTCUSDT</li>
-<li>下单接口会返回成功，但是从Websocket的订单(<code>orders</code>)频道将收到一个基础币数额 size = 1 的消息推送，而非 size = 2</li>
-</ul>
+<p>单向持仓+只减仓
+- 您持有 1.0 个 BTCUSDT 多仓
+- 尝试以市场价(Market Price) sell 2.0个 BTCUSDT
+- 下单接口会返回失败
+- 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
+- 下单接口会返回成功，仓位变化为0.5个 BTCUSDT 多仓
+- 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
+- 下单接口会返回成功，仓位变化为0</p>
 
 <p>未知错误</p>
 
@@ -5689,7 +5695,7 @@ Signature = base64.encode(Signature)
 
 
 <red>
-    <b>注意</b> 操作订单时出现以下两个错误，请用clientOid查询订单详情，以确认操作的最终结果
+    <b>注意</b> 操作订单时出现以下错误，请用clientOid查询订单详情，以确认操作的最终结果
 </red>
 <br/>
 {
@@ -5705,7 +5711,13 @@ Signature = base64.encode(Signature)
     "requestTime": 1666268894071,
     "data": null
 }
-
+<br/>
+{
+    "code": "45001",
+    "msg": "Unknown error",
+    "requestTime": 1666268894071,
+    "data": null
+}
 
 </aside> 
 
@@ -5801,9 +5813,9 @@ Signature = base64.encode(Signature)
 只能同时存在一个方向仓位：buy_single 或 sell_single<br/>
 例如<br/>
 当前持仓：buy_single BTCUSDT_UMCBL size=0.1， 按如下顺序依次下单<br/>
-1）sell_single 0.05 那只会平掉多仓 0.05，多仓还剩 0.05<br/>
-2）第二次sell_single 0.1， 会平掉多仓 0.05  多仓还剩 0,空仓新开0.05<br/>
-3）第三次sell_single 0.15, 空仓会新增仓位0.15，最终变成0.2<br/>
+1）sell_single+reduceOnly=false 0.05 那只会平掉多仓 0.05，多仓还剩 0.05<br/>
+2）第二次sell_single+reduceOnly=true 0.1， 会平掉多仓 0.05  多仓还剩 0,空仓新开0.05<br/>
+3）第三次sell_single+reduceOnly=true 0.15, 空仓会新增仓位0.15，最终变成0.2<br/>
 
 
 </aside> 
@@ -5813,13 +5825,13 @@ Signature = base64.encode(Signature)
 
 {<br/>
     "code":"45116",<br/>
-    "msg":"The count of positions hold by the account exceeds the maximum count 60",<br/>
+    "msg":"The count of positions hold by the account exceeds the maximum count 150",<br/>
     "requestTime":1669910904315,<br/>
     "data":null<br/>
 }<br/>
-如USDT永续合约，如果持仓数量+open orders超过了60，就会收到上面的响应；<br/>
+如USDT永续合约，如果持仓数量+open orders超过了150，就会收到上面的响应；<br/>
 USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
-
+持仓数量限制可能会动态调整，烦请关注通知<br/>
 
 </aside> 
 
@@ -6932,6 +6944,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464831"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464891"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -7038,6 +7051,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">订单类型</td>
 </tr>
 <tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">创建时间</td>
 </tr>
@@ -7114,6 +7131,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -7185,6 +7203,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">orderType</td>
 <td style="text-align: left">订单类型</td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7297,6 +7319,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -7401,6 +7424,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -7515,6 +7542,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
                 </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -7617,6 +7645,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">持仓模式 single_hold 单向持仓,double_hold双向持仓</td>
 </tr>
 <tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">创建时间</td>
 </tr>
@@ -7705,6 +7737,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
         </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="p">,</span><span class="w">
         </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1627028717807</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -7815,6 +7848,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left"><a href="#holdmode">Hold mode(持仓模式)</a></td>
+</tr>
+<tr>
+<td style="text-align: left">orderSource</td>
+<td style="text-align: left"><a href="#ordersource">orderSource</a></td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -12648,7 +12685,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">持仓数量 + 委托订单大于60</td>
+<td style="text-align: left">持仓数量 + 委托订单大于150</td>
 <td style="text-align: left">45116</td>
 <td style="text-align: center">400</td>
 </tr>
