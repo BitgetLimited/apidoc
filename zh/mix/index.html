@@ -1548,11 +1548,11 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td>contract_main_settle_fee</td>
-<td>全仓资金费率</td>
+<td>全仓资金费率。废弃，请勿在查询中使用</td>
 </tr>
 <tr>
 <td>contract_margin_settle_fee</td>
-<td>逐仓资金费率</td>
+<td>逐仓资金费率。废弃，请勿在查询中使用</td>
 </tr>
 <tr>
 <td>tracking_trader_income</td>
@@ -3816,7 +3816,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">账户权益(保证金币种)</td>
+<td style="text-align: left">账户权益(保证金币种)，包含未实现盈亏（根据mark price计算）</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -3956,7 +3956,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">equity</td>
-<td style="text-align: left">账户权益(保证金币种)</td>
+<td style="text-align: left">账户权益(保证金币种)，包含未实现盈亏（根据mark price计算）</td>
 </tr>
 <tr>
 <td style="text-align: left">usdtEquity</td>
@@ -5804,21 +5804,6 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">预设止损价格</td>
 </tr>
 </tbody></table>
-
-<aside class="warning">
-
-
-单向持仓模式下:<br/>
-可以市价也可以限价下单<br/>
-只能同时存在一个方向仓位：buy_single 或 sell_single<br/>
-例如<br/>
-当前持仓：buy_single BTCUSDT_UMCBL size=0.1， 按如下顺序依次下单<br/>
-1）sell_single+reduceOnly=false 0.05 那只会平掉多仓 0.05，多仓还剩 0.05<br/>
-2）第二次sell_single+reduceOnly=true 0.1， 会平掉多仓 0.05  多仓还剩 0,空仓新开0.05<br/>
-3）第三次sell_single+reduceOnly=true 0.15, 空仓会新增仓位0.15，最终变成0.2<br/>
-
-
-</aside> 
 
 <aside class="warning">
 
