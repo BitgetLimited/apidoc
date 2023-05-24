@@ -581,6 +581,48 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>24/05/2023</strong></p>
+
+<p>Update forecast: API team will change value of the fields in below interfaces, original value are all in digital, will update to letter + digital.</p>
+
+<p>The release date is planned : 29th May.</p>
+
+<p>An sample change would be: &#39;93517926348&#39;  --&gt; &#39;706e2bd179b59a5f295c&#39;.</p>
+
+<p>Changes involves below interfaces:</p>
+
+<p>Future CopyTrade:
+/api/mix/v1/trace/cancelCopyTrader<br>
+Request parameter &#39;traderId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
+<p>/api/mix/v1/trace/traderList<br>
+Request parameter &#39;traderId&#39; accepts encrypted plaintext UID and encrypted UID； response field &#39;traderUid&#39; will be encrypted;</p>
+
+<p>/api/mix/v1/trace/queryTraceConfig<br>
+Request parameter &#39;traderId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
+<p>/api/mix/v1/trace/followerSetBatchTraceConfig
+Request parameter &#39;traderId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
+<p>Spot CopyTrade：
+/api/spot/v1/trace/order/orderHistoryList<br>
+Request field &#39;traderUserId&#39; will be encrypted;</p>
+
+<p>/api/spot/v1/trace/config/getFollowerSettings<br>
+Request parameter &#39;traderUserId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
+<p>/api/spot/v1/trace/user/myTraders<br>
+Response field &#39;traderUid&#39; will be encrypted;</p>
+
+<p>/api/spot/v1/trace/config/setFollowerConfig<br>
+Request parameter &#39;traderUserId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
+<p>/api/spot/v1/trace/user/myFollowers<br>
+Response field &#39;followerUserId&#39; will be encrypted;</p>
+
+<p>/api/spot/v1/trace/user/removeTrader<br>
+Request parameter &#39;traderUserId&#39; accepts encrypted plaintext UID and encrypted UID;</p>
+
 <p><strong>17/05/2023</strong></p>
 
 <ul>
@@ -2287,7 +2329,7 @@ microtime(true) * 1000;
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderList?sortRule=composite&amp;sortFlag=asc&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderList?traderUid=abc123&amp;sortRule=composite&amp;sortFlag=asc&amp;pageNo=1&amp;pageSize=20"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -3126,7 +3168,7 @@ microtime(true) * 1000;
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"traderId"</span>: <span class="s2">"64317811357"</span><span class="o">}</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"traderId"</span>: <span class="s2">"abc123"</span><span class="o">}</span>
 
 <span class="s1">'
 </span></code></pre>
@@ -3358,7 +3400,7 @@ microtime(true) * 1000;
         "sellTime": "1681985015846",
         "symbol": "BTCUSDT",
         "trackingNo": "1032884851114008576",
-        "traderUserId": "2856507104"
+        "traderUserId": "abc123"
       }
     ]
   },
@@ -3882,7 +3924,7 @@ microtime(true) * 1000;
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
  -d <span class="se">\'</span><span class="o">{</span>
-        <span class="s2">"traderUserId"</span>:<span class="s2">"32423432423"</span>
+        <span class="s2">"traderUserId"</span>:<span class="s2">"abc123"</span>
 <span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
@@ -4108,7 +4150,7 @@ microtime(true) * 1000;
         </span><span class="s2">"traceTotalNetProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-210.9263"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"traceTotalProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-208.1323"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tradeNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"139****0981"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2856507104"</span><span class="w">
+        </span><span class="s2">"traderUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4231,7 +4273,7 @@ microtime(true) * 1000;
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
  -d <span class="se">\'</span><span class="o">{</span>
-        <span class="s2">"traderUserId"</span>:<span class="s2">"1043534543"</span>,
+        <span class="s2">"traderUserId"</span>:<span class="s2">"abc123"</span>,
         <span class="s2">"setting"</span>: <span class="o">[</span>
           <span class="o">{</span>
             <span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>,
@@ -4328,14 +4370,14 @@ microtime(true) * 1000;
         </span><span class="s2">"canRemoveTraceUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tracerHeadPic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tracerNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131****9077"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tracerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5114197097"</span><span class="w">
+        </span><span class="s2">"tracerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24962317.5129"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"canRemoveTraceUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tracerHeadPic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"tracerNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ma****@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tracerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3946951096"</span><span class="w">
+        </span><span class="s2">"tracerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc124"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4478,7 +4520,7 @@ microtime(true) * 1000;
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
  -d <span class="se">\'</span><span class="o">{</span>
-        <span class="s2">"traderUserId"</span>:<span class="s2">"234322342"</span>
+        <span class="s2">"traderUserId"</span>:<span class="s2">"abc123"</span>
 <span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
