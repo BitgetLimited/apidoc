@@ -6480,6 +6480,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <h3 id='modify-order'>Modify Order</h3>
 <ul>
 <li><p>Modifying <code>size</code> and <code>price</code> to only allow Hedge mode, and One-way mode are not allowed</p></li>
+<li><p>Modifying <code>size</code> and <code>price</code> please pass in both, not just one of them</p></li>
 <li><p>Modifying <code>size</code> and <code>price</code> will cancel the old order; then create a new order asynchronously,  modify the preset TPSL will not cancel the old order.</p></li>
 <li><p>Modify the order <code>price</code>, <code>size</code>  and preset TPSL according to <code>orderId</code> or <code>clientOId</code></p></li>
 <li><p>It is only allowed to modify the <code>new</code> status limit order. If the<code>price</code> and <code>size</code> of the order are modified, the old order will be canceled and a new order will be created. Set TPSL will not be changed</p></li>

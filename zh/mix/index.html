@@ -6564,6 +6564,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <h3 id='89e5b08e91'>修改订单</h3>
 <ul>
 <li><p>修改 <code>size</code> 和 <code>price</code> 只允许双向持仓时使用，单项持仓不允许使用</p></li>
+<li><p>修改 <code>size</code> 和 <code>price</code> 时请一同传入，不能只传其中一个</p></li>
 <li><p>修改 <code>size</code> 和 <code>price</code> 会取消之前的订单；异步生成一个新订单, 修改预设止盈止损不会取消之前的订单。</p></li>
 <li><p>根据 <code>orderId</code> 或者  <code>clientOId</code>  修改订单价格，数量和预设止盈止损</p></li>
 <li><p>只允许修改未成交的限价单，如果修改订单的价格和数量则会取消之前订单重新生成一笔订单，如果 <code>size</code> 和 <code>price</code> 和 预设止盈止损同时传入，则 预设止盈止损不生效</p></li>
