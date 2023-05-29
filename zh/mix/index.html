@@ -567,6 +567,9 @@
                         <a href="#7665dda031" class="toc-h3 toc-link" data-title="一键全撤">一键全撤</a>
                       </li>
                       <li>
+                        <a href="#5d04ef45e2" class="toc-h3 toc-link" data-title="一键全平">一键全平</a>
+                      </li>
+                      <li>
                         <a href="#cee6a1fd93" class="toc-h3 toc-link" data-title="获取当前委托">获取当前委托</a>
                       </li>
                       <li>
@@ -740,7 +743,13 @@ clipboard.on('error', function(e) {
 <p><strong>2023年05月22日</strong></p>
 
 <ul>
-<li>新增接口 <a href="#">修改订单</a></li>
+<li>新增接口 <a href="#5d04ef45e2">一键平仓</a></li>
+</ul>
+
+<p><strong>2023年05月22日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#89e5b08e91">修改订单</a></li>
 <li>接口 <a href="#212cdaad08">获取财务记录</a> 和 <a href="#1a9e1be972"> 获取业务线财务记录</a> 新增请求参数 <code>business</code></li>
 </ul>
 
@@ -1389,46 +1398,125 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>Java</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+<pre class="highlight java tab-java"><code>
+<span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.RuntimeErrorException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//POST sign example</span>
+<span class="c1">//        String timestamp = "1684813405151";</span>
+<span class="c1">//        String body = "{\"symbol\":\"TRXUSDT_UMCBL\",\"marginCoin\":\"USDT\",\"size\":551,\"side\":\"open_long\",\"orderType\":\"limit\",\"price\":0.0555,\"timeInForceValue\":\"normal\"}";</span>
+<span class="c1">//</span>
+<span class="c1">//        String sign = generate(timestamp,"POST","/api/mix/v1/order/placeOrder" ,null,body,secretKey);</span>
+<span class="c1">//        log.info("sign:{}",sign);</span>
+
+
+        <span class="c1">//GET sign example</span>
+        <span class="n">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1684814440729"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">"symbol=btcusdt_umcbl&amp;marginCoin=usdt"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span><span class="s">"GET"</span><span class="o">,</span><span class="s">"/api/mix/v1/account/account"</span> <span class="o">,</span><span class="n">queryString</span><span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"sign:{}"</span><span class="o">,</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Mac</span> <span class="n">MAC</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span> <span class="o">=</span> <span class="n">Mac</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeErrorException</span><span class="o">(</span><span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="s">"Can't get Mac's instance."</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
                                   <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
             <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
 
         <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">defaultIfBlank</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">);</span>
         <span class="n">queryString</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isBlank</span><span class="o">(</span><span class="n">queryString</span><span class="o">)</span> <span class="o">?</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span> <span class="o">:</span> <span class="s">"?"</span> <span class="o">+</span> <span class="n">queryString</span><span class="o">;</span>
-
         <span class="n">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">preHash</span><span class="o">);</span>
-        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">);</span>
-        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">HMAC_SHA256</span><span class="o">);</span>
-        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"preHash:{}"</span><span class="o">,</span><span class="n">preHash</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
         <span class="n">mac</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">secretKeySpec</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">)));</span>
+        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)));</span>
     <span class="o">}</span>
 
+<span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-      <span class="n">String</span> <span class="n">msg</span><span class="o">=</span><span class="n">generate</span><span class="o">(</span><span class="s">"1659927638003"</span><span class="o">,</span><span class="s">"POST"</span><span class="o">,</span><span class="s">"/api/mix/v1/order/placeOrder"</span> <span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">TRXUSDT_UMCBL</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span><span class="n">open_long</span><span class="s">","</span><span class="n">orderType</span><span class="s">":"</span><span class="n">limit</span><span class="s">","</span><span class="n">force</span><span class="s">":"</span><span class="n">normal</span><span class="s">","</span><span class="n">price</span><span class="s">":"</span><span class="mf">0.046317</span><span class="s">","</span><span class="n">quantity</span><span class="s">":"</span><span class="mi">1212</span><span class="s">"}"</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
-    <span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>Python</p>
 </blockquote>
-<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
-    <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<pre class="highlight python tab-python"><code>
+<span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+  <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+  <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
+  <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
 
+
+<span class="k">def</span> <span class="nf">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s">'?'</span>
+  <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">'='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+
+  <span class="k">return</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">signStr</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="s">'1659927638003'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">,</span> <span class="s">'/api/mix/v1/order/placeOrder'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s">'{"symbol":"TRXUSDT_SPBL","side":"open_long","orderType":"limit","force":"normal","price":"0.046317","quantity":"1212"}'</span><span class="p">)),</span> <span class="s">''</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
+  <span class="n">API_SECRET_KEY</span> <span class="o">=</span> <span class="s">""</span>
+
+
+  <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1685013478665"</span> <span class="c"># get_timestamp()</span>
+   <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/order/placeOrder"</span>
+   <span class="c"># POST</span>
+   <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.0555</span><span class="p">,</span> <span class="s">"size"</span><span class="p">:</span> <span class="mi">551</span><span class="p">,</span> <span class="s">"side"</span><span class="p">:</span> <span class="s">"open_long"</span><span class="p">,</span> <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"limit"</span><span class="p">,</span> <span class="s">"timeInForceValue"</span><span class="p">:</span> <span class="s">"normal"</span><span class="p">}</span>
+   <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+   <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
+  <span class="c"># GET</span>
+  <span class="n">body</span> <span class="o">=</span> <span class="s">""</span>
+  <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/account/account"</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">}</span>
+  <span class="n">request_path</span> <span class="o">=</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+  <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
 </code></pre><h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，POST 请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -5689,6 +5777,10 @@ Signature = base64.encode(Signature)
 - 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
 - 下单接口会返回成功，仓位变化为0</p>
 
+<p>注意：</p>
+
+<p>单项持仓限价单平仓，如果当前仓位存在未成交的平仓单，则在此下平仓单时 下单<code>size</code> 大于等于 当前仓位可平数量，则会取消之前的平仓单，重新异步下单，则此时接口响应 orderId 为null, 请以 下单时 <code>clientOid</code> 为主</p>
+
 <p>未知错误</p>
 
 <aside class="warning">
@@ -6563,14 +6655,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tbody></table>
 <h3 id='89e5b08e91'>修改订单</h3>
 <ul>
-<li><p>修改 <code>size</code> 和 <code>price</code> 只允许双向持仓时使用，单项持仓不允许使用</p></li>
-<li><p>修改 <code>size</code> 和 <code>price</code> 时请一同传入，不能只传其中一个</p></li>
-<li><p>修改 <code>size</code> 和 <code>price</code> 会取消之前的订单；异步生成一个新订单, 修改预设止盈止损不会取消之前的订单。</p></li>
-<li><p>根据 <code>orderId</code> 或者  <code>clientOId</code>  修改订单价格，数量和预设止盈止损</p></li>
-<li><p>只允许修改未成交的限价单，如果修改订单的价格和数量则会取消之前订单重新生成一笔订单，如果 <code>size</code> 和 <code>price</code> 和 预设止盈止损同时传入，则 预设止盈止损不生效</p></li>
-<li><p>修改限价单 <code>price</code> 和 <code>size</code> 请务必传入 <code>newClientOid</code>  因为新订单 <code>orderId</code>  无法同步返回,  因此需要根据 <code>newClientOid</code> 来帮助您查询订单信息</p></li>
-<li><p>修改订单数量 需要满足最小下单数量</p></li>
-<li><p>如果只修改预设止盈止损，请不要传入 <code>price</code> 和 <code>size</code> ，只传止损或止盈则 另外一个会被取消</p></li>
+<li>修改 <code>size</code> 和 <code>price</code> 只允许双向持仓时使用，单项持仓不允许使用</li>
+<li>修改 <code>size</code> 和 <code>price</code> 会取消之前的订单；异步生成一个新订单, 修改预设止盈止损不会取消之前的订单。</li>
+<li>修改 <code>size</code> 和 <code>price</code> 时请一同传入，不能只传其中一个</li>
+<li> 根据 <code>orderId</code> 或者  <code>clientOId</code>  修改订单价格，数量和预设止盈止损</li>
+<li>只允许修改未成交的限价单，如果修改订单的价格和数量则会取消之前订单重新生成一笔订单，如果 <code>size</code> 和 <code>price</code> 和 预设止盈止损同时传入，则 预设止盈止损不生效</li>
+<li>修改限价单 <code>price</code> 和 <code>size</code> 请务必传入 <code>newClientOid</code>  因为新订单 <code>orderId</code>  无法同步返回,  因此需要根据 <code>newClientOid</code> 来帮助您查询订单信息</li>
+<li> 修改订单数量 需要满足最小下单数量</li>
+<li>如果只修改预设止盈止损，请不要传入 <code>price</code> 和 <code>size</code> ，只传止损或止盈则 另外一个会被取消</li>
 </ul>
 
 <p>限速规则: 10次/1s (uid)</p>
@@ -6836,6 +6928,85 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1627293504612</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单Id</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">客户端自定义Id</td>
+</tr>
+</tbody></table>
+<h3 id='5d04ef45e2'>一键全平</h3>
+<p>限速规则: 1次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/order/close-all-positions</li>
+</ul>
+
+<p><strong>请求参数(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center"><a href="#producttype">产品类型</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/close-all-positions"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>: <span class="s2">"umcbl"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684747525424</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355251990528"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184832"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184835"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355260379136"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"failure"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
