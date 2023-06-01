@@ -482,6 +482,21 @@
                       <li>
                         <a href="#follower-unfollow-the-trader" class="toc-h3 toc-link" data-title="Follower Unfollow The Trader">Follower Unfollow The Trader</a>
                       </li>
+                      <li>
+                        <a href="#trader-update-copy-trade-settings" class="toc-h3 toc-link" data-title="Trader update copy trade settings">Trader update copy trade settings</a>
+                      </li>
+                      <li>
+                        <a href="#get-my-trader-list" class="toc-h3 toc-link" data-title="Get my trader list">Get my trader list</a>
+                      </li>
+                      <li>
+                        <a href="#get-my-followers" class="toc-h3 toc-link" data-title="Get my followers">Get my followers</a>
+                      </li>
+                      <li>
+                        <a href="#trader-remove-follower" class="toc-h3 toc-link" data-title="Trader remove follower">Trader remove follower</a>
+                      </li>
+                      <li>
+                        <a href="#followers-copy-order-limit" class="toc-h3 toc-link" data-title="Followers’ Copy Order Limit">Followers’ Copy Order Limit</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -543,21 +558,6 @@
                       </li>
                       <li>
                         <a href="#get-trader-information" class="toc-h3 toc-link" data-title="Get Trader Information">Get Trader Information</a>
-                      </li>
-                      <li>
-                        <a href="#trader-update-copy-trade-settings" class="toc-h3 toc-link" data-title="Trader update copy trade settings">Trader update copy trade settings</a>
-                      </li>
-                      <li>
-                        <a href="#get-my-trader-list" class="toc-h3 toc-link" data-title="Get my trader list">Get my trader list</a>
-                      </li>
-                      <li>
-                        <a href="#get-my-followers" class="toc-h3 toc-link" data-title="Get my followers">Get my followers</a>
-                      </li>
-                      <li>
-                        <a href="#trader-remove-follower" class="toc-h3 toc-link" data-title="Trader remove follower">Trader remove follower</a>
-                      </li>
-                      <li>
-                        <a href="#followers-copy-order-limit" class="toc-h3 toc-link" data-title="Followers’ Copy Order Limit">Followers’ Copy Order Limit</a>
                       </li>
                   </ul>
               </li>
@@ -3279,7 +3279,603 @@ microtime(true) * 1000;
   "requestTime":163123213132,
   "data":true
 }
-</code></pre><h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-update-copy-trade-settings'>Trader update copy trade settings</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/traderUpdateConfig</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"enableTrace"</span>: <span class="s2">"YES"</span>,
+    <span class="s2">"showTotalEquity"</span>: <span class="s2">"YES"</span>,
+    <span class="s2">"showTpsl"</span>: <span class="s2">"YES"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">enableTrace</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">(enableTrace, showTotalEquity and showTpsl must have one) YES/NO (YES-enable copy trade   NO-disable copy trade)</td>
+</tr>
+<tr>
+<td style="text-align: left">showTotalEquity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">show total equity (USDT) YES/NO（YES-show NO-close）</td>
+</tr>
+<tr>
+<td style="text-align: left">showTpsl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">show tpsl price YES/NO（YES-show NO-close）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "data":true,
+  "msg":"success",
+  "requestTime":1627354109502
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-my-trader-list'>Get my trader list</h3>
+<p>Only followers are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/myTraderList</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myTraderList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">page Number</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20， max 100）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684830012057,
+  "data": [
+    {
+      "traderId": "ghg646778eb23853ac94",
+      "traderNickName": "kate",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    },
+    {
+      "traderId": "hjg646778eb23853ac94",
+      "traderNickName": "cat",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    },
+    {
+      "traderId": "bab646778eb23853ac94",
+      "traderNickName": "tom",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">trader nickname</td>
+</tr>
+<tr>
+<td style="text-align: left">maxFollowerLimit</td>
+<td style="text-align: left">max follower limit</td>
+</tr>
+<tr>
+<td style="text-align: left">currentFollowerCount</td>
+<td style="text-align: left">current follower amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateMarginAmount</td>
+<td style="text-align: left">accumulate margin amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateNetProfit</td>
+<td style="text-align: left">accumulate net profit amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateProfit</td>
+<td style="text-align: left">accumulate profit amount</td>
+</tr>
+<tr>
+<td style="text-align: left">currentTradingPairs</td>
+<td style="text-align: left">current trading symbols</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-my-followers'>Get my followers</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/myFollowerList</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myFollowerList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">page Number</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20， max 100）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684920707124</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"accountEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3434361.0097"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"canRemoveFollower"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerHeadPic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xyz****@abc.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3946951096"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountEquity</td>
+<td style="text-align: left">account equity</td>
+</tr>
+<tr>
+<td style="text-align: left">canRemoveFollower</td>
+<td style="text-align: left">true means can remove the follower</td>
+</tr>
+<tr>
+<td style="text-align: left">followerHeadPic</td>
+<td style="text-align: left">follower Head Picture</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNickName</td>
+<td style="text-align: left">follower nickName</td>
+</tr>
+<tr>
+<td style="text-align: left">followerUid</td>
+<td style="text-align: left">follower Uid</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-remove-follower'>Trader remove follower</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/removeFollower</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/removeFollower"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"followerUid"</span>: <span class="s2">"bab646778eb23853ac94"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">followerUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">follower UID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681201761390</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='followers-copy-order-limit'>Followers’ Copy Order Limit</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/public/getFollowerConfig</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/public/getFollowerConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<p>N/A</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684832987371</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSD"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOSUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">maxFollowQuantity</td>
+<td style="text-align: left">Max Copy Trade Quantity Per Order(base coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">minFollowQuantity</td>
+<td style="text-align: left">Min Copy Trade Quantity Per Order(base coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+</tbody></table>
+<h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>
 <p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5155,604 +5751,6 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">openProduct</td>
 <td style="text-align: left">Is enabled copy trade</td>
-</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-<h3 id='trader-update-copy-trade-settings'>Trader update copy trade settings</h3>
-<p>Rate Limit: 10 times/sec (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/traderUpdateConfig</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateConfig"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"enableTrace"</span>: <span class="s2">"YES"</span>,
-    <span class="s2">"showTotalEquity"</span>: <span class="s2">"YES"</span>,
-    <span class="s2">"showTpsl"</span>: <span class="s2">"YES"</span>,
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
-<p><strong>Request Body</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Parameter type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">enableTrace</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">(enableTrace, showTotalEquity and showTpsl must have one) YES/NO (YES-enable copy trade   NO-disable copy trade)</td>
-</tr>
-<tr>
-<td style="text-align: left">showTotalEquity</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">show total equity (USDT) YES/NO（YES-show NO-close）</td>
-</tr>
-<tr>
-<td style="text-align: left">showTpsl</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">show tpsl price YES/NO（YES-show NO-close）</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight plaintext"><code>
-{
-  "code":"00000",
-  "data":true,
-  "msg":"success",
-  "requestTime":1627354109502
-}
-</code></pre>
-<p><strong>Response Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">true is success</td>
-</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-<h3 id='get-my-trader-list'>Get my trader list</h3>
-<p>Only followers are allowed to call</p>
-
-<p>Rate Limit: 10 times/sec (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/myTraderList</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myTraderList"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
-    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
-<p><strong>Request Body</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Parameter type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">page Number</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">pageSize（default 20， max 100）</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-  "code": "00000",
-  "msg": "success",
-  "requestTime": 1684830012057,
-  "data": [
-    {
-      "traderId": "ghg646778eb23853ac94",
-      "traderNickName": "kate",
-      "maxFollowerLimit": "500",
-      "currentFollowerCount": "500",
-      "accumulateMarginAmount": "89.6048",
-      "accumulateNetProfit": "-3.7760",
-      "accumulateProfit": "-0.1920",
-      "currentTradingPairs": [
-        "BTCUSDT_UMCBL",
-        "BTCUSD_DMCBL",
-        "EOSUSDT_UMCBL",
-        "ETHUSDT_UMCBL",
-        "ETHUSD_DMCBL"
-      ]
-    },
-    {
-      "traderId": "hjg646778eb23853ac94",
-      "traderNickName": "cat",
-      "maxFollowerLimit": "500",
-      "currentFollowerCount": "500",
-      "accumulateMarginAmount": "89.6048",
-      "accumulateNetProfit": "-3.7760",
-      "accumulateProfit": "-0.1920",
-      "currentTradingPairs": [
-        "BTCUSDT_UMCBL",
-        "BTCUSD_DMCBL",
-        "EOSUSDT_UMCBL",
-        "ETHUSDT_UMCBL",
-        "ETHUSD_DMCBL"
-      ]
-    },
-    {
-      "traderId": "bab646778eb23853ac94",
-      "traderNickName": "tom",
-      "maxFollowerLimit": "500",
-      "currentFollowerCount": "500",
-      "accumulateMarginAmount": "89.6048",
-      "accumulateNetProfit": "-3.7760",
-      "accumulateProfit": "-0.1920",
-      "currentTradingPairs": [
-        "BTCUSDT_UMCBL",
-        "BTCUSD_DMCBL",
-        "EOSUSDT_UMCBL",
-        "ETHUSDT_UMCBL",
-        "ETHUSD_DMCBL"
-      ]
-    }
-  ]
-}
-</code></pre>
-<p><strong>Response Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">traderId</td>
-<td style="text-align: left">trader UID</td>
-</tr>
-<tr>
-<td style="text-align: left">traderNickName</td>
-<td style="text-align: left">trader nickname</td>
-</tr>
-<tr>
-<td style="text-align: left">maxFollowerLimit</td>
-<td style="text-align: left">max follower limit</td>
-</tr>
-<tr>
-<td style="text-align: left">currentFollowerCount</td>
-<td style="text-align: left">current follower amount</td>
-</tr>
-<tr>
-<td style="text-align: left">accumulateMarginAmount</td>
-<td style="text-align: left">accumulate margin amount</td>
-</tr>
-<tr>
-<td style="text-align: left">accumulateNetProfit</td>
-<td style="text-align: left">accumulate net profit amount</td>
-</tr>
-<tr>
-<td style="text-align: left">accumulateProfit</td>
-<td style="text-align: left">accumulate profit amount</td>
-</tr>
-<tr>
-<td style="text-align: left">currentTradingPairs</td>
-<td style="text-align: left">current trading symbols</td>
-</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-<h3 id='get-my-followers'>Get my followers</h3>
-<p>Only traders are allowed to call</p>
-
-<p>Rate Limit: 10 times/sec (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/myFollowerList</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myFollowerList"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
-    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
-<p><strong>Request Body</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Parameter type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">pageNo</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">page Number</td>
-</tr>
-<tr>
-<td style="text-align: left">pageSize</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">no</td>
-<td style="text-align: center">pageSize（default 20， max 100）</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684920707124</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"accountEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3434361.0097"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"canRemoveFollower"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"followerHeadPic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"followerNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xyz****@abc.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"followerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3946951096"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">accountEquity</td>
-<td style="text-align: left">account equity</td>
-</tr>
-<tr>
-<td style="text-align: left">canRemoveFollower</td>
-<td style="text-align: left">true means can remove the follower</td>
-</tr>
-<tr>
-<td style="text-align: left">followerHeadPic</td>
-<td style="text-align: left">follower Head Picture</td>
-</tr>
-<tr>
-<td style="text-align: left">followerNickName</td>
-<td style="text-align: left">follower nickName</td>
-</tr>
-<tr>
-<td style="text-align: left">followerUid</td>
-<td style="text-align: left">follower Uid</td>
-</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-<h3 id='trader-remove-follower'>Trader remove follower</h3>
-<p>Only traders are allowed to call</p>
-
-<p>Rate Limit: 10 times/sec (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/removeFollower</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/removeFollower"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"followerUid"</span>: <span class="s2">"bab646778eb23853ac94"</span>
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
-<p><strong>Request Body</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter name</th>
-<th style="text-align: left">Parameter type</th>
-<th style="text-align: center">Required</th>
-<th style="text-align: center">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">followerUid</td>
-<td style="text-align: left">String</td>
-<td style="text-align: center">yes</td>
-<td style="text-align: center">follower UID</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681201761390</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">data</td>
-<td style="text-align: left">true is success</td>
-</tr>
-</tbody></table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-<h3 id='followers-copy-order-limit'>Followers’ Copy Order Limit</h3>
-<p>Rate Limit: 10 times/sec (uid)</p>
-
-<p><strong>HTTP Request</strong></p>
-
-<ul>
-<li>POST /api/mix/v1/trace/public/getFollowerConfig</li>
-</ul>
-
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/public/getFollowerConfig"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
-<p><strong>Request Body</strong></p>
-
-<p>N/A</p>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684832987371</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSD"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOSUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Response Parameter</strong></p>
-
-<table><thead>
-<tr>
-<th style="text-align: left">Parameter</th>
-<th style="text-align: left">Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">maxFollowQuantity</td>
-<td style="text-align: left">Max Copy Trade Quantity Per Order(base coin)</td>
-</tr>
-<tr>
-<td style="text-align: left">minFollowQuantity</td>
-<td style="text-align: left">Min Copy Trade Quantity Per Order(base coin)</td>
-</tr>
-<tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">symbol</td>
 </tr>
 </tbody></table>
 
