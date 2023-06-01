@@ -10663,8 +10663,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td>&gt;symbolType</td>
-<td>String</td>
-<td>SymbolType：perpetual-&gt;永续 delivery-&gt;交割</td>
+<td>Integer</td>
+<td>SymbolType：1-&gt;永续 2-&gt;交割</td>
 </tr>
 <tr>
 <td>&gt;symbolId</td>
@@ -10674,7 +10674,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td>&gt;deliveryPrice</td>
 <td>String</td>
-<td>交割合约交割价，SymbolType=perpetual时为0</td>
+<td>交割合约交割价，symbolType=1（交割）时为0</td>
 </tr>
 <tr>
 <td>&gt;bidSz</td>
