@@ -3051,6 +3051,12 @@ Signature = base64.encode(Signature)
 <td>划转币种</td>
 </tr>
 <tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>当 fromType or toType = margin_isolated 时必填</td>
+</tr>
+<tr>
 <td>clientOid</td>
 <td>String</td>
 <td>否</td>
@@ -3199,9 +3205,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='v2'>划转V2</h3>
@@ -3248,6 +3254,12 @@ margin_isolated        接受转入转出多个币种</li>
 <td>划转币种</td>
 </tr>
 <tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>当 fromType or toType = margin_isolated 时必填</td>
+</tr>
+<tr>
 <td>clientOid</td>
 <td>String</td>
 <td>否</td>
@@ -3262,9 +3274,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -3418,9 +3430,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='7bc510fe47'>母子账户划转</h3>
@@ -3547,9 +3559,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 

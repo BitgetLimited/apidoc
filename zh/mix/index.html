@@ -5702,6 +5702,8 @@ Signature = base64.encode(Signature)
 
 <p>如果你是交易员只能使用此接口进行开仓， 平仓操作需要调用 <code>跟单接口</code> -&gt; <code>交易员平仓接口</code></p>
 
+<p>交易员下了多个限价单/计划委托，在同一秒内触发时，先成交的订单会带单，其余订单不会带单</p>
+
 <p>下单的价格和数量需要满足  <code>pricePlace</code>  和 <code>priceEndStep</code>  <code>volumePlace</code>    <code>sizeMultiplier</code>   <code>minTradeNum</code> ，    此字段从 <code>行情接口</code> -&gt;  <code>合约信息接口</code></p>
 
 <p>举例说明：</p>
@@ -5819,6 +5821,18 @@ Signature = base64.encode(Signature)
 <li>POST /api/mix/v1/order/placeOrder</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/placeOrder"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"price"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
@@ -5912,18 +5926,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 </aside> 
 
-<blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/placeOrder"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"price"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -8409,6 +8411,18 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>POST /api/mix/v1/plan/placePlan</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placePlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
@@ -8493,18 +8507,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placePlan"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -13011,6 +13013,11 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">未知错误</td>
 <td style="text-align: left">45001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">单边持仓时委托类型也必须是单边持仓类型.</td>
+<td style="text-align: left">40774</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

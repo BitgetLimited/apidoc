@@ -5616,6 +5616,8 @@ If there is a large deviation between the local server time and the API server t
 
 <p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <a href="#trader-close-position">Trader close Position</a></p>
 
+<p>For trader, if multiple limit order/plan order triggers at the same second, then the first order will become CopyTrade order, while the rest will become normal orders (As a result: no one could follow)</p>
+
 <p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, those fields could be found from the response of  <code>Market</code> -&gt; <a href="#get-all-symbols">Get All Symbols</a></p>
 
 <p>for example:</p>
@@ -12904,6 +12906,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">Unknown error</td>
 <td style="text-align: left">45001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order type for unilateral position must also be the unilateral position type.</td>
+<td style="text-align: left">40774</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
