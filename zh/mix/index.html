@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -740,7 +788,11 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
-<p><strong>2023年05月22日</strong></p>
+<p><strong>2023年06月05日</strong></p>
+
+<p>更新接口<a href="#fd6ce2a756">下单</a> 响应字段描述 &#39;orderId&#39;</p>
+
+<p><strong>2023年05月26日</strong></p>
 
 <ul>
 <li>新增接口 <a href="#5d04ef45e2">一键平仓</a></li>
@@ -5779,10 +5831,6 @@ Signature = base64.encode(Signature)
 - 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
 - 下单接口会返回成功，仓位变化为0</p>
 
-<p>注意：</p>
-
-<p>单项持仓限价单平仓，如果当前仓位存在未成交的平仓单，则在此下平仓单时 下单<code>size</code> 大于等于 当前仓位可平数量，则会取消之前的平仓单，重新异步下单，则此时接口响应 orderId 为null, 请以 下单时 <code>clientOid</code> 为主</p>
-
 <p>未知错误</p>
 
 <aside class="warning">
@@ -5949,7 +5997,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </thead><tbody>
 <tr>
 <td style="text-align: left">orderId</td>
-<td style="text-align: left">订单Id</td>
+<td style="text-align: left">订单Id，可能为null，单项持仓限价单平仓，如果当前仓位存在未成交的平仓单，则在此下平仓单时 下单<code>size</code> 大于等于 当前仓位可平数量，则会取消之前的平仓单，重新异步下单，则此时接口响应 orderId 为null, 请以 下单时 <code>clientOid</code> 为主</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>

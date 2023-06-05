@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
   <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -497,6 +545,12 @@
                       <li>
                         <a href="#82dc9455eb" class="toc-h3 toc-link" data-title="跟随者获取跟随者单笔最小跟单数量和最大跟单数量">跟随者获取跟随者单笔最小跟单数量和最大跟单数量</a>
                       </li>
+                      <li>
+                        <a href="#997f9d0e79" class="toc-h3 toc-link" data-title="交易员历史带单列表">交易员历史带单列表</a>
+                      </li>
+                      <li>
+                        <a href="#aa9e594e6e" class="toc-h3 toc-link" data-title="交易员当前带单列表">交易员当前带单列表</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -597,6 +651,14 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年06月05日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#997f9d0e79">交易员历史带单列表</a></li>
+<li>新增接口 <a href="#aa9e594e6e">交易员当前带单列表</a></li>
+<li>修正各接口pageSize默认值说明</li>
+</ul>
+
 <p><strong>2023年06月01日</strong></p>
 
 <ul>
@@ -2401,7 +2463,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">查询条数 默认100</td>
+<td style="text-align: center">查询条数 默认20 最大20</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>
@@ -2498,7 +2560,623 @@ Signature = base64.encode(Signature)
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">" $1138288.24"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4546.146135"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683302400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4545.791495"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683388800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4546.400724"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683475200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4546.484945"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683561600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4545.815554"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683648000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4547.374677"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683734400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4546.736337"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683820800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4547.61375"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683907200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4548.465763"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683993600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4548.729895"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684080000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4548.88847"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684166400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4548.617256"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684252800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.422365"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684339200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.763665"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684425600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.802536"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684512000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.802536"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684598400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.942749"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684684800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.101403"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684771200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4548.983873"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684857600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4549.065783"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684944000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.176564"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685030400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.005469"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685116800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.914916"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685203200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.032026"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685289600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.601748"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685376000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.748229"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685462400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4550.726414"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685548800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.825486"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685635200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10530.1366"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683302400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10530.1366"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683388800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10544.9776"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683475200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10550.4646"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683561600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10550.4646"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683648000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10601.2428"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683734400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10601.2428"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683820800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10601.2428"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683907200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10665.5008"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1683993600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10679.4398"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684080000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10689.1218"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684166400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10689.1218"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684252800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10719.6668"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684339200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10739.8458"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684425600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10743.0278"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684512000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10743.0278"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684598400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10752.0548"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684684800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10761.4658"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684771200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10761.4658"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684857600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10775.0008"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1684944000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10779.8428"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685030400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10779.8428"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685116800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10816.5818"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685203200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10826.3388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685289600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10860.8168"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685376000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10860.8168"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685462400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10860.8168"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685548800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10898.2438"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685635200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685811600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685815200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685818800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685822400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685826000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685829600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685833200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685836800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685840400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685844000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685847600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685851200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685854800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685858400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685862000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685865600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685869200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685872800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685876400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685880000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685883600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685887200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685890800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685898000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685901600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685905200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685908800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685912400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685916000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685919600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685923200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685926800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685930400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685934000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685937600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685941200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685944800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685948400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685952000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685811600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685815200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685818800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685822400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685826000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685829600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685833200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685836800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685840400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685844000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685847600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685851200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685854800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685858400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685862000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685865600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685869200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685872800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685876400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685880000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685883600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685887200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685890800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685898000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685901600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685905200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685908800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685912400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685916000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685919600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685923200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685926800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685930400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685934000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685937600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685941200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685944800000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685948400000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685952000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2537,7 +3215,71 @@ Signature = base64.encode(Signature)
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">" $687938.16"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2579,12 +3321,60 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">可跟单币对</td>
 </tr>
 <tr>
-<td style="text-align: left">myTrader</td>
+<td style="text-align: left">isMyTrader</td>
 <td style="text-align: left">我是否已跟</td>
 </tr>
 <tr>
 <td style="text-align: left">columnList</td>
 <td style="text-align: left">交易员交易指标数据</td>
+</tr>
+<tr>
+<td style="text-align: left">totalFollowers</td>
+<td style="text-align: left">累计跟单人数</td>
+</tr>
+<tr>
+<td style="text-align: left">profitOrderCount</td>
+<td style="text-align: left">盈利次数</td>
+</tr>
+<tr>
+<td style="text-align: left">lossOrderCount</td>
+<td style="text-align: left">亏损次数</td>
+</tr>
+<tr>
+<td style="text-align: left">totalTradeCount</td>
+<td style="text-align: left">交易次数</td>
+</tr>
+<tr>
+<td style="text-align: left">traderHeadPic</td>
+<td style="text-align: left">交易员头像</td>
+</tr>
+<tr>
+<td style="text-align: left">maxCallbackRate</td>
+<td style="text-align: left">最大回撤率</td>
+</tr>
+<tr>
+<td style="text-align: left">averageWinRate</td>
+<td style="text-align: left">平均胜率</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfitRate</td>
+<td style="text-align: left">最近每日收益率</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfit</td>
+<td style="text-align: left">最近每日收益额</td>
+</tr>
+<tr>
+<td style="text-align: left">followerTotalProfit</td>
+<td style="text-align: left">跟单用户总收益</td>
+</tr>
+<tr>
+<td style="text-align: left">profitRate24h</td>
+<td style="text-align: left">最近24小时收益率</td>
+</tr>
+<tr>
+<td style="text-align: left">profit24h</td>
+<td style="text-align: left">最近24小时收益额</td>
 </tr>
 </tbody></table>
 
@@ -2652,6 +3442,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"gainNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lossNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"winRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.67"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1804.49"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ETHUSDT"</span><span class="w">
@@ -2714,6 +3505,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">lossNum</td>
 <td style="text-align: left">亏损比数</td>
+</tr>
+<tr>
+<td style="text-align: left">totalEquity</td>
+<td style="text-align: left">总权益</td>
 </tr>
 <tr>
 <td style="text-align: left">winRate</td>
@@ -3933,6 +4728,351 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">symbol</td>
+</tr>
+</tbody></table>
+<h3 id='997f9d0e79'>交易员历史带单列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/historyList</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易员UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo（默认 1 最大 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize（默认 20 最大 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/historyList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "trackingNo": "1048189860453564416",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.00",
+      "openTime": "1685633857670",
+      "closePrice": "27195.5",
+      "closeTime": "1685670186955",
+      "closeAmount": "0.13",
+      "marginAmount": "0.013623727717"
+    },
+    {
+      "trackingNo": "1048167675915681792",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSDT",
+      "openPrice": "34499.50",
+      "openTime": "1685628568539",
+      "closePrice": "28030.5",
+      "closeTime": "1685633582122",
+      "closeAmount": "1",
+      "marginAmount": "1724.975"
+    },
+    {
+      "trackingNo": "1048166971792703488",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1904.00",
+      "openTime": "1685628400529",
+      "closePrice": "1905.382",
+      "closeTime": "1685628405766",
+      "closeAmount": "1",
+      "marginAmount": "0.003500617756"
+    },
+    {
+      "trackingNo": "1048166841425346560",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.50",
+      "openTime": "1685628369595",
+      "closePrice": "57000",
+      "closeTime": "1685628382842",
+      "closeAmount": "1",
+      "marginAmount": "0.104798824796"
+    },
+    {
+      "trackingNo": "1034684661009235968",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSDT",
+      "openPrice": "27383.12",
+      "openTime": "1682413966955",
+      "closePrice": "27371.804999999992",
+      "closeTime": "1682413979544",
+      "closeAmount": "1",
+      "marginAmount": "1369.1564"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">跟单号</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">fixed:逐仓  crossed:全仓</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">杠杆</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">开仓均价</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">开仓时间 （毫秒时间戳）</td>
+</tr>
+<tr>
+<td style="text-align: left">closePrice</td>
+<td style="text-align: left">平仓均价</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">平仓时间（毫秒时间戳）</td>
+</tr>
+<tr>
+<td style="text-align: left">closeAmount</td>
+<td style="text-align: left">平仓数量（左币）</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">保证金</td>
+</tr>
+</tbody></table>
+<h3 id='aa9e594e6e'>交易员当前带单列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/currentList</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易员UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo（默认 1 最大 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize（默认 20 最大 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/currentList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": [
+    {
+      "trackingNo": "1048190313178349569",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.5",
+      "openTime": "1685633965458",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.0026975"
+    },
+    {
+      "trackingNo": "1048190230605086721",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.4",
+      "openTime": "1685633945923",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.00269746"
+    },
+    {
+      "trackingNo": "1048189910428696577",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.0",
+      "openTime": "1685633869634",
+      "openAmount": "0.32",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.03353533"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">跟单号</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">fixed:逐仓  crossed:全仓</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">杠杆</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">开仓均价</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">开仓时间 （毫秒时间戳）</td>
+</tr>
+<tr>
+<td style="text-align: left">openAmount</td>
+<td style="text-align: left">开仓数量（左币）</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">此笔订单跟单人数</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitPrice</td>
+<td style="text-align: left">止盈价</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">止损价</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">保证金</td>
 </tr>
 </tbody></table>
 <h2 id='0d754733c2'>现货跟单</h2><h3 id='fe23403d70'>查询当前带单列表</h3>

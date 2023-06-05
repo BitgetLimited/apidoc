@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -763,6 +811,10 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Jun 05, 2023</strong></p>
+
+<p>Update description on response field: &#39;orderId&#39; of <a href="#place-order">Place order</a></p>
+
 <p><strong>May 26, 2023</strong></p>
 
 <ul>
@@ -5700,10 +5752,6 @@ If there is a large deviation between the local server time and the API server t
 
 <p>&nbsp;</p>
 
-<p>Notice:</p>
-
-<p>one-way mode limit order is reduce order. If there is an unexecuted limit order in the current position, the order <code>size</code> placed when placing the limit order is greater than or equal to the size that can be available in the current position, and the previous limit order will be canceled and asynchronously place new order. the response orderId is null , please use <code>clientOid</code> as the main when placing an order</p>
-
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -5886,7 +5934,7 @@ The limitation would change with time, please be alert with our notifications
 </thead><tbody>
 <tr>
 <td style="text-align: left">orderId</td>
-<td style="text-align: left">Order Id</td>
+<td style="text-align: left">Order Id, might be null. (especially in one-way mode when limit order is reduce order: if there is an unexecuted limit order in the current position, when the order <code>size</code> of the placing limit order is greater than or equals to the size that are available in the current position, then the previous limit order will be canceled, and place another new order  asynchronously. the response orderId will be null, please DO use <code>clientOid</code> as the main key when placing an order)</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>

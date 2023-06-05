@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -3008,6 +3056,8 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h2 id='ec5249e068'>钱包接口</h2><h3 id='1045de04a1'>划转</h3>
+<p>母账户发起</p>
+
 <p>限速规则：5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3211,6 +3261,8 @@ Signature = base64.encode(Signature)
 </ul></li>
 </ul>
 <h3 id='v2'>划转V2</h3>
+<p>母账户发起</p>
+
 <p>限速规则：5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3666,6 +3718,8 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='263e170b4c'>获取充币地址</h3>
+<p>母账户发起</p>
+
 <p>限速规则：5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -3754,6 +3808,8 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='096be69702'>提币</h3>
+<p>母账户发起</p>
+
 <p>只是链上提币</p>
 
 <p>限速规则：5次/1s (uid)</p>
@@ -3855,6 +3911,8 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='v2-2'>提币V2</h3>
+<p>母账户发起</p>
+
 <p>只是链上提币</p>
 
 <p>限速规则：5次/1s (uid)</p>
@@ -3963,7 +4021,9 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='6eb422678c'>内部提币</h3>
-<p>内部提币 指双方用户都在Bitget平台</p>
+<p>母账户发起</p>
+
+<p>内部提币 指双方用户都在本平台</p>
 
 <p>通过uid形式直接提币，不走链上，不需要传地址</p>
 
@@ -4046,7 +4106,9 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='v2-3'>内部提币V2</h3>
-<p>内部提币 指双方用户都在Bitget平台</p>
+<p>母账户发起</p>
+
+<p>内部提币 指双方用户都在本平台</p>
 
 <p>通过uid形式直接提币，不走链上，不需要传地址</p>
 
@@ -4719,8 +4781,9 @@ Signature = base64.encode(Signature)
 <h3 id='4ff02ca226'>获取所有子账户现货资产</h3>
 <p>限速规则：1次/10s</p>
 
-<p><strong>HTTP请求</strong>
-获取所有子账户现货资产</p>
+<p><strong>HTTP请求</strong></p>
+
+<p>母账户发起，获取所有子账户现货资产</p>
 
 <ul>
 <li>POST  /api/spot/v1/account/sub-account-spot-assets</li>

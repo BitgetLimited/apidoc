@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
   <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -497,6 +545,12 @@
                       <li>
                         <a href="#followers-copy-order-limit" class="toc-h3 toc-link" data-title="Followers’ Copy Order Limit">Followers’ Copy Order Limit</a>
                       </li>
+                      <li>
+                        <a href="#trader-history-order-list" class="toc-h3 toc-link" data-title="Trader History Order List">Trader History Order List</a>
+                      </li>
+                      <li>
+                        <a href="#trader-current-order-list" class="toc-h3 toc-link" data-title="Trader Current Order List">Trader Current Order List</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -596,6 +650,14 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>05/06/2023</strong></p>
+
+<ul>
+<li>New interfaces: <a href="#trader-history-order-list">Trader History Order List</a></li>
+<li>New interfaces: <a href="#trader-current-order-list">Trader Current Order List</a></li>
+<li>Rectify default value of &#39;pageSize&#39; on each interface</li>
+</ul>
+
 <p><strong>01/06/2023</strong></p>
 
 <ul>
@@ -2414,7 +2476,7 @@ microtime(true) * 1000;
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Page size, default 100</td>
+<td style="text-align: center">Page size, default 20 max 20</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>
@@ -2462,7 +2524,71 @@ microtime(true) * 1000;
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.78"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2481,7 +2607,71 @@ microtime(true) * 1000;
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909.94"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2523,12 +2713,60 @@ microtime(true) * 1000;
 <td style="text-align: left">trading Pairs Available</td>
 </tr>
 <tr>
-<td style="text-align: left">myTrader</td>
+<td style="text-align: left">isMyTrader</td>
 <td style="text-align: left">Am I followed The Trader?</td>
 </tr>
 <tr>
 <td style="text-align: left">columnList</td>
 <td style="text-align: left">Trading Indicator Data of Trader</td>
+</tr>
+<tr>
+<td style="text-align: left">totalFollowers</td>
+<td style="text-align: left">Total followers</td>
+</tr>
+<tr>
+<td style="text-align: left">profitOrderCount</td>
+<td style="text-align: left">Profit order count</td>
+</tr>
+<tr>
+<td style="text-align: left">lossOrderCount</td>
+<td style="text-align: left">Loss order count</td>
+</tr>
+<tr>
+<td style="text-align: left">totalTradeCount</td>
+<td style="text-align: left">Total trade count</td>
+</tr>
+<tr>
+<td style="text-align: left">traderHeadPic</td>
+<td style="text-align: left">Trader head picture</td>
+</tr>
+<tr>
+<td style="text-align: left">maxCallbackRate</td>
+<td style="text-align: left">Max callback rate (already multiply 100,you just display with %)</td>
+</tr>
+<tr>
+<td style="text-align: left">averageWinRate</td>
+<td style="text-align: left">Average win rate (already multiply 100,you just display with %)</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfitRate</td>
+<td style="text-align: left">Daily profit rate</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfit</td>
+<td style="text-align: left">Daily profit</td>
+</tr>
+<tr>
+<td style="text-align: left">followerTotalProfit</td>
+<td style="text-align: left">Follower total profit</td>
+</tr>
+<tr>
+<td style="text-align: left">profitRate24h</td>
+<td style="text-align: left">Last 24 hours profit rate</td>
+</tr>
+<tr>
+<td style="text-align: left">profit24h</td>
+<td style="text-align: left">Last 24 hours profit</td>
 </tr>
 </tbody></table>
 
@@ -2596,6 +2834,7 @@ microtime(true) * 1000;
     </span><span class="s2">"gainNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lossNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"winRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.67"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1804.49"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ETHUSDT"</span><span class="w">
@@ -2658,6 +2897,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">lossNum</td>
 <td style="text-align: left">Loss Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">totalEquity</td>
+<td style="text-align: left">Total equity</td>
 </tr>
 <tr>
 <td style="text-align: left">winRate</td>
@@ -3873,6 +4116,351 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">symbol</td>
+</tr>
+</tbody></table>
+<h3 id='trader-history-order-list'>Trader History Order List</h3>
+<p>Rate Limit: 10 times/sec (ip)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/historyList</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo（default 1 max 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20 max 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/historyList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "trackingNo": "1048189860453564416",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.00",
+      "openTime": "1685633857670",
+      "closePrice": "27195.5",
+      "closeTime": "1685670186955",
+      "closeAmount": "0.13",
+      "marginAmount": "0.013623727717"
+    },
+    {
+      "trackingNo": "1048167675915681792",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSDT",
+      "openPrice": "34499.50",
+      "openTime": "1685628568539",
+      "closePrice": "28030.5",
+      "closeTime": "1685633582122",
+      "closeAmount": "1",
+      "marginAmount": "1724.975"
+    },
+    {
+      "trackingNo": "1048166971792703488",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1904.00",
+      "openTime": "1685628400529",
+      "closePrice": "1905.382",
+      "closeTime": "1685628405766",
+      "closeAmount": "1",
+      "marginAmount": "0.003500617756"
+    },
+    {
+      "trackingNo": "1048166841425346560",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.50",
+      "openTime": "1685628369595",
+      "closePrice": "57000",
+      "closeTime": "1685628382842",
+      "closeAmount": "1",
+      "marginAmount": "0.104798824796"
+    },
+    {
+      "trackingNo": "1034684661009235968",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSDT",
+      "openPrice": "27383.12",
+      "openTime": "1682413966955",
+      "closePrice": "27371.804999999992",
+      "closeTime": "1682413979544",
+      "closeAmount": "1",
+      "marginAmount": "1369.1564"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">Average open  price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Open  time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">closePrice</td>
+<td style="text-align: left">Average close position price</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">Position closed time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">closeAmount</td>
+<td style="text-align: left">Close position amount （base coin）</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">Margin Amount (margin coin)</td>
+</tr>
+</tbody></table>
+<h3 id='trader-current-order-list'>Trader Current Order List</h3>
+<p>Rate Limit: 10 times/sec (ip)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/currentList</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">PageNo（default 1 max 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">PageSize（default 20 max 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/currentList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": [
+    {
+      "trackingNo": "1048190313178349569",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.5",
+      "openTime": "1685633965458",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.0026975"
+    },
+    {
+      "trackingNo": "1048190230605086721",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.4",
+      "openTime": "1685633945923",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.00269746"
+    },
+    {
+      "trackingNo": "1048189910428696577",
+      "holdMode": "crossed",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.0",
+      "openTime": "1685633869634",
+      "openAmount": "0.32",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.03353533"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">Average open price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Open  time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">openAmount</td>
+<td style="text-align: left">Open  amount（base coin）</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">Follower count of the order</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitPrice</td>
+<td style="text-align: left">Take Profit Price</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">Stop loss Price</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">Margin Amount (margin coin)</td>
 </tr>
 </tbody></table>
 <h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>
