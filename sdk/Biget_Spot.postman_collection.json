@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c414a437-3e5e-428e-8999-2b07742f5c77",
+		"_postman_id": "b890dc03-2ae2-4ec0-a5ac-f9251dfe786b",
 		"name": "Biget_Spot",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "4311929"
+		"_exporter_id": "26533805"
 	},
 	"item": [
 		{
@@ -302,6 +302,34 @@
 								"v1",
 								"market",
 								"fills"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "btcusdt_spbl"
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get trades History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/spot/v1/market/fills-history?symbol=btcusdt_spbl&limit=100",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"market",
+								"fills-history"
 							],
 							"query": [
 								{
@@ -713,6 +741,70 @@
 					"response": []
 				},
 				{
+					"name": "WithdrawV2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Amzn-Trace-Id",
+								"value": "8703366659934ce1a919968cf3e4fc63",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"coin\": \"USDT\",\n    \"address\": \"0x16f02be88c7ec062b980e0a92f0303049ad26177\",\n    \"chain\": \"ERC201\",\n    \"amount\": \"20\",\n    \"remark\": \"test8 第10次\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/wallet/withdrawal-v2",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"wallet",
+								"withdrawal-v2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Inner Withdraw",
 					"request": {
 						"method": "POST",
@@ -865,7 +957,7 @@
 							}
 						],
 						"url": {
-							"raw": "/api/spot/v1/wallet/withdrawal-list?coin=USDT&startTime=1653278592000&endTime=1653300292000",
+							"raw": "/api/spot/v1/wallet/withdrawal-list?coin=USDT&startTime=1680301634000&endTime=1685650373503",
 							"path": [
 								"api",
 								"spot",
@@ -880,11 +972,11 @@
 								},
 								{
 									"key": "startTime",
-									"value": "1653278592000"
+									"value": "1680301634000"
 								},
 								{
 									"key": "endTime",
-									"value": "1653300292000"
+									"value": "1685650373503"
 								}
 							]
 						}
@@ -928,7 +1020,7 @@
 							}
 						],
 						"url": {
-							"raw": "/api/spot/v1/wallet/deposit-list?coin=USDT&startTime=1649899320000&endTime=1649910120000",
+							"raw": "/api/spot/v1/wallet/deposit-list?coin=USDT&startTime=1680301634000&endTime=1685650373503",
 							"path": [
 								"api",
 								"spot",
@@ -943,11 +1035,11 @@
 								},
 								{
 									"key": "startTime",
-									"value": "1649899320000"
+									"value": "1680301634000"
 								},
 								{
 									"key": "endTime",
-									"value": "1649910120000"
+									"value": "1685650373503"
 								}
 							]
 						}
@@ -955,9 +1047,9 @@
 					"response": []
 				},
 				{
-					"name": "WithdrawV2",
+					"name": "Get Trading Fee",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "ACCESS-KEY",
@@ -982,37 +1074,32 @@
 							{
 								"key": "locale",
 								"value": "en-US",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
-							},
-							{
-								"key": "X-Amzn-Trace-Id",
-								"value": "8703366659934ce1a919968cf3e4fc63",
-								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"coin\": \"USDT\",\n    \"address\": \"0x16f02be88c7ec062b980e0a92f0303049ad26177\",\n    \"chain\": \"ERC201\",\n    \"amount\": \"20\",\n    \"remark\": \"test8 第10次\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "/api/spot/v1/wallet/withdrawal-v2",
+							"raw": "/api/user/v1/fee/query?symbol=BTCUSDT_UMCBL&business=mix",
 							"path": [
 								"api",
-								"spot",
+								"user",
 								"v1",
-								"wallet",
-								"withdrawal-v2"
+								"fee",
+								"query"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT_UMCBL"
+								},
+								{
+									"key": "business",
+									"value": "mix"
+								}
 							]
 						}
 					},
@@ -1140,6 +1227,61 @@
 					"response": []
 				},
 				{
+					"name": "sub-account-spot-assets",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"content-length": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/spot/v1/account/sub-account-spot-assets",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"account",
+								"sub-account-spot-assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get bills",
 					"request": {
 						"method": "POST",
@@ -1219,55 +1361,9 @@
 					"response": []
 				},
 				{
-					"name": "Get transfer record",
+					"name": "Get Transfer List",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "/api/spot/v1/account/transferRecords?coinId=2&fromType=exchange&after=1648627756000&after=1646810529000&limit=100",
-							"path": [
-								"api",
-								"spot",
-								"v1",
-								"account",
-								"transferRecords"
-							],
-							"query": [
-								{
-									"key": "coinId",
-									"value": "2"
-								},
-								{
-									"key": "fromType",
-									"value": "exchange"
-								},
-								{
-									"key": "after",
-									"value": "1648627756000"
-								},
-								{
-									"key": "after",
-									"value": "1646810529000"
-								},
-								{
-									"key": "limit",
-									"value": "100"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "sub-account-spot-assets",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"content-type": true,
-							"content-length": true
-						}
-					},
-					"request": {
-						"method": "POST",
 						"header": [
 							{
 								"key": "ACCESS-KEY",
@@ -1301,13 +1397,37 @@
 							}
 						],
 						"url": {
-							"raw": "/api/spot/v1/account/sub-account-spot-assets",
+							"raw": "/api/spot/v1/account/transferRecords?coinId=1&fromType=withdraw&after=1685650373503&before=1680301634000&limit=100",
 							"path": [
 								"api",
 								"spot",
 								"v1",
 								"account",
-								"sub-account-spot-assets"
+								"transferRecords"
+							],
+							"query": [
+								{
+									"key": "coinId",
+									"value": "1"
+								},
+								{
+									"key": "fromType",
+									"value": "withdraw"
+								},
+								{
+									"key": "after",
+									"value": "1685650373503",
+									"description": "after and before values are reversed. And counted in seconds."
+								},
+								{
+									"key": "before",
+									"value": "1680301634000",
+									"description": "after and before values are reversed. And counted in seconds."
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
 							]
 						}
 					},
@@ -1461,7 +1581,7 @@
 							},
 							{
 								"key": "locale",
-								"value": "zh-CN",
+								"value": "en-US",
 								"type": "text"
 							},
 							{
@@ -1487,6 +1607,122 @@
 								"v1",
 								"trade",
 								"cancel-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order V2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"TRXUSDT_SPBL\",\n    \"orderId\":\"928822884012834816\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/trade/cancel-order-v2",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trade",
+								"cancel-order-v2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Symol Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"TRXUSDT_SPBL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/trade/cancel-symbol-order",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trade",
+								"cancel-symbol-order"
 							]
 						}
 					},
@@ -1545,6 +1781,122 @@
 								"v1",
 								"trade",
 								"cancel-batch-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order in batch  V2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"TRXUSDT_SPBL\",\n    \"orderIds\": [\n        \"928822884012834816\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/trade/cancel-batch-orders-v2",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trade",
+								"cancel-batch-orders-v2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"TRXUSDT_SPBL\",\n    \"orderId\":\"1019799179038756864\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/trade/orderInfo",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trade",
+								"orderInfo"
 							]
 						}
 					},
@@ -1747,69 +2099,6 @@
 					"response": []
 				},
 				{
-					"name": "order info",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "ACCESS-KEY",
-								"value": "{{apiKey}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-SIGN",
-								"value": "{{sign}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-TIMESTAMP",
-								"value": "{{timestamp}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-PASSPHRASE",
-								"value": "{{passphrase}}",
-								"type": "text"
-							},
-							{
-								"key": "locale",
-								"value": "zh-CN",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"symbol\":\"TRXUSDT_SPBL\",\n    \"orderId\":\"1019799179038756864\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "/api/spot/v1/trade/orderInfo",
-							"path": [
-								"api",
-								"spot",
-								"v1",
-								"trade",
-								"orderInfo"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Plan",
-			"item": [
-				{
 					"name": "Place Plan Order",
 					"request": {
 						"method": "POST",
@@ -1926,7 +2215,7 @@
 					"response": []
 				},
 				{
-					"name": "cancel plan",
+					"name": "Cancel Plan",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1984,7 +2273,7 @@
 					"response": []
 				},
 				{
-					"name": "get current plan",
+					"name": "Get Current Plan",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2042,7 +2331,7 @@
 					"response": []
 				},
 				{
-					"name": "get history plan",
+					"name": "Get History Plan",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2098,14 +2387,72 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Batch Cancel Plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "en-US",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbols\": [\"BTCUSDT_SPBL\", \"ETHUSDT_SPNL\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/spot/v1/plan/batchCancelPlan",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"plan",
+								"batchCancelPlan"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "User",
+			"name": "P2P",
 			"item": [
 				{
-					"name": "query",
+					"name": "Get Merchant List",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2132,7 +2479,8 @@
 							{
 								"key": "locale",
 								"value": "zh-CN",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "Content-Type",
@@ -2141,28 +2489,211 @@
 							}
 						],
 						"url": {
-							"raw": "/api/user/v1/fee/query?symbol=BTCUSDT_UMCBL&business=mix",
+							"raw": "/api/p2p/v1/merchant/merchantList?online=yes&pageSize=20",
 							"path": [
 								"api",
-								"user",
+								"p2p",
 								"v1",
-								"fee",
-								"query"
+								"merchant",
+								"merchantList"
 							],
 							"query": [
 								{
-									"key": "symbol",
-									"value": "BTCUSDT_UMCBL"
+									"key": "online",
+									"value": "yes"
 								},
 								{
-									"key": "business",
-									"value": "mix"
+									"key": "pageSize",
+									"value": "20"
 								}
 							]
 						}
 					},
 					"response": []
 				},
+				{
+					"name": "Get Merchant Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/p2p/v1/merchant/merchantInfo",
+							"path": [
+								"api",
+								"p2p",
+								"v1",
+								"merchant",
+								"merchantInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Merchant Adv List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/p2p/v1/merchant/advList?advNo&languageType=en-US&startTime",
+							"path": [
+								"api",
+								"p2p",
+								"v1",
+								"merchant",
+								"advList"
+							],
+							"query": [
+								{
+									"key": "advNo",
+									"value": null
+								},
+								{
+									"key": "languageType",
+									"value": "en-US"
+								},
+								{
+									"key": "startTime",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Merchant Order List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/p2p/v1/merchant/orderList?advNo&languageType=en-US&startTime",
+							"path": [
+								"api",
+								"p2p",
+								"v1",
+								"merchant",
+								"orderList"
+							],
+							"query": [
+								{
+									"key": "advNo",
+									"value": null
+								},
+								{
+									"key": "languageType",
+									"value": "en-US"
+								},
+								{
+									"key": "startTime",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sub-Main Account",
+			"item": [
 				{
 					"name": "virtual-create",
 					"request": {
@@ -2266,54 +2797,6 @@
 					"response": []
 				},
 				{
-					"name": "virtual-api-create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "ACCESS-KEY",
-								"value": "{{apiKey}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-PASSPHRASE",
-								"value": "{{passphrase}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-TIMESTAMP",
-								"value": "{{timestamp}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-SIGN",
-								"value": "{{sign}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"subUid\": \"7713789662\",\n    \"passphrase\": \"1r1b6uX6PQ9tbKwa\",\n    \"remark\":\"1683195313872\",\n    \"perm\":\"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade\"\n}"
-						},
-						"url": {
-							"raw": "/api/user/v1/sub/virtual-api-create",
-							"path": [
-								"api",
-								"user",
-								"v1",
-								"sub",
-								"virtual-api-create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "virtual-api-batch-create",
 					"request": {
 						"method": "POST",
@@ -2361,54 +2844,6 @@
 								"v1",
 								"sub",
 								"virtual-api-batch-create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "virtual-api-modify",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "ACCESS-KEY",
-								"value": "{{apiKey}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-PASSPHRASE",
-								"value": "{{passphrase}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-TIMESTAMP",
-								"value": "{{timestamp}}",
-								"type": "text"
-							},
-							{
-								"key": "ACCESS-SIGN",
-								"value": "{{sign}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"subUid\": \"8055337342\",\n    \"subApiKey\":\"bg_697b8771720daab543a16b3a05ad8d8b\",\n    \"passphrase\": \"1r1b6uX6PQ9tbKwa\",\n    \"remark\":\"1683195099859\",\n    \"perm\":\"contract_trade\",\n    \"ip\":\"127.0.0.1\"\n}"
-						},
-						"url": {
-							"raw": "/api/user/v1/sub/virtual-api-modify",
-							"path": [
-								"api",
-								"user",
-								"v1",
-								"sub",
-								"virtual-api-modify"
 							]
 						}
 					},
@@ -2477,6 +2912,102 @@
 									"value": "normal",
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "virtual-api-create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subUid\": \"7713789662\",\n    \"passphrase\": \"1r1b6uX6PQ9tbKwa\",\n    \"remark\":\"1683195313872\",\n    \"perm\":\"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade\"\n}"
+						},
+						"url": {
+							"raw": "/api/user/v1/sub/virtual-api-create",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"sub",
+								"virtual-api-create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "virtual-api-modify",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subUid\": \"8055337342\",\n    \"subApiKey\":\"xxx\",\n    \"passphrase\": \"xxx\",\n    \"remark\":\"1683195099859\",\n    \"perm\":\"contract_trade\",\n    \"ip\":\"127.0.0.1\"\n}"
+						},
+						"url": {
+							"raw": "/api/user/v1/sub/virtual-api-modify",
+							"path": [
+								"api",
+								"user",
+								"v1",
+								"sub",
+								"virtual-api-modify"
 							]
 						}
 					},
@@ -2617,6 +3148,11 @@
 		},
 		{
 			"key": "host",
+			"value": "https://api.bitget.com",
+			"type": "string"
+		},
+		{
+			"key": "url",
 			"value": "https://api.bitget.com",
 			"type": "string"
 		}

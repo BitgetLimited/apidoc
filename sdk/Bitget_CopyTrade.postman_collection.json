@@ -1,1150 +1,1607 @@
 {
 	"info": {
-		"_postman_id": "4a8f4c5b-b4e0-456a-a541-b9b5dea6e488",
+		"_postman_id": "a4b99f28-7c5d-47c4-bc58-619ad962cc4a",
 		"name": "Bitget_CopyTrade",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26533805"
 	},
 	"item": [
 		{
 			"name": "Mix",
 			"item": [
 				{
-					"name": "Trade",
-					"item": [
-						{
-							"name": "Trader Modify TPSL",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apikey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "local",
-										"value": "en-US",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"trackingNo\": \"924176438170464256\",\n    \"symbol\": \"TRXUSDT_UMCBL\",\n    \"stopProfitPrice\": \"0.08503\",\n    \"stopLossPrice\":\"0.05503\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+					"name": "Get Trader Open order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/currentTrack?symbol&productType&pageSize&pageNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"currentTrack"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": null
 								},
-								"url": {
-									"raw": "/api/mix/v1/trace/modifyTPSL",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"modifyTPSL"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Followers Open Order",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "/api/mix/v1/trace/followerOrder?symbol&productType&pageSize&pageNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerOrder"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": null
-										},
-										{
-											"key": "productType",
-											"value": null
-										},
-										{
-											"key": "pageSize",
-											"value": null
-										},
-										{
-											"key": "pageNo",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader Open order",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/currentTrack?symbol&productType&pageSize&pageNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"currentTrack"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": null
-										},
-										{
-											"key": "productType",
-											"value": null
-										},
-										{
-											"key": "pageSize",
-											"value": null
-										},
-										{
-											"key": "pageNo",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Trader Close Position",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"trackingNo\": \"924176438170464256\",\n    \"symbol\": \"TRXUSDT_UMCBL\"\n}"
+								{
+									"key": "productType",
+									"value": null
 								},
-								"url": {
-									"raw": "/api/mix/v1/trace/closeTrackOrder",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"closeTrackOrder"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Traders History Orders",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "/api/mix/v1/trace/historyTrack?symbol&productType&pageSize&pageNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"historyTrack"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": null
-										},
-										{
-											"key": "productType",
-											"value": null
-										},
-										{
-											"key": "pageSize",
-											"value": null
-										},
-										{
-											"key": "pageNo",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get CopyTrade Symbols",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/traderSymbols",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"traderSymbols"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "traderList",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/traderList?sortRule=composite&sortFlag=asc&pageNo=1&pageSize=20",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"traderList"
-									],
-									"query": [
-										{
-											"key": "sortRule",
-											"value": "composite"
-										},
-										{
-											"key": "sortFlag",
-											"value": "asc"
-										},
-										{
-											"key": "pageNo",
-											"value": "1"
-										},
-										{
-											"key": "pageSize",
-											"value": "20"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "queryTraceConfig",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/queryTraceConfig?traderId=A108A3B4C3F481FADFAE46578808A39C",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"queryTraceConfig"
-									],
-									"query": [
-										{
-											"key": "traderId",
-											"value": "A108A3B4C3F481FADFAE46578808A39C"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "followerSetBatchTraceConfig",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"traderId\": \"A108A3B4C3F481FADFAE46578808A39C\",\n    \"settings\": [{\n        \"symbol\": \"ETHUSDT_UMCBL\",\n        \"marginType\": \"specify\",\n        \"marginCoin\": \"USDT\",\n        \"leverType\": \"specify\",\n        \"longLeverage\": \"12\",\n        \"shortLeverage\": \"10\",\n        \"traceType\": \"amount\",\n        \"traceValue\": \"1000\",\n        \"maxHoldCount\": \"\",\n        \"stopProfitRation\": \"\",\n        \"stopLossRation\": \"\"\n    }]\n}"
+								{
+									"key": "pageSize",
+									"value": null
 								},
-								"url": {
-									"raw": "/api/mix/v1/trace/followerSetBatchTraceConfig",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerSetBatchTraceConfig"
-									]
+								{
+									"key": "pageNo",
+									"value": null
 								}
-							},
-							"response": []
-						},
-						{
-							"name": "Trader Change CopyTrade symbol",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"symbol\": \"ETHUSDT_UMCBL\",\n    \"operation\": \"add\"\n}"
-								},
-								"url": {
-									"raw": "/api/mix/v1/trace/setUpCopySymbols",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"setUpCopySymbols"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "followerHistoryOrders",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/followerHistoryOrders?sortRule=composite&sortFlag=asc&pageNo=1&pageSize=2",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerHistoryOrders"
-									],
-									"query": [
-										{
-											"key": "sortRule",
-											"value": "composite"
-										},
-										{
-											"key": "sortFlag",
-											"value": "asc"
-										},
-										{
-											"key": "languageType",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "fullStatus",
-											"value": "",
-											"disabled": true
-										},
-										{
-											"key": "pageNo",
-											"value": "1"
-										},
-										{
-											"key": "pageSize",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "traderDetail",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/traderDetail",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"traderDetail"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "followerCloseByTrackingNo",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \n    \"productType\":\"UMCBL\",\n    \"trackingNo\": \"1022250157533155328\"\n}"
-								},
-								"url": {
-									"raw": "/api/mix/v1/trace/followerCloseByTrackingNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerCloseByTrackingNo"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "followerCloseByAll",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"productType\": \"UMCBL\",\n    \"marginCoin\": \"USDT\"\n}"
-								},
-								"url": {
-									"raw": "/api/mix/v1/trace/followerCloseByAll",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerCloseByAll"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "followerSetTpsl",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"trackingNo\":\"1016908545251196928\",\n    \"symbol\": \"BTCUSDT_UMCBL\",\n    \"stopProfitPrice\": \"35000\",\n    \"stopLossPrice\":\"17000\"\n}"
-								},
-								"url": {
-									"raw": "/api/mix/v1/trace/followerSetTpsl",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerSetTpsl"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "cancelCopyTrader",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"traderId\": \"3559776384\",\n    \"settings\": [{\n        \"symbol\": \"ETHUSDT_UMCBL\",\n        \"marginType\": \"specify\",\n        \"marginCoin\": \"USDT\",\n        \"leverType\": \"specify\",\n        \"longLeverage\": \"12\",\n        \"shortLeverage\": \"10\",\n        \"traceType\": \"amount\",\n        \"traceValue\": \"1000\",\n        \"maxHoldCount\": \"\",\n        \"stopProfitRation\": \"\",\n        \"stopLossRation\": \"\"\n    }]\n}"
-								},
-								"url": {
-									"raw": "/api/mix/v1/trace/followerSetBatchTraceConfig",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"followerSetBatchTraceConfig"
-									]
-								}
-							},
-							"response": []
+							]
 						}
-					]
+					},
+					"response": []
 				},
 				{
-					"name": "Report",
-					"item": [
-						{
-							"name": "Get Trader Profit Summary",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/summary",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"summary"
-									]
+					"name": "Get Followers Open Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/mix/v1/trace/followerOrder?symbol&productType&pageSize&pageNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerOrder"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": null
+								},
+								{
+									"key": "productType",
+									"value": null
+								},
+								{
+									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "pageNo",
+									"value": null
 								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader History Profit Summary (according to settlement currency)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/profitSettleTokenIdGroup",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"profitSettleTokenIdGroup"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader History Profit Summary (according to settlement currency)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/profitSettleTokenIdGroup",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"profitSettleTokenIdGroup"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader History Profit Summary (according to settlement currency and date)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "/api/mix/v1/trace/profitDateGroupList",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"profitDateGroupList"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader Histroy Profit Detail",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "/api/mix/v1/trace/profitDateList?symbol&productType&pageSize&pageNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"profitDateList"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": null
-										},
-										{
-											"key": "productType",
-											"value": null
-										},
-										{
-											"key": "pageSize",
-											"value": null
-										},
-										{
-											"key": "pageNo",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Trader Profits Details",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "/api/mix/v1/trace/waitProfitDateList?pageSize&pageNo",
-									"path": [
-										"api",
-										"mix",
-										"v1",
-										"trace",
-										"waitProfitDateList"
-									],
-									"query": [
-										{
-											"key": "pageSize",
-											"value": null
-										},
-										{
-											"key": "pageNo",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Get FollowerHistoryOrders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/followerHistoryOrders?sortRule=composite&sortFlag=asc&pageNo=1&pageSize=2",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerHistoryOrders"
+							],
+							"query": [
+								{
+									"key": "sortRule",
+									"value": "composite"
+								},
+								{
+									"key": "sortFlag",
+									"value": "asc"
+								},
+								{
+									"key": "languageType",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "fullStatus",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trader Close Position",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trackingNo\": \"924176438170464256\",\n    \"symbol\": \"TRXUSDT_UMCBL\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/closeTrackOrder",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"closeTrackOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trader Modify TPSL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apikey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "local",
+								"value": "en-US",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trackingNo\": \"924176438170464256\",\n    \"symbol\": \"TRXUSDT_UMCBL\",\n    \"stopProfitPrice\": \"0.08503\",\n    \"stopLossPrice\":\"0.05503\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/modifyTPSL",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"modifyTPSL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Traders History Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/mix/v1/trace/historyTrack?symbol&productType&pageSize&pageNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"historyTrack"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": null
+								},
+								{
+									"key": "productType",
+									"value": null
+								},
+								{
+									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "pageNo",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trader Profit Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/summary",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trader History Profit Summary (according to settlement currency)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/profitSettleTokenIdGroup",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"profitSettleTokenIdGroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trader History Profit Summary (according to settlement currency and date)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/profitDateGroupList",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"profitDateGroupList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trader Histroy Profit Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/mix/v1/trace/profitDateList?symbol&productType&pageSize&pageNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"profitDateList"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": null
+								},
+								{
+									"key": "productType",
+									"value": null
+								},
+								{
+									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "pageNo",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trader Wait Profits Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/api/mix/v1/trace/waitProfitDateList?pageSize&pageNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"waitProfitDateList"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": null
+								},
+								{
+									"key": "pageNo",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get CopyTrade Symbols",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/traderSymbols",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"traderSymbols"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trader Change CopyTrade symbol",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"ETHUSDT_UMCBL\",\n    \"operation\": \"add\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/setUpCopySymbols",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"setUpCopySymbols"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TraderList",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/traderList?sortRule=composite&sortFlag=asc&pageNo=1&pageSize=20",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"traderList"
+							],
+							"query": [
+								{
+									"key": "sortRule",
+									"value": "composite"
+								},
+								{
+									"key": "sortFlag",
+									"value": "asc"
+								},
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TraderDetail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/traderDetail",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"traderDetail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get QueryTraceConfig",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/api/mix/v1/trace/queryTraceConfig?traderId=A108A3B4C3F481FADFAE46578808A39C",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"queryTraceConfig"
+							],
+							"query": [
+								{
+									"key": "traderId",
+									"value": "A108A3B4C3F481FADFAE46578808A39C"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FollowerSetBatchTraceConfig",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"traderId\": \"A108A3B4C3F481FADFAE46578808A39C\",\n    \"settings\": [{\n        \"symbol\": \"ETHUSDT_UMCBL\",\n        \"marginType\": \"specify\",\n        \"marginCoin\": \"USDT\",\n        \"leverType\": \"specify\",\n        \"longLeverage\": \"12\",\n        \"shortLeverage\": \"10\",\n        \"traceType\": \"amount\",\n        \"traceValue\": \"1000\",\n        \"maxHoldCount\": \"\",\n        \"stopProfitRation\": \"\",\n        \"stopLossRation\": \"\"\n    }]\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/followerSetBatchTraceConfig",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerSetBatchTraceConfig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FollowerCloseByTrackingNo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"productType\":\"UMCBL\",\n    \"trackingNo\": \"1022250157533155328\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/followerCloseByTrackingNo",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerCloseByTrackingNo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FollowerCloseByAll",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productType\": \"UMCBL\",\n    \"marginCoin\": \"USDT\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/followerCloseByAll",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerCloseByAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FollowerSetTpsl",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trackingNo\":\"1016908545251196928\",\n    \"symbol\": \"BTCUSDT_UMCBL\",\n    \"stopProfitPrice\": \"35000\",\n    \"stopLossPrice\":\"17000\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/followerSetTpsl",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerSetTpsl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CancelCopyTrader",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"traderId\": \"3559776384\",\n    \"settings\": [{\n        \"symbol\": \"ETHUSDT_UMCBL\",\n        \"marginType\": \"specify\",\n        \"marginCoin\": \"USDT\",\n        \"leverType\": \"specify\",\n        \"longLeverage\": \"12\",\n        \"shortLeverage\": \"10\",\n        \"traceType\": \"amount\",\n        \"traceValue\": \"1000\",\n        \"maxHoldCount\": \"\",\n        \"stopProfitRation\": \"\",\n        \"stopLossRation\": \"\"\n    }]\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/followerSetBatchTraceConfig",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"followerSetBatchTraceConfig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TraderUpdateConfig",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enableTrace\": \"YES\",\n    \"showTotalEquity\": \"YES\",\n    \"showTpsl\": \"YES\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/traderUpdateConfig",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"traderUpdateConfig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Trader List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var CryptoJS = require('crypto-js')",
+									"",
+									"var apiSecret = pm.variables.get(\"secretKey\");",
+									"var apiKey = pm.variables.get(\"apiKey\");",
+									"var passphrase = pm.variables.get(\"passphrase\");",
+									"var url = pm.variables.get(\"host\");",
+									"var uri = pm.request.url.getPath();",
+									"var method = pm.request.method;",
+									"var expires = Date.now()",
+									"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+									"var jsonBody = pm.request.body.raw;",
+									"",
+									"//set params",
+									"pm.variables.set(\"timestamp\", expires);",
+									"",
+									"",
+									"var body = \"\";",
+									"var requestUrl = url+uri;",
+									"if(method == 'GET'){",
+									"    if(getBody != ''){",
+									"        body = \"?\"+getBody;",
+									"    }",
+									"    requestUrl = requestUrl+body;",
+									"}else{",
+									"    if(jsonBody != undefined){",
+									"        body = jsonBody;",
+									"    }",
+									"    console.log(\"jsonBody\"+jsonBody)",
+									"}",
+									"var message = expires+method+uri+body;",
+									"",
+									"console.info(\"sign-value:\"+message)",
+									"console.info(\"request-url:\"+requestUrl)",
+									"pm.request.url = requestUrl;",
+									"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+									"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+									"pm.variables.set(\"sign\", base64);",
+									"console.info(\"sign:\"+base64)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNo\": \"1\",\n    \"pageSize\": \"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/myFollowerList",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"myFollowerList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Folloer List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var CryptoJS = require('crypto-js')",
+									"",
+									"var apiSecret = pm.variables.get(\"secretKey\");",
+									"var apiKey = pm.variables.get(\"apiKey\");",
+									"var passphrase = pm.variables.get(\"passphrase\");",
+									"var url = pm.variables.get(\"host\");",
+									"var uri = pm.request.url.getPath();",
+									"var method = pm.request.method;",
+									"var expires = Date.now()",
+									"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+									"var jsonBody = pm.request.body.raw;",
+									"",
+									"//set params",
+									"pm.variables.set(\"timestamp\", expires);",
+									"",
+									"",
+									"var body = \"\";",
+									"var requestUrl = url+uri;",
+									"if(method == 'GET'){",
+									"    if(getBody != ''){",
+									"        body = \"?\"+getBody;",
+									"    }",
+									"    requestUrl = requestUrl+body;",
+									"}else{",
+									"    if(jsonBody != undefined){",
+									"        body = jsonBody;",
+									"    }",
+									"    console.log(\"jsonBody\"+jsonBody)",
+									"}",
+									"var message = expires+method+uri+body;",
+									"",
+									"console.info(\"sign-value:\"+message)",
+									"console.info(\"request-url:\"+requestUrl)",
+									"pm.request.url = requestUrl;",
+									"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+									"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+									"pm.variables.set(\"sign\", base64);",
+									"console.info(\"sign:\"+base64)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNo\": \"1\",\n    \"pageSize\": \"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/myFollowerList",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"myFollowerList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Folloer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var CryptoJS = require('crypto-js')",
+									"",
+									"var apiSecret = pm.variables.get(\"secretKey\");",
+									"var apiKey = pm.variables.get(\"apiKey\");",
+									"var passphrase = pm.variables.get(\"passphrase\");",
+									"var url = pm.variables.get(\"host\");",
+									"var uri = pm.request.url.getPath();",
+									"var method = pm.request.method;",
+									"var expires = Date.now()",
+									"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+									"var jsonBody = pm.request.body.raw;",
+									"",
+									"//set params",
+									"pm.variables.set(\"timestamp\", expires);",
+									"",
+									"",
+									"var body = \"\";",
+									"var requestUrl = url+uri;",
+									"if(method == 'GET'){",
+									"    if(getBody != ''){",
+									"        body = \"?\"+getBody;",
+									"    }",
+									"    requestUrl = requestUrl+body;",
+									"}else{",
+									"    if(jsonBody != undefined){",
+									"        body = jsonBody;",
+									"    }",
+									"    console.log(\"jsonBody\"+jsonBody)",
+									"}",
+									"var message = expires+method+uri+body;",
+									"",
+									"console.info(\"sign-value:\"+message)",
+									"console.info(\"request-url:\"+requestUrl)",
+									"pm.request.url = requestUrl;",
+									"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+									"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+									"pm.variables.set(\"sign\", base64);",
+									"console.info(\"sign:\"+base64)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"followerUid\": \"bab646778eb23853ac94\"\n}"
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/removeFollower",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"removeFollower"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Folloer Config",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var CryptoJS = require('crypto-js')",
+									"",
+									"var apiSecret = pm.variables.get(\"secretKey\");",
+									"var apiKey = pm.variables.get(\"apiKey\");",
+									"var passphrase = pm.variables.get(\"passphrase\");",
+									"var url = pm.variables.get(\"host\");",
+									"var uri = pm.request.url.getPath();",
+									"var method = pm.request.method;",
+									"var expires = Date.now()",
+									"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+									"var jsonBody = pm.request.body.raw;",
+									"",
+									"//set params",
+									"pm.variables.set(\"timestamp\", expires);",
+									"",
+									"",
+									"var body = \"\";",
+									"var requestUrl = url+uri;",
+									"if(method == 'GET'){",
+									"    if(getBody != ''){",
+									"        body = \"?\"+getBody;",
+									"    }",
+									"    requestUrl = requestUrl+body;",
+									"}else{",
+									"    if(jsonBody != undefined){",
+									"        body = jsonBody;",
+									"    }",
+									"    console.log(\"jsonBody\"+jsonBody)",
+									"}",
+									"var message = expires+method+uri+body;",
+									"",
+									"console.info(\"sign-value:\"+message)",
+									"console.info(\"request-url:\"+requestUrl)",
+									"pm.request.url = requestUrl;",
+									"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+									"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+									"pm.variables.set(\"sign\", base64);",
+									"console.info(\"sign:\"+base64)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "/api/mix/v1/trace/public/getFollowerConfig",
+							"path": [
+								"api",
+								"mix",
+								"v1",
+								"trace",
+								"public",
+								"getFollowerConfig"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var CryptoJS = require('crypto-js')",
+							"",
+							"var apiSecret = pm.variables.get(\"secretKey\");",
+							"var apiKey = pm.variables.get(\"apiKey\");",
+							"var passphrase = pm.variables.get(\"passphrase\");",
+							"var url = pm.variables.get(\"host\");",
+							"var uri = pm.request.url.getPath();",
+							"var method = pm.request.method;",
+							"var expires = Date.now()",
+							"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+							"var jsonBody = pm.request.body.raw;",
+							"",
+							"//set params",
+							"pm.variables.set(\"timestamp\", expires);",
+							"",
+							"",
+							"var body = \"\";",
+							"var requestUrl = url+uri;",
+							"if(method == 'GET'){",
+							"    if(getBody != ''){",
+							"        body = \"?\"+getBody;",
+							"    }",
+							"    requestUrl = requestUrl+body;",
+							"}else{",
+							"    if(jsonBody != undefined){",
+							"        body = jsonBody;",
+							"    }",
+							"    console.log(\"jsonBody\"+jsonBody)",
+							"}",
+							"var message = expires+method+uri+body;",
+							"",
+							"console.info(\"sign-value:\"+message)",
+							"console.info(\"request-url:\"+requestUrl)",
+							"pm.request.url = requestUrl;",
+							"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+							"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+							"pm.variables.set(\"sign\", base64);",
+							"console.info(\"sign:\"+base64)"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -1153,1193 +1610,1248 @@
 			"item": [
 				{
 					"name": "Trade",
-					"item": [
-						{
-							"name": "orderHistoryList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/orderHistoryList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"orderHistoryList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "closeTrackingOrder",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"symbol\":\"BTCUSDT_SPBL\",\"trackingOrderNos\":[\"1032884851114008576\"]\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/closeTrackingOrder",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"closeTrackingOrder"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "updateTpsl",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"trackingNo\":\"1032830954928365568\",\"takeProfitPrice\":\"32600\",\"takeLossPrice\":\"32100\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/updateTpsl",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"updateTpsl"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "endOrder",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"trackingOrderNos\":[\"1032830957373644801\"]\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/followerEndOrder",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"followerEndOrder"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "spotInfoList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/spotInfoList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"spotInfoList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getTraderSettings",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/config/getTraderSettings",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"config",
-										"getTraderSettings"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getTraceSettings",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"traderUserId\":\"2856507104\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/config/getFollowerSettings",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"config",
-										"getFollowerSettings"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "myTraders",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/user/myTraders",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"user",
-										"myTraders"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "myTracers",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/user/myFollowers",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"user",
-										"myFollowers"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "setProductCode",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"symbols\":[\"BTCUSDT\", \"ETHUSDT\", \"BGBUSDT\"]\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/config/setProductCode",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"config",
-										"setProductCode"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "removeTrader",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"traderUserId\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/user/removeTrader",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"user",
-										"removeTrader"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getTraderInfo",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/user/getTraderInfo",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"user",
-										"getTraderInfo"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "setTraceConfig",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\"settingType\":\"Separately\",\"traderUserId\":\"65025DCFC4CFEC094AADDCD6F104C38B\",\"setting\":[{\n                \"maxHoldCount\": \"4000\",\n                \"stopLossRation\": \"22\",\n                \"takeProfitRation\": \"22\",\n                \"symbol\": \"BTCUSDT\",\n                \"traceType\": \"FIXED_OPENING_COST\"\n            }]}\n"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/config/setFollowerConfig",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"config",
-										"setFollowerConfig"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "orderCurrentList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/order/orderCurrentList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"order",
-										"orderCurrentList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
+					"item": []
 				},
 				{
 					"name": "Report",
-					"item": [
-						{
-							"name": "totalProfitInfo",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/profit/totalProfitInfo",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"profit",
-										"totalProfitInfo"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
+					"item": []
+				},
+				{
+					"name": "OrderCurrentList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
 							},
-							"response": []
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\":\"10\"\n}"
 						},
-						{
-							"name": "totalProfitList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/profit/totalProfitList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"profit",
-										"totalProfitList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
+						"url": {
+							"raw": "/api/spot/v1/trace/order/orderCurrentList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"orderCurrentList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
 								}
-							},
-							"response": []
-						},
-						{
-							"name": "profitHisList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/profit/profitHisList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"profit",
-										"profitHisList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "profitHisDetailList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"date\":\"1681985100000\",\n    \"coin\":\"USDT\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/profit/profitHisDetailList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"profit",
-										"profitHisDetailList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "waitProfitDetailList",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "ACCESS-KEY",
-										"value": "{{apiKey}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-SIGN",
-										"value": "{{sign}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-TIMESTAMP",
-										"value": "{{timestamp}}",
-										"type": "text"
-									},
-									{
-										"key": "ACCESS-PASSPHRASE",
-										"value": "{{passphrase}}",
-										"type": "text"
-									},
-									{
-										"key": "locale",
-										"value": "zh-CN",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
-								},
-								"url": {
-									"raw": "/api/spot/v1/trace/profit/waitProfitDetailList",
-									"path": [
-										"api",
-										"spot",
-										"v1",
-										"trace",
-										"profit",
-										"waitProfitDetailList"
-									],
-									"query": [
-										{
-											"key": "coin",
-											"value": "BTC",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "OrderHistoryList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/order/orderHistoryList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"orderHistoryList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CloseTrackingOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\":\"BTCUSDT_SPBL\",\"trackingOrderNos\":[\"1032884851114008576\"]\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/order/closeTrackingOrder",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"closeTrackingOrder"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTpsl",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trackingNo\":\"1032830954928365568\",\"takeProfitPrice\":\"32600\",\"takeLossPrice\":\"32100\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/order/updateTpsl",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"updateTpsl"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EndOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"trackingOrderNos\":[\"1032830957373644801\"]\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/order/followerEndOrder",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"followerEndOrder"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SpotInfoList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/order/spotInfoList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"order",
+								"spotInfoList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTraderSettings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/config/getTraderSettings",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"config",
+								"getTraderSettings"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetFollowerSettings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"traderUserId\":\"2856507104\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/config/getFollowerSettings",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"config",
+								"getFollowerSettings"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MyTraders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/user/myTraders",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"user",
+								"myTraders"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetFollowerConfig",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"settingType\":\"Separately\",\"traderUserId\":\"65025DCFC4CFEC094AADDCD6F104C38B\",\"setting\":[{\n                \"maxHoldCount\": \"4000\",\n                \"stopLossRation\": \"22\",\n                \"takeProfitRation\": \"22\",\n                \"symbol\": \"BTCUSDT\",\n                \"traceType\": \"FIXED_OPENING_COST\"\n            }]}\n"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/config/setFollowerConfig",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"config",
+								"setFollowerConfig"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MyFollower",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/user/myFollowers",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"user",
+								"myFollowers"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SetProductCode",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbols\":[\"BTCUSDT\", \"ETHUSDT\", \"BGBUSDT\"]\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/config/setProductCode",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"config",
+								"setProductCode"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveTrader",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"traderUserId\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/user/removeTrader",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"user",
+								"removeTrader"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TotalProfitInfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/profit/totalProfitInfo",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"profit",
+								"totalProfitInfo"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TotalProfitList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/profit/totalProfitList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"profit",
+								"totalProfitList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfitHisList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/profit/profitHisList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"profit",
+								"profitHisList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfitHisDetailList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\":\"1681985100000\",\n    \"coin\":\"USDT\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/profit/profitHisDetailList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"profit",
+								"profitHisDetailList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WaitProfitDetailList",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"page\":\"1\",\n    \"pageSize\":\"10\"\n}"
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/profit/waitProfitDetailList",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"profit",
+								"waitProfitDetailList"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTraderInfo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ACCESS-KEY",
+								"value": "{{apiKey}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-SIGN",
+								"value": "{{sign}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-TIMESTAMP",
+								"value": "{{timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "ACCESS-PASSPHRASE",
+								"value": "{{passphrase}}",
+								"type": "text"
+							},
+							{
+								"key": "locale",
+								"value": "zh-CN",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "/api/spot/v1/trace/user/getTraderInfo",
+							"path": [
+								"api",
+								"spot",
+								"v1",
+								"trace",
+								"user",
+								"getTraderInfo"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var CryptoJS = require('crypto-js')",
+					"",
+					"var apiSecret = pm.variables.get(\"secretKey\");",
+					"var apiKey = pm.variables.get(\"apiKey\");",
+					"var passphrase = pm.variables.get(\"passphrase\");",
+					"var url = pm.variables.get(\"host\");",
+					"var uri = pm.request.url.getPath();",
+					"var method = pm.request.method;",
+					"var expires = Date.now()",
+					"var getBody = pm.request.url.getQueryString({ignoreDisabled:true});",
+					"var jsonBody = pm.request.body.raw;",
+					"",
+					"//set params",
+					"pm.variables.set(\"timestamp\", expires);",
+					"",
+					"",
+					"var body = \"\";",
+					"var requestUrl = url+uri;",
+					"if(method == 'GET'){",
+					"    if(getBody != ''){",
+					"        body = \"?\"+getBody;",
+					"    }",
+					"    requestUrl = requestUrl+body;",
+					"}else{",
+					"    if(jsonBody != undefined){",
+					"        body = jsonBody;",
+					"    }",
+					"    console.log(\"jsonBody\"+jsonBody)",
+					"}",
+					"var message = expires+method+uri+body;",
+					"",
+					"console.info(\"sign-value:\"+message)",
+					"console.info(\"request-url:\"+requestUrl)",
+					"pm.request.url = requestUrl;",
+					"var hmac = CryptoJS.HmacSHA256(message,apiSecret);",
+					"var base64 = CryptoJS.enc.Base64.stringify(hmac);",
+					"pm.variables.set(\"sign\", base64);",
+					"console.info(\"sign:\"+base64)"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
