@@ -4706,7 +4706,8 @@ microtime(true) * 1000;
             </span><span class="s2">"readonly"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"parentId"</span><span class="p">:</span><span class="s2">"566624801"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"trader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+        </span><span class="s2">"trader"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isSpotTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4749,6 +4750,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">trader</td>
 <td style="text-align: center">true is Trader, false is not</td>
+</tr>
+<tr>
+<td style="text-align: left">isSpotTrader</td>
+<td style="text-align: center">true is Spot Trader, false is not</td>
 </tr>
 </tbody></table>
 <h3 id='get-account-assets'>Get Account Assets</h3>
@@ -5230,6 +5235,8 @@ microtime(true) * 1000;
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place order</h3>
 <p>Rate Limit: 10/sec (uid)</p>
 
+<p>Trader Rate Limit: 1/sec (uid)</p>
+
 <p><strong>HTTP Request</strong> </p>
 
 <ul>
@@ -5357,6 +5364,8 @@ microtime(true) * 1000;
 <p>&nbsp;</p>
 <h3 id='batch-order'>Batch order</h3>
 <p>Rate Limit: 5/sec (uid)</p>
+
+<p>Trader Rate Limit: 1/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 

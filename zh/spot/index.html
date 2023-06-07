@@ -4643,7 +4643,8 @@ Signature = base64.encode(Signature)
             "readonly"
         ],
         "parentId":"566624801",
-        "trader":false
+        "trader":false,
+        "isSpotTrader": false
     }
 }
 </code></pre>
@@ -4686,6 +4687,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">trader</td>
 <td style="text-align: center">是否是交易员</td>
+</tr>
+<tr>
+<td style="text-align: left">isSpotTrader</td>
+<td style="text-align: center">是否是现货交易员</td>
 </tr>
 </tbody></table>
 <h3 id='6f78777a98'>获取账户资产</h3>
@@ -5191,6 +5196,8 @@ Signature = base64.encode(Signature)
 <h2 id='fdf72688ac'>订单接口</h2><h3 id='fd6ce2a756'>下单</h3>
 <p>限速规则：10次/1s</p>
 
+<p>交易员限速规则: 1/s (uid)</p>
+
 <p><strong>HTTP请求</strong>
 下单接口</p>
 
@@ -5266,7 +5273,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">quantity</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">委托数量, limit时表示base coin数量; market表示quote coin数量</td>
+<td style="text-align: center">委托数量, limit时表示base coin数量; market-buy表示quote coin数量</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOrderId</td>
@@ -5323,6 +5330,8 @@ Signature = base64.encode(Signature)
 <p>&nbsp;</p>
 <h3 id='de93fae07b'>批量下单</h3>
 <p>限速规则 5次/1s</p>
+
+<p>交易员限速规则: 1/sec (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
