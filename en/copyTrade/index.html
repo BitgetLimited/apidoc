@@ -650,6 +650,14 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>13/06/2023</strong></p>
+
+<ul>
+<li>/api/mix/v1/trace/traderList add response field: &#39;lastTradeTime&#39; &#39;copyTradeDays&#39;</li>
+<li>/api/mix/v1/trace/report/order/historyList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>/api/mix/v1/trace/report/order/currentList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+</ul>
+
 <p><strong>05/06/2023</strong></p>
 
 <ul>
@@ -2588,7 +2596,9 @@ microtime(true) * 1000;
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2671,7 +2681,9 @@ microtime(true) * 1000;
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2767,6 +2779,14 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">profit24h</td>
 <td style="text-align: left">Last 24 hours profit</td>
+</tr>
+<tr>
+<td style="text-align: left">lastTradeTime</td>
+<td style="text-align: left">The last trade time</td>
+</tr>
+<tr>
+<td style="text-align: left">copyTradeDays</td>
+<td style="text-align: left">copy trade days (Days since first trade)</td>
 </tr>
 </tbody></table>
 
@@ -3959,20 +3979,6 @@ microtime(true) * 1000;
 <li>POST /api/mix/v1/trace/removeFollower</li>
 </ul>
 
-<blockquote>
-<p>Request Example</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/removeFollower"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
- -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"followerUid"</span>: <span class="s2">"bab646778eb23853ac94"</span>
-<span class="o">}</span><span class="s1">'
-</span></code></pre>
 <p><strong>Request Body</strong></p>
 
 <table><thead>
@@ -3991,6 +3997,20 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/removeFollower"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"followerUid"</span>: <span class="s2">"bab646778eb23853ac94"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4190,6 +4210,7 @@ microtime(true) * 1000;
     {
       "trackingNo": "1048189860453564416",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSD",
       "openPrice": "57000.00",
@@ -4197,11 +4218,13 @@ microtime(true) * 1000;
       "closePrice": "27195.5",
       "closeTime": "1685670186955",
       "closeAmount": "0.13",
-      "marginAmount": "0.013623727717"
+      "marginAmount": "0.013623727717",
+      "followerNum": "25"
     },
     {
       "trackingNo": "1048167675915681792",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSDT",
       "openPrice": "34499.50",
@@ -4209,43 +4232,8 @@ microtime(true) * 1000;
       "closePrice": "28030.5",
       "closeTime": "1685633582122",
       "closeAmount": "1",
-      "marginAmount": "1724.975"
-    },
-    {
-      "trackingNo": "1048166971792703488",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "ETHUSD",
-      "openPrice": "1904.00",
-      "openTime": "1685628400529",
-      "closePrice": "1905.382",
-      "closeTime": "1685628405766",
-      "closeAmount": "1",
-      "marginAmount": "0.003500617756"
-    },
-    {
-      "trackingNo": "1048166841425346560",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "BTCUSD",
-      "openPrice": "57000.50",
-      "openTime": "1685628369595",
-      "closePrice": "57000",
-      "closeTime": "1685628382842",
-      "closeAmount": "1",
-      "marginAmount": "0.104798824796"
-    },
-    {
-      "trackingNo": "1034684661009235968",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "BTCUSDT",
-      "openPrice": "27383.12",
-      "openTime": "1682413966955",
-      "closePrice": "27371.804999999992",
-      "closeTime": "1682413979544",
-      "closeAmount": "1",
-      "marginAmount": "1369.1564"
+      "marginAmount": "1724.975",
+      "followerNum": "25"
     }
   ]
 }
@@ -4265,6 +4253,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Hold side (long/short)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -4297,6 +4289,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">marginAmount</td>
 <td style="text-align: left">Margin Amount (margin coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">Follower count of the order</td>
 </tr>
 </tbody></table>
 <h3 id='trader-current-order-list'>Trader Current Order List</h3>
@@ -4371,6 +4367,7 @@ microtime(true) * 1000;
     {
       "trackingNo": "1048190313178349569",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "ETHUSD",
       "openPrice": "1905.5",
@@ -4384,6 +4381,7 @@ microtime(true) * 1000;
     {
       "trackingNo": "1048190230605086721",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "ETHUSD",
       "openPrice": "1905.4",
@@ -4397,6 +4395,7 @@ microtime(true) * 1000;
     {
       "trackingNo": "1048189910428696577",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSD",
       "openPrice": "57000.0",
@@ -4425,6 +4424,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Hold side (long/short)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>

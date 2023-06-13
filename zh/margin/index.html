@@ -886,6 +886,10 @@ clipboard.on('error', function(e) {
 <td>autoRepay</td>
 <td>自动还款下单</td>
 </tr>
+<tr>
+<td>autoLoanAndRepay</td>
+<td>自动借款还款下单</td>
+</tr>
 </tbody></table>
 <h3 id='force'>force(订单类型)</h3>
 <table><thead>
@@ -1411,7 +1415,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
-<td style="text-align: center">杠杆倍数 default 3</td>
+<td style="text-align: center">杠杆倍数 default 10</td>
 </tr>
 <tr>
 <td style="text-align: left">baseTransferInAble</td>
@@ -1651,7 +1655,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
-<td style="text-align: center">有效杠杆倍数，全局默认3倍</td>
+<td style="text-align: center">有效杠杆倍数，全局默认10倍</td>
 </tr>
 <tr>
 <td style="text-align: left">baseCoin</td>

@@ -651,6 +651,14 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年06月13日</strong></p>
+
+<ul>
+<li>/api/mix/v1/trace/traderList 新增响应字段: &#39;lastTradeTime&#39; &#39;copyTradeDays&#39;</li>
+<li>/api/mix/v1/trace/report/order/historyList 新增响应字段: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>/api/mix/v1/trace/report/order/currentList 新增响应字段: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+</ul>
+
 <p><strong>2023年06月05日</strong></p>
 
 <ul>
@@ -3176,7 +3184,9 @@ Signature = base64.encode(Signature)
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -3279,7 +3289,9 @@ Signature = base64.encode(Signature)
           </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3375,6 +3387,14 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">profit24h</td>
 <td style="text-align: left">最近24小时收益额</td>
+</tr>
+<tr>
+<td style="text-align: left">lastTradeTime</td>
+<td style="text-align: left">最近交易时间</td>
+</tr>
+<tr>
+<td style="text-align: left">copyTradeDays</td>
+<td style="text-align: left">带单天数 (第一次交易到现在的天数)</td>
 </tr>
 </tbody></table>
 
@@ -4802,6 +4822,7 @@ Signature = base64.encode(Signature)
     {
       "trackingNo": "1048189860453564416",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSD",
       "openPrice": "57000.00",
@@ -4809,11 +4830,13 @@ Signature = base64.encode(Signature)
       "closePrice": "27195.5",
       "closeTime": "1685670186955",
       "closeAmount": "0.13",
-      "marginAmount": "0.013623727717"
+      "marginAmount": "0.013623727717",
+      "followerNum": "25"
     },
     {
       "trackingNo": "1048167675915681792",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSDT",
       "openPrice": "34499.50",
@@ -4821,43 +4844,8 @@ Signature = base64.encode(Signature)
       "closePrice": "28030.5",
       "closeTime": "1685633582122",
       "closeAmount": "1",
-      "marginAmount": "1724.975"
-    },
-    {
-      "trackingNo": "1048166971792703488",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "ETHUSD",
-      "openPrice": "1904.00",
-      "openTime": "1685628400529",
-      "closePrice": "1905.382",
-      "closeTime": "1685628405766",
-      "closeAmount": "1",
-      "marginAmount": "0.003500617756"
-    },
-    {
-      "trackingNo": "1048166841425346560",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "BTCUSD",
-      "openPrice": "57000.50",
-      "openTime": "1685628369595",
-      "closePrice": "57000",
-      "closeTime": "1685628382842",
-      "closeAmount": "1",
-      "marginAmount": "0.104798824796"
-    },
-    {
-      "trackingNo": "1034684661009235968",
-      "holdMode": "crossed",
-      "leverage": "20",
-      "symbol": "BTCUSDT",
-      "openPrice": "27383.12",
-      "openTime": "1682413966955",
-      "closePrice": "27371.804999999992",
-      "closeTime": "1682413979544",
-      "closeAmount": "1",
-      "marginAmount": "1369.1564"
+      "marginAmount": "1724.975",
+      "followerNum": "25"
     }
   ]
 }
@@ -4877,6 +4865,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">fixed:逐仓  crossed:全仓</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">持仓方向 (long/short)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
@@ -4909,6 +4901,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">marginAmount</td>
 <td style="text-align: left">保证金</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">此笔订单跟单人数</td>
 </tr>
 </tbody></table>
 <h3 id='aa9e594e6e'>交易员当前带单列表</h3>
@@ -4983,6 +4979,7 @@ Signature = base64.encode(Signature)
     {
       "trackingNo": "1048190313178349569",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "ETHUSD",
       "openPrice": "1905.5",
@@ -4996,6 +4993,7 @@ Signature = base64.encode(Signature)
     {
       "trackingNo": "1048190230605086721",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "ETHUSD",
       "openPrice": "1905.4",
@@ -5009,6 +5007,7 @@ Signature = base64.encode(Signature)
     {
       "trackingNo": "1048189910428696577",
       "holdMode": "crossed",
+      "holdSide": "long",
       "leverage": "20",
       "symbol": "BTCUSD",
       "openPrice": "57000.0",
@@ -5037,6 +5036,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">holdMode</td>
 <td style="text-align: left">fixed:逐仓  crossed:全仓</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">持仓方向 (long/short)</td>
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
