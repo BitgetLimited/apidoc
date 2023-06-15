@@ -811,9 +811,18 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Jun 15, 2023</strong></p>
+
+<ul>
+<li><a href="#symbolstatus">symbolStatus</a> added new enum: &#39;restrictedAPI&#39;</li>
+<li><a href="#get-history-plan-orders-tpsl">Get History Plan Orders (TPSL)</a> added param &#39;productType&#39;</li>
+</ul>
+
 <p><strong>Jun 05, 2023</strong></p>
 
-<p>Update description on response field: &#39;orderId&#39; of <a href="#place-order">Place order</a></p>
+<ul>
+<li>Update description on response field: &#39;orderId&#39; of <a href="#place-order">Place order</a></li>
+</ul>
 
 <p><strong>May 26, 2023</strong></p>
 
@@ -2029,6 +2038,7 @@ If there is a large deviation between the local server time and the API server t
 <li>normal    normal</li>
 <li>maintain  symbol is under maintenance</li>
 <li>off       offline</li>
+<li>restrictedAPI   API trading is restricted</li>
 </ul>
 <h3 id='fullstatus'>fullStatus</h3>
 <ul>
@@ -9408,8 +9418,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Symbol Id (Must be capitalized), &#39;productType&#39; and &#39;symbol&#39; must have one</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -9421,7 +9431,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
+<td style="text-align: center"><a href="#producttype">product type</a>, &#39;productType&#39; and &#39;symbol&#39; must have one</td>
 </tr>
 </tbody></table>
 
@@ -9573,9 +9583,15 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#producttype">productType</a></td>
+</tr>
+<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">Symbol Id (Must be capitalized)</td>
 </tr>
 <tr>

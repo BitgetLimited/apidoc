@@ -551,6 +551,12 @@
                       <li>
                         <a href="#aa9e594e6e" class="toc-h3 toc-link" data-title="交易员当前带单列表">交易员当前带单列表</a>
                       </li>
+                      <li>
+                        <a href="#6db38712b7" class="toc-h3 toc-link" data-title="交易员查询止盈止损比例设置">交易员查询止盈止损比例设置</a>
+                      </li>
+                      <li>
+                        <a href="#f83553cb49" class="toc-h3 toc-link" data-title="交易员设置止盈止损比例">交易员设置止盈止损比例</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -651,12 +657,13 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
-<p><strong>2023年06月13日</strong></p>
+<p><strong>2023年06月15日</strong></p>
 
 <ul>
 <li>/api/mix/v1/trace/traderList 新增响应字段: &#39;lastTradeTime&#39; &#39;copyTradeDays&#39;</li>
 <li>/api/mix/v1/trace/report/order/historyList 新增响应字段: &#39;followerNum&#39; &#39;holdSide&#39;</li>
 <li>/api/mix/v1/trace/report/order/currentList 新增响应字段: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>new interface <a href="#6db38712b7">交易员查询止盈止损比例设置</a>, <a href="#f83553cb49">交易员设置止盈止损比例</a></li>
 </ul>
 
 <p><strong>2023年06月05日</strong></p>
@@ -4750,6 +4757,26 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">symbol</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='997f9d0e79'>交易员历史带单列表</h3>
 <p>限速规则 10次/1s (ip)</p>
 
@@ -4907,6 +4934,26 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">此笔订单跟单人数</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='aa9e594e6e'>交易员当前带单列表</h3>
 <p>限速规则 10次/1s (ip)</p>
 
@@ -5076,6 +5123,256 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">marginAmount</td>
 <td style="text-align: left">保证金</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='6db38712b7'>交易员查询止盈止损比例设置</h3>
+<p>trader调用接口</p>
+
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/queryTraderTpslRatioConfig</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">queryTpslRatioConfig</td>
+<td style="text-align: left">List<Object></td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">symbol交易对集合</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品线</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraderTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"queryTpslRatioConfig"</span>: <span class="o">[{</span><span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>,<span class="s2">"productType"</span>:<span class="s2">"umcbl"</span><span class="o">}]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol 交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">止损比例设置的值 （值是正整数，40表示 40%）</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">止盈比例设置的值 （值是正整数，120表示 120%）</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='f83553cb49'>交易员设置止盈止损比例</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/traderUpdateTpslRatioConfig</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tpslRatioConfigList</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">各交易对止盈止损比例设置参数列表</td>
+</tr>
+</tbody></table>
+
+<p><strong>tpslRatioConfigList item</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">symbol交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品线</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">止损比例:0-400之内的正整数，其他值非法 (如果没传表示移除之前的设置，例如以前设置了止损比例，如果本次不传，则之前的设置会被移除,注：止损设置超过100通常在全仓模式下使用)</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">止盈比例 0-400之内的正整数，其他值非法 (如果没传表示移除之前的设置，例如以前设置了止盈比例，如果本次不传，则之前的设置会被移除)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"tpslRatioConfigList"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"umcbl"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"ETHUSD"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"dmcbl"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": true
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true 表示设置成功</td>
 </tr>
 </tbody></table>
 <h2 id='0d754733c2'>现货跟单</h2><h3 id='fe23403d70'>查询当前带单列表</h3>

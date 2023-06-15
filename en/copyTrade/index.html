@@ -551,6 +551,12 @@
                       <li>
                         <a href="#trader-current-order-list" class="toc-h3 toc-link" data-title="Trader Current Order List">Trader Current Order List</a>
                       </li>
+                      <li>
+                        <a href="#trader-query-tpsl-ratio-config" class="toc-h3 toc-link" data-title="Trader Query Tpsl ratio config">Trader Query Tpsl ratio config</a>
+                      </li>
+                      <li>
+                        <a href="#traders-set-take-profit-and-stop-loss-ratio" class="toc-h3 toc-link" data-title="Traders Set Take Profit and Stop Loss Ratio">Traders Set Take Profit and Stop Loss Ratio</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -650,12 +656,13 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
-<p><strong>13/06/2023</strong></p>
+<p><strong>15/06/2023</strong></p>
 
 <ul>
 <li>/api/mix/v1/trace/traderList add response field: &#39;lastTradeTime&#39; &#39;copyTradeDays&#39;</li>
 <li>/api/mix/v1/trace/report/order/historyList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
 <li>/api/mix/v1/trace/report/order/currentList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>new interface <a href="#trader-query-tpsl-ratio-config">Trader Query Tpsl ratio config</a>, <a href="#traders-set-take-profit-and-stop-loss-ratio">Traders Set Take Profit and Stop Loss Ratio</a></li>
 </ul>
 
 <p><strong>05/06/2023</strong></p>
@@ -4138,6 +4145,26 @@ microtime(true) * 1000;
 <td style="text-align: left">symbol</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='trader-history-order-list'>Trader History Order List</h3>
 <p>Rate Limit: 10 times/sec (ip)</p>
 
@@ -4295,6 +4322,26 @@ microtime(true) * 1000;
 <td style="text-align: left">Follower count of the order</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='trader-current-order-list'>Trader Current Order List</h3>
 <p>Rate Limit: 10 times/sec (ip)</p>
 
@@ -4464,6 +4511,258 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">marginAmount</td>
 <td style="text-align: left">Margin Amount (margin coin)</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-query-tpsl-ratio-config'>Trader Query Tpsl ratio config</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/queryTraderTpslRatioConfig</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">queryTpslRatioConfig</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbols query info</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">productType</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraderTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"queryTpslRatioConfig"</span>: <span class="o">[{</span><span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>,<span class="s2">"productType"</span>:<span class="s2">"umcbl"</span><span class="o">}]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">Stop Loss Ratio （the value is postive integer，40 mean 40%）</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">Take Profit Ratio （the value is postive integer，120 mean 120%）</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='traders-set-take-profit-and-stop-loss-ratio'>Traders Set Take Profit and Stop Loss Ratio</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/traderUpdateTpslRatioConfig</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tpslUpdateList</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Set parameters for the take profit and stop loss ratio of each symbol</td>
+</tr>
+</tbody></table>
+
+<p><strong>tpslUpdateList item</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">productType</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Stop Loss Ratio should be postive integer between 0-400， other values are invalid (If you don&#39;t pass &#39;stopLossRatio&#39; then it cancels the previous setting, For example, if you set &#39;stopLossRatio&#39; before and you don&#39;t pass &#39;stopLossRatio&#39; this time, then the previous setting will be canceled. PS: tpsl setting stopLossRatio bigger than 100 should be used with &#39;marginMode&#39; = &#39;crossed&#39;)</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Take Profit Ratio should be postive integer between 0-400， other values are invalid (If you don&#39;t pass Take Profit ratio then it cancels the previous setting, For example, if you set Take Profit Ratio before and you don&#39;t pass Take Profit Ratio this time, then the previous setting will be canceled)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"tpslRatioConfigList"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"umcbl"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"ETHUSD"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"dmcbl"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": true
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
 </tr>
 </tbody></table>
 <h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>

@@ -7608,6 +7608,12 @@ microtime(true) * 1000;
 <td style="text-align: center">order by desc：createTime/price (default createTime)</td>
 </tr>
 <tr>
+<td style="text-align: left">payMethodId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">advertisement payMethodId</td>
+</tr>
+<tr>
 <td style="text-align: left">lastMinId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
@@ -7849,6 +7855,18 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">&gt;&gt;&gt; type</td>
 <td style="text-align: left">pay detail type, file/number, please ignore this field</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; merchantCertifiedResult</td>
+<td style="text-align: left">merchant certified</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; imageUrl</td>
+<td style="text-align: left">merchant certified image</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; desc</td>
+<td style="text-align: left">merchant certified desc</td>
 </tr>
 <tr>
 <td style="text-align: left">minId</td>
@@ -8121,6 +8139,8 @@ microtime(true) * 1000;
 <td style="text-align: left">response data minimum &#39;orderId&#39;</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
 <h2 id='sub-account-endpoints'>Sub-Account Endpoints</h2>
 <ul>
 <li><p>The endpoints documented in this section are for Main-Account, and <strong>only allowed to create/modify virtual sub-accounts</strong> </p></li>
