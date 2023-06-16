@@ -560,6 +560,9 @@
                         <a href="#6f78777a98" class="toc-h3 toc-link" data-title="获取账户资产">获取账户资产</a>
                       </li>
                       <li>
+                        <a href="#05495275e8" class="toc-h3 toc-link" data-title="获取有价账户资产">获取有价账户资产</a>
+                      </li>
+                      <li>
                         <a href="#4ff02ca226" class="toc-h3 toc-link" data-title="获取所有子账户现货资产">获取所有子账户现货资产</a>
                       </li>
                       <li>
@@ -779,6 +782,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年06月16日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#05495275e8">获取有价账户资产</a></li>
+</ul>
+
 <p><strong>2023年05月20日</strong></p>
 
 <p><a href="#f876a4e1f9">获取订单详情</a>, <a href="#b9220b5487">获取历史委托列表</a> 新增响应字段: &#39;feeDetail&#39; and <code>orderSource</code></p>
@@ -4696,8 +4705,9 @@ Signature = base64.encode(Signature)
 <h3 id='6f78777a98'>获取账户资产</h3>
 <p>限速规则：10次/1s</p>
 
-<p><strong>HTTP请求</strong>
-获取账户资产</p>
+<p><strong>HTTP请求</strong></p>
+
+<p>获取账户资产</p>
 
 <ul>
 <li>GET  /api/spot/v1/account/assets</li>
@@ -4717,7 +4727,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">coin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">币种</td>
+<td style="text-align: center">币种, 默认不传时，资产为0的币种记录也将返回</td>
 </tr>
 </tbody></table>
 
@@ -4725,6 +4735,96 @@ Signature = base64.encode(Signature)
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets?coin=USDT"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "message":"success",
+  "data":[
+    {
+        "coinId":"10012",
+        "coinName":"usdt",
+        "available":"0",
+        "frozen":"0",
+        "lock":"0",
+        "uTime":"1622697148"
+    }
+]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coinId</td>
+<td style="text-align: center">币种id</td>
+</tr>
+<tr>
+<td style="text-align: left">coinName</td>
+<td style="text-align: center">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">available</td>
+<td style="text-align: center">可用资产</td>
+</tr>
+<tr>
+<td style="text-align: left">frozen</td>
+<td style="text-align: center">冻结资产, 通常是下单时冻结</td>
+</tr>
+<tr>
+<td style="text-align: left">lock</td>
+<td style="text-align: center">锁仓资产，成为法币商家等的锁仓</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: center">更新时间</td>
+</tr>
+</tbody></table>
+<h3 id='05495275e8'>获取有价账户资产</h3>
+<p>限速规则：10次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取账户资产</p>
+
+<ul>
+<li>GET  /api/spot/v1/account/assets-lite</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币种, 默认不传时返回非0的币种记录，为0的币种不返回</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets-lite?coin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>

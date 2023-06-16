@@ -566,6 +566,9 @@
                         <a href="#get-account-assets" class="toc-h3 toc-link" data-title="Get Account Assets">Get Account Assets</a>
                       </li>
                       <li>
+                        <a href="#get-account-assets-lite" class="toc-h3 toc-link" data-title="Get Account Assets Lite">Get Account Assets Lite</a>
+                      </li>
+                      <li>
                         <a href="#get-sub-account-spot-assets" class="toc-h3 toc-link" data-title="Get sub Account Spot Assets">Get sub Account Spot Assets</a>
                       </li>
                       <li>
@@ -782,6 +785,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>16/06/2023</strong></p>
+
+<ul>
+<li>New interface <a href="##get-account-assets-lite">Get Account Assets Lite</a></li>
+</ul>
+
 <p><strong>20/05/2023</strong></p>
 
 <ul>
@@ -4781,7 +4790,7 @@ microtime(true) * 1000;
 <td>coin</td>
 <td>String</td>
 <td>No</td>
-<td>CoinName, default query all</td>
+<td>CoinName, default will return data even assets are 0 when &#39;coin&#39; is null</td>
 </tr>
 </tbody></table>
 
@@ -4789,6 +4798,95 @@ microtime(true) * 1000;
 <p>Request Example</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets?coin=USDT"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Available assets</td>
+</tr>
+<tr>
+<td>frozen</td>
+<td>Frozen: create order frozen margin</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>Locked assets, like become a fiat/p2p merchant</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>Update timing</td>
+</tr>
+</tbody></table>
+<h3 id='get-account-assets-lite'>Get Account Assets Lite</h3>
+<p>Rate Limit: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/account/assets-lite</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>No</td>
+<td>CoinName, default &#39;coin&#39; is null, will return data with assets &gt; 0; if &#39;coin&#39; is not null, will return the coin no matter what the assets is</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets-lite?coin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
