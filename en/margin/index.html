@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
   <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -831,6 +879,10 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <td>autoRepay</td>
 <td>Auto repay place order</td>
 </tr>
+<tr>
+<td>autoLoanAndRepay</td>
+<td>Auto loan and repay</td>
+</tr>
 </tbody></table>
 <h3 id='force'>force</h3>
 <table><thead>
@@ -1373,7 +1425,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>leverage</td>
-<td>Leverage, default 3</td>
+<td>Leverage, default 10</td>
 </tr>
 <tr>
 <td>baseTransferInAble</td>
@@ -1613,7 +1665,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>leverage</td>
-<td>Leverage, default 3</td>
+<td>Leverage, default 10</td>
 </tr>
 <tr>
 <td>baseCoin</td>
@@ -3327,14 +3379,14 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">start time</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">start time, ms, value should be within 90 days</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">end time</td>
+<td style="text-align: center">end time, ms, value should be within 90 days</td>
 </tr>
 <tr>
 <td style="text-align: left">pageSize</td>
@@ -3504,8 +3556,8 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">start time, ms</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time, ms, value should be within 90 days</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
@@ -5045,8 +5097,8 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">start time, ms</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">start time, ms, value should be within 90 days</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
@@ -5222,8 +5274,8 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">No</td>
-<td style="text-align: center">start time, ms</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time, ms, value should be within 90 days</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>

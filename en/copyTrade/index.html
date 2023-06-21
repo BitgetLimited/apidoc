@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
   <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -482,6 +530,33 @@
                       <li>
                         <a href="#follower-unfollow-the-trader" class="toc-h3 toc-link" data-title="Follower Unfollow The Trader">Follower Unfollow The Trader</a>
                       </li>
+                      <li>
+                        <a href="#trader-update-copy-trade-settings" class="toc-h3 toc-link" data-title="Trader update copy trade settings">Trader update copy trade settings</a>
+                      </li>
+                      <li>
+                        <a href="#get-my-trader-list" class="toc-h3 toc-link" data-title="Get my trader list">Get my trader list</a>
+                      </li>
+                      <li>
+                        <a href="#get-my-followers" class="toc-h3 toc-link" data-title="Get my followers">Get my followers</a>
+                      </li>
+                      <li>
+                        <a href="#trader-remove-follower" class="toc-h3 toc-link" data-title="Trader remove follower">Trader remove follower</a>
+                      </li>
+                      <li>
+                        <a href="#followers-copy-order-limit" class="toc-h3 toc-link" data-title="Followers’ Copy Order Limit">Followers’ Copy Order Limit</a>
+                      </li>
+                      <li>
+                        <a href="#trader-history-order-list" class="toc-h3 toc-link" data-title="Trader History Order List">Trader History Order List</a>
+                      </li>
+                      <li>
+                        <a href="#trader-current-order-list" class="toc-h3 toc-link" data-title="Trader Current Order List">Trader Current Order List</a>
+                      </li>
+                      <li>
+                        <a href="#trader-query-tpsl-ratio-config" class="toc-h3 toc-link" data-title="Trader Query Tpsl ratio config">Trader Query Tpsl ratio config</a>
+                      </li>
+                      <li>
+                        <a href="#traders-set-take-profit-and-stop-loss-ratio" class="toc-h3 toc-link" data-title="Traders Set Take Profit and Stop Loss Ratio">Traders Set Take Profit and Stop Loss Ratio</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -581,6 +656,29 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>15/06/2023</strong></p>
+
+<ul>
+<li>/api/mix/v1/trace/traderList add response field: &#39;lastTradeTime&#39; &#39;copyTradeDays&#39;</li>
+<li>/api/mix/v1/trace/report/order/historyList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>/api/mix/v1/trace/report/order/currentList add response field: &#39;followerNum&#39; &#39;holdSide&#39;</li>
+<li>new interface <a href="#trader-query-tpsl-ratio-config">Trader Query Tpsl ratio config</a>, <a href="#traders-set-take-profit-and-stop-loss-ratio">Traders Set Take Profit and Stop Loss Ratio</a></li>
+</ul>
+
+<p><strong>05/06/2023</strong></p>
+
+<ul>
+<li>New interfaces: <a href="#trader-history-order-list">Trader History Order List</a></li>
+<li>New interfaces: <a href="#trader-current-order-list">Trader Current Order List</a></li>
+<li>Rectify default value of &#39;pageSize&#39; on each interface</li>
+</ul>
+
+<p><strong>01/06/2023</strong></p>
+
+<ul>
+<li>New interfaces: <a href="#trader-update-copy-trade-settings">Trader update copy trade settings</a>, <a href="#get-my-trader-list">Get my trader list</a>, <a href="#get-my-followers">Get my followers</a>, <a href="#trader-remove-follower">Trader remove follower</a>, <a href="#followers-copy-order-limit">Followers’ Copy Order Limit</a></li>
+</ul>
+
 <p><strong>24/05/2023</strong></p>
 
 <p>Update forecast: API team will change value of the fields in below interfaces, original value are all in digital, will update to letter + digital.</p>
@@ -706,7 +804,7 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 
 <p>For Future CopyTrading SDK: </p>
 
-<p><a href="../../sdk/Biget_CopyTrade.postman_collection.json">PostMan</a></p>
+<p><a href="../../sdk/Bitget_CopyTrade.postman_collection.json">PostMan</a></p>
 
 <p>You should first try to config the APIKey, Secretkey and Passphrase in the <code>Environments</code> tab on left of the PostMan</p>
 <h2 id='interface-type'>Interface Type</h2>
@@ -991,33 +1089,86 @@ microtime(true) * 1000;
 <blockquote>
 <p>Java</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+<pre class="highlight java tab-java"><code>
+<span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.RuntimeErrorException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//POST sign example</span>
+<span class="c1">//        String timestamp = "1684813405151";</span>
+<span class="c1">//        String body = "{\"symbol\":\"TRXUSDT_UMCBL\",\"marginCoin\":\"USDT\",\"size\":551,\"side\":\"open_long\",\"orderType\":\"limit\",\"price\":0.0555,\"timeInForceValue\":\"normal\"}";</span>
+<span class="c1">//</span>
+<span class="c1">//        String sign = generate(timestamp,"POST","/api/mix/v1/order/placeOrder" ,null,body,secretKey);</span>
+<span class="c1">//        log.info("sign:{}",sign);</span>
+
+
+        <span class="c1">//GET sign example</span>
+        <span class="n">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1684814440729"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">"symbol=btcusdt_umcbl&amp;marginCoin=usdt"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span><span class="s">"GET"</span><span class="o">,</span><span class="s">"/api/mix/v1/account/account"</span> <span class="o">,</span><span class="n">queryString</span><span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"sign:{}"</span><span class="o">,</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Mac</span> <span class="n">MAC</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span> <span class="o">=</span> <span class="n">Mac</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeErrorException</span><span class="o">(</span><span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="s">"Can't get Mac's instance."</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
                                   <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
             <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
 
         <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">defaultIfBlank</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">);</span>
         <span class="n">queryString</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isBlank</span><span class="o">(</span><span class="n">queryString</span><span class="o">)</span> <span class="o">?</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span> <span class="o">:</span> <span class="s">"?"</span> <span class="o">+</span> <span class="n">queryString</span><span class="o">;</span>
-
         <span class="n">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">preHash</span><span class="o">);</span>
-        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">);</span>
-        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">HMAC_SHA256</span><span class="o">);</span>
-        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"preHash:{}"</span><span class="o">,</span><span class="n">preHash</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
         <span class="n">mac</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">secretKeySpec</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">)));</span>
+        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)));</span>
     <span class="o">}</span>
 
+<span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-      <span class="n">String</span> <span class="n">msg</span><span class="o">=</span><span class="n">generate</span><span class="o">(</span><span class="s">"1659927638003"</span><span class="o">,</span><span class="s">"POST"</span><span class="o">,</span><span class="s">"/api/mix/v1/trace/closeTrackOrder"</span> <span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">BTCUSDT</span><span class="s">","</span><span class="n">trackingNo</span><span class="s">":"</span><span class="mi">6258224712558517</span><span class="s">"}"</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
-    <span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>Python</p>
 </blockquote>
-<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+<pre class="highlight python tab-python"><code>
+<span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
     <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
@@ -1027,10 +1178,34 @@ microtime(true) * 1000;
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
 
 
+<span class="k">def</span> <span class="nf">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'?'</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">'='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+
+    <span class="k">return</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">signStr</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="s">'1659927638003'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">,</span> <span class="s">'/api/mix/v1/trace/closeTrackOrder'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s">'{"symbol":"BTCUSDT","trackingNo":"6258224712558517"}'</span><span class="p">)),</span> <span class="s">''</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
+    <span class="n">API_SECRET_KEY</span> <span class="o">=</span> <span class="s">""</span>
+
+
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1685013478665"</span> <span class="c"># get_timestamp()</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/order/placeOrder"</span>
+    <span class="c"># POST</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.0555</span><span class="p">,</span> <span class="s">"size"</span><span class="p">:</span> <span class="mi">551</span><span class="p">,</span> <span class="s">"side"</span><span class="p">:</span> <span class="s">"open_long"</span><span class="p">,</span> <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"limit"</span><span class="p">,</span> <span class="s">"timeInForceValue"</span><span class="p">:</span> <span class="s">"normal"</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
+    <span class="c"># GET</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/account/account"</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">}</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
 </code></pre>
 <p>For more demo code on other languages, please refer to <a href='#sdk-code-example'>SDK/Code Example</a></p>
 <h2 id='request-interaction'>Request interaction</h2>
@@ -2316,7 +2491,7 @@ microtime(true) * 1000;
 <td style="text-align: left">pageSize</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Page size, default 100</td>
+<td style="text-align: center">Page size, default 20 max 20</td>
 </tr>
 <tr>
 <td style="text-align: left">pageNo</td>
@@ -2364,7 +2539,73 @@ microtime(true) * 1000;
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"194.78"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"canTrace"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2383,7 +2624,73 @@ microtime(true) * 1000;
           </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"909.94"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"myTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="s2">"isMyTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalFollowers"</span><span class="p">:</span><span class="s2">"8501"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profitOrderCount"</span><span class="p">:</span><span class="s2">"494"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lossOrderCount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalTradeCount"</span><span class="p">:</span><span class="s2">"504"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"traderHeadPic"</span><span class="p">:</span><span class="s2">"https://img.bitgetimg.com/trace/20230322/2549f560-6754-46e6-b21d-7f67ea3798f5.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxCallbackRate"</span><span class="p">:</span><span class="s2">"10.443158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"averageWinRate"</span><span class="p">:</span><span class="s2">"98.0158"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerTotalProfit"</span><span class="p">:</span><span class="s2">"710016.54916806"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dailyProfitRate"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.229633"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"dailyProfit"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10910.6538"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685721600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685808000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685894400000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profitRate24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4552.302315"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"rate"</span><span class="p">:</span><span class="s2">"4551.966908"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"profit24h"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685955600000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685959200000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="p">:</span><span class="s2">"10918.4388"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ctime"</span><span class="p">:</span><span class="s2">"1685962800000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"lastTradeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1686270278460"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"copyTradeDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2425,12 +2732,68 @@ microtime(true) * 1000;
 <td style="text-align: left">trading Pairs Available</td>
 </tr>
 <tr>
-<td style="text-align: left">myTrader</td>
+<td style="text-align: left">isMyTrader</td>
 <td style="text-align: left">Am I followed The Trader?</td>
 </tr>
 <tr>
 <td style="text-align: left">columnList</td>
 <td style="text-align: left">Trading Indicator Data of Trader</td>
+</tr>
+<tr>
+<td style="text-align: left">totalFollowers</td>
+<td style="text-align: left">Total followers</td>
+</tr>
+<tr>
+<td style="text-align: left">profitOrderCount</td>
+<td style="text-align: left">Profit order count</td>
+</tr>
+<tr>
+<td style="text-align: left">lossOrderCount</td>
+<td style="text-align: left">Loss order count</td>
+</tr>
+<tr>
+<td style="text-align: left">totalTradeCount</td>
+<td style="text-align: left">Total trade count</td>
+</tr>
+<tr>
+<td style="text-align: left">traderHeadPic</td>
+<td style="text-align: left">Trader head picture</td>
+</tr>
+<tr>
+<td style="text-align: left">maxCallbackRate</td>
+<td style="text-align: left">Max callback rate (already multiply 100,you just display with %)</td>
+</tr>
+<tr>
+<td style="text-align: left">averageWinRate</td>
+<td style="text-align: left">Average win rate (already multiply 100,you just display with %)</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfitRate</td>
+<td style="text-align: left">Daily profit rate</td>
+</tr>
+<tr>
+<td style="text-align: left">dailyProfit</td>
+<td style="text-align: left">Daily profit</td>
+</tr>
+<tr>
+<td style="text-align: left">followerTotalProfit</td>
+<td style="text-align: left">Follower total profit</td>
+</tr>
+<tr>
+<td style="text-align: left">profitRate24h</td>
+<td style="text-align: left">Last 24 hours profit rate</td>
+</tr>
+<tr>
+<td style="text-align: left">profit24h</td>
+<td style="text-align: left">Last 24 hours profit</td>
+</tr>
+<tr>
+<td style="text-align: left">lastTradeTime</td>
+<td style="text-align: left">The last trade time</td>
+</tr>
+<tr>
+<td style="text-align: left">copyTradeDays</td>
+<td style="text-align: left">copy trade days (Days since first trade)</td>
 </tr>
 </tbody></table>
 
@@ -2498,6 +2861,7 @@ microtime(true) * 1000;
     </span><span class="s2">"gainNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lossNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"winRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66.67"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1804.49"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tradingPairsAvailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ETHUSDT"</span><span class="w">
@@ -2560,6 +2924,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">lossNum</td>
 <td style="text-align: left">Loss Numbers</td>
+</tr>
+<tr>
+<td style="text-align: left">totalEquity</td>
+<td style="text-align: left">Total equity</td>
 </tr>
 <tr>
 <td style="text-align: left">winRate</td>
@@ -3181,7 +3549,1223 @@ microtime(true) * 1000;
   "requestTime":163123213132,
   "data":true
 }
-</code></pre><h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-update-copy-trade-settings'>Trader update copy trade settings</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/traderUpdateConfig</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"enableTrace"</span>: <span class="s2">"YES"</span>,
+    <span class="s2">"showTotalEquity"</span>: <span class="s2">"YES"</span>,
+    <span class="s2">"showTpsl"</span>: <span class="s2">"YES"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">enableTrace</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">(enableTrace, showTotalEquity and showTpsl must have one) YES/NO (YES-enable copy trade   NO-disable copy trade)</td>
+</tr>
+<tr>
+<td style="text-align: left">showTotalEquity</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">show total equity (USDT) YES/NO（YES-show NO-close）</td>
+</tr>
+<tr>
+<td style="text-align: left">showTpsl</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">show tpsl price YES/NO（YES-show NO-close）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "data":true,
+  "msg":"success",
+  "requestTime":1627354109502
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-my-trader-list'>Get my trader list</h3>
+<p>Only followers are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/myTraderList</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myTraderList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">page Number</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20， max 100）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684830012057,
+  "data": [
+    {
+      "traderId": "ghg646778eb23853ac94",
+      "traderNickName": "kate",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    },
+    {
+      "traderId": "hjg646778eb23853ac94",
+      "traderNickName": "cat",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    },
+    {
+      "traderId": "bab646778eb23853ac94",
+      "traderNickName": "tom",
+      "maxFollowerLimit": "500",
+      "currentFollowerCount": "500",
+      "accumulateMarginAmount": "89.6048",
+      "accumulateNetProfit": "-3.7760",
+      "accumulateProfit": "-0.1920",
+      "currentTradingPairs": [
+        "BTCUSDT_UMCBL",
+        "BTCUSD_DMCBL",
+        "EOSUSDT_UMCBL",
+        "ETHUSDT_UMCBL",
+        "ETHUSD_DMCBL"
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">trader nickname</td>
+</tr>
+<tr>
+<td style="text-align: left">maxFollowerLimit</td>
+<td style="text-align: left">max follower limit</td>
+</tr>
+<tr>
+<td style="text-align: left">currentFollowerCount</td>
+<td style="text-align: left">current follower amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateMarginAmount</td>
+<td style="text-align: left">accumulate margin amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateNetProfit</td>
+<td style="text-align: left">accumulate net profit amount</td>
+</tr>
+<tr>
+<td style="text-align: left">accumulateProfit</td>
+<td style="text-align: left">accumulate profit amount</td>
+</tr>
+<tr>
+<td style="text-align: left">currentTradingPairs</td>
+<td style="text-align: left">current trading symbols</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='get-my-followers'>Get my followers</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/myFollowerList</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/myFollowerList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">page Number</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20， max 100）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684920707124</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"accountEquity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3434361.0097"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"canRemoveFollower"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerHeadPic"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerNickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xyz****@abc.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3946951096"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">accountEquity</td>
+<td style="text-align: left">account equity</td>
+</tr>
+<tr>
+<td style="text-align: left">canRemoveFollower</td>
+<td style="text-align: left">true means can remove the follower</td>
+</tr>
+<tr>
+<td style="text-align: left">followerHeadPic</td>
+<td style="text-align: left">follower Head Picture</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNickName</td>
+<td style="text-align: left">follower nickName</td>
+</tr>
+<tr>
+<td style="text-align: left">followerUid</td>
+<td style="text-align: left">follower Uid</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-remove-follower'>Trader remove follower</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/removeFollower</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">followerUid</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">follower UID</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/removeFollower"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"followerUid"</span>: <span class="s2">"bab646778eb23853ac94"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1681201761390</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='followers-copy-order-limit'>Followers’ Copy Order Limit</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/public/getFollowerConfig</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/public/getFollowerConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<p>N/A</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684832987371</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSD"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOSUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"maxFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minFollowQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">maxFollowQuantity</td>
+<td style="text-align: left">Max Copy Trade Quantity Per Order(base coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">minFollowQuantity</td>
+<td style="text-align: left">Min Copy Trade Quantity Per Order(base coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-history-order-list'>Trader History Order List</h3>
+<p>Rate Limit: 10 times/sec (ip)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/historyList</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo（default 1 max 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize（default 20 max 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/historyList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "trackingNo": "1048189860453564416",
+      "holdMode": "crossed",
+      "holdSide": "long",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.00",
+      "openTime": "1685633857670",
+      "closePrice": "27195.5",
+      "closeTime": "1685670186955",
+      "closeAmount": "0.13",
+      "marginAmount": "0.013623727717",
+      "followerNum": "25"
+    },
+    {
+      "trackingNo": "1048167675915681792",
+      "holdMode": "crossed",
+      "holdSide": "long",
+      "leverage": "20",
+      "symbol": "BTCUSDT",
+      "openPrice": "34499.50",
+      "openTime": "1685628568539",
+      "closePrice": "28030.5",
+      "closeTime": "1685633582122",
+      "closeAmount": "1",
+      "marginAmount": "1724.975",
+      "followerNum": "25"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Hold side (long/short)</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">Average open  price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Open  time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">closePrice</td>
+<td style="text-align: left">Average close position price</td>
+</tr>
+<tr>
+<td style="text-align: left">closeTime</td>
+<td style="text-align: left">Position closed time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">closeAmount</td>
+<td style="text-align: left">Close position amount （base coin）</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">Margin Amount (margin coin)</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">Follower count of the order</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-current-order-list'>Trader Current Order List</h3>
+<p>Rate Limit: 10 times/sec (ip)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/report/order/currentList</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">traderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Trader UID</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">PageNo（default 1 max 100）</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">PageSize（default 20 max 20）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/report/order/currentList"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"traderId"</span>: <span class="s2">"bfb3487586b33d51a290"</span>,
+    <span class="s2">"pageNo"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"pageSize"</span>: <span class="s2">"10"</span>,
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": [
+    {
+      "trackingNo": "1048190313178349569",
+      "holdMode": "crossed",
+      "holdSide": "long",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.5",
+      "openTime": "1685633965458",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.0026975"
+    },
+    {
+      "trackingNo": "1048190230605086721",
+      "holdMode": "crossed",
+      "holdSide": "long",
+      "leverage": "20",
+      "symbol": "ETHUSD",
+      "openPrice": "1905.4",
+      "openTime": "1685633945923",
+      "openAmount": "0.77",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.00269746"
+    },
+    {
+      "trackingNo": "1048189910428696577",
+      "holdMode": "crossed",
+      "holdSide": "long",
+      "leverage": "20",
+      "symbol": "BTCUSD",
+      "openPrice": "57000.0",
+      "openTime": "1685633869634",
+      "openAmount": "0.32",
+      "followerNum": "0",
+      "takeProfitPrice": "",
+      "stopLossPrice": "",
+      "marginAmount": "0.03353533"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNo</td>
+<td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">holdMode</td>
+<td style="text-align: left">Isolated:&#39;fixed&#39;  cross:&#39;crossed&#39;</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">Hold side (long/short)</td>
+</tr>
+<tr>
+<td style="text-align: left">leverage</td>
+<td style="text-align: left">Leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">openPrice</td>
+<td style="text-align: left">Average open price</td>
+</tr>
+<tr>
+<td style="text-align: left">openTime</td>
+<td style="text-align: left">Open  time （milliseconds）</td>
+</tr>
+<tr>
+<td style="text-align: left">openAmount</td>
+<td style="text-align: left">Open  amount（base coin）</td>
+</tr>
+<tr>
+<td style="text-align: left">followerNum</td>
+<td style="text-align: left">Follower count of the order</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitPrice</td>
+<td style="text-align: left">Take Profit Price</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossPrice</td>
+<td style="text-align: left">Stop loss Price</td>
+</tr>
+<tr>
+<td style="text-align: left">marginAmount</td>
+<td style="text-align: left">Margin Amount (margin coin)</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-query-tpsl-ratio-config'>Trader Query Tpsl ratio config</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/queryTraderTpslRatioConfig</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">queryTpslRatioConfig</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbols query info</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">productType</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/queryTraderTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"queryTpslRatioConfig"</span>: <span class="o">[{</span><span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>,<span class="s2">"productType"</span>:<span class="s2">"umcbl"</span><span class="o">}]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692345350,
+  "data": [
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "stopLossRatio": "40",
+      "takeProfitRatio": "120"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">Stop Loss Ratio （the value is postive integer，40 mean 40%）</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">Take Profit Ratio （the value is postive integer，120 mean 120%）</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='traders-set-take-profit-and-stop-loss-ratio'>Traders Set Take Profit and Stop Loss Ratio</h3>
+<p>Only traders are allowed to call</p>
+
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/traderUpdateTpslRatioConfig</li>
+</ul>
+
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">tpslUpdateList</td>
+<td style="text-align: left">List</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Set parameters for the take profit and stop loss ratio of each symbol</td>
+</tr>
+</tbody></table>
+
+<p><strong>tpslUpdateList item</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">productType</td>
+</tr>
+<tr>
+<td style="text-align: left">stopLossRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Stop Loss Ratio should be postive integer between 0-400， other values are invalid (If you don&#39;t pass &#39;stopLossRatio&#39; then it cancels the previous setting, For example, if you set &#39;stopLossRatio&#39; before and you don&#39;t pass &#39;stopLossRatio&#39; this time, then the previous setting will be canceled. PS: tpsl setting stopLossRatio bigger than 100 should be used with &#39;marginMode&#39; = &#39;crossed&#39;)</td>
+</tr>
+<tr>
+<td style="text-align: left">takeProfitRatio</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Take Profit Ratio should be postive integer between 0-400， other values are invalid (If you don&#39;t pass Take Profit ratio then it cancels the previous setting, For example, if you set Take Profit Ratio before and you don&#39;t pass Take Profit Ratio this time, then the previous setting will be canceled)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/trace/traderUpdateTpslRatioConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"tpslRatioConfigList"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"umcbl"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"symbol"</span>: <span class="s2">"ETHUSD"</span>,
+            <span class="s2">"stopLossRatio"</span>: <span class="s2">"40"</span>,
+            <span class="s2">"takeProfitRatio"</span>: <span class="s2">"110"</span>,
+            <span class="s2">"productType"</span>:<span class="s2">"dmcbl"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1685692706038,
+  "data": true
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">true is success</td>
+</tr>
+</tbody></table>
+<h2 id='spot-copytrading'>Spot CopyTrading</h2><h3 id='get-trader-open-order-2'>Get Trader Open order</h3>
 <p>Limit rule 10 times/1s (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -5059,6 +6643,26 @@ microtime(true) * 1000;
 <td style="text-align: left">Is enabled copy trade</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h1 id='restapi-error-code'>RestAPI error code</h1><h2 id='public-error-code'>Public error code</h2>
 <table><thead>
 <tr>

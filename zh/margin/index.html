@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
   <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -838,6 +886,10 @@ clipboard.on('error', function(e) {
 <td>autoRepay</td>
 <td>自动还款下单</td>
 </tr>
+<tr>
+<td>autoLoanAndRepay</td>
+<td>自动借款还款下单</td>
+</tr>
 </tbody></table>
 <h3 id='force'>force(订单类型)</h3>
 <table><thead>
@@ -1363,7 +1415,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
-<td style="text-align: center">杠杆倍数 default 3</td>
+<td style="text-align: center">杠杆倍数 default 10</td>
 </tr>
 <tr>
 <td style="text-align: left">baseTransferInAble</td>
@@ -1603,7 +1655,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">leverage</td>
-<td style="text-align: center">有效杠杆倍数，全局默认3倍</td>
+<td style="text-align: center">有效杠杆倍数，全局默认10倍</td>
 </tr>
 <tr>
 <td style="text-align: left">baseCoin</td>
@@ -3435,8 +3487,8 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">开始时间</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">开始时间, ms, 值需要在90天内</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
@@ -3613,7 +3665,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">开始时间</td>
+<td style="text-align: center">开始时间, ms, 值需要在90天内</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
@@ -5154,8 +5206,8 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">开始时间</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">开始时间, ms, 值需要在90天内</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>
@@ -5332,7 +5384,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">startTime</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">开始时间</td>
+<td style="text-align: center">开始时间, ms, 值需要在90天内</td>
 </tr>
 <tr>
 <td style="text-align: left">endTime</td>

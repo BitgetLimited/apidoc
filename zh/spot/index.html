@@ -560,9 +560,6 @@
                         <a href="#6f78777a98" class="toc-h3 toc-link" data-title="获取账户资产">获取账户资产</a>
                       </li>
                       <li>
-                        <a href="#05495275e8" class="toc-h3 toc-link" data-title="获取有价账户资产">获取有价账户资产</a>
-                      </li>
-                      <li>
                         <a href="#4ff02ca226" class="toc-h3 toc-link" data-title="获取所有子账户现货资产">获取所有子账户现货资产</a>
                       </li>
                       <li>
@@ -669,23 +666,6 @@
                       </li>
                       <li>
                         <a href="#apikey-5" class="toc-h3 toc-link" data-title="查询子账户ApiKey 列表">查询子账户ApiKey 列表</a>
-                      </li>
-                  </ul>
-              </li>
-              <li>
-                <a href="#7f66ad8d90" class="toc-h2 toc-link" data-title="税务接口">税务接口</a>
-                  <ul class="toc-list-h3">
-                      <li>
-                        <a href="#04236a0ca8" class="toc-h3 toc-link" data-title="现货财务记录">现货财务记录</a>
-                      </li>
-                      <li>
-                        <a href="#0e575cbf72" class="toc-h3 toc-link" data-title="合约财务记录">合约财务记录</a>
-                      </li>
-                      <li>
-                        <a href="#01458a4178" class="toc-h3 toc-link" data-title="杠杆财务记录">杠杆财务记录</a>
-                      </li>
-                      <li>
-                        <a href="#p2p-4" class="toc-h3 toc-link" data-title="P2P财务记录">P2P财务记录</a>
                       </li>
                   </ul>
               </li>
@@ -799,18 +779,6 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
-<p><strong>2023年06月20日</strong></p>
-
-<ul>
-<li>新增接口 <a href="#7f66ad8d90">税务接口</a></li>
-</ul>
-
-<p><strong>2023年06月16日</strong></p>
-
-<ul>
-<li>新增接口 <a href="#05495275e8">获取有价账户资产</a></li>
-</ul>
-
 <p><strong>2023年05月20日</strong></p>
 
 <p><a href="#f876a4e1f9">获取订单详情</a>, <a href="#b9220b5487">获取历史委托列表</a> 新增响应字段: &#39;feeDetail&#39; and <code>orderSource</code></p>
@@ -3287,9 +3255,9 @@ Signature = base64.encode(Signature)
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='v2'>划转V2</h3>
@@ -3358,9 +3326,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -3514,9 +3482,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 <h3 id='7bc510fe47'>母子账户划转</h3>
@@ -3643,9 +3611,9 @@ margin_isolated        接受转入转出多个币种</li>
 <li>spot        接受转入转出多个币种</li>
 <li>mix_usdt        只接受转入转出USDT</li>
 <li>mix_usd         混合合约账户，只接受转入转出保证金币种，如BTC, ETH, EOS, XRP, USDC等</li>
-<li>mix_usdc       只接受转入转出USDC
-margin_cross       接受转入转出多个币种
-margin_isolated        接受转入转出多个币种</li>
+<li>mix_usdc       只接受转入转出USDC</li>
+<li>margin_cross        接受转入转出多个币种</li>
+<li>margin_isolated     接受转入转出多个币种</li>
 </ul></li>
 </ul>
 
@@ -4733,7 +4701,7 @@ margin_isolated        接受转入转出多个币种</li>
 <p>获取账户资产</p>
 
 <ul>
-<li>GET  /api/spot/v1/account/assets</li>
+<li>GET  /api/spot/v1/account/assets-lite</li>
 </ul>
 
 <p><strong>请求参数</strong></p>
@@ -4750,14 +4718,14 @@ margin_isolated        接受转入转出多个币种</li>
 <td style="text-align: left">coin</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">币种, 默认不传时，资产为0的币种记录也将返回</td>
+<td style="text-align: center">币种</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets?coin=USDT"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets-lite?coin=USDT"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
