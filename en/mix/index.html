@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -763,6 +811,19 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Jun 15, 2023</strong></p>
+
+<ul>
+<li><a href="#symbolstatus">symbolStatus</a> added new enum: &#39;restrictedAPI&#39;</li>
+<li><a href="#get-history-plan-orders-tpsl">Get History Plan Orders (TPSL)</a> added param &#39;productType&#39;</li>
+</ul>
+
+<p><strong>Jun 05, 2023</strong></p>
+
+<ul>
+<li>Update description on response field: &#39;orderId&#39; of <a href="#place-order">Place order</a></li>
+</ul>
+
 <p><strong>May 26, 2023</strong></p>
 
 <ul>
@@ -1977,6 +2038,7 @@ If there is a large deviation between the local server time and the API server t
 <li>normal    normal</li>
 <li>maintain  symbol is under maintenance</li>
 <li>off       offline</li>
+<li>restrictedAPI   API trading is restricted</li>
 </ul>
 <h3 id='fullstatus'>fullStatus</h3>
 <ul>
@@ -5616,6 +5678,8 @@ If there is a large deviation between the local server time and the API server t
 
 <p>If you are a trader, you can only use this interface to open a position. To close a position, you need to call <code>CopyTrade</code>  -&gt; <a href="#trader-close-position">Trader close Position</a></p>
 
+<p>For trader, if multiple limit order/plan order triggers at the same second, then the first order will become CopyTrade order, while the rest will become normal orders (As a result: no one could follow)</p>
+
 <p>The price and quantity of the order need to meet <code>pricePlace</code> and <code>priceEndStep</code> <code>volumePlace</code>, those fields could be found from the response of  <code>Market</code> -&gt; <a href="#get-all-symbols">Get All Symbols</a></p>
 
 <p>for example:</p>
@@ -5697,10 +5761,6 @@ If there is a large deviation between the local server time and the API server t
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-
-<p>Notice:</p>
-
-<p>one-way mode limit order is reduce order. If there is an unexecuted limit order in the current position, the order <code>size</code> placed when placing the limit order is greater than or equal to the size that can be available in the current position, and the previous limit order will be canceled and asynchronously place new order. the response orderId is null , please use <code>clientOid</code> as the main when placing an order</p>
 
 <p>&nbsp;</p>
 
@@ -5884,7 +5944,7 @@ The limitation would change with time, please be alert with our notifications
 </thead><tbody>
 <tr>
 <td style="text-align: left">orderId</td>
-<td style="text-align: left">Order Id</td>
+<td style="text-align: left">Order Id, might be null. (especially in one-way mode when limit order is reduce order: if there is an unexecuted limit order in the current position, when the order <code>size</code> of the placing limit order is greater than or equals to the size that are available in the current position, then the previous limit order will be canceled, and place another new order  asynchronously. the response orderId will be null, please DO use <code>clientOid</code> as the main key when placing an order)</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>
@@ -9358,8 +9418,8 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
-<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Symbol Id (Must be capitalized), &#39;productType&#39; and &#39;symbol&#39; must have one</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -9371,7 +9431,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#producttype">product type</a></td>
+<td style="text-align: center"><a href="#producttype">product type</a>, &#39;productType&#39; and &#39;symbol&#39; must have one</td>
 </tr>
 </tbody></table>
 
@@ -9523,9 +9583,15 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center"><a href="#producttype">productType</a></td>
+</tr>
+<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">Symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
@@ -10490,8 +10556,8 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 </tr>
 <tr>
 <td>&gt;symbolType</td>
-<td>String</td>
-<td>SymbolType: delivery: Settled Futures; perpetual: Perpetual Futures</td>
+<td>Integer</td>
+<td>SymbolType: 2: Settled Futures; 1: Perpetual Futures</td>
 </tr>
 <tr>
 <td>&gt;symbolId</td>
@@ -12904,6 +12970,11 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">Unknown error</td>
 <td style="text-align: left">45001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">The order type for unilateral position must also be the unilateral position type.</td>
+<td style="text-align: left">40774</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

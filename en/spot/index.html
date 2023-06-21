@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -518,6 +566,9 @@
                         <a href="#get-account-assets" class="toc-h3 toc-link" data-title="Get Account Assets">Get Account Assets</a>
                       </li>
                       <li>
+                        <a href="#get-account-assets-lite" class="toc-h3 toc-link" data-title="Get Account Assets Lite">Get Account Assets Lite</a>
+                      </li>
+                      <li>
                         <a href="#get-sub-account-spot-assets" class="toc-h3 toc-link" data-title="Get sub Account Spot Assets">Get sub Account Spot Assets</a>
                       </li>
                       <li>
@@ -624,6 +675,23 @@
                       </li>
                       <li>
                         <a href="#get-virtual-sub-apikey-list" class="toc-h3 toc-link" data-title="Get Virtual Sub  ApiKey List">Get Virtual Sub  ApiKey List</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#tax" class="toc-h2 toc-link" data-title="Tax">Tax</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#spot-account-record" class="toc-h3 toc-link" data-title="Spot Account Record">Spot Account Record</a>
+                      </li>
+                      <li>
+                        <a href="#future-account-record" class="toc-h3 toc-link" data-title="Future Account Record">Future Account Record</a>
+                      </li>
+                      <li>
+                        <a href="#margin-account-record" class="toc-h3 toc-link" data-title="Margin Account Record">Margin Account Record</a>
+                      </li>
+                      <li>
+                        <a href="#p2p-account-record" class="toc-h3 toc-link" data-title="P2P Account Record">P2P Account Record</a>
                       </li>
                   </ul>
               </li>
@@ -734,6 +802,18 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>20/06/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#tax">Tax</a></li>
+</ul>
+
+<p><strong>16/06/2023</strong></p>
+
+<ul>
+<li>New interface <a href="##get-account-assets-lite">Get Account Assets Lite</a></li>
+</ul>
+
 <p><strong>20/05/2023</strong></p>
 
 <ul>
@@ -1707,33 +1787,83 @@ microtime(true) * 1000;
 <blockquote>
 <p>Java</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.RuntimeErrorException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//POST sign example</span>
+<span class="c1">//        String timestamp = "1684813405151";</span>
+<span class="c1">//        String body = "{\"symbol\":\"TRXUSDT_UMCBL\",\"marginCoin\":\"USDT\",\"size\":551,\"side\":\"open_long\",\"orderType\":\"limit\",\"price\":0.0555,\"timeInForceValue\":\"normal\"}";</span>
+<span class="c1">//</span>
+<span class="c1">//        String sign = generate(timestamp,"POST","/api/mix/v1/order/placeOrder" ,null,body,secretKey);</span>
+<span class="c1">//        log.info("sign:{}",sign);</span>
+
+
+        <span class="c1">//GET sign example</span>
+        <span class="n">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1684814440729"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">"symbol=btcusdt_umcbl&amp;marginCoin=usdt"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">timestamp</span><span class="o">,</span><span class="s">"GET"</span><span class="o">,</span><span class="s">"/api/mix/v1/account/account"</span> <span class="o">,</span><span class="n">queryString</span><span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="n">secretKey</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"sign:{}"</span><span class="o">,</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">Mac</span> <span class="n">MAC</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span> <span class="o">=</span> <span class="n">Mac</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeErrorException</span><span class="o">(</span><span class="k">new</span> <span class="n">Error</span><span class="o">(</span><span class="s">"Can't get Mac's instance."</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">timestamp</span><span class="o">,</span> <span class="n">String</span> <span class="n">method</span><span class="o">,</span> <span class="n">String</span> <span class="n">requestPath</span><span class="o">,</span>
                                   <span class="n">String</span> <span class="n">queryString</span><span class="o">,</span> <span class="n">String</span> <span class="n">body</span><span class="o">,</span> <span class="n">String</span> <span class="n">secretKey</span><span class="o">)</span>
             <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span><span class="o">,</span> <span class="n">InvalidKeyException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
 
         <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">defaultIfBlank</span><span class="o">(</span><span class="n">body</span><span class="o">,</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span><span class="o">);</span>
         <span class="n">queryString</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isBlank</span><span class="o">(</span><span class="n">queryString</span><span class="o">)</span> <span class="o">?</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">EMPTY</span> <span class="o">:</span> <span class="s">"?"</span> <span class="o">+</span> <span class="n">queryString</span><span class="o">;</span>
-
         <span class="n">String</span> <span class="n">preHash</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">preHash</span><span class="o">);</span>
-        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">);</span>
-        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">HMAC_SHA256</span><span class="o">);</span>
-        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">SignatureUtils</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"preHash:{}"</span><span class="o">,</span><span class="n">preHash</span><span class="o">);</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">secretKeyBytes</span> <span class="o">=</span> <span class="n">secretKey</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="n">SecretKeySpec</span> <span class="n">secretKeySpec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">secretKeyBytes</span><span class="o">,</span> <span class="s">"HmacSHA256"</span><span class="o">);</span>
+        <span class="n">Mac</span> <span class="n">mac</span> <span class="o">=</span> <span class="o">(</span><span class="n">Mac</span><span class="o">)</span> <span class="n">CheckSign</span><span class="o">.</span><span class="na">MAC</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
         <span class="n">mac</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">secretKeySpec</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">SignatureUtils</span><span class="o">.</span><span class="na">CHARSET</span><span class="o">)));</span>
+        <span class="k">return</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">mac</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">preHash</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">)));</span>
     <span class="o">}</span>
 
-
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-      <span class="n">String</span> <span class="n">msg</span><span class="o">=</span><span class="n">generate</span><span class="o">(</span><span class="s">"1659927638003"</span><span class="o">,</span><span class="s">"POST"</span><span class="o">,</span><span class="s">"/api/spot/v1/trade/orders"</span> <span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">TRXUSDT_SPBL</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span><span class="n">buy</span><span class="s">","</span><span class="n">orderType</span><span class="s">":"</span><span class="n">limit</span><span class="s">","</span><span class="n">force</span><span class="s">":"</span><span class="n">normal</span><span class="s">","</span><span class="n">price</span><span class="s">":"</span><span class="mf">0.046317</span><span class="s">","</span><span class="n">quantity</span><span class="s">":"</span><span class="mi">1212</span><span class="s">"}"</span><span class="o">,</span><span class="s">""</span><span class="o">);</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
-    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>Python</p>
 </blockquote>
-<pre class="highlight python tab-python"><code><span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">):</span>
     <span class="n">mac</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">),</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">digestmod</span><span class="o">=</span><span class="s">'sha256'</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">mac</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
@@ -1743,10 +1873,34 @@ microtime(true) * 1000;
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
 
 
+<span class="k">def</span> <span class="nf">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'?'</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">'='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+
+    <span class="k">return</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">signStr</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="s">'1659927638003'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">,</span> <span class="s">'/api/spot/v1/trade/orders'</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="s">'{"symbol":"TRXUSDT_SPBL","side":"buy","orderType":"limit","force":"normal","price":"0.046317","quantity":"1212"}'</span><span class="p">)),</span> <span class="s">''</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">signStr</span><span class="p">)</span>
+    <span class="n">API_SECRET_KEY</span> <span class="o">=</span> <span class="s">""</span>
+
+
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1685013478665"</span> <span class="c"># get_timestamp()</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/order/placeOrder"</span>
+    <span class="c"># POST</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.0555</span><span class="p">,</span> <span class="s">"size"</span><span class="p">:</span> <span class="mi">551</span><span class="p">,</span> <span class="s">"side"</span><span class="p">:</span> <span class="s">"open_long"</span><span class="p">,</span> <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"limit"</span><span class="p">,</span> <span class="s">"timeInForceValue"</span><span class="p">:</span> <span class="s">"normal"</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
+    <span class="c"># GET</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/account/account"</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">}</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
 </code></pre>
 <p>For more demo code on other languages, please refer to <a href='#sdk-code-example'>SDK/Code Example</a></p>
 <h2 id='request-interaction'>Request interaction</h2>
@@ -2982,6 +3136,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 <h2 id='wallet'>Wallet</h2><h3 id='transfer'>Transfer</h3>
+<p>Main account only</p>
+
 <p>Rate Limit：5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -3043,6 +3199,12 @@ microtime(true) * 1000;
 <td>String</td>
 <td>Yes</td>
 <td>transfer coin</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Must provide when fromType or toType = margin_isolated</td>
 </tr>
 <tr>
 <td>clientOid</td>
@@ -3178,6 +3340,8 @@ microtime(true) * 1000;
 
 <p>&nbsp;</p>
 <h3 id='transfer-v2'>Transfer V2</h3>
+<p>Main account only</p>
+
 <p>Rate Limit：5/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -3243,6 +3407,12 @@ microtime(true) * 1000;
 <td>String</td>
 <td>Yes</td>
 <td>transfer coin</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>No</td>
+<td>Must provide when fromType or toType = margin_isolated</td>
 </tr>
 <tr>
 <td>clientOid</td>
@@ -3402,6 +3572,8 @@ microtime(true) * 1000;
 
 <p>&nbsp;</p>
 <h3 id='sub-transfer'>Sub Transfer</h3>
+<p>Initiate by the main account. Restricted by the sub accounts</p>
+
 <p>This interface supports to transfer in below ways</p>
 
 <table><thead>
@@ -3732,6 +3904,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 <h3 id='withdraw'>Withdraw</h3>
+<p>Main account only</p>
+
 <p>Just withdraw coins on the chain</p>
 
 <p>Rate Limit：5/sec (Uid)</p>
@@ -3833,6 +4007,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 <h3 id='withdraw-v2'>Withdraw V2</h3>
+<p>Main account only</p>
+
 <p>Just withdraw coins on the chain</p>
 
 <p>Rate Limit：5/sec (Uid)</p>
@@ -3941,6 +4117,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 <h3 id='inner-withdraw'>Inner Withdraw</h3>
+<p>Main account only</p>
+
 <p>Internal withdrawal means that both users are on the Bitget platform</p>
 
 <p>Withdraw money directly in the form of uid, without going on the chain, no need to pass the address</p>
@@ -4024,6 +4202,8 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 <h3 id='inner-withdraw-v2'>Inner Withdraw v2</h3>
+<p>Main account only</p>
+
 <p>Internal withdrawal means that both users are on the Bitget platform</p>
 
 <p>Withdraw money directly in the form of uid, without going on the chain, no need to pass the address</p>
@@ -4558,7 +4738,8 @@ microtime(true) * 1000;
             </span><span class="s2">"readonly"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"parentId"</span><span class="p">:</span><span class="s2">"566624801"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"trader"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+        </span><span class="s2">"trader"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isSpotTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -4602,6 +4783,10 @@ microtime(true) * 1000;
 <td style="text-align: left">trader</td>
 <td style="text-align: center">true is Trader, false is not</td>
 </tr>
+<tr>
+<td style="text-align: left">isSpotTrader</td>
+<td style="text-align: center">true is Spot Trader, false is not</td>
+</tr>
 </tbody></table>
 <h3 id='get-account-assets'>Get Account Assets</h3>
 <p>Rate Limit: 10 times/1s (uid)</p>
@@ -4628,7 +4813,7 @@ microtime(true) * 1000;
 <td>coin</td>
 <td>String</td>
 <td>No</td>
-<td>CoinName, default query all</td>
+<td>CoinName, default will return data even assets are 0 when &#39;coin&#39; is null</td>
 </tr>
 </tbody></table>
 
@@ -4694,7 +4879,98 @@ microtime(true) * 1000;
 <td>Update timing</td>
 </tr>
 </tbody></table>
+<h3 id='get-account-assets-lite'>Get Account Assets Lite</h3>
+<p>Rate Limit: 10 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/account/assets-lite</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>String</td>
+<td>No</td>
+<td>CoinName, default &#39;coin&#39; is null, will return data with assets &gt; 0; if &#39;coin&#39; is not null, will return the coin no matter what the assets is</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/account/assets-lite?coin=USDT"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coinId</td>
+<td>Coin ID</td>
+</tr>
+<tr>
+<td>coinName</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>available</td>
+<td>Available assets</td>
+</tr>
+<tr>
+<td>frozen</td>
+<td>Frozen: create order frozen margin</td>
+</tr>
+<tr>
+<td>lock</td>
+<td>Locked assets, like become a fiat/p2p merchant</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>Update timing</td>
+</tr>
+</tbody></table>
 <h3 id='get-sub-account-spot-assets'>Get sub Account Spot Assets</h3>
+<p>Main account only</p>
+
 <p>Rate Limit: 1 times/10s (uid)</p>
 
 <p><strong>HTTP Request</strong> </p>
@@ -5080,6 +5356,8 @@ microtime(true) * 1000;
 <h2 id='trade'>Trade</h2><h3 id='place-order'>Place order</h3>
 <p>Rate Limit: 10/sec (uid)</p>
 
+<p>Trader Rate Limit: 1/sec (uid)</p>
+
 <p><strong>HTTP Request</strong> </p>
 
 <ul>
@@ -5207,6 +5485,8 @@ microtime(true) * 1000;
 <p>&nbsp;</p>
 <h3 id='batch-order'>Batch order</h3>
 <p>Rate Limit: 5/sec (uid)</p>
+
+<p>Trader Rate Limit: 1/sec (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -6383,7 +6663,7 @@ microtime(true) * 1000;
 <td>executePrice</td>
 <td>BigDecimal</td>
 <td>No</td>
-<td>order   execute price</td>
+<td>Execute price, could not be null when orderType=limit</td>
 </tr>
 <tr>
 <td>size</td>
@@ -7022,7 +7302,7 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">symbols</td>
 <td style="text-align: left">List<String></td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">symbols：[&quot;BTCUSDT_SPBL&quot;, &quot;ETHUSDT_SPNL&quot;], when symbols is empty, will cancel all spot plan open orders</td>
 </tr>
 </tbody></table>
@@ -7449,6 +7729,12 @@ microtime(true) * 1000;
 <td style="text-align: center">order by desc：createTime/price (default createTime)</td>
 </tr>
 <tr>
+<td style="text-align: left">payMethodId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">advertisement payMethodId</td>
+</tr>
+<tr>
 <td style="text-align: left">lastMinId</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">no</td>
@@ -7690,6 +7976,18 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">&gt;&gt;&gt; type</td>
 <td style="text-align: left">pay detail type, file/number, please ignore this field</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; merchantCertifiedResult</td>
+<td style="text-align: left">merchant certified</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; imageUrl</td>
+<td style="text-align: left">merchant certified image</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; desc</td>
+<td style="text-align: left">merchant certified desc</td>
 </tr>
 <tr>
 <td style="text-align: left">minId</td>
@@ -7962,6 +8260,8 @@ microtime(true) * 1000;
 <td style="text-align: left">response data minimum &#39;orderId&#39;</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
 <h2 id='sub-account-endpoints'>Sub-Account Endpoints</h2>
 <ul>
 <li><p>The endpoints documented in this section are for Main-Account, and <strong>only allowed to create/modify virtual sub-accounts</strong> </p></li>
@@ -8690,6 +8990,445 @@ microtime(true) * 1000;
 <tr>
 <td>ip</td>
 <td>sub ApiKey  ip whilelist</td>
+</tr>
+</tbody></table>
+<h2 id='tax'>Tax</h2><h3 id='spot-account-record'>Spot Account Record</h3>
+<p>It is recommended that APIKey  onlyn check the tax permission </p>
+
+<p>limit rule:  1次/1s (uid)</p>
+
+<p>*<em>HTTP Request *</em></p>
+
+<ul>
+<li>GET /api/user/v1/tax/spot-record</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default all coin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time(timestamp ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">end time (timestamp ms) and   startTime Maximum range 366 days</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default500 Max500</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">last data id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1687257612262,
+  "data": [
+    {
+      "id": "1050266154437103616",
+      "coin": "AIBB",
+      "type": "Interest",
+      "amount": "6018333.33333333",
+      "fee": "0",
+      "total": "468575833.33333306",
+      "timestamp": "1686128884851"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>record id  lastEndId</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>coin name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>biz type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>account change</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>fee</td>
+</tr>
+<tr>
+<td>total</td>
+<td>account total</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>record create time (timestamp ms)</td>
+</tr>
+</tbody></table>
+<h3 id='future-account-record'>Future Account Record</h3>
+<p>It is recommended that APIKey  onlyn check the tax permission </p>
+
+<p>limit rule:  1c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/user/v1/tax/future-record</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default USDT future</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default all marginCoin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time(timestamp ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">end time (timestamp ms) and   startTime Maximum range 366 days</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default500 Max500</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">last data id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1687257612262,
+  "data": [
+    {
+            "id": "1024179365593391107",
+            "symbol": "TRXUSDT_UMCBL",
+            "marginCoin": "USDT",
+            "type": "close_long",
+            "amount": "0.10545",
+            "fee": "-0.02134863",
+            "timestamp": "1679909309766"
+        }
+  ]
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>record id  lastEndId</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>Coin name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>biz type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>account change</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>fee</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>record create time (timestamp ms)</td>
+</tr>
+</tbody></table>
+<h3 id='margin-account-record'>Margin Account Record</h3>
+<p>It is recommended that APIKey  onlyn check the tax permission </p>
+
+<p>limit rule:  1c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/user/v1/tax/margin-record</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">marginType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">MarginType isolated/crossed</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default all coin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time(timestamp ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">end time (timestamp ms) and   startTime Maximum range 366 days</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default500 Max500</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">last data id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1687259242290,
+    "data": [
+        {
+            "id": "1050267830387408896",
+            "symbol": null,
+            "coin": "USDT",
+            "type": "transfer_in",
+            "amount": "13333",
+            "fee": "0",
+            "total": "13333",
+            "timestamp": "1686129284474"
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>record id  lastEndId</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>coin name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>biz type</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Account change</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>fee</td>
+</tr>
+<tr>
+<td>total</td>
+<td>account total</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>record create time (timestamp ms)</td>
+</tr>
+</tbody></table>
+<h3 id='p2p-account-record'>P2P Account Record</h3>
+<p>It is recommended that APIKey  onlyn check the tax permission </p>
+
+<p>limit rule:  1c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/user/v1/tax/p2p-record</li>
+</ul>
+
+<p><strong>Request Parameter(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default all coin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">start time(timestamp ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">end time (timestamp ms) and   startTime Maximum range 366 days</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">default500 Max500</td>
+</tr>
+<tr>
+<td style="text-align: left">lastEndId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">last data id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1687260620793,
+  "data": [
+    {
+      "id": "1752117",
+      "coin": "USDT",
+      "type": "BUY",
+      "total": "10",
+      "timestamp": "1680582050393"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Description</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>record id  lastEndId</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>coin name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>biz type</td>
+</tr>
+<tr>
+<td>total</td>
+<td>account total</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>record create time (timestamp ms)</td>
 </tr>
 </tbody></table>
 

@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -740,7 +788,18 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
-<p><strong>2023年05月22日</strong></p>
+<p><strong>2023年06月15日</strong></p>
+
+<ul>
+<li><a href="#symbolstatus">symbolStatus</a> 新增状态: &#39;restrictedAPI&#39;</li>
+<li><a href="#03b4e6fa59">计划委托下单</a> 新增参数 &#39;productType&#39;</li>
+</ul>
+
+<p><strong>2023年06月05日</strong></p>
+
+<p>更新接口<a href="#fd6ce2a756">下单</a> 响应字段描述 &#39;orderId&#39;</p>
+
+<p><strong>2023年05月26日</strong></p>
 
 <ul>
 <li>新增接口 <a href="#5d04ef45e2">一键平仓</a></li>
@@ -2045,6 +2104,7 @@ Signature = base64.encode(Signature)
 <li>normal    正常</li>
 <li>maintain  维护</li>
 <li>off       下架</li>
+<li>restrictedAPI  API限制下单</li>
 </ul>
 <h3 id='enterpointsource'>enterPointSource</h3>
 <table><thead>
@@ -5702,6 +5762,8 @@ Signature = base64.encode(Signature)
 
 <p>如果你是交易员只能使用此接口进行开仓， 平仓操作需要调用 <code>跟单接口</code> -&gt; <code>交易员平仓接口</code></p>
 
+<p>交易员下了多个限价单/计划委托，在同一秒内触发时，先成交的订单会带单，其余订单不会带单</p>
+
 <p>下单的价格和数量需要满足  <code>pricePlace</code>  和 <code>priceEndStep</code>  <code>volumePlace</code>    <code>sizeMultiplier</code>   <code>minTradeNum</code> ，    此字段从 <code>行情接口</code> -&gt;  <code>合约信息接口</code></p>
 
 <p>举例说明：</p>
@@ -5777,10 +5839,6 @@ Signature = base64.encode(Signature)
 - 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
 - 下单接口会返回成功，仓位变化为0</p>
 
-<p>注意：</p>
-
-<p>单项持仓限价单平仓，如果当前仓位存在未成交的平仓单，则在此下平仓单时 下单<code>size</code> 大于等于 当前仓位可平数量，则会取消之前的平仓单，重新异步下单，则此时接口响应 orderId 为null, 请以 下单时 <code>clientOid</code> 为主</p>
-
 <p>未知错误</p>
 
 <aside class="warning">
@@ -5819,6 +5877,18 @@ Signature = base64.encode(Signature)
 <li>POST /api/mix/v1/order/placeOrder</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/placeOrder"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"price"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
@@ -5913,18 +5983,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </aside> 
 
 <blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/order/placeOrder"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"price"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"timeInForceValue"</span>:<span class="s2">"normal"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
-<blockquote>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -5947,7 +6005,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </thead><tbody>
 <tr>
 <td style="text-align: left">orderId</td>
-<td style="text-align: left">订单Id</td>
+<td style="text-align: left">订单Id，可能为null，单项持仓限价单平仓，如果当前仓位存在未成交的平仓单，则在此下平仓单时 下单<code>size</code> 大于等于 当前仓位可平数量，则会取消之前的平仓单，重新异步下单，则此时接口响应 orderId 为null, 请以 下单时 <code>clientOid</code> 为主</td>
 </tr>
 <tr>
 <td style="text-align: left">clientOid</td>
@@ -8409,6 +8467,18 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>POST /api/mix/v1/plan/placePlan</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placePlan"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
 <p><strong>请求参数(Request Body)</strong></p>
 
 <table><thead>
@@ -8493,18 +8563,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/plan/placePlan"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"size"</span>: <span class="s2">"0.01"</span>,<span class="s2">"executePrice"</span>: <span class="s2">"23145.5"</span>,<span class="s2">"triggerPrice"</span>:<span class="s2">"23555.5"</span>,<span class="s2">"side"</span>:<span class="s2">"open_long"</span>,<span class="s2">"orderType"</span>:<span class="s2">"limit"</span>,<span class="s2">"triggerType"</span>:<span class="s2">"market_price"</span>,<span class="s2">"clientOid"</span>:<span class="s2">"test@483939290000"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
 <blockquote>
 <p>返回数据</p>
 </blockquote>
@@ -9533,8 +9591,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">产品ID 必须大写</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">产品ID 必须大写；symbol 与 productType必填其一</td>
 </tr>
 <tr>
 <td style="text-align: left">isPlan</td>
@@ -9546,7 +9604,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">productType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center"><a href="#producttype">产品类型</a> 如果查询使用此参数 不需要symbol</td>
+<td style="text-align: center"><a href="#producttype">产品类型</a>；symbol 与 productType必填其一</td>
 </tr>
 </tbody></table>
 
@@ -9687,6 +9745,34 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>profit_loss</li>
 </ul></li>
 </ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='b279486965'>获取历史计划委托(止盈止损)列表</h3>
 <p>限速规则:  10次/1s (uid)</p>
 
@@ -9707,9 +9793,15 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </thead><tbody>
 <tr>
+<td style="text-align: left">productType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center"><a href="#producttype">产品类型</a></td>
+</tr>
+<tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
@@ -10661,8 +10753,8 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td>&gt;symbolType</td>
-<td>String</td>
-<td>SymbolType：perpetual-&gt;永续 delivery-&gt;交割</td>
+<td>Integer</td>
+<td>SymbolType：1-&gt;永续 2-&gt;交割</td>
 </tr>
 <tr>
 <td>&gt;symbolId</td>
@@ -10672,7 +10764,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td>&gt;deliveryPrice</td>
 <td>String</td>
-<td>交割合约交割价，SymbolType=perpetual时为0</td>
+<td>交割合约交割价，symbolType=1（交割）时为0</td>
 </tr>
 <tr>
 <td>&gt;bidSz</td>
@@ -13011,6 +13103,11 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">未知错误</td>
 <td style="text-align: left">45001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">单边持仓时委托类型也必须是单边持仓类型.</td>
+<td style="text-align: left">40774</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
