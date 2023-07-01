@@ -2009,7 +2009,7 @@ microtime(true) * 1000;
                     </span><span class="s2">"chain"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"needTag"</span><span class="p">:</span><span class="s2">"false"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawable"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"rechargeAble"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rechargeable"</span><span class="p">:</span><span class="s2">"true"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"depositConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"withdrawConfirm"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -2059,7 +2059,7 @@ microtime(true) * 1000;
 <td>Whether can be withdrawn</td>
 </tr>
 <tr>
-<td>&gt; rechargeAble</td>
+<td>&gt; rechargeable</td>
 <td>Whether can deposit</td>
 </tr>
 <tr>
@@ -2163,11 +2163,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>takerFeeRate</td>
-<td>Taker transaction fee rate</td>
+<td>Default taker transaction fee rate, could be overwritten by <a href="#get-user-fee-ratio">personal fee rate</a></td>
 </tr>
 <tr>
 <td>makerFeeRate</td>
-<td>Maker transaction fee rate</td>
+<td>Default maker transaction fee rate, could be overwritten by <a href="#get-user-fee-ratio">personal fee rate</a></td>
 </tr>
 <tr>
 <td>priceScale</td>
@@ -2288,11 +2288,11 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>takerFeeRate</td>
-<td>Taker transaction fee rate</td>
+<td>Taker transaction fee rate, could be overwritten by <a href="#get-user-fee-ratio">personal fee rate</a></td>
 </tr>
 <tr>
 <td>makerFeeRate</td>
-<td>Maker transaction fee rate</td>
+<td>Maker transaction fee rate, could be overwritten by <a href="#get-user-fee-ratio">personal fee rate</a></td>
 </tr>
 <tr>
 <td>priceScale</td>
@@ -8368,19 +8368,20 @@ microtime(true) * 1000;
 </tbody></table>
 
 <ul>
-<li>status
+<li><p>status</p>
 
 <ul>
 <li>normal </li>
 <li>freeze </li>
 </ul></li>
-<li>auth
+<li><p>auth</p>
 
 <ul>
+<li>readonly</li>
 <li>spot_trade </li>
 <li>contract_trade </li>
 </ul></li>
-<li>failAccounts   create fail accounts
+<li><p>failAccounts   create fail accounts</p>
 
 <ul>
 <li>subName is duplicated</li>
@@ -8459,6 +8460,7 @@ microtime(true) * 1000;
 
 <ul>
 <li>spot_trade </li>
+<li>readonly</li>
 <li>contract_trade </li>
 </ul></li>
 </ul>
@@ -8531,7 +8533,7 @@ microtime(true) * 1000;
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"list"</span>:[<span class="o">{</span><span class="s2">"subName"</span>:<span class="s2">"armendon"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6uX6PQ9tbKwa"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade,readonly,spot_trade"</span>,<span class="s2">"remark"</span>:<span class="s2">"1681808312065"</span><span class="o">}]}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"list"</span>:[<span class="o">{</span><span class="s2">"subName"</span>:<span class="s2">"armendon"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6uX6PQ9tbKwa"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,contract_trade"</span>,<span class="s2">"label"</span>:<span class="s2">"1681808312065"</span><span class="o">}]}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -8659,6 +8661,7 @@ microtime(true) * 1000;
 <ul>
 <li>spot_trade </li>
 <li>contract_trade </li>
+<li>readonly</li>
 </ul></li>
 </ul>
 <h3 id='create-virtual-account-apikey'>Create Virtual Account ApiKey</h3>
@@ -8722,7 +8725,7 @@ microtime(true) * 1000;
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"remark"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"label"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response </p>
@@ -8782,6 +8785,7 @@ microtime(true) * 1000;
 <ul>
 <li>spot_trade</li>
 <li>contract_trade<br></li>
+<li>readonly</li>
 </ul></li>
 </ul>
 <h3 id='modify-virtual-account-apikey'>Modify Virtual Account ApiKey</h3>
@@ -8851,7 +8855,7 @@ microtime(true) * 1000;
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"subApiKey"</span>:<span class="s2">"bg_ab5735b8a90f2d4"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"remark"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade,spot_trade,spot_trade,spot_trade,spot_trade,spot_trade"</span><span class="o">}</span><span class="s1">'
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"subUid"</span>:<span class="s2">"983792"</span>,<span class="s2">"subApiKey"</span>:<span class="s2">"bg_ab5735b8a90f2d4"</span>,<span class="s2">"passphrase"</span>:<span class="s2">"1r1b6usadasdasd"</span>,<span class="s2">"label"</span>:<span class="s2">"1682396356594"</span>,<span class="s2">"perm"</span>:<span class="s2">"spot_trade"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -8905,6 +8909,7 @@ microtime(true) * 1000;
 <ul>
 <li>spot_trade</li>
 <li>contract_trade</li>
+<li>readonly</li>
 </ul></li>
 </ul>
 <h3 id='get-virtual-sub-apikey-list'>Get Virtual Sub  ApiKey List</h3>
