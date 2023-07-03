@@ -594,6 +594,15 @@
                         <a href="#k" class="toc-h3 toc-link" data-title="获取K线数据">获取K线数据</a>
                       </li>
                       <li>
+                        <a href="#k-2" class="toc-h3 toc-link" data-title="合约历史k线">合约历史k线</a>
+                      </li>
+                      <li>
+                        <a href="#k-3" class="toc-h3 toc-link" data-title="合约指数价格历史k线">合约指数价格历史k线</a>
+                      </li>
+                      <li>
+                        <a href="#k-4" class="toc-h3 toc-link" data-title="合约标记价格历史k线">合约标记价格历史k线</a>
+                      </li>
+                      <li>
                         <a href="#b9d4674af5" class="toc-h3 toc-link" data-title="获取币种指数">获取币种指数</a>
                       </li>
                       <li>
@@ -796,7 +805,7 @@
                         <a href="#9841eacefc" class="toc-h3 toc-link" data-title="行情频道">行情频道</a>
                       </li>
                       <li>
-                        <a href="#k-2" class="toc-h3 toc-link" data-title="K线频道">K线频道</a>
+                        <a href="#k-5" class="toc-h3 toc-link" data-title="K线频道">K线频道</a>
                       </li>
                       <li>
                         <a href="#d7c4656629" class="toc-h3 toc-link" data-title="深度频道">深度频道</a>
@@ -870,6 +879,14 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年07月03日</strong></p>
+
+<ul>
+<li>新增 <a href="#k-2">获取历史k线</a></li>
+<li>新增 <a href="#k-3">获取指数价格历史k线</a></li>
+<li>新增 <a href="#k-4">获取标记价格历史k线</a></li>
+</ul>
+
 <p><strong>2023年06月30日</strong></p>
 
 <ul>
@@ -916,7 +933,7 @@ clipboard.on('error', function(e) {
 <p><strong>2023年05月12日</strong></p>
 
 <ul>
-<li>接口 <a href="#09c23f077f">获取交易员列表</a> 新增参数 <code>traderUid</code>  交易员uid 和  <code>traderNickName</code>   交易员昵称 </li>
+<li>接口 <a href="#09c23f077f">获取交易员列表</a> 新增参数 <code>traderUid</code>  交易员uid 和  <code>traderNickName</code>   交易员昵称</li>
 </ul>
 
 <p><strong>2023年05月08日</strong></p>
@@ -1042,7 +1059,7 @@ clipboard.on('error', function(e) {
 <p><strong>2022年12月07日</strong></p>
 
 <ul>
-<li>以下接口指定限定planType值: 
+<li>以下接口指定限定planType值:
 
 <ul>
 <li>/api/mix/v1/plan/placeTPSL</li>
@@ -1070,7 +1087,7 @@ clipboard.on('error', function(e) {
 <p><strong>2022年11月11日</strong></p>
 
 <ul>
-<li>新增接口 RestAPI -&gt; 账户接口 -&gt; <a href="#d7d4465c80">调节单双向持仓模式</a> </li>
+<li>新增接口 RestAPI -&gt; 账户接口 -&gt; <a href="#d7d4465c80">调节单双向持仓模式</a></li>
 <li>补充说明单向持仓时的 <a href="#fd6ce2a756">下单</a> 逻辑</li>
 <li>补充说明单向持仓时的 <a href="#ecccb4a0c0">一键反手</a> 逻辑</li>
 <li><a href="#state">订单状态</a>补充: &#39;init&#39; 状态</li>
@@ -1200,7 +1217,7 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>新增合约账户流水接口</li>
-<li><code>/followerOrder</code> 跟单交易接口增加保证金字段<br></li>
+<li><code>/followerOrder</code> 跟单交易接口增加保证金字段</li>
 </ul>
 
 <p><strong>2022年03月04日</strong></p>
@@ -1308,15 +1325,15 @@ clipboard.on('error', function(e) {
 <li>错误信息支持中/英</li>
 </ul>
 <h1 id='5ea2e0cde2'>简介</h1><h2 id='api'>API 简介</h2>
-<p>欢迎使用Bitget开发者文档！  </p>
+<p>欢迎使用Bitget开发者文档！</p>
 
-<p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。  </p>
+<p>此文档是Bitget API的唯一官方文档，Bitget API提供的能力会在此持续更新，请大家及时关注。</p>
 
-<p>你可以通过点击上方菜单来切换获取不同业务的API，还可通过点击右上方的语言按钮来切换文档语言。  </p>
+<p>你可以通过点击上方菜单来切换获取不同业务的API，还可通过点击右上方的语言按钮来切换文档语言。</p>
 
 <p>文档右侧是针对请求参数以及响应结果的示例。</p>
 <h2 id='7b3af22e1f'>更新关注</h2>
-<p>关于API新增、更新、下线等信息Bitget会提前发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。  </p>
+<p>关于API新增、更新、下线等信息Bitget会提前发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。</p>
 
 <p>您可以点击 <a href='https://www.bitget.com/zh-CN/support/categories/360002621832'>这里 </a> 订阅公告。</p>
 <h2 id='152d3db758'>联系我们</h2>
@@ -1324,7 +1341,7 @@ clipboard.on('error', function(e) {
 
 <ul>
 <li>发送邮件至 API@bitget.com。</li>
-<li>Telegram <a href='https://t.me/bitgetOpenapi'>点击加入</a> </li>
+<li>Telegram <a href='https://t.me/bitgetOpenapi'>点击加入</a></li>
 </ul>
 <h2 id='0adb1147b3'>常见问题</h2>
 <ul>
@@ -1348,11 +1365,11 @@ clipboard.on('error', function(e) {
 <p>A ：<code>symbol</code> 区分大小写  必须一律大写</p></li>
 </ul>
 <h1 id='25e54147de'>快速入门</h1><h2 id='c1ae0a8486'>接入准备</h2>
-<p>如需使用API ，请先<a href='https://www.bitget.com/zh-CN/login'>登录</a>网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。  </p>
+<p>如需使用API ，请先<a href='https://www.bitget.com/zh-CN/login'>登录</a>网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。</p>
 
 <p>您可以点击 <a href='https://www.bitget.com/zh-CN/account/newapi'>这里 </a> 创建 API Key。</p>
 
-<p>每个用户可创建10组Api Key，每个Api Key可对应设置读取、交易两种权限。  </p>
+<p>每个用户可创建10组Api Key，每个Api Key可对应设置读取、交易两种权限。</p>
 
 <p>权限说明如下：</p>
 
@@ -1393,7 +1410,7 @@ clipboard.on('error', function(e) {
 <h2 id='sdk'>SDK/代码示例</h2>
 <p><strong>SDK（推荐）</strong></p>
 
-<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://www.npmjs.com/package/bitget-api">NodeJs</a> |  <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a> </p>
+<p><a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-java-sdk-api">Java</a> | <a href="https://github.com/BitgetLimited/V3-bitget-api-sdk/tree/master/bitget-python-sdk-api">Python</a> | <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-golang-sdk-api">Golang</a> | <a href="https://www.npmjs.com/package/bitget-api">NodeJs</a> |  <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/tree/master/bitget-php-sdk-api">PHP</a></p>
 
 <p><strong>PostMan（推荐）</strong>
 <a href="../../sdk/Bitget_Mix.postman_collection.json">PostMan</a></p>
@@ -1407,11 +1424,11 @@ clipboard.on('error', function(e) {
 <li>私有接口</li>
 </ul>
 
-<p><strong>公共接口</strong> </p>
+<p><strong>公共接口</strong></p>
 
 <p>公共接口可用于获取配置信息和行情数据。公共请求无需认证即可调用。</p>
 
-<p><strong>私有接口</strong> </p>
+<p><strong>私有接口</strong></p>
 
 <p>私有接口可用于订单管理和账户管理。每个私有请求必须使用规范的验证形式进行<a href="#8ba46c43fe">签名</a>。</p>
 
@@ -1423,7 +1440,7 @@ clipboard.on('error', function(e) {
 <li>Rest API 当访问超过频率限制时，将返回429状态：请求太频繁。</li>
 </ul>
 
-<p><strong>Rest API</strong> </p>
+<p><strong>Rest API</strong></p>
 
 <p>如果传入有效的APIKey 用APIKey限速；如果没有则拿公网IP限速。</p>
 
@@ -1431,7 +1448,7 @@ clipboard.on('error', function(e) {
 
 <p>特殊说明：批量下单时，若下4个币对，每个币对10个订单时，计为一次请求。</p>
 <h2 id='api-2'>API域名</h2>
-<p>您可以自行使用Rest API接入方式进行操作。     </p>
+<p>您可以自行使用Rest API接入方式进行操作。</p>
 
 <table><thead>
 <tr>
@@ -1452,7 +1469,7 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h2 id='api-3'>API验证</h2>
-<p><strong>发起请求</strong> </p>
+<p><strong>发起请求</strong></p>
 
 <p>所有REST请求的header都必须包含以下key：</p>
 
@@ -1481,7 +1498,7 @@ microtime(true) * 1000;
 </code></pre><h2 id='8ba46c43fe'>签名</h2>
 <p>ACCESS-SIGN的请求头是对 <code>timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body</code> 字符串(+表示字符串连接)使用 <strong>HMAC SHA256</strong> 方法加密，通过<strong>BASE64</strong> 编码输出而得到的。</p>
 
-<p><strong>签名各字段说明</strong> </p>
+<p><strong>签名各字段说明</strong></p>
 
 <ul>
 <li>timestamp：与 ACCESS-TIMESTAMP 请求头相同。</li>
@@ -1491,19 +1508,19 @@ microtime(true) * 1000;
 <li>body：请求主体对应的字符串，如果请求没有主体(通常为GET请求)则body可省略。</li>
 </ul>
 
-<p><strong>queryString为空时，签名格式</strong> </p>
+<p><strong>queryString为空时，签名格式</strong></p>
 
 <p><code>
 timestamp + method.toUpperCase() + requestPath + body
 </code></p>
 
-<p><strong>queryString不为空时，签名格式</strong> </p>
+<p><strong>queryString不为空时，签名格式</strong></p>
 
 <p><code>
 timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + body
 </code></p>
 
-<p><strong>举例说明</strong> </p>
+<p><strong>举例说明</strong></p>
 
 <p>获取合约深度信息，以 BTCUSDT_UMCBL 为例:</p>
 
@@ -1535,7 +1552,7 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 &#39;16273667805456POST/api/mix/v1/order/placeOrder{&quot;symbol&quot;:&quot;BTCUSDT_UMCBL&quot;,&quot;size&quot;:&quot;8&quot;,&quot;side&quot;:&quot;open_long&quot;,&quot;order_type&quot;:&quot;limit&quot;,&quot;client_oid&quot;:&quot;bitget#123456&quot;}&#39;  
 </code></p>
 
-<p><strong>生成最终签名的步骤</strong> </p>
+<p><strong>生成最终签名的步骤</strong></p>
 
 <p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
 
@@ -2752,11 +2769,11 @@ Signature = base64.encode(Signature)
   -d <span class="se">\'</span><span class="o">{</span><span class="s2">"productType"</span>:<span class="s2">"SUMCBL"</span>,<span class="s2">"planType"</span>: <span class="s2">"profit_plan"</span><span class="o">}</span><span class="s1">'
 </span></code></pre>
 <p>planType
-- profit_plan<br>
-- normal_plan<br>
+- profit_plan
+- normal_plan
 - loss_plan
-- pos_profit<br>
-- pos_loss<br>
+- pos_profit
+- pos_loss
 - track_plan  <code>追踪委托</code>
 - moving_plan  <code>移动止盈止损</code></p>
 
@@ -4264,7 +4281,313 @@ Signature = base64.encode(Signature)
 <li>1W(1week)</li>
 <li>1M (1month)</li>
 <li>6Hutc (UTC0 6hour)</li>
-<li>12Hutc (UTC0 12hour) </li>
+<li>12Hutc (UTC0 12hour)</li>
+<li>1Dutc  (UTC0 1day)</li>
+<li>3Dutc (UTC0 3day)</li>
+<li>1Wutc (UTC0 1 week)</li>
+<li>1Mutc (UTC0 1 month)</li>
+</ul>
+<h3 id='k-2'>合约历史k线</h3>
+<p>限速规则: 20次/1s (IP)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/history-candles</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>产品id 必须大写</td>
+</tr>
+<tr>
+<td>granularity</td>
+<td>String</td>
+<td>是</td>
+<td>k线类别</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>否</td>
+<td>默认100 最大200</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/market/history-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;endTime=1659410528000"
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>[
+    [
+        "1627008780000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ],
+    [
+        "1627008840000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ]
+]
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<p>返回字段Index时间戳0开盘价1最高价2最低价3收盘价4交易币成交量5计价币成交量6</p>
+
+<p><strong>granularity(candles interval)</strong></p>
+
+<ul>
+<li>1m(1minute)</li>
+<li>3m(3minute)</li>
+<li>5m(5minute)</li>
+<li>15m(15minute)</li>
+<li>30m(30minute)</li>
+<li>1H(1hour)</li>
+<li>2H (2hour)</li>
+<li>4H (4hour)</li>
+<li>6H (6hour)</li>
+<li>12H (12hour)</li>
+<li>1D (1day)</li>
+<li>3D (3day)</li>
+<li>1W(1week)</li>
+<li>1M (1month)</li>
+<li>6Hutc (UTC0 6hour)</li>
+<li>12Hutc (UTC0 12hour)</li>
+<li>1Dutc  (UTC0 1day)</li>
+<li>3Dutc (UTC0 3day)</li>
+<li>1Wutc (UTC0 1 week)</li>
+<li>1Mutc (UTC0 1 month)</li>
+</ul>
+<h3 id='k-3'>合约指数价格历史k线</h3>
+<p>限速规则: 20次/1s (IP)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/history-index-candles</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>产品id 必须大写</td>
+</tr>
+<tr>
+<td>granularity</td>
+<td>String</td>
+<td>是</td>
+<td>k线类别</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>否</td>
+<td>默认100 最大200</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/market/history-index-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;endTime=1659410528000"
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>[
+    [
+        "1627008780000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ],
+    [
+        "1627008840000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ]
+]
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<p>返回字段Index时间戳0开盘价1最高价2最低价3收盘价4交易币成交量5计价币成交量6</p>
+
+<p><strong>granularity(candles interval)</strong></p>
+
+<ul>
+<li>1m(1minute)</li>
+<li>3m(3minute)</li>
+<li>5m(5minute)</li>
+<li>15m(15minute)</li>
+<li>30m(30minute)</li>
+<li>1H(1hour)</li>
+<li>2H (2hour)</li>
+<li>4H (4hour)</li>
+<li>6H (6hour)</li>
+<li>12H (12hour)</li>
+<li>1D (1day)</li>
+<li>3D (3day)</li>
+<li>1W(1week)</li>
+<li>1M (1month)</li>
+<li>6Hutc (UTC0 6hour)</li>
+<li>12Hutc (UTC0 12hour)</li>
+<li>1Dutc  (UTC0 1day)</li>
+<li>3Dutc (UTC0 3day)</li>
+<li>1Wutc (UTC0 1 week)</li>
+<li>1Mutc (UTC0 1 month)</li>
+</ul>
+<h3 id='k-4'>合约标记价格历史k线</h3>
+<p>限速规则: 20次/1s (IP)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/history-mark-candles</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>是</td>
+<td>产品id 必须大写</td>
+</tr>
+<tr>
+<td>granularity</td>
+<td>String</td>
+<td>是</td>
+<td>k线类别</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>否</td>
+<td>默认100 最大200</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/market/history-mark-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;endTime=1659410528000"
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>[
+    [
+        "1627008780000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ],
+    [
+        "1627008840000",
+        "24016",
+        "24016",
+        "24016",
+        "24016",
+        "0",
+        "0"
+    ]
+]
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<p>返回字段Index时间戳0开盘价1最高价2最低价3收盘价4交易币成交量5计价币成交量6</p>
+
+<p><strong>granularity(candles interval)</strong></p>
+
+<ul>
+<li>1m(1minute)</li>
+<li>3m(3minute)</li>
+<li>5m(5minute)</li>
+<li>15m(15minute)</li>
+<li>30m(30minute)</li>
+<li>1H(1hour)</li>
+<li>2H (2hour)</li>
+<li>4H (4hour)</li>
+<li>6H (6hour)</li>
+<li>12H (12hour)</li>
+<li>1D (1day)</li>
+<li>3D (3day)</li>
+<li>1W(1week)</li>
+<li>1M (1month)</li>
+<li>6Hutc (UTC0 6hour)</li>
+<li>12Hutc (UTC0 12hour)</li>
 <li>1Dutc  (UTC0 1day)</li>
 <li>3Dutc (UTC0 3day)</li>
 <li>1Wutc (UTC0 1 week)</li>
@@ -6997,10 +7320,10 @@ Signature = base64.encode(Signature)
 
 
 {<br/>
-    "code":"45116",<br/>
-    "msg":"The count of positions hold by the account exceeds the maximum count 150",<br/>
-    "requestTime":1669910904315,<br/>
-    "data":null<br/>
+"code":"45116",<br/>
+"msg":"The count of positions hold by the account exceeds the maximum count 150",<br/>
+"requestTime":1669910904315,<br/>
+"data":null<br/>
 }<br/>
 如USDT永续合约，如果持仓数量+open orders超过了150，就会收到上面的响应；<br/>
 USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
@@ -7114,7 +7437,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 <ul>
 <li>[反手下单的size] = [市价平仓size] = [反向市价开仓size]</li>
-<li>原持仓:1 long BTCUSDT </li>
+<li>原持仓:1 long BTCUSDT</li>
 <li>反手size: 1 close_long BTCUSDT</li>
 <li>理想状态下，原持仓1 long BTCUSDT 会市价平仓，反手市价1 short BTCUSDT 开仓</li>
 </ul></li>
@@ -7126,7 +7449,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>反手 - 1.5倍size
 
 <ul>
-<li>原持仓:1 long BTCUSDT </li>
+<li>原持仓:1 long BTCUSDT</li>
 <li>反手size: 1.50 close_long BTCUSDT</li>
 <li>理想状态下，原持仓1 long BTCUSDT 会市价平仓，反手市价1 short BTCUSDT 开仓</li>
 </ul></li>
@@ -7138,7 +7461,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>反手 - 0.5倍size
 
 <ul>
-<li>原持仓:1 long BTCUSDT </li>
+<li>原持仓:1 long BTCUSDT</li>
 <li>反手size: 0.5 close_long BTCUSDT</li>
 <li>理想状态下，原持仓1 long BTCUSDT 会市价平多0.5，变成0.5个Long BTCUSDT；反手市价short开空0.5 BTCUSDT</li>
 </ul></li>
@@ -7171,12 +7494,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
     </span><span class="s2">"reverse"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>如原持仓方向为open_long, 则反手操作中应设置参数<code>side</code>为 close_long; 
-如原持仓方向为open_short, 则反手操作中应设置参数<code>side</code>为 close_short; 
-如原持仓方向为buy_single, 则反手操作中应设置参数<code>side</code>为 sell_single; 
-如原持仓方向为sell_single, 则反手操作中应设置参数<code>side</code>为 buy_single; </p>
+<p>如原持仓方向为open_long, 则反手操作中应设置参数<code>side</code>为 close_long;
+如原持仓方向为open_short, 则反手操作中应设置参数<code>side</code>为 close_short;
+如原持仓方向为buy_single, 则反手操作中应设置参数<code>side</code>为 sell_single;
+如原持仓方向为sell_single, 则反手操作中应设置参数<code>side</code>为 buy_single;</p>
 
-<p>右边的示例演示了一个反手操作。理想状态下，你最终应该持仓 <code>100 TRXUSDT short</code> </p>
+<p>右边的示例演示了一个反手操作。理想状态下，你最终应该持仓 <code>100 TRXUSDT short</code></p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -7451,13 +7774,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BITGET#1627293504612"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-      </span><span class="s2">"failure"</span><span class="p">:[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1627293504611"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BITGET#1627293504611"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"errorMsg"</span><span class="p">:</span><span class="s2">"Duplicate clientOid"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"failure"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1627293504611"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BITGET#1627293504611"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"errorMsg"</span><span class="p">:</span><span class="s2">"Duplicate clientOid"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1627293504612</span><span class="w">
@@ -7513,7 +7836,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li><p>timeInForceValue</p>
 
 <ul>
-<li>normal<br></li>
+<li>normal</li>
 <li>post_only</li>
 <li>fok</li>
 <li>ioc</li>
@@ -7586,13 +7909,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -7833,13 +8156,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1627293504612"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"BITGET#1627293504612"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293504612</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='symbol'>按symbol撤单</h3>
 <p>限速规则: 10次/1s (uid)</p>
@@ -8074,23 +8397,23 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684747525424</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355251990528"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184832"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184835"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355260379136"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"failure"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1684747525424</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355251990528"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184832"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184835"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355260379136"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"failure"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -8158,42 +8481,42 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.00</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.4520</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464831"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464891"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.4520</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464831"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1678779464891"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -8353,39 +8676,39 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.050</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044911928892862465"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xx005"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-8</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">25500.00</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-8</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">33800.00</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetStopLossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">11300.00</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684852338057"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684852338057"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.050</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044911928892862465"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xx005"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">25500.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"posSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">33800.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetStopLossPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">11300.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684852338057"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684852338057"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -8579,42 +8902,42 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">31.4421</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="w"> </span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">31.4421</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -8804,40 +9127,40 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"nextFlag"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"endId"</span><span class="p">:</span><span class="s2">"802355881591844864"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderList"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452796883"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1665452797002"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627299486707</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -8999,38 +9322,38 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="mf">69582.5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"presetStopLossPrice"</span><span class="p">:</span><span class="mf">21432.5</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="mi">45838</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1627028717807</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300098776</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802382049422487552"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627028708738"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"filledQty"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"priceAvg"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">23999.3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"canceled"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"totalProfits"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"posSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="mf">69582.5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"presetStopLossPrice"</span><span class="p">:</span><span class="mf">21432.5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"filledAmount"</span><span class="p">:</span><span class="mi">45838</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cTime"</span><span class="p">:</span><span class="mi">1627028708807</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uTime"</span><span class="p">:</span><span class="mi">1627028717807</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300098776</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9216,27 +9539,27 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"802377534023585793"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802377533381816325"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627386245672</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"802377534023585793"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802377533381816325"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627386245672</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9309,7 +9632,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li><p>side</p>
 
 <ul>
-<li>open_long<br></li>
+<li>open_long</li>
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
@@ -9381,27 +9704,27 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"802377534023585793"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802377533381816325"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627386245672</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tradeId"</span><span class="p">:</span><span class="s2">"802377534023585793"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"802377533381816325"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sizeQty"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fee"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"burst_close_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fillAmount"</span><span class="p">:</span><span class="s2">"0.3247"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profit"</span><span class="p">:</span><span class="s2">"0E-8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"takerMakerFlag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627027632241"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627386245672</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9474,7 +9797,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <li>side
 
 <ul>
-<li>open_long<br></li>
+<li>open_long</li>
 <li>open_short</li>
 <li>close_long</li>
 <li>close_short</li>
@@ -9593,13 +9916,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9737,13 +10060,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9851,13 +10174,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -9970,13 +10293,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10096,13 +10419,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10203,13 +10526,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10317,13 +10640,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10410,13 +10733,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10485,10 +10808,10 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10555,13 +10878,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"RFIut#1627300490884"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627300490899</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10649,32 +10972,32 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"executePrice"</span><span class="p">:</span><span class="s2">"38923.1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"triggerPrice"</span><span class="p">:</span><span class="s2">"45000.3"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"not_trigger"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"planType"</span><span class="p">:</span><span class="s2">"normal_plan"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"executePrice"</span><span class="p">:</span><span class="s2">"38923.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"triggerPrice"</span><span class="p">:</span><span class="s2">"45000.3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"not_trigger"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"planType"</span><span class="p">:</span><span class="s2">"normal_plan"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10877,33 +11200,33 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回数据</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"executeOrderId"</span><span class="p">:</span><span class="s2">"3036219460491"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"executePrice"</span><span class="p">:</span><span class="s2">"38923.1"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"triggerPrice"</span><span class="p">:</span><span class="s2">"45000.3"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"not_trigger"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"planType"</span><span class="p">:</span><span class="s2">"normal_plan"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"803521986049314816"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="s2">"xxx001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"executeOrderId"</span><span class="p">:</span><span class="s2">"3036219460491"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"size"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"executePrice"</span><span class="p">:</span><span class="s2">"38923.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"triggerPrice"</span><span class="p">:</span><span class="s2">"45000.3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"not_trigger"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"orderType"</span><span class="p">:</span><span class="s2">"limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"planType"</span><span class="p">:</span><span class="s2">"normal_plan"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="s2">"open_long"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"triggerType"</span><span class="p">:</span><span class="s2">"fill_price"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetTakeProfitPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"presetTakeLossPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy_single"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1627300490867"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627354109502</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -11010,7 +11333,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </ul>
 <h1 id='websocketapi'>WebSocketAPI</h1><h2 id='153042ed9e'>概述</h2>
 <p>WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务器全双工通信， 使得数据可以快速地双向传播。通过一次简单的握手就
- 可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
+可以建立客户端和服务器连接， 服务器根据业务规则可以主动推送信息给客户端。其优点如下：</p>
 
 <ul>
 <li>客户端和服务器进行数据传输时，请求头信息比较小，大概2个字节。</li>
@@ -11019,7 +11342,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </ul>
 
 <p>强烈建议开发者使用WebSocket API获取市场行情和买卖深度等信息。
-​     </p>
+​</p>
 
 <table><thead>
 <tr>
@@ -11082,7 +11405,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 <p>requestPath 一律默认为&#39;/user/verify&#39;</p>
 
-<p> 请求在时间戳之后30秒会失效，如果您的服务器时间和API服务器时间有偏差，推荐使用 REST API查询API服务器的时间，然后设置时间戳</p>
+<p>请求在时间戳之后30秒会失效，如果您的服务器时间和API服务器时间有偏差，推荐使用 REST API查询API服务器的时间，然后设置时间戳</p>
 
 <p>签名方式说明参考API概述里的验证部分</p>
 
@@ -11102,48 +11425,48 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求格式说明：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"&lt;passphrase&gt;"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"&lt;timestamp&gt;"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"&lt;sign&gt;"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"&lt;api_key&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"&lt;passphrase&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"&lt;timestamp&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"&lt;sign&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">   
 </span></code></pre>
 <blockquote>
 <p>请求示例：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"bg_573af5eca856acd91c230da294ce2105"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1538054050"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"8RCOqCJAhhEh4PWcZB/96QojLDqMAg4qNynIixFzS3E="</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="s2">"bg_573af5eca856acd91c230da294ce2105"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passphrase"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1538054050"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sign"</span><span class="p">:</span><span class="s2">"8RCOqCJAhhEh4PWcZB/96QojLDqMAg4qNynIixFzS3E="</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>成功返回示例：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"login"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"30005"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"login fail"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"30005"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"login fail"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='5319af762d'>订阅</h2>
 <p><strong>订阅说明</strong></p>
@@ -11152,13 +11475,13 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求格式说明</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "op":"subscribe",
-    "args":[
-        "&lt;SubscriptionTopic&gt; "
-    ]
+  "op":"subscribe",
+  "args":[
+    "&lt;SubscriptionTopic&gt; "
+  ]
 }
 </code></pre>
-<p>WebSocket 频道： <code>公共频道</code> </p>
+<p>WebSocket 频道： <code>公共频道</code></p>
 
 <p><code>公共频道</code>无需登录，包括行情频道，K线频道，交易数据频道，深度数据频道等。</p>
 
@@ -11172,19 +11495,19 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1m"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1m"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -11233,12 +11556,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回示例</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "event":"subscribe",
-    "arg":{
-        "instType":"mc",
-        "channel":"ticker",
-        "instId":"BTCUSDT"
-    }
+  "event":"subscribe",
+  "arg":{
+    "instType":"mc",
+    "channel":"ticker",
+    "instId":"BTCUSDT"
+  }
 }
 </code></pre>
 <p><strong>返回参数</strong></p>
@@ -11301,29 +11624,29 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求格式说明</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "op":"unsubscribe",
-    "args":[
-        "&lt; SubscriptionTopic &gt; "
-    ]
+  "op":"unsubscribe",
+  "args":[
+    "&lt; SubscriptionTopic &gt; "
+  ]
 }
 </code></pre>
 <blockquote>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "op":"unsubscribe",
-    "args":[
-        {
-            "instType":"MC",
-            "channel":"ticker",
-            "instId":"BTCUSDT"
-        },
-        {
-            "instType":"MC",
-            "channel":"candle1D",
-            "instId":"BTCUSDT"
-        }
-    ]
+  "op":"unsubscribe",
+  "args":[
+    {
+      "instType":"MC",
+      "channel":"ticker",
+      "instId":"BTCUSDT"
+    },
+    {
+      "instType":"MC",
+      "channel":"candle1D",
+      "instId":"BTCUSDT"
+    }
+  ]
 }
 </code></pre>
 <p><strong>请求参数</strong></p>
@@ -11372,12 +11695,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"unsubscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -11482,14 +11805,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -11544,21 +11867,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -11619,38 +11942,38 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>推送示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"44962.00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="s2">"44962"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="s2">"44961"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"45136.50"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"43620.00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"capitalRate"</span><span class="p">:</span><span class="s2">"-0.00010"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"nextSettleTime"</span><span class="p">:</span><span class="mi">1632495600000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"systemTime"</span><span class="p">:</span><span class="mi">1632470889087</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"markPrice"</span><span class="p">:</span><span class="s2">"44936.21"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="s2">"44959.23"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"holding"</span><span class="p">:</span><span class="s2">"1825.822"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"39746.470"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17088.5000000000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"chgUTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00778"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"deliveryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.344"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.024"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last"</span><span class="p">:</span><span class="s2">"44962.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bestAsk"</span><span class="p">:</span><span class="s2">"44962"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bestBid"</span><span class="p">:</span><span class="s2">"44961"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"high24h"</span><span class="p">:</span><span class="s2">"45136.50"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"low24h"</span><span class="p">:</span><span class="s2">"43620.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priceChangePercent"</span><span class="p">:</span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"capitalRate"</span><span class="p">:</span><span class="s2">"-0.00010"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nextSettleTime"</span><span class="p">:</span><span class="mi">1632495600000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"systemTime"</span><span class="p">:</span><span class="mi">1632470889087</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"markPrice"</span><span class="p">:</span><span class="s2">"44936.21"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"indexPrice"</span><span class="p">:</span><span class="s2">"44959.23"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"holding"</span><span class="p">:</span><span class="s2">"1825.822"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseVolume"</span><span class="p">:</span><span class="s2">"39746.470"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteVolume"</span><span class="p">:</span><span class="s2">"1760329683.834"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"openUtc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17088.5000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chgUTC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00778"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"deliveryPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bidSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.344"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"askSz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.024"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -11803,21 +12126,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>Best ask size</td>
 </tr>
 </tbody></table>
-<h3 id='k-2'>K线频道</h3>
+<h3 id='k-5'>K线频道</h3>
 <p>获取产品的K线数据。</p>
 
 <blockquote>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -11866,21 +12189,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:candle1D,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:candle1D,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -11941,21 +12264,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>推送示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1597026383085"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"8533.02"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"8553.74"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"8527.17"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"8548.26"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"45247"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1597026383085"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"8533.02"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"8553.74"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"8527.17"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"8548.26"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"45247"</span><span class="w">
     </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12040,14 +12363,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
-    "op":"subscribe",
-    "args":[
-        {
-            "instType":"mc",
-            "channel":"books5",
-            "instId":"BTCUSDT"
-        }
-    ]
+  "op":"subscribe",
+  "args":[
+    {
+      "instType":"mc",
+      "channel":"books5",
+      "instId":"BTCUSDT"
+    }
+  ]
 }
 </code></pre>
 <p><strong>请求参数</strong></p>
@@ -12096,21 +12419,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12169,22 +12492,22 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 
 <p>推送示例:全量</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"books"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="err">    </span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">  </span><span class="p">{</span><span class="err">            </span><span class="w">
-        </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="mf">44849.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0031</span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="mf">44845.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.725</span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"checksum"</span><span class="p">:</span><span class="s2">" -1638549107"</span><span class="p">,</span><span class="w">
-        </span><span class="err"> </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628826748009"</span><span class="err"> </span><span class="w">
-    </span><span class="p">}</span><span class="err">   </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"books"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mf">44849.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0031</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mf">44845.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.725</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"checksum"</span><span class="p">:</span><span class="s2">" -1638549107"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1628826748009"</span><span class="w">
+  </span><span class="p">}</span><span class="err">   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12256,14 +12579,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -12312,23 +12635,23 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12389,26 +12712,26 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>推送示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1630585523753"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.0100"</span><span class="p">,</span><span class="w">
-            </span><span class="mi">1</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"1630572379706"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"0.0221"</span><span class="p">,</span><span class="w">
-            </span><span class="mi">1</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"action"</span><span class="p">:</span><span class="s2">"snapshot"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1630585523753"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"0.0100"</span><span class="p">,</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1630572379706"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"45653.5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"0.0221"</span><span class="p">,</span><span class="w">
+      </span><span class="mi">1</span><span class="w">
     </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12478,14 +12801,14 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -12534,23 +12857,23 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:tradeNew,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:tradeNew,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -12768,12 +13091,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -12822,21 +13145,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:account,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:account,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="err"> </span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -13236,12 +13559,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -13290,21 +13613,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -13573,12 +13896,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>请求示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>请求参数</strong></p>
@@ -13627,21 +13950,21 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <p>成功返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscribe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"instId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>

@@ -511,6 +511,9 @@
                         <a href="#get-candle-data" class="toc-h3 toc-link" data-title="Get Candle Data">Get Candle Data</a>
                       </li>
                       <li>
+                        <a href="#get-history-candle-data" class="toc-h3 toc-link" data-title="Get History Candle Data">Get History Candle Data</a>
+                      </li>
+                      <li>
                         <a href="#get-depth" class="toc-h3 toc-link" data-title="Get Depth">Get Depth</a>
                       </li>
                       <li>
@@ -802,6 +805,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>03/07/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#get-history-candles-data">Get History Candles Data</a></li>
+</ul>
+
 <p><strong>20/06/2023</strong></p>
 
 <ul>
@@ -2827,6 +2836,158 @@ microtime(true) * 1000;
 <p>Request Example</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;after=1659076670000&amp;before=1659080270000&amp;limit=100"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"2.34517"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high"</span><span class="p">:</span><span class="s2">"2.34771"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low"</span><span class="p">:</span><span class="s2">"2.34214"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"2.34555"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"189631.101357091"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"80862.6823"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"189631.101357091"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1622091360000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"open"</span><span class="p">:</span><span class="s2">"2.34391"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"high"</span><span class="p">:</span><span class="s2">"2.34903"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"low"</span><span class="p">:</span><span class="s2">"2.34391"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"close"</span><span class="p">:</span><span class="s2">"2.34608"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteVol"</span><span class="p">:</span><span class="s2">"167725.002115681"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseVol"</span><span class="p">:</span><span class="s2">"71479.3205"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"usdtVol"</span><span class="p">:</span><span class="s2">"167725.002115681"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="s2">"1622091420000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>System timestamp</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Opening price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>Highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>Lowest price</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Closing price</td>
+</tr>
+<tr>
+<td>baseVol</td>
+<td>Base coin volume</td>
+</tr>
+<tr>
+<td>quoteVol</td>
+<td>Denomination coin volume</td>
+</tr>
+<tr>
+<td>usdtVol</td>
+<td>USDT volume</td>
+</tr>
+</tbody></table>
+
+<p><strong>period</strong></p>
+
+<ul>
+<li>1min (1 minute)</li>
+<li>5min (5 minutes)</li>
+<li>15min (15 minutes)</li>
+<li>30min (30 minutes)</li>
+<li>1h (1 hour)</li>
+<li>4h (4 hours)</li>
+<li>6h (6 hours)</li>
+<li>12h (12 hours)</li>
+<li>1day (1 day)</li>
+<li>3day (3 days)</li>
+<li>1week (1 week)</li>
+<li>1M (monthly line)</li>
+<li>6Hutc (UTC0 6 hour)</li>
+<li>12Hutc (UTC0 12 hour)</li>
+<li>1Dutc (UTC0 1day)</li>
+<li>3Dutc (UTC0 3rd)</li>
+<li>1Wutc (UTC0 weekly)</li>
+<li>1Mutc (UTC0 monthly)</li>
+</ul>
+<h3 id='get-history-candle-data'>Get History Candle Data</h3>
+<p>Rate Limit: 20 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p>obtain history candlestick line data</p>
+
+<ul>
+<li>GET /api/spot/v1/market/history-candles</li>
+</ul>
+
+<p><strong>Request parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Parameter type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>Yes</td>
+<td>Symbol Id</td>
+</tr>
+<tr>
+<td>period</td>
+<td>String</td>
+<td>Yes</td>
+<td>Candlestick line time unit, granularity (refer to the following list for values)</td>
+</tr>
+<tr>
+<td>after</td>
+<td>String</td>
+<td>No</td>
+<td>Time after, milliseconds, return greater than or equals</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Time before, milliseconds, return less than or equals</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>String</td>
+<td>No</td>
+<td>Default 100, max 1000</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/history-candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;after=1659076670000&amp;before=1659080270000&amp;limit=100"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
