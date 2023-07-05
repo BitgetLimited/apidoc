@@ -274,6 +274,54 @@
       -webkit-transition: all 300ms;
       transition: all 300ms;
     }
+
+    @media  only screen and (max-width: 768px) {
+
+        a.logo-link {
+          display: none;
+        }
+
+        .con {
+          display: flex;
+          height: 55px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: center;
+          width: 100%;
+          max-width: 268px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        }
+
+        .con li{
+          width: 100%;
+        }
+
+        .con a{
+          display: inline-block;
+          width: 100%;
+          word-break: keep-all;
+        }
+
+        a.international{
+          border: none;
+        }
+
+        .content{
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .lang-selector a.active {
+           display: none;
+        }
+
+       .toc-wrapper.open{
+          top: 0;
+          z-index: 100;
+       }
+    }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
@@ -366,6 +414,9 @@
                       </li>
                       <li>
                         <a href="#auth" class="toc-h3 toc-link" data-title="auth">auth</a>
+                      </li>
+                      <li>
+                        <a href="#perm" class="toc-h3 toc-link" data-title="perm">perm</a>
                       </li>
                       <li>
                         <a href="#producttype" class="toc-h3 toc-link" data-title="productType">productType</a>
@@ -465,6 +516,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget API Document! Click <a href="#introduction">here</a> for a quick start</p>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Jul 5, 2023</strong></p>
+
+<ul>
+<li>Update the enum of &#39;perm&#39; in <a href="#create-sub-apikey-only-broker">Create Sub ApiKey (Only Broker)</a></li>
+</ul>
+
 <p><strong>Dec 28, 2022</strong></p>
 
 <ul>
@@ -738,7 +795,15 @@ If there is a large deviation between the local server time and the API server t
 <li>transfer</li>
 <li>spot_trade</li>
 <li>contract_trade</li>
-<li>readonly</li>
+<li>readonly: read permission (not actually readonly)</li>
+</ul>
+<h3 id='perm'>perm</h3>
+<ul>
+<li>recharge</li>
+<li>transfer</li>
+<li>spot_trade</li>
+<li>contract_trade</li>
+<li>readonly: read permission (not actually readonly)</li>
 </ul>
 <h3 id='producttype'>productType</h3>
 <ul>
@@ -1793,7 +1858,7 @@ crossed       Cross margin</li>
 <td style="text-align: left">perm</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma</td>
+<td style="text-align: center"><a href="#perm">Permissions</a>, separated by comma</td>
 </tr>
 </tbody></table>
 
@@ -1809,7 +1874,7 @@ crossed       Cross margin</li>
       </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1895,7 +1960,7 @@ crossed       Cross margin</li>
       </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1993,7 +2058,7 @@ crossed       Cross margin</li>
 <td style="text-align: left">perm</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center"><a href="#auth">Permissions</a>, separated by comma (override)</td>
+<td style="text-align: center"><a href="#perm">Permissions</a>, separated by comma (override)</td>
 </tr>
 </tbody></table>
 
@@ -2007,7 +2072,7 @@ crossed       Cross margin</li>
       </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
