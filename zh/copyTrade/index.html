@@ -5453,7 +5453,7 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
  -d <span class="se">\'</span><span class="o">{</span>
-    <span class="s2">"trackingNos"</span>: <span class="o">[</span><span class="s2">"534534345345435345"</span><span class="o">]</span>,
+    <span class="s2">"trackingOrderNos"</span>: <span class="o">[</span><span class="s2">"534534345345435345"</span><span class="o">]</span>,
     <span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>
 <span class="o">}</span><span class="s1">'
 </span></code></pre>
@@ -5468,7 +5468,7 @@ Signature = base64.encode(Signature)
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">trackingNos</td>
+<td style="text-align: left">trackingOrderNos</td>
 <td style="text-align: left">List<String></td>
 <td style="text-align: center">是</td>
 <td style="text-align: center">按买入币对分组trackingNo，全部成功或全部失败，跟踪订单号，最大50个</td>
@@ -6289,7 +6289,7 @@ Signature = base64.encode(Signature)
         <span class="s2">"setting"</span>: <span class="o">[</span>
           <span class="o">{</span>
             <span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT"</span>,
-            <span class="s2">"traceType"</span>:<span class="s2">"FIXED_AMOUNT"</span>,
+            <span class="s2">"traceType"</span>:<span class="s2">"amount"</span>,
             <span class="s2">"maxHoldCount"</span>:<span class="s2">"1000"</span>,
             <span class="s2">"traceValue"</span>:<span class="s2">"100"</span>,
             <span class="s2">"takeProfitRation"</span>:<span class="s2">"10"</span>,
@@ -6556,7 +6556,7 @@ Signature = base64.encode(Signature)
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
  -d <span class="se">\'</span><span class="o">{</span>
-        <span class="s2">"symbolIds"</span>:[<span class="s2">"BTCUSDT"</span>, <span class="s2">"ETHUSDT"</span>, <span class="s2">"BGBUSDT"</span><span class="o">]</span>
+        <span class="s2">"symbols"</span>:[<span class="s2">"BTCUSDT"</span>, <span class="s2">"ETHUSDT"</span>, <span class="s2">"BGBUSDT"</span><span class="o">]</span>
 <span class="o">}</span><span class="s1">'
 </span></code></pre>
 <p><strong>请求参数</strong></p>
