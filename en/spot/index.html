@@ -453,6 +453,9 @@
                       <li>
                         <a href="#ordersource" class="toc-h3 toc-link" data-title="orderSource">orderSource</a>
                       </li>
+                      <li>
+                        <a href="#noticetype" class="toc-h3 toc-link" data-title="noticeType">noticeType</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -475,6 +478,14 @@
       <li>
         <a href="#restapi" class="toc-h1 toc-link" data-title="RestAPI">RestAPI</a>
           <ul class="toc-list-h2">
+              <li>
+                <a href="#notice" class="toc-h2 toc-link" data-title="Notice">Notice</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#get-all-notices" class="toc-h3 toc-link" data-title="Get All Notices">Get All Notices</a>
+                      </li>
+                  </ul>
+              </li>
               <li>
                 <a href="#public" class="toc-h2 toc-link" data-title="Public">Public</a>
                   <ul class="toc-list-h3">
@@ -805,6 +816,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>06/07/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#get-all-notices">Get All Notices</a></li>
+</ul>
+
 <p><strong>03/07/2023</strong></p>
 
 <ul>
@@ -1705,6 +1722,30 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <td>Spot follower sell (follower)</td>
 </tr>
 </tbody></table>
+<h3 id='noticetype'>noticeType</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NEW_NOTICE</td>
+<td>Latest Announcements</td>
+</tr>
+<tr>
+<td>TRADING_AND_ACTIVITIES</td>
+<td>Trading competitions and promotions</td>
+</tr>
+<tr>
+<td>NEW_COIN_LAUNCH</td>
+<td>Coin listings</td>
+</tr>
+<tr>
+<td>MAINTENANCE_SYSTEM_UPGRADE</td>
+<td>Maintenance or System Updates</td>
+</tr>
+</tbody></table>
 <h2 id='api-verification'>API Verification</h2>
 <p><strong>Initiating request</strong></p>
 
@@ -1960,7 +2001,101 @@ microtime(true) * 1000;
 <li>GET: The parameters are transmitted to the server in the path through queryString.</li>
 <li>POST: The parameters are sending to the server in json format.</li>
 </ul>
-<h1 id='restapi'>RestAPI</h1><h2 id='public'>Public</h2><h3 id='get-server-time'>Get Server Time</h3>
+<h1 id='restapi'>RestAPI</h1><h2 id='notice'>Notice</h2><h3 id='get-all-notices'>Get All Notices</h3>
+<p>Return data within one month</p>
+
+<p>Rate Limit: 20 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/notice/queryAllNotices</li>
+</ul>
+
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>noticeType</td>
+<td>String</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+</tr>
+<tr>
+<td>languageType</td>
+<td>String</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/spot/v1/notice/queryAllNotices?languageType=en_US"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1688008631614</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"noticeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23685"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noticeTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test0629"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noticeDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new notice"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1688008040000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"languageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en_US"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"noticeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.bitget.com/en_US/support/articles/23685"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>Response Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>noticeId</td>
+<td>notice id</td>
+</tr>
+<tr>
+<td>noticeTitle</td>
+<td>notice title</td>
+</tr>
+<tr>
+<td>noticeDesc</td>
+<td>notice desc</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>create time</td>
+</tr>
+<tr>
+<td>languageType</td>
+<td>languageType</td>
+</tr>
+<tr>
+<td>noticeUrl</td>
+<td>notice url</td>
+</tr>
+</tbody></table>
+<h2 id='public'>Public</h2><h3 id='get-server-time'>Get Server Time</h3>
 <p>Rate Limit: 20 times/1s (IP)</p>
 
 <p><strong>HTTP Request</strong></p>
@@ -6221,14 +6356,14 @@ microtime(true) * 1000;
 <tr>
 <td>orderId</td>
 <td>String</td>
-<td>Yes</td>
-<td>Order ID</td>
+<td>No</td>
+<td>Order ID, clientOrderId and orderId should have one</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
 <td>String</td>
 <td>No</td>
-<td>Custom ID</td>
+<td>Custom ID, clientOrderId and orderId should have one</td>
 </tr>
 </tbody></table>
 
