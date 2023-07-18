@@ -453,6 +453,15 @@
                       <li>
                         <a href="#noticetype" class="toc-h3 toc-link" data-title="noticeType">noticeType</a>
                       </li>
+                      <li>
+                        <a href="#tax-type-spot" class="toc-h3 toc-link" data-title="tax type spot">tax type spot</a>
+                      </li>
+                      <li>
+                        <a href="#tax-type-future-and-margin" class="toc-h3 toc-link" data-title="tax type future and margin">tax type future and margin</a>
+                      </li>
+                      <li>
+                        <a href="#tax-type-p2p" class="toc-h3 toc-link" data-title="tax type p2p">tax type p2p</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -1730,6 +1739,165 @@ microtime(true) * 1000;
 <tr>
 <td>MAINTENANCE_SYSTEM_UPGRADE</td>
 <td>维护/系统升级</td>
+</tr>
+</tbody></table>
+<h3 id='tax-type-spot'>tax type spot</h3>
+<ul>
+<li>deposit</li>
+<li>withdraw</li>
+<li>Buy</li>
+<li>Sell</li>
+<li>deduction of handling fee</li>
+<li>transfer-in</li>
+<li>transfer-out</li>
+<li>Super account</li>
+<li>System account</li>
+<li>System account</li>
+<li>User fees</li>
+<li>System charges fees</li>
+<li>Judicial recall</li>
+<li>Deduction of judicial recall</li>
+<li>System lock</li>
+<li>System lock-up</li>
+<li>User lock</li>
+<li>Manage background lock positions</li>
+<li>User contract trial fund</li>
+<li>User contract simulation fund</li>
+<li>rebate rewards</li>
+<li>Rebate rewards</li>
+<li>Unlock locked order</li>
+<li>The locked order is returned to the system</li>
+<li>The locked order is returned to the system</li>
+<li>Failed</li>
+<li>Withdrawal frozen</li>
+<li>Withdrawal unfreeze</li>
+<li>Deposit</li>
+<li>Deposit</li>
+<li>Ordinary Withdrawal</li>
+<li>Ordinary Withdrawal</li>
+<li>Fast withdrawal fee</li>
+<li>Airdrop Reward-A</li>
+<li>Airdrop Reward-B</li>
+<li>Subscribe</li>
+<li>Interest</li>
+<li>Penalty</li>
+<li>Redemption</li>
+<li>Activity fund(USDT-Ⓜ)</li>
+<li>Activity fund</li>
+<li>Activity fund(Coin-Ⓜ)</li>
+<li>Activity fund</li>
+<li>Increase exchange rate</li>
+<li>Reduce exchange rate</li>
+<li>Activity issuance</li>
+<li>Exchange spending</li>
+<li>Exchange income</li>
+<li>Sent</li>
+<li>Received</li>
+<li>MegaSwap Transfer in</li>
+<li>MegaSwap Transfer out</li>
+<li>Channel referral rewards</li>
+<li>Strategic purchase-user accounts</li>
+<li>Subscribe to trader-user accounts</li>
+<li>Strategic refund-User account</li>
+<li>Subscription fee refund-user account</li>
+<li>Strategic Income-Traders&#39; accounts</li>
+<li>Copy Trade expense</li>
+<li>Copy Trade profit</li>
+<li>Refund Copy Trade commission</li>
+<li>Buy with card</li>
+<li>Trading fee rebate</li>
+<li>Decrease due to ETF settlement</li>
+<li>Increase due to ETF settlement</li>
+<li>Automatic deposit</li>
+<li>Automatic withdrawal</li>
+<li>Deposit from strategy account</li>
+<li>Withdraw to strategy account</li>
+<li>Lotto rewards</li>
+<li>Buy Crypto</li>
+<li>Sell Crypto</li>
+</ul>
+<h3 id='tax-type-future-and-margin'>tax type future and margin</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transfer_in</td>
+<td>账户转入</td>
+</tr>
+<tr>
+<td>transfer_out</td>
+<td>账户转出</td>
+</tr>
+<tr>
+<td>borrow</td>
+<td>借款</td>
+</tr>
+<tr>
+<td>repay</td>
+<td>还款</td>
+</tr>
+<tr>
+<td>liquidation_fee</td>
+<td>爆仓清算费</td>
+</tr>
+<tr>
+<td>compensate</td>
+<td>风险基金传仓补偿</td>
+</tr>
+<tr>
+<td>deal_in</td>
+<td>杠杆 成交入帐 买入</td>
+</tr>
+<tr>
+<td>deal_out</td>
+<td>杠杆  成交扣除 卖出</td>
+</tr>
+<tr>
+<td>system_fee_in</td>
+<td>交易手续费</td>
+</tr>
+<tr>
+<td>interest_repay</td>
+<td>归还利息</td>
+</tr>
+<tr>
+<td>confiscated</td>
+<td>穿仓扣除</td>
+</tr>
+<tr>
+<td>exchange_in</td>
+<td>兑换收入</td>
+</tr>
+<tr>
+<td>exchange_out</td>
+<td>兑换支出</td>
+</tr>
+</tbody></table>
+<h3 id='tax-type-p2p'>tax type p2p</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transfer_in</td>
+<td>账户转入</td>
+</tr>
+<tr>
+<td>transfer_out</td>
+<td>账户转出</td>
+</tr>
+<tr>
+<td>SELL</td>
+<td>卖出</td>
+</tr>
+<tr>
+<td>BUY</td>
+<td>买入</td>
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
@@ -9832,7 +10000,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td>type</td>
-<td>业务类型</td>
+<td><a href="#tax-type-spot">tax type spot</a></td>
 </tr>
 <tr>
 <td>amount</td>
@@ -9948,7 +10116,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td>type</td>
-<td>业务类型</td>
+<td><a href="#tax-type-future-and-margin">tax type future and margin</a></td>
 </tr>
 <tr>
 <td>amount</td>
@@ -10061,7 +10229,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td>type</td>
-<td>业务类型</td>
+<td><a href="#tax-type-future-and-margin">tax type future and margin</a></td>
 </tr>
 <tr>
 <td>amount</td>
@@ -10169,7 +10337,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td>type</td>
-<td>业务类型</td>
+<td><a href="#tax-type-p2p">tax type p2p</a></td>
 </tr>
 <tr>
 <td>total</td>
