@@ -687,6 +687,23 @@
                   </ul>
               </li>
               <li>
+                <a href="#16f3ae6c65" class="toc-h2 toc-link" data-title="闪兑">闪兑</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#d7ca4db56d" class="toc-h3 toc-link" data-title="查询闪兑币种列表">查询闪兑币种列表</a>
+                      </li>
+                      <li>
+                        <a href="#8e0e29609f" class="toc-h3 toc-link" data-title="获取询价">获取询价</a>
+                      </li>
+                      <li>
+                        <a href="#16f3ae6c65-2" class="toc-h3 toc-link" data-title="闪兑">闪兑</a>
+                      </li>
+                      <li>
+                        <a href="#5cf8b44b92" class="toc-h3 toc-link" data-title="兑换记录">兑换记录</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
                 <a href="#7f66ad8d90" class="toc-h2 toc-link" data-title="税务接口">税务接口</a>
                   <ul class="toc-list-h3">
                       <li>
@@ -813,6 +830,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年07月18日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#16f3ae6c65">闪兑接口</a></li>
+</ul>
+
 <p><strong>2023年07月06日</strong></p>
 
 <ul>
@@ -3058,10 +3081,16 @@ Signature = base64.encode(Signature)
 <td style="text-align: center">K线的时间单位,粒度（取值参考如下列表)</td>
 </tr>
 <tr>
-<td style="text-align: left">endTime</td>
+<td style="text-align: left">after</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">ms,结束时间</td>
+<td style="text-align: center">ms,返回大于等于本时间之后的</td>
+</tr>
+<tr>
+<td style="text-align: left">before</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">ms,返回小于等于本时间之前的</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -4899,7 +4928,7 @@ margin_isolated        接受转入转出多个币种</li>
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/fee/query&amp;symbol=BTCUSDT_UMCBL&amp;business=mix"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/user/v1/fee/query?symbol=BTCUSDT_UMCBL&amp;business=mix"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -4973,7 +5002,7 @@ margin_isolated        接受转入转出多个币种</li>
             "trade",
             "readonly"
         ],
-        "parentId":"566624801",
+        "parentId":566624801,
         "trader":false,
         "isSpotTrader": false
     }
@@ -5539,7 +5568,7 @@ margin_isolated        接受转入转出多个币种</li>
     "data":[
         {
             "coinName":"btc",
-            "status":"SUCCESS",
+            "status":"Successful",
             "toType":"USD_MIX",
             "toSymbol":"",
             "fromType":"CONTRACT",
@@ -5568,7 +5597,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td style="text-align: left">status</td>
-<td style="text-align: center">划转状态</td>
+<td style="text-align: center">划转状态: Successful, Failed, Processing</td>
 </tr>
 <tr>
 <td style="text-align: left">toType</td>
@@ -9293,6 +9322,423 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td>ip</td>
 <td>子账户ApiKey  ip 白名单</td>
+</tr>
+</tbody></table>
+<h2 id='16f3ae6c65'>闪兑</h2><h3 id='d7ca4db56d'>查询闪兑币种列表</h3>
+<p>限速规则: 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/convert/currencies</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/spot/v1/convert/currencies" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": [
+    {
+      "coin": "ETH",
+      "available": "0.9994",
+      "maxCcy": "5",
+      "minCcy": "0.0005"
+    }
+  ],
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>available</td>
+<td>币种账户可用</td>
+</tr>
+<tr>
+<td>maxCcy</td>
+<td>最大可兑换 作为fromCoin时 代表最大可消耗这么多， 作为toCoin时 代表最大可得到数量这么多</td>
+</tr>
+<tr>
+<td>minCcy</td>
+<td>最小可兑换 作为fromCoin时 代表最小可消耗这么多， 作为toCoin时 代表最小兑换数量这么多</td>
+</tr>
+</tbody></table>
+<h3 id='8e0e29609f'>获取询价</h3>
+<p>获取报价结果 8秒内去请求兑换接口，过期则无法兑换</p>
+
+<p>获取消耗 fromCoin 数量时得到 toCoin 数量的报价</p>
+
+<p>获取得到 toCoin 数量时消耗的 fromCoin 数量的报价</p>
+
+<p>需要勾选现货交易权限</p>
+
+<p>限速规则: 5次/1s (uid)  </p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST  /api/spot/v1/convert/quoted-price</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>String</td>
+<td>是</td>
+<td>询价币种</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>String</td>
+<td>否</td>
+<td>询价币种数量  fromCoinSz 和 toCoinSz 只允许同时传入一个</td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>String</td>
+<td>是</td>
+<td>目标币种</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>String</td>
+<td>否</td>
+<td>目标币种数量  fromCoinSz 和 toCoinSz 只允许同时传入一个</td>
+</tr>
+</tbody></table>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://api.bitget.com/api/spot/v1/convert/quotedPrice" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+  -d \'{"fromCoin": "USDT","fromCoinSz":"444","toCoin":"ETH"}'
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "fee": "0",
+    "fromCoinSz": "444",
+    "fromCoin": "USDT",
+    "cnvtPx": "0.0005226794534969",
+    "toCoinSz": "0.23206967",
+    "toCoin": "ETH",
+    "traceId": "1060321041546502144"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>询价币种</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>询价币种数量</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>闪兑价格</td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>目标币种</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>目标币种数量</td>
+</tr>
+<tr>
+<td>traceId</td>
+<td>询价单id</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>手续费</td>
+</tr>
+</tbody></table>
+<h3 id='16f3ae6c65-2'>闪兑</h3>
+<p>需要勾选 交易/现货交易 权限
+限速规则: 5次/1s (uid) </p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST  /api/spot/v1/convert/trade</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>String</td>
+<td>是</td>
+<td>询价币种</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>String</td>
+<td>是</td>
+<td>询价币种数量</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>String</td>
+<td>是</td>
+<td>询价获取的结果 /quotedPrice  <code>cnvtPx</code></td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>String</td>
+<td>是</td>
+<td>目标币种</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>String</td>
+<td>是</td>
+<td>目标币种兑换数量 /quotedPrice  <code>toCoinSz</code></td>
+</tr>
+<tr>
+<td>traceId</td>
+<td>String</td>
+<td>是</td>
+<td>询价单id     /quotedPrice  <code>traceId</code>  有效期8秒</td>
+</tr>
+</tbody></table>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://api.bitget.com/api/spot/v1/convert/trade" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+  -d \'{"fromCoin": "USDT","fromCoinSz":"444","toCoin":"ETH","cnvtPx":"0.0005226794534969","toCoinSz":"0.23206967","traceId":"1060321041546502144"}'
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "timestamp": "1688527221603",
+    "cnvtPx": "0.00052268",
+    "toCoinSz": "0.23206967",
+    "toCoin": "ETH"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>toCoin</td>
+<td>兑换币种</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>得到兑换币种数量</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>兑换价格</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>兑换时间</td>
+</tr>
+</tbody></table>
+<h3 id='5cf8b44b92'>兑换记录</h3>
+<p>限速规则: 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET  /api/spot/v1/convert/convert-record</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>是</td>
+<td>开始时间 (时间戳毫秒)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间 (时间戳毫秒) 最大间隔 90天</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>否</td>
+<td>默认20  最大100</td>
+</tr>
+<tr>
+<td>lastEndId</td>
+<td>String</td>
+<td>否</td>
+<td>上次endId</td>
+</tr>
+</tbody></table>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/spot/v1/account/convert-record?startTime=1686128558000&amp;endTime=1686214958000&amp;pageSize=10" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "dataList": [
+      {
+        "id": "1060326726652944385",
+        "timestamp": "1688527512229",
+        "cnvtPx": "0.00052268",
+        "fee": "0",
+        "fromCoinSz": "444",
+        "fromCoin": "USDT",
+        "toCoinSz": "0.23206967",
+        "toCoin": "ETH"
+      }
+    ],
+    "endId": "1060325507679150080"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataList</td>
+<td>List</td>
+</tr>
+<tr>
+<td>-- id</td>
+<td>记录id</td>
+</tr>
+<tr>
+<td>-- timestamp</td>
+<td>记录生成时间</td>
+</tr>
+<tr>
+<td>-- cnvtPx</td>
+<td>兑换时价格</td>
+</tr>
+<tr>
+<td>-- fee</td>
+<td>手续费</td>
+</tr>
+<tr>
+<td>-- fromCoinSz</td>
+<td>兑换币种数量</td>
+</tr>
+<tr>
+<td>-- fromCoin</td>
+<td>兑换币种</td>
+</tr>
+<tr>
+<td>-- toCoinSz</td>
+<td>得到目标币种数量</td>
+</tr>
+<tr>
+<td>-- toCoin</td>
+<td>目标币种</td>
+</tr>
+<tr>
+<td>endId</td>
+<td>分页使用</td>
 </tr>
 </tbody></table>
 <h2 id='7f66ad8d90'>税务接口</h2><h3 id='04236a0ca8'>现货财务记录</h3>

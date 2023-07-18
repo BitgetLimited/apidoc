@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <link href="../../images/bitget_new_log.png" rel="icon" type="image/png" />
+  <link href="../../images/bitget_new_log-0bf2eca6.png" rel="icon" type="image/png" />
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -330,7 +330,7 @@
 <header class="top-nav">
   <div class="top-menu">
       <a href="https://www.bitget.com/en/" class="logo-link" target="_self">
-        <img src="../../images/log-jk382.svg" class="logo" alt="" />
+        <img src="../../images/log-jk382-75a3c4e9.svg" class="logo" alt="" />
       </a>
     <ul class="con">
          <li><a id="spot" data-text="现货" >Spot</a></li>
@@ -693,6 +693,23 @@
                   </ul>
               </li>
               <li>
+                <a href="#convert" class="toc-h2 toc-link" data-title="Convert">Convert</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#get-convert-coins" class="toc-h3 toc-link" data-title="Get Convert Coins">Get Convert Coins</a>
+                      </li>
+                      <li>
+                        <a href="#get-quoted-price" class="toc-h3 toc-link" data-title="Get Quoted Price">Get Quoted Price</a>
+                      </li>
+                      <li>
+                        <a href="#convert-2" class="toc-h3 toc-link" data-title="Convert">Convert</a>
+                      </li>
+                      <li>
+                        <a href="#convert-history" class="toc-h3 toc-link" data-title="Convert History">Convert History</a>
+                      </li>
+                  </ul>
+              </li>
+              <li>
                 <a href="#tax" class="toc-h2 toc-link" data-title="Tax">Tax</a>
                   <ul class="toc-list-h3">
                       <li>
@@ -790,7 +807,7 @@
 Clipboard script
 -->
 
-<script src="../../dist/clipboard.min-f99f064d.js"></script>
+<script src="../../dist/clipboard.min-f99f064d-3bd90afc.js"></script>
 
 <script>
 var clipboard = new ClipboardJS('.clipboard_button');
@@ -816,6 +833,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>18/07/2023</strong></p>
+
+<ul>
+<li>New interface <a href="#convert">Convert</a></li>
+</ul>
+
 <p><strong>06/07/2023</strong></p>
 
 <ul>
@@ -3100,10 +3123,16 @@ microtime(true) * 1000;
 <td>Candlestick line time unit, granularity (refer to the following list for values)</td>
 </tr>
 <tr>
-<td>endTime</td>
+<td>after</td>
 <td>String</td>
 <td>No</td>
-<td>endTime, milliseconds</td>
+<td>Time after, milliseconds, return greater than or equals</td>
+</tr>
+<tr>
+<td>before</td>
+<td>String</td>
+<td>No</td>
+<td>Time before, milliseconds, return less than or equals</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -5027,7 +5056,7 @@ microtime(true) * 1000;
             </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"readonly"</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"parentId"</span><span class="p">:</span><span class="s2">"566624801"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"parentId"</span><span class="p">:</span><span class="mi">566624801</span><span class="p">,</span><span class="w">
         </span><span class="s2">"trader"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isSpotTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -5567,7 +5596,7 @@ microtime(true) * 1000;
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"Successful"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"toType"</span><span class="p">:</span><span class="s2">"USD_MIX"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"toSymbol"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fromType"</span><span class="p">:</span><span class="s2">"CONTRACT"</span><span class="p">,</span><span class="w">
@@ -5595,7 +5624,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td>status</td>
-<td>Transfer status</td>
+<td>Transfer status: Successful, Failed, Processing</td>
 </tr>
 <tr>
 <td>toType</td>
@@ -9287,10 +9316,428 @@ microtime(true) * 1000;
 <td>sub ApiKey  ip whilelist</td>
 </tr>
 </tbody></table>
+<h2 id='convert'>Convert</h2><h3 id='get-convert-coins'>Get Convert Coins</h3>
+<p>Limit Rule: 10c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/convert/currencies</li>
+</ul>
+
+<p><strong>RequestParameter(Request Param)</strong></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/spot/v1/convert/currencies" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": [
+    {
+      "coin": "ETH",
+      "available": "0.9994",
+      "maxCcy": "5",
+      "minCcy": "0.0005"
+    }
+  ],
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coin</td>
+<td>coin name</td>
+</tr>
+<tr>
+<td>available</td>
+<td>account available</td>
+</tr>
+<tr>
+<td>maxCcy</td>
+<td>Max convert, When used as fromCoin, it represents the maximum amount that can be consumed, and when used as toCoin, it represents the maximum amount that can be obtained</td>
+</tr>
+<tr>
+<td>minCcy</td>
+<td>Min convert, When used as fromCoin, it represents the minimum amount that can be consumed. When used as toCoin, it represents the minimum amount of convert.</td>
+</tr>
+</tbody></table>
+<h3 id='get-quoted-price'>Get Quoted Price</h3>
+<p>Get the quote price and request the exchange interface within 8 seconds, and it cannot be exchanged if it expires</p>
+
+<p>Get the quotation of the toCoin amount when the fromCoin amount is consumed</p>
+
+<p>Get a quote for the amount of fromCoin consumed when getting the amount of toCoin</p>
+
+<p>need <code>trade</code> or <code>spot_trade</code></p>
+
+<p>Limit Rule: 5c/1s (uid)  </p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST  /api/spot/v1/convert/quoted-price</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>String</td>
+<td>Yes</td>
+<td>consumption</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>String</td>
+<td>No</td>
+<td>Consumption size  (fromCoinSz and toCoinSz Only one is allowed to be passed in at the once)</td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>String</td>
+<td>Yes</td>
+<td>You&#39;ve got coin</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>String</td>
+<td>No</td>
+<td>You&#39;ve got coin size  (fromCoinSz and toCoinSz Only one is allowed to be passed in at the once)</td>
+</tr>
+</tbody></table>
+
+<p><strong>RequestParameter(Request Param)</strong></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://api.bitget.com/api/spot/v1/convert/quotedPrice" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+  -d \'{"fromCoin": "USDT","fromCoinSz":"444","toCoin":"ETH"}'
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "fee": "0",
+    "fromCoinSz": "444",
+    "fromCoin": "USDT",
+    "cnvtPx": "0.0005226794534969",
+    "toCoinSz": "0.23206967",
+    "toCoin": "ETH",
+    "traceId": "1060321041546502144"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>Consumption coin name</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>Consumption coin size</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>convert price</td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>you get coin name</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>you get coin size</td>
+</tr>
+<tr>
+<td>traceId</td>
+<td>trace Id</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>convert fee</td>
+</tr>
+</tbody></table>
+<h3 id='convert-2'>Convert</h3>
+<p>need <code>trade</code> or <code>spot_trade</code></p>
+
+<p>Limit Rule: 5c/1s (uid) </p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST  /api/spot/v1/convert/trade</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromCoin</td>
+<td>String</td>
+<td>Yes</td>
+<td>Consumption coin      eg USDT</td>
+</tr>
+<tr>
+<td>fromCoinSz</td>
+<td>String</td>
+<td>Yes</td>
+<td>Consumption coin size</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>String</td>
+<td>Yes</td>
+<td>convert price  <code>/quotedPrice</code>  <code>cnvtPx</code></td>
+</tr>
+<tr>
+<td>toCoin</td>
+<td>String</td>
+<td>Yes</td>
+<td>You&#39;ve got coin eg BGB</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>String</td>
+<td>Yes</td>
+<td>You&#39;ve got coin size <code>/quotedPrice</code>  <code>toCoinSz</code></td>
+</tr>
+<tr>
+<td>traceId</td>
+<td>String</td>
+<td>Yes</td>
+<td>trace Id     <code>/quotedPrice</code>  <code>traceId</code>  8 seconds expires</td>
+</tr>
+</tbody></table>
+
+<p><strong>RequestParameter(Request Param)</strong></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl -X POST "https://api.bitget.com/api/spot/v1/convert/trade" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+  -d \'{"fromCoin": "USDT","fromCoinSz":"444","toCoin":"ETH","cnvtPx":"0.0005226794534969","toCoinSz":"0.23206967","traceId":"1060321041546502144"}'
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "timestamp": "1688527221603",
+    "cnvtPx": "0.00052268",
+    "toCoinSz": "0.23206967",
+    "toCoin": "ETH"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>toCoin</td>
+<td>get coin name</td>
+</tr>
+<tr>
+<td>toCoinSz</td>
+<td>get coin size</td>
+</tr>
+<tr>
+<td>cnvtPx</td>
+<td>convert price</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>get quote price</td>
+</tr>
+</tbody></table>
+<h3 id='convert-history'>Convert History</h3>
+<p>Limit Rule: 10c/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET  /api/spot/v1/convert/convert-record</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>start time (ms timestamp)</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>Yes</td>
+<td>end time (timestamp ms) Maximum difference 90 days</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>String</td>
+<td>No</td>
+<td>default 20  max 100</td>
+</tr>
+<tr>
+<td>lastEndId</td>
+<td>String</td>
+<td>No</td>
+<td>last endId</td>
+</tr>
+</tbody></table>
+
+<p><strong>RequestParameter(Request Param)</strong></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/spot/v1/account/convert-record?startTime=1686128558000&amp;endTime=1686214958000&amp;pageSize=10" \
+  -H "ACCESS-KEY:you apiKey" \
+  -H "ACCESS-SIGN:*******" \
+  -H "ACCESS-PASSPHRASE:*****" \
+  -H "ACCESS-TIMESTAMP:1659076670000" \
+  -H "locale:en-US" \
+  -H "Content-Type: application/json" \
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": {
+    "dataList": [
+      {
+        "id": "1060326726652944385",
+        "timestamp": "1688527512229",
+        "cnvtPx": "0.00052268",
+        "fee": "0",
+        "fromCoinSz": "444",
+        "fromCoin": "USDT",
+        "toCoinSz": "0.23206967",
+        "toCoin": "ETH"
+      }
+    ],
+    "endId": "1060325507679150080"
+  },
+  "msg": "success",
+  "requestTime": 1627293612502
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataList</td>
+<td>List</td>
+</tr>
+<tr>
+<td>-- id</td>
+<td>record Id</td>
+</tr>
+<tr>
+<td>-- timestamp</td>
+<td>Convert trade time, Unix timestamp format in milliseconds, e.g. 1597026383085</td>
+</tr>
+<tr>
+<td>-- cnvtPx</td>
+<td>fill price</td>
+</tr>
+<tr>
+<td>-- fee</td>
+<td>convert fee</td>
+</tr>
+<tr>
+<td>-- fromCoinSz</td>
+<td>Consumption size</td>
+</tr>
+<tr>
+<td>-- fromCoin</td>
+<td>Consumption name</td>
+</tr>
+<tr>
+<td>-- toCoinSz</td>
+<td>get coin size</td>
+</tr>
+<tr>
+<td>-- toCoin</td>
+<td>get coin name</td>
+</tr>
+<tr>
+<td>endId</td>
+<td>last end id</td>
+</tr>
+</tbody></table>
 <h2 id='tax'>Tax</h2><h3 id='spot-account-record'>Spot Account Record</h3>
 <p>It is recommended that APIKey  onlyn check the tax permission </p>
 
-<p>limit rule:  1次/1s (uid)</p>
+<p>limit rule:  1c/1s (uid)</p>
 
 <p>*<em>HTTP Request *</em></p>
 
