@@ -671,6 +671,9 @@
                         <a href="#v2-2" class="toc-h3 toc-link" data-title="获取全部合约仓位信息V2">获取全部合约仓位信息V2</a>
                       </li>
                       <li>
+                        <a href="#fa2a45bb2f" class="toc-h3 toc-link" data-title="合约持仓历史记录">合约持仓历史记录</a>
+                      </li>
+                      <li>
                         <a href="#212cdaad08" class="toc-h3 toc-link" data-title="获取财务记录">获取财务记录</a>
                       </li>
                       <li>
@@ -879,6 +882,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年07月25日</strong></p>
+
+<ul>
+<li>新增 <a href="#fa2a45bb2f">获取历史持仓记录</a></li>
+</ul>
+
 <p><strong>2023年07月03日</strong></p>
 
 <ul>
@@ -2328,6 +2337,8 @@ Signature = base64.encode(Signature)
 </tbody></table>
 <h2 id='94d4e02010'>模拟盘模拟币测试</h2>
 <p>模拟盘的币有：SUSDT, SBTC, SETH, SEOS, SUSDC, 模拟币是无价值的，只是给用户来模拟交易，试手交易的, 模拟币在注册账号之后就会自动到账户里：合约账户-模拟U本位合约账户</p>
+
+<p>子账户不支持模拟盘测试，请使用母账户测试</p>
 <h3 id='abe0681fd1'>模拟盘获取币对合约信息</h3>
 <p>请求API接口：/api/mix/v1/market/contracts?productType=sumcbl</p>
 
@@ -6795,6 +6806,170 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: left">最近更新时间 时间戳 毫秒</td>
+</tr>
+</tbody></table>
+<h3 id='fa2a45bb2f'>合约持仓历史记录</h3>
+<p>仅支持查询3个月以内</p>
+
+<p>限速规则: 20次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/mix/v1/market/history-position</li>
+</ul>
+
+<p><strong>请求参数(Request Param)</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>productType</td>
+<td>String</td>
+<td>否</td>
+<td>业务类型 默认umcbl 如果传了 symbol  则此字段失效</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>String</td>
+<td>否</td>
+<td>交易币对</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Int</td>
+<td>否</td>
+<td>默认20 最大100</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>String</td>
+<td>是</td>
+<td>开始时间，例如：<code>1597026383085</code></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>String</td>
+<td>是</td>
+<td>结束时间，例如：<code>1597026383011</code> 最大间隔 90天</td>
+</tr>
+<tr>
+<td>lastEndId</td>
+<td>String</td>
+<td>否</td>
+<td>上一次的 lastEndId</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/market/history-positions?productType=umcbl&amp;startTime=&amp;endTime="
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 0,
+  "data": {
+    "list": [
+      {
+        "symbol": "ETHUSDT_UMCBL",
+        "marginCoin": "USDT",
+        "holdSide": "short",
+        "openAvgPrice": "1206.7",
+        "closeAvgPrice": "1206.8",
+        "marginMode": "fixed",
+        "openTotalPos": "1.15",
+        "closeTotalPos": "1.15",
+        "pnl": "-0.11",
+        "netProfit": "-1.780315",
+        "totalFunding": "0",
+        "openFee": "-0.83",
+        "closeFee": "-0.83",
+        "ctime": "1689300233897",
+        "utime": "1689300238205"
+      }
+    ],
+    "endId": "1062308959580516352"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th>字段</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>marginCoin</td>
+<td>保证金币种</td>
+</tr>
+<tr>
+<td>holdSide</td>
+<td>多空方向</td>
+</tr>
+<tr>
+<td>openAvgPrice</td>
+<td>开仓均价</td>
+</tr>
+<tr>
+<td>closeAvgPrice</td>
+<td>平仓均价</td>
+</tr>
+<tr>
+<td>marginMode</td>
+<td>保证金模式</td>
+</tr>
+<tr>
+<td>openTotalPos</td>
+<td>开仓数量 累计</td>
+</tr>
+<tr>
+<td>closeTotalPos</td>
+<td>已平仓量  累计</td>
+</tr>
+<tr>
+<td>pnl</td>
+<td>已实现盈亏</td>
+</tr>
+<tr>
+<td>netProfit</td>
+<td>净盈亏</td>
+</tr>
+<tr>
+<td>totalFunding</td>
+<td>资金费用 累计</td>
+</tr>
+<tr>
+<td>openFee</td>
+<td>仓位开仓总手续费</td>
+</tr>
+<tr>
+<td>closeFee</td>
+<td>仓位平仓总手续费</td>
+</tr>
+<tr>
+<td>cTime</td>
+<td>仓位创建时间</td>
+</tr>
+<tr>
+<td>uTime</td>
+<td>仓位更改时间</td>
 </tr>
 </tbody></table>
 <h3 id='212cdaad08'>获取财务记录</h3>
