@@ -656,6 +656,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>31/07/2023</strong></p>
+
+<ul>
+<li>/api/mix/v1/trace/followerOrder required search param &#39;symbol&#39; changed to &#39;No&#39;; added response field: &#39;traderNickName&#39;</li>
+</ul>
+
 <p><strong>15/06/2023</strong></p>
 
 <ul>
@@ -1429,7 +1435,7 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">Yes</td>
+<td style="text-align: center">No</td>
 <td style="text-align: center">Symbol Id (Must be capitalized)</td>
 </tr>
 <tr>
@@ -1460,6 +1466,7 @@ microtime(true) * 1000;
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"804641389214179330"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="s2">"xxxxx"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"804641382428463106"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"closeOrderId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"traderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ghg646778eb23853ac94"</span><span class="p">,</span><span class="w">
@@ -1490,6 +1497,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">trackingNo</td>
 <td style="text-align: left">Tracking order number</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">Trader nickname</td>
 </tr>
 <tr>
 <td style="text-align: left">openOrderId</td>
@@ -2932,7 +2943,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">tradingPairsAvailable</td>
-<td style="text-align: left">trading Pairs Available</td>
+<td style="text-align: left">Trading pairs Available, return maximum 3 symbols</td>
 </tr>
 <tr>
 <td style="text-align: left">isMyTrader</td>
@@ -2996,7 +3007,7 @@ microtime(true) * 1000;
 </tr>
 <tr>
 <td style="text-align: left">copyTradeDays</td>
-<td style="text-align: left">copy trade days (Days since first trade)</td>
+<td style="text-align: left">Copy trade days (Days since first trade)</td>
 </tr>
 </tbody></table>
 

@@ -657,6 +657,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年07月31日</strong></p>
+
+<ul>
+<li>/api/mix/v1/trace/followerOrder 查询条件 &#39;symbol&#39; 变更为非必填；新增响应字段: &#39;traderNickName&#39;</li>
+</ul>
+
 <p><strong>2023年06月15日</strong></p>
 
 <ul>
@@ -1405,7 +1411,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">产品ID 必须大写</td>
 </tr>
 <tr>
@@ -1436,6 +1442,7 @@ Signature = base64.encode(Signature)
     </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"trackingNo"</span><span class="p">:</span><span class="s2">"804641389214179330"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"traderNickName"</span><span class="p">:</span><span class="s2">"xxxxx"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openOrderId"</span><span class="p">:</span><span class="s2">"804641382428463106"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"closeOrderId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"traderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ghg646778eb23853ac94"</span><span class="p">,</span><span class="w">
@@ -1466,6 +1473,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">trackingNo</td>
 <td style="text-align: left">跟踪订单号</td>
+</tr>
+<tr>
+<td style="text-align: left">traderNickName</td>
+<td style="text-align: left">交易员昵称</td>
 </tr>
 <tr>
 <td style="text-align: left">openOrderId</td>
@@ -2954,7 +2965,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">tradingPairsAvailable</td>
-<td style="text-align: left">可跟单币对</td>
+<td style="text-align: left">可跟单币对，最多返回三个币对</td>
 </tr>
 <tr>
 <td style="text-align: left">isMyTrader</td>
@@ -3782,25 +3793,25 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
-<td style="text-align: center">交易对</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">交易对 (symbol marginCoin marginMode holdSide 必传其一)</td>
 </tr>
 <tr>
 <td style="text-align: left">marginCoin</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">保证金币种</td>
 </tr>
 <tr>
 <td style="text-align: left">marginMode</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">仓位模式</td>
 </tr>
 <tr>
 <td style="text-align: left">holdSide</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">持仓方向</td>
 </tr>
 </tbody></table>
