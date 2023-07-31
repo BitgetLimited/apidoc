@@ -839,6 +839,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年07月31日</strong></p>
+
+<ul>
+<li><a href="#v2-3">内部提币V2</a> 支持按 uid/mobile/email 做内部提币</li>
+</ul>
+
 <p><strong>2023年07月18日</strong></p>
 
 <ul>
@@ -1743,33 +1749,62 @@ microtime(true) * 1000;
 </tbody></table>
 <h3 id='tax-type-spot'>tax type spot</h3>
 <ul>
-<li>deposit</li>
-<li>withdraw</li>
-<li>Buy</li>
-<li>Sell</li>
-<li>deduction of handling fee</li>
-<li>transfer-in</li>
-<li>transfer-out</li>
-<li>Super account</li>
-<li>System account</li>
-<li>System account</li>
+<li>Deposit</li>
+<li>Withdrawal</li>
 <li>User fees</li>
+<li>Fiat withdrawal success - Deduct</li>
+<li>Sell</li>
+<li>Buy</li>
+<li>Transaction fee deduct</li>
+<li>Strategic purchase-user accounts</li>
+<li>Subscribe to trader-user accounts</li>
 <li>System charges fees</li>
+<li>Strategic refund-User account</li>
+<li>Subscription fee refund-user account</li>
+<li>Strategic Income-Traders&#39; accounts</li>
+<li>Crypto Voucher Distribution</li>
+<li>Copy Trade expense</li>
 <li>Judicial recall</li>
+<li>Copy Trade profit</li>
+<li>Refund Copy Trade commission</li>
+<li>Buy Crypto</li>
 <li>Deduction of judicial recall</li>
-<li>System lock</li>
+<li>Buy with card</li>
 <li>System lock-up</li>
-<li>User lock</li>
+<li>Airdrop Reward-B</li>
+<li>Decrease due to ETF settlement</li>
+<li>Increase due to ETF settlement</li>
+<li>System lock-up</li>
+<li>User lock-up</li>
+<li>Trading fee rebate</li>
 <li>Manage background lock positions</li>
+<li>Automatic deposit</li>
+<li>Automatic withdrawal</li>
+<li>Deposit from strategy account</li>
+<li>Withdraw to strategy account</li>
+<li>Lotto rewards</li>
 <li>User contract trial fund</li>
 <li>User contract simulation fund</li>
-<li>rebate rewards</li>
+<li>Delegate</li>
+<li>Undelegate</li>
 <li>Rebate rewards</li>
+<li>Rebate rewards</li>
+<li>Consumption</li>
+<li>Gains</li>
 <li>Unlock locked order</li>
+<li>Deduction</li>
+<li>Return</li>
+<li>Release</li>
+<li>Repayment</li>
+<li>Forced liquidation return</li>
 <li>The locked order is returned to the system</li>
 <li>The locked order is returned to the system</li>
 <li>Failed</li>
 <li>Withdrawal frozen</li>
+<li>Mirror fund</li>
+<li>Supplement fund</li>
+<li>Reduce fund</li>
+<li>Settlement out</li>
 <li>Withdrawal unfreeze</li>
 <li>Deposit</li>
 <li>Deposit</li>
@@ -1777,7 +1812,6 @@ microtime(true) * 1000;
 <li>Ordinary Withdrawal</li>
 <li>Fast withdrawal fee</li>
 <li>Airdrop Reward-A</li>
-<li>Airdrop Reward-B</li>
 <li>Subscribe</li>
 <li>Interest</li>
 <li>Penalty</li>
@@ -1788,7 +1822,11 @@ microtime(true) * 1000;
 <li>Activity fund</li>
 <li>Increase exchange rate</li>
 <li>Reduce exchange rate</li>
+<li>Transfer in</li>
 <li>Activity issuance</li>
+<li>Transfer out</li>
+<li>Super account</li>
+<li>System account</li>
 <li>Exchange spending</li>
 <li>Exchange income</li>
 <li>Sent</li>
@@ -1796,25 +1834,9 @@ microtime(true) * 1000;
 <li>MegaSwap Transfer in</li>
 <li>MegaSwap Transfer out</li>
 <li>Channel referral rewards</li>
-<li>Strategic purchase-user accounts</li>
-<li>Subscribe to trader-user accounts</li>
-<li>Strategic refund-User account</li>
-<li>Subscription fee refund-user account</li>
-<li>Strategic Income-Traders&#39; accounts</li>
-<li>Copy Trade expense</li>
-<li>Copy Trade profit</li>
-<li>Refund Copy Trade commission</li>
-<li>Buy with card</li>
-<li>Trading fee rebate</li>
-<li>Decrease due to ETF settlement</li>
-<li>Increase due to ETF settlement</li>
-<li>Automatic deposit</li>
-<li>Automatic withdrawal</li>
-<li>Deposit from strategy account</li>
-<li>Withdraw to strategy account</li>
-<li>Lotto rewards</li>
-<li>Buy Crypto</li>
+<li>System account</li>
 <li>Sell Crypto</li>
+<li>Fiat deposit</li>
 </ul>
 <h3 id='tax-type-future-and-margin'>tax type future and margin</h3>
 <table><thead>
@@ -4118,7 +4140,7 @@ margin_isolated        接受转入转出多个币种</li>
 <td>toUserId</td>
 <td>String</td>
 <td>是</td>
-<td>转出账户UID</td>
+<td>转入账户UID</td>
 </tr>
 </tbody></table>
 
@@ -4681,6 +4703,18 @@ margin_isolated        接受转入转出多个币种</li>
 <td>String</td>
 <td>否</td>
 <td>客户端自定义ID 唯一健</td>
+</tr>
+<tr>
+<td>toType</td>
+<td>String</td>
+<td>否</td>
+<td>收款类型（email/mobile/uid）</td>
+</tr>
+<tr>
+<td>areaCode</td>
+<td>String</td>
+<td>否</td>
+<td>当收款方类型值为“mobile”时，该字段必填</td>
 </tr>
 </tbody></table>
 
@@ -6383,7 +6417,7 @@ margin_isolated        接受转入转出多个币种</li>
 <td style="text-align: left">orderIds</td>
 <td style="text-align: left">String[]</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">订单id数组</td>
+<td style="text-align: center">订单id数组，最多50个</td>
 </tr>
 </tbody></table>
 
@@ -9549,11 +9583,11 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td>maxCcy</td>
-<td>最大可兑换 作为fromCoin时 代表最大可消耗这么多， 作为toCoin时 代表最大可得到数量这么多</td>
+<td>最大可兑换 作为fromCoin时 代表最大可消耗这数量， 作为toCoin时 代表最大可得到的数量</td>
 </tr>
 <tr>
 <td>minCcy</td>
-<td>最小可兑换 作为fromCoin时 代表最小可消耗这么多， 作为toCoin时 代表最小兑换数量这么多</td>
+<td>最小可兑换 作为fromCoin时 代表最小可消耗数量， 作为toCoin时 代表最小兑换的数量</td>
 </tr>
 </tbody></table>
 <h3 id='8e0e29609f'>获取询价</h3>
@@ -9563,7 +9597,7 @@ margin_isolated        接受转入转出多个币种</li>
 
 <p>获取得到 toCoin 数量时消耗的 fromCoin 数量的报价</p>
 
-<p>需要勾选现货交易权限</p>
+<p>需要勾选交易/现货交易权限</p>
 
 <p>限速规则: 5次/1s (uid)  </p>
 
@@ -12458,6 +12492,11 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">该币种限制买入额度{0}，还剩{1}</td>
 <td style="text-align: left">43122</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">您的身份认证还在审核中,请等待审核通过后再试此功能</td>
+<td style="text-align: left">40926</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
