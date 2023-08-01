@@ -486,6 +486,9 @@
                         <a href="#get-traders-history-orders" class="toc-h3 toc-link" data-title="Get Traders History Orders">Get Traders History Orders</a>
                       </li>
                       <li>
+                        <a href="#trader-close-position-by-symbol" class="toc-h3 toc-link" data-title="Trader Close Position By Symbol">Trader Close Position By Symbol</a>
+                      </li>
+                      <li>
                         <a href="#get-trader-profit-summary" class="toc-h3 toc-link" data-title="Get Trader Profit Summary">Get Trader Profit Summary</a>
                       </li>
                       <li>
@@ -602,6 +605,12 @@
                         <a href="#follower-unfollow-the-trader-2" class="toc-h3 toc-link" data-title="Follower unfollow the trader">Follower unfollow the trader</a>
                       </li>
                       <li>
+                        <a href="#spot-trader-gets-removable-follower-configuration" class="toc-h3 toc-link" data-title="Spot trader gets removable follower configuration">Spot trader gets removable follower configuration</a>
+                      </li>
+                      <li>
+                        <a href="#spot-trader-remove-follower" class="toc-h3 toc-link" data-title="Spot trader remove follower">Spot trader remove follower</a>
+                      </li>
+                      <li>
                         <a href="#get-trader-profit-summary-2" class="toc-h3 toc-link" data-title="Get Trader Profit Summary">Get Trader Profit Summary</a>
                       </li>
                       <li>
@@ -656,6 +665,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>01/08/2023</strong></p>
+
+<ul>
+<li>New interfaces: <a href="#trader-close-position-by-symbol">Trader Close Position By Symbol</a>, <a href="#spot-trader-gets-removable-follower-configuration">Spot trader gets removable follower configuration</a>, <a href="#spot-trader-remove-follower">Spot trader remove follower</a></li>
+</ul>
+
 <p><strong>31/07/2023</strong></p>
 
 <ul>
@@ -2049,6 +2064,90 @@ microtime(true) * 1000;
 <td style="text-align: left">Number of closed Positions</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='trader-close-position-by-symbol'>Trader Close Position By Symbol</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/closeTrackOrderBySymbol</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/trace/closeTrackOrderBySymbol"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT_UMCBL"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">symbol</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":{
+        "trackingNos":["xxxxx"]
+    },
+    "msg":"success",
+    "requestTime":1627354109502
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNos</td>
+<td style="text-align: left">trackingNos which be close position successfully</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -6695,6 +6794,143 @@ microtime(true) * 1000;
 <td style="text-align: left">true is success</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='spot-trader-gets-removable-follower-configuration'>Spot trader gets removable follower configuration</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trace/getRemovableFollower</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/config/getRemoveFollowerConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "removableFollowerMinUSDT": "100" 
+    }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">removableFollowerMinUSDT</td>
+<td style="text-align: left">Users whose assets are less than this value can be removed</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='spot-trader-remove-follower'>Spot trader remove follower</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trace/user/removeFollower</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/trace/removeFollower"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"followerUserId"</span>: <span class="s2">"xxx"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">followerUserId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Obtain followerUserId from /api/spot/v1/trace/user/myFollowers</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": true,
+  "msg": "success",
+  "requestTime": "1681985013131"
+}
+</code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 

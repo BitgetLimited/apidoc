@@ -486,6 +486,9 @@
                         <a href="#f81de52fbe" class="toc-h3 toc-link" data-title="交易员获取历史带单">交易员获取历史带单</a>
                       </li>
                       <li>
+                        <a href="#symbol" class="toc-h3 toc-link" data-title="合约交易员根据Symbol平仓">合约交易员根据Symbol平仓</a>
+                      </li>
+                      <li>
                         <a href="#36cac047b7" class="toc-h3 toc-link" data-title="交易员分润汇总">交易员分润汇总</a>
                       </li>
                       <li>
@@ -602,6 +605,12 @@
                         <a href="#e40109a55a" class="toc-h3 toc-link" data-title="取消跟随">取消跟随</a>
                       </li>
                       <li>
+                        <a href="#fec9f644fd" class="toc-h3 toc-link" data-title="现货交易员获取可移除跟随者配置">现货交易员获取可移除跟随者配置</a>
+                      </li>
+                      <li>
+                        <a href="#058bfefd56" class="toc-h3 toc-link" data-title="现货交易员移除跟随者">现货交易员移除跟随者</a>
+                      </li>
+                      <li>
                         <a href="#36cac047b7-2" class="toc-h3 toc-link" data-title="交易员分润汇总">交易员分润汇总</a>
                       </li>
                       <li>
@@ -657,6 +666,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月01日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#symbol">合约交易员根据Symbol平仓</a>, <a href="#fec9f644fd">现货交易员获取可移除跟随者配置</a>, <a href="#058bfefd56">现货交易员移除跟随者</a></li>
+</ul>
+
 <p><strong>2023年07月31日</strong></p>
 
 <ul>
@@ -2047,6 +2062,96 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">平仓数量</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='symbol'>合约交易员根据Symbol平仓</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/trace/closeTrackOrderBySymbol</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/trace/closeTrackOrderBySymbol"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbol"</span>:<span class="s2">"BTCUSDT_UMCBL"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">symbol</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code":"00000",
+    "data":{
+        "trackingNos":["xxxxx"]
+    },
+    "msg":"success",
+    "requestTime":1627354109502
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">trackingNos</td>
+<td style="text-align: left">成功平仓的跟单号</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
@@ -6692,6 +6797,164 @@ Signature = base64.encode(Signature)
 
 <p>&nbsp;</p>
 
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='fec9f644fd'>现货交易员获取可移除跟随者配置</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trace/config/getRemoveFollowerConfig</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/trace/config/getRemoveFollowerConfig"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"pageNo"</span>:<span class="s2">"1"</span>,<span class="s2">"pageSize"</span>:<span class="s2">"10"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">页码</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">页数</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "removableFollowerMinUSDT": "100" // 只能移除资产小于100的用户
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">removableFollowerMinUSDT</td>
+<td style="text-align: left">能移除资产小于该值的用户</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='058bfefd56'>现货交易员移除跟随者</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/trace/user/removeFollower</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/trace/user/removeFollower"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"followerUserId"</span>: <span class="s2">"xxx"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">followerUserId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">跟随者UID，从/api/spot/v1/trace/user/myFollowers 中followerUserId 获取</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "data": true,
+  "msg": "success",
+  "requestTime": "1681985013131"
+}
+</code></pre>
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
