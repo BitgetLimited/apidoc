@@ -424,6 +424,9 @@
                       <li>
                         <a href="#source" class="toc-h3 toc-link" data-title="source">source</a>
                       </li>
+                      <li>
+                        <a href="#flash-repay-status" class="toc-h3 toc-link" data-title="Flash repay  status (一键还款状态)">Flash repay  status (一键还款状态)</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -501,6 +504,18 @@
                       </li>
                       <li>
                         <a href="#dd3d08a662" class="toc-h3 toc-link" data-title="逐仓最大可转出数量接口">逐仓最大可转出数量接口</a>
+                      </li>
+                      <li>
+                        <a href="#db0adf8667" class="toc-h3 toc-link" data-title="逐仓一键还款">逐仓一键还款</a>
+                      </li>
+                      <li>
+                        <a href="#53ea3d19ed" class="toc-h3 toc-link" data-title="查询逐仓还款结果">查询逐仓还款结果</a>
+                      </li>
+                      <li>
+                        <a href="#a2300050b4" class="toc-h3 toc-link" data-title="全仓一键还款">全仓一键还款</a>
+                      </li>
+                      <li>
+                        <a href="#6767a6486a" class="toc-h3 toc-link" data-title="获取直客账户余额列表">获取直客账户余额列表</a>
                       </li>
                   </ul>
               </li>
@@ -673,6 +688,25 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月08日</strong></p>
+
+<ul>
+<li>新增接口
+
+<ul>
+<li><a href="#db0adf8667">逐仓一键还款</a></li>
+<li><a href="#53ea3d19ed">查询逐仓还款结果</a></li>
+<li><a href="#a2300050b4">全仓一键还款</a></li>
+<li><a href="#6767a6486a">获取直客账户余额列表</a></li>
+</ul></li>
+<li>接口查询条件:
+
+<ul>
+<li><a href="#bcf414608b">获取全仓杠杆账户资产</a> 参数 &#39;coin&#39; 改为非必填</li>
+<li><a href="#93d957742c">获取逐仓杠杆账户资产</a> 参数 &#39;symbol&#39; 改为非必填</li>
+</ul></li>
+</ul>
+
 <p><strong>2023年04月11日</strong></p>
 
 <ul>
@@ -1029,6 +1063,26 @@ clipboard.on('error', function(e) {
 <tr>
 <td>SYS</td>
 <td>系统</td>
+</tr>
+</tbody></table>
+<h3 id='flash-repay-status'>Flash repay  status (一键还款状态)</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BEGIN</td>
+<td>开始还款</td>
+</tr>
+<tr>
+<td>REPAYING</td>
+<td>还款中</td>
+</tr>
+<tr>
+<td>FINISH</td>
+<td>还款结束</td>
 </tr>
 </tbody></table>
 <h2 id='8ba46c43fe'>签名</h2>
@@ -1827,7 +1881,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">coin</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">币种</td>
 </tr>
 </tbody></table>
@@ -1908,8 +1962,9 @@ Signature = base64.encode(Signature)
 <h3 id='93d957742c'>获取逐仓杠杆账户资产</h3>
 <p>限速规则：10次/1s</p>
 
-<p><strong>HTTP请求</strong>
-获取账户资产</p>
+<p><strong>HTTP请求</strong></p>
+
+<p>获取账户资产</p>
 
 <ul>
 <li>GET  /api/margin/v1/isolated/account/assets</li>
@@ -1928,7 +1983,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">是</td>
+<td style="text-align: center">否</td>
 <td style="text-align: center">币对 (例如：BTCUSDT)</td>
 </tr>
 </tbody></table>
@@ -2455,7 +2510,7 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">symbol</td>
 <td style="text-align: left">String</td>
-<td style="text-align: center">否</td>
+<td style="text-align: center">是</td>
 <td style="text-align: center">币对     (例如：BTCUSDT)</td>
 </tr>
 <tr>
@@ -2811,6 +2866,402 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">maxTransferOutAmount</td>
 <td style="text-align: center">最大可转出数量</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='db0adf8667'>逐仓一键还款</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/isolated/account/flashRepay</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/flashRepay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbols"</span>: <span class="o">[</span><span class="s2">"BTCUSDT"</span>, <span class="s2">"ETHUSDT"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbols</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">逐仓交易对/不传还全部（数组最大100个）</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": [
+    {
+      "id":"3423423",
+      "symbol":"BTCUSDT",
+      "code": "success"
+    },
+    {
+      "id":"3423423",
+      "symbol":"ETHUSDT",
+      "code": "success"
+    }
+  ]
+
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">还款id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">杠杆symbol交易对</td>
+</tr>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">success还款请求成功</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='53ea3d19ed'>查询逐仓还款结果</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/isolated/account/queryFlashRepayStatus</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/queryFlashRepayStatus"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"idList"</span>: <span class="o">[</span><span class="s2">"13423423"</span>, <span class="s2">"36278902"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">idList</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">发起还款单请求id集合(最大100个id)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": [
+    {
+      "id":"13423423",
+      "status":"FINISH"
+
+    },
+    {
+      "id":"36278902",
+      "status":"FINISH"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">还款ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">还款结果状态</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='a2300050b4'>全仓一键还款</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/cross/account/flashRepay</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/flashRepay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"coin"</span>: <span class="s2">"BTC"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">全仓币种, 不传则是全仓所有币种全部还款</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": {
+    "id":"23423423423432",
+    "coin":"BTC"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">还款id</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">还款币种，如果是还全部，则coin没有值返回</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='6767a6486a'>获取直客账户余额列表</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/cross/account/queryFlashRepayStatus</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/queryFlashRepayStatus"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"idList"</span>: <span class="o">[</span><span class="s2">"13423423"</span>, <span class="s2">"36278902"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">idList</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">发起平仓单请求id集合(最大100个id)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据
+```Json</p>
+</blockquote>
+
+<p>{
+  &quot;code&quot;:&quot;00000&quot;,
+  &quot;msg&quot;:&quot;success&quot;,
+  &quot;requestTime&quot;:163123213132,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;:&quot;13423423&quot;,
+      &quot;status&quot;:&quot;FINISH&quot;</p>
+
+<p>},
+    {
+      &quot;id&quot;:&quot;36278902&quot;,
+      &quot;status&quot;:&quot;FINISH&quot;
+    }
+  ]
+}
+```</p>
+
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">还款ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">还款结果状态</td>
 </tr>
 </tbody></table>
 <h2 id='5e9615a594'>逐仓订单和交易记录接口</h2><h3 id='6fa7048e41'>逐仓下单接口</h3>

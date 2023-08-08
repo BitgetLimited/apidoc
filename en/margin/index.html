@@ -421,6 +421,9 @@
                       <li>
                         <a href="#source" class="toc-h3 toc-link" data-title="source">source</a>
                       </li>
+                      <li>
+                        <a href="#flash-repay-status" class="toc-h3 toc-link" data-title="Flash repay  status">Flash repay  status</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -501,6 +504,18 @@
                       </li>
                       <li>
                         <a href="#get-isolated-max-transfer-out-amount" class="toc-h3 toc-link" data-title="Get isolated max transfer out amount">Get isolated max transfer out amount</a>
+                      </li>
+                      <li>
+                        <a href="#isolated-flash-repay" class="toc-h3 toc-link" data-title="Isolated Flash Repay">Isolated Flash Repay</a>
+                      </li>
+                      <li>
+                        <a href="#query-isolated-flash-repay-status" class="toc-h3 toc-link" data-title="Query Isolated Flash Repay Status">Query Isolated Flash Repay Status</a>
+                      </li>
+                      <li>
+                        <a href="#cross-flash-repay" class="toc-h3 toc-link" data-title="Cross Flash Repay">Cross Flash Repay</a>
+                      </li>
+                      <li>
+                        <a href="#query-cross-flash-repay-status" class="toc-h3 toc-link" data-title="Query Cross Flash Repay Status">Query Cross Flash Repay Status</a>
                       </li>
                   </ul>
               </li>
@@ -672,6 +687,25 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>08/08/2023</strong></p>
+
+<ul>
+<li>New interfaces:
+
+<ul>
+<li><a href="#isolated-flash-repay">Isolated Flash Repay</a></li>
+<li><a href="#query-isolated-flash-repay-status">Query Isolated Flash Repay status</a></li>
+<li><a href="#cross-flash-repay">Cross Flash Repay</a></li>
+<li><a href="#query-cross-flash-repay-status">Query Cross Flash Repay status</a></li>
+</ul></li>
+<li>Search criteria changes:
+
+<ul>
+<li><a href="#get-cross-assets">Get Cross assets</a> &#39;coin&#39; required changed to false</li>
+<li><a href="#get-isolated-assets">Get isolated assets</a> &#39;symbol&#39; required changed to false</li>
+</ul></li>
+</ul>
+
 <p><strong>11/04/2023</strong></p>
 
 <ul>
@@ -1022,6 +1056,26 @@ Leaking any of these three keys may cause loss of your assets. If you find by an
 <tr>
 <td>SYS</td>
 <td>system</td>
+</tr>
+</tbody></table>
+<h3 id='flash-repay-status'>Flash repay  status</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BEGIN</td>
+<td>begin flash repay</td>
+</tr>
+<tr>
+<td>REPAYING</td>
+<td>flash repay in progress</td>
+</tr>
+<tr>
+<td>FINISH</td>
+<td>finish flash repay</td>
 </tr>
 </tbody></table>
 <h2 id='api-verification'>API Verification</h2>
@@ -1835,7 +1889,7 @@ microtime(true) * 1000;
 <tr>
 <td>coin</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 <td>coin name</td>
 </tr>
 </tbody></table>
@@ -1931,7 +1985,7 @@ microtime(true) * 1000;
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>Yes</td>
+<td>No</td>
 <td>Symbol Id: &#39;BTCUSDT&#39;</td>
 </tr>
 </tbody></table>
@@ -2447,7 +2501,7 @@ microtime(true) * 1000;
 <tr>
 <td>symbol</td>
 <td>String</td>
-<td>NO</td>
+<td>YES</td>
 <td>symbol ID: &#39;BTCUSDT&#39;</td>
 </tr>
 <tr>
@@ -2806,6 +2860,402 @@ microtime(true) * 1000;
 <tr>
 <td>maxTransferOutAmount</td>
 <td>max transfer out amount</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='isolated-flash-repay'>Isolated Flash Repay</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/isolated/account/flashRepay</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/flashRepay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"symbols"</span>: <span class="o">[</span><span class="s2">"BTCUSDT"</span>, <span class="s2">"ETHUSDT"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbols</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Isolated Symbol List (max lenth 100), empty is to repay all</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": [
+    {
+      "id":"3423423",
+      "symbol":"BTCUSDT",
+      "code": "success"
+    },
+    {
+      "id":"3423423",
+      "symbol":"ETHUSDT",
+      "code": "success"
+    }
+  ]
+
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Flash repay id</td>
+</tr>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">Margin Symbol</td>
+</tr>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">success means request flashRepay success</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-isolated-flash-repay-status'>Query Isolated Flash Repay Status</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/isolated/account/queryFlashRepayStatus</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/queryFlashRepayStatus"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"idList"</span>: <span class="o">[</span><span class="s2">"13423423"</span>, <span class="s2">"36278902"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">idList</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Flash repay ID Collection (max lenth 100)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": [
+    {
+      "id":"13423423",
+      "status":"FINISH"
+
+    },
+    {
+      "id":"36278902",
+      "status":"FINISH"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Flash Repay ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Status</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='cross-flash-repay'>Cross Flash Repay</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/cross/account/flashRepay</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/flashRepay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"coin"</span>: <span class="s2">"BTC"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Coin, empty is to repay all</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": {
+    "id":"23423423423432",
+    "coin":"BTC"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Flash Repay ID</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">Repay coin, if repay all, this parameter will be empty</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-cross-flash-repay-status'>Query Cross Flash Repay Status</h3>
+<p>Rate Limit: 10 times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/margin/v1/cross/account/queryFlashRepayStatus</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/queryFlashRepayStatus"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"idList"</span>: <span class="o">[</span><span class="s2">"13423423"</span>, <span class="s2">"36278902"</span><span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter name</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">idList</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Flash repay ID Collection (max lenth 100)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response
+```Json</p>
+</blockquote>
+
+<p>{
+  &quot;code&quot;:&quot;00000&quot;,
+  &quot;msg&quot;:&quot;success&quot;,
+  &quot;requestTime&quot;:163123213132,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;:&quot;13423423&quot;,
+      &quot;status&quot;:&quot;FINISH&quot;</p>
+
+<p>},
+    {
+      &quot;id&quot;:&quot;36278902&quot;,
+      &quot;status&quot;:&quot;FINISH&quot;
+    }
+  ]
+}
+```</p>
+
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">Flash Repay ID</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Status</td>
 </tr>
 </tbody></table>
 <h2 id='isolated-margin-orders-and-trades'>isolated margin orders and trades</h2><h3 id='isolated-place-order'>isolated place order</h3>
