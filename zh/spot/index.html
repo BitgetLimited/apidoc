@@ -3425,7 +3425,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">否</td>
-<td style="text-align: center">查询条数 默认150</td>
+<td style="text-align: center">查询条数 默认150, 最大200</td>
 </tr>
 </tbody></table>
 
@@ -7213,21 +7213,27 @@ margin_isolated        接受转入转出多个币种</li>
 <td style="text-align: center">否</td>
 <td style="text-align: center">订单有效期</td>
 </tr>
+<tr>
+<td style="text-align: left">placeType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">下单类型（按照数量下单类型：amount ，按照金额下单类型：total）</td>
+</tr>
 </tbody></table>
 
 <blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/spot/v1/plan/placePlan"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"TRXUSDT_SPBL"</span>, <span class="s2">"side"</span>: <span class="s2">"buy"</span>, <span class="s2">"triggerPrice"</span>: 0.041572, <span class="s2">"executePrice"</span>: <span class="s2">"0.041572"</span>, <span class="s2">"size"</span>: 151, <span class="s2">"triggerType"</span>: <span class="s2">"market_price"</span>, <span class="s2">"orderType"</span>: <span class="s2">"limit"</span>,<span class="s2">"clientOid"</span>: <span class="s2">"12345"</span>, <span class="s2">"timeInForceValue"</span>: <span class="s2">"normal"</span><span class="o">}</span><span class="s1">'
-</span></code></pre>
-<blockquote>
+<p>请求
+<code>shell
+curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
+  -H &quot;ACCESS-KEY:you apiKey&quot; \
+  -H &quot;ACCESS-SIGN:*******&quot; \
+  -H &quot;ACCESS-PASSPHRASE:*****&quot; \
+  -H &quot;ACCESS-TIMESTAMP:1659076670000&quot; \
+  -H &quot;locale:en-US&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d \&#39;{&quot;symbol&quot;: &quot;TRXUSDT_SPBL&quot;, &quot;side&quot;: &quot;buy&quot;, &quot;triggerPrice&quot;: 0.041572, &quot;executePrice&quot;: &quot;0.041572&quot;, &quot;size&quot;: 151, &quot;triggerType&quot;: &quot;market_price&quot;, &quot;orderType&quot;: &quot;limit&quot;,&quot;clientOid&quot;: &quot;12345&quot;, &quot;timeInForceValue&quot;: &quot;normal&quot;}&#39;
+</code></p>
+
 <p>返回参数</p>
 </blockquote>
 <pre class="highlight plaintext"><code>{
@@ -7624,6 +7630,10 @@ margin_isolated        接受转入转出多个币种</li>
 <td style="text-align: left">cTime</td>
 <td style="text-align: center">创建时间</td>
 </tr>
+<tr>
+<td style="text-align: left">placeType</td>
+<td style="text-align: center">下单类型</td>
+</tr>
 </tbody></table>
 
 <p>&nbsp;</p>
@@ -7802,6 +7812,10 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">cTime</td>
 <td style="text-align: center">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">placeType</td>
+<td style="text-align: center">下单类型</td>
 </tr>
 </tbody></table>
 
