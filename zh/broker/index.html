@@ -676,6 +676,8 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 
 <p><strong>生成最终签名的步骤</strong> </p>
 
+<p><strong><em>HMAC</em></strong></p>
+
 <p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
 
 <p><code>
@@ -687,6 +689,12 @@ Signature = hmac_sha256(secretkey, Message)
 <p><code>
 Signature = base64.encode(Signature)
 </code></p>
+
+<p><strong><em>RSA</em></strong></p>
+
+<p>第一步，使用RSA私钥privateKey对待签名字符串进行SHA-256签名。</p>
+
+<p>第二步，对生成的签名字符串进行编码为 base64 string，得到签名字符串进行接口请求。</p>
 <h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -826,7 +834,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>
@@ -914,7 +922,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>
@@ -988,7 +996,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>

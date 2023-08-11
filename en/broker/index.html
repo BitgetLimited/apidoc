@@ -730,17 +730,21 @@ String content = timestamp + method.toUpperCase() + requestPath + &quot;?&quot; 
 
 <p><strong>Steps to generate the final signature</strong> </p>
 
-<p>Step 1. Use the secretkey to encrypt the content string via hmac sha256</p>
+<p><strong><em>HMAC</em></strong></p>
 
-<p><code>
-String encryptedString = hmacSHA256(content, secretkey)
-</code></p>
+<p>Step 1. Use the private key <strong>secretkey</strong> to encrypt the string to be signed with hmac sha256</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">hmac_sha256</span><span class="o">(</span><span class="n">secretkey</span><span class="o">,</span> <span class="n">Message</span><span class="o">);</span>
+</code></pre>
+<p> </p>
 
-<p>Base64 encode the encryptedString</p>
+<p>Step 2. Base64 encoding for Signature.</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+</code></pre>
+<p><strong><em>RSA</em></strong></p>
 
-<p><code>
-String signature = Base64.encode(encryptedString)
-</code></p>
+<p>Step 1. Use the RSA privateKey <strong>privateKey</strong> to encrypt the string to be signed with SHA-256</p>
+
+<p>Step 2. Base64 encoding for Signature.</p>
 <h2 id='request-interaction'>Request Interaction</h2>
 <p>All requests are based on the Https protocol, and the Content-Type in the request header information needs to set to:&#39;application/json&#39; for all POST methods.</p>
 
