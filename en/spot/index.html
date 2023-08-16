@@ -3421,29 +3421,23 @@ microtime(true) * 1000;
 <td>Candlestick line time unit, granularity (refer to the following list for values)</td>
 </tr>
 <tr>
-<td>after</td>
+<td>endTime</td>
 <td>String</td>
-<td>No</td>
-<td>Time after, milliseconds, return greater than or equals</td>
-</tr>
-<tr>
-<td>before</td>
-<td>String</td>
-<td>No</td>
-<td>Time before, milliseconds, return less than or equals</td>
+<td>Yes</td>
+<td>endTime, milliseconds</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>String</td>
 <td>No</td>
-<td>Default 100, max 1000</td>
+<td>Default 100, max 200</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/history-candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;after=1659076670000&amp;before=1659080270000&amp;limit=100"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/history-candles?symbol=BTCUSDT_SPBL&amp;period=1min&amp;endTime=1659080270000&amp;limit=100"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
