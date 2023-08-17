@@ -470,6 +470,15 @@
                       <li>
                         <a href="#sub-deposit-auto-transfer-only-broker" class="toc-h3 toc-link" data-title="Sub Deposit Auto Transfer (Only Broker)">Sub Deposit Auto Transfer (Only Broker)</a>
                       </li>
+                      <li>
+                        <a href="#query-sub-account-transfer-record" class="toc-h3 toc-link" data-title="query sub account transfer record">query sub account transfer record</a>
+                      </li>
+                      <li>
+                        <a href="#query-sub-account-deposit-record" class="toc-h3 toc-link" data-title="query sub account deposit record">query sub account deposit record</a>
+                      </li>
+                      <li>
+                        <a href="#query-sub-account-withdrawal-record" class="toc-h3 toc-link" data-title="query sub account withdrawal record">query sub account withdrawal record</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -516,6 +525,18 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget API Document! Click <a href="#introduction">here</a> for a quick start</p>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Aug 17, 2023</strong></p>
+
+<ul>
+<li>New Interfaces
+
+<ul>
+<li><a href="#query-sub-account-transfer-record">query sub account transfer record</a></li>
+<li><a href="#query-sub-account-deposit-record">query sub account deposit record</a></li>
+<li><a href="#query-sub-account-withdrawal-record">query sub account withdrawal record</a></li>
+</ul></li>
+</ul>
+
 <p><strong>Jul 5, 2023</strong></p>
 
 <ul>
@@ -1806,6 +1827,512 @@ crossed       Cross margin</li>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-sub-account-transfer-record'>query sub account transfer record</h3>
+<p>Rate Limit times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-transfer</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{...}'</span>
+</code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "coin": "USDT",
+        "status": "Successful",
+        "toType": "spot",
+        "toSymbol": null,
+        "fromType": "usdt_m_futures",
+        "fromSymbol": null,
+        "amount": "10",
+        "transferTime": "1689833233282",
+        "orderId": "XXXXX",
+        "clientOid": "XXXXX",
+        "subUid": "123123",
+        "transferId": "XXXXX"
+    }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">The processing status of the transfer process</td>
+</tr>
+<tr>
+<td style="text-align: left">toType</td>
+<td style="text-align: left">Types of transfer-to-accounts</td>
+</tr>
+<tr>
+<td style="text-align: left">toSymbol</td>
+<td style="text-align: left">Transfer-in transaction pair, returned when the transfer-in account is isolated_margin</td>
+</tr>
+<tr>
+<td style="text-align: left">fromType</td>
+<td style="text-align: left">Type of transfer-out account</td>
+</tr>
+<tr>
+<td style="text-align: left">fromSymbol</td>
+<td style="text-align: left">Transfer-out transaction pair, returned when the transfer-out account is isolated_margin</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">The amount of transfer currency</td>
+</tr>
+<tr>
+<td style="text-align: left">transferTime</td>
+<td style="text-align: left">transfer time,ms</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">orderId</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">Custom ID</td>
+</tr>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">Sub-account ID</td>
+</tr>
+<tr>
+<td style="text-align: left">transferId</td>
+<td style="text-align: left">transferId</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>status</p>
+
+<ul>
+<li>Successful</li>
+<li>Failed</li>
+<li>Processing</li>
+</ul></li>
+<li><p>toType/fromType</p>
+
+<ul>
+<li>spot</li>
+<li>p2p</li>
+<li>coin_m_futures</li>
+<li>usdt_m_futures</li>
+<li>usdc_m_futures</li>
+<li>cross_margin</li>
+<li>isolated_margin</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-sub-account-deposit-record'>query sub account deposit record</h3>
+<p>Rate Limit times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-deposit</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{...}'</span>
+</code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "orderId": "XXXXX",
+        "txId": "XXXXXXX",
+        "coin": "USDT",
+        "type": "deposit",
+        "dest": internal_transfer,
+        "amount": "10",
+        "status": "success",
+        "fromAddress": "123123",
+        "toAddress": "456456",
+        "fee": "1",
+        "chain": "erc20",
+        "confirm": "3",
+        "tag": "xx",
+        "cTime": "1689833233282",
+        "uTime": "1689833233282"
+    }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">orderId</td>
+</tr>
+<tr>
+<td style="text-align: left">txId</td>
+<td style="text-align: left">txId</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">type</td>
+</tr>
+<tr>
+<td style="text-align: left">dest</td>
+<td style="text-align: left">Deposit type</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">Deposit amount</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">The status of the deposit process</td>
+</tr>
+<tr>
+<td style="text-align: left">fromAddress</td>
+<td style="text-align: left">Deposit initiator information. When recharging on the chain, this field is the initiator wallet address; when transferring internally, this field is UID</td>
+</tr>
+<tr>
+<td style="text-align: left">toAddress</td>
+<td style="text-align: left">Deposit recipient information. When recharging on the chain, this field is the initiator wallet address; when transferring internally, this field is UID</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">The amount of the fee. The pricing unit is the recharge currency</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">Deposit network</td>
+</tr>
+<tr>
+<td style="text-align: left">confirm</td>
+<td style="text-align: left">Confirm the number of blocks</td>
+</tr>
+<tr>
+<td style="text-align: left">tag</td>
+<td style="text-align: left">tag</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">creation time ms</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">update time ms</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>dest</p>
+
+<ul>
+<li>on_chain</li>
+<li>internal_transfer</li>
+</ul></li>
+<li><p>status</p>
+
+<ul>
+<li>pending</li>
+<li>pending_review</li>
+<li>pending_fail</li>
+<li>pending_review_fail</li>
+<li>reject</li>
+<li>success</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-sub-account-withdrawal-record'>query sub account withdrawal record</h3>
+<p>Rate Limit times/sec (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-withdrawal</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{...}'</span>
+</code></pre>
+<p><strong>Request Body</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Parameter type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center"></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "orderId": "XXXXX",
+        "txId": "XXXXXXX",
+        "coin": "USDT",
+        "type": "withdraw",
+        "dest": internal_transfer,
+        "amount": "10",
+        "status": "success",
+        "fromAddress": "123123",
+        "toAddress": "456456",
+        "fee": "1",
+        "chain": "erc20",
+        "confirm": "3",
+        "tag": "xx",
+        "cTime": "1689833233282",
+        "uTime": "1689833233282"
+    }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">orderId</td>
+</tr>
+<tr>
+<td style="text-align: left">txId</td>
+<td style="text-align: left">txId</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">coin</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">type</td>
+</tr>
+<tr>
+<td style="text-align: left">dest</td>
+<td style="text-align: left">Withdrawal type</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">Withdrawal amount</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">The status of the withdrawal process</td>
+</tr>
+<tr>
+<td style="text-align: left">fromAddress</td>
+<td style="text-align: left">When recharging on the chain, this field is the initiator wallet address; when transferring internally, this field is UID</td>
+</tr>
+<tr>
+<td style="text-align: left">toAddress</td>
+<td style="text-align: left">Withdraw recipient information. When recharging on the chain, this field is the sender’s wallet address; when transferring internally, this field is the recipient’s account number, including one of the three formats of UID, mobile phone number and email</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">The amount of the fee. The pricing unit is the recharge currency</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">Withdraw network</td>
+</tr>
+<tr>
+<td style="text-align: left">confirm</td>
+<td style="text-align: left">Confirm the number of blocks</td>
+</tr>
+<tr>
+<td style="text-align: left">tag</td>
+<td style="text-align: left">tag</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">creation time ms</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">update time ms</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>dest</p>
+
+<ul>
+<li>on_chain</li>
+<li>internal_transfer</li>
+</ul></li>
+<li><p>status</p>
+
+<ul>
+<li>pending</li>
+<li>pending_review</li>
+<li>pending_fail</li>
+<li>pending_review_fail</li>
+<li>reject</li>
+<li>success</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
