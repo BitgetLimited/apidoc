@@ -668,6 +668,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>Aug 17, 2023</strong></p>
+
+<ul>
+<li>Forecast: <a href="#get-copytrade-symbols">/api/mix/v1/trace/traderSymbols</a> added response field: <code>maxLeverage</code></li>
+</ul>
+
 <p><strong>Aug 11, 2023</strong></p>
 
 <ul>
@@ -2741,6 +2747,7 @@ microtime(true) * 1000;
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2763,6 +2770,10 @@ microtime(true) * 1000;
 <tr>
 <td style="text-align: left">openTrader</td>
 <td style="text-align: left">Whether enabled copy trading</td>
+</tr>
+<tr>
+<td style="text-align: left">maxLeverage</td>
+<td style="text-align: left">Max leverage</td>
 </tr>
 <tr>
 <td style="text-align: left">minOpenCount</td>

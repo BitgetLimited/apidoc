@@ -669,6 +669,12 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月17日</strong></p>
+
+<ul>
+<li>预告：接口 <a href="#91fa8c6a21">/api/mix/v1/trace/traderSymbols</a> 增加响应字段：maxLeverage</li>
+</ul>
+
 <p><strong>2023年08月11日</strong></p>
 
 <ul>
@@ -2722,6 +2728,7 @@ Signature = base64.encode(Signature)
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2742,8 +2749,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">产品id</td>
 </tr>
 <tr>
-<td style="text-align: left">openTrade</td>
+<td style="text-align: left">openTrader</td>
 <td style="text-align: left">是否开启跟单</td>
+</tr>
+<tr>
+<td style="text-align: left">maxLeverage</td>
+<td style="text-align: left">交易员最最大杠杆倍数</td>
 </tr>
 <tr>
 <td style="text-align: left">minOpenCount</td>

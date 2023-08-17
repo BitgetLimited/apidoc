@@ -885,6 +885,19 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月17日</strong></p>
+
+<ul>
+<li>预告：以下接口添加响应字段 <code>autoMargin</code>: 自动添加保证金
+
+<ul>
+<li><a href="#f1e69afa43">/api/mix/v1/position/singlePosition</a></li>
+<li><a href="#v2">/api/mix/v1/position/singlePosition-v2</a></li>
+<li><a href="#2cedacc22e">/api/mix/v1/position/allPosition</a></li>
+<li><a href="#v2-2">/api/mix/v1/position/allPosition-v2</a></li>
+</ul></li>
+</ul>
+
 <p><strong>2023年08月11日</strong></p>
 
 <ul>
@@ -6293,6 +6306,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6338,6 +6352,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">保证金数量 (保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">自动追加保证金: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6456,6 +6474,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6476,6 +6495,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6520,6 +6540,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">保证金数量 (保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">自动追加保证金: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6638,6 +6662,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6684,6 +6709,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">保证金数量 (保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">自动追加保证金: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6806,6 +6835,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6826,6 +6856,7 @@ Signature = base64.encode(Signature)
             </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6870,6 +6901,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">保证金数量 (保证金币种)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">自动追加保证金: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>

@@ -905,16 +905,29 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update log</h1>
-<p><strong>July 25, 2023</strong></p>
+<p><strong>Aug 17, 2023</strong></p>
 
 <ul>
-<li>Added <a href="#get-history-position">get history position</a></li>
+<li>Forecast: New response field on below APIs: <code>autoMargin</code>: auto suppliment margin
+
+<ul>
+<li><a href="#get-symbol-position">/api/mix/v1/position/singlePosition</a></li>
+<li><a href="#get-symbol-position-v2">/api/mix/v1/position/singlePosition-v2</a></li>
+<li><a href="#get-all-position">/api/mix/v1/position/allPosition</a></li>
+<li><a href="#get-all-position-v2">/api/mix/v1/position/allPosition-v2</a></li>
+</ul></li>
 </ul>
 
 <p><strong>Aug 11, 2023</strong></p>
 
 <ul>
 <li>New feature to support RSA signature: <a href="#rsa-signature-demo-code">RSA Signature Demo Code</a></li>
+</ul>
+
+<p><strong>July 25, 2023</strong></p>
+
+<ul>
+<li>Added <a href="#get-history-position">get history position</a></li>
 </ul>
 
 <p><strong>July 03, 2023</strong></p>
@@ -6358,6 +6371,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6403,6 +6417,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6513,6 +6531,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6533,6 +6552,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6577,6 +6597,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6687,6 +6711,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6732,6 +6757,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6840,6 +6869,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6860,6 +6890,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6906,6 +6937,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
