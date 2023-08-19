@@ -732,6 +732,44 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#e12d7e42ff" class="toc-h2 toc-link" data-title="质押借币接口">质押借币接口</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#1ba8b5ab51" class="toc-h3 toc-link" data-title="查询币种数据列表">查询币种数据列表</a>
+                      </li>
+                      <li>
+                        <a href="#708b24b996" class="toc-h3 toc-link" data-title="查询每小时预估利息及可借数量">查询每小时预估利息及可借数量</a>
+                      </li>
+                      <li>
+                        <a href="#32d6e98f1f" class="toc-h3 toc-link" data-title="借币">借币</a>
+                      </li>
+                      <li>
+                        <a href="#6ff6956591" class="toc-h3 toc-link" data-title="查询借款中列表">查询借款中列表</a>
+                      </li>
+                      <li>
+                        <a href="#a9af9c2d42" class="toc-h3 toc-link" data-title="还款">还款</a>
+                      </li>
+                      <li>
+                        <a href="#da4fde80da" class="toc-h3 toc-link" data-title="查询还款历史列表">查询还款历史列表</a>
+                      </li>
+                      <li>
+                        <a href="#fae95f2045" class="toc-h3 toc-link" data-title="调整质押率">调整质押率</a>
+                      </li>
+                      <li>
+                        <a href="#39e714943e" class="toc-h3 toc-link" data-title="查询调整质押率历史列表">查询调整质押率历史列表</a>
+                      </li>
+                      <li>
+                        <a href="#23709ab43d" class="toc-h3 toc-link" data-title="查询借币历史列表">查询借币历史列表</a>
+                      </li>
+                      <li>
+                        <a href="#ad7f446e57" class="toc-h3 toc-link" data-title="查询资产负债列表">查询资产负债列表</a>
+                      </li>
+                      <li>
+                        <a href="#462716543f" class="toc-h3 toc-link" data-title="查询强平记录列表">查询强平记录列表</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
       </li>
       <li>
@@ -842,6 +880,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月19日</strong></p>
+
+<ul>
+<li>新功能: <a href="#e12d7e42ff">质押借币</a></li>
+</ul>
+
 <p><strong>2023年08月11日</strong></p>
 
 <ul>
@@ -10504,6 +10548,1668 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 </tbody></table>
 
 <p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h2 id='e12d7e42ff'>质押借币接口</h2><h3 id='1ba8b5ab51'>查询币种数据列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/public/loan/coinInfos</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/loan/coinInfos"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692433281223,
+  "data": {
+    "loanInfos": [
+      {
+        "coin": "USDT",
+        "hourRate7D": "0.00000617",
+        "rate7D": "0.054",
+        "hourRate30D": "0.00000879",
+        "rate30D": "0.077",
+        "minUsdt": "200",
+        "maxUsdt": "1000000",
+        "min": "200",
+        "max": "1000000"
+      }
+  ],
+  "pledgeInfos": [
+    {
+      "coin": "MATIC",
+      "initRate": "0.6",
+      "supRate": "0.75",
+      "forceRate": "0.83",
+      "minUsdt": "0",
+      "maxUsdt": "200000"
+    }
+  ]
+  } 
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanInfos</td>
+<td style="text-align: left">可借币种列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">币种</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;hourRate7D</td>
+<td style="text-align: left">7天固定利率每小时百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;rate7D</td>
+<td style="text-align: left">7天固定利率年化百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;hourRate30D</td>
+<td style="text-align: left">30天固定利率每小时百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;rate30D</td>
+<td style="text-align: left">30天固定利率年化百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;minUsdt</td>
+<td style="text-align: left">最小可借限额 usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;maxUsdt</td>
+<td style="text-align: left">最大可借限额 usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;min</td>
+<td style="text-align: left">最小可借数量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;max</td>
+<td style="text-align: left">最大可借数量</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeInfos</td>
+<td style="text-align: left">可抵押币种列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">抵押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;initRate</td>
+<td style="text-align: left">初始质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;supRate</td>
+<td style="text-align: left">补保质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;forceRate</td>
+<td style="text-align: left">强平质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;minUsdt</td>
+<td style="text-align: left">最小质押限额 usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;maxUsdt</td>
+<td style="text-align: left">最大质押限额 usdt</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='708b24b996'>查询每小时预估利息及可借数量</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/public/loan/hour-interest</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/loan/hour-interest?loanCoin=USDT&amp;pledgeCoin=ETH&amp;pledgeAmount=0.2&amp;daily=SEVEN"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">需借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">质押天数</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押数量  loanAmount为空时必填</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>daily
+
+<ul>
+<li>SEVEN       7天</li>
+<li>THIRTY    30天</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692433739845,
+  "data": {
+    "hourInterest": "0.00133436",
+    "loanAmount": "216.2654"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">hourInterest</td>
+<td style="text-align: left">每小时预估利息数量</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">可借数量</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='32d6e98f1f'>借币</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/borrow</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/borrow"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"loanCoin"</span>:<span class="s2">"ETH"</span>,
+    <span class="s2">"pledgeCoin"</span>:<span class="s2">"USDT"</span>,
+    <span class="s2">"daily"</span>:<span class="s2">"SEVEN"</span>,
+    <span class="s2">"loanAmount"</span>:<span class="s2">"0.01"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">需借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">质押天数</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借币数量  pledgeAmount为空时必填</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押数量  loanAmount为空时必填</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>daily
+
+<ul>
+<li>SEVEN       7天</li>
+<li>THIRTY    30天</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": {
+    "orderId": "1076713704374022144"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='6ff6956591'>查询借款中列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/ongoing-orders</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/ongoing-orders?orderId=1076713704374022144"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借款订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">需借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692434611622,
+  "data": [
+    {
+      "orderId": "1076713704374022144",
+      "loanCoin": "ETH",
+      "loanAmount": "1",
+      "interestAmount": "0.00000229",
+      "hourInterestRate": "0.000229",
+      "pledgeCoin": "USDT",
+      "pledgeAmount": "2619.69231032",
+      "pledgeRate": "65",
+      "supRate": "75",
+      "forceRate": "83",
+      "borrowTime": "1692434472156",
+      "expireTime": "1693036799999"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">借款订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">借币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">interestAmount</td>
+<td style="text-align: left">已产生利息数量</td>
+</tr>
+<tr>
+<td style="text-align: left">hourInterestRate</td>
+<td style="text-align: left">小时利率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">质押数量</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeRate</td>
+<td style="text-align: left">质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">supRate</td>
+<td style="text-align: left">补保质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">forceRate</td>
+<td style="text-align: left">强平质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">borrowTime</td>
+<td style="text-align: left">借币时间 毫秒时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left">expireTime</td>
+<td style="text-align: left">到期时间 毫秒时间戳</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='a9af9c2d42'>还款</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/repay</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/repay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"orderId"</span>:<span class="s2">"ETH"</span>,
+    <span class="s2">"repayAll"</span>:<span class="s2">"yes"</span>,
+    <span class="s2">"repayUnlock"</span>:<span class="s2">"yes"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">还款数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlock</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">是否赎回 默认yes</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAll</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">是否全部还款</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>repayUnlock</p>
+
+<ul>
+<li>yes       是</li>
+<li>no        否</li>
+</ul></li>
+<li><p>repayAll</p>
+
+<ul>
+<li>yes       是</li>
+<li>no        否</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": {
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">借币币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAmount</td>
+<td style="text-align: left">借币币种还款总额</td>
+</tr>
+<tr>
+<td style="text-align: left">payInterest</td>
+<td style="text-align: left">借币币种支付利息数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">借币币种归还本金数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlockAmount</td>
+<td style="text-align: left">质押币种释放质押品数量</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='da4fde80da'>查询还款历史列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/repay-history</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/repay-history?startTime=1685957902000&amp;endTime=1691228302423"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借款订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间，仅支持查询近三个月数据</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo 默认值1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize  默认值10，最大值100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195",
+    "repayTime": "1684747525424"
+  }, {
+    "orderId": "1278182633",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195",
+    "repayTime": "1684747525424"
+  }]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">借款订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">借币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAmount</td>
+<td style="text-align: left">借币币种还款总额</td>
+</tr>
+<tr>
+<td style="text-align: left">payInterest</td>
+<td style="text-align: left">借币币种支付利息数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">借币币种归还本金数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlockAmount</td>
+<td style="text-align: left">质押币种释放质押品数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayTime</td>
+<td style="text-align: left">还款时间</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='fae95f2045'>调整质押率</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/revise-pledge</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/revise-pledge"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"orderId"</span>:<span class="s2">"1278182633"</span>,
+    <span class="s2">"pledgeCoin"</span>:<span class="s2">"USDT"</span>,
+    <span class="s2">"reviseType"</span>:<span class="s2">"OUT"</span>,
+    <span class="s2">"amount"</span>:<span class="s2">"1"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">还款数量</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">还款类型</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>reviseType
+
+<ul>
+<li>OUT   提取质押品</li>
+<li>IN   补充质押品</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": {
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "afterPledgeRate": "60.5"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">借币币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">afterPledgeRate</td>
+<td style="text-align: left">调整后质押利率百分比</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='39e714943e'>查询调整质押率历史列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/revise-history</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/revise-history?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借款订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">调整方向。不传枚举值时展示全部</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间，仅支持查询近三个月数据</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo 默认值1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize  默认值10，最大值100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>reviseSide
+
+<ul>
+<li>down   转入调低</li>
+<li>up   转出调高</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692436125845,
+  "data": [
+    {
+      "loanCoin": "ETH",
+      "pledgeCoin": "USDT",
+      "orderId": "1076713704374022144",
+      "reviseTime": "1692436102448",
+      "reviseSide": "down",
+      "reviseAmount": "10",
+      "afterPledgeRate": "64.75",
+      "beforePledgeRate": "65"
+    }
+  ]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">借款订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseTime</td>
+<td style="text-align: left">调整时间</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseSide</td>
+<td style="text-align: left">调整方向</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseAmount</td>
+<td style="text-align: left">调整数量</td>
+</tr>
+<tr>
+<td style="text-align: left">afterPledgeRate</td>
+<td style="text-align: left">调整后质押利率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">beforePledgeRate</td>
+<td style="text-align: left">调整前质押利率百分比</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='23709ab43d'>查询借币历史列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/borrow-history</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/borrow-history?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借款订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借贷币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">状态</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间，仅支持查询近三个月数据</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo 默认值1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize  默认值10，最大值100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>rollback 失败</li>
+<li>force 强平</li>
+<li>repay 已还款</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "initPledgeAmount": "0.757",
+    "initLoanAmount": "4321321.23820848",
+    "hourRate": "59.1",
+    "daily": "7",
+    "borrowTime": "1684747528424",
+    "status": "REPAY"
+  }, {
+    "orderId": "1278182633",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "initPledgeAmount": "0.757",
+    "initLoanAmount": "4321321.23820848",
+    "hourRate": "59.1",
+    "daily": "7",
+    "borrowTime": "1684747528424",
+    "status": "REPAY"
+  }]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">借款订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">initPledgeAmount</td>
+<td style="text-align: left">初始化质押数量</td>
+</tr>
+<tr>
+<td style="text-align: left">initLoanAmount</td>
+<td style="text-align: left">初始化借币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">hourRate</td>
+<td style="text-align: left">每小时利率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">质押借币天数</td>
+</tr>
+<tr>
+<td style="text-align: left">borrowTime</td>
+<td style="text-align: left">借币时间</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">status</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='ad7f446e57'>查询资产负债列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/debts</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/debts?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<p>N/A</p>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692436610750,
+  "data": {
+    "pledgeInfos": [
+      {
+        "coin": "USDT",
+        "amount": "28826.61539642",
+        "amountUsdt": "28826.61"
+      }
+    ],
+    "loanInfos": [
+      {
+        "coin": "ETH",
+        "amount": "11.00002748",
+        "amountUsdt": "18730.85"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanInfos</td>
+<td style="text-align: left">质押资产</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">币种</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amount</td>
+<td style="text-align: left">币种数量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amountUsdt</td>
+<td style="text-align: left">估值 usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeInfos</td>
+<td style="text-align: left">负债资产</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">币种</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amount</td>
+<td style="text-align: left">币种数量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amountUsdt</td>
+<td style="text-align: left">估值 usdt</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='462716543f'>查询强平记录列表</h3>
+<p>限速规则 10次/1s (ip)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/debts</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/debts?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借款订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">借贷币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">状态</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">开始时间，仅支持查询近三个月数据</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageNo 默认值1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">pageSize  默认值10，最大值100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>COMPLETE 已强平</li>
+<li>WAIT 强平中</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "reduceTime": "0.757",
+    "pledgeRate": "98.2",
+    "pledgePrice": "111.4",
+    "status": "COMPLETE",
+    "pledgeAmount": "1213.5",
+    "reduceFee": "REPAY",
+    "residueAmount": "3234.2",
+    "runlockAmount": "23",
+    "repayLoanAmount": "53.2"
+  }, {
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "reduceTime": "0.757",
+    "pledgeRate": "98.2",
+    "pledgePrice": "111.4",
+    "status": "COMPLETE",
+    "pledgeAmount": "1213.5",
+    "reduceFee": "REPAY",
+    "residueAmount": "3234.2",
+    "runlockAmount": "23",
+    "repayLoanAmount": "53.2"
+  }]
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">借款订单id</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">已借币种</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">质押币种</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceTime</td>
+<td style="text-align: left">强平时间</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeRate</td>
+<td style="text-align: left">强平时质押率百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgePrice</td>
+<td style="text-align: left">强平时质押价格</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">强平状态</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">强平质押币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceFee</td>
+<td style="text-align: left">强平费用</td>
+</tr>
+<tr>
+<td style="text-align: left">residueAmount</td>
+<td style="text-align: left">剩余质押币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">runlockAmount</td>
+<td style="text-align: left">释放质押币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">偿还借币欠款</td>
+</tr>
+</tbody></table>
 
 <p>&nbsp;</p>
 

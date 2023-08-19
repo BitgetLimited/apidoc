@@ -738,6 +738,44 @@
                       </li>
                   </ul>
               </li>
+              <li>
+                <a href="#loans" class="toc-h2 toc-link" data-title="Loans">Loans</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#query-currency-data-list" class="toc-h3 toc-link" data-title="Query currency data list">Query currency data list</a>
+                      </li>
+                      <li>
+                        <a href="#query-hourly-estimated-interest-and-loan-amount" class="toc-h3 toc-link" data-title="Query hourly estimated interest and loan amount">Query hourly estimated interest and loan amount</a>
+                      </li>
+                      <li>
+                        <a href="#borrow-coin" class="toc-h3 toc-link" data-title="Borrow coin">Borrow coin</a>
+                      </li>
+                      <li>
+                        <a href="#query-the-list-of-loan-orders" class="toc-h3 toc-link" data-title="Query the list of loan orders">Query the list of loan orders</a>
+                      </li>
+                      <li>
+                        <a href="#repay-loan-orders" class="toc-h3 toc-link" data-title="Repay Loan Orders">Repay Loan Orders</a>
+                      </li>
+                      <li>
+                        <a href="#query-the-repayment-history-list" class="toc-h3 toc-link" data-title="Query the repayment history list">Query the repayment history list</a>
+                      </li>
+                      <li>
+                        <a href="#adjust-pledge-rate" class="toc-h3 toc-link" data-title="Adjust pledge rate">Adjust pledge rate</a>
+                      </li>
+                      <li>
+                        <a href="#query-the-historical-list-of-adjusted-pledge-ratios" class="toc-h3 toc-link" data-title="Query the historical list of adjusted pledge ratios">Query the historical list of adjusted pledge ratios</a>
+                      </li>
+                      <li>
+                        <a href="#query-loan-history-list" class="toc-h3 toc-link" data-title="Query loan history list">Query loan history list</a>
+                      </li>
+                      <li>
+                        <a href="#query-the-list-of-assets-and-liabilities" class="toc-h3 toc-link" data-title="Query the list of assets and liabilities">Query the list of assets and liabilities</a>
+                      </li>
+                      <li>
+                        <a href="#query-the-list-of-forced-liquidation-records" class="toc-h3 toc-link" data-title="Query the list of forced liquidation records">Query the list of forced liquidation records</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
       </li>
       <li>
@@ -845,6 +883,12 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='update-log'>Update Log</h1>
+<p><strong>Aug 19, 2023</strong></p>
+
+<ul>
+<li>New feature: <a href="#loans">Loans</a></li>
+</ul>
+
 <p><strong>Aug 11, 2023</strong></p>
 
 <ul>
@@ -10494,6 +10538,1668 @@ microtime(true) * 1000;
 <td>record create time (timestamp ms)</td>
 </tr>
 </tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h2 id='loans'>Loans</h2><h3 id='query-currency-data-list'>Query currency data list</h3>
+<p>Rate Limit: 10 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/public/loan/coinInfos</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/loan/coinInfos"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">coin</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692433281223,
+  "data": {
+    "loanInfos": [
+      {
+        "coin": "USDT",
+        "hourRate7D": "0.00000617",
+        "rate7D": "0.054",
+        "hourRate30D": "0.00000879",
+        "rate30D": "0.077",
+        "minUsdt": "200",
+        "maxUsdt": "1000000",
+        "min": "200",
+        "max": "1000000"
+      }
+  ],
+  "pledgeInfos": [
+    {
+      "coin": "MATIC",
+      "initRate": "0.6",
+      "supRate": "0.75",
+      "forceRate": "0.83",
+      "minUsdt": "0",
+      "maxUsdt": "200000"
+    }
+  ]
+  } 
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanInfos</td>
+<td style="text-align: left">Loan infos</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;hourRate7D</td>
+<td style="text-align: left">7 days fixed rate per hour percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;rate7D</td>
+<td style="text-align: left">7-day fixed rate annualized percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;hourRate30D</td>
+<td style="text-align: left">30-day fixed rate hourly percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;rate30D</td>
+<td style="text-align: left">30-day fixed rate annualized percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;minUsdt</td>
+<td style="text-align: left">Minimum Borrowable limit usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;maxUsdt</td>
+<td style="text-align: left">Maximum borrowing limit usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;min</td>
+<td style="text-align: left">Minimum borrowing limit</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;max</td>
+<td style="text-align: left">Maximum borrowing limit</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeInfos</td>
+<td style="text-align: left">Pledge infos</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;initRate</td>
+<td style="text-align: left">Initial pledge rate percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;supRate</td>
+<td style="text-align: left">Percentage of supplementary guarantee pledge rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;forceRate</td>
+<td style="text-align: left">Forced Liquidation Pledge Rate Percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;minUsdt</td>
+<td style="text-align: left">Minimum pledge limit usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;maxUsdt</td>
+<td style="text-align: left">Maximum pledge limit usdt</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-hourly-estimated-interest-and-loan-amount'>Query hourly estimated interest and loan amount</h3>
+<p>Rate Limit: 10 times/1s (IP)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/public/loan/hour-interest</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/public/loan/hour-interest?loanCoin=USDT&amp;pledgeCoin=ETH&amp;pledgeAmount=0.2&amp;daily=SEVEN"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Pledge days</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge amount</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>daily
+
+<ul>
+<li>SEVEN       7 days</li>
+<li>THIRTY    30 days</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692433739845,
+  "data": {
+    "hourInterest": "0.00133436",
+    "loanAmount": "216.2654"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">hourInterest</td>
+<td style="text-align: left">Estimated interest amount per hour</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">Borrowable amount</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='borrow-coin'>Borrow coin</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/borrow</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/borrow"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"loanCoin"</span>:<span class="s2">"ETH"</span>,
+    <span class="s2">"pledgeCoin"</span>:<span class="s2">"USDT"</span>,
+    <span class="s2">"daily"</span>:<span class="s2">"SEVEN"</span>,
+    <span class="s2">"loanAmount"</span>:<span class="s2">"0.01"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Pledge days</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge amount</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Loan amount  pledgeAmount and loanAmount must send one</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>daily
+
+<ul>
+<li>SEVEN       7 days</li>
+<li>THIRTY    30 days</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code":"00000",
+  "msg":"success",
+  "requestTime":163123213132,
+  "data": {
+    "orderId": "1076713704374022144"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order ID</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-the-list-of-loan-orders'>Query the list of loan orders</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/ongoing-orders</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/ongoing-orders?orderId=1076713704374022144"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692434611622,
+  "data": [
+    {
+      "orderId": "1076713704374022144",
+      "loanCoin": "ETH",
+      "loanAmount": "1",
+      "interestAmount": "0.00000229",
+      "hourInterestRate": "0.000229",
+      "pledgeCoin": "USDT",
+      "pledgeAmount": "2619.69231032",
+      "pledgeRate": "65",
+      "supRate": "75",
+      "forceRate": "83",
+      "borrowTime": "1692434472156",
+      "expireTime": "1693036799999"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">Loan amount</td>
+</tr>
+<tr>
+<td style="text-align: left">interestAmount</td>
+<td style="text-align: left">Interest amount</td>
+</tr>
+<tr>
+<td style="text-align: left">hourInterestRate</td>
+<td style="text-align: left">Hour interest amount</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">Pledge amount</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeRate</td>
+<td style="text-align: left">Pledge rate</td>
+</tr>
+<tr>
+<td style="text-align: left">supRate</td>
+<td style="text-align: left">supplementary rate</td>
+</tr>
+<tr>
+<td style="text-align: left">forceRate</td>
+<td style="text-align: left">Forced Liquidation Pledge Rate Percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">borrowTime</td>
+<td style="text-align: left">Borrow time  millseconds</td>
+</tr>
+<tr>
+<td style="text-align: left">expireTime</td>
+<td style="text-align: left">Expire time millseconds</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='repay-loan-orders'>Repay Loan Orders</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/repay</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/repay"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"orderId"</span>:<span class="s2">"ETH"</span>,
+    <span class="s2">"repayAll"</span>:<span class="s2">"yes"</span>,
+    <span class="s2">"repayUnlock"</span>:<span class="s2">"yes"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Repay amount</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlock</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Repay unlock, default value: yes</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAll</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Repay all</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>repayUnlock</p>
+
+<ul>
+<li>yes       yes</li>
+<li>no        no</li>
+</ul></li>
+<li><p>repayAll</p>
+
+<ul>
+<li>yes       yes</li>
+<li>no        no</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": {
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAmount</td>
+<td style="text-align: left">Repay amount</td>
+</tr>
+<tr>
+<td style="text-align: left">payInterest</td>
+<td style="text-align: left">payment interest</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">Repay loan amount</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlockAmount</td>
+<td style="text-align: left">Pledge currency releases the amount of collateral</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-the-repayment-history-list'>Query the repayment history list</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/repay-history</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/repay-history?startTime=1685957902000&amp;endTime=1691228302423"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Start time, only supports querying the data of the past three months</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">End time</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo default 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize  default 10，max 100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195",
+    "repayTime": "1684747525424"
+  }, {
+    "orderId": "1278182633",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "repayAmount": "1566.23820848",
+    "payInterest": "0.1185634",
+    "repayLoanAmount": "1566.22635214",
+    "repayUnlockAmount": "195",
+    "repayTime": "1684747525424"
+  }]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order id</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">loanAmount</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">repayAmount</td>
+<td style="text-align: left">Repay amount</td>
+</tr>
+<tr>
+<td style="text-align: left">payInterest</td>
+<td style="text-align: left">Payment interest</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">Loan Currency Repayment of Principal Amount</td>
+</tr>
+<tr>
+<td style="text-align: left">repayUnlockAmount</td>
+<td style="text-align: left">Pledge currency releases the amount of collateral</td>
+</tr>
+<tr>
+<td style="text-align: left">repayTime</td>
+<td style="text-align: left">Repayment time</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='adjust-pledge-rate'>Adjust pledge rate</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/spot/v1/loan/revise-pledge</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/revise-pledge"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+ -d <span class="se">\'</span><span class="o">{</span>
+    <span class="s2">"orderId"</span>:<span class="s2">"1278182633"</span>,
+    <span class="s2">"pledgeCoin"</span>:<span class="s2">"USDT"</span>,
+    <span class="s2">"reviseType"</span>:<span class="s2">"OUT"</span>,
+    <span class="s2">"amount"</span>:<span class="s2">"1"</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Repay amount</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Repay Type</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>reviseType
+
+<ul>
+<li>OUT   Withdraw collateral</li>
+<li>IN   supplementary collateral</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": {
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "afterPledgeRate": "60.5"
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">afterPledgeRate</td>
+<td style="text-align: left">Adjusted Pledge Rate Percentage</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-the-historical-list-of-adjusted-pledge-ratios'>Query the historical list of adjusted pledge ratios</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/revise-history</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/revise-history?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Revise side</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Start time, only supports querying the data of the past three months</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">End time</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo default 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize  default 10，max 100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>reviseSide
+
+<ul>
+<li>down   turn down</li>
+<li>up   turn up</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692436125845,
+  "data": [
+    {
+      "loanCoin": "ETH",
+      "pledgeCoin": "USDT",
+      "orderId": "1076713704374022144",
+      "reviseTime": "1692436102448",
+      "reviseSide": "down",
+      "reviseAmount": "10",
+      "afterPledgeRate": "64.75",
+      "beforePledgeRate": "65"
+    }
+  ]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseTime</td>
+<td style="text-align: left">Adjust time</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseSide</td>
+<td style="text-align: left">Adjust direction</td>
+</tr>
+<tr>
+<td style="text-align: left">reviseAmount</td>
+<td style="text-align: left">Adjustment quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">afterPledgeRate</td>
+<td style="text-align: left">Adjusted Pledge Rate Percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">beforePledgeRate</td>
+<td style="text-align: left">Pledge rate percentage before adjustment</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-loan-history-list'>Query loan history list</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/borrow-history</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/borrow-history?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Status</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Start time, only supports querying the data of the past three months</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">End time</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo default 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize  default 10，amx 100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>rollback failure</li>
+<li>force liquidation</li>
+<li>repay already repaid</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "initPledgeAmount": "0.757",
+    "initLoanAmount": "4321321.23820848",
+    "hourRate": "59.1",
+    "daily": "7",
+    "borrowTime": "1684747528424",
+    "status": "REPAY"
+  }, {
+    "orderId": "1278182633",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "initPledgeAmount": "0.757",
+    "initLoanAmount": "4321321.23820848",
+    "hourRate": "59.1",
+    "daily": "7",
+    "borrowTime": "1684747528424",
+    "status": "REPAY"
+  }]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">initPledgeAmount</td>
+<td style="text-align: left">Initialize the pledge amount</td>
+</tr>
+<tr>
+<td style="text-align: left">initLoanAmount</td>
+<td style="text-align: left">Initialize the loan amount</td>
+</tr>
+<tr>
+<td style="text-align: left">hourRate</td>
+<td style="text-align: left">hourly rate percentage</td>
+</tr>
+<tr>
+<td style="text-align: left">daily</td>
+<td style="text-align: left">Pledge loan days</td>
+</tr>
+<tr>
+<td style="text-align: left">borrowTime</td>
+<td style="text-align: left">Borrowing time</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Status</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-the-list-of-assets-and-liabilities'>Query the list of assets and liabilities</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/debts</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/debts?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<p>N/A</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692436610750,
+  "data": {
+    "pledgeInfos": [
+      {
+        "coin": "USDT",
+        "amount": "28826.61539642",
+        "amountUsdt": "28826.61"
+      }
+    ],
+    "loanInfos": [
+      {
+        "coin": "ETH",
+        "amount": "11.00002748",
+        "amountUsdt": "18730.85"
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">loanInfos</td>
+<td style="text-align: left">Pledged assets info</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">Coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amount</td>
+<td style="text-align: left">Amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amountUsdt</td>
+<td style="text-align: left">Amount usdt</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeInfos</td>
+<td style="text-align: left">Pledge assets Info</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;coin</td>
+<td style="text-align: left">Coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amount</td>
+<td style="text-align: left">Amount</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;amountUsdt</td>
+<td style="text-align: left">Amount usdt</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='query-the-list-of-forced-liquidation-records'>Query the list of forced liquidation records</h3>
+<p>Rate Limit: 10 times/1s (UID)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/loan/debts</li>
+</ul>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/debts?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>Request Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">Status</td>
+</tr>
+<tr>
+<td style="text-align: left">startTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">Start time, only supports querying the data of the past three months</td>
+</tr>
+<tr>
+<td style="text-align: left">endTime</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">yes</td>
+<td style="text-align: center">End time</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNo</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageNo default 1</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">no</td>
+<td style="text-align: center">pageSize  default 10，max 100</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>status
+
+<ul>
+<li>COMPLETE completed liquidation</li>
+<li>WAIT liquidating</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>
+{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1684747525424,
+  "data": [{
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "reduceTime": "0.757",
+    "pledgeRate": "98.2",
+    "pledgePrice": "111.4",
+    "status": "COMPLETE",
+    "pledgeAmount": "1213.5",
+    "reduceFee": "REPAY",
+    "residueAmount": "3234.2",
+    "runlockAmount": "23",
+    "repayLoanAmount": "53.2"
+  }, {
+    "orderId": "1278182632",
+    "loanCoin": "TRX",
+    "pledgeCoin": "USDT",
+    "reduceTime": "0.757",
+    "pledgeRate": "98.2",
+    "pledgePrice": "111.4",
+    "status": "COMPLETE",
+    "pledgeAmount": "1213.5",
+    "reduceFee": "REPAY",
+    "residueAmount": "3234.2",
+    "runlockAmount": "23",
+    "repayLoanAmount": "53.2"
+  }]
+}
+</code></pre>
+<p><strong>Response Parameter</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">Order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">loanCoin</td>
+<td style="text-align: left">Loan coin</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeCoin</td>
+<td style="text-align: left">Pledge coin</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceTime</td>
+<td style="text-align: left">Liquidation time</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeRate</td>
+<td style="text-align: left">Pledge rate percentage during liquidation</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgePrice</td>
+<td style="text-align: left">Pledge price when Liquidation</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">Liquidation status</td>
+</tr>
+<tr>
+<td style="text-align: left">pledgeAmount</td>
+<td style="text-align: left">Liquidation of the number of pledged coins</td>
+</tr>
+<tr>
+<td style="text-align: left">reduceFee</td>
+<td style="text-align: left">Liquidation fee</td>
+</tr>
+<tr>
+<td style="text-align: left">residueAmount</td>
+<td style="text-align: left">Remaining pledged coin amount</td>
+</tr>
+<tr>
+<td style="text-align: left">runlockAmount</td>
+<td style="text-align: left">Release the amount of pledged coin</td>
+</tr>
+<tr>
+<td style="text-align: left">repayLoanAmount</td>
+<td style="text-align: left">Repayment of loan amount</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
 
 <p>&nbsp;</p>
 
