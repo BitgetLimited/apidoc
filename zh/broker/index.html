@@ -1516,14 +1516,13 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{...}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -1676,14 +1675,13 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{...}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -1715,7 +1713,7 @@ Signature = base64.encode(Signature)
         "txId": "XXXXXXX",
         "coin": "USDT",
         "type": "deposit",
-        "dest": internal_transfer,
+        "dest": "internal_transfer",
         "amount": "10",
         "status": "success",
         "fromAddress": "123123",
@@ -1849,14 +1847,13 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s1">'{...}'</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -1888,7 +1885,7 @@ Signature = base64.encode(Signature)
         "txId": "XXXXXXX",
         "coin": "USDT",
         "type": "withdraw",
-        "dest": internal_transfer,
+        "dest": "internal_transfer",
         "amount": "10",
         "status": "success",
         "fromAddress": "123123",
