@@ -897,11 +897,23 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">待定</td>
 <td style="text-align: center">开发测试中</td>
 </tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: center">API 即将支持 自动追加保证金</td>
+<td style="text-align: center">待定</td>
+<td style="text-align: center">开发测试中</td>
+</tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
 <p>一周内更新预告</p>
 
-<p><strong>预计：2023年08月19日</strong></p>
+<p><strong>ETA 2023年08月25日</strong></p>
+
+<ul>
+<li>Websocket <a href="#7ba26f77f3">持仓频道</a> 添加响应字段 <code>autoMargin</code>: 自动添加保证金, 取值: on/off</li>
+</ul>
+<h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月21日</strong></p>
 
 <ul>
 <li>以下接口添加响应字段 <code>autoMargin</code>: 自动添加保证金
@@ -914,12 +926,6 @@ clipboard.on('error', function(e) {
 </ul></li>
 </ul>
 
-<p><strong>预计：2023年08月21日</strong></p>
-
-<ul>
-<li>Websocket <a href="#7ba26f77f3">持仓频道</a> 添加响应字段 <code>autoMargin</code>: 自动添加保证金, 取值: on/off</li>
-</ul>
-<h1 id='185368440e'>更新日志</h1>
 <p><strong>2023年08月11日</strong></p>
 
 <ul>
@@ -13809,7 +13815,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>占用保证金</td>
 </tr>
 <tr>
-<td>&gt;marginMode</td>
+<td>&gt; autoMargin</td>
+<td>String</td>
+<td>自动添加保证金, 取值: on/off</td>
+</tr>
+<tr>
+<td>&gt; marginMode</td>
 <td>String</td>
 <td>保证金模式， <code>crossed</code>：全仓 <code>fixed</code>：逐仓</td>
 </tr>
@@ -13839,7 +13850,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td>冻结数量</td>
 </tr>
 <tr>
-<td>&gt;averageOpenPrice</td>
+<td>&gt; averageOpenPrice</td>
 <td>String</td>
 <td>开仓平均价</td>
 </tr>

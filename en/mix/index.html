@@ -917,11 +917,23 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">TBP</td>
 <td style="text-align: center">Developing and testing</td>
 </tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: center">new feature to support auto suppliment margin</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Developing and testing</td>
+</tr>
 </tbody></table>
 <h3 id='update-forecast'>Update Forecast</h3>
+<p><strong>ETA Aug 25, 2023</strong></p>
+
+<ul>
+<li>New response field on Websocket <a href="#positions-channel">Positions Channel</a>: <code>autoMargin</code>: auto suppliment margin, value: on/off</li>
+</ul>
+<h1 id='update-log'>Update log</h1>
 <p>Below listed upcoming updates within a week</p>
 
-<p><strong>ETA Aug 19, 2023</strong></p>
+<p><strong>Aug 21, 2023</strong></p>
 
 <ul>
 <li>New response field on below APIs: <code>autoMargin</code>: auto suppliment margin, value: on/off
@@ -934,12 +946,6 @@ clipboard.on('error', function(e) {
 </ul></li>
 </ul>
 
-<p><strong>ETA Aug 21, 2023</strong></p>
-
-<ul>
-<li>New response field on Websocket <a href="#positions-channel">Positions Channel</a>: <code>autoMargin</code>: auto suppliment margin, value: on/off</li>
-</ul>
-<h1 id='update-log'>Update log</h1>
 <p><strong>Aug 11, 2023</strong></p>
 
 <ul>
@@ -13789,7 +13795,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Margin, can be added or reduced</td>
 </tr>
 <tr>
-<td>&gt;marginMode</td>
+<td>&gt; autoMargin</td>
+<td>String</td>
+<td>Auto suppliment margin, value: on/off</td>
+</tr>
+<tr>
+<td>&gt; marginMode</td>
 <td>String</td>
 <td>Margin mode, <code>cross</code> <code>fixed</code></td>
 </tr>
@@ -13819,7 +13830,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Frozen quantity</td>
 </tr>
 <tr>
-<td>&gt;averageOpenPrice</td>
+<td>&gt; averageOpenPrice</td>
 <td>String</td>
 <td>Average open price</td>
 </tr>
