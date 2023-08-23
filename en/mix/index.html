@@ -364,6 +364,14 @@
           <ul class="toc-list-h2">
               <li>
                 <a href="#coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#new-feature-forecast" class="toc-h3 toc-link" data-title="New Feature Forecast">New Feature Forecast</a>
+                      </li>
+                      <li>
+                        <a href="#update-forecast" class="toc-h3 toc-link" data-title="Update Forecast">Update Forecast</a>
+                      </li>
+                  </ul>
               </li>
           </ul>
       </li>
@@ -412,7 +420,10 @@
                 <a href="#signature" class="toc-h2 toc-link" data-title="Signature">Signature</a>
               </li>
               <li>
-                <a href="#signature-code-demo" class="toc-h2 toc-link" data-title="Signature Code Demo">Signature Code Demo</a>
+                <a href="#hmac-signature-code-demo" class="toc-h2 toc-link" data-title="HMAC Signature Code Demo">HMAC Signature Code Demo</a>
+              </li>
+              <li>
+                <a href="#rsa-signature-demo-code" class="toc-h2 toc-link" data-title="RSA Signature Demo Code">RSA Signature Demo Code</a>
               </li>
               <li>
                 <a href="#request-interaction" class="toc-h2 toc-link" data-title="Request Interaction">Request Interaction</a>
@@ -677,6 +688,9 @@
                         <a href="#change-margin-mode" class="toc-h3 toc-link" data-title="Change Margin Mode">Change Margin Mode</a>
                       </li>
                       <li>
+                        <a href="#set-auto-margin" class="toc-h3 toc-link" data-title="Set Auto Margin">Set Auto Margin</a>
+                      </li>
+                      <li>
                         <a href="#change-hold-mode" class="toc-h3 toc-link" data-title="Change Hold Mode">Change Hold Mode</a>
                       </li>
                       <li>
@@ -891,7 +905,7 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href="#introduction">here</a> for quick start</p>
-<h2 id='coming-soon'>Coming Soon</h2>
+<h2 id='coming-soon'>Coming Soon</h2><h3 id='new-feature-forecast'>New Feature Forecast</h3>
 <table><thead>
 <tr>
 <th style="text-align: center"><strong>No.</strong></th>
@@ -900,8 +914,53 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>Remark</strong></th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">API v2</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Developing and testing</td>
+</tr>
+<tr>
+<td style="text-align: center">2</td>
+<td style="text-align: center">new feature to support auto suppliment margin</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Developing and testing</td>
+</tr>
 </tbody></table>
+<h3 id='update-forecast'>Update Forecast</h3>
+<p><strong>ETA Aug 25, 2023</strong></p>
+
+<ul>
+<li>New response field on Websocket <a href="#positions-channel">Positions Channel</a>: <code>autoMargin</code>: auto suppliment margin, value: on/off</li>
+</ul>
 <h1 id='update-log'>Update log</h1>
+<p>Below listed upcoming updates within a week</p>
+
+<p><strong>Aug 23, 2023</strong></p>
+
+<ul>
+<li>Added  <a href="#set-auto-margin">Set Auto Margin</a></li>
+</ul>
+
+<p><strong>Aug 21, 2023</strong></p>
+
+<ul>
+<li>New response field on below APIs: <code>autoMargin</code>: auto suppliment margin, value: on/off
+
+<ul>
+<li><a href="#get-symbol-position">/api/mix/v1/position/singlePosition</a></li>
+<li><a href="#get-symbol-position-v2">/api/mix/v1/position/singlePosition-v2</a></li>
+<li><a href="#get-all-position">/api/mix/v1/position/allPosition</a></li>
+<li><a href="#get-all-position-v2">/api/mix/v1/position/allPosition-v2</a></li>
+</ul></li>
+</ul>
+
+<p><strong>Aug 11, 2023</strong></p>
+
+<ul>
+<li>New feature to support RSA signature: <a href="#rsa-signature-demo-code">RSA Signature Demo Code</a></li>
+</ul>
+
 <p><strong>July 25, 2023</strong></p>
 
 <ul>
@@ -1577,18 +1636,22 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 
 <p><strong>Steps to generate the final signature</strong></p>
 
-<p>Step 1. Use the private key <strong>secretkey</strong> to encrypt the content with hmac sha256</p>
+<p><strong><em>HMAC</em></strong></p>
 
-<p><code>
-String payload = hmac_sha256(secretkey, content);
-</code></p>
+<p>Step 1. Use the private key <strong>secretkey</strong> to encrypt the string to be signed with hmac sha256</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">hmac_sha256</span><span class="o">(</span><span class="n">secretkey</span><span class="o">,</span> <span class="n">Message</span><span class="o">);</span>
+</code></pre>
+<p> </p>
 
-<p>The second step is to base64 encode the payload</p>
+<p>Step 2. Base64 encoding for Signature.</p>
+<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+</code></pre>
+<p><strong><em>RSA</em></strong></p>
 
-<p><code>
-String signature = base64.encode(payload);
-</code></p>
-<h2 id='signature-code-demo'>Signature Code Demo</h2>
+<p>Step 1. Use the RSA privateKey <strong>privateKey</strong> to encrypt the string to be signed with SHA-256</p>
+
+<p>Step 2. Base64 encoding for Signature.</p>
+<h2 id='hmac-signature-code-demo'>HMAC Signature Code Demo</h2>
 <blockquote>
 <p>Java</p>
 </blockquote>
@@ -1601,6 +1664,7 @@ String signature = base64.encode(payload);
 <span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Base64Utils</span><span class="o">;</span>
 
 <span class="nd">@Slf4j</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
@@ -1708,7 +1772,97 @@ String signature = base64.encode(payload);
   <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
 </code></pre>
 <p>For more demo code on other development languages, please refer to <a href="#sdk/code-example">SDK</a></p>
-<h2 id='request-interaction'>Request Interaction</h2>
+<h2 id='rsa-signature-demo-code'>RSA Signature Demo Code</h2>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.RuntimeErrorException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//GET sign example</span>
+<span class="c1">//        String timestamp = "1684814440729";</span>
+<span class="c1">//        String queryString = "symbol=btcusdt_umcbl&amp;marginCoin=usdt";</span>
+<span class="c1">//        String signContent = timestamp + "GET" + "/api/mix/v1/account/account?" + queryString;</span>
+<span class="c1">//        String sign = generate(signContent);</span>
+<span class="c1">//        log.info("sign:{}",sign);</span>
+
+
+        <span class="c1">//POST sign example</span>
+        <span class="n">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1684814440729"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">preContent</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s">"POST"</span> <span class="o">+</span> <span class="s">"/api/spot/v1/trade/orders"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">body</span> <span class="o">=</span> <span class="s">"{\"symbol\":\"btcusdt_spbl\",\"quantity\":\"8\",\"side\":\"buy\",\"price\":\"1\",\"orderType\":\"limit\",\"clientOrderId\":\"bitget1233456\"}"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">signContent</span> <span class="o">=</span> <span class="n">preContent</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">signContent</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"sign:{}"</span><span class="o">,</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+
+  <span class="cm">/**
+   *
+   * @param content: the string to be signed
+   * @return
+   */</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="s">"-----BEGIN PRIVATE KEY-----\n"</span> <span class="o">+</span>
+            <span class="s">"xxxxxxxxxxxxxxxxxxxx9w0BAQEFAASCBKgwggSkAgEAAoIBAQD5C1iP01MC9fh5\n"</span> <span class="o">+</span>
+            <span class="s">"43mGx8WgJRAp3Xz9Tcqfz6HzoSg+zd8HVxKXRTXBwMDBfLxfQXobptz1tDlPUs+g\n"</span> <span class="o">+</span>
+            <span class="s">"YI38X8XEBZi5U4EBaZ5qHxArBTimyNXX6WNL6hTw0MI238cGKiW0WvWd9v6Z6/LX\n"</span> <span class="o">+</span>
+            <span class="s">"i6uFUiUEsZiiuHXcO7EKGuvBrVIRl57FzvOPD5QKfhVxcHr63NfEViAEQfQH4IN2\n"</span> <span class="o">+</span>
+            <span class="s">"+mu+L8epkWkmbua4jILUP+LXvHN7ZMiWP9bouw3r4l6v0NJ4XyucSYJL9fJ81rsI\n"</span> <span class="o">+</span>
+            <span class="s">"iUoD1S7xlSboujR4RSsFZKFyurE1c8XiU2aZ2qq+6vjby0ncE4dKVu5x/iJZ4gsL\n"</span> <span class="o">+</span>
+            <span class="s">"bneZujBLAgMBAAECggEAD6cF5uw6QGpjNo30emMd6aXKsUbpbyYvgQHUxPIxDFl2\n"</span> <span class="o">+</span>
+            <span class="s">"FgkD8xv3d/j8ZGzJjhcYbJp9MrgkDfc/c23+HomKbXqIkcVMy2DvAu523q1SVTE0\n"</span> <span class="o">+</span>
+            <span class="s">"N4DEq+XHcSc9vaMs6BdIDWDWJRp8AAKTXba6jgOOrg/Xbwq25aOeyerNPHv/N3m3\n"</span> <span class="o">+</span>
+            <span class="s">"VImJZVV+ZcetUZ82UdX7NkvV4qmRi8se47OXUT9aypzpvGbSukkqXuE4GtKGoybR\n"</span> <span class="o">+</span>
+            <span class="s">"R1sJtU10ap3QvyVNshn2QJnRd3GN2UENDvZS3ZvSY6f/Cq7K/EAmrsstOdUB2Ihn\n"</span> <span class="o">+</span>
+            <span class="s">"POnI9/MrghWFq/n3ekuArWc54bDai0deKFl9KvI2oQKBgQD9ekRFMB6ueRCCeoyg\n"</span> <span class="o">+</span>
+            <span class="s">"TOGvvW3d7X7G90XKL1xKhrg6mYh65hfQaxbihfOcrneFOoc3BgZwnbAZpF+hlq9J\n"</span> <span class="o">+</span>
+            <span class="s">"klu69adhYlMxP2nF3PGj5vPln9/rd6/gcFFE9o7zZhI166PsmlxQ7/N0SCnlao7y\n"</span> <span class="o">+</span>
+            <span class="s">"HZQoeeFJ1xuvCHVlNsTR+XZ88QKBgQD7hckVvGxIftcZsHChP8TFcDAn1IsaVbyt\n"</span> <span class="o">+</span>
+            <span class="s">"i1UZ5JPznSLTcdb8YPtFr9afiCJ4b2NqRe8gCpUCUi+urnoMMsqMxTUMopiLPh2S\n"</span> <span class="o">+</span>
+            <span class="s">"SYaBgpQYUIDLpt+Wx06krbOOyXVZ8RtgYLMpMhFCsRyzovqe8/LZQfQKWfQGTAXS\n"</span> <span class="o">+</span>
+            <span class="s">"qL5vdyiw+wKBgQC7DMDYdbwOcFRYlOq1WEarExTCUoHdfZfIrc5jSKsmwynN14H3\n"</span> <span class="o">+</span>
+            <span class="s">"US9gFg1BsBWPATPKzO1vqU3Mfln7umC73/9FJgZQfOh7TRpW4saGduXAq4voDTiC\n"</span> <span class="o">+</span>
+            <span class="s">"XR/7zh6LSuVhWPRsozRAnfF/+8i+/TVjQaSVgetYPB63uXw4JoRzlq1zYQKBgQDJ\n"</span> <span class="o">+</span>
+            <span class="s">"7ASb25G+vX1n1TsGaNBKhR9TypEFylDXreTbDaMtTzg3Mcwa/qyarGiL2Fl8AEh6\n"</span> <span class="o">+</span>
+            <span class="s">"d7xaJ8SqgVpgTRgUFO6BBozpINt/5ZUN7NL7w92qi25qkAQt4sGi+QQOnHMGisak\n"</span> <span class="o">+</span>
+            <span class="s">"n90VNGmg9dkJ6cxzsXqDqiwF52M9bui5zthbWfkj4wKBgEFVT+jf235aihaS88Oj\n"</span> <span class="o">+</span>
+            <span class="s">"MbR078tvsFiRBICHlYCIef7/a+gt7N1u9sEGlPspY3HuPamA39201BuItD9X83VR\n"</span> <span class="o">+</span>
+            <span class="s">"Vg+HjkeQIIrxmfvZn1O8/l+ItSNUzQhX6T0cSdCo6KtmZLBQ6Zaw7r63GcdvSdR2\n"</span> <span class="o">+</span>
+            <span class="s">"xxxxxxxxxxxxxxxxxxxxxxx\n"</span> <span class="o">+</span>
+            <span class="s">"-----END PRIVATE KEY-----\n"</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">parsedPem</span> <span class="o">=</span> <span class="n">privateKey</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"\n"</span><span class="o">,</span> <span class="s">""</span><span class="o">).</span><span class="na">trim</span><span class="o">();</span>
+      <span class="n">parsedPem</span> <span class="o">=</span> <span class="n">parsedPem</span>
+              <span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"-----BEGIN PRIVATE KEY-----"</span><span class="o">,</span> <span class="s">""</span><span class="o">)</span>
+              <span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"-----END PRIVATE KEY-----"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+      <span class="n">PKCS8EncodedKeySpec</span> <span class="n">priPKCS8</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PKCS8EncodedKeySpec</span><span class="o">(</span><span class="n">Base64Utils</span><span class="o">.</span><span class="na">decodeFromString</span><span class="o">(</span><span class="n">parsedPem</span><span class="o">));</span>
+      <span class="n">KeyFactory</span> <span class="n">keyFactory</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">);</span>
+      <span class="n">PrivateKey</span> <span class="n">priKey</span> <span class="o">=</span> <span class="n">keyFactory</span><span class="o">.</span><span class="na">generatePrivate</span><span class="o">(</span><span class="n">priPKCS8</span><span class="o">);</span>
+      <span class="n">Signature</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA256WithRSA"</span><span class="o">);</span>
+      <span class="n">signature</span><span class="o">.</span><span class="na">initSign</span><span class="o">(</span><span class="n">priKey</span><span class="o">);</span>
+      <span class="n">signature</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">content</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+      <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">Base64Utils</span><span class="o">.</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">signature</span><span class="o">.</span><span class="na">sign</span><span class="o">());</span>
+      <span class="k">return</span> <span class="n">sign</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"create sign  failed"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre><h2 id='request-interaction'>Request Interaction</h2>
 <p>All requests are based on the Https protocol, and the Content-Type in the POST request header should set to:&#39;application/json&#39;.</p>
 
 <p><strong>Request Interaction Description</strong></p>
@@ -4114,7 +4268,7 @@ If there is a large deviation between the local server time and the API server t
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/candles?symbol=BTCUSDT_UMCBL&amp;granularity=5m&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -4214,7 +4368,7 @@ If there is a large deviation between the local server time and the API server t
 <h3 id='get-history-candle-data'>Get History Candle Data</h3>
 <p>Limit rule: 20 times/1s (IP)</p>
 
-<p>Could only get data within 30 days for &#39;1m&#39; data, default return 100 rows</p>
+<p>Get history candle data, max return 200 rows</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -4260,14 +4414,14 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default 100, max 1000</td>
+<td style="text-align: center">Default 100, max 200</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-candles?symbol=BTCUSDT_UMCBL&amp;granularity=5m&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -4413,14 +4567,14 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default 100, max 1000</td>
+<td style="text-align: center">Default 100, max 200</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-index-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-index-candles?symbol=BTCUSDT_UMCBL&amp;granularity=5m&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -4566,14 +4720,14 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">limit</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">No</td>
-<td style="text-align: center">Default 100, max 1000</td>
+<td style="text-align: center">Default 100, max 200</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-mark-candles?symbol=BTCUSDT_UMCBL&amp;granularity=300&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/history-mark-candles?symbol=BTCUSDT_UMCBL&amp;granularity=5m&amp;startTime=1659406928000&amp;endTime=1659410528000"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -6096,6 +6250,116 @@ If there is a large deviation between the local server time and the API server t
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='set-auto-margin'>Set Auto Margin</h3>
+<p>Limit rule: 5 times/1s (uid)</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>POST /api/mix/v1/account/set-auto-margin</li>
+</ul>
+
+<p><strong>Request Parameter(Request Body)</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter Name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Symbol Id (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">marginCoin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">Margin currency (Must be capitalized)</td>
+</tr>
+<tr>
+<td style="text-align: left">holdSide</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">long / short</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center">on/off</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/mix/v1/account/set-auto-margin"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="se">\'</span><span class="o">{</span><span class="s2">"symbol"</span>: <span class="s2">"BTCUSDT_UMCBL"</span>,<span class="s2">"marginCoin"</span>: <span class="s2">"USDT"</span>,<span class="s2">"holdSide"</span>: <span class="s2">"long"</span>,<span class="s2">"autoMargin"</span>:<span class="s2">"on"</span><span class="o">}</span><span class="s1">'
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1627293445916</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='change-hold-mode'>Change Hold Mode</h3>
 <p>Please DO NOT change the hold mode with existing position/order under any symbols within the &#39;productType&#39;</p>
 
@@ -6252,6 +6516,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6299,6 +6564,10 @@ If there is a large deviation between the local server time and the API server t
 <td style="text-align: left">Margin quantity (margin currency)</td>
 </tr>
 <tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
+</tr>
+<tr>
 <td style="text-align: left">available</td>
 <td style="text-align: left">Position available (Quote currency)</td>
 </tr>
@@ -6340,7 +6609,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">marketPrice</td>
-<td style="text-align: left">market  price</td>
+<td style="text-align: left">mark  price</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6407,6 +6676,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6427,6 +6697,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6471,6 +6742,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6518,7 +6793,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">marketPrice</td>
-<td style="text-align: left">market  price</td>
+<td style="text-align: left">mark (typo) price</td>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
@@ -6581,6 +6856,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6626,6 +6902,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6734,6 +7014,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6754,6 +7035,7 @@ If there is a large deviation between the local server time and the API server t
       </span><span class="s2">"holdSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"short"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"openDelegateCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"margin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"autoMargin"</span><span class="p">:</span><span class="s2">"off"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"locked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
@@ -6800,6 +7082,10 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">margin</td>
 <td style="text-align: left">Margin quantity (margin currency)</td>
+</tr>
+<tr>
+<td style="text-align: left">autoMargin</td>
+<td style="text-align: left">Auto suppliment margin: <code>off</code> <code>on</code></td>
 </tr>
 <tr>
 <td style="text-align: left">available</td>
@@ -6891,7 +7177,7 @@ If there is a large deviation between the local server time and the API server t
 <td>pageSize</td>
 <td>Int</td>
 <td>No</td>
-<td>default 20 Max 100 </td>
+<td>default 20 Max 100</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -6909,14 +7195,14 @@ If there is a large deviation between the local server time and the API server t
 <td>lastEndId</td>
 <td>String</td>
 <td>No</td>
-<td> lastEndId</td>
+<td>lastEndId</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/market/history-positions?productType=umcbl&amp;startTime=&amp;endTime="
+<pre class="highlight plaintext"><code>curl "https://api.bitget.com/api/mix/v1/position/history-positions?productType=umcbl&amp;startTime=&amp;endTime="
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -13626,7 +13912,12 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Margin, can be added or reduced</td>
 </tr>
 <tr>
-<td>&gt;marginMode</td>
+<td>&gt; autoMargin</td>
+<td>String</td>
+<td>Auto suppliment margin, value: on/off</td>
+</tr>
+<tr>
+<td>&gt; marginMode</td>
 <td>String</td>
 <td>Margin mode, <code>cross</code> <code>fixed</code></td>
 </tr>
@@ -13656,7 +13947,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <td>Frozen quantity</td>
 </tr>
 <tr>
-<td>&gt;averageOpenPrice</td>
+<td>&gt; averageOpenPrice</td>
 <td>String</td>
 <td>Average open price</td>
 </tr>
