@@ -2710,7 +2710,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/maxBorrowableAmount?coin=usdt"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/margin/v1/cross/account/maxBorrowableAmount"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -2785,7 +2785,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/maxBorrowableAmount"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.bitget.com/api/margin/v1/isolated/account/maxBorrowableAmount"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
