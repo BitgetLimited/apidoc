@@ -880,6 +880,37 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 </tbody></table>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月23日</strong></p>
+
+<p>Websocket异常响应格式变更：</p>
+
+<p>From:</p>
+
+<aside class="info">
+{<br/>
+&nbsp;&nbsp;"event":"error",<br/>
+&nbsp;&nbsp;"code":30003,<br/>
+&nbsp;&nbsp;"msg":"instType:SP,channel:ticker,instId:BTC-USDT Symbol not exists"<br/>
+}
+</aside>
+
+<p>To:</p>
+
+<aside class="info">
+{<br/>
+&nbsp;&nbsp;"event":"error",<br/>
+&nbsp;&nbsp;"arg":<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"instType":"SP",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channel":"ticker",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"instId":"BTC-USDT"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;"code":30003,<br/>
+&nbsp;&nbsp;"msg":"instType:SP,channel:ticker,instId:BTC-USDT Symbol not exists",<br/>
+&nbsp;&nbsp;"op":"subscribe"<br/>
+}
+</aside>
+
 <p><strong>2023年08月19日</strong></p>
 
 <ul>
@@ -12762,10 +12793,17 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unrecognized request: {</span><span class="se">\"</span><span class="s2">op</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">subscribe</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">arg</span><span class="se">\"</span><span class="s2">:[</span><span class="se">\"</span><span class="s2">instType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">sp</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">channel</span><span class="se">\"</span><span class="s2"> : </span><span class="se">\"</span><span class="s2">ticker</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">instId</span><span class="se">\"</span><span class="s2"> : </span><span class="se">\"</span><span class="s2">BTCUSDT</span><span class="se">\"</span><span class="s2">}]}"</span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30001</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:SP,channel:ticker,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
 
@@ -13040,10 +13078,17 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:sp,channel:candle1D,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30001</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:sp,channel:candle1D,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
 
@@ -13257,10 +13302,17 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:sp,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"sp"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30001</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:sp,channel:books5,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
 
@@ -13451,10 +13503,17 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30001</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:spbl,channel:trade,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
 
@@ -13638,10 +13697,17 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:account,instId:BTC-USDT Symbol not exists"</span><span class="err"> </span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:spbl,channel:account,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
 
@@ -13851,9 +13917,16 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <p>失败返回示例</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:spbl,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"spbl"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:spbl,channel:orders,instId:BTC-USDT doesn't exist"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回参数</strong></p>
@@ -14372,6 +14445,10 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <tr>
 <td style="text-align: left">无效的签名</td>
 <td style="text-align: left">30015</td>
+</tr>
+<tr>
+<td style="text-align: left">参数错误</td>
+<td style="text-align: left">30016</td>
 </tr>
 </tbody></table>
 

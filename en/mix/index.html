@@ -925,13 +925,44 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h3 id='update-forecast'>Update Forecast</h3>
+<p>Below listed upcoming updates within a week</p>
+
 <p><strong>ETA Aug 25, 2023</strong></p>
 
 <ul>
 <li>New response field on Websocket <a href="#positions-channel">Positions Channel</a>: <code>autoMargin</code>: auto suppliment margin, value: on/off</li>
 </ul>
 <h1 id='update-log'>Update log</h1>
-<p>Below listed upcoming updates within a week</p>
+<p><strong>Aug 23, 2023</strong></p>
+
+<p>Websocket error response format change：</p>
+
+<p>From:</p>
+
+<aside class="info">
+{<br/>
+&nbsp;&nbsp;"event":"error",<br/>
+&nbsp;&nbsp;"code":30003,<br/>
+&nbsp;&nbsp;"msg":"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"<br/>
+}
+</aside>
+
+<p>To:</p>
+
+<aside class="info">
+{<br/>
+&nbsp;&nbsp;"event":"error",<br/>
+&nbsp;&nbsp;"arg":<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"instType":"MC",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channel":"ticker",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"instId":"BTC-USDT"<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;"code":30003,<br/>
+&nbsp;&nbsp;"msg":"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists",<br/>
+&nbsp;&nbsp;"op":"subscribe"<br/>
+}
+</aside>
 
 <p><strong>Aug 21, 2023</strong></p>
 
@@ -12482,10 +12513,15 @@ Such as: <code>bid1[price:amount]</code>:<code>ask1[price:amount]</code>:<code>a
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"candle1D"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:ticker,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
@@ -12787,11 +12823,15 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"books5"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:books5,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
@@ -12988,11 +13028,15 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:trade,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
@@ -13213,11 +13257,15 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"MC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"mc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"tradeNew"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:MC,channel:tradeNew,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
@@ -13491,10 +13539,17 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <p>Failure Response Example</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,account:ticker,instId:BTC-USDT Symbol not exists"</span><span class="w">
-</span><span class="p">}</span><span class="err"> </span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:UMCBL,channel:account,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response parameters</strong></p>
 
@@ -13960,9 +14015,16 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <p>Failure Response Example</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response Parameter</strong></p>
@@ -14302,9 +14364,16 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <p>Fail</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">30003</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instType:UMCBL,channel:orders,instId:BTC-USDT Symbol not exists"</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"arg"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"instType"</span><span class="p">:</span><span class="s2">"UMCBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"channel"</span><span class="p">:</span><span class="s2">"ordersAlgo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"instId"</span><span class="p">:</span><span class="s2">"BTC-USDT"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">30003</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"instType:UMCBL,channel:ordersAlgo,instId:BTC-USDT Symbol not exists"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"op"</span><span class="p">:</span><span class="s2">"subscribe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>Response Parameter</strong></p>
@@ -14859,6 +14928,10 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td style="text-align: left">Invalid signature</td>
 <td style="text-align: left">30015</td>
+</tr>
+<tr>
+<td style="text-align: left">Param error</td>
+<td style="text-align: left">30016</td>
 </tr>
 </tbody></table>
 
