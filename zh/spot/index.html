@@ -3570,12 +3570,64 @@ Signature = base64.encode(Signature)
 <p>限速规则：20次/1s</p>
 
 <p><strong>HTTP请求</strong>
-获取K线数据</p>
+获取深度数据</p>
 
 <ul>
 <li>GET /api/spot/v1/market/depth</li>
 </ul>
 
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/depth?symbol=BTCUSDT_SPBL&amp;type=step0&amp;limit=100"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"asks"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38084.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.0039"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38085.7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.0018"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38086.7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.0310"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38088.2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.5303"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"bids"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38073.7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.4993000000000000"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38073.4"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.4500"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38073.3"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.1179"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"38071.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.2162"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"1622102974025"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -3596,7 +3648,7 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">type</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">默认：step0： 不合并，取值：step0，step1，step2，step3，step4，step5</td>
+<td style="text-align: center">默认：step0： 取值：step0，step1，step2，step3，step4，step5</td>
 </tr>
 <tr>
 <td style="text-align: left">limit</td>
@@ -3606,58 +3658,29 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>请求示例</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/depth?symbol=BTCUSDT_SPBL&amp;type=step0&amp;limit=100"</span>
-</code></pre>
-<blockquote>
-<p>返回数据</p>
-</blockquote>
-<pre class="highlight plaintext"><code>{
-    "code":"00000",
-    "msg":"success",
-    "data":{
-        "asks":[
-            [
-                "38084.5",
-                "0.0039"
-            ],
-            [
-                "38085.7",
-                "0.0018"
-            ],
-            [
-                "38086.7",
-                "0.0310"
-            ],
-            [
-                "38088.2",
-                "0.5303"
-            ]
-        ],
-        "bids":[
-            [
-                "38073.7",
-                "0.4993000000000000"
-            ],
-            [
-                "38073.4",
-                "0.4500"
-            ],
-            [
-                "38073.3",
-                "0.1179"
-            ],
-            [
-                "38071.5",
-                "0.2162"
-            ]
-        ],
-        "timestamp":"1622102974025"
-    }
-}
-</code></pre>
+<p>type: 统一向上取整 强制进一</p>
+
+<ul>
+<li>step0 正常显示</li>
+<li>step1 去掉一位小数</li>
+<li>step2 去掉两位小数</li>
+<li>step3 去掉三位小数</li>
+<li>step4 去掉三位小数 向上取整为5的倍数</li>
+<li>step5 去掉四位小数</li>
+</ul>
+
+<p>示例
+BTCUSDt priceScale 2
+当前价格  39223.42</p>
+
+<ul>
+<li>step1 39223.5</li>
+<li>step2 39224.0</li>
+<li>step3 39230.0</li>
+<li>step4 39250.0</li>
+<li>step5 39300.0</li>
+</ul>
+
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>

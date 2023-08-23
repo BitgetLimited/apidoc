@@ -3689,7 +3689,7 @@ microtime(true) * 1000;
 <td>type</td>
 <td>String</td>
 <td>Yes</td>
-<td>Default: step0: do not merge, value: step0, step1, step2, step3, step4, step5</td>
+<td>Default: step0; value: step0, step1, step2, step3, step4, step5</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3699,19 +3699,28 @@ microtime(true) * 1000;
 </tr>
 </tbody></table>
 
-<p>&nbsp;</p>
+<p>type</p>
 
-<p>&nbsp;</p>
+<ul>
+<li>step0 original price</li>
+<li>step1 original price * 10 and round up</li>
+<li>step2 original price * 100 and round up</li>
+<li>step3 original price * 1000 and round up</li>
+<li>step4 original price * 1000 and round up to a multiple of 5</li>
+<li>step5 original price * 10000 and round up</li>
+</ul>
 
-<p>&nbsp;</p>
+<p>example</p>
 
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<ul>
+<li>BTCUSDT priceScale: 2</li>
+<li>current price  39223.42</li>
+<li>step1 39223.5</li>
+<li>step2 39224.0</li>
+<li>step3 39230.0</li>
+<li>step4 39250.0</li>
+<li>step5 39300.0</li>
+</ul>
 
 <p>&nbsp;</p>
 
