@@ -323,7 +323,7 @@
        }
     }
   </style>
-  <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
+    <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
   <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
@@ -361,9 +361,19 @@
   <ul id="toc" class="toc-list-h1">
       <li>
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
-      </li>
-      <li>
-        <a href="#update-log" class="toc-h1 toc-link" data-title="Update Log">Update Log</a>
+          <ul class="toc-list-h2">
+              <li>
+                <a href="#coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#new-feature-forecast" class="toc-h3 toc-link" data-title="New Feature Forecast">New Feature Forecast</a>
+                      </li>
+                      <li>
+                        <a href="#update-forecast" class="toc-h3 toc-link" data-title="Update Forecast">Update Forecast</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
       </li>
       <li>
         <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -667,7 +677,27 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget ApiDoc! Click <a href='#introduction'>here</a> for quick start</p>
-<h1 id='update-log'>Update Log</h1>
+<h2 id='coming-soon'>Coming Soon</h2><h3 id='new-feature-forecast'>New Feature Forecast</h3>
+<table><thead>
+<tr>
+<th style="text-align: center"><strong>No.</strong></th>
+<th style="text-align: center"><strong>Interface</strong></th>
+<th style="text-align: center"><strong>Launch Date</strong></th>
+<th style="text-align: center"><strong>Remark</strong></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='update-forecast'>Update Forecast</h3>
+<p>Below listed upcoming updates within a week</p>
+
+<p><strong>ETA Aug 29, 2023</strong></p>
+
+<ul>
+<li>Forecast  <a href="#get-follower-open-orders">/api/mix/v1/trace/followerOrder</a> added response field:：openFee
+         <a href="#get-trader-open-order">/api/mix/v1/trace/currentTrack</a> added response field:：openFee
+# Update Log</li>
+</ul>
+
 <p><strong>Aug 17, 2023</strong></p>
 
 <ul>
