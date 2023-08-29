@@ -447,6 +447,15 @@
                       <li>
                         <a href="#72f9e19c7c" class="toc-h3 toc-link" data-title="充币自动划转(仅适用主账户)">充币自动划转(仅适用主账户)</a>
                       </li>
+                      <li>
+                        <a href="#0e916bb962" class="toc-h3 toc-link" data-title="查询子账户划转记录">查询子账户划转记录</a>
+                      </li>
+                      <li>
+                        <a href="#b4c29a1798" class="toc-h3 toc-link" data-title="查询子账户充币记录">查询子账户充币记录</a>
+                      </li>
+                      <li>
+                        <a href="#59ce1290d2" class="toc-h3 toc-link" data-title="查询子账户提币记录">查询子账户提币记录</a>
+                      </li>
                   </ul>
               </li>
               <li>
@@ -492,8 +501,23 @@ clipboard.on('error', function(e) {
 });
 </script>
 <h1 id='185368440e'>更新日志</h1>
-<p><strong>2022年12月28日</strong>
- - 切换官方telegram群</p>
+<p><strong>2023年08月17日</strong></p>
+
+<ul>
+<li>新增接口：
+
+<ul>
+<li><a href="#0e916bb962">查询子账户划转记录</a></li>
+<li><a href="#b4c29a1798">查询子账户充币记录</a></li>
+<li><a href="#59ce1290d2">查询子账户提币记录</a></li>
+</ul></li>
+</ul>
+
+<p><strong>2022年12月28日</strong></p>
+
+<ul>
+<li>切换官方telegram群</li>
+</ul>
 
 <p><strong>2022年9月28日</strong></p>
 
@@ -676,6 +700,8 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 
 <p><strong>生成最终签名的步骤</strong> </p>
 
+<p><strong><em>HMAC</em></strong></p>
+
 <p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
 
 <p><code>
@@ -687,6 +713,12 @@ Signature = hmac_sha256(secretkey, Message)
 <p><code>
 Signature = base64.encode(Signature)
 </code></p>
+
+<p><strong><em>RSA</em></strong></p>
+
+<p>第一步，使用RSA私钥privateKey对待签名字符串进行SHA-256签名。</p>
+
+<p>第二步，对生成的签名字符串进行编码为 base64 string，得到签名字符串进行接口请求。</p>
 <h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -826,7 +858,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>
@@ -914,7 +946,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>
@@ -988,7 +1020,7 @@ Signature = base64.encode(Signature)
 <li>auth
 
 <ul>
-<li>trade   所有交易权限</li>
+<li>recharge 充值权限</li>
 <li>withdraw 提币权限</li>
 <li>transfer  划转</li>
 <li>spot_trade 只能现货交易</li>
@@ -1472,6 +1504,509 @@ Signature = base64.encode(Signature)
 <li>mix_usdc</li>
 </ul></li>
 </ul>
+<h3 id='0e916bb962'>查询子账户划转记录</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-transfer</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "coin": "USDT",
+        "status": "Successful",
+        "toType": "spot",
+        "toSymbol": null,
+        "fromType": "usdt_m_futures",
+        "fromSymbol": null,
+        "amount": "10",
+        "transferTime": "1689833233282",
+        "orderId": "XXXXX",
+        "clientOid": "XXXXX",
+        "subUid": "123123",
+        "transferId": "XXXXX"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">划转币种</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">划转流程的处理状态</td>
+</tr>
+<tr>
+<td style="text-align: left">toType</td>
+<td style="text-align: left">划转转入账户的类型</td>
+</tr>
+<tr>
+<td style="text-align: left">toSymbol</td>
+<td style="text-align: left">转入交易对, 当转入账户是isolated_margin时返回</td>
+</tr>
+<tr>
+<td style="text-align: left">fromType</td>
+<td style="text-align: left">划转转出账户的类型</td>
+</tr>
+<tr>
+<td style="text-align: left">fromSymbol</td>
+<td style="text-align: left">转出交易对, 当转出账户是isolated_margin时返回</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">划转币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">transferTime</td>
+<td style="text-align: left">划转时间,ms</td>
+</tr>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">clientOid</td>
+<td style="text-align: left">客户自定义ID</td>
+</tr>
+<tr>
+<td style="text-align: left">subUid</td>
+<td style="text-align: left">子账户ID</td>
+</tr>
+<tr>
+<td style="text-align: left">transferId</td>
+<td style="text-align: left">划转ID</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>status</p>
+
+<ul>
+<li>Successful</li>
+<li>Failed</li>
+<li>Processing</li>
+</ul></li>
+<li><p>toType/fromType</p>
+
+<ul>
+<li>spot</li>
+<li>p2p</li>
+<li>coin_m_futures</li>
+<li>usdt_m_futures</li>
+<li>usdc_m_futures</li>
+<li>cross_margin</li>
+<li>isolated_margin</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='b4c29a1798'>查询子账户充币记录</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-deposit</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "orderId": "XXXXX",
+        "txId": "XXXXXXX",
+        "coin": "USDT",
+        "type": "deposit",
+        "dest": "internal_transfer",
+        "amount": "10",
+        "status": "success",
+        "fromAddress": "123123",
+        "toAddress": "456456",
+        "fee": "1",
+        "chain": "erc20",
+        "confirm": "3",
+        "tag": "xx",
+        "cTime": "1689833233282",
+        "uTime": "1689833233282"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">txId</td>
+<td style="text-align: left">交易ID</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">类型</td>
+</tr>
+<tr>
+<td style="text-align: left">dest</td>
+<td style="text-align: left">充币类型</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">充币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">充币流程的状态</td>
+</tr>
+<tr>
+<td style="text-align: left">fromAddress</td>
+<td style="text-align: left">充币发起人信息。 链上充值时，该字段为发起人钱包地址；内部转账时，该字段为UID</td>
+</tr>
+<tr>
+<td style="text-align: left">toAddress</td>
+<td style="text-align: left">充币接收人信息。 链上充值时，该字段为发起人钱包地址；内部转账时，该字段为UID</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费数量。计价单位为充值币种</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">充币网络</td>
+</tr>
+<tr>
+<td style="text-align: left">confirm</td>
+<td style="text-align: left">确认区块数量</td>
+</tr>
+<tr>
+<td style="text-align: left">tag</td>
+<td style="text-align: left">标签</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">创建时间 ms</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">修改时间 ms</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>dest</p>
+
+<ul>
+<li>on_chain</li>
+<li>internal_transfer</li>
+</ul></li>
+<li><p>status</p>
+
+<ul>
+<li>pending</li>
+<li>pending_review</li>
+<li>pending_fail</li>
+<li>pending_review_fail</li>
+<li>reject</li>
+<li>success</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='59ce1290d2'>查询子账户提币记录</h3>
+<p>限速规则 10次/1s (uid)</p>
+
+<p><strong>HTTP请求</strong></p>
+
+<ul>
+<li>GET /api/broker/v1/subaccount-withdrawal</li>
+</ul>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+</code></pre>
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">订单Id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1689833233282,
+    "data": {
+        "orderId": "XXXXX",
+        "txId": "XXXXXXX",
+        "coin": "USDT",
+        "type": "withdraw",
+        "dest": "internal_transfer",
+        "amount": "10",
+        "status": "success",
+        "fromAddress": "123123",
+        "toAddress": "456456",
+        "fee": "1",
+        "chain": "erc20",
+        "confirm": "3",
+        "tag": "xx",
+        "cTime": "1689833233282",
+        "uTime": "1689833233282"
+    }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">返回字段</th>
+<th style="text-align: left">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">orderId</td>
+<td style="text-align: left">订单ID</td>
+</tr>
+<tr>
+<td style="text-align: left">txId</td>
+<td style="text-align: left">交易ID</td>
+</tr>
+<tr>
+<td style="text-align: left">coin</td>
+<td style="text-align: left">币种名称</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left">类型</td>
+</tr>
+<tr>
+<td style="text-align: left">dest</td>
+<td style="text-align: left">提币类型</td>
+</tr>
+<tr>
+<td style="text-align: left">amount</td>
+<td style="text-align: left">提币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left">提币流程的状态</td>
+</tr>
+<tr>
+<td style="text-align: left">fromAddress</td>
+<td style="text-align: left">提币发起人信息。 链上充值时，该字段为发起人钱包地址；内部转账时，该字段为UID</td>
+</tr>
+<tr>
+<td style="text-align: left">toAddress</td>
+<td style="text-align: left">提币接收人信息。 链上充值时，该字段为发起人钱包地址；内部转账时，该字段为接收人账号为，包含UID, 手机号及邮箱三种格式中的一个</td>
+</tr>
+<tr>
+<td style="text-align: left">fee</td>
+<td style="text-align: left">手续费数量。计价单位为充值币种</td>
+</tr>
+<tr>
+<td style="text-align: left">chain</td>
+<td style="text-align: left">提币网络</td>
+</tr>
+<tr>
+<td style="text-align: left">confirm</td>
+<td style="text-align: left">确认区块数量</td>
+</tr>
+<tr>
+<td style="text-align: left">tag</td>
+<td style="text-align: left">标签</td>
+</tr>
+<tr>
+<td style="text-align: left">cTime</td>
+<td style="text-align: left">创建时间 ms</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">修改时间 ms</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>dest</p>
+
+<ul>
+<li>on_chain</li>
+<li>internal_transfer</li>
+</ul></li>
+<li><p>status</p>
+
+<ul>
+<li>pending</li>
+<li>pending_review</li>
+<li>pending_fail</li>
+<li>pending_review_fail</li>
+<li>reject</li>
+<li>success</li>
+</ul></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h2 id='api-4'>子账户API</h2><h3 id='apikey'>创建子账户ApiKey (主账户请求)</h3>
 <p>限速规则：10次/1s (uid)</p>
 

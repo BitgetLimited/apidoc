@@ -451,7 +451,10 @@
                 <a href="#8ba46c43fe" class="toc-h2 toc-link" data-title="签名">签名</a>
               </li>
               <li>
-                <a href="#90c3a93e7c" class="toc-h2 toc-link" data-title="加密示例">加密示例</a>
+                <a href="#hmac" class="toc-h2 toc-link" data-title="HMAC 加密示例">HMAC 加密示例</a>
+              </li>
+              <li>
+                <a href="#rsa" class="toc-h2 toc-link" data-title="RSA 签名示例">RSA 签名示例</a>
               </li>
               <li>
                 <a href="#d9ed27b09f" class="toc-h2 toc-link" data-title="请求交互">请求交互</a>
@@ -666,6 +669,18 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年08月17日</strong></p>
+
+<ul>
+<li>预告：接口 <a href="#91fa8c6a21">/api/mix/v1/trace/traderSymbols</a> 增加响应字段：maxLeverage</li>
+</ul>
+
+<p><strong>2023年08月11日</strong></p>
+
+<ul>
+<li>API支持RSA密钥签名，增加<a href="#rsa">RSA 签名示例</a></li>
+</ul>
+
 <p><strong>2023年08月01日</strong></p>
 
 <ul>
@@ -1081,6 +1096,8 @@ timestamp + method.toUpperCase() + requestPath + &quot;?&quot; + queryString + b
 
 <p><strong>生成最终签名的步骤</strong></p>
 
+<p><strong><em>HMAC</em></strong></p>
+
 <p>第1步，将待签名字符串使用私钥secretkey进行hmac sha256加密</p>
 
 <p><code>
@@ -1092,7 +1109,13 @@ Signature = hmac_sha256(secretkey, Message)
 <p><code>
 Signature = base64.encode(Signature)
 </code></p>
-<h2 id='90c3a93e7c'>加密示例</h2>
+
+<p><strong><em>RSA</em></strong></p>
+
+<p>第一步，使用RSA私钥privateKey对待签名字符串进行SHA-256签名。</p>
+
+<p>第二步，对生成的签名字符串进行编码为 base64 string，得到签名字符串进行接口请求。</p>
+<h2 id='hmac'>HMAC 加密示例</h2>
 <blockquote>
 <p>Java</p>
 </blockquote>
@@ -1215,6 +1238,97 @@ Signature = base64.encode(Signature)
     <span class="n">sign</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">API_SECRET_KEY</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
 
+</code></pre><h2 id='rsa'>RSA 签名示例</h2>
+<blockquote>
+<p>Java</p>
+</blockquote>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">lombok.extern.slf4j.Slf4j</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.lang3.StringUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.Mac</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.management.RuntimeErrorException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.InvalidKeyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Base64</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Base64Utils</span><span class="o">;</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckSign</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//GET sign example</span>
+<span class="c1">//        String timestamp = "1684814440729";</span>
+<span class="c1">//        String queryString = "symbol=btcusdt_umcbl&amp;marginCoin=usdt";</span>
+<span class="c1">//        String signContent = timestamp + "GET" + "/api/mix/v1/account/account?" + queryString;</span>
+<span class="c1">//        String sign = generate(signContent);</span>
+<span class="c1">//        log.info("sign:{}",sign);</span>
+
+
+        <span class="c1">//POST sign example</span>
+        <span class="n">String</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">"1684814440729"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">preContent</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s">"POST"</span> <span class="o">+</span> <span class="s">"/api/spot/v1/trade/orders"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">body</span> <span class="o">=</span> <span class="s">"{\"symbol\":\"btcusdt_spbl\",\"quantity\":\"8\",\"side\":\"buy\",\"price\":\"1\",\"orderType\":\"limit\",\"clientOrderId\":\"bitget1233456\"}"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">signContent</span> <span class="o">=</span> <span class="n">preContent</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">generate</span><span class="o">(</span><span class="n">signContent</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"sign:{}"</span><span class="o">,</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+
+  <span class="cm">/**
+   *
+   * @param content: the string to be signed
+   * @return
+   */</span>
+  <span class="kd">private</span> <span class="n">String</span> <span class="nf">generate</span><span class="o">(</span><span class="n">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">privateKey</span> <span class="o">=</span> <span class="s">"-----BEGIN PRIVATE KEY-----\n"</span> <span class="o">+</span>
+            <span class="s">"xxxxxxxxxxxxxxxxxxxx9w0BAQEFAASCBKgwggSkAgEAAoIBAQD5C1iP01MC9fh5\n"</span> <span class="o">+</span>
+            <span class="s">"43mGx8WgJRAp3Xz9Tcqfz6HzoSg+zd8HVxKXRTXBwMDBfLxfQXobptz1tDlPUs+g\n"</span> <span class="o">+</span>
+            <span class="s">"YI38X8XEBZi5U4EBaZ5qHxArBTimyNXX6WNL6hTw0MI238cGKiW0WvWd9v6Z6/LX\n"</span> <span class="o">+</span>
+            <span class="s">"i6uFUiUEsZiiuHXcO7EKGuvBrVIRl57FzvOPD5QKfhVxcHr63NfEViAEQfQH4IN2\n"</span> <span class="o">+</span>
+            <span class="s">"+mu+L8epkWkmbua4jILUP+LXvHN7ZMiWP9bouw3r4l6v0NJ4XyucSYJL9fJ81rsI\n"</span> <span class="o">+</span>
+            <span class="s">"iUoD1S7xlSboujR4RSsFZKFyurE1c8XiU2aZ2qq+6vjby0ncE4dKVu5x/iJZ4gsL\n"</span> <span class="o">+</span>
+            <span class="s">"bneZujBLAgMBAAECggEAD6cF5uw6QGpjNo30emMd6aXKsUbpbyYvgQHUxPIxDFl2\n"</span> <span class="o">+</span>
+            <span class="s">"FgkD8xv3d/j8ZGzJjhcYbJp9MrgkDfc/c23+HomKbXqIkcVMy2DvAu523q1SVTE0\n"</span> <span class="o">+</span>
+            <span class="s">"N4DEq+XHcSc9vaMs6BdIDWDWJRp8AAKTXba6jgOOrg/Xbwq25aOeyerNPHv/N3m3\n"</span> <span class="o">+</span>
+            <span class="s">"VImJZVV+ZcetUZ82UdX7NkvV4qmRi8se47OXUT9aypzpvGbSukkqXuE4GtKGoybR\n"</span> <span class="o">+</span>
+            <span class="s">"R1sJtU10ap3QvyVNshn2QJnRd3GN2UENDvZS3ZvSY6f/Cq7K/EAmrsstOdUB2Ihn\n"</span> <span class="o">+</span>
+            <span class="s">"POnI9/MrghWFq/n3ekuArWc54bDai0deKFl9KvI2oQKBgQD9ekRFMB6ueRCCeoyg\n"</span> <span class="o">+</span>
+            <span class="s">"TOGvvW3d7X7G90XKL1xKhrg6mYh65hfQaxbihfOcrneFOoc3BgZwnbAZpF+hlq9J\n"</span> <span class="o">+</span>
+            <span class="s">"klu69adhYlMxP2nF3PGj5vPln9/rd6/gcFFE9o7zZhI166PsmlxQ7/N0SCnlao7y\n"</span> <span class="o">+</span>
+            <span class="s">"HZQoeeFJ1xuvCHVlNsTR+XZ88QKBgQD7hckVvGxIftcZsHChP8TFcDAn1IsaVbyt\n"</span> <span class="o">+</span>
+            <span class="s">"i1UZ5JPznSLTcdb8YPtFr9afiCJ4b2NqRe8gCpUCUi+urnoMMsqMxTUMopiLPh2S\n"</span> <span class="o">+</span>
+            <span class="s">"SYaBgpQYUIDLpt+Wx06krbOOyXVZ8RtgYLMpMhFCsRyzovqe8/LZQfQKWfQGTAXS\n"</span> <span class="o">+</span>
+            <span class="s">"qL5vdyiw+wKBgQC7DMDYdbwOcFRYlOq1WEarExTCUoHdfZfIrc5jSKsmwynN14H3\n"</span> <span class="o">+</span>
+            <span class="s">"US9gFg1BsBWPATPKzO1vqU3Mfln7umC73/9FJgZQfOh7TRpW4saGduXAq4voDTiC\n"</span> <span class="o">+</span>
+            <span class="s">"XR/7zh6LSuVhWPRsozRAnfF/+8i+/TVjQaSVgetYPB63uXw4JoRzlq1zYQKBgQDJ\n"</span> <span class="o">+</span>
+            <span class="s">"7ASb25G+vX1n1TsGaNBKhR9TypEFylDXreTbDaMtTzg3Mcwa/qyarGiL2Fl8AEh6\n"</span> <span class="o">+</span>
+            <span class="s">"d7xaJ8SqgVpgTRgUFO6BBozpINt/5ZUN7NL7w92qi25qkAQt4sGi+QQOnHMGisak\n"</span> <span class="o">+</span>
+            <span class="s">"n90VNGmg9dkJ6cxzsXqDqiwF52M9bui5zthbWfkj4wKBgEFVT+jf235aihaS88Oj\n"</span> <span class="o">+</span>
+            <span class="s">"MbR078tvsFiRBICHlYCIef7/a+gt7N1u9sEGlPspY3HuPamA39201BuItD9X83VR\n"</span> <span class="o">+</span>
+            <span class="s">"Vg+HjkeQIIrxmfvZn1O8/l+ItSNUzQhX6T0cSdCo6KtmZLBQ6Zaw7r63GcdvSdR2\n"</span> <span class="o">+</span>
+            <span class="s">"xxxxxxxxxxxxxxxxxxxxxxx\n"</span> <span class="o">+</span>
+            <span class="s">"-----END PRIVATE KEY-----\n"</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">parsedPem</span> <span class="o">=</span> <span class="n">privateKey</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"\n"</span><span class="o">,</span> <span class="s">""</span><span class="o">).</span><span class="na">trim</span><span class="o">();</span>
+      <span class="n">parsedPem</span> <span class="o">=</span> <span class="n">parsedPem</span>
+              <span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"-----BEGIN PRIVATE KEY-----"</span><span class="o">,</span> <span class="s">""</span><span class="o">)</span>
+              <span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"-----END PRIVATE KEY-----"</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+      <span class="n">PKCS8EncodedKeySpec</span> <span class="n">priPKCS8</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PKCS8EncodedKeySpec</span><span class="o">(</span><span class="n">Base64Utils</span><span class="o">.</span><span class="na">decodeFromString</span><span class="o">(</span><span class="n">parsedPem</span><span class="o">));</span>
+      <span class="n">KeyFactory</span> <span class="n">keyFactory</span> <span class="o">=</span> <span class="n">KeyFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"RSA"</span><span class="o">);</span>
+      <span class="n">PrivateKey</span> <span class="n">priKey</span> <span class="o">=</span> <span class="n">keyFactory</span><span class="o">.</span><span class="na">generatePrivate</span><span class="o">(</span><span class="n">priPKCS8</span><span class="o">);</span>
+      <span class="n">Signature</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">Signature</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"SHA256WithRSA"</span><span class="o">);</span>
+      <span class="n">signature</span><span class="o">.</span><span class="na">initSign</span><span class="o">(</span><span class="n">priKey</span><span class="o">);</span>
+      <span class="n">signature</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">content</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+      <span class="n">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">Base64Utils</span><span class="o">.</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">signature</span><span class="o">.</span><span class="na">sign</span><span class="o">());</span>
+      <span class="k">return</span> <span class="n">sign</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"create sign  failed"</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
 </code></pre><h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -2614,6 +2728,7 @@ Signature = base64.encode(Signature)
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"minOpenCount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxLeverage"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"openTrader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2634,8 +2749,12 @@ Signature = base64.encode(Signature)
 <td style="text-align: left">产品id</td>
 </tr>
 <tr>
-<td style="text-align: left">openTrade</td>
+<td style="text-align: left">openTrader</td>
 <td style="text-align: left">是否开启跟单</td>
+</tr>
+<tr>
+<td style="text-align: left">maxLeverage</td>
+<td style="text-align: left">交易员最最大杠杆倍数</td>
 </tr>
 <tr>
 <td style="text-align: left">minOpenCount</td>
