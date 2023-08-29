@@ -2301,6 +2301,146 @@ Signature = base64.encode(Signature)
   <span class="o">}</span>
 
 <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Python</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">SHA256</span>
+<span class="kn">from</span> <span class="nn">Crypto.Signature</span> <span class="kn">import</span> <span class="n">PKCS1_v1_5</span>
+<span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">RSA</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">rsa_sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">private_key</span><span class="p">):</span>
+  <span class="n">pri_key</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="n">private_key</span><span class="p">)</span>
+  <span class="n">encoded_param</span> <span class="o">=</span> <span class="n">SHA256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">))</span>
+  <span class="n">sign_str</span> <span class="o">=</span> <span class="n">PKCS1_v1_5</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">pri_key</span><span class="p">)</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">encoded_param</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">sign_str</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
+
+
+<span class="k">def</span> <span class="nf">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'?'</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">'='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+
+    <span class="k">return</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">private_key</span> <span class="o">=</span> <span class="s">'''-----BEGIN PRIVATE KEY-----
+XXXXXXXXXXANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdTR5gmwGH77wE
+e0ljABC58EVhiw7fPXWhMh7gZwurQQ8M/I9/VA8lDjwwoGuuJ6enurdfwhpZxeZH
+P3wdmwvD7XLESEXVuxJv5hdpI9m6ydInK9SA8IbaF4yYWp0l4N2mA44MzadA7QZq
+bQtQPlyPZHeia5q/NZHFWCrCbW2lGAAWwrhQq9LceVIW75e213xtnps0pGlII7Ye
+xLkoazuhC1X8YNSxlCdLOiz1GvOeVSeiSZx31o/O+rj7tDFpSgZJEXRmtGRoJkJy
+10EGSrvUMezCVSOcb1hCExg4osK6rBKnDjFjwQvwvNNZq0JG+CkfH8eHAa7gSK50
+In51go29AgMBAAECggEAEvYk30hQGu7PH0stQX3UhlVsR6HXnRlvgIrmJe7F/VLO
+WaZoNdUQLktU/heYY1nsX8+mIyjmvEOayqPgdkEmXevVlcuQf38Zbduynr3vlRCX
+AJnL9+8GkmucSxFBODuu/EAZc3mm27C2wUV7w6SAy9g0g6Os97ehZsSGAwHl4aye
+i6KtB07LAA10Eh5Ptq4YAfCYiUO7j10pQ+DJKqN9N1eyjyw5eixEgCpudcbpCc9X
++EK6zxk8Ynr0ANX8/LwvokqgYBK1UIL6ear0dtKmeFU+KwrmkKZfXk8/Amr/O8Ot
+iHTTr1SLyQKRzq3La149LMmNkUYxaMSV/KGTEV7ukQKBgQDQl/fA3mxXtQg2IjTB
+cvDBGhB4c3haECWcP7TQWJDb30vxOKeq1k9YPUfegZga5zlyV28PAZnb0m5x07+0
+OY4862brT+pje9OhQxfkAY6AtJaiIqhCcw5ew8Go/Ja1ML0jZESWG1MWBJtCcFTm
+d3+n9yU1fB1Ze0adilYmyu7zwwKBgQDBDPJZgSj7YssPyRmo3bO0MjknfYBqXvwi
+6TxV11mJRe5BJ9Rc2WXGfEm3DEn7TO/Wv0t7Yqm6/sXg5HzriN/PHlaVtE6wlXe7
+3gpYKjlm99KO7KKWYqP812mASl6ydLX9QWozlOXjVhWMuSGqMWjut4J3P8jlkOJ6
+pNq9c8/gfwKBgQCxwvAl8ubNj78hsuDWgsddKIMkwvKrfdsvXrMOYouAdLjZJvjs
+A5q2jfKzUil3s9km8g/479pYlOn+Iv/Z7Lqke8/HdOFASoQ9h1nSuujgEgXUwkg1
+6Ks0Ywqkoi0k2BY3FPnGGh8iQma1pdkUVn35fAq/m7e/S+kP1JY6lPIx1QKBgQCS
+jxul67KLNrNmpot+ceGt2bseSd8l4jqU3nDZ0oW8+4Qnnu9QFhN4Hn9wIjpAOGaU
+p+HMKFknB6h+Vbior98JxMSDHsHmuXKPA8DishumGlqV+vxsIzLQD1Ge/dbqsERB
+olnYEyB7+KyfiyUNqjk5kcPQeHIyJk5qQaF21udoTQKBgDOMbtM0Nq7cd/SAHISR
+VYIGGXRFNqAjLJW7DRJGxw3AEwxKG+nxNLeG7GsQDyPCvZSKwRpdpXRTh+6mzXqe
+pQ6+33v2gOtez8Cwo6tgyKRi6QPObQk00vbrKEBTihP30m81rwBPzjwj7iKXxWgA
+DJoVsaqGOaIf4qXXXXXXXXXX
+-----END PRIVATE KEY-----'''</span>
+
+
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">get_timestamp</span><span class="p">()</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/order/placeOrder"</span>
+    <span class="c"># POST</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.0555</span><span class="p">,</span> <span class="s">"size"</span><span class="p">:</span> <span class="mi">551</span><span class="p">,</span> <span class="s">"side"</span><span class="p">:</span> <span class="s">"open_long"</span><span class="p">,</span> <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"limit"</span><span class="p">,</span> <span class="s">"timeInForceValue"</span><span class="p">:</span> <span class="s">"normal"</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">rsa_sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">private_key</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
+    <span class="c"># GET</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/account/account"</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">}</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">rsa_sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">private_key</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>NodeJs</p>
+</blockquote>
+<pre class="highlight plaintext"><code>export function sign() {
+
+    const private_key = '-----BEGIN PRIVATE KEY-----\n' +
+        'XXXXXXXXXXANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdTR5gmwGH77wE\n' +
+        'e0ljABC58EVhiw7fPXWhMh7gZwurQQ8M/I9/VA8lDjwwoGuuJ6enurdfwhpZxeZH\n' +
+        'P3wdmwvD7XLESEXVuxJv5hdpI9m6ydInK9SA8IbaF4yYWp0l4N2mA44MzadA7QZq\n' +
+        'bQtQPlyPZHeia5q/NZHFWCrCbW2lGAAWwrhQq9LceVIW75e213xtnps0pGlII7Ye\n' +
+        'xLkoazuhC1X8YNSxlCdLOiz1GvOeVSeiSZx31o/O+rj7tDFpSgZJEXRmtGRoJkJy\n' +
+        '10EGSrvUMezCVSOcb1hCExg4osK6rBKnDjFjwQvwvNNZq0JG+CkfH8eHAa7gSK50\n' +
+        'In51go29AgMBAAECggEAEvYk30hQGu7PH0stQX3UhlVsR6HXnRlvgIrmJe7F/VLO\n' +
+        'WaZoNdUQLktU/heYY1nsX8+mIyjmvEOayqPgdkEmXevVlcuQf38Zbduynr3vlRCX\n' +
+        'AJnL9+8GkmucSxFBODuu/EAZc3mm27C2wUV7w6SAy9g0g6Os97ehZsSGAwHl4aye\n' +
+        'i6KtB07LAA10Eh5Ptq4YAfCYiUO7j10pQ+DJKqN9N1eyjyw5eixEgCpudcbpCc9X\n' +
+        '+EK6zxk8Ynr0ANX8/LwvokqgYBK1UIL6ear0dtKmeFU+KwrmkKZfXk8/Amr/O8Ot\n' +
+        'iHTTr1SLyQKRzq3La149LMmNkUYxaMSV/KGTEV7ukQKBgQDQl/fA3mxXtQg2IjTB\n' +
+        'cvDBGhB4c3haECWcP7TQWJDb30vxOKeq1k9YPUfegZga5zlyV28PAZnb0m5x07+0\n' +
+        'OY4862brT+pje9OhQxfkAY6AtJaiIqhCcw5ew8Go/Ja1ML0jZESWG1MWBJtCcFTm\n' +
+        'd3+n9yU1fB1Ze0adilYmyu7zwwKBgQDBDPJZgSj7YssPyRmo3bO0MjknfYBqXvwi\n' +
+        '6TxV11mJRe5BJ9Rc2WXGfEm3DEn7TO/Wv0t7Yqm6/sXg5HzriN/PHlaVtE6wlXe7\n' +
+        '3gpYKjlm99KO7KKWYqP812mASl6ydLX9QWozlOXjVhWMuSGqMWjut4J3P8jlkOJ6\n' +
+        'pNq9c8/gfwKBgQCxwvAl8ubNj78hsuDWgsddKIMkwvKrfdsvXrMOYouAdLjZJvjs\n' +
+        'A5q2jfKzUil3s9km8g/479pYlOn+Iv/Z7Lqke8/HdOFASoQ9h1nSuujgEgXUwkg1\n' +
+        '6Ks0Ywqkoi0k2BY3FPnGGh8iQma1pdkUVn35fAq/m7e/S+kP1JY6lPIx1QKBgQCS\n' +
+        'jxul67KLNrNmpot+ceGt2bseSd8l4jqU3nDZ0oW8+4Qnnu9QFhN4Hn9wIjpAOGaU\n' +
+        'p+HMKFknB6h+Vbior98JxMSDHsHmuXKPA8DishumGlqV+vxsIzLQD1Ge/dbqsERB\n' +
+        'olnYEyB7+KyfiyUNqjk5kcPQeHIyJk5qQaF21udoTQKBgDOMbtM0Nq7cd/SAHISR\n' +
+        'VYIGGXRFNqAjLJW7DRJGxw3AEwxKG+nxNLeG7GsQDyPCvZSKwRpdpXRTh+6mzXqe\n' +
+        'pQ6+33v2gOtez8Cwo6tgyKRi6QPObQk00vbrKEBTihP30m81rwBPzjwj7iKXxWgA\n' +
+        'DJoVsaqGOaIf4qXXXXXXXXXX\n' +
+        '-----END PRIVATE KEY-----\n'
+
+    const ts = Date.now();
+    const NodeRSA = require('node-rsa')
+    const pri_key = new NodeRSA(private_key)
+
+    //GET
+    const ts = Date.now();
+    const params = 'coin=USDT&amp;startTime=1687744761000&amp;endTime=1690336761929'
+    const endpoint = '/api/spot/v1/wallet/withdrawal-list'
+    const method = "GET"
+    const pre_hash = String(ts) + method + endpoint + '?' + params
+    const sign = pri_key.sign(pre_hash, 'base64', 'UTF-8')
+
+    //POST
+    const endpoint_post = '/api/spot/v1/trade/open-orders'
+    const params_post = '{"symbol": "BTCUSDT_SPBL"}'
+    const method_post = "POST"
+    const pre_hash_post = String(ts) + method_post + endpoint_post + params_post
+    const sign_post = pri_key.sign(pre_hash_post, 'base64', 'UTF-8')
+
+    return sign
+}
 </code></pre><h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，POST 请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -5131,14 +5271,16 @@ margin_isolated        接受转入转出多个币种</li>
 <li>status
 
 <ul>
-<li>pending 待初审</li>
+<li>Pending 待初审</li>
 <li>pending_review 待复审</li>
-<li>pending_fail 初审失败</li>
+<li>Pending_fail 初审失败</li>
 <li>pending_review_fail 复审失败</li>
 <li>wallet_processing 钱包处理中</li>
 <li>wallet_fail 钱包处理失败</li>
+<li>cancel 取消</li>
 <li>reject 拒绝</li>
 <li>success 成功</li>
+<li>unknown 未知</li>
 </ul></li>
 </ul>
 <h3 id='e2a027ceb6'>获取充值记录</h3>
@@ -5297,12 +5439,14 @@ margin_isolated        接受转入转出多个币种</li>
 <ul>
 <li>Pending 待初审</li>
 <li>pending_review 待复审</li>
-<li>pending_fail 初审失败</li>
+<li>Pending_fail 初审失败</li>
 <li>pending_review_fail 复审失败</li>
 <li>wallet_processing 钱包处理中</li>
 <li>wallet_fail 钱包处理失败</li>
+<li>cancel 取消</li>
 <li>reject 拒绝</li>
 <li>success 成功</li>
+<li>unknown 未知</li>
 </ul></li>
 </ul>
 <h3 id='34196645ac'>获取交易手续费率</h3>
@@ -10647,7 +10791,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -10698,7 +10842,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
       "maxUsdt": "200000"
     }
   ]
-  }
+  } 
 }
 </code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10816,7 +10960,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11054,7 +11198,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11353,7 +11497,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11643,7 +11787,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11809,7 +11953,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11995,7 +12139,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -12106,7 +12250,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
