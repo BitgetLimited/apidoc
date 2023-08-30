@@ -909,6 +909,13 @@ clipboard.on('error', function(e) {
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
 <p>功能更新预告</p>
+
+<p><strong>ETA 2023年08月30日</strong></p>
+
+<ul>
+<li><a href="#5d04ef45e2">一键全平</a>接口新增返回symbol字段</li>
+<li><a href="#7665dda031">一键全撤</a>接口失败信息fail_infos新增返回symbol字段</li>
+</ul>
 <h1 id='185368440e'>更新日志</h1>
 <p><strong>2023年08月29日</strong></p>
 
@@ -8951,11 +8958,16 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"1627293504612"</span><span class="w">
+      </span><span class="s2">"627293504612"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"client_order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"abc123"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fail_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"err_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -8974,12 +8986,36 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">orderId</td>
+<td style="text-align: left">order_ids</td>
+<td style="text-align: left">撤销成功订单Id列表</td>
+</tr>
+<tr>
+<td style="text-align: left">client_order_ids</td>
+<td style="text-align: left">撤销成功订单Id列表</td>
+</tr>
+<tr>
+<td style="text-align: left">fail_infos</td>
+<td style="text-align: left">撤销失败 数组</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; symbol</td>
+<td style="text-align: left">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; order_id</td>
 <td style="text-align: left">订单Id</td>
 </tr>
 <tr>
-<td style="text-align: left">clientOid</td>
-<td style="text-align: left">客户端自定义Id</td>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">client order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_code</td>
+<td style="text-align: left">错误码</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; err_msg</td>
+<td style="text-align: left">错误详情</td>
 </tr>
 </tbody></table>
 <h3 id='5d04ef45e2'>一键全平</h3>
@@ -9031,10 +9067,12 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355251990528"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184832"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184835"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355260379136"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -9053,11 +9091,35 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">orderId</td>
+<td style="text-align: left">orderInfo</td>
+<td style="text-align: left">平仓订单列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; symbol</td>
+<td style="text-align: left">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; orderId</td>
 <td style="text-align: left">订单Id</td>
 </tr>
 <tr>
-<td style="text-align: left">clientOid</td>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">客户端自定义Id</td>
+</tr>
+<tr>
+<td style="text-align: left">failure</td>
+<td style="text-align: left">平仓失败订单列表</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; symbol</td>
+<td style="text-align: left">币对</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; orderId</td>
+<td style="text-align: left">订单Id</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; clientOid</td>
 <td style="text-align: left">客户端自定义Id</td>
 </tr>
 </tbody></table>

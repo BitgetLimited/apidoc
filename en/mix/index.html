@@ -927,7 +927,14 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">Developing and testing</td>
 </tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update log</h1>
+<h3 id='update-forecast'>Update Forecast</h3>
+<p><strong>ETA Aug 30, 2023</strong></p>
+
+<ul>
+<li>new response field &#39;symbol&#39; on interface <a href="#close-all-position">Close All Position</a></li>
+<li>new response field &#39;fail_infos&#39;.&#39;symbol&#39; on interface <a href="#cancel-all-order">Cancel All Order</a></li>
+</ul>
+<h1 id='update-log'>Update log</h1>
 <p><strong>Aug 29, 2023</strong></p>
 
 <ul>
@@ -8997,13 +9004,17 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"1627293504612"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"client_order_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"abc123"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"fail_infos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"err_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"err_msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -9022,20 +9033,28 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">symbol</td>
-<td style="text-align: left">Symbol Id</td>
-</tr>
-<tr>
 <td style="text-align: left">order_ids</td>
 <td style="text-align: left">Cancel success order Id list</td>
+</tr>
+<tr>
+<td style="text-align: left">client_order_ids</td>
+<td style="text-align: left">Cancel success client order ID list</td>
 </tr>
 <tr>
 <td style="text-align: left">fail_infos</td>
 <td style="text-align: left">cancel failed information</td>
 </tr>
 <tr>
+<td style="text-align: left">&gt; symbol</td>
+<td style="text-align: left">Symbol Id</td>
+</tr>
+<tr>
 <td style="text-align: left">&gt; order_id</td>
 <td style="text-align: left">Failed order id</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">client order ID</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; err_code</td>
@@ -9095,10 +9114,12 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"orderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355251990528"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184832"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_UMCBL"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355256184835"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"clientOid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1044472355260379136"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -9117,28 +9138,36 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">symbol</td>
+<td style="text-align: left">orderInfo</td>
+<td style="text-align: left">order Id list</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; symbol</td>
 <td style="text-align: left">Symbol Id</td>
 </tr>
 <tr>
-<td style="text-align: left">order_ids</td>
-<td style="text-align: left">Cancel success order Id list</td>
+<td style="text-align: left">&gt; orderId</td>
+<td style="text-align: left">order id</td>
 </tr>
 <tr>
-<td style="text-align: left">fail_infos</td>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">client order ID</td>
+</tr>
+<tr>
+<td style="text-align: left">failure</td>
 <td style="text-align: left">cancel failed information</td>
 </tr>
 <tr>
-<td style="text-align: left">&gt; order_id</td>
-<td style="text-align: left">Failed order id</td>
+<td style="text-align: left">&gt; symbol</td>
+<td style="text-align: left">Symbol Id</td>
 </tr>
 <tr>
-<td style="text-align: left">&gt; err_code</td>
-<td style="text-align: left">Error code</td>
+<td style="text-align: left">&gt; orderId</td>
+<td style="text-align: left">order id</td>
 </tr>
 <tr>
-<td style="text-align: left">&gt; err_msg</td>
-<td style="text-align: left">Error message</td>
+<td style="text-align: left">&gt; clientOid</td>
+<td style="text-align: left">client order ID</td>
 </tr>
 </tbody></table>
 <h3 id='get-open-order'>Get Open Order</h3>
