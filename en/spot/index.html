@@ -545,6 +545,9 @@
                         <a href="#get-depth" class="toc-h3 toc-link" data-title="Get Depth">Get Depth</a>
                       </li>
                       <li>
+                        <a href="#get-merged-depth-data" class="toc-h3 toc-link" data-title="Get merged depth data">Get merged depth data</a>
+                      </li>
+                      <li>
                         <a href="#vip-fee-rate" class="toc-h3 toc-link" data-title="VIP fee rate">VIP fee rate</a>
                       </li>
                   </ul>
@@ -881,14 +884,20 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>Remark</strong></th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">Feature on &#39;Earn&#39;</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Bitget Earn</td>
+</tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA Sep 01, 2023</strong></p>
+<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update Log</h1>
+<p><strong>Sep 05, 2023</strong></p>
 
 <ul>
-<li>new field on websocket &#39;account&#39; channel: &#39;costPrice&#39;</li>
+<li>New interface <a href="#get-merged-depth-data">Get merged depth data</a></li>
 </ul>
-<h1 id='update-log'>Update Log</h1>
+
 <p><strong>Aug 23, 2023</strong></p>
 
 <p>Websocket error response format change：</p>
@@ -3889,6 +3898,149 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
+<h3 id='get-merged-depth-data'>Get merged depth data</h3>
+<p>Speed limit rule: 20 times/1s</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<ul>
+<li>GET /api/spot/v1/market/merge-depth</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">parameter name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">describe</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Yes</td>
+<td style="text-align: center"><br/>                                                                                                                                                                                                                                                                                                                      Trading pair name, for example: BTCUSDT_SPBL</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Price accuracy, according to the selected accuracy as the step size to return the cumulative depth, enumeration value: scale0/scale1/scale2/scale3, scale0 is not merged, the default value, in general, scale1 is the merged depth of the transaction pair’s quotation accuracy*10, generally In this case, scale2 is the quotation precision *100, scale3 is the quotation precision *1000, and the precision corresponding to 0/1/2/3 is subject to the actual return parameter &quot;scale&quot;. The quotation precision of each trading pair is different, and some currencies The pair does not have scale2, and the request for a scale that does not exist for the currency pair will be processed according to the maximum scale. Example: A certain trading pair only has scale 0/1, and when scale2 is requested, it will be automatically reduced to scale1.</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">No</td>
+<td style="text-align: center">Fixed gear enumeration value: 1/5/15/50/max, the default gear is 100. When the actual depth does not meet the limit, it will be returned according to the actual gear. Passing in max will return the maximum gear of the trading pair.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>request example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/merge-depth?symbol=BTCUSDT_SPBL&amp;precision=scale0&amp;limit=5"</span>
+</code></pre>
+<blockquote>
+<p>return data</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692761101932,
+  "data": {
+    "asks": [
+      [
+        0.00000881,
+        1000000
+      ],
+      [
+        0.00000900,
+        1000000
+      ],
+      [
+        0.00001010,
+        1000000
+      ],
+      [
+        0.00001020,
+        1110000
+      ],
+      [
+        0.00001030,
+        110000
+      ]
+    ],
+    "bids": [
+      [
+        0.00000870,
+        130000
+      ],
+      [
+        0.00000860,
+        130000
+      ],
+      [
+        0.00000850,
+        130000
+      ],
+      [
+        0.00000840,
+        130000
+      ],
+      [
+        0.00000830,
+        130000
+      ]
+    ],
+    "ts": "1692761101940",
+    "scale": "0.00000001",
+    "precision": "scale0",
+    "isMaxPrecision": "NO"
+  }
+}
+</code></pre>
+<p><strong>Return value description</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">parameter name</th>
+<th style="text-align: left">Parameter Type</th>
+<th style="text-align: center">field description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">All buy orders at the current price, such as [&quot;38084.5&quot;,&quot;0.5&quot;], &quot;38084.5&quot; represents the depth price, and &quot;0.5&quot; represents the amount of base currency</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">All sell orders at the current price</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">Current gear, for example: scale 1</td>
+</tr>
+<tr>
+<td style="text-align: left">scale</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">The actual precision value, for example: 0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">isMaxPrecision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">YES means it is already the maximum precision, NO is not the maximum precision</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">The time corresponding to the current depth</td>
+</tr>
+</tbody></table>
 <h3 id='vip-fee-rate'>VIP fee rate</h3>
 <p>Rate Limit: 10 times/1s (IP)</p>
 

@@ -587,6 +587,9 @@
                         <a href="#5cb783b30a" class="toc-h3 toc-link" data-title="深度行情接口">深度行情接口</a>
                       </li>
                       <li>
+                        <a href="#5aa1b11c2a" class="toc-h3 toc-link" data-title="获取合并深度数据">获取合并深度数据</a>
+                      </li>
+                      <li>
                         <a href="#ticker-2" class="toc-h3 toc-link" data-title="单个Ticker行情获取">单个Ticker行情获取</a>
                       </li>
                       <li>
@@ -910,6 +913,12 @@ clipboard.on('error', function(e) {
 <h3 id='88387098a2'>更新预告</h3>
 <p>功能更新预告</p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年09月05日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#5aa1b11c2a">获取合并深度数据</a></li>
+</ul>
+
 <p><strong>2023年08月31日</strong></p>
 
 <ul>
@@ -3794,6 +3803,186 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <p>[&quot;0.000010934&quot;,&quot;1.2224E+8&quot;]</p>
 
 <p>请调整您的代码以处理用科学计数法表示的返回值</p>
+<h3 id='5aa1b11c2a'>获取合并深度数据</h3>
+<p>限速规则：20次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取合并深度数据</p>
+
+<ul>
+<li>GET /api/mix/v1/market/merge-depth</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">交易对名称，例：BTCUSDT_UMCBL</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">价格精度，根据选择的精度作为步长返回累计深度，枚举值：scale0/scale1/scale2/scale3,scale0 不合并，默认值,一般情况下，scale1为交易对报价精度*10的合并深度,一般情况下，scale2为报价精度*100，scale3为报价精度*1000,0/1/2/3对应的精度以实际返回参数“scale”为准,每个交易对的报价精度都不一样，部分币对并没有scale2，请求该币对不存在的scale将会按照最大scale处理。例：某个交易对只有scale 0/1，当请求scale2时自动降为scale1。</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">固定档位枚举值：1/5/15/50/max，默认档位100，当实际深度不满足limit时，按实际档位返回，传入max返回该交易对的最大档位</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/mix/v1/market/merge-depth?symbol=ETHUSDT_UMCBL&amp;precision=scale0&amp;limit=5"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692761045039,
+  "data": {
+    "asks": [
+      [
+        1842.2,
+        0.100
+      ],
+      [
+        1842.3,
+        3.176
+      ],
+      [
+        1842.8,
+        7.428
+      ],
+      [
+        1843.3,
+        6.128
+      ],
+      [
+        1843.8,
+        2.747
+      ]
+    ],
+    "bids": [
+      [
+        1841.8,
+        0.519
+      ],
+      [
+        1841.3,
+        2.931
+      ],
+      [
+        1840.8,
+        8.622
+      ],
+      [
+        1840.3,
+        1.018
+      ],
+      [
+        1839.8,
+        4.112
+      ]
+    ],
+    "ts": "1692761045063",
+    "scale": "0.1",
+    "precision": "scale0",
+    "isMaxPrecision": "NO"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有买单,如[&quot;38084.5&quot;,&quot;0.5&quot;] 中，&quot;38084.5&quot;代表深度价格，&quot;0.5&quot;代表基础币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有卖单</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前档位,例：scale 1</td>
+</tr>
+<tr>
+<td style="text-align: left">scale</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">实际的精度值，例：0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">isMaxPrecision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">YES 表示当前已经是最大精度，NO 非最大精度</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前深度对应的时间</td>
+</tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
 <h3 id='ticker-2'>单个Ticker行情获取</h3>
 <p>限速规则: 20次/1s (IP)</p>
 

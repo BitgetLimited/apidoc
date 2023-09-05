@@ -363,12 +363,14 @@
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#b8627ec132" class="toc-h2 toc-link" data-title="近期接口变更预告">近期接口变更预告</a>
+                <a href="#7db8172f13" class="toc-h2 toc-link" data-title="近期大功能预告">近期大功能预告</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#88387098a2" class="toc-h3 toc-link" data-title="更新预告">更新预告</a>
+                      </li>
+                  </ul>
               </li>
           </ul>
-      </li>
-      <li>
-        <a href="#88387098a2" class="toc-h1 toc-link" data-title="更新预告">更新预告</a>
       </li>
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
@@ -535,6 +537,9 @@
                       </li>
                       <li>
                         <a href="#5139801b64" class="toc-h3 toc-link" data-title="获取深度数据">获取深度数据</a>
+                      </li>
+                      <li>
+                        <a href="#5aa1b11c2a" class="toc-h3 toc-link" data-title="获取合并深度数据">获取合并深度数据</a>
                       </li>
                       <li>
                         <a href="#vip" class="toc-h3 toc-link" data-title="VIP费率">VIP费率</a>
@@ -864,7 +869,7 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h2 id='b8627ec132'>近期接口变更预告</h2>
+<h2 id='7db8172f13'>近期大功能预告</h2>
 <table><thead>
 <tr>
 <th style="text-align: center"><strong>编号</strong></th>
@@ -873,12 +878,20 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>功能描述</strong></th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">理财</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Bitget 理财</td>
+</tr>
 </tbody></table>
-<h1 id='88387098a2'>更新预告</h1>
-<p><strong>ETA 2023年09月01日</strong></p>
+<h3 id='88387098a2'>更新预告</h3><h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年09月05日</strong></p>
 
-<p>现货资产频道新增&#39;costPrice&#39;: 成本价</p>
-<h1 id='185368440e'>更新日志</h1>
+<ul>
+<li>新增接口 <a href="#5aa1b11c2a">获取合并深度数据</a></li>
+</ul>
+
 <p><strong>2023年08月23日</strong></p>
 
 <p>Websocket异常响应格式变更：</p>
@@ -3819,6 +3832,186 @@ BTCUSDt priceScale 2
 <li>step4 39250.0</li>
 <li>step5 39300.0</li>
 </ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='5aa1b11c2a'>获取合并深度数据</h3>
+<p>限速规则：20次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取合并深度数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/merge-depth</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">价格精度，根据选择的精度作为步长返回累计深度，枚举值：scale0/scale1/scale2/scale3,scale0 不合并，默认值,一般情况下，scale1为交易对报价精度*10的合并深度,一般情况下，scale2为报价精度*100,一般情况下，scale3为报价精度*1000,一般情况下，0/1/2/3对应的精度以实际返回参数“scale”为准,每个交易对的报价精度都不一样，部分币对并没有scale 2，请求该币对不存在的scale将会按照最大scale处理。例：某个交易对只有scale 0/1，当请求scale2时自动降为scale1。</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">固定档位枚举值：1/5/15/50/max，默认档位100，当实际深度不满足limit时，按实际档位返回，传入max返回该交易对的最大档位</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/merge-depth?symbol=BTCUSDT_SPBL&amp;precision=scale0&amp;limit=5"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692761101932,
+  "data": {
+    "asks": [
+      [
+        0.00000881,
+        1000000
+      ],
+      [
+        0.00000900,
+        1000000
+      ],
+      [
+        0.00001010,
+        1000000
+      ],
+      [
+        0.00001020,
+        1110000
+      ],
+      [
+        0.00001030,
+        110000
+      ]
+    ],
+    "bids": [
+      [
+        0.00000870,
+        130000
+      ],
+      [
+        0.00000860,
+        130000
+      ],
+      [
+        0.00000850,
+        130000
+      ],
+      [
+        0.00000840,
+        130000
+      ],
+      [
+        0.00000830,
+        130000
+      ]
+    ],
+    "ts": "1692761101940",
+    "scale": "0.00000001",
+    "precision": "scale0",
+    "isMaxPrecision": "NO"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有买单,如[&quot;38084.5&quot;,&quot;0.5&quot;] 中，&quot;38084.5&quot;代表深度价格，&quot;0.5&quot;代表基础币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有卖单</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前档位,例：scale 1</td>
+</tr>
+<tr>
+<td style="text-align: left">scale</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">实际的精度值，例：0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">isMaxPrecision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">YES 表示当前已经是最大精度，NO 非最大精度</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前深度对应的时间</td>
+</tr>
+</tbody></table>
 
 <p>&nbsp;</p>
 
