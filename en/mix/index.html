@@ -925,18 +925,12 @@ clipboard.on('error', function(e) {
 </tr>
 <tr>
 <td style="text-align: center">2</td>
-<td style="text-align: center">API history open interest</td>
-<td style="text-align: center">2023-09-06</td>
-<td style="text-align: center">gray</td>
+<td style="text-align: center">new feature to support auto suppliment margin</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Developing and testing</td>
 </tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA Sep 06, 2023</strong></p>
-
-<ul>
-<li>Forecast  <a href="#e008da145c">/api/mix/v1/market/contracts</a> added response field：<code>minTradeUSDT</code>  <code>maxPositionNum</code>  <code>maxOrderNum</code></li>
-</ul>
-<h1 id='update-log'>Update log</h1>
+<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update log</h1>
 <p><strong>Sep 05, 2023</strong></p>
 
 <ul>
@@ -3079,32 +3073,34 @@ If there is a large deviation between the local server time and the API server t
 
 <p>Response：</p>
 <pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "data":[
-    {
-      "orderId":"803521986049314816",
-      "clientOid":"xxx001",
-      "symbol":"SBTCSUSDT_SUMCBL",
-      "marginCoin":"SUSDT",
-      "size":"1",
-      "executePrice":"38923.1",
-      "triggerPrice":"45000.3",
-      "status":"not_trigger",
-      "orderType":"limit",
-      "planType":"normal_plan",
-      "side":"open_long",
-      "triggerType":"fill_price",
-      "presetTakeProfitPrice":"0",
-      "presetTakeLossPrice":"0",
-      "rangeRate": "",
-      "enterPointSource": "WEB",
-      "tradeSide": "buy_single",
-      "holdMode": "single_hold",
-      "cTime":"1627300490867"
-    }
-  ],
-  "msg":"success",
-  "requestTime":1627354109502
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 0,
+    "data": [
+        {
+            "orderId": "1083162196761448449",
+            "clientOid": "1083162196761448448",
+            "symbol": "SBTCSUSDT_SUMCBL",
+            "marginCoin": "SUSDT",
+            "size": "0.01",
+            "executePrice": "0",
+            "triggerPrice": "26746.5",
+            "status": "not_trigger",
+            "orderType": "market",
+            "planType": "normal_plan",
+            "side": "buy_single",
+            "triggerType": "market_price",
+            "presetTakeProfitPrice": "0",
+            "presetTakeLossPrice": "0",
+            "rangeRate": "",
+            "enterPointSource": "API",
+            "tradeSide": "buy_single",
+            "holdMode": "single_hold",
+            "reduceOnly": false,
+            "cTime": "1693971912565",
+            "uTime": null
+        }
+    ]
 }
 </code></pre><h3 id='get-history-plan-orders-in-simulated-trading'>Get History Plan Orders in Simulated Trading</h3>
 <p>HTTP Request： /api/mix/v1/plan/historyPlan?symbol=SBTCSUSDT_SUMCBL&amp;startTime=1659406928000&amp;endTime=1659414128000&amp;pageSize=20</p>
@@ -3113,33 +3109,37 @@ If there is a large deviation between the local server time and the API server t
 
 <p>Response：</p>
 <pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "data":[
-    {
-      "orderId":"803521986049314816",
-      "clientOid":"xxx001",
-      "executeOrderId":"3036219460491",
-      "symbol":"SBTCSUSDT_SUMCBL",
-      "marginCoin":"SUSDT",
-      "size":"1",
-      "executePrice":"38923.1",
-      "triggerPrice":"45000.3",
-      "status":"not_trigger",
-      "orderType":"limit",
-      "planType":"normal_plan",
-      "side":"open_long",
-      "triggerType":"fill_price",
-      "presetTakeProfitPrice":"0",
-      "presetTakeLossPrice":"0",
-      "rangeRate": "",
-      "enterPointSource": "WEB",
-      "tradeSide": "buy_single",
-      "holdMode": "single_hold",
-      "cTime":"1627300490867"
-    }
-  ],
-  "msg":"success",
-  "requestTime":1627354109502
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1693981786695,
+    "data": [
+        {
+            "orderId": "1048210602999750657",
+            "clientOid": "1048210602999750656",
+            "executeOrderId": "1048508364888899593",
+            "symbol": "SBTCSUSDT_SUMCBL",
+            "marginCoin": "SUSDT",
+            "size": "0.001",
+            "executePrice": "27500",
+            "triggerPrice": "27200",
+            "status": "triggered",
+            "orderType": "limit",
+            "planType": "normal_plan",
+            "side": "sell_single",
+            "triggerType": "market_price",
+            "presetTakeProfitPrice": "0",
+            "presetTakeLossPrice": "0",
+            "rangeRate": null,
+            "enterPointSource": "API",
+            "tradeSide": "sell_single",
+            "holdMode": "single_hold",
+            "reduceOnly": false,
+            "executeTime": "1685709795259",
+            "executeSize": "0.001",
+            "cTime": "1685638803243",
+            "uTime": "1685709795259"
+        }
+    ]
 }
 </code></pre><h3 id='get-order-details-in-simulated-trading'>Get Order Details in Simulated Trading</h3>
 <p>HTTP Request： /api/mix/v1/order/detail?symbol=SBTCSUSDT_SUMCBL&amp;orderId=1627293504612</p>
@@ -11913,7 +11913,11 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 </tr>
 <tr>
 <td style="text-align: left">ctime</td>
-<td style="text-align: left">Order creation time</td>
+<td style="text-align: left">Order Creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">utime</td>
+<td style="text-align: left">Order Update time</td>
 </tr>
 </tbody></table>
 <h3 id='get-history-plan-orders-tpsl'>Get History Plan Orders (TPSL)</h3>
@@ -12018,7 +12022,7 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
             </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell_single"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"executeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1685709795259"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"executeSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1685638803243"</span><span class="p">,</span><span class="w">
@@ -12058,10 +12062,6 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <tr>
 <td style="text-align: left">size</td>
 <td style="text-align: left">Order size</td>
-</tr>
-<tr>
-<td style="text-align: left">executeSize</td>
-<td style="text-align: left">Execute Size</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -12120,8 +12120,20 @@ Use <code>buy_single</code> when original position <code>side</code> is <code>se
 <td style="text-align: left">Is reduce only</td>
 </tr>
 <tr>
+<td style="text-align: left">executeTime</td>
+<td style="text-align: left">Execute Time</td>
+</tr>
+<tr>
+<td style="text-align: left">executeSize</td>
+<td style="text-align: left">Execute Size</td>
+</tr>
+<tr>
 <td style="text-align: left">ctime</td>
 <td style="text-align: left">Order creation time</td>
+</tr>
+<tr>
+<td style="text-align: left">utime</td>
+<td style="text-align: left">Order Update time</td>
 </tr>
 </tbody></table>
 <h1 id='websocketapi'>WebSocketAPI</h1><h2 id='overview'>Overview</h2>

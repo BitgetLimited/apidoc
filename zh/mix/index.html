@@ -905,14 +905,13 @@ clipboard.on('error', function(e) {
 </tr>
 <tr>
 <td style="text-align: center">2</td>
-<td style="text-align: center">API 历史未平仓量</td>
-<td style="text-align: center">2023-09-06</td>
-<td style="text-align: center">待发布</td>
+<td style="text-align: center">API 即将支持 自动追加保证金</td>
+<td style="text-align: center">待定</td>
+<td style="text-align: center">开发测试中</td>
 </tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
-<p><strong>ETA 2023年09月06日</strong>
-预告：接口 <a href="#237aec9981">/api/mix/v1/market/contracts</a> 增加响应字段：<code>minTradeUSDT</code>  <code>maxPositionNum</code>  <code>maxOrderNum</code></p>
+<p>功能更新预告</p>
 <h1 id='185368440e'>更新日志</h1>
 <p><strong>2023年09月05日</strong></p>
 
@@ -3156,32 +3155,34 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 
 <p>返回信息：</p>
 <pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "data":[
-    {
-      "orderId":"803521986049314816",
-      "clientOid":"xxx001",
-      "symbol":"SBTCSUSDT_SUMCBL",
-      "marginCoin":"SUSDT",
-      "size":"1",
-      "executePrice":"38923.1",
-      "triggerPrice":"45000.3",
-      "status":"not_trigger",
-      "orderType":"limit",
-      "planType":"normal_plan",
-      "side":"open_long",
-      "triggerType":"fill_price",
-      "presetTakeProfitPrice":"0",
-      "presetTakeLossPrice":"0",
-      "rangeRate": "",
-      "enterPointSource": "WEB",
-      "tradeSide": "buy_single",
-      "holdMode": "single_hold",
-      "cTime":"1627300490867"
-    }
-  ],
-  "msg":"success",
-  "requestTime":1627354109502
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 0,
+    "data": [
+        {
+            "orderId": "1083162196761448449",
+            "clientOid": "1083162196761448448",
+            "symbol": "SBTCSUSDT_SUMCBL",
+            "marginCoin": "SUSDT",
+            "size": "0.01",
+            "executePrice": "0",
+            "triggerPrice": "26746.5",
+            "status": "not_trigger",
+            "orderType": "market",
+            "planType": "normal_plan",
+            "side": "buy_single",
+            "triggerType": "market_price",
+            "presetTakeProfitPrice": "0",
+            "presetTakeLossPrice": "0",
+            "rangeRate": "",
+            "enterPointSource": "API",
+            "tradeSide": "buy_single",
+            "holdMode": "single_hold",
+            "reduceOnly": false,
+            "cTime": "1693971912565",
+            "uTime": null
+        }
+    ]
 }
 </code></pre><h3 id='870f372103'>模拟盘合约历史计划委托接口</h3>
 <p>请求API接口： /api/mix/v1/plan/historyPlan?symbol=SBTCSUSDT_SUMCBL&amp;startTime=1659406928000&amp;endTime=1659414128000&amp;pageSize=20</p>
@@ -3190,33 +3191,37 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 
 <p>返回信息：</p>
 <pre class="highlight plaintext"><code>{
-  "code":"00000",
-  "data":[
-    {
-      "orderId":"803521986049314816",
-      "clientOid":"xxx001",
-      "executeOrderId":"3036219460491",
-      "symbol":"SBTCSUSDT_SUMCBL",
-      "marginCoin":"SUSDT",
-      "size":"1",
-      "executePrice":"38923.1",
-      "triggerPrice":"45000.3",
-      "status":"not_trigger",
-      "orderType":"limit",
-      "planType":"normal_plan",
-      "side":"open_long",
-      "triggerType":"fill_price",
-      "presetTakeProfitPrice":"0",
-      "presetTakeLossPrice":"0",
-      "rangeRate": "",
-      "enterPointSource": "WEB",
-      "tradeSide": "buy_single",
-      "holdMode": "single_hold",
-      "cTime":"1627300490867"
-    }
-  ],
-  "msg":"success",
-  "requestTime":1627354109502
+    "code": "00000",
+    "msg": "success",
+    "requestTime": 1693981786695,
+    "data": [
+        {
+            "orderId": "1048210602999750657",
+            "clientOid": "1048210602999750656",
+            "executeOrderId": "1048508364888899593",
+            "symbol": "SBTCSUSDT_SUMCBL",
+            "marginCoin": "SUSDT",
+            "size": "0.001",
+            "executePrice": "27500",
+            "triggerPrice": "27200",
+            "status": "triggered",
+            "orderType": "limit",
+            "planType": "normal_plan",
+            "side": "sell_single",
+            "triggerType": "market_price",
+            "presetTakeProfitPrice": "0",
+            "presetTakeLossPrice": "0",
+            "rangeRate": null,
+            "enterPointSource": "API",
+            "tradeSide": "sell_single",
+            "holdMode": "single_hold",
+            "reduceOnly": false,
+            "executeTime": "1685709795259",
+            "executeSize": "0.001",
+            "cTime": "1685638803243",
+            "uTime": "1685709795259"
+        }
+    ]
 }
 </code></pre><h3 id='08af908bfb'>模拟盘合约订单详情</h3>
 <p>请求API接口： /api/mix/v1/order/detail?symbol=SBTCSUSDT_SUMCBL&amp;orderId=1627293504612</p>
@@ -11977,7 +11982,11 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: left">最近更新时间</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">更新时间</td>
 </tr>
 </tbody></table>
 
@@ -12119,7 +12128,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
             </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"tradeSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell_single"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_hold"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reduceOnly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"executeTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1685709795259"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"executeSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1685638803243"</span><span class="p">,</span><span class="w">
@@ -12159,10 +12168,6 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">size</td>
 <td style="text-align: left">委托数量</td>
-</tr>
-<tr>
-<td style="text-align: left">executeSize</td>
-<td style="text-align: left">执行数量</td>
 </tr>
 <tr>
 <td style="text-align: left">executePrice</td>
@@ -12221,8 +12226,20 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <td style="text-align: left">只减仓</td>
 </tr>
 <tr>
+<td style="text-align: left">executeTime</td>
+<td style="text-align: left">执行时间</td>
+</tr>
+<tr>
+<td style="text-align: left">executeSize</td>
+<td style="text-align: left">执行数量</td>
+</tr>
+<tr>
 <td style="text-align: left">cTime</td>
-<td style="text-align: left">最近更新时间</td>
+<td style="text-align: left">创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
+<td style="text-align: left">更新时间</td>
 </tr>
 </tbody></table>
 
