@@ -363,12 +363,14 @@
         <a href="#welcome" class="toc-h1 toc-link" data-title="Welcome">Welcome</a>
           <ul class="toc-list-h2">
               <li>
-                <a href="#b8627ec132" class="toc-h2 toc-link" data-title="近期接口变更预告">近期接口变更预告</a>
+                <a href="#7db8172f13" class="toc-h2 toc-link" data-title="近期大功能预告">近期大功能预告</a>
+                  <ul class="toc-list-h3">
+                      <li>
+                        <a href="#88387098a2" class="toc-h3 toc-link" data-title="更新预告">更新预告</a>
+                      </li>
+                  </ul>
               </li>
           </ul>
-      </li>
-      <li>
-        <a href="#88387098a2" class="toc-h1 toc-link" data-title="更新预告">更新预告</a>
       </li>
       <li>
         <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
@@ -535,6 +537,9 @@
                       </li>
                       <li>
                         <a href="#5139801b64" class="toc-h3 toc-link" data-title="获取深度数据">获取深度数据</a>
+                      </li>
+                      <li>
+                        <a href="#5aa1b11c2a" class="toc-h3 toc-link" data-title="获取合并深度数据">获取合并深度数据</a>
                       </li>
                       <li>
                         <a href="#vip" class="toc-h3 toc-link" data-title="VIP费率">VIP费率</a>
@@ -836,14 +841,6 @@
       </li>
       <li>
         <a href="#restapi-2" class="toc-h1 toc-link" data-title="RestAPI错误">RestAPI错误</a>
-          <ul class="toc-list-h2">
-              <li>
-                <a href="#5699b4eac7" class="toc-h2 toc-link" data-title="公共错误码">公共错误码</a>
-              </li>
-              <li>
-                <a href="#8c719e58bd" class="toc-h2 toc-link" data-title="现货错误码">现货错误码</a>
-              </li>
-          </ul>
       </li>
       <li>
         <a href="#websocket" class="toc-h1 toc-link" data-title="WebSocket错误代码">WebSocket错误代码</a>
@@ -872,7 +869,7 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='welcome'>Welcome</h1>
 <p>欢迎来到Bitget API文档！点击<a href="#5ea2e0cde2">这里</a>直接开始</p>
-<h2 id='b8627ec132'>近期接口变更预告</h2>
+<h2 id='7db8172f13'>近期大功能预告</h2>
 <table><thead>
 <tr>
 <th style="text-align: center"><strong>编号</strong></th>
@@ -881,12 +878,24 @@ clipboard.on('error', function(e) {
 <th style="text-align: center"><strong>功能描述</strong></th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: center">1</td>
+<td style="text-align: center">理财</td>
+<td style="text-align: center">TBP</td>
+<td style="text-align: center">Bitget 理财</td>
+</tr>
 </tbody></table>
-<h1 id='88387098a2'>更新预告</h1>
-<p><strong>ETA 2023年09月01日</strong></p>
-
-<p>现货资产频道新增&#39;costPrice&#39;: 成本价</p>
+<h3 id='88387098a2'>更新预告</h3>
+<p><strong>ETA 2023年09月06日</strong>
+预告：接口 <a href="#d990beddee">/api/spot/v1/public/products</a> 增加响应字段：<code>maxOrderNum</code>
+预告：接口 <a href="#84a4efea8f">/api/spot/v1/public/product</a> 增加响应字段：<code>maxOrderNum</code></p>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年09月05日</strong></p>
+
+<ul>
+<li>新增接口 <a href="#5aa1b11c2a">获取合并深度数据</a></li>
+</ul>
+
 <p><strong>2023年08月23日</strong></p>
 
 <p>Websocket异常响应格式变更：</p>
@@ -2301,6 +2310,146 @@ Signature = base64.encode(Signature)
   <span class="o">}</span>
 
 <span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Python</p>
+</blockquote>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">SHA256</span>
+<span class="kn">from</span> <span class="nn">Crypto.Signature</span> <span class="kn">import</span> <span class="n">PKCS1_v1_5</span>
+<span class="kn">from</span> <span class="nn">Crypto.PublicKey</span> <span class="kn">import</span> <span class="n">RSA</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">rsa_sign</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">private_key</span><span class="p">):</span>
+  <span class="n">pri_key</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="n">private_key</span><span class="p">)</span>
+  <span class="n">encoded_param</span> <span class="o">=</span> <span class="n">SHA256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">))</span>
+  <span class="n">sign_str</span> <span class="o">=</span> <span class="n">PKCS1_v1_5</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">pri_key</span><span class="p">)</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">encoded_param</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">sign_str</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="o">+</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">body</span>
+
+
+<span class="k">def</span> <span class="nf">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'?'</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">'='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;'</span>
+
+    <span class="k">return</span> <span class="n">url</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">private_key</span> <span class="o">=</span> <span class="s">'''-----BEGIN PRIVATE KEY-----
+XXXXXXXXXXANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdTR5gmwGH77wE
+e0ljABC58EVhiw7fPXWhMh7gZwurQQ8M/I9/VA8lDjwwoGuuJ6enurdfwhpZxeZH
+P3wdmwvD7XLESEXVuxJv5hdpI9m6ydInK9SA8IbaF4yYWp0l4N2mA44MzadA7QZq
+bQtQPlyPZHeia5q/NZHFWCrCbW2lGAAWwrhQq9LceVIW75e213xtnps0pGlII7Ye
+xLkoazuhC1X8YNSxlCdLOiz1GvOeVSeiSZx31o/O+rj7tDFpSgZJEXRmtGRoJkJy
+10EGSrvUMezCVSOcb1hCExg4osK6rBKnDjFjwQvwvNNZq0JG+CkfH8eHAa7gSK50
+In51go29AgMBAAECggEAEvYk30hQGu7PH0stQX3UhlVsR6HXnRlvgIrmJe7F/VLO
+WaZoNdUQLktU/heYY1nsX8+mIyjmvEOayqPgdkEmXevVlcuQf38Zbduynr3vlRCX
+AJnL9+8GkmucSxFBODuu/EAZc3mm27C2wUV7w6SAy9g0g6Os97ehZsSGAwHl4aye
+i6KtB07LAA10Eh5Ptq4YAfCYiUO7j10pQ+DJKqN9N1eyjyw5eixEgCpudcbpCc9X
++EK6zxk8Ynr0ANX8/LwvokqgYBK1UIL6ear0dtKmeFU+KwrmkKZfXk8/Amr/O8Ot
+iHTTr1SLyQKRzq3La149LMmNkUYxaMSV/KGTEV7ukQKBgQDQl/fA3mxXtQg2IjTB
+cvDBGhB4c3haECWcP7TQWJDb30vxOKeq1k9YPUfegZga5zlyV28PAZnb0m5x07+0
+OY4862brT+pje9OhQxfkAY6AtJaiIqhCcw5ew8Go/Ja1ML0jZESWG1MWBJtCcFTm
+d3+n9yU1fB1Ze0adilYmyu7zwwKBgQDBDPJZgSj7YssPyRmo3bO0MjknfYBqXvwi
+6TxV11mJRe5BJ9Rc2WXGfEm3DEn7TO/Wv0t7Yqm6/sXg5HzriN/PHlaVtE6wlXe7
+3gpYKjlm99KO7KKWYqP812mASl6ydLX9QWozlOXjVhWMuSGqMWjut4J3P8jlkOJ6
+pNq9c8/gfwKBgQCxwvAl8ubNj78hsuDWgsddKIMkwvKrfdsvXrMOYouAdLjZJvjs
+A5q2jfKzUil3s9km8g/479pYlOn+Iv/Z7Lqke8/HdOFASoQ9h1nSuujgEgXUwkg1
+6Ks0Ywqkoi0k2BY3FPnGGh8iQma1pdkUVn35fAq/m7e/S+kP1JY6lPIx1QKBgQCS
+jxul67KLNrNmpot+ceGt2bseSd8l4jqU3nDZ0oW8+4Qnnu9QFhN4Hn9wIjpAOGaU
+p+HMKFknB6h+Vbior98JxMSDHsHmuXKPA8DishumGlqV+vxsIzLQD1Ge/dbqsERB
+olnYEyB7+KyfiyUNqjk5kcPQeHIyJk5qQaF21udoTQKBgDOMbtM0Nq7cd/SAHISR
+VYIGGXRFNqAjLJW7DRJGxw3AEwxKG+nxNLeG7GsQDyPCvZSKwRpdpXRTh+6mzXqe
+pQ6+33v2gOtez8Cwo6tgyKRi6QPObQk00vbrKEBTihP30m81rwBPzjwj7iKXxWgA
+DJoVsaqGOaIf4qXXXXXXXXXX
+-----END PRIVATE KEY-----'''</span>
+
+
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">get_timestamp</span><span class="p">()</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/order/placeOrder"</span>
+    <span class="c"># POST</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.0555</span><span class="p">,</span> <span class="s">"size"</span><span class="p">:</span> <span class="mi">551</span><span class="p">,</span> <span class="s">"side"</span><span class="p">:</span> <span class="s">"open_long"</span><span class="p">,</span> <span class="s">"orderType"</span><span class="p">:</span> <span class="s">"limit"</span><span class="p">,</span> <span class="s">"timeInForceValue"</span><span class="p">:</span> <span class="s">"normal"</span><span class="p">}</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">rsa_sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">private_key</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+
+
+    <span class="c"># GET</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="s">"/api/mix/v1/account/account"</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s">"symbol"</span><span class="p">:</span> <span class="s">"TRXUSDT_UMCBL"</span><span class="p">,</span> <span class="s">"marginCoin"</span><span class="p">:</span> <span class="s">"USDT"</span><span class="p">}</span>
+    <span class="n">request_path</span> <span class="o">=</span> <span class="n">request_path</span> <span class="o">+</span> <span class="n">parse_params_to_str</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sign</span> <span class="o">=</span> <span class="n">rsa_sign</span><span class="p">(</span><span class="n">pre_hash</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="s">"GET"</span><span class="p">,</span> <span class="n">request_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">body</span><span class="p">)),</span> <span class="n">private_key</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">sign</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>NodeJs</p>
+</blockquote>
+<pre class="highlight plaintext"><code>export function sign() {
+
+    const private_key = '-----BEGIN PRIVATE KEY-----\n' +
+        'XXXXXXXXXXANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdTR5gmwGH77wE\n' +
+        'e0ljABC58EVhiw7fPXWhMh7gZwurQQ8M/I9/VA8lDjwwoGuuJ6enurdfwhpZxeZH\n' +
+        'P3wdmwvD7XLESEXVuxJv5hdpI9m6ydInK9SA8IbaF4yYWp0l4N2mA44MzadA7QZq\n' +
+        'bQtQPlyPZHeia5q/NZHFWCrCbW2lGAAWwrhQq9LceVIW75e213xtnps0pGlII7Ye\n' +
+        'xLkoazuhC1X8YNSxlCdLOiz1GvOeVSeiSZx31o/O+rj7tDFpSgZJEXRmtGRoJkJy\n' +
+        '10EGSrvUMezCVSOcb1hCExg4osK6rBKnDjFjwQvwvNNZq0JG+CkfH8eHAa7gSK50\n' +
+        'In51go29AgMBAAECggEAEvYk30hQGu7PH0stQX3UhlVsR6HXnRlvgIrmJe7F/VLO\n' +
+        'WaZoNdUQLktU/heYY1nsX8+mIyjmvEOayqPgdkEmXevVlcuQf38Zbduynr3vlRCX\n' +
+        'AJnL9+8GkmucSxFBODuu/EAZc3mm27C2wUV7w6SAy9g0g6Os97ehZsSGAwHl4aye\n' +
+        'i6KtB07LAA10Eh5Ptq4YAfCYiUO7j10pQ+DJKqN9N1eyjyw5eixEgCpudcbpCc9X\n' +
+        '+EK6zxk8Ynr0ANX8/LwvokqgYBK1UIL6ear0dtKmeFU+KwrmkKZfXk8/Amr/O8Ot\n' +
+        'iHTTr1SLyQKRzq3La149LMmNkUYxaMSV/KGTEV7ukQKBgQDQl/fA3mxXtQg2IjTB\n' +
+        'cvDBGhB4c3haECWcP7TQWJDb30vxOKeq1k9YPUfegZga5zlyV28PAZnb0m5x07+0\n' +
+        'OY4862brT+pje9OhQxfkAY6AtJaiIqhCcw5ew8Go/Ja1ML0jZESWG1MWBJtCcFTm\n' +
+        'd3+n9yU1fB1Ze0adilYmyu7zwwKBgQDBDPJZgSj7YssPyRmo3bO0MjknfYBqXvwi\n' +
+        '6TxV11mJRe5BJ9Rc2WXGfEm3DEn7TO/Wv0t7Yqm6/sXg5HzriN/PHlaVtE6wlXe7\n' +
+        '3gpYKjlm99KO7KKWYqP812mASl6ydLX9QWozlOXjVhWMuSGqMWjut4J3P8jlkOJ6\n' +
+        'pNq9c8/gfwKBgQCxwvAl8ubNj78hsuDWgsddKIMkwvKrfdsvXrMOYouAdLjZJvjs\n' +
+        'A5q2jfKzUil3s9km8g/479pYlOn+Iv/Z7Lqke8/HdOFASoQ9h1nSuujgEgXUwkg1\n' +
+        '6Ks0Ywqkoi0k2BY3FPnGGh8iQma1pdkUVn35fAq/m7e/S+kP1JY6lPIx1QKBgQCS\n' +
+        'jxul67KLNrNmpot+ceGt2bseSd8l4jqU3nDZ0oW8+4Qnnu9QFhN4Hn9wIjpAOGaU\n' +
+        'p+HMKFknB6h+Vbior98JxMSDHsHmuXKPA8DishumGlqV+vxsIzLQD1Ge/dbqsERB\n' +
+        'olnYEyB7+KyfiyUNqjk5kcPQeHIyJk5qQaF21udoTQKBgDOMbtM0Nq7cd/SAHISR\n' +
+        'VYIGGXRFNqAjLJW7DRJGxw3AEwxKG+nxNLeG7GsQDyPCvZSKwRpdpXRTh+6mzXqe\n' +
+        'pQ6+33v2gOtez8Cwo6tgyKRi6QPObQk00vbrKEBTihP30m81rwBPzjwj7iKXxWgA\n' +
+        'DJoVsaqGOaIf4qXXXXXXXXXX\n' +
+        '-----END PRIVATE KEY-----\n'
+
+    const ts = Date.now();
+    const NodeRSA = require('node-rsa')
+    const pri_key = new NodeRSA(private_key)
+
+    //GET
+    const ts = Date.now();
+    const params = 'coin=USDT&amp;startTime=1687744761000&amp;endTime=1690336761929'
+    const endpoint = '/api/spot/v1/wallet/withdrawal-list'
+    const method = "GET"
+    const pre_hash = String(ts) + method + endpoint + '?' + params
+    const sign = pri_key.sign(pre_hash, 'base64', 'UTF-8')
+
+    //POST
+    const endpoint_post = '/api/spot/v1/trade/open-orders'
+    const params_post = '{"symbol": "BTCUSDT_SPBL"}'
+    const method_post = "POST"
+    const pre_hash_post = String(ts) + method_post + endpoint_post + params_post
+    const sign_post = pri_key.sign(pre_hash_post, 'base64', 'UTF-8')
+
+    return sign
+}
 </code></pre><h2 id='d9ed27b09f'>请求交互</h2>
 <p>所有请求基于Https协议，POST 请求头信息中Content-Type 需要统一设置为: &#39;application/json&#39;。</p>
 
@@ -2612,26 +2761,28 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -2681,6 +2832,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">quotePrecision</td>
+<td style="text-align: center">市价买精度</td>
 </tr>
 <tr>
 <td style="text-align: left">minTradeUSDT</td>
@@ -2735,26 +2890,26 @@ Signature = base64.encode(Signature)
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -2804,6 +2959,10 @@ Signature = base64.encode(Signature)
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
+</tr>
+<tr>
+<td style="text-align: left">quotePrecision</td>
+<td style="text-align: center">市价买精度</td>
 </tr>
 <tr>
 <td style="text-align: left">minTradeUSDT</td>
@@ -3687,6 +3846,186 @@ BTCUSDt priceScale 2
 <li>step4 39250.0</li>
 <li>step5 39300.0</li>
 </ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<h3 id='5aa1b11c2a'>获取合并深度数据</h3>
+<p>限速规则：20次/1s</p>
+
+<p><strong>HTTP请求</strong>
+获取合并深度数据</p>
+
+<ul>
+<li>GET /api/spot/v1/market/merge-depth</li>
+</ul>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">是否必须</th>
+<th style="text-align: center">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">symbol</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">是</td>
+<td style="text-align: center">产品ID</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">价格精度，根据选择的精度作为步长返回累计深度，枚举值：scale0/scale1/scale2/scale3,scale0 不合并，默认值,一般情况下，scale1为交易对报价精度*10的合并深度,一般情况下，scale2为报价精度*100,一般情况下，scale3为报价精度*1000,一般情况下，0/1/2/3对应的精度以实际返回参数“scale”为准,每个交易对的报价精度都不一样，部分币对并没有scale 2，请求该币对不存在的scale将会按照最大scale处理。例：某个交易对只有scale 0/1，当请求scale2时自动降为scale1。</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">否</td>
+<td style="text-align: center">固定档位枚举值：1/5/15/50/max，默认档位100，当实际深度不满足limit时，按实际档位返回，传入max返回该交易对的最大档位</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>请求示例</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/market/merge-depth?symbol=BTCUSDT_SPBL&amp;precision=scale0&amp;limit=5"</span>
+</code></pre>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+  "code": "00000",
+  "msg": "success",
+  "requestTime": 1692761101932,
+  "data": {
+    "asks": [
+      [
+        0.00000881,
+        1000000
+      ],
+      [
+        0.00000900,
+        1000000
+      ],
+      [
+        0.00001010,
+        1000000
+      ],
+      [
+        0.00001020,
+        1110000
+      ],
+      [
+        0.00001030,
+        110000
+      ]
+    ],
+    "bids": [
+      [
+        0.00000870,
+        130000
+      ],
+      [
+        0.00000860,
+        130000
+      ],
+      [
+        0.00000850,
+        130000
+      ],
+      [
+        0.00000840,
+        130000
+      ],
+      [
+        0.00000830,
+        130000
+      ]
+    ],
+    "ts": "1692761101940",
+    "scale": "0.00000001",
+    "precision": "scale0",
+    "isMaxPrecision": "NO"
+  }
+}
+</code></pre>
+<p><strong>返回值说明</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">参数名</th>
+<th style="text-align: left">参数类型</th>
+<th style="text-align: center">字段说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">asks</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有买单,如[&quot;38084.5&quot;,&quot;0.5&quot;] 中，&quot;38084.5&quot;代表深度价格，&quot;0.5&quot;代表基础币数量</td>
+</tr>
+<tr>
+<td style="text-align: left">bids</td>
+<td style="text-align: left">Array</td>
+<td style="text-align: center">当前价位的所有卖单</td>
+</tr>
+<tr>
+<td style="text-align: left">precision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前档位,例：scale 1</td>
+</tr>
+<tr>
+<td style="text-align: left">scale</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">实际的精度值，例：0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">isMaxPrecision</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">YES 表示当前已经是最大精度，NO 非最大精度</td>
+</tr>
+<tr>
+<td style="text-align: left">ts</td>
+<td style="text-align: left">String</td>
+<td style="text-align: center">当前深度对应的时间</td>
+</tr>
+</tbody></table>
 
 <p>&nbsp;</p>
 
@@ -5131,14 +5470,16 @@ margin_isolated        接受转入转出多个币种</li>
 <li>status
 
 <ul>
-<li>pending 待初审</li>
+<li>Pending 待初审</li>
 <li>pending_review 待复审</li>
-<li>pending_fail 初审失败</li>
+<li>Pending_fail 初审失败</li>
 <li>pending_review_fail 复审失败</li>
 <li>wallet_processing 钱包处理中</li>
 <li>wallet_fail 钱包处理失败</li>
+<li>cancel 取消</li>
 <li>reject 拒绝</li>
 <li>success 成功</li>
+<li>unknown 未知</li>
 </ul></li>
 </ul>
 <h3 id='e2a027ceb6'>获取充值记录</h3>
@@ -5297,12 +5638,14 @@ margin_isolated        接受转入转出多个币种</li>
 <ul>
 <li>Pending 待初审</li>
 <li>pending_review 待复审</li>
-<li>pending_fail 初审失败</li>
+<li>Pending_fail 初审失败</li>
 <li>pending_review_fail 复审失败</li>
 <li>wallet_processing 钱包处理中</li>
 <li>wallet_fail 钱包处理失败</li>
+<li>cancel 取消</li>
 <li>reject 拒绝</li>
 <li>success 成功</li>
+<li>unknown 未知</li>
 </ul></li>
 </ul>
 <h3 id='34196645ac'>获取交易手续费率</h3>
@@ -10647,7 +10990,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -10698,7 +11041,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
       "maxUsdt": "200000"
     }
   ]
-  }
+  } 
 }
 </code></pre>
 <p><strong>返回值说明</strong></p>
@@ -10816,7 +11159,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11054,7 +11397,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11353,7 +11696,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11643,7 +11986,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11809,7 +12152,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -11995,7 +12338,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -12106,7 +12449,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
   -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
 </code></pre>
 <p><strong>请求参数</strong></p>
 
@@ -14206,7 +14549,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <td>订单交易手续费，平台向用户收取的交易手续费</td>
 </tr>
 </tbody></table>
-<h1 id='restapi-2'>RestAPI错误</h1><h2 id='5699b4eac7'>公共错误码</h2>
+<h1 id='restapi-2'>RestAPI错误</h1>
 <table><thead>
 <tr>
 <th style="text-align: left">错误提示</th>
@@ -14215,217 +14558,3458 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: left">请求头&quot;ACCESS_KEY&quot;不能为空</td>
+<td style="text-align: left">00000</td>
+<td style="text-align: left">成功！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
 <td style="text-align: left">40001</td>
+<td style="text-align: left">ACCESS_KEY不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">请求头&quot;ACCESS_SIGN&quot;不能为空</td>
 <td style="text-align: left">40002</td>
+<td style="text-align: left">SECRET_KEY不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">请求头&quot;ACCESS_TIMESTAMP&quot;不能为空</td>
 <td style="text-align: left">40003</td>
+<td style="text-align: left">签名不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">无效的ACCESS_TIMESTAMP</td>
-<td style="text-align: left">40005</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">无效的ACCESS_KEY</td>
-<td style="text-align: left">40006</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">无效的Content_Type，请使用“application/json”格式</td>
-<td style="text-align: left">40007</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
+<td style="text-align: left">40004</td>
 <td style="text-align: left">请求时间戳过期</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40005</td>
+<td style="text-align: left">无效的ACCESS_TIMESTAMP</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40006</td>
+<td style="text-align: left">无效的ACCESS_KEY</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40007</td>
+<td style="text-align: left">无效的Content_Type</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
 <td style="text-align: left">40008</td>
+<td style="text-align: left">请求时间戳过期</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">api 校验失败</td>
 <td style="text-align: left">40009</td>
+<td style="text-align: left">sign签名错误</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">请求太频繁</td>
-<td style="text-align: left">429</td>
-<td style="text-align: center">429</td>
-</tr>
-<tr>
-<td style="text-align: left">请求头&quot;ACCESS_PASSPHRASE&quot;不能为空</td>
-<td style="text-align: left">40011</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">apikey/passphrase不正确</td>
-<td style="text-align: left">40012</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">用户被冻结</td>
-<td style="text-align: left">40013</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">权限不正确</td>
-<td style="text-align: left">40014</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">系统错误</td>
-<td style="text-align: left">40015</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">用户必须绑定手机或者谷歌</td>
-<td style="text-align: left">40016</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">参数校验失败</td>
-<td style="text-align: left">40017</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">非法的ip请求</td>
-<td style="text-align: left">40018</td>
-<td style="text-align: center">400</td>
-</tr>
-</tbody></table>
-<h2 id='8c719e58bd'>现货错误码</h2>
-<table><thead>
-<tr>
-<th style="text-align: left">错误提示</th>
-<th style="text-align: left">错误码</th>
-<th style="text-align: center">http状态码</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">单次撤单不能超过50</td>
-<td style="text-align: left">40912</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">orderId或者clientId 必须传一个</td>
-<td style="text-align: left">40913</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">交易对配置不存在</td>
-<td style="text-align: left">40102</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">服务器升级，请稍后再试</td>
-<td style="text-align: left">40200</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">client_oid长度不大于40,且不能是火星字符</td>
-<td style="text-align: left">40305</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">格式错误</td>
-<td style="text-align: left">40409</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">只能查最近三个月的数据</td>
-<td style="text-align: left">40704</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">开始时间大于结束时间</td>
-<td style="text-align: left">40707</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">参数为空</td>
-<td style="text-align: left">40724</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">服务返回错误</td>
-<td style="text-align: left">40725</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">订单不存在</td>
-<td style="text-align: left">43001</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">挂单失败</td>
-<td style="text-align: left">43002</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">没有可撤消的委单</td>
-<td style="text-align: left">43004</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">超过交易量最大委托限制</td>
-<td style="text-align: left">43005</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">下单数量小于最小交易数量</td>
-<td style="text-align: left">43006</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">下单数量大于最大交易数量</td>
-<td style="text-align: left">43007</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">当前委托价格不能小于{0}</td>
-<td style="text-align: left">43008</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">当前委托价格超过限制{0}</td>
-<td style="text-align: left">43009</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">交易额不能小于{0}</td>
-<td style="text-align: left">43010</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">当前委托价格不能小于{0}</td>
-<td style="text-align: left">43011</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">clientOrderId重复</td>
-<td style="text-align: left">43118</td>
-<td style="text-align: center">400</td>
-</tr>
-<tr>
-<td style="text-align: left">请求超时</td>
 <td style="text-align: left">40010</td>
+<td style="text-align: left">请求超时</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">该币种限制买入额度{0}，还剩{1}</td>
+<td style="text-align: left">40011</td>
+<td style="text-align: left">ACCESS_PASSPHRASE不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40012</td>
+<td style="text-align: left">apikey/口令不正确</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40013</td>
+<td style="text-align: left">用户状态异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40014</td>
+<td style="text-align: left">权限不正确, 需要 {0} 权限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40015</td>
+<td style="text-align: left">系统异常，请稍后重试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40016</td>
+<td style="text-align: left">用户必须绑定手机或者谷歌</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40017</td>
+<td style="text-align: left">参数校验失败 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">00171</td>
+<td style="text-align: left">参数校验失败 {0}{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">00172</td>
+<td style="text-align: left">参数校验失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40018</td>
+<td style="text-align: left">无效的IP</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40019</td>
+<td style="text-align: left">参数 {0} 不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40020</td>
+<td style="text-align: left">参数 {0} 异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40021</td>
+<td style="text-align: left">用户禁止提币</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40022</td>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40023</td>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40024</td>
+<td style="text-align: left">账号已被冻结</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40025</td>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40026</td>
+<td style="text-align: left">用户已被禁用</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40027</td>
+<td style="text-align: left">此账户地区提币必须kyc</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40028</td>
+<td style="text-align: left">此subUid不属于该账号</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40029</td>
+<td style="text-align: left">此账号不是Broker,请先申请成为Broker</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40030</td>
+<td style="text-align: left">子账号无此权限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40031</td>
+<td style="text-align: left">该账号已注销，不可再次使用</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40032</td>
+<td style="text-align: left">创建账号数量已达限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40033</td>
+<td style="text-align: left">该邮箱已被使用</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40034</td>
+<td style="text-align: left">参数 {0} 不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50001</td>
+<td style="text-align: left">coin {0} 不支持全仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50002</td>
+<td style="text-align: left">symbol {0} 不支持逐仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50003</td>
+<td style="text-align: left">coin {0} 不支持逐仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50004</td>
+<td style="text-align: left">symbol {0} 不支持全仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50005</td>
+<td style="text-align: left">symbol {0} 无效或者不支持杠杆交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40035</td>
+<td style="text-align: left">遵循相关法律法规，根据您的当前登录信息，为方便您的使用，请先进行KYC</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40036</td>
+<td style="text-align: left">passphrase 错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40037</td>
+<td style="text-align: left">Apikey 不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40038</td>
+<td style="text-align: left">当前请求ip 没有在ip白名单列表</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40039</td>
+<td style="text-align: left">userSignature签名错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40040</td>
+<td style="text-align: left">user api key权限设置错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40041</td>
+<td style="text-align: left">用户的ApiKey不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40043</td>
+<td style="text-align: left">FD Broker不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40045</td>
+<td style="text-align: left">被绑定的user不能是FD broker</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40047</td>
+<td style="text-align: left">FD Broker绑定相关接口调用频率限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40048</td>
+<td style="text-align: left">用户的ApiKey必须是母账号</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40049</td>
+<td style="text-align: left">用户账号字段解密失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40051</td>
+<td style="text-align: left">此账号不是FD Broker,请先申请成为FD Broker</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40052</td>
+<td style="text-align: left">此账号已修改了安全设置。为了您账号的安全，24小时内禁止提币</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40053</td>
+<td style="text-align: left">取值范围校验失败: {0}取值应在{1}之间</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40054</td>
+<td style="text-align: left">根据{0}获取数据为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40055</td>
+<td style="text-align: left">subName 长度控制在8位</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40056</td>
+<td style="text-align: left">remark 长度需要满足1~20</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40057</td>
+<td style="text-align: left">参数 {0} {1} 不符合规范</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40058</td>
+<td style="text-align: left">参数 {0} 限制个数在 {1} 以内</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40059</td>
+<td style="text-align: left">参数 {0} 应该小于 {1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40060</td>
+<td style="text-align: left">subNames 存在重复的</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40061</td>
+<td style="text-align: left">sub-account 不允许访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40062</td>
+<td style="text-align: left">由于监管要求，您被限制下订单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40063</td>
+<td style="text-align: left">API超过添加的最大限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40064</td>
+<td style="text-align: left">子账户创建失败，请检查是否有重复的</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40065</td>
+<td style="text-align: left">此subApikey不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40066</td>
+<td style="text-align: left">该subUid不属于该账号或不是虚拟子账号</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40067</td>
+<td style="text-align: left">子账户创建失败，请检查是否有重复的</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40068</td>
+<td style="text-align: left">禁止子账户访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40069</td>
+<td style="text-align: left">已达到创建子账号的最大数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40070</td>
+<td style="text-align: left">passphrase 8-32个字母和数字字符</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40071</td>
+<td style="text-align: left">subName 存在重复的</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40072</td>
+<td style="text-align: left">symbol {0} 无效或者不支持合约交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40102</td>
+<td style="text-align: left">合约配置不存在，请检查参数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40109</td>
+<td style="text-align: left">查不到该订单的数据，请确认订单号</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40200</td>
+<td style="text-align: left">服务器升级，请稍后再试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40301</td>
+<td style="text-align: left">暂未获得使用权限，如需使用，请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40303</td>
+<td style="text-align: left">最多只能查询20000条数据</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40304</td>
+<td style="text-align: left">clientOid或clientOrderId的长度不能大于50个字符</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40305</td>
+<td style="text-align: left">clientOid或clientOrderId的长度不能大于64个字符,且不能是火星字符</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40306</td>
+<td style="text-align: left">批量处理订单最多只能处理50条</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40308</td>
+<td style="text-align: left">该合约正在临时维护</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40309</td>
+<td style="text-align: left">该合约已下架</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40400</td>
+<td style="text-align: left">状态校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40401</td>
+<td style="text-align: left">该操作无法执行</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40402</td>
+<td style="text-align: left">orderId或clientOId格式错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40407</td>
+<td style="text-align: left">查询方向不是计划委托的方向</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40408</td>
+<td style="text-align: left">范围错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40409</td>
+<td style="text-align: left">格式错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40704</td>
+<td style="text-align: left">只能查最近三个月的数据</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40705</td>
+<td style="text-align: left">起止时间不能超过90天</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40707</td>
+<td style="text-align: left">开始时间大于结束时间</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40708</td>
+<td style="text-align: left">参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40709</td>
+<td style="text-align: left">该仓位暂无持仓,不能设置自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40710</td>
+<td style="text-align: left">账户非正常状态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40711</td>
+<td style="text-align: left">合约账户余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40712</td>
+<td style="text-align: left">保证金数量不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40713</td>
+<td style="text-align: left">不能超过最大可转出保证金数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40714</td>
+<td style="text-align: left">不允许直接追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40715</td>
+<td style="text-align: left">委托数量大于最大可开张数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40716</td>
+<td style="text-align: left">该交易对不支持全仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40724</td>
+<td style="text-align: left">参数为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40725</td>
+<td style="text-align: left">返回无映射信息</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40726</td>
+<td style="text-align: left">全仓模式不支持自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40727</td>
+<td style="text-align: left">全仓模式不支持调整保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40728</td>
+<td style="text-align: left">您当前为交易员身份，请在当前带单下进行平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40729</td>
+<td style="text-align: left">调整仓位失败，当前持有仓位或委托或者计划委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40730</td>
+<td style="text-align: left">当前有委托，或者计划委托，无法调整杠杆</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40199</td>
+<td style="text-align: left">非交易员调用接口</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40731</td>
+<td style="text-align: left">该产品不支持跟单交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40732</td>
+<td style="text-align: left">当前不是交易员身份</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40733</td>
+<td style="text-align: left">跟单平仓已经处理完成</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40734</td>
+<td style="text-align: left">下单失败，交易员最少开仓张数{0}张</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40735</td>
+<td style="text-align: left">多头仓位止盈价格请大于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40736</td>
+<td style="text-align: left">多头仓位止盈价格请大于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40737</td>
+<td style="text-align: left">空头仓位止盈价格请小于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40738</td>
+<td style="text-align: left">空头仓位止盈价格请小于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40739</td>
+<td style="text-align: left">多头仓位止损价格请小于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40740</td>
+<td style="text-align: left">多头仓位止损价格请小于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40741</td>
+<td style="text-align: left">空头仓位止损价格请大于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40742</td>
+<td style="text-align: left">空头仓位止损价格请大于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40743</td>
+<td style="text-align: left">该订单正在平仓中,不能再次平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40744</td>
+<td style="text-align: left">该追踪订单状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40745</td>
+<td style="text-align: left">此带单正在委托中，暂不支持平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40746</td>
+<td style="text-align: left">当前最多可平仓张数为{0}张，超过的张数请到当前带单下平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40747</td>
+<td style="text-align: left">赠金不允许双向持仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40748</td>
+<td style="text-align: left">委托价格高于最高买价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40749</td>
+<td style="text-align: left">委托价格低于于最低卖价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40750</td>
+<td style="text-align: left">该合约的计划委托已达到上限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40751</td>
+<td style="text-align: left">该合约的止盈止损委托已达到上限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40752</td>
+<td style="text-align: left">您被禁用当前业务,如有疑问请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40753</td>
+<td style="text-align: left">api权限已禁用,如有疑问请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40754</td>
+<td style="text-align: left">balance的可用不足.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40755</td>
+<td style="text-align: left">开仓可用不足.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40756</td>
+<td style="text-align: left">balance的锁定不足.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40757</td>
+<td style="text-align: left">position的可用不足.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40758</td>
+<td style="text-align: left">position的锁定不足.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40759</td>
+<td style="text-align: left">没有任何资产</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40760</td>
+<td style="text-align: left">账户非正常状态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40761</td>
+<td style="text-align: left">未成交委托单总数过高</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40762</td>
+<td style="text-align: left">委托数量大于最大可开数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40763</td>
+<td style="text-align: left">委托数量不能超过对应档位的最大量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40764</td>
+<td style="text-align: left">订单剩余量小于本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40765</td>
+<td style="text-align: left">仓位剩余量小于本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40766</td>
+<td style="text-align: left">开仓委托数量小于本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40767</td>
+<td style="text-align: left">开仓处理时仓位不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40768</td>
+<td style="text-align: left">订单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40769</td>
+<td style="text-align: left">拒绝订单已有成交</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40770</td>
+<td style="text-align: left">结算或者手续费币种配置未找到.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40771</td>
+<td style="text-align: left">扎差时，不能拥有平仓委托.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40772</td>
+<td style="text-align: left">帐户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40773</td>
+<td style="text-align: left">平仓只能发生在双向持仓下.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40774</td>
+<td style="text-align: left">单边持仓时委托类型也必须是单边持仓类型.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40775</td>
+<td style="text-align: left">做市帐户只能是单边持仓类型.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40776</td>
+<td style="text-align: left">创建订单错误.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40777</td>
+<td style="text-align: left">取消订单错误.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40778</td>
+<td style="text-align: left">币对{0}不支持{1}币种作为保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40779</td>
+<td style="text-align: left">请检查使用了正确的delegateType</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40780</td>
+<td style="text-align: left">同一symbolId同一时刻有多条风险处理记录</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40781</td>
+<td style="text-align: left">未找到转帐订单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40782</td>
+<td style="text-align: left">内部划转错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40783</td>
+<td style="text-align: left">档位未找到</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40784</td>
+<td style="text-align: left">需要配置modify depth帐户</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40785</td>
+<td style="text-align: left">需要配置draw line帐户</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40786</td>
+<td style="text-align: left">重复的clientOid</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40787</td>
+<td style="text-align: left">价格步长不匹配</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40788</td>
+<td style="text-align: left">批量内部划转错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40789</td>
+<td style="text-align: left">配置项中tokenId重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40790</td>
+<td style="text-align: left">配置项中symbolCode重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40791</td>
+<td style="text-align: left">symbolCode的baseToken或者quoteToken不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40792</td>
+<td style="text-align: left">配置项中symbol重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40793</td>
+<td style="text-align: left">BusinessSymbol的symbolCode不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40794</td>
+<td style="text-align: left">BusinessSymbol的supportMarginToken未配置</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40795</td>
+<td style="text-align: left">因为结算或维护原因， 交易暂停</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40796</td>
+<td style="text-align: left">调整后杠杆不在合适的范围内</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40797</td>
+<td style="text-align: left">超过最大可设置杠杆倍数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40798</td>
+<td style="text-align: left">合约账户余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40799</td>
+<td style="text-align: left">不能小于最小转入数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40800</td>
+<td style="text-align: left">保证金数量不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40801</td>
+<td style="text-align: left">不能超过最大可转出保证金数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40802</td>
+<td style="text-align: left">仓位为零,不允许直接追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40803</td>
+<td style="text-align: left">调小杠杆,追加保证金数量不正确</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40804</td>
+<td style="text-align: left">平仓数量不能超过持有仓位数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40805</td>
+<td style="text-align: left">不支持的操作</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40806</td>
+<td style="text-align: left">不支持的币种</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40807</td>
+<td style="text-align: left">账户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40808</td>
+<td style="text-align: left">参数校验异常 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40809</td>
+<td style="text-align: left">执行价格参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40810</td>
+<td style="text-align: left">触发价格参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40811</td>
+<td style="text-align: left">参数 {0} 不应该为null</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40812</td>
+<td style="text-align: left">条件 {0} 未满足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40813</td>
+<td style="text-align: left">参数 {0} 必须有值,不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40814</td>
+<td style="text-align: left">杠杆倍数无变化</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40815</td>
+<td style="text-align: left">委托价格高于最高买价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40816</td>
+<td style="text-align: left">委托价格低于于最低卖价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40817</td>
+<td style="text-align: left">当前订单状态不能撤销</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40818</td>
+<td style="text-align: left">当前订单类型不能撤销</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40819</td>
+<td style="text-align: left">订单不存在！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40820</td>
+<td style="text-align: left">平多委托价格不允许低于爆仓价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40821</td>
+<td style="text-align: left">平空委托价格不允许高于爆仓价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40822</td>
+<td style="text-align: left">合约配置不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40823</td>
+<td style="text-align: left">成交或合理标记价格不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40824</td>
+<td style="text-align: left">当前不允许挂市价单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40825</td>
+<td style="text-align: left">合约对手深度不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40826</td>
+<td style="text-align: left">因价格波动过大，市价委托成本不足，开仓委托失败。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40827</td>
+<td style="text-align: left">赠金不允许双向持仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40828</td>
+<td style="text-align: left">特殊做市账户不能手动挂单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40829</td>
+<td style="text-align: left">多头仓位止盈价格请大于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40830</td>
+<td style="text-align: left">多头仓位止盈价格请大于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40831</td>
+<td style="text-align: left">空头仓位止盈价格请小于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40832</td>
+<td style="text-align: left">空头仓位止盈价格请小于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40833</td>
+<td style="text-align: left">多头仓位止损价格请小于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40834</td>
+<td style="text-align: left">多头仓位止损价格请小于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40835</td>
+<td style="text-align: left">空头仓位止损价格请大于开仓均价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40836</td>
+<td style="text-align: left">空头仓位止损价格请大于当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40837</td>
+<td style="text-align: left">该仓位暂无持仓,不能进行止盈止损委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40838</td>
+<td style="text-align: left">该仓位暂无持仓,不能设置自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40839</td>
+<td style="text-align: left">该合约自动追加保证金功能已暂停使用</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40840</td>
+<td style="text-align: left">分片做市账户重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40841</td>
+<td style="text-align: left">线上环境不允许执行</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40842</td>
+<td style="text-align: left">目前配置不允许调整,请稍后重试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40843</td>
+<td style="text-align: left">no_datasource_key_exists</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40844</td>
+<td style="text-align: left">该合约正在临时维护</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40845</td>
+<td style="text-align: left">该合约已下架</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40846</td>
+<td style="text-align: left">状态校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40847</td>
+<td style="text-align: left">该操作无法执行</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40848</td>
+<td style="text-align: left">有仓位不能开启跟单交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40849</td>
+<td style="text-align: left">该用户已存在进行中的跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40850</td>
+<td style="text-align: left">跟单进行中，不能转出余额</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40851</td>
+<td style="text-align: left">账户状态错误，不能结束跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40852</td>
+<td style="text-align: left">有未成交的委托订单，不能结束跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40853</td>
+<td style="text-align: left">有未执行的计划委托，不能结束跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40854</td>
+<td style="text-align: left">该产品不支持跟单交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40855</td>
+<td style="text-align: left">用户已结束跟单，不能再次结束跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40856</td>
+<td style="text-align: left">数据异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40857</td>
+<td style="text-align: left">跟单号错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40858</td>
+<td style="text-align: left">追踪订单状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40859</td>
+<td style="text-align: left">该订单正在平仓中,不能再次平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40860</td>
+<td style="text-align: left">交易员不存在,不能设置跟随</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40861</td>
+<td style="text-align: left">交易员已停用,不能设置跟随</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40862</td>
+<td style="text-align: left">请撤销当前委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40863</td>
+<td style="text-align: left">请撤销当前计划</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40864</td>
+<td style="text-align: left">请将当前带单平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40865</td>
+<td style="text-align: left">此带单正在委托中，暂不支持平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40866</td>
+<td style="text-align: left">您当前为交易员身份，请在当前带单下进行平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40867</td>
+<td style="text-align: left">当前最多可平仓数量为{0}，超过的数量请到当前带单下平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40868</td>
+<td style="text-align: left">您当前为交易员身份，暂不支持通过计划委托进行平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40869</td>
+<td style="text-align: left">您当前为交易员身份，暂不支持修改杠杆</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40870</td>
+<td style="text-align: left">您当前正在进行跟单，暂不支持修改杠杆</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40871</td>
+<td style="text-align: left">杠杆不满足配置，不能成为交易员</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40872</td>
+<td style="text-align: left">调整仓位失败，当前持有仓位或委托或者计划委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40873</td>
+<td style="text-align: left">帐户拥有保证金，需要转出</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40874</td>
+<td style="text-align: left">全仓模式不支持自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40875</td>
+<td style="text-align: left">全仓模式不支持调整保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40876</td>
+<td style="text-align: left">追踪订单数量过多</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40877</td>
+<td style="text-align: left">跟随追踪订单数量过多</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40878</td>
+<td style="text-align: left">合约指数数据异常，为了避免造成您的损失，请稍后再试。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40879</td>
+<td style="text-align: left">风险处理中，不能调整资金.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40880</td>
+<td style="text-align: left">风险处理中，不能调整杠杆.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40881</td>
+<td style="text-align: left">当前有委托，或者计划委托，无法调整杠杆.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40882</td>
+<td style="text-align: left">您当前为交易员身份，不能切换为全仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40883</td>
+<td style="text-align: left">币种混合时，不能调整为逐仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40884</td>
+<td style="text-align: left">单向持仓时，不能调整为逐仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40885</td>
+<td style="text-align: left">逐仓模式时，不能调整为单向持仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40886</td>
+<td style="text-align: left">全仓模式时，不能调整自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40887</td>
+<td style="text-align: left">下单失败，单笔闪电开仓数量最多{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40888</td>
+<td style="text-align: left">下单失败，单笔闪电平仓数量最多{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40889</td>
+<td style="text-align: left">该合约的计划委托已达到上限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40890</td>
+<td style="text-align: left">该合约的止盈止损委托已达到上限</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40891</td>
+<td style="text-align: left">仓位不足，不能设置止盈或者止损</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40892</td>
+<td style="text-align: left">下单失败，交易员最少开仓数量{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40893</td>
+<td style="text-align: left">无法更新此仓位的杠杆系数，没有足够的保证金！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40894</td>
+<td style="text-align: left">跟单平仓已经处理完成</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40895</td>
+<td style="text-align: left">预设价格与委托/执行价格不匹配</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40896</td>
+<td style="text-align: left">预设止盈止损已经部分兑现,不允许修改</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40897</td>
+<td style="text-align: left">系统体验金账户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40898</td>
+<td style="text-align: left">系统体验金账户余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40899</td>
+<td style="text-align: left">存储的用户数量超出限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40900</td>
+<td style="text-align: left">系统体验金账户不一致</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40901</td>
+<td style="text-align: left">合约体验金余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40902</td>
+<td style="text-align: left">不允许使用未来时间</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40903</td>
+<td style="text-align: left">获取杠杆信息失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40904</td>
+<td style="text-align: left">归集资金费用失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40905</td>
+<td style="text-align: left">收取用户资金费用失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40906</td>
+<td style="text-align: left">支付用户资金费用失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40907</td>
+<td style="text-align: left">结算处理中，不能进行划转</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40908</td>
+<td style="text-align: left">并发操作失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40909</td>
+<td style="text-align: left">划转处理中</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40910</td>
+<td style="text-align: left">操作超时</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40911</td>
+<td style="text-align: left">请求时间戳过期</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40912</td>
+<td style="text-align: left">单次撤单不能超过50</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40913</td>
+<td style="text-align: left">{0}必须传一个</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40914</td>
+<td style="text-align: left">您当前为交易员身份,可使用的最大杠杆为{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40915</td>
+<td style="text-align: left">多头仓位止盈价格请&gt;标记价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40916</td>
+<td style="text-align: left">此账号该业务已被限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40917</td>
+<td style="text-align: left">多头仓位止损价格请 &lt; 标记价格 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40918</td>
+<td style="text-align: left">交易员带单开仓过于频繁</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40919</td>
+<td style="text-align: left">该功能暂未开放</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40920</td>
+<td style="text-align: left">当前持有仓位或订单，仓位模式无法更换</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40921</td>
+<td style="text-align: left">委托数量不能超过对应档位的最大量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40922</td>
+<td style="text-align: left">只允许修改 未成交的限价单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40923</td>
+<td style="text-align: left">订单数量和订单价格 没有变化</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40924</td>
+<td style="text-align: left">orderId 和 clientOid 必须传入一个</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40925</td>
+<td style="text-align: left">price or size 必须同时传入</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43001</td>
+<td style="text-align: left">订单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43002</td>
+<td style="text-align: left">挂单失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43003</td>
+<td style="text-align: left">挂单失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43004</td>
+<td style="text-align: left">没有可撤消的委单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43005</td>
+<td style="text-align: left">超过交易对最大委托数量限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43006</td>
+<td style="text-align: left">下单数量小于最小交易数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43007</td>
+<td style="text-align: left">下单数量大于最大交易数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43008</td>
+<td style="text-align: left">当前委托价格不能小于{0}{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43009</td>
+<td style="text-align: left">当前委托价格超过限制{0}{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43010</td>
+<td style="text-align: left">交易额不能小于{0}{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43011</td>
+<td style="text-align: left">参数不合符规范 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">42013</td>
+<td style="text-align: left">划转失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">42014</td>
+<td style="text-align: left">当前币种不支持充币</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">42015</td>
+<td style="text-align: left">当前币种不支持提币</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">42016</td>
+<td style="text-align: left">symbol {0} 无效或者不支持现货交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43013</td>
+<td style="text-align: left">止盈价格需要&gt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43014</td>
+<td style="text-align: left">止盈价格需要&lt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43015</td>
+<td style="text-align: left">止损价格需要&lt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43016</td>
+<td style="text-align: left">止损价格需要&gt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43017</td>
+<td style="text-align: left">您当前为交易员身份，暂不支持通过计划委托进行平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43020</td>
+<td style="text-align: left">止盈止损单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43021</td>
+<td style="text-align: left">止盈止损单已经处于结束状态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43022</td>
+<td style="text-align: left">预设止盈止损触发失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43023</td>
+<td style="text-align: left">仓位不足，不能设置止盈或者止损</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43024</td>
+<td style="text-align: left">已有委托中的止盈/止损，请在全部撤销后更改</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43025</td>
+<td style="text-align: left">计划委托单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43026</td>
+<td style="text-align: left">计划委托单已经处于结束状态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43027</td>
+<td style="text-align: left">不满足最小下单价值{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43028</td>
+<td style="text-align: left">价格请输入{0}的整倍数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43029</td>
+<td style="text-align: left">当前委托的数量 &gt; 最大可平仓数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43032</td>
+<td style="text-align: left">rangeRate is smaller than {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43033</td>
+<td style="text-align: left">Trailing order does not exist</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43034</td>
+<td style="text-align: left">The trigger price should be ≤ the current market price</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43035</td>
+<td style="text-align: left">The trigger price should be ≥ the current market price</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43036</td>
+<td style="text-align: left">交易员修改止盈止损300ms内只允许操作一次</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43037</td>
+<td style="text-align: left">不能小于交易最小委托量{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43038</td>
+<td style="text-align: left">不能大于交易最大委托量{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43039</td>
+<td style="text-align: left">超过最大价格限制{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43040</td>
+<td style="text-align: left">价格最小变动为{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43041</td>
+<td style="text-align: left">超过最大交易额{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43042</td>
+<td style="text-align: left">低于最小交易额{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43043</td>
+<td style="text-align: left">该仓位暂无持仓,不能进行止盈止损委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43044</td>
+<td style="text-align: left">追踪订单状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43045</td>
+<td style="text-align: left">此交易员已达跟单上限，请选择其他交易员</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43046</td>
+<td style="text-align: left">用户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43047</td>
+<td style="text-align: left">跟随者被移除后的几分钟内不允许再次跟随，请稍后再试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43048</td>
+<td style="text-align: left">交易对为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43049</td>
+<td style="text-align: left">不支持该保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43050</td>
+<td style="text-align: left">杠杆超过有效范围</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43051</td>
+<td style="text-align: left">超过最大限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43052</td>
+<td style="text-align: left">跟单数量不能低于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43053</td>
+<td style="text-align: left">跟单比例不能超过{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43054</td>
+<td style="text-align: left">跟单比例不能低于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43055</td>
+<td style="text-align: left">止损比例需介于{0}-{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43056</td>
+<td style="text-align: left">止盈比例需介于{0}-{1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43057</td>
+<td style="text-align: left">子母账户之间不可带单或跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43058</td>
+<td style="text-align: left">参数校验失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43059</td>
+<td style="text-align: left">操作失败，请重试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43060</td>
+<td style="text-align: left">排序规则必传</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43061</td>
+<td style="text-align: left">排序字段必传</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43062</td>
+<td style="text-align: left">该交易员不存在或不可跟单该交易员</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43063</td>
+<td style="text-align: left">自己不能跟单自己</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43064</td>
+<td style="text-align: left">当前带单订单状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43065</td>
+<td style="text-align: left">跟踪单号 不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43066</td>
+<td style="text-align: left">操作失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43067</td>
+<td style="text-align: left">加载数据已达上限，单次最大支持加载{0}条</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43068</td>
+<td style="text-align: left">当前跟随者状态异常，暂不允许移除</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43069</td>
+<td style="text-align: left">当跟随者账户权益低于{0}USDT时才可被移除</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45001</td>
+<td style="text-align: left">未知错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45002</td>
+<td style="text-align: left">资产可用不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45003</td>
+<td style="text-align: left">开仓可用不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45004</td>
+<td style="text-align: left">资产的锁定不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45005</td>
+<td style="text-align: left">仓位的可用不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45006</td>
+<td style="text-align: left">position的仓位不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45007</td>
+<td style="text-align: left">position的锁定不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45008</td>
+<td style="text-align: left">没有任何资产</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45009</td>
+<td style="text-align: left">账户有风险,暂时不能交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45010</td>
+<td style="text-align: left">委托数量不能超过对应档位的最大量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45011</td>
+<td style="text-align: left">订单剩余量&lt;本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45012</td>
+<td style="text-align: left">仓位剩余量&lt;本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45013</td>
+<td style="text-align: left">开仓委托数量&lt;本次成交量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45014</td>
+<td style="text-align: left">开仓处理时仓位不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45015</td>
+<td style="text-align: left">订单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45016</td>
+<td style="text-align: left">拒绝订单已有成交</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45017</td>
+<td style="text-align: left">结算或者手续费币种配置未找到.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45018</td>
+<td style="text-align: left">扎差时，不能拥有平仓委托.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45019</td>
+<td style="text-align: left">帐户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45020</td>
+<td style="text-align: left">平仓只能发生在双向持仓下.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45021</td>
+<td style="text-align: left">单边持仓时委托类型也必须是单边持仓类型.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45023</td>
+<td style="text-align: left">创建订单错误.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45024</td>
+<td style="text-align: left">取消订单错误.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45025</td>
+<td style="text-align: left">币对不支持该币种作为保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45026</td>
+<td style="text-align: left">请检查使用了正确的delegateType</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45031</td>
+<td style="text-align: left">订单已经是终态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45034</td>
+<td style="text-align: left">重复的clientOid</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45035</td>
+<td style="text-align: left">价格步长不匹配</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45043</td>
+<td style="text-align: left">因为结算或维护原因， 交易暂停</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45044</td>
+<td style="text-align: left">调整后杠杆不在合适的范围内</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45045</td>
+<td style="text-align: left">超过最大可设置杠杆倍数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45047</td>
+<td style="text-align: left">调小杠杆,追加保证金数量不正确</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45051</td>
+<td style="text-align: left">执行价格参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45052</td>
+<td style="text-align: left">触发价格参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45055</td>
+<td style="text-align: left">当前订单状态不能撤销</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45056</td>
+<td style="text-align: left">当前订单类型不能撤销</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45057</td>
+<td style="text-align: left">订单不存在！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45060</td>
+<td style="text-align: left">多头仓位止盈价格请&gt;当前价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45061</td>
+<td style="text-align: left">空头仓位止盈价格请&lt;当前价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45062</td>
+<td style="text-align: left">多头仓位止损价格请&lt;当前价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45063</td>
+<td style="text-align: left">空头仓位止损价格请&gt;当前价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45064</td>
+<td style="text-align: left">多头仓位止盈价格请&gt;委托价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45065</td>
+<td style="text-align: left">空头仓位止盈价格请&lt;委托价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45066</td>
+<td style="text-align: left">多头仓位止损价格请&lt;委托价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45067</td>
+<td style="text-align: left">空头仓位止损价格请&gt;委托价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45068</td>
+<td style="text-align: left">多头仓位止盈价格请&gt;执行价格{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45075</td>
+<td style="text-align: left">该用户已存在进行中的跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45081</td>
+<td style="text-align: left">跟单号错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45089</td>
+<td style="text-align: left">您当前正在进行跟单，暂不支持修改杠杆</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45091</td>
+<td style="text-align: left">追踪订单数量过多</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45097</td>
+<td style="text-align: left">当前有委托，或者计划委托，无法调整杠杆.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45098</td>
+<td style="text-align: left">您当前为交易员身份，不能切换为全仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45099</td>
+<td style="text-align: left">币种混合时，不能调整为逐仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45100</td>
+<td style="text-align: left">单向持仓时，不能调整为逐仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45101</td>
+<td style="text-align: left">逐仓模式时，不能调整为单向持仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45102</td>
+<td style="text-align: left">全仓模式时，不能调整自动追加保证金</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45103</td>
+<td style="text-align: left">下单失败，单笔闪电开仓数量最多%s</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45104</td>
+<td style="text-align: left">下单失败，单笔闪电平仓数量最多%s</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45106</td>
+<td style="text-align: left">跟单平仓已经处理完成</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45107</td>
+<td style="text-align: left">API限制开仓，如有问题请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45108</td>
+<td style="text-align: left">API限制平仓，如有问题请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45110</td>
+<td style="text-align: left">触发最小下单价值限制 {0} USDT</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45111</td>
+<td style="text-align: left">触发最小下单数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45112</td>
+<td style="text-align: left">触发最最大下单数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45113</td>
+<td style="text-align: left">触发最大下单价值限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45114</td>
+<td style="text-align: left">不满足最小下单要求</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45115</td>
+<td style="text-align: left">price 应该满足 {0} 倍数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45116</td>
+<td style="text-align: left">当前账号持仓条数超过最大数量 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45117</td>
+<td style="text-align: left">当前持有仓位或委托，无法调整保证金模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45118</td>
+<td style="text-align: left">达到总笔数上限(当前委托笔数+当前带单笔数) {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45119</td>
+<td style="text-align: left">此合约暂不支持开仓操作</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45120</td>
+<td style="text-align: left">委托数量 &gt; 最大可开数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45121</td>
+<td style="text-align: left">合理标记价格偏离盘口过大,您当前杠杆开仓风险较高</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45122</td>
+<td style="text-align: left">空头仓位止损价格请&gt;标记价格 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45123</td>
+<td style="text-align: left">可用不足, 当前只可市价下单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45124</td>
+<td style="text-align: left">Please edit and submit again.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45125</td>
+<td style="text-align: left">Order cancellation is unavailable for inactive orders. Please cancel parent order and place a new order.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45126</td>
+<td style="text-align: left">Order cancellation is unavailable for inactive orders. Please cancel parent order and place a new order.</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45127</td>
+<td style="text-align: left">Position brackets disabled TP SL</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45128</td>
+<td style="text-align: left">Position brackets disabled modify qty</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45129</td>
+<td style="text-align: left">撤单过于频繁, 同一个订单号一秒内只允许取消一次</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">41103</td>
+<td style="text-align: left">参数{0}错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">41101</td>
+<td style="text-align: left">参数{0}错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">41113</td>
+<td style="text-align: left">该交易对已下线</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">41114</td>
+<td style="text-align: left">当前交易对停盘中，具体开放时间请留意官方公告</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43012</td>
+<td style="text-align: left">账户余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">41100</td>
+<td style="text-align: left">{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43111</td>
+<td style="text-align: left">参数错误 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43112</td>
+<td style="text-align: left">提币金额小于手续费 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43113</td>
+<td style="text-align: left">单笔超过了每日限额 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43114</td>
+<td style="text-align: left">提币小于最小提币数 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43115</td>
+<td style="text-align: left">此交易对未到开盘交易时间</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43116</td>
+<td style="text-align: left">该chain提币需要tag</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43117</td>
+<td style="text-align: left">超过可转出的最大金额</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43118</td>
+<td style="text-align: left">clientOrderId重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43119</td>
+<td style="text-align: left">Trading is not open</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43120</td>
+<td style="text-align: left">symbol is not open trade</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43121</td>
+<td style="text-align: left">Withdrawal address cannot be your own</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
 <td style="text-align: left">43122</td>
+<td style="text-align: left">该币种限制买入额度{0}，还剩{1}</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
-<td style="text-align: left">您的身份认证还在审核中,请等待审核通过后再试此功能</td>
-<td style="text-align: left">40926</td>
+<td style="text-align: left">43123</td>
+<td style="text-align: left">param error {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43124</td>
+<td style="text-align: left">withdraw step is error</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43125</td>
+<td style="text-align: left">No more than 8 decimal places</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43126</td>
+<td style="text-align: left">This currency does not support withdrawals</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43127</td>
+<td style="text-align: left">非母账户发起划转，或母子账户关系错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">43128</td>
+<td style="text-align: left">超过总交易对最大委托数量限制 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">47001</td>
+<td style="text-align: left">Currency recharge is not enabled</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">47002</td>
+<td style="text-align: left">提币地址校验失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49000</td>
+<td style="text-align: left">apiKey与用户userId不匹配</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49001</td>
+<td style="text-align: left">非外部资金托管账户，不允许操作</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49002</td>
+<td style="text-align: left">缺少http header: ACCESS-BROKER-KEY or ACCESS-BROKER-SIGN</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49003</td>
+<td style="text-align: left">非法的IP，拒绝访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49004</td>
+<td style="text-align: left">非法的ACCESS-BROKER-KEY值</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49005</td>
+<td style="text-align: left">子账户拒绝访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49006</td>
+<td style="text-align: left">ACCESS-BROKER-SIGN校验失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49007</td>
+<td style="text-align: left">账户未绑定</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49008</td>
+<td style="text-align: left">账户已绑定</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49009</td>
+<td style="text-align: left">指定clientUserId和已绑定用户ID不一致</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49010</td>
+<td style="text-align: left">账户 {0} 存在资产: {1}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49011</td>
+<td style="text-align: left">用户绑定前必须完成KYC</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49020</td>
+<td style="text-align: left">不支持的币种</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49021</td>
+<td style="text-align: left">资金操作进行中</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49022</td>
+<td style="text-align: left">禁止访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49023</td>
+<td style="text-align: left">余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49024</td>
+<td style="text-align: left">{0} 数量精度错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49025</td>
+<td style="text-align: left">请求内容和初次请求该requestId的内容不一致，具体参数 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49026</td>
+<td style="text-align: left">{0} 最大 {1} 位</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49030</td>
+<td style="text-align: left">外部资金托管账户, 拒绝访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">49040</td>
+<td style="text-align: left">未知异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60001</td>
+<td style="text-align: left">startTime不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60002</td>
+<td style="text-align: left">merchantId不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60003</td>
+<td style="text-align: left">未找到订单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60004</td>
+<td style="text-align: left">未找到广告</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60005</td>
+<td style="text-align: left">未找到商家</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">70001</td>
+<td style="text-align: left">活动ID错误，未找到该活动</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">70002</td>
+<td style="text-align: left">rankType错误不支持</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">45109</td>
+<td style="text-align: left">当前铺单账户为双向持仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40000</td>
+<td style="text-align: left">Bitget正在为全球多个国家和地区提供服务，并严格遵守各个国家和地区的法规与监管要求。依据相关法规，Bitget当前无法对您所在的地区(中国大陆地区)提供服务，您没有开仓权限，给您带来不便，敬请谅解！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">48001</td>
+<td style="text-align: left">参数验证失败 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">48002</td>
+<td style="text-align: left">缺少请求参数</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">46013</td>
+<td style="text-align: left">该币种限制卖出额度{0}，还剩{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40404</td>
+<td style="text-align: left">请求的URL不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50010</td>
+<td style="text-align: left">未知错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50012</td>
+<td style="text-align: left">账户已冻结或者已注销，请联系客服。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50013</td>
+<td style="text-align: left">账户已冻结、注销，请联系客服。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50019</td>
+<td style="text-align: left">该用户禁止交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50059</td>
+<td style="text-align: left">不支持划转该币种</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50052</td>
+<td style="text-align: left">资产划转时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50048</td>
+<td style="text-align: left">超过交易对最大委托数量限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50046</td>
+<td style="text-align: left">价格太低</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50047</td>
+<td style="text-align: left">价格太高</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50026</td>
+<td style="text-align: left">交易对未开放交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50025</td>
+<td style="text-align: left">交易对未开放交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50016</td>
+<td style="text-align: left">挂单数量低于交易对最小挂单数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50017</td>
+<td style="text-align: left">挂单数量高于交易对最大挂单数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50023</td>
+<td style="text-align: left">账号异常被冻结，如有疑问请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50031</td>
+<td style="text-align: left">系统异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50044</td>
+<td style="text-align: left">未配置系统账户</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50049</td>
+<td style="text-align: left">系统用户操作请求体为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50050</td>
+<td style="text-align: left">系统借贷归集已经被执行过了</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50027</td>
+<td style="text-align: left">交易对停止交易维护</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50030</td>
+<td style="text-align: left">交易对即将开放</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50029</td>
+<td style="text-align: left">交易对无下单价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50028</td>
+<td style="text-align: left">交易对下线</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50040</td>
+<td style="text-align: left">还款金额必须大于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50042</td>
+<td style="text-align: left">还款金额必须大于利息</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50041</td>
+<td style="text-align: left">还款金额必须小于可用资产</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50051</td>
+<td style="text-align: left">对账时收到不在系统（缓存）中的用户</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50024</td>
+<td style="text-align: left">交易对不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50011</td>
+<td style="text-align: left">参数校验异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50053</td>
+<td style="text-align: left">借贷归还时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50056</td>
+<td style="text-align: left">强平手续费缴纳时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50054</td>
+<td style="text-align: left">利息归还时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50055</td>
+<td style="text-align: left">手续费缴纳时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50033</td>
+<td style="text-align: left">websocket查询的topic不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50057</td>
+<td style="text-align: left">穿仓补偿时金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50032</td>
+<td style="text-align: left">币种不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50036</td>
+<td style="text-align: left">借贷配置不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50037</td>
+<td style="text-align: left">该币种不可借贷</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50038</td>
+<td style="text-align: left">超出系统限制额度</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50034</td>
+<td style="text-align: left">借款金额必须大于0.00000001</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50035</td>
+<td style="text-align: left">超出最大可借金额</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50020</td>
+<td style="text-align: left">余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50045</td>
+<td style="text-align: left">锁定资产不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50015</td>
+<td style="text-align: left">子账号暂时不支持开通杠杆交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50021</td>
+<td style="text-align: left">杠杆帐户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50022</td>
+<td style="text-align: left">账户处于强平状态</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50014</td>
+<td style="text-align: left">账户已存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50060</td>
+<td style="text-align: left">重复的clientOid</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50058</td>
+<td style="text-align: left">穿仓没收盈余金额小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50039</td>
+<td style="text-align: left">币对币种不匹配</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50018</td>
+<td style="text-align: left">价格不能小于0</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50043</td>
+<td style="text-align: left">未知的资产流水类型</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50061</td>
+<td style="text-align: left">请修改后提交</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50062</td>
+<td style="text-align: left">该订单已成交或者已撤单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50063</td>
+<td style="text-align: left">币种精度必须小于等于8位</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50064</td>
+<td style="text-align: left">当前业务已冻结，如有疑问请联系客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50065</td>
+<td style="text-align: left">币对已下架</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">50066</td>
+<td style="text-align: left">仓位平仓中，请稍后操作</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31001</td>
+<td style="text-align: left">该用户不是交易员</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31002</td>
+<td style="text-align: left">条件 {0} 未满足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31003</td>
+<td style="text-align: left">参数 {0} 必须有值,不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31004</td>
+<td style="text-align: left">止盈价格需要&gt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31005</td>
+<td style="text-align: left">止损价格需要&lt;当前价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31006</td>
+<td style="text-align: left">此带单正在委托中，暂不支持平仓</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31007</td>
+<td style="text-align: left">订单不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31008</td>
+<td style="text-align: left">该仓位暂无持仓,不能进行止盈止损委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31009</td>
+<td style="text-align: left">追踪订单状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31010</td>
+<td style="text-align: left">清退用户提示</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31011</td>
+<td style="text-align: left">未完全成交订单平仓提示取消委托</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31012</td>
+<td style="text-align: left">回调幅度大于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31013</td>
+<td style="text-align: left">回调幅度小于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31014</td>
+<td style="text-align: left">止盈收益率大于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31015</td>
+<td style="text-align: left">止损收益率小于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31016</td>
+<td style="text-align: left">批量执行异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31017</td>
+<td style="text-align: left">超过最大价格限制{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31018</td>
+<td style="text-align: left">价格最小变动为 {0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31019</td>
+<td style="text-align: left">支持交易币对不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31020</td>
+<td style="text-align: left">业务被限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31021</td>
+<td style="text-align: left">该币对不可交易，请选择其他币对</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31022</td>
+<td style="text-align: left">不满足该交易区最小下单量，请选择其他交易区</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31023</td>
+<td style="text-align: left">结束跟单处理中</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31024</td>
+<td style="text-align: left">该笔订单未完全成交，请到&quot;现货交易&quot;-&quot;当前委托&quot;下撤销该笔委托后，再进行卖出或结束操作！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31025</td>
+<td style="text-align: left">您的交易员身份已被停用或撤销，暂不支持此操作，如有疑问请联系客服！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31026</td>
+<td style="text-align: left">用户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31027</td>
+<td style="text-align: left">操作失败，请重试</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31028</td>
+<td style="text-align: left">参数验证失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31029</td>
+<td style="text-align: left">用户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31030</td>
+<td style="text-align: left">所选交易对为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31031</td>
+<td style="text-align: left">您当前身份为交易员，暂不可进行跟单操作</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31032</td>
+<td style="text-align: left">不能自己跟自己</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31033</td>
+<td style="text-align: left">移除失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31034</td>
+<td style="text-align: left">此交易员跟随人数达上限，请选择其他交易员</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31035</td>
+<td style="text-align: left">跟单比例不能低于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31036</td>
+<td style="text-align: left">跟单比例不能超过{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31037</td>
+<td style="text-align: left">跟单张数不能低于{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31038</td>
+<td style="text-align: left">超过最大限制</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31039</td>
+<td style="text-align: left">交易员身份已被取消,无法设置提醒</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31040</td>
+<td style="text-align: left">止盈比例需介于{0}%%-{1}%%</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31041</td>
+<td style="text-align: left">止损比例需介于{0}%%-{1}%%</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31042</td>
+<td style="text-align: left">您的交易员身份已暂停，若需设置带单合约请联系在线客服</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31043</td>
+<td style="text-align: left">您的带单人数已经过平台增员，如需打开此功能请联系客服减员！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31044</td>
+<td style="text-align: left">您当前正在申请交易员，暂不允许跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31045</td>
+<td style="text-align: left">当前最多可止盈/止损数量为{0}，超过的数量请到当前带单下操作。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31046</td>
+<td style="text-align: left">子母账户之间不可带单或跟单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31047</td>
+<td style="text-align: left">跟随者被移除后的{0}分钟内不允许再次跟随，请稍后再试！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31048</td>
+<td style="text-align: left">该交易员仅支持邀请用户跟随，请选择其他交易员！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31049</td>
+<td style="text-align: left">该交易员身份异常或已被撤销，暂不支持查看！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31050</td>
+<td style="text-align: left">交易员UID重复</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31051</td>
+<td style="text-align: left">traderUserId 异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31052</td>
+<td style="text-align: left">不能设置交易员未开启的带单对。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31053</td>
+<td style="text-align: left">executePrice 不能超过 triggerPrice 的{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">31054</td>
+<td style="text-align: left">没有可撤销的订单</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">20001</td>
+<td style="text-align: left">startTime 必须小于 endTime</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22001</td>
+<td style="text-align: left">暂无委托可撤销</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22002</td>
+<td style="text-align: left">暂无仓位可平</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22003</td>
+<td style="text-align: left">修改price 和 size 时 请务必 传入 newClientOid</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22004</td>
+<td style="text-align: left">此 {0} 合约暂未支持API交易</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22005</td>
+<td style="text-align: left">此合约暂不支持使用全仓模式</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22006</td>
+<td style="text-align: left">委托价格 &gt; 风控最高买价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22007</td>
+<td style="text-align: left">委托价格 &lt; 风控最低卖价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22008</td>
+<td style="text-align: left">市场价格 &gt; 风控最高买价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22009</td>
+<td style="text-align: left">市场价格 &lt; 风控最低卖价</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">22010</td>
+<td style="text-align: left">请设置ip白名单地址</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40100</td>
+<td style="text-align: left">由于监管要求，香港IP需要先完成身份验证</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40101</td>
+<td style="text-align: left">请先完成KYC</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">00001</td>
+<td style="text-align: left">startTime 和 endTime 间隔不能大于366天</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">12001</td>
+<td style="text-align: left">当前最多可使用{0}，剩余部分处于跟单或带单的冻结资产，暂不可使用</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">12002</td>
+<td style="text-align: left">当前币种{0}，限制净卖出价值{1} USD</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">12003</td>
+<td style="text-align: left">当前币种{0}，限制净买出价值{1} USD</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13001</td>
+<td style="text-align: left">提币操作太频繁</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13002</td>
+<td style="text-align: left">币种不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13003</td>
+<td style="text-align: left">提币超过每月限额</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13004</td>
+<td style="text-align: left">您实际可提数量为{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13005</td>
+<td style="text-align: left">生成地址失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60006</td>
+<td style="text-align: left">参数异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60007</td>
+<td style="text-align: left">上传文件不能超过5M</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60008</td>
+<td style="text-align: left">文件格式必须是[&quot;.jpg&quot;, &quot;.jpeg&quot;, &quot;.png&quot;]</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60009</td>
+<td style="text-align: left">文件格式不正确</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60010</td>
+<td style="text-align: left">上传异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60011</td>
+<td style="text-align: left">普通用户无法发布广告</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60012</td>
+<td style="text-align: left">您当前为离线状态，请切换为在线状态后再发布广告！</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60013</td>
+<td style="text-align: left">可用余额不足</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60014</td>
+<td style="text-align: left">法币信息未查到</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60015</td>
+<td style="text-align: left">数字币信息未查到</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60016</td>
+<td style="text-align: left">仅支持发布CNY广告</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60017</td>
+<td style="text-align: left">不支持发布CNY广告</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60018</td>
+<td style="text-align: left">您的 KYC 认证仅支持发布{0}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60019</td>
+<td style="text-align: left">发布失败,无法获取汇率价格</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60020</td>
+<td style="text-align: left">广告类型错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60021</td>
+<td style="text-align: left">支付方式为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60022</td>
+<td style="text-align: left">交易数量不正确</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60023</td>
+<td style="text-align: left">不满足法币限额({0}-{1})</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60024</td>
+<td style="text-align: left">对账资金异常</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60025</td>
+<td style="text-align: left">备注长度不能大于配置长度</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60026</td>
+<td style="text-align: left">专属国家错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60027</td>
+<td style="text-align: left">付款期限错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60028</td>
+<td style="text-align: left">付款方式错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60029</td>
+<td style="text-align: left">发布广告失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60030</td>
+<td style="text-align: left">状态错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60031</td>
+<td style="text-align: left">广告编号太长</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60032</td>
+<td style="text-align: left">广告不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60033</td>
+<td style="text-align: left">发布的广告金额错误</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60034</td>
+<td style="text-align: left">备注图片数量不能大于配置数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60035</td>
+<td style="text-align: left">编辑广告失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60036</td>
+<td style="text-align: left">payTimeLimit不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60037</td>
+<td style="text-align: left">发布失败，定价与参考价差距大</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60038</td>
+<td style="text-align: left">发布失败，浮动比率错误。</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60039</td>
+<td style="text-align: left">用户不存在</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60040</td>
+<td style="text-align: left">未授权不支持访问</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60041</td>
+<td style="text-align: left">修改广告价格失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60042</td>
+<td style="text-align: left">limitPrice 不能为空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60043</td>
+<td style="text-align: left">广告状态更新失败</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60044</td>
+<td style="text-align: left">只有编辑中的广告，才能编辑</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60045</td>
+<td style="text-align: left">超过可发布的广告数量</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60046</td>
+<td style="text-align: left">priceValue 不能是空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">60047</td>
+<td style="text-align: left">userPayMethodId 不能是空</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>
