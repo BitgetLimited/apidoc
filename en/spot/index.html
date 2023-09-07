@@ -887,15 +887,23 @@ clipboard.on('error', function(e) {
 <tr>
 <td style="text-align: center">1</td>
 <td style="text-align: center">Feature on &#39;Earn&#39;</td>
-<td style="text-align: center">TBP</td>
+<td style="text-align: center">Early Oct, 2023</td>
 <td style="text-align: center">Bitget Earn</td>
 </tr>
 </tbody></table>
 <h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA Sep 06, 2023</strong>
-- Forecast 
-  <a href="#get-symbols">/api/spot/v1/public/products</a> added response field：<code>maxOrderNum</code>
-   <a href="#get-single-symbol">/api/spot/v1/public/product</a> added response field：<code>maxOrderNum</code></p>
+<p><strong>ETA Mid Sep, 2023</strong></p>
+
+<ul>
+<li><a href="#get-order-history">Get order history</a> and <a href="#get-order-details">Get order history</a>  field to be updated: a new field on response </li>
+</ul>
+
+<p><aside class="info">
+   &#39;feeDetail.newFees&#39;
+   &quot;feeDetail&quot;: &quot;{\&quot;BGB\&quot;:{\&quot;deduction\&quot;:true,\&quot;feeCoinCode\&quot;:\&quot;BGB\&quot;,
+   \&quot;totalDeductionFee\&quot;:-0.017118519726,
+   \&quot;totalFee\&quot;:-0.017118519726,\&quot;newFees\&quot;:{\&quot;t\&quot;:1,\&quot;d\&quot;:1,\&quot;r\&quot;:1,\&quot;c\&quot;:1}}}&quot;
+   </aside></p>
 <h1 id='update-log'>Update Log</h1>
 <p><strong>Sep 05, 2023</strong></p>
 
@@ -7130,7 +7138,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
             </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"142.9015000000000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.9999972790000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726}}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">newFees</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">t</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">d</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">r</span><span class="se">\"</span><span class="s2">:1,"</span><span class="err">\c\</span><span class="s2">":1}}}"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684134644509"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -7203,7 +7211,43 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td>feeDetail</td>
-<td>order fee detail</td>
+<td>order fee detail, json string</td>
+</tr>
+<tr>
+<td>&gt; deduction</td>
+<td>Is deduction</td>
+</tr>
+<tr>
+<td>&gt; feeCoinCode</td>
+<td>Fee coin, like BGB</td>
+</tr>
+<tr>
+<td>&gt; totalDeductionFee</td>
+<td>Total deduction</td>
+</tr>
+<tr>
+<td>&gt; totalFee</td>
+<td>Total fee</td>
+</tr>
+<tr>
+<td>&gt; newFees</td>
+<td>Object  (new field, ETA Mid Sep, 2023)</td>
+</tr>
+<tr>
+<td>&gt;&gt; t</td>
+<td>Total fee, base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
+</tr>
+<tr>
+<td>&gt;&gt; d</td>
+<td>Fee deduction: BGB quantity</td>
+</tr>
+<tr>
+<td>&gt;&gt; r</td>
+<td>Real fee deducted, base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
+</tr>
+<tr>
+<td>&gt;&gt; c</td>
+<td>Coupon deducted: base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
 </tr>
 <tr>
 <td>orderSource</td>
@@ -7417,7 +7461,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
       </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"142.9015000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.9999972790000000"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726}}"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">newFees</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">t</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">d</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">r</span><span class="se">\"</span><span class="s2">:1,"</span><span class="err">\c\</span><span class="s2">":1}}}"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684134644509"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -7491,6 +7535,42 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <tr>
 <td>feeDetail</td>
 <td>order fee detail</td>
+</tr>
+<tr>
+<td>&gt; deduction</td>
+<td>Is deduction</td>
+</tr>
+<tr>
+<td>&gt; feeCoinCode</td>
+<td>Fee coin, like BGB</td>
+</tr>
+<tr>
+<td>&gt; totalDeductionFee</td>
+<td>Total deduction</td>
+</tr>
+<tr>
+<td>&gt; totalFee</td>
+<td>Total fee</td>
+</tr>
+<tr>
+<td>&gt; newFees</td>
+<td>Object (new field, ETA Mid Sep, 2023)</td>
+</tr>
+<tr>
+<td>&gt;&gt; t</td>
+<td>Total fee, base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
+</tr>
+<tr>
+<td>&gt;&gt; d</td>
+<td>Fee deduction: BGB quantity</td>
+</tr>
+<tr>
+<td>&gt;&gt; r</td>
+<td>Real fee deducted, base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
+</tr>
+<tr>
+<td>&gt;&gt; c</td>
+<td>Coupon deducted: base coin when &#39;buy&#39;, quote coin when &#39;sell&#39;</td>
 </tr>
 <tr>
 <td>orderSource</td>

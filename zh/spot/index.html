@@ -881,14 +881,23 @@ clipboard.on('error', function(e) {
 <tr>
 <td style="text-align: center">1</td>
 <td style="text-align: center">理财</td>
-<td style="text-align: center">TBP</td>
+<td style="text-align: center">2023 十月初</td>
 <td style="text-align: center">Bitget 理财</td>
 </tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
-<p><strong>ETA 2023年09月06日</strong>
-预告：接口 <a href="#d990beddee">/api/spot/v1/public/products</a> 增加响应字段：<code>maxOrderNum</code>
-预告：接口 <a href="#84a4efea8f">/api/spot/v1/public/product</a> 增加响应字段：<code>maxOrderNum</code></p>
+<p><strong>ETA 2023年09月中</strong></p>
+
+<ul>
+<li>接口 <a href="#b9220b5487">获取历史委托列表</a> 与 <a href="#f876a4e1f9">获取订单详情</a> 新增响应字段：feeDetail.newFees</li>
+</ul>
+
+<p><aside class="info">
+   &#39;feeDetail.newFees&#39;
+   &quot;feeDetail&quot;: &quot;{\&quot;BGB\&quot;:{\&quot;deduction\&quot;:true,\&quot;feeCoinCode\&quot;:\&quot;BGB\&quot;,
+   \&quot;totalDeductionFee\&quot;:-0.017118519726,
+   \&quot;totalFee\&quot;:-0.017118519726,\&quot;newFees\&quot;:{\&quot;t\&quot;:1,\&quot;d\&quot;:1,\&quot;r\&quot;:1,\&quot;c\&quot;:1}}}&quot;
+   </aside>        </p>
 <h1 id='185368440e'>更新日志</h1>
 <p><strong>2023年09月05日</strong></p>
 
@@ -2761,28 +2770,26 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -2832,10 +2839,6 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
-</tr>
-<tr>
-<td style="text-align: left">quotePrecision</td>
-<td style="text-align: center">市价买精度</td>
 </tr>
 <tr>
 <td style="text-align: left">minTradeUSDT</td>
@@ -2890,26 +2893,26 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <p>返回数据:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT_SPBL"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"baseCoin"</span><span class="p">:</span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quoteCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeAmount"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"maxTradeAmount"</span><span class="p">:</span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"takerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"makerFeeRate"</span><span class="p">:</span><span class="s2">"0.001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priceScale"</span><span class="p">:</span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantityScale"</span><span class="p">:</span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"minTradeUSDT"</span><span class="p">:</span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sellLimitPriceRatio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>返回值说明</strong></p>
@@ -2959,10 +2962,6 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <tr>
 <td style="text-align: left">quantityScale</td>
 <td style="text-align: center">数量精度</td>
-</tr>
-<tr>
-<td style="text-align: left">quotePrecision</td>
-<td style="text-align: center">市价买精度</td>
 </tr>
 <tr>
 <td style="text-align: left">minTradeUSDT</td>
@@ -4814,8 +4813,6 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 </tbody></table>
 <h3 id='263e170b4c'>获取充币地址</h3>
-<p>母账户发起</p>
-
 <p>限速规则：5次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -7177,7 +7174,7 @@ margin_isolated        接受转入转出多个币种</li>
             </span><span class="s2">"fillQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"142.9015000000000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"fillTotalAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.9999972790000000"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"enterPointSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726}}"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"feeDetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">deduction</span><span class="se">\"</span><span class="s2">:true,</span><span class="se">\"</span><span class="s2">feeCoinCode</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">BGB</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">totalDeductionFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">totalFee</span><span class="se">\"</span><span class="s2">:-0.017118519726,</span><span class="se">\"</span><span class="s2">newFees</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">t</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">d</span><span class="se">\"</span><span class="s2">:1,</span><span class="se">\"</span><span class="s2">r</span><span class="se">\"</span><span class="s2">:1,"</span><span class="err">\c\</span><span class="s2">":1}}}"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"orderSource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1684134644509"</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -7251,6 +7248,42 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">feeDetail</td>
 <td style="text-align: center">手续费明细</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; deduction</td>
+<td style="text-align: center">是否抵扣</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; feeCoinCode</td>
+<td style="text-align: center">手续费币种, 如BGB</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalDeductionFee</td>
+<td style="text-align: center">抵扣手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalFee</td>
+<td style="text-align: center">总手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; newFees</td>
+<td style="text-align: center">Object （预计2023年9月中上线）</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; t</td>
+<td style="text-align: center">总手续费, &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; d</td>
+<td style="text-align: center">抵扣手续费: BGB 数量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; r</td>
+<td style="text-align: center">实付手续费, &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; c</td>
+<td style="text-align: center">抵扣券抵扣的金额: &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
 </tr>
 <tr>
 <td style="text-align: left">orderSource</td>
@@ -7468,7 +7501,7 @@ margin_isolated        接受转入转出多个币种</li>
       "fillQuantity": "142.9015000000000000",
       "fillTotalAmount": "9.9999972790000000",
       "enterPointSource": "API",
-      "feeDetail": "{\"BGB\":{\"deduction\":true,\"feeCoinCode\":\"BGB\",\"totalDeductionFee\":-0.017118519726,\"totalFee\":-0.017118519726}}",
+      "feeDetail": "{\"BGB\":{\"deduction\":true,\"feeCoinCode\":\"BGB\",\"totalDeductionFee\":-0.017118519726,\"totalFee\":-0.017118519726,\"newFees\":{\"t\":1,\"d\":1,\"r\":1,"\c\":1}}}",
       "orderSource": "market",
       "cTime": "1684134644509"
     }
@@ -7542,6 +7575,42 @@ margin_isolated        接受转入转出多个币种</li>
 <tr>
 <td style="text-align: left">feeDetail</td>
 <td style="text-align: center">手续费明细</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; deduction</td>
+<td style="text-align: center">是否抵扣</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; feeCoinCode</td>
+<td style="text-align: center">手续费币种, 如BGB</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalDeductionFee</td>
+<td style="text-align: center">抵扣手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; totalFee</td>
+<td style="text-align: center">总手续费</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt; newFees</td>
+<td style="text-align: center">Object （预计2023年9月中上线）</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; t</td>
+<td style="text-align: center">总手续费, &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; d</td>
+<td style="text-align: center">抵扣手续费: BGB 数量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; r</td>
+<td style="text-align: center">实付手续费, &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt; c</td>
+<td style="text-align: center">抵扣券抵扣的金额: &#39;buy&#39;时按左币计算, &#39;sell&#39;时按右币计算</td>
 </tr>
 <tr>
 <td style="text-align: left">orderSource</td>
