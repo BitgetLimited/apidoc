@@ -912,6 +912,16 @@ clipboard.on('error', function(e) {
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
 <p>功能更新预告</p>
+
+<p><strong>ETA 2023年09月下旬</strong></p>
+
+<p><a href="#fd6ce2a756">合约下单</a>接口逻辑更新预告：</p>
+
+<ul>
+<li>原逻辑：单向持仓模式 + &quot;reduceOnly&quot;:true时，下平仓单的数量超过持仓数量时，下单会报异常 &#39;40757-Not enough position is available.&#39;；</li>
+<li>新逻辑：单向持仓模式 + &quot;reduceOnly&quot;:true时，超量平仓单 的 下单数量会自动改为仓位总量, 相应地，下超量平仓单会返回下单成功</li>
+<li>双向持仓模式 下超量平仓单 逻辑不变</li>
+</ul>
 <h1 id='185368440e'>更新日志</h1>
 <p><strong>2023年09月05日</strong></p>
 
@@ -5904,7 +5914,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td style="text-align: left">unrealizedPL</td>
-<td style="text-align: left">未实现盈亏</td>
+<td style="text-align: left">全仓未实现盈亏，USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">bonus</td>
@@ -8005,19 +8015,25 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 
 <p>双向持仓时，当平仓时指定的size大于持仓size时，下单会成功，持仓仓位会全平，即：只减仓，不会反向开仓。</p>
 
-<p>单向持仓+非只减仓
-- 您持有 1.0 个 BTCUSDT 多仓
-- 尝试以市场价(Market Price) sell 3.0个 BTCUSDT
-- 下单接口会返回成功，1.0 个 BTCUSDT 多仓会平仓，空仓开 2.0个BTCUSDT</p>
+<p>单向持仓+非只减仓</p>
 
-<p>单向持仓+只减仓
-- 您持有 1.0 个 BTCUSDT 多仓
-- 尝试以市场价(Market Price) sell 2.0个 BTCUSDT
-- 下单接口会返回失败
-- 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
-- 下单接口会返回成功，仓位变化为0.5个 BTCUSDT 多仓
-- 尝试以市场价(Market Price) sell 0.5个 BTCUSDT
-- 下单接口会返回成功，仓位变化为0</p>
+<ul>
+<li>您持有 1.0 个 BTCUSDT 多仓</li>
+<li>尝试以市场价(Market Price) sell 3.0个 BTCUSDT</li>
+<li>下单接口会返回成功，1.0 个 BTCUSDT 多仓会平仓，空仓开 2.0个BTCUSDT</li>
+</ul>
+
+<p>单向持仓+只减仓</p>
+
+<ul>
+<li>您持有 1.0 个 BTCUSDT 多仓</li>
+<li>尝试以市场价(Market Price) sell 2.0个 BTCUSDT</li>
+<li>下单接口会返回失败</li>
+<li>尝试以市场价(Market Price) sell 0.5个 BTCUSDT</li>
+<li>下单接口会返回成功，仓位变化为0.5个 BTCUSDT 多仓</li>
+<li>尝试以市场价(Market Price) sell 0.5个 BTCUSDT</li>
+<li>下单接口会返回成功，仓位变化为0</li>
+</ul>
 
 <p>未知错误</p>
 

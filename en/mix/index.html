@@ -930,7 +930,17 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">Developing and testing</td>
 </tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update log</h1>
+<h3 id='update-forecast'>Update Forecast</h3>
+<p><strong>ETA end of Sep, 2023</strong></p>
+
+<p><a href="#place-order">Place Order</a> logic update forecast: </p>
+
+<ul>
+<li>Current logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, API will return &#39;40757-Not enough position is available.&#39; when &#39;order size&#39; is greater than the &#39;position size&#39;</li>
+<li>New logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, API will return &#39;success&#39; when &#39;order size&#39; is greater than the &#39;position size&#39; with actual position size</li>
+<li>Logic in &#39;double_hold&#39; mode remains the same</li>
+</ul>
+<h1 id='update-log'>Update log</h1>
 <p><strong>Sep 05, 2023</strong></p>
 
 <ul>
@@ -5969,7 +5979,7 @@ If there is a large deviation between the local server time and the API server t
 </tr>
 <tr>
 <td style="text-align: left">unrealizedPL</td>
-<td style="text-align: left">unrealized profit and loss</td>
+<td style="text-align: left">unrealized profit and loss at crossed <a href="#marginmode">margin mode</a>, unit in USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">bonus</td>
@@ -8061,19 +8071,25 @@ If there is a large deviation between the local server time and the API server t
 <p>Hold mode = double_hold
 - if specify a <code>size</code> greater than the <code>position size</code>  when closing position, the order will success with <code>actual position size</code>,  that is, reduceOnly.</p>
 
-<p>Hold mode = single_hold + reduceOnly=false
-- you are holding 1.0 long BTCUSDT
-- try to close the long BTCUSDT with size: 3.0 in market price
-- place order interface return success, 1.0 long position will be closed, and 2.0 short position will be opened</p>
+<p>Hold mode = single_hold + reduceOnly=false</p>
 
-<p>Hold mode = single_hold + reduceOnly=true
-- you are holding 1.0 long BTCUSDT
-- try to close the long BTCUSDT with size: 2.0 in market price
-- place order interface return failure
-- try to close the long BTCUSDT with size: 0.5 in market price
-- place order interface return success, position changes to 0.5 long BTCUSDT
-- try to close the long BTCUSDT with size: 0.5 in market price
-- place order interface return success, position changes to 0</p>
+<ul>
+<li>you are holding 1.0 long BTCUSDT</li>
+<li>try to close the long BTCUSDT with size: 3.0 in market price</li>
+<li>place order interface return success, 1.0 long position will be closed, and 2.0 short position will be opened</li>
+</ul>
+
+<p>Hold mode = single_hold + reduceOnly=true</p>
+
+<ul>
+<li>you are holding 1.0 long BTCUSDT</li>
+<li>try to close the long BTCUSDT with size: 2.0 in market price</li>
+<li>place order interface return failure</li>
+<li>try to close the long BTCUSDT with size: 0.5 in market price</li>
+<li>place order interface return success, position changes to 0.5 long BTCUSDT</li>
+<li>try to close the long BTCUSDT with size: 0.5 in market price</li>
+<li>place order interface return success, position changes to 0</li>
+</ul>
 
 <p>&nbsp;</p>
 
