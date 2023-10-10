@@ -891,19 +891,30 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">Bitget Earn</td>
 </tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA early Oct, 2023</strong></p>
+<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update Log</h1>
+<p><strong>Oct 10, 2023</strong></p>
 
 <ul>
-<li><a href="#get-order-history">Get order history</a> and <a href="#get-order-details">Get order history</a>  field to be updated: a new field &#39;feeDetail.newFees&#39; on response </li>
+<li><a href="#get-order-history">Get order history</a> and <a href="#get-order-details">Get order detail</a> added new field on response: &#39;feeDetail.newFees&#39;</li>
 </ul>
 
 <p><aside class="info">
-   &quot;feeDetail&quot;: &quot;{\&quot;BGB\&quot;:{\&quot;deduction\&quot;:true,\&quot;feeCoinCode\&quot;:\&quot;BGB\&quot;,
-   \&quot;totalDeductionFee\&quot;:-0.017118519726,
-   \&quot;totalFee\&quot;:-0.017118519726,\&quot;newFees\&quot;:{\&quot;t\&quot;:1,\&quot;d\&quot;:1,\&quot;r\&quot;:1,\&quot;c\&quot;:1}}}&quot;
-   </aside></p>
-<h1 id='update-log'>Update Log</h1>
+  &quot;feeDetail&quot;: &quot;{\&quot;BGB\&quot;:{\&quot;deduction\&quot;:true,\&quot;feeCoinCode\&quot;:\&quot;BGB\&quot;,
+  \&quot;totalDeductionFee\&quot;:-0.017118519726,
+  \&quot;totalFee\&quot;:-0.017118519726,\&quot;newFees\&quot;:{\&quot;t\&quot;:1,\&quot;d\&quot;:1,\&quot;r\&quot;:1,\&quot;c\&quot;:1}}}&quot;
+  </aside></p>
+
+<ul>
+<li>Validation logic changes on <a href="#get-order-history">withdraw</a> and <a href="#get-order-history">withdraw-v2</a>
+
+<ul>
+<li>There are 3 types of withdrawal address: &#39;Normal&#39;, &#39;Universal&#39; and &#39;EVM address&#39;</li>
+<li>Change only apply to for &#39;Normal&#39; address: </li>
+<li>Old logic: Withdraw will only validate the &#39;address&#39; (withdraw with a wrong &#39;address + coin&#39; will fail in a later steps)</li>
+<li>New logic: Withdraw will validate the &#39;address + coin&#39; (withdraw with a wrong &#39;address + coin&#39; will fail right away)</li>
+</ul></li>
+</ul>
+
 <p><strong>Sep 05, 2023</strong></p>
 
 <ul>
@@ -7258,7 +7269,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td>&gt; newFees</td>
-<td>Object  (new field, ETA Early Oct, 2023)</td>
+<td>Object</td>
 </tr>
 <tr>
 <td>&gt;&gt; t</td>
@@ -7581,7 +7592,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td>&gt; newFees</td>
-<td>Object (new field, ETA Mid Sep, 2023)</td>
+<td>Object</td>
 </tr>
 <tr>
 <td>&gt;&gt; t</td>

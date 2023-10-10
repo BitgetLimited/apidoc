@@ -885,8 +885,8 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">Bitget 理财</td>
 </tr>
 </tbody></table>
-<h3 id='88387098a2'>更新预告</h3>
-<p><strong>ETA 2023年10月初</strong></p>
+<h3 id='88387098a2'>更新预告</h3><h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年10月10日</strong></p>
 
 <ul>
 <li>接口 <a href="#b9220b5487">获取历史委托列表</a> 与 <a href="#f876a4e1f9">获取订单详情</a> 新增响应字段：feeDetail.newFees</li>
@@ -896,8 +896,19 @@ clipboard.on('error', function(e) {
    &quot;feeDetail&quot;: &quot;{\&quot;BGB\&quot;:{\&quot;deduction\&quot;:true,\&quot;feeCoinCode\&quot;:\&quot;BGB\&quot;,
    \&quot;totalDeductionFee\&quot;:-0.017118519726,
    \&quot;totalFee\&quot;:-0.017118519726,\&quot;newFees\&quot;:{\&quot;t\&quot;:1,\&quot;d\&quot;:1,\&quot;r\&quot;:1,\&quot;c\&quot;:1}}}&quot;
-   </aside>        </p>
-<h1 id='185368440e'>更新日志</h1>
+   </aside> </p>
+
+<ul>
+<li>接口校验逻辑变更：<a href="#096be69702">提币</a> and <a href="#v2-2">提币V2</a>
+
+<ul>
+<li>平台支持三类提币地址: &#39;普通地址&#39;, &#39;通用地址&#39; 和 &#39;EVM 地址&#39;</li>
+<li>校验逻辑只涉及 &#39;普通地址&#39;:</li>
+<li>原逻辑: 提币时，只校验 &#39;address&#39; (错误的 &#39;address + coin&#39; 在后续的提币处理中会失败)</li>
+<li>新逻辑: 提币时，校验 &#39;address + coin&#39; (错误的 &#39;address + coin&#39; 提币接口会马上失败)</li>
+</ul></li>
+</ul>
+
 <p><strong>2023年09月05日</strong></p>
 
 <ul>
@@ -7294,7 +7305,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td style="text-align: left">&gt; newFees</td>
-<td style="text-align: center">Object （预计2023年10月初上线）</td>
+<td style="text-align: center">Object</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt;&gt; t</td>
@@ -7621,7 +7632,7 @@ margin_isolated        接受转入转出多个币种</li>
 </tr>
 <tr>
 <td style="text-align: left">&gt; newFees</td>
-<td style="text-align: center">Object （预计2023年9月中上线）</td>
+<td style="text-align: center">Object</td>
 </tr>
 <tr>
 <td style="text-align: left">&gt;&gt; t</td>
