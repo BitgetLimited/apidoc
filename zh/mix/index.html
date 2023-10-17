@@ -898,12 +898,6 @@ clipboard.on('error', function(e) {
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">1</td>
-<td style="text-align: center">API V2</td>
-<td style="text-align: center">待定</td>
-<td style="text-align: center">开发测试中</td>
-</tr>
-<tr>
 <td style="text-align: center">2</td>
 <td style="text-align: center">API 即将支持 自动追加保证金</td>
 <td style="text-align: center">待定</td>
@@ -911,13 +905,18 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
-<p><strong>ETA 2023年10月上旬</strong></p>
+<p><strong>ETA 2023年10月下旬</strong></p>
 
 <p><a href="#fd6ce2a756">合约下单</a>接口逻辑更新预告：</p>
 
 <ul>
 <li>原逻辑：单向持仓模式 + &quot;reduceOnly&quot;:true时，下平仓单的数量超过持仓数量时，下单会报异常 &#39;40757-Not enough position is available.&#39;；</li>
-<li>新逻辑：单向持仓模式 + &quot;reduceOnly&quot;:true时，超量平仓单 的 下单数量会自动改为仓位总量, 相应地，下超量平仓单会返回下单成功</li>
+<li>新逻辑：单向持仓模式 + &quot;reduceOnly&quot;:true时，
+
+<ul>
+<li>如果仓位数量为0（已经被平仓），新增抛出异常：<code>45006-position的仓位不足</code></li>
+<li>如果仓位数量不足（超量平仓），抛出原异常：<code>40757-Not enough position is available.</code></li>
+</ul></li>
 <li>双向持仓模式 下超量平仓单 逻辑不变</li>
 </ul>
 <h1 id='185368440e'>更新日志</h1>
@@ -7371,6 +7370,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
             </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28071.34"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1669362331867"</span><span class="w">
+            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1676426611041"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
@@ -7391,7 +7391,8 @@ DJoVsaqGOaIf4qXXXXXXXXXX
             </span><span class="s2">"liquidationPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"keepMarginRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.004"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marketPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28071.34"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1669362331868"</span><span class="w">
+            </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1669362331868"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"uTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673426611041"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -7478,6 +7479,10 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td style="text-align: left">cTime</td>
+<td style="text-align: left">最近仓位创建时间 时间戳 毫秒</td>
+</tr>
+<tr>
+<td style="text-align: left">uTime</td>
 <td style="text-align: left">最近更新时间 时间戳 毫秒</td>
 </tr>
 </tbody></table>
@@ -18641,6 +18646,56 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 <tr>
 <td style="text-align: left">60047</td>
 <td style="text-align: left">userPayMethodId 不能是空</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13007</td>
+<td style="text-align: left">当前币种{0}，24小时限制净买入价值{1} USD，还可以净购买价值{2} USD的{3}</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">11000</td>
+<td style="text-align: left">白名单已开启，您的账户只能提现到地址簿地址</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40103</td>
+<td style="text-align: left">非常抱歉，根据您的IP地址和留存信息，您似乎位于我们目前无法提供服务的国家或地区</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40104</td>
+<td style="text-align: left">无法转账到该账户 请确保这是个有效并完成认证的账户</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">30001</td>
+<td style="text-align: left">价格最小变动为 {0} %</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">40928</td>
+<td style="text-align: left">风控比例限制，您当前最大可开为{0} {1}。单个用户风控比例限额是所有母子账户一起计算</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">47003</td>
+<td style="text-align: left">白名单已开启，您的账户只能提现到地址簿地址</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13008</td>
+<td style="text-align: left">单笔提币超过最大限额</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">13009</td>
+<td style="text-align: left">超过每日总额额度</td>
+<td style="text-align: center">400</td>
+</tr>
+<tr>
+<td style="text-align: left">32038</td>
+<td style="text-align: left">卖出价不能低于触发价的{0}</td>
 <td style="text-align: center">400</td>
 </tr>
 </tbody></table>

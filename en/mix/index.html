@@ -919,25 +919,24 @@ clipboard.on('error', function(e) {
 </thead><tbody>
 <tr>
 <td style="text-align: center">1</td>
-<td style="text-align: center">API v2</td>
-<td style="text-align: center">TBP</td>
-<td style="text-align: center">Developing and testing</td>
-</tr>
-<tr>
-<td style="text-align: center">2</td>
-<td style="text-align: center">new feature to support auto suppliment margin</td>
+<td style="text-align: center">New feature to support auto suppliment margin</td>
 <td style="text-align: center">TBP</td>
 <td style="text-align: center">Developing and testing</td>
 </tr>
 </tbody></table>
 <h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA early of Oct, 2023</strong></p>
+<p><strong>ETA end of Oct, 2023</strong></p>
 
 <p><a href="#place-order">Place Order</a> logic update forecast: </p>
 
 <ul>
 <li>Current logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, API will return &#39;40757-Not enough position is available.&#39; when &#39;order size&#39; is greater than the &#39;position size&#39;</li>
-<li>New logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, API will return &#39;success&#39; when &#39;order size&#39; is greater than the &#39;position size&#39; with actual position size</li>
+<li>New logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, 
+
+<ul>
+<li>If position size = 0 (was fully closed), a new error will throw: <code>45006-Insufficient position</code></li>
+<li>If closing size &gt; position size  (over size), original error will throw: <code>40757-Not enough position is available.</code></li>
+</ul></li>
 <li>Logic in &#39;double_hold&#39; mode remains the same</li>
 </ul>
 <h1 id='update-log'>Update log</h1>
@@ -15162,7 +15161,7 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 </tr>
 <tr>
 <td>40002</td>
-<td>SECRET_KEY cannot be empty</td>
+<td>ACCESS_SIGN cannot be empty</td>
 <td>400</td>
 </tr>
 <tr>
@@ -18628,6 +18627,61 @@ channel books15 return 15 bids index from 5 to 19(index 19 is bid1), and return 
 <tr>
 <td>60047</td>
 <td>userPayMethodId not empty</td>
+<td>400</td>
+</tr>
+<tr>
+<td>40926</td>
+<td>Your identity authentication is still under review. Please wait for the review to pass before trying this function again</td>
+<td>400</td>
+</tr>
+<tr>
+<td>13007</td>
+<td>The current currency is {0}, and the net purchase value of {1} USD is limited within 24 hours, and the net purchase value of {2} USD is also allowed for {3}</td>
+<td>400</td>
+</tr>
+<tr>
+<td>11000</td>
+<td>withdraw address is not in addressBook</td>
+<td>400</td>
+</tr>
+<tr>
+<td>40103</td>
+<td>based on your IP address , it appears that you are located in a country or region where we are currently unable to provide services</td>
+<td>400</td>
+</tr>
+<tr>
+<td>40104</td>
+<td>Unable to withdraw to this account Please make sure this is a valid and verified account</td>
+<td>400</td>
+</tr>
+<tr>
+<td>30001</td>
+<td>Minimum Price Change {0} %</td>
+<td>400</td>
+</tr>
+<tr>
+<td>40928</td>
+<td>Risk control, currently your max open size is {0} {1}. The size was calculated with all the main-sub accounts</td>
+<td>400</td>
+</tr>
+<tr>
+<td>47003</td>
+<td>Withdraw address is not in addressBook</td>
+<td>400</td>
+</tr>
+<tr>
+<td>13008</td>
+<td>A single withdrawal exceeds the maximum limit</td>
+<td>400</td>
+</tr>
+<tr>
+<td>13009</td>
+<td>Exceeds withdrawal daily limit</td>
+<td>400</td>
+</tr>
+<tr>
+<td>32038</td>
+<td>The sell price cannot be lower than the trigger price percent{0}</td>
 <td>400</td>
 </tr>
 </tbody></table>
