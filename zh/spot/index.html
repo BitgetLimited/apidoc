@@ -881,8 +881,8 @@ clipboard.on('error', function(e) {
 <tr>
 <td style="text-align: center">1</td>
 <td style="text-align: center">理财</td>
-<td style="text-align: center">2023 十月中</td>
-<td style="text-align: center">Bitget 理财</td>
+<td style="text-align: center">2023 十月下旬</td>
+<td style="text-align: center">Bitget 理财，将于V2接口上线</td>
 </tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3><h1 id='185368440e'>更新日志</h1>
@@ -2738,7 +2738,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 <tr>
 <td style="text-align: left">&gt; extraWithDrawFee</td>
-<td style="text-align: left">额外钱包收取，部分币种收取</td>
+<td style="text-align: left">额外收取，部分币种收取。链上销毁：<code>0.1</code>表示<code>10%</code></td>
 </tr>
 <tr>
 <td style="text-align: left">&gt; depositConfirm</td>
@@ -11365,7 +11365,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='32d6e98f1f'>借币</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -11487,7 +11487,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='6ff6956591'>查询借款中列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -11640,7 +11640,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='a9af9c2d42'>还款</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -11786,7 +11786,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='da4fde80da'>查询还款历史列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -11950,7 +11950,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='fae95f2045'>调整质押率</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -11995,7 +11995,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <td style="text-align: left">amount</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">还款数量</td>
+<td style="text-align: center">调整数量</td>
 </tr>
 <tr>
 <td style="text-align: left">pledgeCoin</td>
@@ -12007,7 +12007,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 <td style="text-align: left">reviseType</td>
 <td style="text-align: left">String</td>
 <td style="text-align: center">是</td>
-<td style="text-align: center">还款类型</td>
+<td style="text-align: center">调整类型</td>
 </tr>
 </tbody></table>
 
@@ -12076,7 +12076,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='39e714943e'>查询调整质押率历史列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -12242,7 +12242,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='23709ab43d'>查询借币历史列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -12428,7 +12428,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='ad7f446e57'>查询资产负债列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -12539,18 +12539,18 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 
 <p>&nbsp;</p>
 <h3 id='462716543f'>查询强平记录列表</h3>
-<p>限速规则 10次/1s (ip)</p>
+<p>限速规则 10次/1s (UID)</p>
 
 <p><strong>HTTP请求</strong></p>
 
 <ul>
-<li>GET /api/spot/v1/loan/debts</li>
+<li>GET /api/spot/v1/loan/reduces</li>
 </ul>
 
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/debts?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/spot/v1/loan/reduces?startTime=1691119224000&amp;endTime=1692436119603"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
   -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
@@ -14676,7 +14676,7 @@ curl -X POST &quot;https://api.bitget.com/api/spot/v1/plan/placePlan&quot; \
 </tr>
 <tr>
 <td style="text-align: left">40002</td>
-<td style="text-align: left">SECRET_KEY不能为空</td>
+<td style="text-align: left">ACCESS_SIGN不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
