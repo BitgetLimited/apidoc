@@ -925,13 +925,17 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h3 id='update-forecast'>Update Forecast</h3>
-<p><strong>ETA end of Oct, 2023</strong></p>
+<p><strong>ETA Nov 1 , 2023</strong></p>
 
-<p><a href="#place-order">Place Order</a> logic update forecast: </p>
+<p><a href="#get-single-account">/api/mix/v1/account/account</a> response &#39;crossedUnrealizedPL&#39;  &#39;isolatedUnrealizedPL&#39;</p>
+<h1 id='update-log'>Update log</h1>
+<p><strong>Oct 30, 2023</strong></p>
+
+<p><a href="#place-order">Place Order</a> logic update forecast:</p>
 
 <ul>
 <li>Current logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, API will return &#39;40757-Not enough position is available.&#39; when &#39;order size&#39; is greater than the &#39;position size&#39;</li>
-<li>New logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true, 
+<li>New logic: &#39;single_hold&#39; mode + &quot;reduceOnly&quot;:true,
 
 <ul>
 <li>If position size = 0 (was fully closed), a new error will throw: <code>45006-Insufficient position</code></li>
@@ -939,7 +943,7 @@ clipboard.on('error', function(e) {
 </ul></li>
 <li>Logic in &#39;double_hold&#39; mode remains the same</li>
 </ul>
-<h1 id='update-log'>Update log</h1>
+
 <p><strong>Sep 21, 2023</strong></p>
 
 <p>New response field &#39;uTime&#39; added: <a href="#get-all-position-v2">/api/mix/v1/position/allPosition-v2</a> </p>
@@ -5906,6 +5910,8 @@ If there is a large deviation between the local server time and the API server t
     </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"crossedUnrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"isolatedUnrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -5983,6 +5989,14 @@ If there is a large deviation between the local server time and the API server t
 <tr>
 <td style="text-align: left">unrealizedPL</td>
 <td style="text-align: left">unrealized profit and loss at crossed <a href="#marginmode">margin mode</a>, unit in USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">crossedUnrealizedPL</td>
+<td style="text-align: left">current symbol unrealized profit and loss at crossed <a href="#marginmode">margin mode</a>, unit in USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">isolatedUnrealizedPL</td>
+<td style="text-align: left">current symbol unrealized profit and loss at isolated <a href="#marginmode">margin mode</a>, unit in USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">bonus</td>

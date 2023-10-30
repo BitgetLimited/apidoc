@@ -905,7 +905,10 @@ clipboard.on('error', function(e) {
 </tr>
 </tbody></table>
 <h3 id='88387098a2'>更新预告</h3>
-<p><strong>ETA 2023年10月下旬</strong></p>
+<p><strong>ETA 2023年11月1号</strong>
+接口<a href="#86b3aa37f0">/api/mix/v1/account/account</a> 新增响应字段 &#39;crossedUnrealizedPL&#39;  &#39;isolatedUnrealizedPL&#39;</p>
+<h1 id='185368440e'>更新日志</h1>
+<p><strong>2023年10月下旬</strong></p>
 
 <p><a href="#fd6ce2a756">合约下单</a>接口逻辑更新预告：</p>
 
@@ -919,7 +922,7 @@ clipboard.on('error', function(e) {
 </ul></li>
 <li>双向持仓模式 下超量平仓单 逻辑不变</li>
 </ul>
-<h1 id='185368440e'>更新日志</h1>
+
 <p><strong>2023年09月21</strong></p>
 
 <p>接口<a href="#v2-2">/api/mix/v1/position/allPosition-v2</a> 新增响应字段 &#39;uTime&#39;  </p>
@@ -5839,6 +5842,8 @@ DJoVsaqGOaIf4qXXXXXXXXXX
         </span><span class="s2">"marginMode"</span><span class="p">:</span><span class="s2">"crossed"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"holdMode"</span><span class="p">:</span><span class="s2">"double_hold"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"unrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"crossedUnrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isolatedUnrealizedPL"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"bonus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -5916,6 +5921,14 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <tr>
 <td style="text-align: left">unrealizedPL</td>
 <td style="text-align: left">全仓未实现盈亏，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">crossedUnrealizedPL</td>
+<td style="text-align: left">当前币对下全仓未实现盈亏，USDT</td>
+</tr>
+<tr>
+<td style="text-align: left">isolatedUnrealizedPL</td>
+<td style="text-align: left">当前币对下逐仓未实现盈亏，USDT</td>
 </tr>
 <tr>
 <td style="text-align: left">bonus</td>
@@ -15205,7 +15218,7 @@ USDT永续合约和币本位合约会分别计算持仓数量+open orders<br/>
 </tr>
 <tr>
 <td style="text-align: left">40002</td>
-<td style="text-align: left">SECRET_KEY不能为空</td>
+<td style="text-align: left">ACCESS_SIGN不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>
