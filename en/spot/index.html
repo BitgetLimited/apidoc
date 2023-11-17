@@ -891,7 +891,12 @@ clipboard.on('error', function(e) {
 <td style="text-align: center">Bitget Earn, will be available in V2</td>
 </tr>
 </tbody></table>
-<h3 id='update-forecast'>Update Forecast</h3><h1 id='update-log'>Update Log</h1>
+<h3 id='update-forecast'>Update Forecast</h3>
+<p><strong>ETA Sep 06, 2023</strong>
+- Forecast 
+  <a href="#get-symbols">/api/spot/v1/public/products</a> added response field：<code>maxOrderNum</code>
+   <a href="#get-single-symbol">/api/spot/v1/public/product</a> added response field：<code>maxOrderNum</code></p>
+<h1 id='update-log'>Update Log</h1>
 <p><strong>Oct 10, 2023</strong></p>
 
 <ul>
@@ -7125,12 +7130,6 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 </tr>
 </thead><tbody>
 <tr>
-<td>symbol</td>
-<td>String</td>
-<td>Yes</td>
-<td>Symbol Id</td>
-</tr>
-<tr>
 <td>orderId</td>
 <td>String</td>
 <td>No</td>
@@ -7140,7 +7139,7 @@ DJoVsaqGOaIf4qXXXXXXXXXX
 <td>clientOrderId</td>
 <td>String</td>
 <td>No</td>
-<td>Custom ID, clientOrderId and orderId should have one</td>
+<td>Custom ID, clientOrderId and orderId should have one (clientOrderId must be user-generated to be valid, and only orders within 24 hours can be queried)</td>
 </tr>
 </tbody></table>
 
