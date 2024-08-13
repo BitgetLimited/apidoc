@@ -43,7 +43,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -127,7 +127,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -142,41 +142,52 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nl {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
+  background-color: #272822;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ow {
   color: #f92672;
@@ -324,7 +335,7 @@
     }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
-  <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
+    <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
@@ -501,6 +512,26 @@ clipboard.on('error', function(e) {
 });
 </script>
 <h1 id='185368440e'>更新日志</h1>
+<p><strong>2024年8月15日</strong></p>
+
+<ul>
+<li><strong>API接口限频调整</strong></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>接口</th>
+<th>原限频</th>
+<th>新限频</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/api/broker/v1/account/sub-withdrawal</td>
+<td>10次/秒/UID</td>
+<td>1次/秒/UID</td>
+</tr>
+</tbody></table>
+
 <p><strong>2023年08月17日</strong></p>
 
 <ul>
@@ -772,15 +803,15 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -834,19 +865,19 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <ul>
 <li>status
 
@@ -908,19 +939,19 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="s2">"readonly"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"contract_trade"</span><span class="p">,</span><span class="w">
@@ -928,13 +959,13 @@ Signature = base64.encode(Signature)
                     </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"recharge"</span><span class="w">
                 </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
+                </span><span class="nl">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <ul>
 <li>status
 
@@ -996,19 +1027,19 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <ul>
 <li>status
 
@@ -1064,12 +1095,12 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='7120ab2161'>获取子账户邮箱</h3>
+</span></code></pre></div><h3 id='7120ab2161'>获取子账户邮箱</h3>
 <p>限速规则：1次/1s (ApiKey)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -1099,17 +1130,17 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="mi">7713789662</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="mi">7713789662</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='ab8652ba96'>获取子现货账户列表</h3>
+</span></code></pre></div><h3 id='ab8652ba96'>获取子现货账户列表</h3>
 <p>限速规则：10次/1s (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -1139,21 +1170,21 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+        </span><span class="nl">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -1223,25 +1254,25 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
+            </span><span class="nl">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -1329,19 +1360,19 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -1376,7 +1407,7 @@ Signature = base64.encode(Signature)
 </tr>
 </tbody></table>
 <h3 id='43de9ab9a8'>子账户提币(仅适用主账户)</h3>
-<p>限速规则：10次/1s  (uid)</p>
+<p>限速规则：1次/1s  (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
 
@@ -1441,12 +1472,12 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='72f9e19c7c'>充币自动划转(仅适用主账户)</h3>
+</span></code></pre></div><h3 id='72f9e19c7c'>充币自动划转(仅适用主账户)</h3>
 <p>限速规则：5次/1s  (uid)</p>
 
 <p><strong>HTTP请求</strong></p>
@@ -1488,12 +1519,12 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <ul>
 <li>toAccountType
 
@@ -1516,14 +1547,14 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+</code></pre></div>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -1545,7 +1576,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -1564,7 +1595,7 @@ Signature = base64.encode(Signature)
         "transferId": "XXXXX"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -1675,14 +1706,14 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -1704,7 +1735,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -1726,7 +1757,7 @@ Signature = base64.encode(Signature)
         "uTime": "1689833233282"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -1847,14 +1878,14 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>请求示例</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
 <p><strong>请求参数</strong></p>
 
 <table><thead>
@@ -1876,7 +1907,7 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -1898,7 +1929,7 @@ Signature = base64.encode(Signature)
         "uTime": "1689833233282"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -2061,21 +2092,21 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -2151,21 +2182,21 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -2253,18 +2284,18 @@ Signature = base64.encode(Signature)
 <blockquote>
 <p>返回数据:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>返回值说明</strong></p>
 
 <table><thead>
@@ -2326,7 +2357,7 @@ Signature = base64.encode(Signature)
 </tr>
 <tr>
 <td style="text-align: left">40002</td>
-<td style="text-align: left">SECRET_KEY不能为空</td>
+<td style="text-align: left">ACCESS_SIGN不能为空</td>
 <td style="text-align: center">400</td>
 </tr>
 <tr>

@@ -43,7 +43,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -127,7 +127,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -142,41 +142,52 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nl {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
+  background-color: #272822;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ow {
   color: #f92672;
@@ -324,7 +335,7 @@
     }
   </style>
     <link href="../../stylesheets/screen-e1bf6c67.css" rel="stylesheet" media="screen" />
-  <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
+    <link href="../../stylesheets/print-f1a026e8.css" rel="stylesheet" media="print" />
     <script src="../../javascripts/all-0f81ae09.js"></script>
 </head>
 <header class="top-nav">
@@ -525,6 +536,26 @@ clipboard.on('error', function(e) {
 <h1 id='welcome'>Welcome</h1>
 <p>Welcome to Bitget API Document! Click <a href="#introduction">here</a> for a quick start</p>
 <h1 id='update-log'>Update log</h1>
+<p><strong>Aug 15, 2024</strong></p>
+
+<ul>
+<li><strong>API rate limit adjustment</strong></li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Endpoint</th>
+<th>Old rate limit</th>
+<th>New rate limit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/api/broker/v1/account/sub-withdrawal</td>
+<td>10 req/sec/UID</td>
+<td>1 req/sec/UID</td>
+</tr>
+</tbody></table>
+
 <p><strong>Aug 17, 2023</strong></p>
 
 <ul>
@@ -659,30 +690,30 @@ clipboard.on('error', function(e) {
 <li>Content-Type：Set to <code>application/json</code> for POST request</li>
 <li>locale: Support languages such as: English (en-US), Chinese (zh-CN)</li>
 </ul>
-<pre class="highlight java tab-java"><code><span class="c1">//Java</span>
-<span class="n">Long</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-</code></pre><pre class="highlight plaintext"><code>//python
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="c1">//Java</span>
+<span class="nc">Long</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>//python
 import time
 time.time_ns() / 1000000
-</code></pre><pre class="highlight go tab-go"><code><span class="c">//Golang</span><span class="x">
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-  </span><span class="s">"time"</span><span class="x">
-</span><span class="p">)</span><span class="x">
-</span><span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span><span class="x">
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">//Golang</span>
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"time"</span>
+<span class="p">)</span>
+<span class="kt">int64</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">UnixNano</span><span class="p">()</span><span class="o">/</span><span class="m">1000000</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">//Javascript</span>
 <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
-</code></pre><pre class="highlight php tab-php"><code>//PHP
-microtime(true) * 1000;
-</code></pre><h2 id='signature'>Signature</h2>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="c1">//PHP</span>
+<span class="nb">microtime</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+</code></pre></div><h2 id='signature'>Signature</h2>
 <blockquote>
 <p>Signature - build content</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="c1">//timestamp: milliseconds</span>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="c1">//timestamp: milliseconds</span>
 <span class="c1">//method: GET or POST</span>
 <span class="c1">//requestPath: url path</span>
 <span class="c1">//queryString: '?uid=123&amp;startTime=16800001234&amp;endTime=16800004321'</span>
-<span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
-</code></pre>
+<span class="nc">String</span> <span class="n">content</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="n">method</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">()</span> <span class="o">+</span> <span class="n">requestPath</span> <span class="o">+</span> <span class="n">queryString</span> <span class="o">+</span> <span class="n">body</span><span class="o">;</span>
+</code></pre></div>
 <p>The request header of ACCESS-SIGN is generated as follows </p>
 
 <p>1). Concatenate a string content like in the right console: </p>
@@ -690,9 +721,9 @@ microtime(true) * 1000;
 <blockquote>
 <p>Signature - encrypt and encode</p>
 </blockquote>
-<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">encryptedString</span> <span class="o">=</span> <span class="n">hmacSHA256</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-<span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">encryptedString</span><span class="o">);</span>
-</code></pre>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">String</span> <span class="n">encryptedString</span> <span class="o">=</span> <span class="n">hmacSHA256</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="nc">Base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">encryptedString</span><span class="o">);</span>
+</code></pre></div>
 <p>2). Encrypt the content by <strong>HMAC SHA256</strong> algorithm with the <code>secretKey</code>, at the end use BASE64 to encode the hmac sha256 output.</p>
 
 <p><strong>Description of each fields in the signature</strong> </p>
@@ -754,13 +785,13 @@ String content = timestamp + method.toUpperCase() + requestPath + &quot;?&quot; 
 <p><strong><em>HMAC</em></strong></p>
 
 <p>Step 1. Use the private key <strong>secretkey</strong> to encrypt the string to be signed with hmac sha256</p>
-<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">hmac_sha256</span><span class="o">(</span><span class="n">secretkey</span><span class="o">,</span> <span class="n">Message</span><span class="o">);</span>
-</code></pre>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">hmac_sha256</span><span class="o">(</span><span class="n">secretkey</span><span class="o">,</span> <span class="nc">Message</span><span class="o">);</span>
+</code></pre></div>
 <p> </p>
 
 <p>Step 2. Base64 encoding for Signature.</p>
-<pre class="highlight java tab-java"><code><span class="n">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
-</code></pre>
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">String</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+</code></pre></div>
 <p><strong><em>RSA</em></strong></p>
 
 <p>Step 1. Use the RSA privateKey <strong>privateKey</strong> to encrypt the string to be signed with SHA-256</p>
@@ -865,15 +896,15 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subAccountQty"</span><span class="p">:</span><span class="s2">"2311"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maxSubAccountQty"</span><span class="p">:</span><span class="s2">"5000"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -927,19 +958,19 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1038,19 +1069,19 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1656589586807</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"hasNextPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastEndId"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7713789662"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01@bgbroker6314497154"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="s2">"readonly"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"contract_trade"</span><span class="p">,</span><span class="w">
@@ -1058,13 +1089,13 @@ crossed       Cross margin</li>
                     </span><span class="s2">"withdraw"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"recharge"</span><span class="w">
                 </span><span class="p">],</span><span class="w">
-                </span><span class="s2">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
+                </span><span class="nl">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"cTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1653287983475"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>&nbsp;<strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1130,7 +1161,7 @@ crossed       Cross margin</li>
 
 <p>&nbsp;</p>
 <h3 id='modify-sub-account'>Modify Sub Account</h3>
-<p>Limit rule：1/sec (ApiKey)</p>
+<p>Limit rule：1/sec/UID</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1171,19 +1202,19 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
-        </span><span class="s2">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="s2">"293848922"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="s2">"subEmail@hyc.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"auth"</span><span class="p">:[</span><span class="s2">"spot_trade"</span><span class="p">,</span><span class="s2">"transfer"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="s2">"mySub01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cTime"</span><span class="p">:</span><span class="s2">"1651130117853"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>&nbsp;<strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1276,11 +1307,11 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1338,17 +1369,17 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="mi">7713789662</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="mi">7713789662</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo@bitget.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1406,21 +1437,21 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
+        </span><span class="nl">"coinId"</span><span class="p">:</span><span class="s2">"10012"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coinName"</span><span class="p">:</span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"frozen"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lock"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uTime"</span><span class="p">:</span><span class="s2">"1622697148"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1498,25 +1529,25 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
+            </span><span class="nl">"marginCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"locked"</span><span class="p">:</span><span class="s2">"0.31876482"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"available"</span><span class="p">:</span><span class="s2">"10575.26735771"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"crossMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fixedMaxAvailable"</span><span class="p">:</span><span class="s2">"10580.56434289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"maxTransferOut"</span><span class="p">:</span><span class="s2">"10572.92904289"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"equity"</span><span class="p">:</span><span class="s2">"10582.90265771"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usdtEquity"</span><span class="p">:</span><span class="s2">"10582.902657719473"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"btcEquity"</span><span class="p">:</span><span class="s2">"0.204885807029"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requestTime"</span><span class="p">:</span><span class="mi">1630901215622</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1620,19 +1651,19 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29390"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-Bitcoin"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://btc.com/1HPn8Rx2y6nNSfagQBKy27GB99Vbzg89wv"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -1683,7 +1714,7 @@ crossed       Cross margin</li>
 
 <p>&nbsp;</p>
 <h3 id='sub-withdrawal-only-broker'>Sub Withdrawal (Only Broker)</h3>
-<p>Limit rule：10/sec  (uid)</p>
+<p>Limit rule：1/sec  (uid)</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1754,12 +1785,12 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -1821,12 +1852,12 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234433328677111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
@@ -1848,14 +1879,14 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-transfer?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
 <p><strong>Request Body</strong></p>
 
 <table><thead>
@@ -1877,7 +1908,7 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -1896,7 +1927,7 @@ crossed       Cross margin</li>
         "transferId": "XXXXX"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2007,14 +2038,14 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-deposit?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
 <p><strong>Request Body</strong></p>
 
 <table><thead>
@@ -2036,7 +2067,7 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -2058,7 +2089,7 @@ crossed       Cross margin</li>
         "uTime": "1689833233282"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2179,14 +2210,14 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Request Example</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
-  -H <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
-  -H <span class="s2">"locale:en-US"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.bitget.com/api/broker/v1/subaccount-withdrawal?orderId=123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-KEY:you apiKey"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-SIGN:*******"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-PASSPHRASE:*****"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"ACCESS-TIMESTAMP:1659076670000"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"locale:en-US"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> 
+</code></pre></div>
 <p><strong>Request Body</strong></p>
 
 <table><thead>
@@ -2208,7 +2239,7 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight plaintext"><code>{
+<div class="highlight"><pre class="highlight plaintext"><code>{
     "code": "00000",
     "msg": "success",
     "requestTime": 1689833233282,
@@ -2230,7 +2261,7 @@ crossed       Cross margin</li>
         "uTime": "1689833233282"
     }
 }
-</code></pre>
+</code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2393,21 +2424,21 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2479,21 +2510,21 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"secretKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sjwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2593,18 +2624,18 @@ crossed       Cross margin</li>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"subUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58281113"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bg_djwwwls98a1s0dLK3deq2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"perm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read_only,contract_trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.127.127.127"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p><strong>Response Parameter</strong></p>
 
 <table><thead>
@@ -2654,7 +2685,7 @@ crossed       Cross margin</li>
 </tr>
 <tr>
 <td>40002</td>
-<td>SECRET_KEY cannot be empty</td>
+<td>ACCESS_SIGN cannot be empty</td>
 <td>400</td>
 </tr>
 <tr>
